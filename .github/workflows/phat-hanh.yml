@@ -1,0 +1,53 @@
+name: Phat hanh phan mem len Releases
+
+# Chay tay tu tab Actions. Lay cac file cai dat dang nam trong public/tai
+# roi tao ban phat hanh, de kho ma nguon khong phai chua file nang.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  phat-hanh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Tao cac ban phat hanh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+          taoBan() {
+            THE="$1"; TEN="$2"; GHICHU="$3"; shift 3
+            CO=""
+            for f in "$@"; do
+              if [ -f "$f" ]; then CO="$CO $f"; else echo "Bo qua, khong thay: $f"; fi
+            done
+            if [ -z "$CO" ]; then echo "Khong co file nao cho $THE, bo qua"; return 0; fi
+            if gh release view "$THE" >/dev/null 2>&1; then
+              echo "Ban $THE da co, tai lai file"
+              gh release upload "$THE" $CO --clobber
+            else
+              echo "Tao ban $THE"
+              gh release create "$THE" $CO --title "$TEN" --notes "$GHICHU"
+            fi
+          }
+
+          taoBan "phan-mem-order-2.6" "Phần Mềm Order 2.6" \
+            "Ví tiền, huỷ đơn, ảnh đính kèm. Có bản cho macOS, Windows và Android." \
+            public/tai/PhanMemOrder-2.6.dmg public/tai/PhanMemOrder-2.6.0-Setup.exe public/tai/PhanMemOrder-2.6.0.apk
+
+          taoBan "chinh-sua-anh-1.6" "Chỉnh Sửa Ảnh 1.6" \
+            "Sửa lỗi ảnh bị tối, thêm trang điểm. Có bản cho macOS và Windows." \
+            public/tai/ChinhSuaAnh-1.6.dmg public/tai/ChinhSuaAnh-1.6-Windows.exe
+
+          taoBan "hoc-tieng-trung-android-0.1" "Học Tiếng Trung — Android 0.1" \
+            "Bản Android thử nghiệm đầu tiên." \
+            public/tai/HocTiengTrung-Android-0.1.0.apk
+
+          echo
+          echo "===== Ket qua ====="
+          gh release list
