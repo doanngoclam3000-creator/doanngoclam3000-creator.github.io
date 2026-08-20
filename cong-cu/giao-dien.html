@@ -282,7 +282,7 @@ function khungTaiPhanMem(){
     <label>Tải file cài đặt lên</label>
     <div id="keo-phanmem" class="taile taile-to">
       <b>Kéo file cài đặt thả vào đây</b>
-      <small>Nhận .dmg cho Mac · .exe cho Windows · .apk cho Android — tự điền vào đúng ô bên dưới</small>
+      <small>Nhận .dmg cho Mac · .exe hoặc .zip cho Windows · .apk cho Android — tự điền vào đúng ô bên dưới</small>
     </div>
     <div class="tienDo" id="td-phanmem" style="display:none"><i></i></div>
     <div id="tt-phanmem" class="goiy"></div>
@@ -368,11 +368,46 @@ const O_THEO_DUOI = {
   '.apk': { o: 'f-linkTaiAndroid', ten: 'Android' },
 };
 
+const MAY = {
+  mac:     { o: 'f-linkTaiMac',     ten: 'macOS' },
+  win:     { o: 'f-linkTaiWin',     ten: 'Windows' },
+  android: { o: 'f-linkTaiAndroid', ten: 'Android' },
+};
+
+// File .zip thì không biết của máy nào, phải đoán theo tên file
+function doanTheoTen(ten){
+  const t = ten.toLowerCase();
+  if (/win|windows|pc/.test(t)) return MAY.win;
+  if (/mac|macos|osx|darwin/.test(t)) return MAY.mac;
+  if (/android|apk/.test(t)) return MAY.android;
+  return null;
+}
+
+let TEP_CHO_CHON = null;   // giữ file lại trong lúc người dùng chọn máy
+
+function hoiChonMay(tep){
+  TEP_CHO_CHON = tep;
+  $('tt-phanmem').innerHTML =
+    `File <b>${tep.name}</b> dùng cho máy nào?
+     <div style="display:flex;gap:6px;margin-top:8px">
+       <button class="nut" onclick="chonMay('mac')">MacBook / iMac</button>
+       <button class="nut" onclick="chonMay('win')">Máy tính Windows</button>
+       <button class="nut" onclick="chonMay('android')">Điện thoại Android</button>
+       <button class="nut" onclick="huyChonMay()">Huỷ</button>
+     </div>`;
+}
+function chonMay(k){
+  const tep = TEP_CHO_CHON; TEP_CHO_CHON = null;
+  $('tt-phanmem').innerHTML = '';
+  if (tep) taiPhanMem(tep, MAY[k]);
+}
+function huyChonMay(){ TEP_CHO_CHON = null; $('tt-phanmem').innerHTML = ''; }
+
 function ganTaiPhanMem(){
   const khung = $('keo-phanmem'); if (!khung) return;
   const chon = document.createElement('input');
   chon.type = 'file';
-  chon.accept = '.dmg,.pkg,.exe,.msi,.apk';
+  chon.accept = '.dmg,.pkg,.exe,.msi,.apk,.zip';
   chon.style.display = 'none';
   document.body.appendChild(chon);
   chon.onchange = () => chon.files[0] && taiPhanMem(chon.files[0]);
@@ -385,10 +420,18 @@ function ganTaiPhanMem(){
   };
 }
 
-async function taiPhanMem(tep){
+async function taiPhanMem(tep, dichEp){
   const duoi = (tep.name.match(/\.[^.]+$/) || [''])[0].toLowerCase();
-  const dich = O_THEO_DUOI[duoi];
-  if (!dich) return bao(`Không nhận ra loại file "${duoi}". Chỉ nhận .dmg .pkg .exe .msi .apk`, 'loi');
+  let dich = dichEp || O_THEO_DUOI[duoi];
+
+  // .zip và các đuôi lạ: đoán theo tên, không đoán được thì hỏi
+  if (!dich) {
+    dich = doanTheoTen(tep.name);
+    if (!dich) {
+      if (duoi === '.zip' || duoi === '.rar' || duoi === '.7z') return hoiChonMay(tep);
+      return bao(`Không nhận ra loại file "${duoi}". Nhận .dmg .pkg .exe .msi .apk .zip`, 'loi');
+    }
+  }
 
   const phienBan = ($('f-phienBan') ? $('f-phienBan').value : '').trim();
   if (!phienBan) return bao('Điền ô Phiên bản trước đã — file sẽ được phát hành theo số này', 'loi');
