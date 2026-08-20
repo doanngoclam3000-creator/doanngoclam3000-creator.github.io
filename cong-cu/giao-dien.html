@@ -71,11 +71,14 @@
   .congcu button:hover { color:var(--chu); border-color:var(--xanh); }
   .hopchon { display:flex; align-items:center; gap:7px; font-size:13px; }
   .hopchon input { width:auto; }
-  .taile { border:1px dashed var(--vien); border-radius:10px; padding:14px; text-align:center; color:var(--mo); font-size:13px; }
+  .taile { border:1px dashed var(--vien); border-radius:10px; padding:14px; text-align:center; color:var(--mo); font-size:13px; cursor:pointer; }
+  .taile:hover { border-color:var(--xanh); background:#f8fbff; }
+  .taile b { color:var(--chu); }
   .taile.keo { border-color:var(--xanh); background:#eef4ff; color:var(--chu); }
-  .taile-to { padding:20px 14px; line-height:1.6; }
-  .taile-to b { display:block; color:var(--chu); font-size:14px; margin-bottom:3px; }
-  .taile-to small { font-size:12px; }
+  .taile-to { padding:20px 14px; line-height:1.6; cursor:pointer; }
+  .taile-to small { display:block; font-size:12px; }
+  .taile-to .nho-hon { font-size:11.5px; margin-top:5px; opacity:.85; }
+  .nut-chon { margin-bottom:9px; }
   .xemvideo { margin-top:10px; width:100%; max-height:230px; border-radius:10px; background:#000; }
   .canh { padding:9px 12px; border-radius:8px; font-size:12.5px; margin-bottom:12px; line-height:1.55; }
   .canh.vang { background:#fff8ec; color:#92400e; border:1px solid #f5d9a8; }
@@ -264,7 +267,7 @@ function khungVideo(video){
   return `<div class="o"><label>Video hướng dẫn</label>
     <input id="f-video" value="${esc(video)}" placeholder="Dán link YouTube, hoặc tải file video lên bên dưới" oninput="xemLaiVideo()" />
     <div class="goiy">Nên dùng <b>link YouTube</b> cho video dài. Tải file trực tiếp chỉ nên dùng cho video ngắn dưới 90MB.</div>
-    <div id="keo-video" class="taile" style="margin-top:9px">Kéo file video thả vào đây, hoặc <b>bấm để chọn</b></div>
+    <div id="keo-video" class="taile" style="margin-top:9px"><b>Bấm để chọn file video</b><br><small>hoặc kéo thả vào đây</small></div>
     <div class="tienDo" id="td-video" style="display:none"><i></i></div>
     <div id="xem-video"></div>
   </div>`;
@@ -272,7 +275,7 @@ function khungVideo(video){
 function khungAnh(anh){
   return `<div class="o"><label>Ảnh bìa</label>
     <input id="f-anh" value="${esc(anh)}" placeholder="/anh/ten-anh.jpg" oninput="xemLaiAnh()" />
-    <div id="keo-anh" class="taile" style="margin-top:9px">Kéo ảnh thả vào đây, hoặc <b>bấm để chọn</b></div>
+    <div id="keo-anh" class="taile" style="margin-top:9px"><b>Bấm để chọn ảnh</b><br><small>hoặc kéo thả vào đây</small></div>
     <div class="tienDo" id="td-anh" style="display:none"><i></i></div>
     <div id="xem-anh"></div>
   </div>`;
@@ -281,8 +284,9 @@ function khungTaiPhanMem(){
   return `<div class="o">
     <label>Tải file cài đặt lên</label>
     <div id="keo-phanmem" class="taile taile-to">
-      <b>Kéo file cài đặt thả vào đây</b>
-      <small>Nhận .dmg cho Mac · .exe hoặc .zip cho Windows · .apk cho Android — tự điền vào đúng ô bên dưới</small>
+      <button type="button" id="nut-chon-phanmem" class="nut chinh nut-chon">Chọn file trong máy…</button>
+      <small>hoặc kéo thả file vào đây</small>
+      <small class="nho-hon">.dmg cho Mac · .exe hoặc .zip cho Windows · .apk cho Android — tự điền vào đúng ô bên dưới</small>
     </div>
     <div class="tienDo" id="td-phanmem" style="display:none"><i></i></div>
     <div id="tt-phanmem" class="goiy"></div>
@@ -410,8 +414,13 @@ function ganTaiPhanMem(){
   chon.accept = '.dmg,.pkg,.exe,.msi,.apk,.zip';
   chon.style.display = 'none';
   document.body.appendChild(chon);
-  chon.onchange = () => chon.files[0] && taiPhanMem(chon.files[0]);
-  khung.onclick = () => chon.click();
+  chon.onchange = () => {
+    if (chon.files[0]) taiPhanMem(chon.files[0]);
+    chon.value = '';           // chọn lại đúng file đó lần nữa vẫn chạy
+  };
+  const moHopChon = (e) => { if (e) e.stopPropagation(); chon.click(); };
+  $('nut-chon-phanmem').onclick = moHopChon;
+  khung.onclick = moHopChon;   // bấm chỗ nào trong khung cũng mở được
   khung.ondragover = (e) => { e.preventDefault(); khung.classList.add('keo'); };
   khung.ondragleave = () => khung.classList.remove('keo');
   khung.ondrop = (e) => {
