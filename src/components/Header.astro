@@ -1,0 +1,104 @@
+---
+import { CAUHINH, CHUYEN_MUC } from '../config';
+const p = Astro.url.pathname;
+const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
+---
+<header class="dau-trang">
+  <div class="khung thanh">
+    <a href="/" class="logo">
+      <span class="logo-o">PM</span>
+      <span class="logo-chu">{CAUHINH.tenSite}</span>
+    </a>
+
+    <nav class="menu" id="menu">
+      <a href="/" class:list={['muc', dangO('/') && 'dang-o']}>Trang chủ</a>
+      <a href="/phan-mem" class:list={['muc', dangO('/phan-mem') && 'dang-o']}>Phần mềm</a>
+      <div class="tha-xuong">
+        <a href="/bai-viet" class:list={['muc', dangO('/bai-viet') && 'dang-o']}>Bài viết ▾</a>
+        <div class="bang">
+          {Object.entries(CHUYEN_MUC).map(([ma, cm]) => (
+            <a href={`/chuyen-muc/${ma}`}>
+              <span class="cm-icon">{cm.icon}</span>
+              <span><b>{cm.ten}</b><small>{cm.moTa}</small></span>
+            </a>
+          ))}
+        </div>
+      </div>
+      <a href="/gioi-thieu" class:list={['muc', dangO('/gioi-thieu') && 'dang-o']}>Giới thiệu</a>
+      <a href="/lien-he" class:list={['muc', dangO('/lien-he') && 'dang-o']}>Liên hệ</a>
+    </nav>
+
+    <div class="phai">
+      <button id="doi-giao-dien" class="nut-tron" aria-label="Đổi giao diện sáng/tối" title="Sáng / Tối">
+        <span class="hien-sang">🌙</span><span class="hien-toi">☀️</span>
+      </button>
+      <a href="/phan-mem" class="nut nut-chinh nut-tai">Tải phần mềm</a>
+      <button id="mo-menu" class="nut-tron chi-mobile" aria-label="Mở menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .dau-trang {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--nen) 85%, transparent);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--vien);
+  }
+  .thanh { display: flex; align-items: center; gap: 1rem; height: 64px; }
+  .logo { display: flex; align-items: center; gap: .6rem; font-weight: 800; color: var(--chu); font-size: 1.05rem; }
+  .logo-o {
+    display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px;
+    background: linear-gradient(135deg, var(--chinh), #7c3aed); color: #fff; font-size: .8rem; letter-spacing: .02em;
+  }
+  .menu { display: flex; align-items: center; gap: .25rem; margin-left: 1rem; }
+  .muc {
+    padding: .5rem .8rem; border-radius: 9px; color: var(--chu-nhat); font-weight: 500; font-size: .95rem;
+  }
+  .muc:hover { background: var(--nen-phu); color: var(--chu); }
+  .dang-o { color: var(--chinh); background: var(--chinh-nhat); }
+  .tha-xuong { position: relative; }
+  .bang {
+    position: absolute; top: calc(100% + 8px); left: 0; width: 320px; padding: 8px;
+    background: var(--nen-the); border: 1px solid var(--vien); border-radius: 14px; box-shadow: var(--bong-cao);
+    opacity: 0; visibility: hidden; transform: translateY(-6px); transition: .16s ease;
+  }
+  .tha-xuong:hover .bang, .tha-xuong:focus-within .bang { opacity: 1; visibility: visible; transform: none; }
+  .bang a { display: flex; gap: .7rem; padding: .6rem .7rem; border-radius: 10px; color: var(--chu); }
+  .bang a:hover { background: var(--nen-phu); }
+  .bang b { display: block; font-size: .95rem; }
+  .bang small { color: var(--chu-nhat); font-size: .8rem; line-height: 1.4; display: block; }
+  .cm-icon { font-size: 1.1rem; }
+  .phai { margin-left: auto; display: flex; align-items: center; gap: .6rem; }
+  .nut-tron {
+    width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px;
+    background: transparent; border: 1px solid var(--vien); cursor: pointer; font-size: 1rem; color: var(--chu);
+  }
+  .nut-tron:hover { background: var(--nen-phu); }
+  html[data-theme='dark'] .hien-sang, html:not([data-theme='dark']) .hien-toi { display: none; }
+  .chi-mobile { display: none; }
+
+  @media (max-width: 900px) {
+    .nut-tai { display: none; }
+    .chi-mobile { display: grid; }
+    .menu {
+      position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch;
+      background: var(--nen); border-bottom: 1px solid var(--vien); padding: 10px 16px 18px; gap: .2rem;
+      margin: 0; display: none;
+    }
+    .menu.mo { display: flex; }
+    .bang { position: static; width: auto; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding: 0 0 0 .6rem; }
+  }
+</style>
+
+<script>
+  const nutGD = document.getElementById('doi-giao-dien');
+  nutGD?.addEventListener('click', () => {
+    const moi = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = moi;
+    localStorage.setItem('giao-dien', moi);
+  });
+  document.getElementById('mo-menu')?.addEventListener('click', () => {
+    document.getElementById('menu')?.classList.toggle('mo');
+  });
+</script>

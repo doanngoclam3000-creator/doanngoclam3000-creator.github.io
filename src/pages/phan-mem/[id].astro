@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TheBaiViet from '../../components/TheBaiViet.astro';
+import { getCollection, render } from 'astro:content';
+import { dinhDangNgay } from '../../config';
+
+export async function getStaticPaths() {
+  const ds = await getCollection('phan-mem');
+  return ds.map((pm) => ({ params: { id: pm.id }, props: { pm } }));
+}
+const { pm } = Astro.props;
+const { Content } = await render(pm);
+const lienQuan = (await getCollection('bai-viet'))
+  .filter((b) => b.data.thuocPhanMem === pm.id)
+  .sort((a, b) => +b.data.ngayDang - +a.data.ngayDang)
+  .slice(0, 3);
+---
+<Layout tieuDe={pm.data.ten} moTa={pm.data.moTa} anh={pm.data.anh} loai="product">
+  <div class="banner" style={`--mau:${pm.data.mauNen}`}>
+    <div class="khung banner-trong">
+      <span class="icon-lon">{pm.data.icon}</span>
+      <div class="tt">
+        <div class="duong-dan nho"><a href="/phan-mem">Phần mềm</a> <span>/</span> <span>{pm.data.ten}</span></div>
+        <h1>{pm.data.ten}</h1>
+        <p class="mo-ta">{pm.data.moTa}</p>
+        <div class="chips">
+          {pm.data.phienBan && <span class="chip">Phiên bản {pm.data.phienBan}</span>}
+          {pm.data.nenTang.map((n: string) => <span class="chip">{n}</span>)}
+          <span class="chip">Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
+        </div>
+        <div class="hd">
+          {pm.data.linkTai && <a href={pm.data.linkTai} class="nut nut-tai-ve">⬇︎ Tải về</a>}
+          {pm.data.linkTaiPhu && <a href={pm.data.linkTaiPhu} class="nut nut-phu">Link dự phòng</a>}
+          <a href="/lien-he" class="nut nut-phu">Liên hệ mua</a>
+        </div>
+      </div>
+      {pm.data.gia && <div class="hop-gia"><small>Giá</small><b>{pm.data.gia}</b></div>}
+    </div>
+  </div>
+
+  <div class="khung-hep noi-dung than-bai">
+    <Content />
+  </div>
+
+  {lienQuan.length > 0 && (
+    <div class="khung phan">
+      <h2>Bài viết về {pm.data.ten}</h2>
+      <div class="luoi luoi-3">{lienQuan.map((b) => <TheBaiViet bai={b} />)}</div>
+    </div>
+  )}
+</Layout>
+
+<style>
+  .banner {
+    background: linear-gradient(135deg, var(--mau), color-mix(in srgb, var(--mau) 50%, #111));
+    color: #fff; padding: 48px 0 44px;
+  }
+  .banner-trong { display: flex; gap: 26px; align-items: flex-start; flex-wrap: wrap; }
+  .icon-lon {
+    font-size: 3.4rem; width: 92px; height: 92px; display: grid; place-items: center;
+    background: rgba(255,255,255,.16); border-radius: 22px; flex-shrink: 0;
+  }
+  .tt { flex: 1; min-width: 280px; }
+  .duong-dan { opacity: .85; margin-bottom: .4rem; }
+  .duong-dan a { color: #fff; text-decoration: underline; }
+  .banner h1 { color: #fff; margin: 0 0 .5rem; }
+  .mo-ta { font-size: 1.08rem; opacity: .93; max-width: 620px; }
+  .chips { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1rem 0 1.4rem; }
+  .chip { font-size: .82rem; font-weight: 500; background: rgba(255,255,255,.18); padding: .28rem .7rem; border-radius: 999px; }
+  .hd { display: flex; gap: .6rem; flex-wrap: wrap; }
+  .nut-tai-ve { background: #fff; color: #111; }
+  .nut-tai-ve:hover { background: #f1f5f9; color: #111; transform: translateY(-1px); }
+  .nut-phu { background: rgba(255,255,255,.16); color: #fff; }
+  .nut-phu:hover { background: rgba(255,255,255,.28); color: #fff; }
+  .hop-gia { background: rgba(255,255,255,.16); border-radius: 14px; padding: 14px 22px; text-align: center; }
+  .hop-gia small { display: block; opacity: .8; font-size: .8rem; }
+  .hop-gia b { font-size: 1.35rem; }
+  .than-bai { padding-top: 44px; }
+  .phan { padding: 56px 20px 0; }
+</style>

@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout tieuDe="Không tìm thấy trang">
+  <div class="khung-hep giua">
+    <div class="so">404</div>
+    <h1>Không tìm thấy trang</h1>
+    <p class="chu-nhat">Trang bạn tìm không tồn tại hoặc đã được đổi đường dẫn.</p>
+    <div class="nut-nhom">
+      <a href="/" class="nut nut-chinh">Về trang chủ</a>
+      <a href="/phan-mem" class="nut nut-vien">Xem phần mềm</a>
+    </div>
+  </div>
+</Layout>
+<style>
+  .giua { text-align: center; padding: 100px 20px; }
+  .so { font-size: 5rem; font-weight: 800; background: linear-gradient(120deg, var(--chinh), #7c3aed); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .nut-nhom { display: flex; gap: .7rem; justify-content: center; margin-top: 1.4rem; flex-wrap: wrap; }
+</style>

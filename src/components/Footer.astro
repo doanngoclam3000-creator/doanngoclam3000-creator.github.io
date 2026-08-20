@@ -1,0 +1,58 @@
+---
+import { CAUHINH, CHUYEN_MUC } from '../config';
+import { getCollection } from 'astro:content';
+const dsPhanMem = (await getCollection('phan-mem')).sort((a, b) => a.data.thuTu - b.data.thuTu).slice(0, 6);
+const nam = new Date().getFullYear();
+---
+<footer class="chan">
+  <div class="khung luoi-chan">
+    <div>
+      <a href="/" class="ten">{CAUHINH.tenSite}</a>
+      <p class="chu-nhat nho">{CAUHINH.moTa}</p>
+      <div class="mxh">
+        {CAUHINH.facebook && <a href={CAUHINH.facebook} target="_blank" rel="noopener">Facebook</a>}
+        {CAUHINH.zalo && <a href={CAUHINH.zalo} target="_blank" rel="noopener">Zalo</a>}
+        {CAUHINH.youtube && <a href={CAUHINH.youtube} target="_blank" rel="noopener">YouTube</a>}
+        <a href="/rss.xml">RSS</a>
+      </div>
+    </div>
+    <div>
+      <h4>Phần mềm</h4>
+      <ul>
+        {dsPhanMem.map((pm) => <li><a href={`/phan-mem/${pm.id}`}>{pm.data.ten}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h4>Chuyên mục</h4>
+      <ul>
+        {Object.entries(CHUYEN_MUC).map(([ma, cm]) => <li><a href={`/chuyen-muc/${ma}`}>{cm.ten}</a></li>)}
+      </ul>
+    </div>
+    <div>
+      <h4>Thông tin</h4>
+      <ul>
+        <li><a href="/gioi-thieu">Giới thiệu</a></li>
+        <li><a href="/lien-he">Liên hệ</a></li>
+        <li><a href="/bai-viet">Tất cả bài viết</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="khung ban-quyen">
+    <span class="chu-nhat nho">© {nam} {CAUHINH.tenSite} — {CAUHINH.tacGia}. Bảo lưu mọi quyền.</span>
+  </div>
+</footer>
+
+<style>
+  .chan { border-top: 1px solid var(--vien); background: var(--nen-phu); margin-top: 80px; padding: 56px 0 24px; }
+  .luoi-chan { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; }
+  .ten { font-weight: 800; font-size: 1.1rem; color: var(--chu); display: block; margin-bottom: .5rem; }
+  .luoi-chan h4 { font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; color: var(--chu-nhat); margin-bottom: .9rem; }
+  .luoi-chan ul { list-style: none; padding: 0; margin: 0; }
+  .luoi-chan li { margin-bottom: .5rem; }
+  .luoi-chan li a { color: var(--chu); font-size: .93rem; }
+  .luoi-chan li a:hover { color: var(--chinh); }
+  .mxh { display: flex; gap: .9rem; margin-top: 1rem; font-size: .9rem; font-weight: 500; }
+  .ban-quyen { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--vien); }
+  @media (max-width: 860px) { .luoi-chan { grid-template-columns: 1fr 1fr; gap: 28px; } }
+  @media (max-width: 520px) { .luoi-chan { grid-template-columns: 1fr; } }
+</style>

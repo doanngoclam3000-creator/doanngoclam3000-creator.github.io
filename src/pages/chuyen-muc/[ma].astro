@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TheBaiViet from '../../components/TheBaiViet.astro';
+import { getCollection } from 'astro:content';
+import { CHUYEN_MUC } from '../../config';
+
+export async function getStaticPaths() {
+  return Object.keys(CHUYEN_MUC).map((ma) => ({ params: { ma } }));
+}
+const { ma } = Astro.params;
+const cm = CHUYEN_MUC[ma as keyof typeof CHUYEN_MUC];
+const baiViet = (await getCollection('bai-viet'))
+  .filter((b) => b.data.chuyenMuc === ma)
+  .sort((a, b) => +b.data.ngayDang - +a.data.ngayDang);
+---
+<Layout tieuDe={cm.ten} moTa={cm.moTa}>
+  <div class="khung dau" style={`--mau:${cm.mau}`}>
+    <span class="o-icon">{cm.icon}</span>
+    <h1>{cm.ten}</h1>
+    <p class="chu-nhat">{cm.moTa} — {baiViet.length} bài viết.</p>
+    <div class="loc">
+      <a href="/bai-viet" class="the-loc">Tất cả</a>
+      {Object.entries(CHUYEN_MUC).map(([k, c]) => (
+        <a href={`/chuyen-muc/${k}`} class:list={['the-loc', k === ma && 'dang-o']} style={k === ma ? `background:${c.mau};border-color:${c.mau};color:#fff` : ''}>{c.icon} {c.ten}</a>
+      ))}
+    </div>
+  </div>
+  <div class="khung">
+    {baiViet.length > 0
+      ? <div class="luoi luoi-3">{baiViet.map((b) => <TheBaiViet bai={b} />)}</div>
+      : <p class="chu-nhat trong">Chưa có bài viết nào trong chuyên mục này.</p>}
+  </div>
+</Layout>
+<style>
+  .dau { padding: 52px 20px 28px; }
+  .o-icon { font-size: 2rem; width: 60px; height: 60px; display: grid; place-items: center; border-radius: 16px; background: color-mix(in srgb, var(--mau) 13%, transparent); margin-bottom: 1rem; }
+  .dau h1 { margin: 0 0 .4rem; }
+  .loc { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.3rem; }
+  .the-loc { padding: .45rem .9rem; border-radius: 999px; border: 1px solid var(--vien); font-size: .9rem; font-weight: 500; color: var(--chu); }
+  .the-loc:hover { border-color: var(--chinh); color: var(--chinh); }
+  .trong { padding: 40px 0 20px; }
+</style>

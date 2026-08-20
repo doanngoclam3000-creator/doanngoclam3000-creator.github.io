@@ -1,0 +1,42 @@
+---
+import { dinhDangNgay } from '../config';
+const { pm } = Astro.props;
+---
+<article class="the pm" style={`--mau:${pm.data.mauNen}`}>
+  <a href={`/phan-mem/${pm.id}`} class="dinh">
+    <span class="icon">{pm.data.icon}</span>
+    {pm.data.phienBan && <span class="ver">v{pm.data.phienBan}</span>}
+  </a>
+  <div class="than">
+    <h3><a href={`/phan-mem/${pm.id}`}>{pm.data.ten}</a></h3>
+    <p class="chu-nhat nho tom-tat">{pm.data.moTa}</p>
+    <div class="nen-tang">
+      {pm.data.nenTang.map((n: string) => <span class="chip">{n}</span>)}
+    </div>
+    <div class="chan-the">
+      <span class="gia">{pm.data.gia ?? 'Liên hệ'}</span>
+      <a href={`/phan-mem/${pm.id}`} class="nut nut-vien nut-nho">Xem chi tiết</a>
+    </div>
+    <span class="chu-nhat nho">Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
+  </div>
+</article>
+
+<style>
+  .dinh {
+    height: 108px; display: flex; align-items: center; justify-content: space-between; padding: 0 20px;
+    background: linear-gradient(135deg, var(--mau), color-mix(in srgb, var(--mau) 55%, #000));
+  }
+  .icon { font-size: 2.6rem; filter: drop-shadow(0 2px 6px rgba(0,0,0,.25)); }
+  .ver { background: rgba(255,255,255,.2); color: #fff; font-size: .78rem; font-weight: 600; padding: .2rem .6rem; border-radius: 999px; }
+  .than { padding: 18px; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+  .than h3 { margin: 0; font-size: 1.15rem; }
+  .than h3 a { color: var(--chu); }
+  .pm:hover h3 a { color: var(--chinh); }
+  .tom-tat { margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .nen-tang { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .chip { font-size: .75rem; font-weight: 500; padding: .2rem .55rem; border-radius: 6px; background: var(--nen-phu); border: 1px solid var(--vien); color: var(--chu-nhat); }
+  .chan-the { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-top: auto; padding-top: .4rem; }
+  .gia { font-weight: 700; color: var(--mau); }
+  html[data-theme='dark'] .gia { color: color-mix(in srgb, var(--mau) 70%, #fff); }
+  .nut-nho { padding: .45rem .8rem; font-size: .85rem; }
+</style>

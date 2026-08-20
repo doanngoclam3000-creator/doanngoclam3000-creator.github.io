@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TheBaiViet from '../../components/TheBaiViet.astro';
+import { getCollection } from 'astro:content';
+import { CHUYEN_MUC } from '../../config';
+const baiViet = (await getCollection('bai-viet')).sort((a, b) => +b.data.ngayDang - +a.data.ngayDang);
+---
+<Layout tieuDe="Bài viết" moTa="Tất cả bài viết: thông báo cập nhật, hướng dẫn sử dụng, thủ thuật và tin tức.">
+  <div class="khung dau">
+    <h1>Bài viết</h1>
+    <p class="chu-nhat">Tổng cộng {baiViet.length} bài. Lọc theo chuyên mục bên dưới.</p>
+    <div class="loc">
+      <a href="/bai-viet" class="the-loc dang-o">Tất cả</a>
+      {Object.entries(CHUYEN_MUC).map(([ma, cm]) => (
+        <a href={`/chuyen-muc/${ma}`} class="the-loc">{cm.icon} {cm.ten}</a>
+      ))}
+    </div>
+  </div>
+  <div class="khung">
+    <div class="luoi luoi-3">{baiViet.map((b) => <TheBaiViet bai={b} />)}</div>
+  </div>
+</Layout>
+<style>
+  .dau { padding: 56px 20px 28px; }
+  .loc { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1.3rem; }
+  .the-loc { padding: .45rem .9rem; border-radius: 999px; border: 1px solid var(--vien); font-size: .9rem; font-weight: 500; color: var(--chu); }
+  .the-loc:hover { border-color: var(--chinh); color: var(--chinh); }
+  .the-loc.dang-o { background: var(--chinh); border-color: var(--chinh); color: #fff; }
+</style>

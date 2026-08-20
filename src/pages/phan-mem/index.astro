@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ThePhanMem from '../../components/ThePhanMem.astro';
+import { getCollection } from 'astro:content';
+const phanMem = (await getCollection('phan-mem')).sort((a, b) => a.data.thuTu - b.data.thuTu);
+---
+<Layout tieuDe="Phần mềm" moTa="Danh sách toàn bộ phần mềm do tôi phát triển, kèm link tải và hướng dẫn sử dụng.">
+  <div class="khung dau">
+    <h1>Phần mềm</h1>
+    <p class="chu-nhat">Toàn bộ {phanMem.length} phần mềm do tôi tự phát triển. Bấm vào từng phần mềm để xem tính năng, ảnh chụp và link tải.</p>
+  </div>
+  <div class="khung">
+    <div class="luoi luoi-3">
+      {phanMem.map((pm) => <ThePhanMem pm={pm} />)}
+    </div>
+  </div>
+</Layout>
+<style>
+  .dau { padding: 56px 20px 28px; max-width: 760px; }
+  .dau p { font-size: 1.05rem; }
+</style>

@@ -1,0 +1,48 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CAUHINH } from '../config';
+const kenh = [
+  CAUHINH.facebook && { ten: 'Facebook', icon: '💬', mo: 'Nhắn tin trực tiếp, phản hồi nhanh nhất.', link: CAUHINH.facebook, nhan: 'Nhắn Facebook' },
+  CAUHINH.zalo && { ten: 'Zalo', icon: '📱', mo: 'Gọi hoặc nhắn tin qua Zalo.', link: CAUHINH.zalo, nhan: 'Mở Zalo' },
+  CAUHINH.email && { ten: 'Email', icon: '✉️', mo: 'Gửi email cho các yêu cầu chi tiết.', link: `mailto:${CAUHINH.email}`, nhan: CAUHINH.email },
+  CAUHINH.youtube && { ten: 'YouTube', icon: '▶️', mo: 'Xem video hướng dẫn sử dụng.', link: CAUHINH.youtube, nhan: 'Xem kênh' },
+].filter(Boolean) as any[];
+---
+<Layout tieuDe="Liên hệ" moTa="Liên hệ để được tư vấn, mua phần mềm hoặc hỗ trợ kỹ thuật.">
+  <div class="khung-hep dau">
+    <h1>Liên hệ</h1>
+    <p class="chu-nhat sapo">Cần mua phần mềm, gặp lỗi hay muốn đặt viết riêng theo yêu cầu? Nhắn cho tôi qua một trong các kênh dưới đây.</p>
+  </div>
+  <div class="khung-hep">
+    <div class="luoi luoi-2">
+      {kenh.map((k) => (
+        <a href={k.link} target="_blank" rel="noopener" class="the o-lh">
+          <span class="lh-icon">{k.icon}</span>
+          <b>{k.ten}</b>
+          <small class="chu-nhat">{k.mo}</small>
+          <span class="nut nut-vien nut-nho">{k.nhan}</span>
+        </a>
+      ))}
+    </div>
+    <div class="luu-y">
+      <h3>Mua phần mềm như thế nào?</h3>
+      <ol>
+        <li>Nhắn tin cho tôi, nói rõ bạn cần phần mềm nào và dùng trên máy gì (macOS / Windows / iPhone).</li>
+        <li>Tôi gửi link tải và hướng dẫn cài đặt.</li>
+        <li>Chuyển khoản, tôi kích hoạt và hỗ trợ đến khi bạn dùng được.</li>
+      </ol>
+    </div>
+  </div>
+</Layout>
+<style>
+  .dau { padding: 56px 20px 26px; }
+  .sapo { font-size: 1.08rem; }
+  .o-lh { padding: 22px; display: flex; flex-direction: column; gap: .4rem; align-items: flex-start; color: var(--chu); }
+  .lh-icon { font-size: 1.8rem; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: var(--nen-phu); margin-bottom: .3rem; }
+  .o-lh b { font-size: 1.1rem; }
+  .nut-nho { margin-top: .8rem; padding: .45rem .85rem; font-size: .85rem; }
+  .luu-y { margin-top: 34px; padding: 24px; border-radius: 16px; background: var(--nen-phu); border: 1px solid var(--vien); }
+  .luu-y h3 { margin-top: 0; }
+  .luu-y ol { padding-left: 1.2em; margin: 0; color: var(--chu-nhat); }
+  .luu-y li { margin-bottom: .5em; }
+</style>

@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CAUHINH } from '../config';
+import { getCollection } from 'astro:content';
+const soPM = (await getCollection('phan-mem')).length;
+const soBai = (await getCollection('bai-viet')).length;
+---
+<Layout tieuDe="Giới thiệu" moTa={`Giới thiệu về ${CAUHINH.tenSite} và tác giả ${CAUHINH.tacGia}.`}>
+  <div class="khung-hep dau">
+    <h1>Giới thiệu</h1>
+    <p class="sapo chu-nhat">{CAUHINH.khauHieu}</p>
+  </div>
+  <div class="khung-hep noi-dung">
+    <p>Xin chào, tôi là <b>{CAUHINH.tacGia}</b>. Tôi tự viết các phần mềm nhỏ gọn phục vụ công việc hằng ngày:
+      giả lập vị trí, bán tệ, học tiếng Trung, quản lý kho hàng nhập từ 1688 và Taobao. Website này là nơi tôi
+      phát hành phần mềm, đăng thông báo cập nhật và viết hướng dẫn sử dụng.</p>
+
+    <div class="so-lieu">
+      <div class="o"><b>{soPM}</b><small class="chu-nhat">phần mềm</small></div>
+      <div class="o"><b>{soBai}</b><small class="chu-nhat">bài viết</small></div>
+      <div class="o"><b>100%</b><small class="chu-nhat">tự phát triển</small></div>
+    </div>
+
+    <h2>Vì sao nên dùng phần mềm của tôi</h2>
+    <ul>
+      <li><b>Làm cho người Việt:</b> toàn bộ giao diện tiếng Việt, hợp thói quen làm việc trong nước.</li>
+      <li><b>Nhẹ và nhanh:</b> viết native, không cồng kềnh, mở lên là chạy.</li>
+      <li><b>Cập nhật liên tục:</b> mọi bản mới đều được thông báo trong mục Cập nhật.</li>
+      <li><b>Hỗ trợ trực tiếp:</b> nhắn tin là tôi trả lời, không qua tổng đài.</li>
+    </ul>
+
+    <h2>Bản quyền và điều khoản</h2>
+    <p>Phần mềm được cấp cho người mua sử dụng cá nhân. Vui lòng không chia sẻ lại bản cài đặt hoặc khoá
+      kích hoạt. Tôi không chịu trách nhiệm với thiệt hại phát sinh do sử dụng sai mục đích.</p>
+
+    <div class="cta">
+      <span>Cần tư vấn hoặc muốn mua phần mềm?</span>
+      <a href="/lien-he" class="nut nut-chinh">Liên hệ ngay</a>
+    </div>
+  </div>
+</Layout>
+<style>
+  .dau { padding: 56px 20px 10px; }
+  .sapo { font-size: 1.12rem; }
+  .so-lieu { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 2rem 0; }
+  .o { background: var(--nen-phu); border: 1px solid var(--vien); border-radius: 14px; padding: 20px; text-align: center; }
+  .o b { display: block; font-size: 1.7rem; color: var(--chinh); }
+  .cta { margin-top: 2.5rem; padding: 24px; border-radius: 16px; background: var(--chinh-nhat); display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; font-weight: 600; }
+</style>

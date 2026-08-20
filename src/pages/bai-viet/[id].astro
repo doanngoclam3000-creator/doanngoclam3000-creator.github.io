@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TheBaiViet from '../../components/TheBaiViet.astro';
+import { getCollection, render } from 'astro:content';
+import { CHUYEN_MUC, dinhDangNgay, CAUHINH } from '../../config';
+
+export async function getStaticPaths() {
+  const ds = await getCollection('bai-viet');
+  return ds.map((b) => ({ params: { id: b.id }, props: { bai: b } }));
+}
+const { bai } = Astro.props;
+const { Content } = await render(bai);
+const cm = CHUYEN_MUC[bai.data.chuyenMuc];
+
+const tatCa = (await getCollection('bai-viet')).sort((a, b) => +b.data.ngayDang - +a.data.ngayDang);
+const lienQuan = tatCa.filter((b) => b.id !== bai.id && b.data.chuyenMuc === bai.data.chuyenMuc).slice(0, 3);
+const phanMem = bai.data.thuocPhanMem
+  ? (await getCollection('phan-mem')).find((p) => p.id === bai.data.thuocPhanMem)
+  : undefined;
+---
+<Layout tieuDe={bai.data.tieuDe} moTa={bai.data.moTa} anh={bai.data.anh} loai="article">
+  <article>
+    <header class="dau-bai khung-hep">
+      <div class="duong-dan nho chu-nhat">
+        <a href="/bai-viet">Bài viết</a> / <a href={`/chuyen-muc/${bai.data.chuyenMuc}`}>{cm.ten}</a>
+      </div>
+      <span class="nhan" style={`background:${cm.mau}1a;color:${cm.mau}`}>{cm.icon} {cm.ten}</span>
+      <h1>{bai.data.tieuDe}</h1>
+      <p class="sapo chu-nhat">{bai.data.moTa}</p>
+      <div class="meta chu-nhat nho">
+        <span>{CAUHINH.tacGia}</span><span>·</span>
+        <time datetime={bai.data.ngayDang.toISOString()}>{dinhDangNgay(bai.data.ngayDang)}</time>
+        {phanMem && <><span>·</span><a href={`/phan-mem/${phanMem.id}`}>{phanMem.data.icon} {phanMem.data.ten}</a></>}
+      </div>
+    </header>
+
+    {bai.data.anh && <div class="khung-hep"><img class="anh-bia" src={bai.data.anh} alt={bai.data.tieuDe} /></div>}
+
+    <div class="khung-hep noi-dung">
+      <Content />
+    </div>
+
+    {bai.data.tags.length > 0 && (
+      <div class="khung-hep tags">
+        {bai.data.tags.map((t: string) => <span class="tag">#{t}</span>)}
+      </div>
+    )}
+
+    {phanMem && (
+      <div class="khung-hep">
+        <a href={`/phan-mem/${phanMem.id}`} class="hop-pm" style={`--mau:${phanMem.data.mauNen}`}>
+          <span class="pm-icon">{phanMem.data.icon}</span>
+          <span>
+            <small class="chu-nhat">Bài viết này thuộc phần mềm</small>
+            <b>{phanMem.data.ten}</b>
+            <small class="chu-nhat">{phanMem.data.moTa}</small>
+          </span>
+          <span class="mui-ten">→</span>
+        </a>
+      </div>
+    )}
+  </article>
+
+  {lienQuan.length > 0 && (
+    <div class="khung phan">
+      <h2>Bài viết liên quan</h2>
+      <div class="luoi luoi-3">{lienQuan.map((b) => <TheBaiViet bai={b} />)}</div>
+    </div>
+  )}
+</Layout>
+
+<style>
+  .dau-bai { padding: 50px 20px 24px; }
+  .duong-dan { margin-bottom: 1rem; }
+  .dau-bai h1 { margin: .8rem 0 .6rem; }
+  .sapo { font-size: 1.12rem; }
+  .meta { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
+  .anh-bia { width: 100%; border-radius: 16px; border: 1px solid var(--vien); margin: 1rem 0 .5rem; }
+  .tags { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 2.5rem; }
+  .tag { font-size: .85rem; padding: .3rem .7rem; border-radius: 8px; background: var(--nen-phu); border: 1px solid var(--vien); color: var(--chu-nhat); }
+  .hop-pm {
+    display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: 18px 20px;
+    border: 1px solid var(--vien); border-radius: var(--bo-goc); background: var(--nen-the); color: var(--chu);
+  }
+  .hop-pm:hover { border-color: var(--mau); box-shadow: var(--bong); }
+  .pm-icon { font-size: 2rem; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 14px; background: color-mix(in srgb, var(--mau) 14%, transparent); flex-shrink: 0; }
+  .hop-pm b { display: block; font-size: 1.05rem; }
+  .hop-pm small { display: block; font-size: .85rem; }
+  .mui-ten { margin-left: auto; font-size: 1.3rem; color: var(--mau); }
+  .phan { padding: 60px 20px 0; }
+</style>

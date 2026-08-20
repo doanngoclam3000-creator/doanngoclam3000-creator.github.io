@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ThePhanMem from '../components/ThePhanMem.astro';
+import TheBaiViet from '../components/TheBaiViet.astro';
+import { getCollection } from 'astro:content';
+import { CAUHINH, CHUYEN_MUC } from '../config';
+
+const phanMem = (await getCollection('phan-mem')).sort((a, b) => a.data.thuTu - b.data.thuTu);
+const baiViet = (await getCollection('bai-viet')).sort((a, b) => +b.data.ngayDang - +a.data.ngayDang);
+const baiMoi = baiViet.slice(0, 6);
+---
+<Layout>
+  <section class="hero">
+    <div class="khung hero-trong">
+      <span class="nhan">✨ {phanMem.length} phần mềm · {baiViet.length} bài viết</span>
+      <h1>Phần mềm tự viết,<br /><span class="to-mau">gọn nhẹ và dễ dùng</span></h1>
+      <p class="mo-ta">{CAUHINH.moTa}</p>
+      <div class="hero-nut">
+        <a href="/phan-mem" class="nut nut-chinh">Xem tất cả phần mềm</a>
+        <a href="/bai-viet" class="nut nut-vien">Đọc bài viết</a>
+      </div>
+    </div>
+    <div class="dom"></div>
+  </section>
+
+  <section class="khung phan">
+    <div class="tieu-de-phan">
+      <div>
+        <h2>Phần mềm của tôi</h2>
+        <p class="chu-nhat">Mỗi phần mềm đều có trang riêng: tính năng, ảnh chụp, hướng dẫn và link tải.</p>
+      </div>
+      <a href="/phan-mem" class="xem-them">Tất cả →</a>
+    </div>
+    <div class="luoi luoi-3">
+      {phanMem.slice(0, 6).map((pm) => <ThePhanMem pm={pm} />)}
+    </div>
+  </section>
+
+  <section class="khung phan">
+    <div class="tieu-de-phan">
+      <div>
+        <h2>Bài viết mới nhất</h2>
+        <p class="chu-nhat">Thông báo cập nhật, hướng dẫn sử dụng và thủ thuật.</p>
+      </div>
+      <a href="/bai-viet" class="xem-them">Tất cả →</a>
+    </div>
+    <div class="luoi luoi-3">
+      {baiMoi.map((b) => <TheBaiViet bai={b} />)}
+    </div>
+  </section>
+
+  <section class="khung phan">
+    <h2>Chuyên mục</h2>
+    <div class="luoi luoi-2">
+      {Object.entries(CHUYEN_MUC).map(([ma, cm]) => {
+        const soBai = baiViet.filter((b) => b.data.chuyenMuc === ma).length;
+        return (
+          <a href={`/chuyen-muc/${ma}`} class="o-cm" style={`--mau:${cm.mau}`}>
+            <span class="o-icon">{cm.icon}</span>
+            <span>
+              <b>{cm.ten}</b>
+              <small class="chu-nhat">{cm.moTa}</small>
+            </span>
+            <span class="dem">{soBai}</span>
+          </a>
+        );
+      })}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero { position: relative; overflow: hidden; border-bottom: 1px solid var(--vien); }
+  .hero-trong { padding: 80px 20px 90px; text-align: center; position: relative; z-index: 2; max-width: 820px; }
+  .hero h1 { margin: 1.1rem 0 0; }
+  .to-mau { background: linear-gradient(120deg, var(--chinh), #7c3aed 60%, #db2777); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .mo-ta { font-size: 1.1rem; color: var(--chu-nhat); margin: 1.2rem auto 2rem; max-width: 640px; }
+  .hero-nut { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+  .dom {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background:
+      radial-gradient(600px 300px at 20% 0%, color-mix(in srgb, var(--chinh) 16%, transparent), transparent 70%),
+      radial-gradient(600px 300px at 85% 20%, rgba(124,58,237,.14), transparent 70%);
+  }
+  .phan { padding: 64px 20px 0; }
+  .tieu-de-phan { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 26px; flex-wrap: wrap; }
+  .tieu-de-phan h2 { margin: 0 0 .2rem; }
+  .tieu-de-phan p { margin: 0; }
+  .xem-them { font-weight: 600; font-size: .95rem; white-space: nowrap; }
+  .o-cm {
+    display: flex; align-items: center; gap: 1rem; padding: 18px 20px;
+    background: var(--nen-the); border: 1px solid var(--vien); border-radius: var(--bo-goc); color: var(--chu); transition: .18s;
+  }
+  .o-cm:hover { border-color: var(--mau); transform: translateY(-2px); box-shadow: var(--bong); }
+  .o-icon { font-size: 1.7rem; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 12px; background: color-mix(in srgb, var(--mau) 12%, transparent); flex-shrink: 0; }
+  .o-cm b { display: block; }
+  .o-cm small { display: block; font-size: .85rem; line-height: 1.5; }
+  .dem { margin-left: auto; font-weight: 700; color: var(--mau); font-size: 1.1rem; }
+</style>

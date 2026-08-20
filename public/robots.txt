@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://doanngoclam3000-creator.github.io/sitemap-index.xml
