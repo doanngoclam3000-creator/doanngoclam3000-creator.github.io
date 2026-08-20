@@ -42,7 +42,7 @@ jobs:
 
           taoBan "phan-mem-order-2.6" "Phần Mềm Order 2.6" \
             "Ví tiền, huỷ đơn, ảnh đính kèm. Có bản cho macOS, Windows và Android." \
-            public/tai/PhanMemOrder-2.6.dmg public/tai/PhanMemOrder-2.6.0-Setup.exe public/tai/PhanMemOrder-2.6.0.apk
+            public/tai/PhanMemOrder-2.6.dmg public/tai/PhanMemOrder-2.6.0.apk
 
           taoBan "chinh-sua-anh-1.6" "Chỉnh Sửa Ảnh 1.6" \
             "Sửa lỗi ảnh bị tối, thêm trang điểm. Có bản cho macOS và Windows." \
