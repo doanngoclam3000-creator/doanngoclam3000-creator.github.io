@@ -7,6 +7,7 @@ export const CAUHINH = {
   // Lien he
   facebook: 'https://facebook.com/',
   zalo: '',
+  wechat: 'tieuphung1409',
   email: 'luc.tieu.phung1409@gmail.com',
   youtube: '',
   // Anh banner o trang chu. Thay bang anh cua ban:

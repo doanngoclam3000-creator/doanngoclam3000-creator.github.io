@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import TheBaiViet from '../../components/TheBaiViet.astro';
+import KhoiTai from '../../components/KhoiTai.astro';
 import { getCollection, render } from 'astro:content';
 import { dinhDangNgay } from '../../config';
 
@@ -18,7 +19,9 @@ const lienQuan = (await getCollection('bai-viet'))
 <Layout tieuDe={pm.data.ten} moTa={pm.data.moTa} anh={pm.data.anh} loai="product">
   <div class="banner" style={`--mau:${pm.data.mauNen}`}>
     <div class="khung banner-trong">
-      <span class="icon-lon">{pm.data.icon}</span>
+      {pm.data.anhIcon
+        ? <img class="icon-anh-lon" src={pm.data.anhIcon} alt={pm.data.ten} width="92" height="92" />
+        : <span class="icon-lon">{pm.data.icon}</span>}
       <div class="tt">
         <div class="duong-dan nho"><a href="/phan-mem">Phần mềm</a> <span>/</span> <span>{pm.data.ten}</span></div>
         <h1>{pm.data.ten}</h1>
@@ -29,17 +32,17 @@ const lienQuan = (await getCollection('bai-viet'))
           <span class="chip">Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
         </div>
         <div class="hd">
-          {pm.data.linkTai && <a href={pm.data.linkTai} class="nut nut-tai-ve">⬇︎ Tải về</a>}
-          {pm.data.linkTaiPhu && <a href={pm.data.linkTaiPhu} class="nut nut-phu">Link dự phòng</a>}
+          <a href="#tai-ve" class="nut nut-tai-ve">⬇︎ Tải về</a>
         </div>
       </div>
-      {pm.data.gia && <div class="hop-gia"><small>Giá</small><b>{pm.data.gia}</b></div>}
     </div>
   </div>
 
   <div class="khung-hep noi-dung than-bai">
     <Content />
   </div>
+
+  <div class="khung"><KhoiTai pm={pm} /></div>
 
   {lienQuan.length > 0 && (
     <div class="khung phan">
@@ -59,6 +62,7 @@ const lienQuan = (await getCollection('bai-viet'))
     font-size: 3.4rem; width: 92px; height: 92px; display: grid; place-items: center;
     background: rgba(255,255,255,.16); border-radius: 22px; flex-shrink: 0;
   }
+  .icon-anh-lon { width: 92px; height: 92px; border-radius: 22px; box-shadow: 0 8px 26px rgba(0,0,0,.4); flex-shrink: 0; }
   .tt { flex: 1; min-width: 280px; }
   .duong-dan { opacity: .85; margin-bottom: .4rem; }
   .duong-dan a { color: #fff; text-decoration: underline; }
@@ -71,20 +75,17 @@ const lienQuan = (await getCollection('bai-viet'))
   .nut-tai-ve:hover { background: #f1f5f9; color: #111; transform: translateY(-1px); }
   .nut-phu { background: rgba(255,255,255,.16); color: #fff; }
   .nut-phu:hover { background: rgba(255,255,255,.28); color: #fff; }
-  .hop-gia { background: rgba(255,255,255,.16); border-radius: 14px; padding: 14px 22px; text-align: center; }
-  .hop-gia small { display: block; opacity: .8; font-size: .8rem; }
-  .hop-gia b { font-size: 1.35rem; }
   .than-bai { padding-top: 44px; }
   .phan { padding: 56px 20px 0; }
   @media (max-width: 640px) {
     .banner { padding: 32px 0 30px; }
     .banner-trong { gap: 16px; }
     .icon-lon { width: 64px; height: 64px; font-size: 2.4rem; border-radius: 16px; }
+    .icon-anh-lon { width: 64px; height: 64px; border-radius: 16px; }
     .tt { min-width: 0; }
     .mo-ta { font-size: 1rem; }
     .hd { width: 100%; }
     .hd .nut { flex: 1 1 calc(50% - .3rem); justify-content: center; }
-    .hop-gia { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
     .than-bai { padding-top: 32px; }
     .phan { padding: 44px 16px 0; }
   }

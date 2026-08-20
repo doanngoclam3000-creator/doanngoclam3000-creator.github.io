@@ -4,6 +4,7 @@ import { CAUHINH } from '../config';
 const kenh = [
   CAUHINH.facebook && { ten: 'Facebook', icon: '💬', mo: 'Nhắn tin trực tiếp, phản hồi nhanh nhất.', link: CAUHINH.facebook, nhan: 'Nhắn Facebook' },
   CAUHINH.zalo && { ten: 'Zalo', icon: '📱', mo: 'Gọi hoặc nhắn tin qua Zalo.', link: CAUHINH.zalo, nhan: 'Mở Zalo' },
+  CAUHINH.wechat && { ten: 'WeChat', icon: '💚', mo: 'Kết bạn WeChat để trao đổi nhanh, kể cả khi tôi đang ở Trung Quốc.', link: null, nhan: CAUHINH.wechat },
   CAUHINH.email && { ten: 'Email', icon: '✉️', mo: 'Gửi email cho các yêu cầu chi tiết.', link: `mailto:${CAUHINH.email}`, nhan: CAUHINH.email },
   CAUHINH.youtube && { ten: 'YouTube', icon: '▶️', mo: 'Xem video hướng dẫn sử dụng.', link: CAUHINH.youtube, nhan: 'Xem kênh' },
 ].filter(Boolean) as any[];
@@ -15,13 +16,20 @@ const kenh = [
   </div>
   <div class="khung-hep">
     <div class="luoi luoi-2">
-      {kenh.map((k) => (
+      {kenh.map((k) => k.link ? (
         <a href={k.link} target="_blank" rel="noopener" class="the o-lh">
           <span class="lh-icon">{k.icon}</span>
           <b>{k.ten}</b>
           <small class="chu-nhat">{k.mo}</small>
           <span class="nut nut-vien nut-nho">{k.nhan}</span>
         </a>
+      ) : (
+        <div class="the o-lh">
+          <span class="lh-icon">{k.icon}</span>
+          <b>{k.ten}</b>
+          <small class="chu-nhat">{k.mo}</small>
+          <button class="nut nut-vien nut-nho chep" data-chep={k.nhan}>{k.nhan} — bấm để chép</button>
+        </div>
       ))}
     </div>
     <div class="luu-y">
@@ -34,6 +42,21 @@ const kenh = [
     </div>
   </div>
 </Layout>
+
+<script>
+  document.querySelectorAll('.chep').forEach((n) => {
+    n.addEventListener('click', async () => {
+      const ma = (n as HTMLElement).dataset.chep || '';
+      try {
+        await navigator.clipboard.writeText(ma);
+        const cu = n.textContent;
+        n.textContent = 'Đã chép: ' + ma;
+        setTimeout(() => (n.textContent = cu), 1800);
+      } catch {}
+    });
+  });
+</script>
+
 <style>
   .dau { padding: 56px 20px 26px; }
   .sapo { font-size: 1.08rem; }

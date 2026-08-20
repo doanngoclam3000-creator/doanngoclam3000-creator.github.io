@@ -42,26 +42,6 @@
     <circle cx="700" cy="60" r="1.6" fill="#93c5fd"/>
   </g>
 
-  <g opacity=".85">
-    <g transform="translate(150 330) rotate(-8)">
-      <rect x="-56" y="-56" width="112" height="112" rx="30" fill="#1e293b" fill-opacity=".85" stroke="#334155" stroke-opacity=".8"/>
-      <rect x="-56" y="-56" width="112" height="112" rx="30" fill="url(#mo)"/>
-      <text x="0" y="18" font-size="52" text-anchor="middle">📍</text>
-    </g>
-    <g transform="translate(1450 300) rotate(9)">
-      <rect x="-54" y="-54" width="108" height="108" rx="29" fill="#1e293b" fill-opacity=".85" stroke="#334155" stroke-opacity=".8"/>
-      <rect x="-54" y="-54" width="108" height="108" rx="29" fill="url(#mo)"/>
-      <text x="0" y="17" font-size="50" text-anchor="middle">💱</text>
-    </g>
-    <g transform="translate(300 585) rotate(6)" opacity=".8">
-      <rect x="-46" y="-46" width="92" height="92" rx="25" fill="#1e293b" fill-opacity=".8" stroke="#334155" stroke-opacity=".7"/>
-      <text x="0" y="15" font-size="42" text-anchor="middle">🀄️</text>
-    </g>
-    <g transform="translate(1310 600) rotate(-7)" opacity=".8">
-      <rect x="-46" y="-46" width="92" height="92" rx="25" fill="#1e293b" fill-opacity=".8" stroke="#334155" stroke-opacity=".7"/>
-      <text x="0" y="15" font-size="42" text-anchor="middle">🏬</text>
-    </g>
-  </g>
 
   <path d="M0 700 L0 560 Q400 640 800 590 T1600 540 L1600 700 Z" fill="#000000" fill-opacity=".22"/>
 </svg>

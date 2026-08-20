@@ -8,10 +8,30 @@ import { CAUHINH, CHUYEN_MUC } from '../config';
 const phanMem = (await getCollection('phan-mem')).sort((a, b) => a.data.thuTu - b.data.thuTu);
 const baiViet = (await getCollection('bai-viet')).sort((a, b) => +b.data.ngayDang - +a.data.ngayDang);
 const baiMoi = baiViet.slice(0, 6);
+
+// Icon that cua cac phan mem, bay tren nen banner
+const viTri = [
+  { trai: '7%', tren: '30%', to: 86, xoay: -8, mo: 0.9 },
+  { trai: '19%', tren: '68%', to: 62, xoay: 7, mo: 0.65 },
+  { trai: '81%', tren: '26%', to: 78, xoay: 9, mo: 0.85 },
+  { trai: '90%', tren: '66%', to: 58, xoay: -6, mo: 0.6 },
+  { trai: '69%', tren: '76%', to: 52, xoay: 5, mo: 0.5 },
+];
+const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => ({ ...viTri[i], anh: p.data.anhIcon!, ten: p.data.ten }));
 ---
 <Layout>
   <section class="hero" style={`--anh-banner:url(${CAUHINH.anhBanner})`}>
     <div class="anh-nen" role="presentation"></div>
+    <div class="icon-bay" aria-hidden="true">
+      {iconBay.map((x) => (
+        <img
+          src={x.anh}
+          alt=""
+          loading="lazy"
+          style={`left:${x.trai};top:${x.tren};width:${x.to}px;height:${x.to}px;--xoay:${x.xoay}deg;opacity:${x.mo}`}
+        />
+      ))}
+    </div>
     <div class="khung hero-trong">
       <span class="nhan">✨ {phanMem.length} phần mềm · {baiViet.length} bài viết</span>
       <h1>Phần mềm tự viết,<br /><span class="to-mau">gọn nhẹ và dễ dùng</span></h1>
@@ -95,6 +115,21 @@ const baiMoi = baiViet.slice(0, 6);
       radial-gradient(600px 300px at 20% 0%, color-mix(in srgb, var(--chinh) 16%, transparent), transparent 70%),
       radial-gradient(600px 300px at 85% 20%, rgba(124,58,237,.14), transparent 70%);
   }
+  .icon-bay { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+  .icon-bay img {
+    position: absolute; transform: translate(-50%, -50%) rotate(var(--xoay));
+    border-radius: 22%; box-shadow: 0 14px 40px rgba(0,0,0,.45);
+    animation: troi 9s ease-in-out infinite alternate;
+  }
+  .icon-bay img:nth-child(2n) { animation-duration: 11s; animation-delay: -3s; }
+  .icon-bay img:nth-child(3n) { animation-duration: 13s; animation-delay: -6s; }
+  @keyframes troi {
+    from { transform: translate(-50%, -50%) rotate(var(--xoay)); }
+    to   { transform: translate(-50%, calc(-50% - 14px)) rotate(calc(var(--xoay) * -0.6)); }
+  }
+  @media (prefers-reduced-motion: reduce) { .icon-bay img { animation: none; } }
+  @media (max-width: 900px) { .icon-bay img { opacity: .28 !important; } }
+  @media (max-width: 640px) { .icon-bay img:nth-child(n+3) { display: none; } }
   .phan { padding: 64px 20px 0; }
   .tieu-de-phan { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 26px; flex-wrap: wrap; }
   .tieu-de-phan h2 { margin: 0 0 .2rem; }

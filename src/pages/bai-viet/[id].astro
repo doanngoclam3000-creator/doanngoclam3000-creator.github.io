@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import TheBaiViet from '../../components/TheBaiViet.astro';
+import Video from '../../components/Video.astro';
 import { getCollection, render } from 'astro:content';
 import { CHUYEN_MUC, dinhDangNgay, CAUHINH } from '../../config';
 
@@ -34,7 +35,9 @@ const phanMem = bai.data.thuocPhanMem
       </div>
     </header>
 
-    {bai.data.anh && <div class="khung-hep"><img class="anh-bia" src={bai.data.anh} alt={bai.data.tieuDe} /></div>}
+    {bai.data.video
+      ? <div class="khung-hep"><Video src={bai.data.video} /></div>
+      : bai.data.anh && <div class="khung-hep"><img class="anh-bia" src={bai.data.anh} alt={bai.data.tieuDe} /></div>}
 
     <div class="khung-hep noi-dung">
       <Content />

@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Soạn bài website</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --nen:#ffffff; --nen2:#f7f9fc; --nen3:#eef2f7; --vien:#dce3ec;
+    --chu:#131a24; --mo:#5d6b7d; --xanh:#2563eb; --xanh2:#3b82f6;
+    --luc:#059669; --do:#dc2626; --vang:#d97706;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; height:100vh; overflow:hidden; display:flex;
+    background:var(--nen); color:var(--chu);
+    font-family:'Be Vietnam Pro',-apple-system,BlinkMacSystemFont,sans-serif; font-size:14px;
+  }
+  button { font-family:inherit; cursor:pointer; }
+  input, textarea, select {
+    font-family:inherit; font-size:14px; width:100%; padding:9px 11px;
+    background:#fff; border:1px solid var(--vien); border-radius:8px; color:var(--chu);
+  }
+  input:hover, textarea:hover, select:hover { border-color:#c3cddb; }
+  input:focus, textarea:focus, select:focus { outline:none; border-color:var(--xanh); box-shadow:0 0 0 3px rgba(37,99,235,.12); }
+
+  /* Cot trai */
+  aside { width:290px; flex-shrink:0; background:var(--nen2); border-right:1px solid var(--vien); display:flex; flex-direction:column; }
+  .thanh { box-shadow:0 1px 3px rgba(19,26,36,.05); }
+  .dau { padding:16px; border-bottom:1px solid var(--vien); }
+  .dau h1 { margin:0 0 3px; font-size:15px; }
+  .dau p { margin:0; font-size:12px; color:var(--mo); }
+  .tab { display:flex; gap:4px; padding:10px 12px 0; }
+  .tab button { flex:1; padding:7px; background:none; border:none; color:var(--mo); border-radius:7px; font-size:13px; font-weight:500; }
+  .tab button.chon { background:var(--nen3); color:var(--chu); }
+  .tim { padding:10px 12px; }
+  .ds { flex:1; overflow-y:auto; padding:0 8px 8px; }
+  .muc { padding:9px 11px; border-radius:8px; cursor:pointer; border:1px solid transparent; margin-bottom:2px; }
+  .muc:hover { background:var(--nen3); }
+  .muc.chon { background:#e8f0fe; border-color:var(--xanh); }
+  .muc b { display:block; font-size:13px; font-weight:500; line-height:1.4;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .muc small { color:var(--mo); font-size:11px; }
+  .cham { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; vertical-align:1px; }
+  .day { padding:12px; border-top:1px solid var(--vien); }
+
+  /* Cot phai */
+  main { flex:1; display:flex; flex-direction:column; min-width:0; }
+  .thanh { display:flex; align-items:center; gap:8px; padding:11px 16px; border-bottom:1px solid var(--vien); background:var(--nen2); }
+  .thanh .ten { font-weight:600; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .nut { padding:8px 14px; border-radius:8px; border:1px solid var(--vien); background:var(--nen3); color:var(--chu); font-size:13px; font-weight:500; }
+  .nut:hover { border-color:var(--xanh); }
+  .nut.chinh { background:var(--xanh); border-color:var(--xanh); color:#fff; }
+  .nut.chinh:hover { background:#2563eb; }
+  .nut.luc { background:var(--luc); border-color:var(--luc); color:#fff; }
+  .nut.luc:hover { background:#047857; }
+  .nut.do { color:var(--do); }
+  .nut:disabled { opacity:.45; cursor:not-allowed; }
+
+  .than { flex:1; overflow-y:auto; padding:18px 22px 40px; }
+  .trong { display:grid; place-items:center; height:100%; color:var(--mo); text-align:center; }
+  .luoi { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+  .o { margin-bottom:12px; }
+  .o label { display:block; font-size:12px; color:var(--mo); margin-bottom:5px; font-weight:500; }
+  .o .goiy { font-size:11px; color:var(--mo); margin-top:4px; }
+  textarea.noidung { min-height:calc(100vh - 520px); resize:vertical; line-height:1.75; font-size:14.5px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .congcu { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:7px; }
+  .congcu button { padding:5px 10px; font-size:12px; background:var(--nen3); border:1px solid var(--vien); border-radius:6px; color:var(--mo); }
+  .congcu button:hover { color:var(--chu); border-color:var(--xanh); }
+  .hopchon { display:flex; align-items:center; gap:7px; font-size:13px; }
+  .hopchon input { width:auto; }
+  .taile { border:1px dashed var(--vien); border-radius:10px; padding:14px; text-align:center; color:var(--mo); font-size:13px; }
+  .taile.keo { border-color:var(--xanh); background:#eef4ff; color:var(--chu); }
+  .xemvideo { margin-top:10px; width:100%; max-height:230px; border-radius:10px; background:#000; }
+  .canh { padding:9px 12px; border-radius:8px; font-size:12.5px; margin-bottom:12px; line-height:1.55; }
+  .canh.vang { background:#fff8ec; color:#92400e; border:1px solid #f5d9a8; }
+  .canh.luc { background:#ecfdf5; color:#065f46; border:1px solid #a7e3ca; }
+  .canh.do { background:#fef2f2; color:#b91c1c; border:1px solid #f6c2c2; }
+
+  .thongbao { position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(80px);
+    background:#fff; border:1px solid var(--vien); padding:11px 20px; border-radius:10px;
+    box-shadow:0 10px 34px rgba(19,26,36,.16); transition:.25s; opacity:0; z-index:99; font-size:13.5px; }
+  .thongbao.hien { transform:translateX(-50%); opacity:1; }
+  .thongbao.loi { border-color:var(--do); color:#b91c1c; }
+  .thongbao.ok { border-color:var(--luc); color:#046c50; }
+  .man { position:fixed; inset:0; background:rgba(19,26,36,.42); backdrop-filter:blur(2px); display:grid; place-items:center; z-index:100; }
+  .hop { background:#fff; border:1px solid var(--vien); border-radius:14px; padding:22px;
+    width:min(560px,92vw); box-shadow:0 24px 60px rgba(19,26,36,.22); }
+  .hop h3 { margin:0 0 12px; font-size:16px; }
+  .hop pre { background:var(--nen3); padding:11px; border-radius:8px; font-size:11.5px; max-height:230px;
+    overflow:auto; color:#3f4a58; white-space:pre-wrap; margin:10px 0 0; }
+  .cuoi { display:flex; gap:8px; justify-content:flex-end; margin-top:16px; }
+  .tienDo { height:5px; background:var(--nen); border-radius:3px; overflow:hidden; margin-top:9px; }
+  .tienDo i { display:block; height:100%; background:var(--xanh); width:0; transition:.2s; }
+</style>
+</head>
+<body>
+<aside>
+  <div class="dau">
+    <h1>Soạn bài website</h1>
+    <p id="tt-git">Đang kiểm tra…</p>
+  </div>
+  <div class="tab">
+    <button id="tab-bai" class="chon" onclick="doiTab('bai-viet')">Bài viết</button>
+    <button id="tab-pm" onclick="doiTab('phan-mem')">Phần mềm</button>
+  </div>
+  <div class="tim"><input id="o-tim" placeholder="Tìm nhanh…" oninput="veDanhSach()" /></div>
+  <div class="ds" id="ds"></div>
+  <div class="day">
+    <button class="nut chinh" style="width:100%" onclick="baiMoi()">+ Viết bài mới</button>
+  </div>
+</aside>
+
+<main>
+  <div class="thanh">
+    <span class="ten" id="ten-bai">Chưa chọn bài nào</span>
+    <button class="nut" onclick="xemThu()" id="nut-xem" disabled>Xem thử</button>
+    <button class="nut do" onclick="xoaBai()" id="nut-xoa" disabled>Xoá</button>
+    <button class="nut chinh" onclick="luuBai()" id="nut-luu" disabled>Lưu</button>
+    <button class="nut luc" onclick="moDang()" id="nut-dang">Đăng lên web</button>
+  </div>
+  <div class="than" id="than">
+    <div class="trong"><div>
+      <div style="font-size:40px;margin-bottom:10px">📝</div>
+      Chọn một bài bên trái để sửa,<br />hoặc bấm <b>Viết bài mới</b>.
+    </div></div>
+  </div>
+</main>
+
+<div class="thongbao" id="tb"></div>
+
+<script>
+const CHUYEN_MUC = {
+  'cap-nhat':{ten:'Cập nhật',mau:'#2563eb'}, 'huong-dan':{ten:'Hướng dẫn',mau:'#059669'},
+  'thu-thuat':{ten:'Thủ thuật',mau:'#d97706'}, 'tin-tuc':{ten:'Tin tức',mau:'#7c3aed'},
+};
+let LOAI='bai-viet', DULIEU={baiViet:[],phanMem:[]}, DANGCHON=null, IDCU=null;
+
+const $=(id)=>document.getElementById(id);
+function bao(t,kieu=''){ const e=$('tb'); e.textContent=t; e.className='thongbao hien '+kieu;
+  clearTimeout(e._t); e._t=setTimeout(()=>e.className='thongbao',3200); }
+const homNay=()=>new Date().toISOString().slice(0,10);
+
+async function nap(){
+  DULIEU=await (await fetch('/api/danh-sach')).json();
+  veDanhSach(); kiemTraGit();
+}
+async function kiemTraGit(){
+  try{ const g=await (await fetch('/api/git')).json();
+    $('tt-git').textContent = g.thayDoi.length ? `${g.thayDoi.length} thay đổi chưa đăng` : 'Đã đăng hết lên web';
+    $('tt-git').style.color = g.thayDoi.length ? '#b45309' : '#047857';
+  }catch{ $('tt-git').textContent='Không đọc được git'; }
+}
+function doiTab(l){ LOAI=l; DANGCHON=null;
+  $('tab-bai').className = l==='bai-viet'?'chon':''; $('tab-pm').className = l==='phan-mem'?'chon':'';
+  veDanhSach(); $('than').innerHTML='<div class="trong"><div>Chọn một mục bên trái để sửa.</div></div>';
+  $('ten-bai').textContent='Chưa chọn'; ['nut-luu','nut-xoa','nut-xem'].forEach(i=>$(i).disabled=true);
+}
+function veDanhSach(){
+  const tim=($('o-tim').value||'').toLowerCase();
+  const ds=(LOAI==='bai-viet'?DULIEU.baiViet:DULIEU.phanMem)
+    .filter(x=>((x.tieuDe||x.ten||'')+' '+(x.moTa||'')).toLowerCase().includes(tim));
+  $('ds').innerHTML = ds.map(x=>{
+    const cm=CHUYEN_MUC[x.chuyenMuc];
+    const phu = LOAI==='bai-viet'
+      ? `<span class="cham" style="background:${cm?cm.mau:'#666'}"></span>${cm?cm.ten:''} · ${x.ngayDang||''}${x.video?' · 🎬':''}`
+      : `${(x.nenTang||[]).join(', ')} · v${x.phienBan||''}`;
+    return `<div class="muc ${DANGCHON===x.id?'chon':''}" onclick="moBai('${x.id}')">
+      <b>${(x.tieuDe||x.ten||x.id).replace(/</g,'&lt;')}</b><small>${phu}</small></div>`;
+  }).join('') || '<div style="padding:16px;color:var(--mo);font-size:13px">Chưa có mục nào.</div>';
+}
+
+function o(nhan,html,goiy){ return `<div class="o"><label>${nhan}</label>${html}${goiy?`<div class="goiy">${goiy}</div>`:''}</div>`; }
+
+async function moBai(id){
+  DANGCHON=id; IDCU=id; veDanhSach();
+  const r=await (await fetch(`/api/bai?id=${encodeURIComponent(id)}&loai=${LOAI}`)).json();
+  if(r.loi) return bao(r.loi,'loi');
+  veForm(r.data, r.noiDung, id);
+}
+function baiMoi(){
+  DANGCHON=null; IDCU=null; veDanhSach();
+  if(LOAI==='bai-viet') veForm({tieuDe:'',moTa:'',ngayDang:homNay(),chuyenMuc:'huong-dan',tags:[],noiBat:false},'',null);
+  else veForm({ten:'',moTa:'',nenTang:['macOS'],phienBan:'1.0',ngayCapNhat:homNay(),linkTai:'',icon:'📦',mauNen:'#2563eb',thuTu:9},'',null);
+}
+
+function veForm(d, noiDung, id){
+  const moi = !id;
+  $('ten-bai').textContent = moi ? (LOAI==='bai-viet'?'Bài viết mới':'Phần mềm mới') : id;
+  $('nut-luu').disabled=false; $('nut-xoa').disabled=moi; $('nut-xem').disabled=moi;
+  const dsPM = DULIEU.phanMem.map(p=>`<option value="${p.id}" ${d.thuocPhanMem===p.id?'selected':''}>${p.ten}</option>`).join('');
+
+  let html = '';
+  if(LOAI==='bai-viet'){
+    html = o('Tiêu đề bài viết',`<input id="f-tieuDe" value="${esc(d.tieuDe)}" placeholder="Ví dụ: Hướng dẫn cài phần mềm trên Mac" />`)
+    + o('Mô tả ngắn',`<textarea id="f-moTa" rows="2" placeholder="1–2 câu, hiện ở trang danh sách và trên Google">${esc(d.moTa)}</textarea>`)
+    + `<div class="luoi">`
+      + o('Chuyên mục',`<select id="f-chuyenMuc">${Object.entries(CHUYEN_MUC).map(([k,v])=>`<option value="${k}" ${d.chuyenMuc===k?'selected':''}>${v.ten}</option>`).join('')}</select>`)
+      + o('Ngày đăng',`<input id="f-ngayDang" type="date" value="${esc(d.ngayDang).slice(0,10)}" />`)
+    + `</div>`
+    + `<div class="luoi">`
+      + o('Thuộc phần mềm nào',`<select id="f-thuocPhanMem"><option value="">— Không thuộc phần mềm nào —</option>${dsPM}</select>`)
+      + o('Từ khoá',`<input id="f-tags" value="${esc((d.tags||[]).join(', '))}" placeholder="cách nhau bằng dấu phẩy" />`)
+    + `</div>`
+    + `<div class="o"><label class="hopchon"><input type="checkbox" id="f-noiBat" ${d.noiBat?'checked':''} /> Đánh dấu bài nổi bật</label></div>`
+    + khungVideo(d.video)
+    + khungAnh(d.anh)
+    + khungNoiDung(noiDung);
+  } else {
+    html = o('Tên phần mềm',`<input id="f-ten" value="${esc(d.ten)}" />`)
+    + o('Mô tả ngắn',`<textarea id="f-moTa" rows="2">${esc(d.moTa)}</textarea>`)
+    + `<div class="luoi">`
+      + o('Nền tảng',`<input id="f-nenTang" value="${esc((d.nenTang||[]).join(', '))}" placeholder="macOS, Windows, iOS" />`)
+      + o('Phiên bản',`<input id="f-phienBan" value="${esc(d.phienBan)}" />`)
+    + `</div><div class="luoi">`
+      + o('Ngày cập nhật',`<input id="f-ngayCapNhat" type="date" value="${esc(d.ngayCapNhat).slice(0,10)}" />`)
+      + o('Biểu tượng (emoji)',`<input id="f-icon" value="${esc(d.icon)}" />`)
+    + `</div>`
+    + `<div class="canh vang" style="margin:6px 0 12px">Điền link tải cho từng hệ điều hành — website sẽ tự hiện đúng số nút tải.</div>`
+    + `<div class="luoi">`
+      + o('Link tải cho macOS',`<input id="f-linkTaiMac" value="${esc(d.linkTaiMac)}" placeholder="https://... file .dmg" />`)
+      + o('Link tải cho Windows',`<input id="f-linkTaiWin" value="${esc(d.linkTaiWin)}" placeholder="https://... file .exe" />`)
+    + `</div><div class="luoi">`
+      + o('Link tải cho iPhone / iPad',`<input id="f-linkTaiIOS" value="${esc(d.linkTaiIOS)}" placeholder="Link TestFlight" />`)
+      + o('Link tải cho Android',`<input id="f-linkTaiAndroid" value="${esc(d.linkTaiAndroid)}" placeholder="https://... file .apk" />`)
+    + `</div><div class="luoi">`
+      + o('Dung lượng file',`<input id="f-dungLuong" value="${esc(d.dungLuong)}" placeholder="khoảng 135 MB" />`)
+      + o('Thứ tự hiển thị',`<input id="f-thuTu" type="number" value="${d.thuTu??9}" />`)
+    + `</div><div class="luoi">`
+      + o('Link tải chung',`<input id="f-linkTai" value="${esc(d.linkTai)}" placeholder="Dùng khi không chia theo hệ điều hành" />`)
+      + o('Link dự phòng',`<input id="f-linkTaiPhu" value="${esc(d.linkTaiPhu)}" placeholder="Link thứ hai nếu link chính chậm" />`)
+    + `</div>`
+    + `<div class="luoi">`
+      + o('Màu nền',`<input id="f-mauNen" value="${esc(d.mauNen)}" placeholder="#2563eb" />`)
+      + o('Ảnh biểu tượng thật',`<input id="f-anhIcon" value="${esc(d.anhIcon)}" placeholder="/icon/ten-app.png" />`)
+    + `</div>`
+    + khungNoiDung(noiDung);
+  }
+  $('than').innerHTML = html;
+  ganKeoTha();
+}
+
+const esc=(v)=>String(v??'').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+
+function khungVideo(video){
+  return `<div class="o"><label>Video hướng dẫn</label>
+    <input id="f-video" value="${esc(video)}" placeholder="Dán link YouTube, hoặc tải file video lên bên dưới" oninput="xemLaiVideo()" />
+    <div class="goiy">Nên dùng <b>link YouTube</b> cho video dài. Tải file trực tiếp chỉ nên dùng cho video ngắn dưới 90MB.</div>
+    <div id="keo-video" class="taile" style="margin-top:9px">Kéo file video thả vào đây, hoặc <b>bấm để chọn</b></div>
+    <div class="tienDo" id="td-video" style="display:none"><i></i></div>
+    <div id="xem-video"></div>
+  </div>`;
+}
+function khungAnh(anh){
+  return `<div class="o"><label>Ảnh bìa</label>
+    <input id="f-anh" value="${esc(anh)}" placeholder="/anh/ten-anh.jpg" oninput="xemLaiAnh()" />
+    <div id="keo-anh" class="taile" style="margin-top:9px">Kéo ảnh thả vào đây, hoặc <b>bấm để chọn</b></div>
+    <div class="tienDo" id="td-anh" style="display:none"><i></i></div>
+    <div id="xem-anh"></div>
+  </div>`;
+}
+function khungNoiDung(noiDung){
+  return `<div class="o"><label>Nội dung bài viết</label>
+    <div class="congcu">
+      <button onclick="chen('## ','','Đề mục lớn')">H2</button>
+      <button onclick="chen('### ','','Đề mục nhỏ')">H3</button>
+      <button onclick="chen('**','**','chữ đậm')">Đậm</button>
+      <button onclick="chen('- ','','mục')">Gạch đầu dòng</button>
+      <button onclick="chen('1. ','','bước 1')">Đánh số</button>
+      <button onclick="chen('> ','','ghi chú')">Ghi chú</button>
+      <button onclick="chenLink()">Chèn link</button>
+      <button onclick="chenAnhVao()">Chèn ảnh</button>
+      <button onclick="chen('\\n| Cột 1 | Cột 2 |\\n| --- | --- |\\n| a | b |\\n','','')">Bảng</button>
+      <button onclick="chen('\\n---\\n','','')">Đường kẻ</button>
+    </div>
+    <textarea id="f-noiDung" class="noidung" placeholder="Viết nội dung ở đây…">${String(noiDung||'').replace(/</g,'&lt;')}</textarea>
+  </div>`;
+}
+
+function chen(truoc,sau,mau){
+  const t=$('f-noiDung'); const a=t.selectionStart,b=t.selectionEnd;
+  const chon=t.value.slice(a,b)||mau;
+  t.value=t.value.slice(0,a)+truoc+chon+sau+t.value.slice(b);
+  t.focus(); t.selectionStart=a+truoc.length; t.selectionEnd=a+truoc.length+chon.length;
+}
+function chenLink(){ const u=prompt('Dán địa chỉ link:'); if(u) chen('[',`](${u})`,'chữ hiển thị'); }
+function chenAnhVao(){ const u=$('f-anh')?.value; if(!u) return bao('Tải ảnh lên trước đã','loi'); chen(`\n![Mô tả ảnh](${u})\n`,'',''); }
+
+function xemLaiVideo(){
+  const v=$('f-video').value.trim(); const k=$('xem-video'); if(!k) return;
+  if(!v){ k.innerHTML=''; return; }
+  const yt=v.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+  k.innerHTML = yt
+    ? `<iframe class="xemvideo" style="aspect-ratio:16/9;border:0" src="https://www.youtube-nocookie.com/embed/${yt[1]}"></iframe>`
+    : `<video class="xemvideo" src="${v}" controls></video>`;
+}
+function xemLaiAnh(){ const v=$('f-anh').value.trim(); const k=$('xem-anh');
+  if(k) k.innerHTML = v?`<img class="xemvideo" style="object-fit:contain" src="${v}" />`:''; }
+
+function ganKeoTha(){
+  ganMotO('keo-anh','anh','image/*','f-anh','td-anh',xemLaiAnh);
+  ganMotO('keo-video','video','video/*','f-video','td-video',xemLaiVideo);
+}
+function ganMotO(idO,loai,chapNhan,idInput,idTd,sauKhiXong){
+  const khung=$(idO); if(!khung) return;
+  const chon=document.createElement('input');
+  chon.type='file'; chon.accept=chapNhan; chon.style.display='none';
+  document.body.appendChild(chon);
+  chon.onchange=()=>chon.files[0]&&taiLen(chon.files[0],loai,idInput,idTd,sauKhiXong);
+  khung.onclick=()=>chon.click();
+  khung.ondragover=(e)=>{e.preventDefault(); khung.classList.add('keo');};
+  khung.ondragleave=()=>khung.classList.remove('keo');
+  khung.ondrop=(e)=>{e.preventDefault(); khung.classList.remove('keo');
+    const f=e.dataTransfer.files[0]; if(f) taiLen(f,loai,idInput,idTd,sauKhiXong); };
+}
+function taiLen(tep,loai,idInput,idTd,xong){
+  const MB=tep.size/1048576;
+  if(loai==='video'&&MB>90) return bao(`Video ${MB.toFixed(0)}MB quá nặng. Hãy tải lên YouTube rồi dán link vào ô trên.`,'loi');
+  const td=$(idTd); td.style.display='block'; const thanh=td.querySelector('i');
+  const xhr=new XMLHttpRequest();
+  xhr.open('PUT',`/api/tai-len?loai=${loai}&ten=${encodeURIComponent(tep.name)}`);
+  xhr.upload.onprogress=(e)=>{ if(e.lengthComputable) thanh.style.width=(e.loaded/e.total*100)+'%'; };
+  xhr.onload=()=>{ td.style.display='none'; thanh.style.width='0';
+    try{ const r=JSON.parse(xhr.responseText);
+      if(r.url){ $(idInput).value=r.url; xong&&xong(); bao(`Đã tải lên (${MB.toFixed(1)}MB)`,'ok'); }
+      else bao(r.loi||'Tải lên thất bại','loi');
+    }catch{ bao('Tải lên thất bại','loi'); } };
+  xhr.onerror=()=>{ td.style.display='none'; bao('Tải lên thất bại','loi'); };
+  xhr.send(tep);
+}
+
+async function luuBai(){
+  const g=(id)=>$(id)?$(id).value.trim():'';
+  let data, tieuDe;
+  if(LOAI==='bai-viet'){
+    tieuDe=g('f-tieuDe');
+    if(!tieuDe) return bao('Chưa nhập tiêu đề','loi');
+    data={ tieuDe, moTa:g('f-moTa'), ngayDang:g('f-ngayDang')||homNay(), chuyenMuc:g('f-chuyenMuc'),
+      thuocPhanMem:g('f-thuocPhanMem')||undefined, anh:g('f-anh')||undefined, video:g('f-video')||undefined,
+      tags:g('f-tags').split(',').map(s=>s.trim()).filter(Boolean), noiBat:$('f-noiBat').checked };
+  } else {
+    tieuDe=g('f-ten');
+    if(!tieuDe) return bao('Chưa nhập tên phần mềm','loi');
+    data={ ten:tieuDe, moTa:g('f-moTa'), nenTang:g('f-nenTang').split(',').map(s=>s.trim()).filter(Boolean),
+      phienBan:g('f-phienBan'), ngayCapNhat:g('f-ngayCapNhat')||homNay(),
+      linkTai:g('f-linkTai')||undefined, linkTaiPhu:g('f-linkTaiPhu')||undefined,
+      linkTaiMac:g('f-linkTaiMac')||undefined, linkTaiWin:g('f-linkTaiWin')||undefined,
+      linkTaiIOS:g('f-linkTaiIOS')||undefined, linkTaiAndroid:g('f-linkTaiAndroid')||undefined,
+      dungLuong:g('f-dungLuong')||undefined,
+      anhIcon:g('f-anhIcon')||undefined, icon:g('f-icon')||'📦',
+      mauNen:g('f-mauNen')||'#2563eb', thuTu:Number(g('f-thuTu'))||9 };
+  }
+  const r=await (await fetch('/api/luu',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({ id:DANGCHON, idCu:IDCU, loai:LOAI, data, noiDung:$('f-noiDung').value })})).json();
+  if(r.loi) return bao(r.loi,'loi');
+  DANGCHON=r.id; IDCU=r.id;
+  await nap(); $('ten-bai').textContent=r.id;
+  $('nut-xoa').disabled=false; $('nut-xem').disabled=false;
+  bao('Đã lưu vào máy. Bấm "Đăng lên web" để đưa lên mạng.','ok');
+}
+async function xoaBai(){
+  if(!DANGCHON) return;
+  if(!confirm('Xoá hẳn mục này? Không khôi phục lại được.')) return;
+  await fetch('/api/xoa',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({id:DANGCHON,loai:LOAI})});
+  DANGCHON=null; IDCU=null; await nap();
+  $('than').innerHTML='<div class="trong"><div>Đã xoá.</div></div>'; $('ten-bai').textContent='Chưa chọn';
+  ['nut-luu','nut-xoa','nut-xem'].forEach(i=>$(i).disabled=true);
+  bao('Đã xoá','ok');
+}
+function xemThu(){ if(DANGCHON) window.open(`http://localhost:4321/${LOAI}/${DANGCHON}`,'_blank'); }
+
+function moDang(){
+  const m=document.createElement('div'); m.className='man'; m.id='man-dang';
+  m.innerHTML=`<div class="hop">
+    <h3>Đăng lên web</h3>
+    <div class="canh vang">Toàn bộ bài đã lưu sẽ được đưa lên website. Khoảng 1–2 phút sau web tự cập nhật.</div>
+    <div class="o"><label>Ghi chú lần đăng này</label>
+      <input id="f-loiNhan" value="Cap nhat bai viet ${homNay()}" /></div>
+    <div id="kq-dang"></div>
+    <div class="cuoi">
+      <button class="nut" onclick="dongMan()">Huỷ</button>
+      <button class="nut luc" id="nut-xacnhan" onclick="dangLen()">Đăng ngay</button>
+    </div></div>`;
+  document.body.appendChild(m);
+}
+function dongMan(){ $('man-dang')?.remove(); }
+async function dangLen(){
+  const n=$('nut-xacnhan'); n.disabled=true; n.textContent='Đang đăng…';
+  $('kq-dang').innerHTML='<div class="canh vang">Đang đưa bài lên GitHub…</div>';
+  try{
+    const r=await (await fetch('/api/dang',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({loiNhan:$('f-loiNhan').value})})).json();
+    $('kq-dang').innerHTML = r.ok
+      ? `<div class="canh luc">Đăng thành công! Website sẽ tự cập nhật sau 1–2 phút.</div>`
+      : `<div class="canh do">Chưa đăng được.</div><pre>${(r.nhatKy||r.loi||'').replace(/</g,'&lt;')}</pre>`;
+    n.textContent = r.ok?'Xong':'Thử lại'; n.disabled=false;
+    if(r.ok) setTimeout(dongMan,2200);
+    kiemTraGit();
+  }catch(e){ $('kq-dang').innerHTML=`<div class="canh do">Lỗi: ${e.message}</div>`; n.disabled=false; n.textContent='Thử lại'; }
+}
+
+document.addEventListener('keydown',(e)=>{
+  if((e.metaKey||e.ctrlKey)&&e.key==='s'){ e.preventDefault(); if(!$('nut-luu').disabled) luuBai(); }
+});
+nap();
+setInterval(kiemTraGit, 15000);
+</script>
+</body>
+</html>

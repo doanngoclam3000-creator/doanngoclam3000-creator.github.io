@@ -5,3 +5,6 @@ dist/
 .env
 .env.production
 npm-debug.log*
+
+# File tam cua cong cu soan bai
+cong-cu/tam/

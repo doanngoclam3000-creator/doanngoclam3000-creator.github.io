@@ -12,6 +12,7 @@ const nam = new Date().getFullYear();
       <div class="mxh">
         {CAUHINH.facebook && <a href={CAUHINH.facebook} target="_blank" rel="noopener">Facebook</a>}
         {CAUHINH.zalo && <a href={CAUHINH.zalo} target="_blank" rel="noopener">Zalo</a>}
+        {CAUHINH.wechat && <span class="wechat">WeChat: {CAUHINH.wechat}</span>}
         {CAUHINH.youtube && <a href={CAUHINH.youtube} target="_blank" rel="noopener">YouTube</a>}
         <a href="/rss.xml">RSS</a>
       </div>
@@ -51,7 +52,8 @@ const nam = new Date().getFullYear();
   .luoi-chan li { margin-bottom: .5rem; }
   .luoi-chan li a { color: var(--chu); font-size: .93rem; }
   .luoi-chan li a:hover { color: var(--chinh); }
-  .mxh { display: flex; gap: .9rem; margin-top: 1rem; font-size: .9rem; font-weight: 500; }
+  .mxh { display: flex; gap: .9rem; margin-top: 1rem; font-size: .9rem; font-weight: 500; flex-wrap: wrap; }
+  .wechat { color: var(--chu-nhat); }
   .ban-quyen { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--vien); }
   @media (max-width: 860px) { .luoi-chan { grid-template-columns: 1fr 1fr; gap: 28px; } }
   @media (max-width: 520px) { .luoi-chan { grid-template-columns: 1fr; } }

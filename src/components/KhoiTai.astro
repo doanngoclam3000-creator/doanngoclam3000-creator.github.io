@@ -1,0 +1,111 @@
+---
+import { dinhDangNgay } from '../config';
+const { pm } = Astro.props;
+
+const nut = [
+  { link: pm.data.linkTaiMac, ten: 'MacBook / iMac', phu: 'macOS · file .dmg', icon: '' },
+  { link: pm.data.linkTaiWin, ten: 'Máy tính Windows', phu: 'Windows · file .exe', icon: '⊞' },
+  { link: pm.data.linkTaiIOS, ten: 'iPhone / iPad', phu: 'iOS · qua TestFlight', icon: '' },
+  { link: pm.data.linkTaiAndroid, ten: 'Điện thoại Android', phu: 'Android · file .apk', icon: '🤖' },
+].filter((n) => n.link && n.link !== '#');
+
+// Neu chua khai bao link rieng cho tung he dieu hanh thi dung link chung
+const dungLinkChung = nut.length === 0 && pm.data.linkTai && pm.data.linkTai !== '#';
+const chuaCoLink = nut.length === 0 && !dungLinkChung;
+---
+<section class="khoi-tai" style={`--mau:${pm.data.mauNen}`} id="tai-ve">
+  <div class="vien-sang"></div>
+  <div class="trong">
+    <div class="trai">
+      {pm.data.anhIcon
+        ? <img class="icon" src={pm.data.anhIcon} alt={pm.data.ten} width="76" height="76" loading="lazy" />
+        : <span class="icon icon-emoji">{pm.data.icon}</span>}
+      <div>
+        <h2>Tải {pm.data.ten}</h2>
+        <p class="chi-tiet">
+          {pm.data.phienBan && <><b>Phiên bản {pm.data.phienBan}</b><span class="cach">·</span></>}
+          <span>Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
+          {pm.data.dungLuong && <><span class="cach">·</span><span>{pm.data.dungLuong}</span></>}
+        </p>
+      </div>
+    </div>
+
+    <div class="phai">
+      {nut.map((n) => (
+        <a href={n.link} class="nut-tai">
+          <span class="nut-icon">{n.icon}</span>
+          <span class="nut-chu">
+            <b>{n.ten}</b>
+            <small>{n.phu}</small>
+          </span>
+          <span class="mui">↓</span>
+        </a>
+      ))}
+      {dungLinkChung && (
+        <a href={pm.data.linkTai} class="nut-tai">
+          <span class="nut-icon">⬇</span>
+          <span class="nut-chu"><b>Tải về máy</b><small>{pm.data.nenTang.join(' · ')}</small></span>
+          <span class="mui">↓</span>
+        </a>
+      )}
+      {chuaCoLink && (
+        <a href="/lien-he" class="nut-tai chua-co">
+          <span class="nut-icon">💬</span>
+          <span class="nut-chu"><b>Nhắn tin để nhận link tải</b><small>Phản hồi trong ngày</small></span>
+          <span class="mui">→</span>
+        </a>
+      )}
+      {pm.data.linkTaiPhu && pm.data.linkTaiPhu !== '#' && (
+        <a href={pm.data.linkTaiPhu} class="link-phu">Link dự phòng (nếu link trên tải chậm)</a>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  .khoi-tai {
+    position: relative; margin: 46px auto 0; max-width: 860px;
+    border: 1px solid var(--vien); border-radius: 20px; overflow: hidden;
+    background:
+      radial-gradient(700px 260px at 12% 0%, color-mix(in srgb, var(--mau) 16%, transparent), transparent 70%),
+      var(--nen-the);
+  }
+  .vien-sang {
+    position: absolute; inset: 0 0 auto 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--mau), transparent);
+  }
+  .trong { display: flex; align-items: center; gap: 28px; padding: 26px 30px; flex-wrap: wrap; }
+  .trai { display: flex; align-items: center; gap: 16px; flex: 1; min-width: 260px; }
+  .icon { width: 76px; height: 76px; border-radius: 19px; box-shadow: 0 8px 24px rgba(0,0,0,.3); flex-shrink: 0; }
+  .icon-emoji { display: grid; place-items: center; font-size: 2.4rem; background: color-mix(in srgb, var(--mau) 14%, transparent); }
+  .khoi-tai h2 { margin: 0 0 .25rem; font-size: 1.3rem; }
+  .chi-tiet { margin: 0; font-size: .9rem; color: var(--chu-nhat); }
+  .chi-tiet b { color: var(--chu); }
+  .cach { margin: 0 .45rem; opacity: .5; }
+
+  .phai { display: flex; flex-direction: column; gap: 9px; min-width: 268px; }
+  .nut-tai {
+    display: flex; align-items: center; gap: 12px; padding: 12px 16px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--mau), color-mix(in srgb, var(--mau) 62%, #000));
+    color: #fff; transition: .18s ease; box-shadow: 0 6px 18px color-mix(in srgb, var(--mau) 32%, transparent);
+  }
+  .nut-tai:hover { color: #fff; transform: translateY(-2px); box-shadow: 0 10px 26px color-mix(in srgb, var(--mau) 45%, transparent); }
+  .nut-tai:active { transform: translateY(0); }
+  .nut-icon { font-size: 1.35rem; width: 34px; text-align: center; flex-shrink: 0; }
+  .nut-chu { flex: 1; line-height: 1.3; }
+  .nut-chu b { display: block; font-size: .97rem; }
+  .nut-chu small { font-size: .78rem; opacity: .85; }
+  .mui { font-size: 1.1rem; opacity: .8; }
+  .chua-co { background: linear-gradient(135deg, #475569, #1e293b); box-shadow: none; }
+  .link-phu { font-size: .84rem; color: var(--chu-nhat); text-align: center; margin-top: .2rem; }
+  .link-phu:hover { color: var(--chinh); }
+
+  @media (max-width: 700px) {
+    .khoi-tai { margin-top: 34px; border-radius: 16px; }
+    .trong { padding: 20px; gap: 18px; }
+    .trai { min-width: 0; }
+    .icon { width: 60px; height: 60px; border-radius: 15px; }
+    .khoi-tai h2 { font-size: 1.12rem; }
+    .phai { min-width: 0; width: 100%; }
+  }
+</style>

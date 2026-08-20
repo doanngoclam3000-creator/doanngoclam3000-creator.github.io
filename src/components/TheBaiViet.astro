@@ -6,6 +6,7 @@ const cm = CHUYEN_MUC[bai.data.chuyenMuc];
 <article class:list={['the', ngang && 'ngang']}>
   <a href={`/bai-viet/${bai.id}`} class="anh" style={`--mau:${cm.mau}`}>
     {bai.data.anh ? <img src={bai.data.anh} alt={bai.data.tieuDe} loading="lazy" /> : <span class="bieu-tuong">{cm.icon}</span>}
+    {bai.data.video && <span class="dau-video">▶</span>}
   </a>
   <div class="than">
     <a href={`/chuyen-muc/${bai.data.chuyenMuc}`} class="nhan" style={`background:${cm.mau}1a;color:${cm.mau}`}>{cm.ten}</a>
@@ -26,6 +27,12 @@ const cm = CHUYEN_MUC[bai.data.chuyenMuc];
   }
   .anh img { width: 100%; height: 100%; object-fit: cover; }
   .bieu-tuong { font-size: 2.6rem; opacity: .9; }
+  .anh { position: relative; }
+  .dau-video {
+    position: absolute; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center;
+    background: rgba(0,0,0,.55); color: #fff; font-size: 1.05rem; padding-left: 3px;
+    backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,.25);
+  }
   .than { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
   .than h3 { font-size: 1.08rem; margin: .6rem 0 .4rem; }
   .than h3 a { color: var(--chu); }

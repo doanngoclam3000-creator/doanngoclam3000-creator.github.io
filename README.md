@@ -2,7 +2,29 @@
 
 Website giới thiệu và phát hành các phần mềm tự phát triển. Chạy bằng [Astro](https://astro.build), tự động deploy lên GitHub Pages mỗi khi push lên nhánh `main`.
 
-## Cách đăng bài mới
+## Cách dễ nhất: dùng phần mềm soạn bài
+
+Bấm đúp file **`Soan Bai Website.command`** ngoài màn hình Desktop. Một cửa sổ trình duyệt tự mở ra, trong đó bạn có thể:
+
+- Xem danh sách toàn bộ bài viết và phần mềm
+- Viết bài mới, sửa bài cũ, xoá bài
+- **Kéo thả ảnh và video** vào để tải lên
+- Dán link YouTube làm video hướng dẫn
+- Bấm **Xem thử** để xem bài hiện lên web trông thế nào
+- Bấm **Đăng lên web** là tự đẩy lên GitHub, 1–2 phút sau website cập nhật
+
+Phím tắt **Cmd + S** để lưu nhanh. Đóng cửa sổ Terminal là tắt phần mềm.
+
+### Về video
+
+- **Video dài** (trên 90MB): tải lên YouTube trước, rồi dán link vào ô *Video hướng dẫn*. Đây là cách nên dùng.
+- **Video ngắn**: kéo thẳng file vào ô tải lên. File sẽ nằm trong thư mục `public/video/`.
+
+> GitHub giới hạn mỗi file tối đa 100MB. Video dài hãy dùng YouTube.
+
+---
+
+## Cách thủ công: viết file markdown
 
 ### Đăng một bài viết
 Tạo file mới trong `src/content/bai-viet/`, ví dụ `ten-bai-viet.md`:
