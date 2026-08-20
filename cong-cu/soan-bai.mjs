@@ -149,7 +149,14 @@ const may = http.createServer(async (req, res) => {
     if (duong === '/api/git') {
       const tt = await chayLenh('git', ['status', '--short']);
       const xa = await chayLenh('git', ['remote', '-v']);
-      return json(res, { thayDoi: tt.ra.trim().split('\n').filter(Boolean), coRemote: xa.ra.includes('origin') });
+      // Dem so ban ghi da luu nhung chua day len mang
+      const cho = await chayLenh('git', ['rev-list', '--count', 'origin/main..HEAD']);
+      const chuaDay = cho.ma === 0 ? Number(cho.ra.trim()) || 0 : -1;
+      return json(res, {
+        thayDoi: tt.ra.trim().split('\n').filter(Boolean),
+        coRemote: xa.ra.includes('origin'),
+        chuaDay,
+      });
     }
 
     if (duong === '/api/dang' && req.method === 'POST') {

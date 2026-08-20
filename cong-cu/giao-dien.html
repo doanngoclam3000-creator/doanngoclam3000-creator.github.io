@@ -149,8 +149,12 @@ async function nap(){
 }
 async function kiemTraGit(){
   try{ const g=await (await fetch('/api/git')).json();
-    $('tt-git').textContent = g.thayDoi.length ? `${g.thayDoi.length} thay đổi chưa đăng` : 'Đã đăng hết lên web';
-    $('tt-git').style.color = g.thayDoi.length ? '#b45309' : '#047857';
+    let chu, mau;
+    if (g.thayDoi.length) { chu = `${g.thayDoi.length} thay đổi chưa đăng`; mau = '#b45309'; }
+    else if (g.chuaDay > 0) { chu = `${g.chuaDay} lần sửa chờ đăng lên mạng`; mau = '#b45309'; }
+    else if (g.chuaDay < 0) { chu = 'Chưa kết nối được với GitHub'; mau = '#b91c1c'; }
+    else { chu = 'Đã đăng hết lên web'; mau = '#047857'; }
+    $('tt-git').textContent = chu; $('tt-git').style.color = mau;
   }catch{ $('tt-git').textContent='Không đọc được git'; }
 }
 function doiTab(l){ LOAI=l; DANGCHON=null;
