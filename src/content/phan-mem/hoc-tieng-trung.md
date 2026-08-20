@@ -6,7 +6,7 @@ phienBan: "2.0"
 ngayCapNhat: 2026-08-21
 ghiChuCapNhat: "Đã có bản Windows. Bản Android 0.2 thêm tập viết chữ Hán chấm từng nét."
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiWin: "https://phanmemtq.com/tai/HocTiengTrung-0.2.0-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-windows-0.2/HocTiengTrung-0.2.0-Windows.zip"
 linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-android-0.2/HocTiengTrung-Android-0.2.0.apk"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
