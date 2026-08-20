@@ -56,6 +56,10 @@ jobs:
             "Thêm tập viết chữ Hán chấm từng nét. Máy Android 64-bit (từ khoảng 2017 trở lại đây)." \
             public/tai/HocTiengTrung-Android-0.2.0.apk
 
+          taoBan "hoc-tieng-trung-windows-0.2" "Học Tiếng Trung — Windows 0.2" \
+            "Bản Windows thử nghiệm. Giải nén rồi chạy file Setup để cài." \
+            public/tai/HocTiengTrung-0.2.0-Windows.zip
+
           echo
           echo "===== Ket qua ====="
           gh release list

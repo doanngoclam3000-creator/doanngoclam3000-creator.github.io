@@ -1,11 +1,12 @@
 ---
 ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
-nenTang: ["iOS", "macOS", "Android"]
+nenTang: ["iOS", "macOS", "Android", "Windows"]
 phienBan: "2.0"
 ngayCapNhat: 2026-08-21
-ghiChuCapNhat: "Bản Android 0.2: thêm tập viết chữ Hán chấm từng nét."
+ghiChuCapNhat: "Đã có bản Windows. Bản Android 0.2 thêm tập viết chữ Hán chấm từng nét."
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-windows-0.2/HocTiengTrung-0.2.0-Windows.zip"
 linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-android-0.2/HocTiengTrung-Android-0.2.0.apk"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
@@ -55,6 +56,21 @@ Những phần này đang được làm tiếp.
 
 Lần đầu mở app hơi lâu vì máy phải chép từ điển ra, những lần sau vào ngay.
 
+## Bản Windows (0.2 — đang thử nghiệm)
+
+Cùng một phần mềm với bản Android, chạy trên máy tính Windows. Tải về được một
+file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-0.2.0-Setup.exe` để cài.
+
+Có đủ như bản Android: từ điển 10.908 từ nằm sẵn trong máy, lộ trình HSK, tra từ,
+nghe phát âm và tập viết chữ Hán chấm từng nét (viết bằng chuột).
+
+> **Phần nghe phát âm trên Windows cần máy có sẵn giọng đọc tiếng Trung.** Máy nào
+> chưa cài thì vào *Settings → Time & Language → Speech* thêm gói tiếng Trung
+> (Chinese Simplified), nếu không bấm nghe sẽ không ra tiếng.
+
+> Bản Windows chưa mua chứng chỉ ký nên lần đầu chạy, Windows SmartScreen sẽ hiện
+> bảng xanh "Windows protected your PC" — bấm **More info** rồi **Run anyway**.
+
 ## Yêu cầu hệ thống
 
 | Hệ điều hành | Yêu cầu |
@@ -62,6 +78,7 @@ Lần đầu mở app hơi lâu vì máy phải chép từ điển ra, những l
 | iPhone / iPad | iOS 17 trở lên |
 | Mac | macOS 14 trở lên |
 | Android | Android 6 trở lên, máy 64-bit (khoảng từ 2017 trở lại đây) |
+| Windows | Windows 10 trở lên, máy 64-bit |
 
 > Phần chấm phát âm cần cấp quyền micro và nhận diện giọng nói cho app.
 
