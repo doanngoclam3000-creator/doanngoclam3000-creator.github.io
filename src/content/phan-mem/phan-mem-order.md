@@ -5,9 +5,9 @@ nenTang: ["iOS", "macOS", "Windows", "Android"]
 phienBan: "2.7"
 banToiThieu: "2.7"
 ngayCapNhat: 2026-08-21
-ghiChuCapNhat: "- Bản Windows và Android tự đọc được hành trình vận đơn\n- Đăng nhập 1688 một lần ngay trong phần mềm, sau đó tự lấy hành trình về\n- Dịch sẵn những câu hay gặp của hãng chuyển phát sang tiếng Việt\n- Tự điền tình trạng kiện và kéo hàng sang bước Về kho TQ khi đã ký nhận"
+ghiChuCapNhat: "- Bản Windows đổi sang file nén .zip: giải nén ra chạy luôn, không phải cài đặt\n- Bản Windows và Android tự đọc được hành trình vận đơn\n- Đăng nhập 1688 một lần ngay trong phần mềm, sau đó tự lấy hành trình về\n- Dịch sẵn những câu hay gặp của hãng chuyển phát sang tiếng Việt\n- Tự điền tình trạng kiện và kéo hàng sang bước Về kho TQ khi đã ký nhận"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.0-Setup.exe"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.0-Windows.zip"
 linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.0.apk"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"
@@ -41,7 +41,7 @@ thuTu: 5
 | --- | --- |
 | iPhone / iPad | iOS 17 trở lên |
 | Mac | macOS 14 trở lên |
-| Windows | Windows 10 trở lên (64-bit) |
+| Windows | Windows 10 trở lên (64-bit) — tải file nén, giải nén ra chạy luôn |
 | Android | Android 6.0 trở lên |
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
