@@ -1,13 +1,14 @@
 ---
 ten: "Bán Tệ"
-moTa: "Công cụ tính và ghi sổ giao dịch mua bán nhân dân tệ, đồng bộ được giữa Mac và iPhone."
-nenTang: ["macOS", "iOS"]
+moTa: "Công cụ tính và ghi sổ giao dịch mua bán nhân dân tệ, dùng được trên máy tính lẫn iPhone."
+nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "1.8"
 banToiThieu: "1.8"
-ngayCapNhat: 2026-08-20
-ghiChuCapNhat: "Bản Mac tải thẳng từ đây, có bản mới là phần mềm tự báo và bắt cập nhật."
+ngayCapNhat: 2026-08-21
+ghiChuCapNhat: "Đã có bản cho máy tính Windows. Ra bản mới là phần mềm tự báo và bắt cập nhật."
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-windows-1.8/BanTe-Windows-1.8.0.zip"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
-dungLuong: "khoảng 3 MB (Mac)"
+dungLuong: "khoảng 110 MB (Windows)"
 anhIcon: "/icon/ban-te.png"
 icon: "💱"
 mauNen: "#059669"
@@ -38,17 +39,31 @@ Bản Mac và bản iPhone giữ sổ riêng trên từng máy. Khi hai bên l�
 
 | Thiết bị | Yêu cầu |
 | --- | --- |
+| Máy tính Windows | Windows 10 trở lên, loại 64-bit |
 | Mac | macOS 15 trở lên |
 | iPhone / iPad | iOS 17 trở lên |
 
-## Cài trên Mac
+## Cài trên máy tính Windows
 
-Tải file `.dmg` ở nút **Tải cho macOS**, mở file rồi kéo **Bán Tệ** vào thư mục
-**Applications**. Phần mềm đã được Apple kiểm duyệt (notarize) nên mở là chạy,
-máy không báo chặn.
+Tải file `.zip` ở nút **Tải cho Windows**, giải nén ra một thư mục rồi chạy
+**Ban Te.exe** bên trong. Không phải cài đặt gì thêm.
+
+Lần đầu chạy, Windows có thể báo *"Windows đã bảo vệ máy tính của bạn"* vì phần mềm
+chưa mua chứng chỉ ký số — bấm **Thông tin thêm** rồi **Vẫn chạy**. Những lần sau
+không hỏi lại nữa.
 
 Khi có bản mới, phần mềm tự báo ngay trên máy và yêu cầu cập nhật trước khi dùng
-tiếp — bấm **Tải bản mới ngay** là về đúng trang này. Dữ liệu và key bản quyền
-giữ nguyên sau khi cập nhật.
+tiếp. Dữ liệu và key bản quyền giữ nguyên sau khi cập nhật.
+
+## Chuyển sổ giữa máy tính và iPhone
+
+Mỗi máy giữ sổ riêng. Muốn hai bên khớp nhau: ở máy đang có sổ ĐÚNG bấm
+**Xuất dữ liệu** ra file, gửi file sang máy kia (Zalo, USB, email) rồi bấm
+**Nhập dữ liệu**. File dùng chung được cả hai chiều.
+
+> Nhập dữ liệu là ghi đè toàn bộ sổ đang có trên máy đó. Phần mềm tự giữ một bản
+> sao trước khi ghi đè, phòng khi nhập nhầm.
+
+> Bản cho Mac đang chờ Apple kiểm duyệt, có ngay khi xong.
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
