@@ -39,6 +39,7 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
           <span>Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
           {pm.data.dungLuong && <><span class="cach">·</span><span>{pm.data.dungLuong}</span></>}
         </p>
+        {pm.data.ghiChuCapNhat && <p class="ghi-chu">Bản mới: {pm.data.ghiChuCapNhat}</p>}
       </div>
     </div>
 
@@ -94,6 +95,8 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
   .chi-tiet { margin: 0; font-size: .9rem; color: var(--chu-nhat); }
   .chi-tiet b { color: var(--chu); }
   .cach { margin: 0 .45rem; opacity: .5; }
+  .ghi-chu { margin: .4rem 0 0; font-size: .86rem; color: var(--mau); }
+  html[data-theme='dark'] .ghi-chu { color: color-mix(in srgb, var(--mau) 65%, #fff); }
 
   .phai { display: flex; flex-direction: column; gap: 9px; min-width: 268px; }
   .nut-tai {

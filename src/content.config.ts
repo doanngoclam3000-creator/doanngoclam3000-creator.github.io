@@ -9,6 +9,8 @@ const phanMem = defineCollection({
     moTa: z.string(),
     nenTang: z.array(z.string()).default([]),
     phienBan: z.string().optional(),
+    banToiThieu: z.string().optional(),
+    ghiChuCapNhat: z.string().optional(),
     ngayCapNhat: z.coerce.date(),
     gia: z.string().optional(),
     linkTai: z.string().optional(),

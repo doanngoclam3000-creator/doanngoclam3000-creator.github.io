@@ -225,6 +225,10 @@ function veForm(d, noiDung, id){
       + o('Ngày cập nhật',`<input id="f-ngayCapNhat" type="date" value="${esc(d.ngayCapNhat).slice(0,10)}" />`)
       + o('Biểu tượng (emoji)',`<input id="f-icon" value="${esc(d.icon)}" />`)
     + `</div>`
+    + `<div class="luoi">`
+      + o('Bản tối thiểu bắt buộc',`<input id="f-banToiThieu" value="${esc(d.banToiThieu)}" placeholder="Ví dụ 3.1 — cũ hơn là bắt cập nhật" />`,'Máy khách đang chạy bản cũ hơn số này sẽ bị bắt cập nhật mới dùng tiếp được.')
+      + o('Ghi chú bản mới',`<input id="f-ghiChuCapNhat" value="${esc(d.ghiChuCapNhat)}" placeholder="Câu ngắn hiện trong bảng nhắc cập nhật" />`)
+    + `</div>`
     + `<div class="canh vang" style="margin:6px 0 12px">Điền link tải cho từng hệ điều hành — website sẽ tự hiện đúng số nút tải.</div>`
     + `<div class="luoi">`
       + o('Link tải cho macOS',`<input id="f-linkTaiMac" value="${esc(d.linkTaiMac)}" placeholder="https://... file .dmg" />`)
@@ -352,7 +356,8 @@ async function luuBai(){
     tieuDe=g('f-ten');
     if(!tieuDe) return bao('Chưa nhập tên phần mềm','loi');
     data={ ten:tieuDe, moTa:g('f-moTa'), nenTang:g('f-nenTang').split(',').map(s=>s.trim()).filter(Boolean),
-      phienBan:g('f-phienBan'), ngayCapNhat:g('f-ngayCapNhat')||homNay(),
+      phienBan:g('f-phienBan'), banToiThieu:g('f-banToiThieu')||undefined,
+      ghiChuCapNhat:g('f-ghiChuCapNhat')||undefined, ngayCapNhat:g('f-ngayCapNhat')||homNay(),
       linkTai:g('f-linkTai')||undefined, linkTaiPhu:g('f-linkTaiPhu')||undefined,
       linkTaiMac:g('f-linkTaiMac')||undefined, linkTaiWin:g('f-linkTaiWin')||undefined,
       linkTaiIOS:g('f-linkTaiIOS')||undefined, linkTaiAndroid:g('f-linkTaiAndroid')||undefined,
