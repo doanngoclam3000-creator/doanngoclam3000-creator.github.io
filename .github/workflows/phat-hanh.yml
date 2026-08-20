@@ -36,6 +36,10 @@ jobs:
             fi
           }
 
+          taoBan "phan-mem-order-2.7" "Phần Mềm Order 2.7" \
+            "Bản Windows và Android tự đọc được hành trình vận đơn. Đăng nhập 1688 một lần ngay trong phần mềm." \
+            public/tai/PhanMemOrder-2.7.dmg public/tai/PhanMemOrder-2.7.0-Setup.exe public/tai/PhanMemOrder-2.7.0.apk
+
           taoBan "phan-mem-order-2.6" "Phần Mềm Order 2.6" \
             "Ví tiền, huỷ đơn, ảnh đính kèm. Có bản cho macOS, Windows và Android." \
             public/tai/PhanMemOrder-2.6.dmg public/tai/PhanMemOrder-2.6.0-Setup.exe public/tai/PhanMemOrder-2.6.0.apk

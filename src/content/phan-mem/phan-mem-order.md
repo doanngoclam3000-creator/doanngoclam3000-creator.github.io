@@ -2,13 +2,13 @@
 ten: "Phần Mềm Order"
 moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tính tiền theo tỉ giá lẻ/sỉ, quản lý kho TQ, công nợ và báo cáo."
 nenTang: ["iOS", "macOS", "Windows", "Android"]
-phienBan: "2.6"
+phienBan: "2.7"
 banToiThieu: "2.6"
-ngayCapNhat: 2026-08-20
-ghiChuCapNhat: "- Bản Windows và Android: thêm ví tiền, theo dõi giá vốn tệ\n- Thêm màn huỷ đơn và tệ chờ shop hoàn lại\n- Thêm ảnh đính kèm đơn, ví của khách, mở thẳng đơn bên 1688\n- Ghi mã vận đơn và tình trạng kiện hàng"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.6/PhanMemOrder-2.6.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.6/PhanMemOrder-2.6.0-Setup.exe"
-linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.6/PhanMemOrder-2.6.0.apk"
+ngayCapNhat: 2026-08-21
+ghiChuCapNhat: "- Bản Windows và Android tự đọc được hành trình vận đơn\n- Đăng nhập 1688 một lần ngay trong phần mềm, sau đó tự lấy hành trình về\n- Dịch sẵn những câu hay gặp của hãng chuyển phát sang tiếng Việt\n- Tự điền tình trạng kiện và kéo hàng sang bước Về kho TQ khi đã ký nhận"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.dmg"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.0-Setup.exe"
+linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.0.apk"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"
 icon: "🧾"
