@@ -235,6 +235,7 @@ function veForm(d, noiDung, id){
       + o('Bản tối thiểu bắt buộc',`<input id="f-banToiThieu" value="${esc(d.banToiThieu)}" placeholder="Ví dụ 3.1 — cũ hơn là bắt cập nhật" />`,'Máy khách đang chạy bản cũ hơn số này sẽ bị bắt cập nhật mới dùng tiếp được.')
       + o('Ghi chú bản mới',`<input id="f-ghiChuCapNhat" value="${esc(d.ghiChuCapNhat)}" placeholder="Câu ngắn hiện trong bảng nhắc cập nhật" />`)
     + `</div>`
+    + khungVideo(d.video)
     + khungTaiPhanMem()
     + `<div class="canh vang" style="margin:6px 0 12px">Hoặc tự dán link vào các ô dưới đây nếu bạn để file ở chỗ khác.</div>`
     + `<div class="luoi">`
@@ -266,7 +267,7 @@ const esc=(v)=>String(v??'').replace(/"/g,'&quot;').replace(/</g,'&lt;');
 function khungVideo(video){
   return `<div class="o"><label>Video hướng dẫn</label>
     <input id="f-video" value="${esc(video)}" placeholder="Dán link YouTube, hoặc tải file video lên bên dưới" oninput="xemLaiVideo()" />
-    <div class="goiy">Nên dùng <b>link YouTube</b> cho video dài. Tải file trực tiếp chỉ nên dùng cho video ngắn dưới 90MB.</div>
+    <div class="goiy"><b>Nên dùng link YouTube</b> — dán vào ô trên là xong, không giới hạn dung lượng. Chỉ chọn file trực tiếp với video ngắn dưới 40 MB.</div>
     <div id="keo-video" class="taile" style="margin-top:9px"><b>Bấm để chọn file video</b><br><small>hoặc kéo thả vào đây</small></div>
     <div class="tienDo" id="td-video" style="display:none"><i></i></div>
     <div id="xem-video"></div>
@@ -349,7 +350,8 @@ function ganMotO(idO,loai,chapNhan,idInput,idTd,sauKhiXong){
 }
 function taiLen(tep,loai,idInput,idTd,xong){
   const MB=tep.size/1048576;
-  if(loai==='video'&&MB>90) return bao(`Video ${MB.toFixed(0)}MB quá nặng. Hãy tải lên YouTube rồi dán link vào ô trên.`,'loi');
+  // Video nặng làm phình kho vĩnh viễn -> bắt buộc dùng YouTube
+  if(loai==='video'&&MB>40) return bao(`Video ${MB.toFixed(0)} MB quá nặng, sẽ làm phình kho vĩnh viễn. Hãy tải lên YouTube rồi dán link vào ô trên.`,'loi');
   const td=$(idTd); td.style.display='block'; const thanh=td.querySelector('i');
   const xhr=new XMLHttpRequest();
   xhr.open('PUT',`/api/tai-len?loai=${loai}&ten=${encodeURIComponent(tep.name)}`);
@@ -509,6 +511,7 @@ async function luuBai(){
       linkTaiMac:g('f-linkTaiMac')||undefined, linkTaiWin:g('f-linkTaiWin')||undefined,
       linkTaiIOS:g('f-linkTaiIOS')||undefined, linkTaiAndroid:g('f-linkTaiAndroid')||undefined,
       dungLuong:g('f-dungLuong')||undefined,
+      video:g('f-video')||undefined,
       anhIcon:g('f-anhIcon')||undefined, icon:g('f-icon')||'📦',
       mauNen:g('f-mauNen')||'#2563eb', thuTu:Number(g('f-thuTu'))||9 };
   }

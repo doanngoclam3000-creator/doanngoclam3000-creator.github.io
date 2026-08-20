@@ -21,6 +21,7 @@ const phanMem = defineCollection({
     linkTaiAndroid: z.string().optional(),
     dungLuong: z.string().optional(),
     anh: z.string().optional(),
+    video: z.string().optional(),
     anhIcon: z.string().optional(),
     mauNen: z.string().default('#2563eb'),
     icon: z.string().default('📦'),

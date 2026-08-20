@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import TheBaiViet from '../../components/TheBaiViet.astro';
 import KhoiTai from '../../components/KhoiTai.astro';
+import Video from '../../components/Video.astro';
 import { getCollection, render } from 'astro:content';
 import { dinhDangNgay } from '../../config';
 
@@ -42,6 +43,13 @@ const lienQuan = (await getCollection('bai-viet'))
     </div>
   </div>
 
+  {pm.data.video && (
+    <div class="khung-hep khoi-video">
+      <h2 class="tieu-de-video">Xem phần mềm chạy thực tế</h2>
+      <Video src={pm.data.video} />
+    </div>
+  )}
+
   <div class="khung-hep noi-dung than-bai">
     <Content />
   </div>
@@ -79,7 +87,9 @@ const lienQuan = (await getCollection('bai-viet'))
   .nut-tai-ve:hover { background: #f1f5f9; color: #111; transform: translateY(-1px); }
   .nut-phu { background: rgba(255,255,255,.16); color: #fff; }
   .nut-phu:hover { background: rgba(255,255,255,.28); color: #fff; }
-  .than-bai { padding-top: 44px; }
+  .khoi-video { padding-top: 40px; }
+  .tieu-de-video { font-size: 1.3rem; margin-bottom: .8rem; }
+  .than-bai { padding-top: 24px; }
   .phan { padding: 56px 20px 0; }
   @media (max-width: 640px) {
     .banner { padding: 32px 0 30px; }

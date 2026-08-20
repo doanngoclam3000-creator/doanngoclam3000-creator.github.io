@@ -36,6 +36,9 @@ function tachFrontmatter(vanBan) {
       v = v.slice(1, -1).split(',').map((x) => x.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
     } else if (v === 'true' || v === 'false') {
       v = v === 'true';
+    } else if (/^-?\d+(\.\d+)?$/.test(v)) {
+      // So khong dat trong ngoac: doc thanh so, khong phai chuoi
+      v = Number(v);
     } else if (v.startsWith('"') && v.endsWith('"') && v.length > 1) {
       // Chuoi co dau nhay: giai ma dung cach de khong bi nhan doi dau \\
       try { v = JSON.parse(v); } catch { v = v.slice(1, -1); }
@@ -55,6 +58,9 @@ function ghepFrontmatter(data, noiDung) {
       if (!v.length) continue;
       dong.push(`${k}: [${v.map((x) => JSON.stringify(String(x))).join(', ')}]`);
     } else if (typeof v === 'boolean') {
+      dong.push(`${k}: ${v}`);
+    } else if (typeof v === 'number' && Number.isFinite(v)) {
+      // So phai ghi tran, dong ngoac kep vao la hong schema
       dong.push(`${k}: ${v}`);
     } else if (/^\d{4}-\d{2}-\d{2}$/.test(String(v))) {
       dong.push(`${k}: ${v}`);
