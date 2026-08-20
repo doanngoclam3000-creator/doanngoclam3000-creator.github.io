@@ -2,9 +2,13 @@
 ten: "Chỉnh Sửa Ảnh"
 moTa: "Bộ công cụ sửa ảnh gọn nhẹ: cắt xoay, xoá vật thể thừa, làm phẳng ảnh chụp giấy tờ, thêm chữ, ghép lớp."
 nenTang: ["iOS", "macOS"]
-phienBan: "1.4"
-ngayCapNhat: 2026-08-11
+phienBan: "1.5"
+banToiThieu: "1.5"
+ghiChuCapNhat: "- Phần mềm tự kiểm tra bản mới, bản quá cũ sẽ được nhắc tải bản mới\n- Bản Mac ký Developer ID, tải về mở được ngay\n- Sửa vài lỗi nhỏ"
+ngayCapNhat: 2026-08-20
+linkTaiMac: "https://phanmemtq.com/tai/ChinhSuaAnh-1.5.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/HdU95ZUW"
+dungLuong: "1,2 MB"
 anhIcon: "/icon/chinh-sua-anh.png"
 icon: "🖼️"
 mauNen: "#dc2626"
