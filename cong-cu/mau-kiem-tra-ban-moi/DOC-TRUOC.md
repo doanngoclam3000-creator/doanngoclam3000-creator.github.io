@@ -30,18 +30,38 @@ Mở app **Soạn Bài Website** → tab **Phần mềm** → chọn phần mề
 
 Bấm **Lưu** rồi **Đăng lên web** là xong. Khoảng 1–2 phút sau mọi máy khách đều biết.
 
-## Gắn vào phần mềm macOS
+## Gắn vào phần mềm
 
-Kéo file `KiemTraBanMoi.swift` vào project Xcode, rồi gọi một dòng lúc app khởi động:
+`maPhanMem` chính là tên file markdown trên web: `gia-lap-vi-tri`, `ban-te`,
+`phan-mem-order`, `hoc-tieng-trung`, `chinh-sua-anh`...
+
+### Bản Electron — Windows và Mac (file `kiemtrabanmoi.js`)
+
+Chép file vào thư mục `nguon/` của dự án, rồi thêm vào `chinh.js`:
+
+```js
+const kiemTraBanMoi = require("./kiemtrabanmoi");
+
+app.whenReady().then(() => {
+  moCuaSo();
+  // Chờ 2 giây cho cửa sổ hiện lên rồi mới kiểm tra, đỡ giật
+  kiemTraBanMoi.chay({ maPhanMem: "gia-lap-vi-tri", hoanLai: 2000 });
+});
+```
+
+Không cần truyền số phiên bản — nó tự lấy từ `package.json` bằng `app.getVersion()`.
+Nhớ tăng số `version` trong `package.json` mỗi lần đóng gói bản mới.
+
+### Bản viết bằng Swift — macOS (file `KiemTraBanMoi.swift`)
+
+Kéo file vào project Xcode, rồi gọi một dòng lúc app khởi động:
 
 ```swift
 func applicationDidFinishLaunching(_ n: Notification) {
-    KiemTraBanMoi.chay(maPhanMem: "gia-lap-vi-tri", banHienTai: "3.1")
+    KiemTraBanMoi.chay(maPhanMem: "ban-te", banHienTai: "1.8")
     // ... phần còn lại
 }
 ```
-
-`maPhanMem` chính là tên file markdown trên web (`gia-lap-vi-tri`, `ban-te`, `phan-mem-order`...).
 
 ## Quan trọng: giữ nguyên link Google Drive khi ra bản mới
 
@@ -55,3 +75,24 @@ Thay vào đó, trên Google Drive:
 
 Link giữ nguyên y hệt, ai bấm vào cũng nhận được bản mới nhất. Bạn chỉ cần đổi số **Phiên bản**
 trong app Soạn Bài, không phải đụng tới link.
+
+
+---
+
+## Quy trình ra bản mới, làm theo đúng thứ tự
+
+1. **Tăng số phiên bản trong mã nguồn**
+   - Electron: sửa `version` trong `package.json`
+   - Swift: sửa số bản trong Xcode
+2. **Đóng gói** file `.dmg` / `.exe` như mọi khi
+3. **Thay file trên Google Drive** bằng *Quản lý phiên bản* — link giữ nguyên
+4. **Mở app Soạn Bài Website** → tab Phần mềm → chọn phần mềm:
+   - Sửa ô **Phiên bản** thành số mới
+   - Điền **Ghi chú bản mới** một câu ngắn
+   - Muốn ép mọi người lên bản mới thì điền **Bản tối thiểu bắt buộc**
+5. **Bấm Đăng lên web**
+
+Khoảng 1–2 phút sau, mọi máy khách mở phần mềm lên đều nhận được thông báo.
+
+> Đừng điền **Bản tối thiểu bắt buộc** nếu chưa chắc file trên Drive đã thay xong.
+> Bạn sẽ chặn hết khách trong khi họ chưa có chỗ tải bản mới.
