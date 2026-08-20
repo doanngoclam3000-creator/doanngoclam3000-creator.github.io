@@ -6,7 +6,7 @@ phienBan: "2.0"
 ngayCapNhat: 2026-08-20
 ghiChuCapNhat: "Đã có bản cho máy Mac tải thẳng về, và bản Android thử nghiệm."
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiAndroid: "https://phanmemtq.com/tai/HocTiengTrung-Android-0.1.0.apk"
+linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-android-0.1/HocTiengTrung-Android-0.1.0.apk"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"

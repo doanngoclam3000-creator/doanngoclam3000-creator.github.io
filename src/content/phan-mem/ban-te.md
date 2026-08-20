@@ -6,7 +6,7 @@ phienBan: "1.8"
 banToiThieu: "1.8"
 ngayCapNhat: 2026-08-20
 ghiChuCapNhat: "Bản Mac tải thẳng từ đây, có bản mới là phần mềm tự báo và bắt cập nhật."
-linkTaiMac: "https://phanmemtq.com/tai/BanTe-1.8-build28.dmg"
+
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
 dungLuong: "khoảng 3 MB (Mac)"
 anhIcon: "/icon/ban-te.png"
