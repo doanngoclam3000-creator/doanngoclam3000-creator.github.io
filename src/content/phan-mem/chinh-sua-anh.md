@@ -7,9 +7,9 @@ banToiThieu: "1.6"
 ghiChuCapNhat: "- Sửa lỗi ảnh bị tối đi sau khi chỉnh (thanh Độ mịn da làm ảnh tối tới 35%)\n- Sửa thanh Độ sáng: trước kéo nhẹ đã cháy trắng hoặc đen sì\n- Sửa lỗi xoay ảnh bị khuyết viền\n- Thêm 7 bộ lọc làm sẵn: Tự nhiên, Rạng rỡ, Son đỏ, Hàn Quốc, Ảnh thẻ chuẩn, Cổ điển\n- Thêm trang điểm: da trắng sáng, son môi, má hồng, mắt đen rõ, lông mày đậm\n- Đã có bản cho máy tính Windows"
 ngayCapNhat: 2026-08-20
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.6/ChinhSuaAnh-1.6.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.6/ChinhSuaAnh-1.6-Windows.exe"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.6/ChinhSuaAnh-1.6-Windows-BoCai.zip"
 linkTaiIOS: "https://testflight.apple.com/join/HdU95ZUW"
-dungLuong: "Mac 1,2 MB · Windows 93 MB"
+dungLuong: "Mac 1,2 MB · Windows 93 MB (file nén)"
 anhIcon: "/icon/chinh-sua-anh.png"
 icon: "🖼️"
 mauNen: "#dc2626"
@@ -47,6 +47,6 @@ thuTu: 5
 | Mac | macOS 14 trở lên |
 | Máy tính Windows | Windows 10 trở lên, 64-bit |
 
-> **Bản Windows**: tải về chạy file cài đặt là xong. Lần đầu mở, Windows có thể hiện bảng xanh "Windows protected your PC" — bấm **More info** rồi **Run anyway**. Phần nhận diện khuôn mặt chạy ngay trên máy bạn, ảnh không gửi đi đâu cả.
+> **Bản Windows**: tải về được một file nén `.zip`. Bấm chuột phải vào nó, chọn **Extract All** để giải nén, rồi chạy file cài đặt `ChinhSuaAnh-1.6-Windows-BoCai.exe` bên trong. Lần đầu mở, Windows có thể hiện bảng xanh "Windows protected your PC" — bấm **More info** rồi **Run anyway**. Phần nhận diện khuôn mặt chạy ngay trên máy bạn, ảnh không gửi đi đâu cả.
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
