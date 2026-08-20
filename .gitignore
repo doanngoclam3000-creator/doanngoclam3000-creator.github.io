@@ -8,3 +8,9 @@ npm-debug.log*
 
 # File tam cua cong cu soan bai
 cong-cu/tam/
+
+# San pham bien dich cua app macOS
+cong-cu/app-macos/build/
+cong-cu/app-macos/icon-tam/
+cong-cu/app-macos/SoanBai
+cong-cu/app-macos/TaoIcon

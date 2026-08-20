@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleName</key><string>Soạn Bài Website</string>
+  <key>CFBundleDisplayName</key><string>Soạn Bài Website</string>
+  <key>CFBundleExecutable</key><string>SoanBai</string>
+  <key>CFBundleIdentifier</key><string>com.doanngoclam3000.soanbaiwebsite</string>
+  <key>CFBundleIconFile</key><string>SoanBai</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>1.0</string>
+  <key>CFBundleVersion</key><string>1</string>
+  <key>LSMinimumSystemVersion</key><string>12.0</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSHumanReadableCopyright</key><string>© 2026 Đoàn Ngọc Lâm</string>
+  <key>NSDocumentsFolderUsageDescription</key>
+  <string>Phần mềm cần đọc và ghi các bài viết trong thư mục website của bạn.</string>
+  <key>NSDesktopFolderUsageDescription</key>
+  <string>Phần mềm cần đọc thư mục website nếu bạn để website ngoài màn hình.</string>
+  <key>NSDownloadsFolderUsageDescription</key>
+  <string>Phần mềm cần đọc ảnh và video bạn tải lên bài viết.</string>
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsLocalNetworking</key><true/>
+  </dict>
+</dict>
+</plist>

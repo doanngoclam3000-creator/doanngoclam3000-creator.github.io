@@ -1,0 +1,27 @@
+SOAN BAI WEBSITE
+================
+
+CACH CAI:
+  Keo bieu tuong "Soan Bai Website" tha vao thu muc Applications ben canh.
+
+LAN MO DAU TIEN:
+  1. Vao Applications, BAM CHUOT PHAI vao "Soan Bai Website" -> chon Open
+  2. Bam Open mot lan nua
+  3. May hoi quyen truy cap thu muc Tai lieu -> bam CHO PHEP
+  (Chi can lam vay lan dau. Nhung lan sau mo binh thuong.)
+
+YEU CAU:
+  - macOS 12 tro len
+  - Da cai Node.js (tai tai nodejs.org, chon ban LTS)
+  - Thu muc website nam o: ~/Documents/WebPhanMem
+    (Neu de cho khac, phan mem se hoi de ban tu chon)
+
+CACH DUNG:
+  - Cot trai: danh sach bai viet va phan mem
+  - Bam mot muc de sua, hoac bam "Viet bai moi"
+  - Keo tha anh va video vao o tai len
+  - Video dai: tai len YouTube roi dan link vao
+  - Cmd + S de luu nhanh
+  - Bam "Dang len web" la tu dua bai len mang
+
+Ban quyen DOAN NGOC LAM - WeChat tieuphung1409

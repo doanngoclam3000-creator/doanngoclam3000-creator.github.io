@@ -2,9 +2,9 @@
 
 Website giới thiệu và phát hành các phần mềm tự phát triển. Chạy bằng [Astro](https://astro.build), tự động deploy lên GitHub Pages mỗi khi push lên nhánh `main`.
 
-## Cách dễ nhất: dùng phần mềm soạn bài
+## Cách dễ nhất: dùng phần mềm Soạn Bài Website
 
-Bấm đúp file **`Soan Bai Website.command`** ngoài màn hình Desktop. Một cửa sổ trình duyệt tự mở ra, trong đó bạn có thể:
+Mở **Soạn Bài Website** trong thư mục Applications (cài từ file `Soan Bai Website.dmg`). Phần mềm mở ra cửa sổ riêng, trong đó bạn có thể:
 
 - Xem danh sách toàn bộ bài viết và phần mềm
 - Viết bài mới, sửa bài cũ, xoá bài
@@ -13,7 +13,17 @@ Bấm đúp file **`Soan Bai Website.command`** ngoài màn hình Desktop. Một
 - Bấm **Xem thử** để xem bài hiện lên web trông thế nào
 - Bấm **Đăng lên web** là tự đẩy lên GitHub, 1–2 phút sau website cập nhật
 
-Phím tắt **Cmd + S** để lưu nhanh. Đóng cửa sổ Terminal là tắt phần mềm.
+Phím tắt: **Cmd + S** lưu bài · **Cmd + R** tải lại · **Cmd + P** mở website xem thử.
+
+### Dựng lại app sau khi sửa
+
+Nếu sửa file `cong-cu/giao-dien.html` hoặc `cong-cu/soan-bai.mjs`, chạy lệnh sau để dựng lại app và file DMG:
+
+```bash
+cong-cu/app-macos/dung-app.sh
+```
+
+File DMG mới sẽ nằm ngoài Desktop.
 
 ### Về video
 
