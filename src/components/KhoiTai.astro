@@ -21,8 +21,10 @@ const coTestFlight = nut.some((n) => n.tf);
 
 // Neu chua khai bao link rieng cho tung he dieu hanh thi dung link chung
 const dungLinkChung = nut.length === 0 && pm.data.linkTai && pm.data.linkTai !== '#';
-const chuaCoLink = nut.length === 0 && !dungLinkChung;
+// Chua co link nao thi khong hien khoi tai
+const coGiDeTai = nut.length > 0 || dungLinkChung;
 ---
+{coGiDeTai && (
 <section class="khoi-tai" style={`--mau:${pm.data.mauNen}`} id="tai-ve">
   <div class="vien-sang"></div>
   <div class="trong">
@@ -58,13 +60,6 @@ const chuaCoLink = nut.length === 0 && !dungLinkChung;
           <span class="mui">↓</span>
         </a>
       )}
-      {chuaCoLink && (
-        <a href="/lien-he" class="nut-tai chua-co">
-          <span class="nut-icon">💬</span>
-          <span class="nut-chu"><b>Nhắn tin để nhận link tải</b><small>Phản hồi trong ngày</small></span>
-          <span class="mui">→</span>
-        </a>
-      )}
       {coTestFlight && (
         <p class="nhac-tf">
           Bấm nút iPhone / iPad <b>ngay trên điện thoại</b>. Chưa có TestFlight?
@@ -77,6 +72,7 @@ const chuaCoLink = nut.length === 0 && !dungLinkChung;
     </div>
   </div>
 </section>
+)}
 
 <style>
   .khoi-tai {
@@ -112,7 +108,6 @@ const chuaCoLink = nut.length === 0 && !dungLinkChung;
   .nut-chu b { display: block; font-size: .97rem; }
   .nut-chu small { font-size: .78rem; opacity: .85; }
   .mui { font-size: 1.1rem; opacity: .8; }
-  .chua-co { background: linear-gradient(135deg, #475569, #1e293b); box-shadow: none; }
   .nut-tf {
     background: linear-gradient(135deg, #3aa9ff, #0a72e8);
     box-shadow: 0 6px 18px rgba(10, 114, 232, .34);

@@ -4,7 +4,7 @@ moTa: "Công cụ tính và ghi sổ giao dịch mua bán nhân dân tệ, đồ
 nenTang: ["macOS", "iOS"]
 phienBan: "1.8"
 ngayCapNhat: 2026-08-15
-linkTai: "#"
+linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
 anhIcon: "/icon/ban-te.png"
 icon: "💱"
 mauNen: "#059669"

@@ -4,7 +4,7 @@ moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tí
 nenTang: ["iOS", "macOS"]
 phienBan: "2.4"
 ngayCapNhat: 2026-08-10
-linkTai: "#"
+linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"
 icon: "🧾"
 mauNen: "#f59e0b"

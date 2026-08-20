@@ -4,7 +4,7 @@ moTa: "Bộ công cụ sửa ảnh gọn nhẹ: cắt xoay, xoá vật thể th�
 nenTang: ["iOS", "macOS"]
 phienBan: "1.4"
 ngayCapNhat: 2026-08-11
-linkTai: "#"
+linkTaiIOS: "https://testflight.apple.com/join/HdU95ZUW"
 anhIcon: "/icon/chinh-sua-anh.png"
 icon: "🖼️"
 mauNen: "#dc2626"

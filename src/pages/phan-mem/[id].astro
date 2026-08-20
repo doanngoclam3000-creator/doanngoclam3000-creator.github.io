@@ -11,6 +11,8 @@ export async function getStaticPaths() {
 }
 const { pm } = Astro.props;
 const { Content } = await render(pm);
+const coLinkTai = [pm.data.linkTaiMac, pm.data.linkTaiWin, pm.data.linkTaiIOS, pm.data.linkTaiAndroid, pm.data.linkTai]
+  .some((l) => l && l !== '#');
 const lienQuan = (await getCollection('bai-viet'))
   .filter((b) => b.data.thuocPhanMem === pm.id)
   .sort((a, b) => +b.data.ngayDang - +a.data.ngayDang)
@@ -31,9 +33,11 @@ const lienQuan = (await getCollection('bai-viet'))
           {pm.data.nenTang.map((n: string) => <span class="chip">{n}</span>)}
           <span class="chip">Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
         </div>
-        <div class="hd">
-          <a href="#tai-ve" class="nut nut-tai-ve">⬇︎ Tải về</a>
-        </div>
+        {coLinkTai && (
+          <div class="hd">
+            <a href="#tai-ve" class="nut nut-tai-ve">⬇︎ Tải về</a>
+          </div>
+        )}
       </div>
     </div>
   </div>
