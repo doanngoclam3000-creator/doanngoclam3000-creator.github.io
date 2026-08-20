@@ -6,6 +6,7 @@ chuyenMuc: "huong-dan"
 anh: "/anh/testflight/bia.svg"
 tags: ["TestFlight", "iPhone", "iOS", "cài đặt", "hướng dẫn"]
 noiBat: true
+ghim: true
 ---
 
 Nếu bạn dùng **iPhone hoặc iPad**, phần mềm của tôi được cài qua **TestFlight**.

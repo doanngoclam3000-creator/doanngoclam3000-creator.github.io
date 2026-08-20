@@ -101,7 +101,10 @@ async function danhSach() {
     }
     return ds;
   };
-  const baiViet = (await docThuMuc(D_BAI)).sort((a, b) => String(b.ngayDang).localeCompare(String(a.ngayDang)));
+  const baiViet = (await docThuMuc(D_BAI)).sort((a, b) => {
+    if (!!a.ghim !== !!b.ghim) return a.ghim ? -1 : 1;
+    return String(b.ngayDang).localeCompare(String(a.ngayDang));
+  });
   const phanMem = (await docThuMuc(D_PM)).sort((a, b) => (a.thuTu ?? 99) - (b.thuTu ?? 99));
   return { baiViet, phanMem };
 }

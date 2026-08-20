@@ -40,6 +40,7 @@ const baiViet = defineCollection({
     video: z.string().optional(),
     tags: z.array(z.string()).default([]),
     noiBat: z.boolean().default(false),
+    ghim: z.boolean().default(false),
   }),
 });
 

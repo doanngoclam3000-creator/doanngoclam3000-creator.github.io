@@ -4,9 +4,10 @@ import ThePhanMem from '../components/ThePhanMem.astro';
 import TheBaiViet from '../components/TheBaiViet.astro';
 import { getCollection } from 'astro:content';
 import { CAUHINH, CHUYEN_MUC } from '../config';
+import { sapXepBai } from '../sapXep';
 
 const phanMem = (await getCollection('phan-mem')).sort((a, b) => a.data.thuTu - b.data.thuTu);
-const baiViet = (await getCollection('bai-viet')).sort((a, b) => +b.data.ngayDang - +a.data.ngayDang);
+const baiViet = sapXepBai(await getCollection('bai-viet'));
 const baiMoi = baiViet.slice(0, 6);
 
 // Icon that cua cac phan mem, bay tren nen banner

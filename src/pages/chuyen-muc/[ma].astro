@@ -3,15 +3,14 @@ import Layout from '../../layouts/Layout.astro';
 import TheBaiViet from '../../components/TheBaiViet.astro';
 import { getCollection } from 'astro:content';
 import { CHUYEN_MUC } from '../../config';
+import { sapXepBai } from '../../sapXep';
 
 export async function getStaticPaths() {
   return Object.keys(CHUYEN_MUC).map((ma) => ({ params: { ma } }));
 }
 const { ma } = Astro.params;
 const cm = CHUYEN_MUC[ma as keyof typeof CHUYEN_MUC];
-const baiViet = (await getCollection('bai-viet'))
-  .filter((b) => b.data.chuyenMuc === ma)
-  .sort((a, b) => +b.data.ngayDang - +a.data.ngayDang);
+const baiViet = sapXepBai((await getCollection('bai-viet')).filter((b) => b.data.chuyenMuc === ma));
 ---
 <Layout tieuDe={cm.ten} moTa={cm.moTa}>
   <div class="khung dau" style={`--mau:${cm.mau}`}>

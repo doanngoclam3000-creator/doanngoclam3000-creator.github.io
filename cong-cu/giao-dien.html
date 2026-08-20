@@ -169,7 +169,7 @@ function veDanhSach(){
   $('ds').innerHTML = ds.map(x=>{
     const cm=CHUYEN_MUC[x.chuyenMuc];
     const phu = LOAI==='bai-viet'
-      ? `<span class="cham" style="background:${cm?cm.mau:'#666'}"></span>${cm?cm.ten:''} · ${x.ngayDang||''}${x.video?' · 🎬':''}`
+      ? `<span class="cham" style="background:${cm?cm.mau:'#666'}"></span>${x.ghim?'📌 ':''}${cm?cm.ten:''} · ${x.ngayDang||''}${x.video?' · 🎬':''}`
       : `${(x.nenTang||[]).join(', ')} · v${x.phienBan||''}`;
     return `<div class="muc ${DANGCHON===x.id?'chon':''}" onclick="moBai('${x.id}')">
       <b>${(x.tieuDe||x.ten||x.id).replace(/</g,'&lt;')}</b><small>${phu}</small></div>`;
@@ -186,7 +186,7 @@ async function moBai(id){
 }
 function baiMoi(){
   DANGCHON=null; IDCU=null; veDanhSach();
-  if(LOAI==='bai-viet') veForm({tieuDe:'',moTa:'',ngayDang:homNay(),chuyenMuc:'huong-dan',tags:[],noiBat:false},'',null);
+  if(LOAI==='bai-viet') veForm({tieuDe:'',moTa:'',ngayDang:homNay(),chuyenMuc:'huong-dan',tags:[],noiBat:false,ghim:false},'',null);
   else veForm({ten:'',moTa:'',nenTang:['macOS'],phienBan:'1.0',ngayCapNhat:homNay(),linkTai:'',icon:'📦',mauNen:'#2563eb',thuTu:9},'',null);
 }
 
@@ -208,7 +208,10 @@ function veForm(d, noiDung, id){
       + o('Thuộc phần mềm nào',`<select id="f-thuocPhanMem"><option value="">— Không thuộc phần mềm nào —</option>${dsPM}</select>`)
       + o('Từ khoá',`<input id="f-tags" value="${esc((d.tags||[]).join(', '))}" placeholder="cách nhau bằng dấu phẩy" />`)
     + `</div>`
-    + `<div class="o"><label class="hopchon"><input type="checkbox" id="f-noiBat" ${d.noiBat?'checked':''} /> Đánh dấu bài nổi bật</label></div>`
+    + `<div class="o" style="display:flex;gap:22px;flex-wrap:wrap">
+        <label class="hopchon"><input type="checkbox" id="f-ghim" ${d.ghim?'checked':''} /> 📌 Ghim lên đầu danh sách</label>
+        <label class="hopchon"><input type="checkbox" id="f-noiBat" ${d.noiBat?'checked':''} /> Đánh dấu bài nổi bật</label>
+      </div>`
     + khungVideo(d.video)
     + khungAnh(d.anh)
     + khungNoiDung(noiDung);
@@ -343,7 +346,8 @@ async function luuBai(){
     if(!tieuDe) return bao('Chưa nhập tiêu đề','loi');
     data={ tieuDe, moTa:g('f-moTa'), ngayDang:g('f-ngayDang')||homNay(), chuyenMuc:g('f-chuyenMuc'),
       thuocPhanMem:g('f-thuocPhanMem')||undefined, anh:g('f-anh')||undefined, video:g('f-video')||undefined,
-      tags:g('f-tags').split(',').map(s=>s.trim()).filter(Boolean), noiBat:$('f-noiBat').checked };
+      tags:g('f-tags').split(',').map(s=>s.trim()).filter(Boolean),
+      noiBat:$('f-noiBat').checked, ghim:$('f-ghim').checked };
   } else {
     tieuDe=g('f-ten');
     if(!tieuDe) return bao('Chưa nhập tên phần mềm','loi');

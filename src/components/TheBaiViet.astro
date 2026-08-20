@@ -9,7 +9,10 @@ const cm = CHUYEN_MUC[bai.data.chuyenMuc];
     {bai.data.video && <span class="dau-video">▶</span>}
   </a>
   <div class="than">
-    <a href={`/chuyen-muc/${bai.data.chuyenMuc}`} class="nhan" style={`background:${cm.mau}1a;color:${cm.mau}`}>{cm.ten}</a>
+    <div class="hang-nhan">
+      <a href={`/chuyen-muc/${bai.data.chuyenMuc}`} class="nhan" style={`background:${cm.mau}1a;color:${cm.mau}`}>{cm.ten}</a>
+      {bai.data.ghim && <span class="nhan nhan-ghim">📌 Ghim</span>}
+    </div>
     <h3><a href={`/bai-viet/${bai.id}`}>{bai.data.tieuDe}</a></h3>
     <p class="chu-nhat nho tom-tat">{bai.data.moTa}</p>
     <div class="chan-the chu-nhat nho">
@@ -34,6 +37,9 @@ const cm = CHUYEN_MUC[bai.data.chuyenMuc];
     backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,.25);
   }
   .than { padding: 16px 18px 18px; display: flex; flex-direction: column; flex: 1; }
+  .hang-nhan { display: flex; gap: .4rem; flex-wrap: wrap; align-items: center; }
+  .nhan-ghim { background: rgba(245,158,11,.14); color: #d97706; }
+  html[data-theme='dark'] .nhan-ghim { background: rgba(245,158,11,.16); color: #fbbf24; }
   .than h3 { font-size: 1.08rem; margin: .6rem 0 .4rem; }
   .than h3 a { color: var(--chu); }
   .the:hover h3 a { color: var(--chinh); }

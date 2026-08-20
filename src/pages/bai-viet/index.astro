@@ -3,7 +3,8 @@ import Layout from '../../layouts/Layout.astro';
 import TheBaiViet from '../../components/TheBaiViet.astro';
 import { getCollection } from 'astro:content';
 import { CHUYEN_MUC } from '../../config';
-const baiViet = (await getCollection('bai-viet')).sort((a, b) => +b.data.ngayDang - +a.data.ngayDang);
+import { sapXepBai } from '../../sapXep';
+const baiViet = sapXepBai(await getCollection('bai-viet'));
 ---
 <Layout tieuDe="Bài viết" moTa="Tất cả bài viết: thông báo cập nhật, hướng dẫn sử dụng, thủ thuật và tin tức.">
   <div class="khung dau">
