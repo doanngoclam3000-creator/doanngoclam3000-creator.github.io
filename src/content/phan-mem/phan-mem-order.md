@@ -1,9 +1,13 @@
 ---
 ten: "Phần Mềm Order"
 moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tính tiền theo tỉ giá lẻ/sỉ, quản lý kho TQ, công nợ và báo cáo."
-nenTang: ["iOS", "macOS"]
-phienBan: "2.4"
-ngayCapNhat: 2026-08-10
+nenTang: ["iOS", "macOS", "Windows"]
+phienBan: "2.5"
+banToiThieu: "2.5"
+ngayCapNhat: 2026-08-20
+ghiChuCapNhat: "- Thêm bản cho máy Windows\n- Phần mềm tự báo và bắt cập nhật khi có bản mới\n- Bản Mac tự tải và tự thay bản mới từ file .dmg"
+linkTaiMac: "https://phanmemtq.com/tai/PhanMemOrder-2.5.dmg"
+linkTaiWin: "https://phanmemtq.com/tai/PhanMemOrder-2.5.0-Setup.exe"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"
 icon: "🧾"
@@ -36,5 +40,6 @@ thuTu: 5
 | --- | --- |
 | iPhone / iPad | iOS 17 trở lên |
 | Mac | macOS 14 trở lên |
+| Windows | Windows 10 trở lên (64-bit) |
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
