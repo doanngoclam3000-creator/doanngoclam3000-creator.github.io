@@ -3,7 +3,7 @@ ten: "Phần Mềm Order"
 moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tính tiền theo tỉ giá lẻ/sỉ, quản lý kho TQ, công nợ và báo cáo."
 nenTang: ["iOS", "macOS", "Windows", "Android"]
 phienBan: "2.7"
-banToiThieu: "2.6"
+banToiThieu: "2.7"
 ngayCapNhat: 2026-08-21
 ghiChuCapNhat: "- Bản Windows và Android tự đọc được hành trình vận đơn\n- Đăng nhập 1688 một lần ngay trong phần mềm, sau đó tự lấy hành trình về\n- Dịch sẵn những câu hay gặp của hãng chuyển phát sang tiếng Việt\n- Tự điền tình trạng kiện và kéo hàng sang bước Về kho TQ khi đã ký nhận"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.dmg"
