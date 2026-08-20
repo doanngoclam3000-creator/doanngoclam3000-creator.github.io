@@ -4,7 +4,7 @@ moTa: "Các bước cài đặt Giả Lập Vị Trí trên máy tính, bật Ch
 ngayDang: 2026-08-19
 chuyenMuc: "huong-dan"
 thuocPhanMem: "gia-lap-vi-tri"
-video: "/video/gia-lap-vi-tri-huong-dan.mp4"
+video: "https://youtu.be/NT3uojQpswo"
 tags: ["giả lập vị trí", "cài đặt", "iPhone", "Android", "video"]
 noiBat: true
 ---
