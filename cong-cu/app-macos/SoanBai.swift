@@ -186,6 +186,40 @@ final class BoDieuKhien: NSObject, NSApplicationDelegate, WKNavigationDelegate, 
         return nil
     }
 
+    // Cua so web nhung khong tu mo duoc hop chon file, app phai lo viec nay
+    func webView(_ w: WKWebView, runOpenPanelWith thamSo: WKOpenPanelParameters,
+                 initiatedByFrame khung: WKFrameInfo,
+                 completionHandler xong: @escaping ([URL]?) -> Void) {
+        let hop = NSOpenPanel()
+        hop.canChooseFiles = true
+        hop.canChooseDirectories = thamSo.allowsDirectories
+        hop.allowsMultipleSelection = thamSo.allowsMultipleSelection
+        hop.resolvesAliases = true
+        hop.prompt = "Chọn"
+        hop.message = "Chọn file cần tải lên"
+        hop.beginSheetModal(for: cuaSo) { ketQua in
+            xong(ketQua == .OK ? hop.urls : nil)
+        }
+    }
+
+    // Trang web goi alert / confirm thi hien bang cua he thong
+    func webView(_ w: WKWebView, runJavaScriptAlertPanelWithMessage chu: String,
+                 initiatedByFrame khung: WKFrameInfo, completionHandler xong: @escaping () -> Void) {
+        let bang = NSAlert()
+        bang.messageText = chu
+        bang.addButton(withTitle: "OK")
+        bang.beginSheetModal(for: cuaSo) { _ in xong() }
+    }
+
+    func webView(_ w: WKWebView, runJavaScriptConfirmPanelWithMessage chu: String,
+                 initiatedByFrame khung: WKFrameInfo, completionHandler xong: @escaping (Bool) -> Void) {
+        let bang = NSAlert()
+        bang.messageText = chu
+        bang.addButton(withTitle: "Đồng ý")
+        bang.addButton(withTitle: "Huỷ")
+        bang.beginSheetModal(for: cuaSo) { kq in xong(kq == .alertFirstButtonReturn) }
+    }
+
     func applicationShouldTerminateAfterLastWindowClosed(_ a: NSApplication) -> Bool { true }
     func applicationWillTerminate(_ n: Notification) {
         tienTrinh?.terminate()
