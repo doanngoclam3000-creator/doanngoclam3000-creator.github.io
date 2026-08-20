@@ -52,6 +52,10 @@ jobs:
             "Bản Android thử nghiệm đầu tiên." \
             public/tai/HocTiengTrung-Android-0.1.0.apk
 
+          taoBan "hoc-tieng-trung-android-0.2" "Học Tiếng Trung — Android 0.2" \
+            "Thêm tập viết chữ Hán chấm từng nét. Máy Android 64-bit (từ khoảng 2017 trở lại đây)." \
+            public/tai/HocTiengTrung-Android-0.2.0.apk
+
           echo
           echo "===== Ket qua ====="
           gh release list

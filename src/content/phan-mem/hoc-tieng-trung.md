@@ -3,10 +3,10 @@ ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Android"]
 phienBan: "2.0"
-ngayCapNhat: 2026-08-20
-ghiChuCapNhat: "Đã có bản cho máy Mac tải thẳng về, và bản Android thử nghiệm."
+ngayCapNhat: 2026-08-21
+ghiChuCapNhat: "Bản Android 0.2: thêm tập viết chữ Hán chấm từng nét."
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-android-0.1/HocTiengTrung-Android-0.1.0.apk"
+linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-android-0.2/HocTiengTrung-Android-0.2.0.apk"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
@@ -36,7 +36,7 @@ thuTu: 3
 - **"Hôm nay học gì":** cuối ngày app dựng lại một đoạn hội thoại từ đúng những từ bạn học hôm đó.
 - **Lịch ôn thông minh:** dùng thuật toán FSRS-5, tự tính ngày nào nên ôn lại từ nào.
 
-## Bản Android (0.1 — đang thử nghiệm)
+## Bản Android (0.2 — đang thử nghiệm)
 
 Bản cho điện thoại Android vừa mới ra, còn đang làm dở. **Tải về dùng thử được ngay,
 nhưng chưa có đủ tính năng như bản iPhone và Mac.**
@@ -47,9 +47,11 @@ nhưng chưa có đủ tính năng như bản iPhone và Mac.**
 - Lộ trình HSK 1–6 và danh sách từ từng cấp.
 - Tra từ bằng chữ Hán, bằng pinyin (gõ có dấu hay không đều được) hoặc bằng nghĩa tiếng Việt.
 - Nghe phát âm chuẩn từng từ.
+- **Tập viết chữ Hán chấm từng nét:** viết bằng ngón tay, app chấm từng nét một —
+  sai chiều, sai thứ tự hay lệch chỗ đều báo rõ. Chấm bằng đúng thuật toán của bản Mac.
 
-**Chưa có:** chấm điểm phát âm, chấm thanh điệu, tập viết chữ từng nét, bài tập,
-hội thoại AI, lịch ôn FSRS. Những phần này đang được làm tiếp.
+**Chưa có:** chấm điểm phát âm, chấm thanh điệu, bài tập, hội thoại AI, lịch ôn FSRS.
+Những phần này đang được làm tiếp.
 
 Lần đầu mở app hơi lâu vì máy phải chép từ điển ra, những lần sau vào ngay.
 
@@ -59,7 +61,7 @@ Lần đầu mở app hơi lâu vì máy phải chép từ điển ra, những l
 | --- | --- |
 | iPhone / iPad | iOS 17 trở lên |
 | Mac | macOS 14 trở lên |
-| Android | Android 6 trở lên |
+| Android | Android 6 trở lên, máy 64-bit (khoảng từ 2017 trở lại đây) |
 
 > Phần chấm phát âm cần cấp quyền micro và nhận diện giọng nói cho app.
 
