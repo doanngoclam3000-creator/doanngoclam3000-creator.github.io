@@ -58,6 +58,8 @@ p { margin: 0 0 1em; }
 
 .khung { width: 100%; max-width: var(--rong); margin: 0 auto; padding: 0 20px; }
 .khung-hep { width: 100%; max-width: 760px; margin: 0 auto; padding: 0 20px; }
+/* Video quay man hinh can rong hon cot chu, khong thi chu trong anh be qua. */
+.khung-rong { width: 100%; max-width: 1060px; margin: 0 auto; padding: 0 20px; }
 
 /* Nut */
 .nut {
