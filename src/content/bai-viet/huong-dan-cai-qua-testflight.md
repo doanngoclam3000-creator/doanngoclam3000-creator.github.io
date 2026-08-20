@@ -10,7 +10,7 @@ noiBat: true
 
 Các phần mềm của tôi chạy trên iPhone và iPad được phát hành qua **TestFlight** — ứng dụng chính thức của Apple dùng để cài các phần mềm đang trong giai đoạn thử nghiệm.
 
-Bạn chỉ cần làm **2 bước**, tổng cộng khoảng 3 phút. Sau này có phiên bản mới thì vào TestFlight bấm cập nhật là xong.
+Bạn chỉ cần làm **2 bước**, tổng cộng khoảng 3 phút: cài TestFlight, rồi bấm nút tải ngay trên trang phần mềm. Sau này có phiên bản mới thì vào TestFlight bấm cập nhật là xong.
 
 > Hướng dẫn này dành cho **iPhone và iPad**. Nếu bạn dùng máy tính Mac hoặc Windows, xem bài hướng dẫn riêng của từng phần mềm.
 
@@ -31,19 +31,21 @@ TestFlight **hoàn toàn miễn phí**, do chính Apple làm ra, không phải p
 
 ## Bước 2: Tải phần mềm về máy
 
-### 2.1 — Bấm vào link mời tôi gửi
+### 2.1 — Bấm nút tải trên trang phần mềm
 
-![Bấm vào link mời nhận được qua tin nhắn](/anh/testflight/2-mo-link-moi.svg)
+![Bấm nút iPhone / iPad ở phần Tải về trên website](/anh/testflight/2-bam-nut-tai.svg)
 
-Sau khi bạn mua, tôi sẽ gửi cho bạn một **link mời** qua Zalo, Messenger hoặc WeChat. Link có dạng:
+1. Mở trang phần mềm bạn muốn cài trên website này, ngay **bằng trình duyệt trên iPhone**.
+2. Kéo xuống phần **Tải về**.
+3. Bấm nút **iPhone / iPad**.
+
+Máy sẽ tự mở ứng dụng TestFlight vừa cài ở bước 1. Link tải có dạng:
 
 ```
 https://testflight.apple.com/join/xxxxxxxx
 ```
 
-**Bấm thẳng vào link đó ngay trên iPhone.** Máy sẽ tự mở ứng dụng TestFlight vừa cài.
-
-> Quan trọng: phải bấm link **trên chính chiếc iPhone sẽ dùng phần mềm**. Bấm trên máy tính sẽ không cài được.
+> Quan trọng: phải bấm nút này **trên chính chiếc iPhone sẽ dùng phần mềm**. Bấm trên máy tính sẽ không cài được — nếu đang xem bằng máy tính, hãy mở lại trang này trên điện thoại.
 
 ### 2.2 — Chấp nhận và cài đặt
 
@@ -89,8 +91,9 @@ Dữ liệu cũ của bạn vẫn giữ nguyên, không mất gì cả.
 | TestFlight có an toàn không? | Có. Đây là ứng dụng chính thức của Apple, tải từ App Store. |
 | Có tốn tiền thêm không? | Không. TestFlight miễn phí, và bạn không phải trả gì khi cài. |
 | Có cần mật khẩu Apple ID không? | Không cần khi cài qua link mời. |
-| Bấm link mà không mở TestFlight? | Bạn chưa cài TestFlight. Quay lại Bước 1 cài trước đã. |
-| Link báo hết hạn hoặc đã đầy? | Nhắn cho tôi, tôi gửi link mới ngay. |
+| Bấm nút tải mà không mở TestFlight? | Bạn chưa cài TestFlight. Quay lại Bước 1 cài trước đã. |
+| Bấm nút trên máy tính có được không? | Không. Phải mở trang này bằng trình duyệt trên chính iPhone của bạn. |
+| Link báo hết hạn hoặc đã đầy chỗ? | Nhắn cho tôi, tôi mở thêm chỗ hoặc gửi link mới ngay. |
 | Máy báo phần mềm hết hạn sau 90 ngày? | Bản thử nghiệm có hạn 90 ngày. Trước khi hết hạn tôi sẽ ra bản mới, bạn chỉ cần vào TestFlight bấm cập nhật. |
 | Xoá nhầm phần mềm thì sao? | Mở TestFlight, bấm cài lại. Không cần link mời mới. |
 | Dùng được trên iPad không? | Được, cách làm y hệt. |

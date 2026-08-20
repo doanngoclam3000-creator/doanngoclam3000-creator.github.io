@@ -2,12 +2,22 @@
 import { dinhDangNgay } from '../config';
 const { pm } = Astro.props;
 
+const laTestFlight = (u?: string) => !!u && u.includes('testflight.apple.com');
+
 const nut = [
-  { link: pm.data.linkTaiMac, ten: 'MacBook / iMac', phu: 'macOS · file .dmg', icon: '' },
-  { link: pm.data.linkTaiWin, ten: 'Máy tính Windows', phu: 'Windows · file .exe', icon: '⊞' },
-  { link: pm.data.linkTaiIOS, ten: 'iPhone / iPad', phu: 'iOS · qua TestFlight', icon: '' },
-  { link: pm.data.linkTaiAndroid, ten: 'Điện thoại Android', phu: 'Android · file .apk', icon: '🤖' },
+  { link: pm.data.linkTaiMac, ten: 'MacBook / iMac', phu: 'macOS · file .dmg', icon: '', tf: false },
+  { link: pm.data.linkTaiWin, ten: 'Máy tính Windows', phu: 'Windows · file .exe', icon: '⊞', tf: false },
+  {
+    link: pm.data.linkTaiIOS,
+    ten: 'iPhone / iPad',
+    phu: laTestFlight(pm.data.linkTaiIOS) ? 'iOS · qua TestFlight' : 'iOS',
+    icon: '',
+    tf: laTestFlight(pm.data.linkTaiIOS),
+  },
+  { link: pm.data.linkTaiAndroid, ten: 'Điện thoại Android', phu: 'Android · file .apk', icon: '🤖', tf: false },
 ].filter((n) => n.link && n.link !== '#');
+
+const coTestFlight = nut.some((n) => n.tf);
 
 // Neu chua khai bao link rieng cho tung he dieu hanh thi dung link chung
 const dungLinkChung = nut.length === 0 && pm.data.linkTai && pm.data.linkTai !== '#';
@@ -32,7 +42,7 @@ const chuaCoLink = nut.length === 0 && !dungLinkChung;
 
     <div class="phai">
       {nut.map((n) => (
-        <a href={n.link} class="nut-tai">
+        <a href={n.link} class:list={['nut-tai', n.tf && 'nut-tf']} target={n.tf ? '_blank' : undefined} rel={n.tf ? 'noopener' : undefined}>
           <span class="nut-icon">{n.icon}</span>
           <span class="nut-chu">
             <b>{n.ten}</b>
@@ -54,6 +64,12 @@ const chuaCoLink = nut.length === 0 && !dungLinkChung;
           <span class="nut-chu"><b>Nhắn tin để nhận link tải</b><small>Phản hồi trong ngày</small></span>
           <span class="mui">→</span>
         </a>
+      )}
+      {coTestFlight && (
+        <p class="nhac-tf">
+          Bấm nút iPhone / iPad <b>ngay trên điện thoại</b>. Chưa có TestFlight?
+          <a href="/bai-viet/huong-dan-cai-qua-testflight"> Xem hướng dẫn có hình</a>
+        </p>
       )}
       {pm.data.linkTaiPhu && pm.data.linkTaiPhu !== '#' && (
         <a href={pm.data.linkTaiPhu} class="link-phu">Link dự phòng (nếu link trên tải chậm)</a>
@@ -97,6 +113,15 @@ const chuaCoLink = nut.length === 0 && !dungLinkChung;
   .nut-chu small { font-size: .78rem; opacity: .85; }
   .mui { font-size: 1.1rem; opacity: .8; }
   .chua-co { background: linear-gradient(135deg, #475569, #1e293b); box-shadow: none; }
+  .nut-tf {
+    background: linear-gradient(135deg, #3aa9ff, #0a72e8);
+    box-shadow: 0 6px 18px rgba(10, 114, 232, .34);
+  }
+  .nut-tf:hover { box-shadow: 0 10px 26px rgba(10, 114, 232, .46); }
+  .nhac-tf {
+    margin: .3rem 0 0; font-size: .82rem; line-height: 1.55; color: var(--chu-nhat); text-align: center;
+  }
+  .nhac-tf b { color: var(--chu); }
   .link-phu { font-size: .84rem; color: var(--chu-nhat); text-align: center; margin-top: .2rem; }
   .link-phu:hover { color: var(--chinh); }
 

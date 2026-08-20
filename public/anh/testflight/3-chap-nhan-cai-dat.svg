@@ -24,7 +24,7 @@
 <g>
   <circle cx="96" cy="104" r="34" fill="#2563eb"/>
   <text x="96" y="116" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
-  <text x="152" y="116" font-size="34" font-weight="700" fill="#0f172a">Chấp nhận lời mời</text>
+  <text x="152" y="116" font-size="34" font-weight="700" fill="#0f172a">Chấp nhận và cài</text>
   <text x="56" y="186" font-size="21" fill="#475569"><tspan>TestFlight mở ra và hiện tên phần mềm.</tspan></text>
   <text x="56" y="262" font-size="21" fill="#475569"><tspan>Bấm </tspan><tspan font-weight="700" fill="#0f172a">CHẤP NHẬN</tspan><tspan> (Accept),</tspan></text>
   <text x="56" y="300" font-size="21" fill="#475569"><tspan>rồi bấm tiếp </tspan><tspan font-weight="700" fill="#0f172a">CÀI ĐẶT</tspan><tspan> (Install).</tspan></text>
