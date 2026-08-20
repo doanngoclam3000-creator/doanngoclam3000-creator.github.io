@@ -9,6 +9,9 @@ export const CAUHINH = {
   zalo: '',
   email: 'luc.tieu.phung1409@gmail.com',
   youtube: '',
+  // Anh banner o trang chu. Thay bang anh cua ban:
+  // bo file vao thu muc public/ roi doi duong dan o day, vi du '/banner.jpg'
+  anhBanner: '/banner.svg',
 };
 
 export const CHUYEN_MUC = {

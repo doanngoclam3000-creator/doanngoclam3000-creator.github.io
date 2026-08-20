@@ -31,7 +31,6 @@ const lienQuan = (await getCollection('bai-viet'))
         <div class="hd">
           {pm.data.linkTai && <a href={pm.data.linkTai} class="nut nut-tai-ve">⬇︎ Tải về</a>}
           {pm.data.linkTaiPhu && <a href={pm.data.linkTaiPhu} class="nut nut-phu">Link dự phòng</a>}
-          <a href="/lien-he" class="nut nut-phu">Liên hệ mua</a>
         </div>
       </div>
       {pm.data.gia && <div class="hop-gia"><small>Giá</small><b>{pm.data.gia}</b></div>}
