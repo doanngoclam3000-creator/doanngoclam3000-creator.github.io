@@ -2,7 +2,7 @@
 const { src } = Astro.props;
 // Nhan dang link YouTube de nhung, con lai coi la file video trong thu muc public/
 function idYouTube(u: string): string | null {
-  const m = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+  const m = u.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
   return m ? m[1] : null;
 }
 const yt = idYouTube(src);
@@ -12,8 +12,7 @@ const yt = idYouTube(src);
     ? <iframe
         src={`https://www.youtube-nocookie.com/embed/${yt}`}
         title="Video hướng dẫn"
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture"
         allowfullscreen
       />
     : <video src={src} controls preload="metadata" playsinline />}

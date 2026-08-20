@@ -115,7 +115,7 @@ p { margin: 0 0 1em; }
 /* ===== Toi uu cho dien thoai ===== */
 @media (max-width: 640px) {
   body { font-size: 15.5px; }
-  .khung, .khung-hep { padding: 0 16px; }
+  .khung, .khung-hep, .khung-rong { padding: 0 16px; }
   .luoi { gap: 16px; }
   h1 { letter-spacing: -0.015em; }
   .noi-dung { font-size: 1rem; }
@@ -127,7 +127,7 @@ p { margin: 0 0 1em; }
   .nut { padding: .8rem 1.1rem; min-height: 44px; }
 }
 @media (max-width: 400px) {
-  .khung, .khung-hep { padding: 0 14px; }
+  .khung, .khung-hep, .khung-rong { padding: 0 14px; }
 }
 /* Anh va ma nhung khong bao gio tran ra ngoai */
 .noi-dung img, .noi-dung iframe, .noi-dung video { max-width: 100%; height: auto; }
