@@ -5,9 +5,10 @@ export const CAUHINH = {
   moTa: 'Nơi phát hành các phần mềm do tôi tự phát triển: giả lập vị trí, bán tệ, học tiếng Trung, quản lý kho hàng 1688 & Taobao... Kèm hướng dẫn sử dụng và thông báo cập nhật.',
   tacGia: 'Đoàn Ngọc Lâm',
   // Lien he
-  facebook: 'https://facebook.com/',
+  facebook: 'https://www.facebook.com/oanngoclam.324266',
   zalo: '',
   wechat: 'tieuphung1409',
+  wechatQR: '/anh/wechat-qr.jpg',
   email: 'luc.tieu.phung1409@gmail.com',
   youtube: '',
   // Anh banner o trang chu. Thay bang anh cua ban:

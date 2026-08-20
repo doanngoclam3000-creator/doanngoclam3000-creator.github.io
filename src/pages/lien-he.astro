@@ -4,7 +4,7 @@ import { CAUHINH } from '../config';
 const kenh = [
   CAUHINH.facebook && { ten: 'Facebook', icon: '💬', mo: 'Nhắn tin trực tiếp, phản hồi nhanh nhất.', link: CAUHINH.facebook, nhan: 'Nhắn Facebook' },
   CAUHINH.zalo && { ten: 'Zalo', icon: '📱', mo: 'Gọi hoặc nhắn tin qua Zalo.', link: CAUHINH.zalo, nhan: 'Mở Zalo' },
-  CAUHINH.wechat && { ten: 'WeChat', icon: '💚', mo: 'Kết bạn WeChat để trao đổi nhanh, kể cả khi tôi đang ở Trung Quốc.', link: null, nhan: CAUHINH.wechat },
+
   CAUHINH.email && { ten: 'Email', icon: '✉️', mo: 'Gửi email cho các yêu cầu chi tiết.', link: `mailto:${CAUHINH.email}`, nhan: CAUHINH.email },
   CAUHINH.youtube && { ten: 'YouTube', icon: '▶️', mo: 'Xem video hướng dẫn sử dụng.', link: CAUHINH.youtube, nhan: 'Xem kênh' },
 ].filter(Boolean) as any[];
@@ -15,6 +15,22 @@ const kenh = [
     <p class="chu-nhat sapo">Cần mua phần mềm, gặp lỗi hay muốn đặt viết riêng theo yêu cầu? Nhắn cho tôi qua một trong các kênh dưới đây.</p>
   </div>
   <div class="khung-hep">
+    {CAUHINH.wechat && (
+      <div class="the o-wechat">
+        <div class="wc-chu">
+          <span class="lh-icon">💬</span>
+          <b>WeChat</b>
+          <small class="chu-nhat">Cách nhanh nhất để gặp tôi. Quét mã bên cạnh bằng WeChat, hoặc tìm theo tên tài khoản.</small>
+          <button class="nut nut-vien nut-nho chep" data-chep={CAUHINH.wechat}>{CAUHINH.wechat} — bấm để chép</button>
+        </div>
+        {CAUHINH.wechatQR && (
+          <a class="wc-qr" href={CAUHINH.wechatQR} target="_blank" rel="noopener" title="Bấm để xem mã lớn">
+            <img src={CAUHINH.wechatQR} alt={`Mã QR WeChat ${CAUHINH.wechat}`} width="220" height="295" loading="lazy" />
+            <span class="chu-nhat nho">Quét mã để kết bạn</span>
+          </a>
+        )}
+      </div>
+    )}
     <div class="luoi luoi-2">
       {kenh.map((k) => k.link ? (
         <a href={k.link} target="_blank" rel="noopener" class="the o-lh">
@@ -64,6 +80,23 @@ const kenh = [
   .lh-icon { font-size: 1.8rem; width: 52px; height: 52px; display: grid; place-items: center; border-radius: 14px; background: var(--nen-phu); margin-bottom: .3rem; }
   .o-lh b { font-size: 1.1rem; }
   .nut-nho { margin-top: .8rem; padding: .45rem .85rem; font-size: .85rem; }
+  .o-wechat {
+    display: flex; align-items: center; gap: 26px; padding: 24px; margin-bottom: 22px;
+    flex-direction: row; flex-wrap: wrap;
+  }
+  .wc-chu { flex: 1; min-width: 250px; display: flex; flex-direction: column; align-items: flex-start; gap: .4rem; }
+  .wc-chu b { font-size: 1.15rem; }
+  .wc-chu small { line-height: 1.6; }
+  .wc-qr {
+    display: flex; flex-direction: column; align-items: center; gap: .5rem;
+    padding: 12px; border-radius: 14px; background: #ffffff; border: 1px solid var(--vien);
+  }
+  .wc-qr img { width: 200px; height: auto; border-radius: 8px; }
+  .wc-qr:hover { border-color: var(--chinh); }
+  @media (max-width: 620px) {
+    .o-wechat { flex-direction: column; align-items: stretch; gap: 18px; }
+    .wc-qr { align-self: center; }
+  }
   .luu-y { margin-top: 34px; padding: 24px; border-radius: 16px; background: var(--nen-phu); border: 1px solid var(--vien); }
   .luu-y h3 { margin-top: 0; }
   .luu-y ol { padding-left: 1.2em; margin: 0; color: var(--chu-nhat); }
