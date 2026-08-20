@@ -4,9 +4,14 @@ moTa: "Các bước cài đặt Giả Lập Vị Trí trên máy tính, bật Ch
 ngayDang: 2026-08-19
 chuyenMuc: "huong-dan"
 thuocPhanMem: "gia-lap-vi-tri"
-tags: ["giả lập vị trí", "cài đặt", "iPhone"]
+video: "/video/gia-lap-vi-tri-huong-dan.mp4"
+tags: ["giả lập vị trí", "cài đặt", "iPhone", "Android", "video"]
 noiBat: true
 ---
+
+Video bên trên quay lại toàn bộ quá trình trên Windows, từ lúc cài đến khi vị trí đã đổi trên iPhone. Xem hết mất khoảng ba phút.
+
+Bên dưới là các bước viết bằng chữ, tiện cho ai muốn dò lại từng chỗ.
 
 Làm theo đúng thứ tự dưới đây là dùng được. Cả hai hệ điều hành đều chỉ cần **một file duy nhất**.
 
