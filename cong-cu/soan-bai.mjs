@@ -87,6 +87,20 @@ function docThan(req, gioiHan = 600 * 1024 * 1024) {
   });
 }
 
+// Tim cong cu dong lenh cua GitHub
+function timGh() {
+  const cho = [
+    path.join(process.env.HOME || '', 'bin/gh'),
+    '/opt/homebrew/bin/gh',
+    '/usr/local/bin/gh',
+    '/usr/bin/gh',
+  ];
+  for (const d of cho) {
+    try { if (fs.statSync(d).isFile()) return d; } catch {}
+  }
+  return null;
+}
+
 const chayLenh = (lenh, thamSo) => new Promise((ok) => {
   execFile(lenh, thamSo, { cwd: THUMUC, maxBuffer: 10 * 1024 * 1024 }, (e, ra, loi) => ok({ ma: e ? 1 : 0, ra: (ra || '') + (loi || '') }));
 });
@@ -154,6 +168,78 @@ const may = http.createServer(async (req, res) => {
       const than = await docThan(req);
       await fsp.writeFile(path.join(laVideo ? D_VIDEO : D_ANH, ten), than);
       return json(res, { ok: true, url: `/${laVideo ? 'video' : 'anh'}/${ten}`, kichThuoc: than.length });
+    }
+
+    // Kiem tra da san sang phat hanh chua
+    if (duong === '/api/gh') {
+      const gh = timGh();
+      if (!gh) return json(res, { coGh: false, daDangNhap: false });
+      const tt = await chayLenh(gh, ['auth', 'status']);
+      return json(res, { coGh: true, daDangNhap: tt.ma === 0 });
+    }
+
+    // Tai file cai dat len GitHub Releases
+    if (duong === '/api/tai-phan-mem' && req.method === 'PUT') {
+      const gh = timGh();
+      if (!gh) return json(res, { loi: 'Máy chưa có công cụ gh của GitHub' }, 400);
+
+      const ma = path.basename(u.searchParams.get('ma') || '');
+      const phienBan = (u.searchParams.get('phienBan') || '').trim();
+      const tenGoc = path.basename(u.searchParams.get('ten') || 'phanmem');
+      if (!ma) return json(res, { loi: 'Chưa biết là phần mềm nào' }, 400);
+      if (!phienBan) return json(res, { loi: 'Điền số phiên bản trước khi tải file lên' }, 400);
+
+      // Ghi thang ra dia, khong giu trong bo nho: file cai dat co the hang tram MB
+      const thuMucTam = path.join(THUMUC, 'cong-cu/tam');
+      fs.mkdirSync(thuMucTam, { recursive: true });
+      const tepTam = path.join(thuMucTam, tenGoc);
+      await new Promise((xong, hong) => {
+        const ghi = fs.createWriteStream(tepTam);
+        req.pipe(ghi);
+        ghi.on('finish', xong);
+        ghi.on('error', hong);
+        req.on('error', hong);
+      });
+
+      const the = `${ma}-${phienBan}`;
+      let ket;
+      const daCo = await chayLenh(gh, ['release', 'view', the]);
+      if (daCo.ma === 0) {
+        ket = await chayLenh(gh, ['release', 'upload', the, tepTam, '--clobber']);
+      } else {
+        ket = await chayLenh(gh, ['release', 'create', the, tepTam,
+          '--title', `Phiên bản ${phienBan}`,
+          '--notes', `Bản phát hành ${phienBan}`]);
+      }
+
+      if (ket.ma !== 0) {
+        try { fs.unlinkSync(tepTam); } catch {}
+        const raw = ket.ra || '';
+        let loi;
+        if (/gh auth login|GH_TOKEN/.test(raw)) {
+          loi = 'Chưa đăng nhập GitHub. Mở Terminal chạy: ~/bin/gh auth login';
+        } else if (/already exists/i.test(raw)) {
+          loi = 'File này đã có trong bản phát hành. Đổi tên file hoặc tăng số phiên bản.';
+        } else if (/rate limit|network|timeout|connection/i.test(raw)) {
+          loi = 'Mạng trục trặc khi đẩy lên GitHub, thử lại sau ít phút.';
+        } else {
+          loi = 'Không đẩy lên được: ' + raw.trim().split('\n').slice(-2).join(' ').slice(0, 200);
+        }
+        return json(res, { loi }, 500);
+      }
+
+      // Lay dia chi tai ve
+      const xem = await chayLenh(gh, ['release', 'view', the, '--json', 'assets']);
+      let diaChi = null;
+      try {
+        const ds = JSON.parse(xem.ra).assets || [];
+        const t = ds.find((x) => x.name === tenGoc);
+        if (t) diaChi = t.url;
+      } catch {}
+
+      const kichThuoc = fs.statSync(tepTam).size;
+      try { fs.unlinkSync(tepTam); } catch {}   // Khong giu ban sao trong du an
+      return json(res, { ok: true, url: diaChi, the, kichThuoc });
     }
 
     if (duong === '/api/git') {

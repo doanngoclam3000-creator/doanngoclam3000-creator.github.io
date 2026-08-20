@@ -73,6 +73,9 @@
   .hopchon input { width:auto; }
   .taile { border:1px dashed var(--vien); border-radius:10px; padding:14px; text-align:center; color:var(--mo); font-size:13px; }
   .taile.keo { border-color:var(--xanh); background:#eef4ff; color:var(--chu); }
+  .taile-to { padding:20px 14px; line-height:1.6; }
+  .taile-to b { display:block; color:var(--chu); font-size:14px; margin-bottom:3px; }
+  .taile-to small { font-size:12px; }
   .xemvideo { margin-top:10px; width:100%; max-height:230px; border-radius:10px; background:#000; }
   .canh { padding:9px 12px; border-radius:8px; font-size:12.5px; margin-bottom:12px; line-height:1.55; }
   .canh.vang { background:#fff8ec; color:#92400e; border:1px solid #f5d9a8; }
@@ -229,7 +232,8 @@ function veForm(d, noiDung, id){
       + o('Bản tối thiểu bắt buộc',`<input id="f-banToiThieu" value="${esc(d.banToiThieu)}" placeholder="Ví dụ 3.1 — cũ hơn là bắt cập nhật" />`,'Máy khách đang chạy bản cũ hơn số này sẽ bị bắt cập nhật mới dùng tiếp được.')
       + o('Ghi chú bản mới',`<input id="f-ghiChuCapNhat" value="${esc(d.ghiChuCapNhat)}" placeholder="Câu ngắn hiện trong bảng nhắc cập nhật" />`)
     + `</div>`
-    + `<div class="canh vang" style="margin:6px 0 12px">Điền link tải cho từng hệ điều hành — website sẽ tự hiện đúng số nút tải.</div>`
+    + khungTaiPhanMem()
+    + `<div class="canh vang" style="margin:6px 0 12px">Hoặc tự dán link vào các ô dưới đây nếu bạn để file ở chỗ khác.</div>`
     + `<div class="luoi">`
       + o('Link tải cho macOS',`<input id="f-linkTaiMac" value="${esc(d.linkTaiMac)}" placeholder="https://... file .dmg" />`)
       + o('Link tải cho Windows',`<input id="f-linkTaiWin" value="${esc(d.linkTaiWin)}" placeholder="https://... file .exe" />`)
@@ -251,6 +255,7 @@ function veForm(d, noiDung, id){
   }
   $('than').innerHTML = html;
   ganKeoTha();
+  if (LOAI === 'phan-mem') ganTaiPhanMem();
 }
 
 const esc=(v)=>String(v??'').replace(/"/g,'&quot;').replace(/</g,'&lt;');
@@ -272,6 +277,18 @@ function khungAnh(anh){
     <div id="xem-anh"></div>
   </div>`;
 }
+function khungTaiPhanMem(){
+  return `<div class="o">
+    <label>Tải file cài đặt lên</label>
+    <div id="keo-phanmem" class="taile taile-to">
+      <b>Kéo file cài đặt thả vào đây</b>
+      <small>Nhận .dmg cho Mac · .exe cho Windows · .apk cho Android — tự điền vào đúng ô bên dưới</small>
+    </div>
+    <div class="tienDo" id="td-phanmem" style="display:none"><i></i></div>
+    <div id="tt-phanmem" class="goiy"></div>
+  </div>`;
+}
+
 function khungNoiDung(noiDung){
   return `<div class="o"><label>Nội dung bài viết</label>
     <div class="congcu">
@@ -339,6 +356,84 @@ function taiLen(tep,loai,idInput,idTd,xong){
       else bao(r.loi||'Tải lên thất bại','loi');
     }catch{ bao('Tải lên thất bại','loi'); } };
   xhr.onerror=()=>{ td.style.display='none'; bao('Tải lên thất bại','loi'); };
+  xhr.send(tep);
+}
+
+// ---- Tải file cài đặt lên GitHub Releases ----
+const O_THEO_DUOI = {
+  '.dmg': { o: 'f-linkTaiMac',     ten: 'macOS' },
+  '.pkg': { o: 'f-linkTaiMac',     ten: 'macOS' },
+  '.exe': { o: 'f-linkTaiWin',     ten: 'Windows' },
+  '.msi': { o: 'f-linkTaiWin',     ten: 'Windows' },
+  '.apk': { o: 'f-linkTaiAndroid', ten: 'Android' },
+};
+
+function ganTaiPhanMem(){
+  const khung = $('keo-phanmem'); if (!khung) return;
+  const chon = document.createElement('input');
+  chon.type = 'file';
+  chon.accept = '.dmg,.pkg,.exe,.msi,.apk';
+  chon.style.display = 'none';
+  document.body.appendChild(chon);
+  chon.onchange = () => chon.files[0] && taiPhanMem(chon.files[0]);
+  khung.onclick = () => chon.click();
+  khung.ondragover = (e) => { e.preventDefault(); khung.classList.add('keo'); };
+  khung.ondragleave = () => khung.classList.remove('keo');
+  khung.ondrop = (e) => {
+    e.preventDefault(); khung.classList.remove('keo');
+    const f = e.dataTransfer.files[0]; if (f) taiPhanMem(f);
+  };
+}
+
+async function taiPhanMem(tep){
+  const duoi = (tep.name.match(/\.[^.]+$/) || [''])[0].toLowerCase();
+  const dich = O_THEO_DUOI[duoi];
+  if (!dich) return bao(`Không nhận ra loại file "${duoi}". Chỉ nhận .dmg .pkg .exe .msi .apk`, 'loi');
+
+  const phienBan = ($('f-phienBan') ? $('f-phienBan').value : '').trim();
+  if (!phienBan) return bao('Điền ô Phiên bản trước đã — file sẽ được phát hành theo số này', 'loi');
+  if (!DANGCHON) return bao('Lưu phần mềm này lại trước khi tải file lên', 'loi');
+
+  // Kiểm tra đã đăng nhập GitHub chưa
+  try {
+    const g = await (await fetch('/api/gh')).json();
+    if (!g.coGh) return bao('Máy chưa có công cụ gh của GitHub', 'loi');
+    if (!g.daDangNhap) return bao('Chưa đăng nhập GitHub. Mở Terminal chạy: ~/bin/gh auth login', 'loi');
+  } catch { return bao('Không kiểm tra được GitHub', 'loi'); }
+
+  const MB = tep.size / 1048576;
+  if (MB > 2048) return bao('File lớn hơn 2 GB, GitHub không nhận', 'loi');
+
+  const td = $('td-phanmem'); const thanh = td.querySelector('i'); const tt = $('tt-phanmem');
+  td.style.display = 'block';
+  tt.textContent = `Đang đẩy ${tep.name} (${MB.toFixed(1)} MB) lên bản phát hành ${DANGCHON}-${phienBan}…`;
+
+  const xhr = new XMLHttpRequest();
+  const dc = `/api/tai-phan-mem?ma=${encodeURIComponent(DANGCHON)}`
+    + `&phienBan=${encodeURIComponent(phienBan)}&ten=${encodeURIComponent(tep.name)}`;
+  xhr.open('PUT', dc);
+  xhr.upload.onprogress = (e) => {
+    if (!e.lengthComputable) return;
+    const pt = e.loaded / e.total * 100;
+    thanh.style.width = pt + '%';
+    if (pt >= 99.5) tt.textContent = 'Đã nhận đủ file, đang đẩy lên GitHub — chờ chút…';
+  };
+  xhr.onload = () => {
+    td.style.display = 'none'; thanh.style.width = '0';
+    let r = {};
+    try { r = JSON.parse(xhr.responseText); } catch {}
+    if (r.url) {
+      $(dich.o).value = r.url;
+      tt.innerHTML = `Xong. Link ${dich.ten} đã điền vào ô bên dưới. Nhớ bấm <b>Lưu</b>.`;
+      bao(`Đã phát hành ${tep.name} (${MB.toFixed(1)} MB)`, 'ok');
+    } else {
+      tt.textContent = '';
+      bao(r.loi || 'Đẩy lên thất bại', 'loi');
+    }
+  };
+  xhr.onerror = () => { td.style.display = 'none'; tt.textContent = ''; bao('Mất kết nối khi đang tải lên', 'loi'); };
+  xhr.timeout = 30 * 60 * 1000;   // file lớn có thể mất vài chục phút
+  xhr.ontimeout = () => { td.style.display = 'none'; tt.textContent = ''; bao('Quá lâu, đã dừng', 'loi'); };
   xhr.send(tep);
 }
 
