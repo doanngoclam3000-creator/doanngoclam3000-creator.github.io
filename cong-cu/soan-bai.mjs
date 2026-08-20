@@ -6,14 +6,21 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn, execFile } from 'node:child_process';
 
-const THUMUC = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const CHAY_TRONG_APP = process.env.SOANBAI_APP === '1';
+const THUMUC = process.env.SOANBAI_THUMUC
+  ? path.resolve(process.env.SOANBAI_THUMUC)
+  : path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const D_BAI = path.join(THUMUC, 'src/content/bai-viet');
 const D_PM = path.join(THUMUC, 'src/content/phan-mem');
 const D_ANH = path.join(THUMUC, 'public/anh');
 const D_VIDEO = path.join(THUMUC, 'public/video');
-const CONG = 4400;
+const CONG = Number(process.env.SOANBAI_CONG) || 4400;
 const CONG_WEB = 4321;
 
+if (!fs.existsSync(D_BAI) || !fs.existsSync(D_PM)) {
+  console.error('KHONG-TIM-THAY-WEBSITE: ' + THUMUC);
+  process.exit(2);
+}
 for (const d of [D_ANH, D_VIDEO]) fs.mkdirSync(d, { recursive: true });
 
 // ---------- Doc/ghi frontmatter ----------
@@ -194,7 +201,8 @@ may.listen(CONG, () => {
   console.log('  │                                               │');
   console.log('  │   Dong cua so nay la tat phan mem             │');
   console.log('  └───────────────────────────────────────────────┘\n');
-  spawn('open', [dc]);
+  if (!CHAY_TRONG_APP) spawn('open', [dc]);
+  console.log('SAN-SANG');
 });
 
 const dong = () => { try { web?.kill(); } catch {} process.exit(0); };
