@@ -32,3 +32,5 @@ Do quy định của iOS, ứng dụng không thể tự động đọc dữ li�
 | Thiết bị | Yêu cầu |
 | --- | --- |
 | iPhone / iPad | iOS 17 trở lên |
+
+> Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.

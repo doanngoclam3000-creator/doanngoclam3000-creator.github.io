@@ -38,4 +38,4 @@ Bản Mac và bản iPhone giữ sổ riêng trên từng máy. Khi hai bên l�
 | Mac | macOS 14 trở lên |
 | iPhone / iPad | iOS 17 trở lên |
 
-Bản iPhone được phát hành qua TestFlight. Khi có phiên bản mới, phần mềm sẽ hiện thanh thông báo ngay trong ứng dụng.
+> Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.

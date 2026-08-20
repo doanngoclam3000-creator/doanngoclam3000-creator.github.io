@@ -37,12 +37,16 @@ echo "4/5  Ky ten…"
 codesign --force --deep --sign - "$APP"
 
 echo "5/5  Tao file DMG…"
-rm -rf build/dmg && mkdir -p build/dmg
-cp -R "$APP" build/dmg/
-ln -s /Applications "build/dmg/Applications"
-cp DOC-TRUOC-KHI-CAI.txt "build/dmg/DOC TRUOC KHI CAI.txt"
-hdiutil create -volname "Soan Bai Website" -srcfolder build/dmg -ov -format UDZO \
+# Dung o thu muc tam NGOAI du an: lien ket toi /Applications neu nam trong du an
+# se lam may chu xem thu di theo lien ket va quet ca thu muc Applications.
+TAM="$(mktemp -d)/dmg"
+mkdir -p "$TAM"
+cp -R "$APP" "$TAM/"
+ln -s /Applications "$TAM/Applications"
+cp DOC-TRUOC-KHI-CAI.txt "$TAM/DOC TRUOC KHI CAI.txt"
+hdiutil create -volname "Soan Bai Website" -srcfolder "$TAM" -ov -format UDZO \
   -fs HFS+ build/SoanBaiWebsite.dmg > /dev/null
+rm -rf "$(dirname "$TAM")"
 
 cp build/SoanBaiWebsite.dmg ~/Desktop/"Soan Bai Website.dmg"
 echo

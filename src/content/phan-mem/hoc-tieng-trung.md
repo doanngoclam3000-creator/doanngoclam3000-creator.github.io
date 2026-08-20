@@ -39,3 +39,5 @@ thuTu: 3
 | Mac | macOS 14 trở lên |
 
 > Phần chấm phát âm cần cấp quyền micro và nhận diện giọng nói cho app.
+
+> Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.

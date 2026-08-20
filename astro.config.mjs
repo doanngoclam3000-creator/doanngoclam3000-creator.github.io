@@ -10,4 +10,13 @@ export default defineConfig({
   markdown: {
     shikiConfig: { theme: 'github-dark', wrap: true },
   },
+  vite: {
+    server: {
+      watch: {
+        // Khong theo doi thu muc cong cu va ban dung app
+        ignored: ['**/cong-cu/**', '**/dist/**'],
+        followSymlinks: false,
+      },
+    },
+  },
 });
