@@ -3,8 +3,12 @@ ten: "Bán Tệ"
 moTa: "Công cụ tính và ghi sổ giao dịch mua bán nhân dân tệ, đồng bộ được giữa Mac và iPhone."
 nenTang: ["macOS", "iOS"]
 phienBan: "1.8"
-ngayCapNhat: 2026-08-15
+banToiThieu: "1.8"
+ngayCapNhat: 2026-08-20
+ghiChuCapNhat: "Bản Mac tải thẳng từ đây, có bản mới là phần mềm tự báo và bắt cập nhật."
+linkTaiMac: "https://phanmemtq.com/tai/BanTe-1.8-build28.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
+dungLuong: "khoảng 3 MB (Mac)"
 anhIcon: "/icon/ban-te.png"
 icon: "💱"
 mauNen: "#059669"
@@ -35,7 +39,17 @@ Bản Mac và bản iPhone giữ sổ riêng trên từng máy. Khi hai bên l�
 
 | Thiết bị | Yêu cầu |
 | --- | --- |
-| Mac | macOS 14 trở lên |
+| Mac | macOS 15 trở lên |
 | iPhone / iPad | iOS 17 trở lên |
+
+## Cài trên Mac
+
+Tải file `.dmg` ở nút **Tải cho macOS**, mở file rồi kéo **Bán Tệ** vào thư mục
+**Applications**. Phần mềm đã được Apple kiểm duyệt (notarize) nên mở là chạy,
+máy không báo chặn.
+
+Khi có bản mới, phần mềm tự báo ngay trên máy và yêu cầu cập nhật trước khi dùng
+tiếp — bấm **Tải bản mới ngay** là về đúng trang này. Dữ liệu và key bản quyền
+giữ nguyên sau khi cập nhật.
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
