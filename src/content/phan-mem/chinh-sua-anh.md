@@ -1,14 +1,15 @@
 ---
 ten: "Chỉnh Sửa Ảnh"
 moTa: "Bộ công cụ sửa ảnh gọn nhẹ: cắt xoay, xoá vật thể thừa, làm phẳng ảnh chụp giấy tờ, thêm chữ, ghép lớp."
-nenTang: ["iOS", "macOS"]
-phienBan: "1.5"
-banToiThieu: "1.5"
-ghiChuCapNhat: "- Phần mềm tự kiểm tra bản mới, bản quá cũ sẽ được nhắc tải bản mới\n- Bản Mac ký Developer ID, tải về mở được ngay\n- Sửa vài lỗi nhỏ"
+nenTang: ["Windows", "macOS", "iOS"]
+phienBan: "1.6"
+banToiThieu: "1.6"
+ghiChuCapNhat: "- Sửa lỗi ảnh bị tối đi sau khi chỉnh (thanh Độ mịn da làm ảnh tối tới 35%)\n- Sửa thanh Độ sáng: trước kéo nhẹ đã cháy trắng hoặc đen sì\n- Sửa lỗi xoay ảnh bị khuyết viền\n- Thêm 7 bộ lọc làm sẵn: Tự nhiên, Rạng rỡ, Son đỏ, Hàn Quốc, Ảnh thẻ chuẩn, Cổ điển\n- Thêm trang điểm: da trắng sáng, son môi, má hồng, mắt đen rõ, lông mày đậm\n- Đã có bản cho máy tính Windows"
 ngayCapNhat: 2026-08-20
-linkTaiMac: "https://phanmemtq.com/tai/ChinhSuaAnh-1.5.dmg"
+linkTaiMac: "https://phanmemtq.com/tai/ChinhSuaAnh-1.6.dmg"
+linkTaiWin: "https://phanmemtq.com/tai/ChinhSuaAnh-1.6-Windows.exe"
 linkTaiIOS: "https://testflight.apple.com/join/HdU95ZUW"
-dungLuong: "1,2 MB"
+dungLuong: "Mac 1,2 MB · Windows 93 MB"
 anhIcon: "/icon/chinh-sua-anh.png"
 icon: "🖼️"
 mauNen: "#dc2626"
@@ -29,6 +30,8 @@ thuTu: 5
 - **Thêm chữ lên ảnh:** đổi phông, cỡ, màu và viền chữ.
 - **Chuyển đen trắng:** nhiều mức độ khác nhau, hợp để in giấy tờ.
 - **Ghép lớp:** chồng nhiều ảnh lên nhau và chỉnh độ mờ từng lớp.
+- **Bộ lọc làm sẵn:** bấm một cái là áp cả bộ — Tự nhiên, Rạng rỡ, Son đỏ, Hàn Quốc, Ảnh thẻ chuẩn, Cổ điển.
+- **Trang điểm tự động:** phần mềm tự tìm môi, má, mắt và lông mày rồi tô đúng chỗ — da trắng sáng, son môi, má hồng, mắt đen rõ, lông mày đậm. Bấm xong vẫn chỉnh lại từng mức được.
 
 ## Dùng cho việc gì
 
@@ -42,5 +45,8 @@ thuTu: 5
 | --- | --- |
 | iPhone / iPad | iOS 17 trở lên |
 | Mac | macOS 14 trở lên |
+| Máy tính Windows | Windows 10 trở lên, 64-bit |
+
+> **Bản Windows**: tải về chạy file cài đặt là xong. Lần đầu mở, Windows có thể hiện bảng xanh "Windows protected your PC" — bấm **More info** rồi **Run anyway**. Phần nhận diện khuôn mặt chạy ngay trên máy bạn, ảnh không gửi đi đâu cả.
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
