@@ -324,7 +324,7 @@ function chenAnhVao(){ const u=$('f-anh')?.value; if(!u) return bao('Tải ảnh
 function xemLaiVideo(){
   const v=$('f-video').value.trim(); const k=$('xem-video'); if(!k) return;
   if(!v){ k.innerHTML=''; return; }
-  const yt=v.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+  const yt=v.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
   k.innerHTML = yt
     ? `<iframe class="xemvideo" style="aspect-ratio:16/9;border:0" src="https://www.youtube-nocookie.com/embed/${yt[1]}"></iframe>`
     : `<video class="xemvideo" src="${v}" controls></video>`;
