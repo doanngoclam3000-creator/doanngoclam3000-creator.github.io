@@ -77,4 +77,16 @@ const lienQuan = (await getCollection('bai-viet'))
   .hop-gia b { font-size: 1.35rem; }
   .than-bai { padding-top: 44px; }
   .phan { padding: 56px 20px 0; }
+  @media (max-width: 640px) {
+    .banner { padding: 32px 0 30px; }
+    .banner-trong { gap: 16px; }
+    .icon-lon { width: 64px; height: 64px; font-size: 2.4rem; border-radius: 16px; }
+    .tt { min-width: 0; }
+    .mo-ta { font-size: 1rem; }
+    .hd { width: 100%; }
+    .hd .nut { flex: 1 1 calc(50% - .3rem); justify-content: center; }
+    .hop-gia { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+    .than-bai { padding-top: 32px; }
+    .phan { padding: 44px 16px 0; }
+  }
 </style>

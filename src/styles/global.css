@@ -14,22 +14,32 @@
   --rong: 1140px;
 }
 html[data-theme='dark'] {
-  --nen: #0c1017;
-  --nen-phu: #10151e;
-  --nen-the: #141a25;
-  --vien: #232c3b;
-  --chu: #eef2f8;
-  --chu-nhat: #98a4b6;
+  --nen: #05070a;
+  --nen-phu: #0a0d13;
+  --nen-the: #0e1219;
+  --vien: #1c222d;
+  --chu: #f2f5fa;
+  --chu-nhat: #96a1b3;
   --chinh: #60a5fa;
   --chinh-dam: #93c5fd;
-  --chinh-nhat: #172033;
-  --bong: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
-  --bong-cao: 0 2px 4px rgba(0,0,0,.35), 0 16px 40px rgba(0,0,0,.5);
+  --chinh-nhat: #101a2c;
+  --bong: 0 1px 2px rgba(0,0,0,.6), 0 8px 24px rgba(0,0,0,.5);
+  --bong-cao: 0 2px 4px rgba(0,0,0,.6), 0 18px 48px rgba(0,0,0,.7);
 }
+html[data-theme='dark'] body {
+  background:
+    radial-gradient(900px 500px at 12% -10%, rgba(37,99,235,.10), transparent 60%),
+    radial-gradient(800px 480px at 88% 4%, rgba(124,58,237,.09), transparent 62%),
+    var(--nen);
+  background-attachment: fixed;
+}
+html[data-theme='dark'] .the { background: linear-gradient(180deg, #10151d, #0c1016); }
+html[data-theme='dark'] .the:hover { border-color: color-mix(in srgb, var(--chinh) 45%, var(--vien)); }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
+  overflow-x: hidden;
   background: var(--nen);
   color: var(--chu);
   font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -69,8 +79,8 @@ p { margin: 0 0 1em; }
 .the:hover { transform: translateY(-3px); box-shadow: var(--bong-cao); border-color: color-mix(in srgb, var(--chinh) 35%, var(--vien)); }
 
 .luoi { display: grid; gap: 22px; }
-.luoi-3 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
-.luoi-2 { grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+.luoi-3 { grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
+.luoi-2 { grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); }
 
 .nhan {
   display: inline-flex; align-items: center; gap: .35rem;
@@ -98,3 +108,26 @@ p { margin: 0 0 1em; }
 .noi-dung th, .noi-dung td { border: 1px solid var(--vien); padding: .6em .8em; text-align: left; }
 .noi-dung th { background: var(--nen-phu); font-weight: 600; }
 .noi-dung hr { border: none; border-top: 1px solid var(--vien); margin: 2.5em 0; }
+
+
+/* ===== Toi uu cho dien thoai ===== */
+@media (max-width: 640px) {
+  body { font-size: 15.5px; }
+  .khung, .khung-hep { padding: 0 16px; }
+  .luoi { gap: 16px; }
+  h1 { letter-spacing: -0.015em; }
+  .noi-dung { font-size: 1rem; }
+  .noi-dung h2 { margin-top: 1.6em; }
+  /* Bang dai thi cho cuon ngang rieng, khong lam vo trang */
+  .noi-dung table { display: block; overflow-x: auto; white-space: nowrap; }
+  .noi-dung pre { font-size: .85rem; padding: .9em 1em; }
+  /* Nut de bam bang ngon tay */
+  .nut { padding: .8rem 1.1rem; min-height: 44px; }
+}
+@media (max-width: 400px) {
+  .khung, .khung-hep { padding: 0 14px; }
+}
+/* Anh va ma nhung khong bao gio tran ra ngoai */
+.noi-dung img, .noi-dung iframe, .noi-dung video { max-width: 100%; height: auto; }
+.noi-dung pre { max-width: 100%; }
+.noi-dung a { word-break: break-word; }

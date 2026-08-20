@@ -33,7 +33,7 @@ const url = new URL(Astro.url.pathname, Astro.site);
   <script is:inline>
     (function () {
       var t = localStorage.getItem('giao-dien');
-      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      if (!t) t = 'dark';
       document.documentElement.dataset.theme = t;
     })();
   </script>
