@@ -4,7 +4,7 @@ moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm �
 nenTang: ["iOS", "macOS"]
 phienBan: "2.0"
 ngayCapNhat: 2026-08-18
-linkTai: "#"
+linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
