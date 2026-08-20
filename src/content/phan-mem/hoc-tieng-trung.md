@@ -1,10 +1,12 @@
 ---
 ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
-nenTang: ["iOS", "macOS"]
+nenTang: ["iOS", "macOS", "Android"]
 phienBan: "2.0"
-ngayCapNhat: 2026-08-18
+ngayCapNhat: 2026-08-20
+ghiChuCapNhat: "Đã có bản cho máy Mac tải thẳng về, và bản Android thử nghiệm."
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
+linkTaiAndroid: "https://phanmemtq.com/tai/HocTiengTrung-Android-0.1.0.apk"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
@@ -15,6 +17,9 @@ thuTu: 3
 ## Giới thiệu
 
 **Học Tiếng Trung** là app học tiếng Trung làm riêng cho người Việt. Toàn bộ từ điển nằm sẵn trong máy nên học được cả khi không có mạng, chỉ phần hội thoại AI mới cần mạng.
+
+> Danh sách tính năng dưới đây là của **bản iPhone, iPad và Mac**. Bản Android
+> mới ra, hiện chưa có đủ — xem mục *Bản Android* ở cuối trang.
 
 ### Tính năng chính
 
@@ -31,13 +36,34 @@ thuTu: 3
 - **"Hôm nay học gì":** cuối ngày app dựng lại một đoạn hội thoại từ đúng những từ bạn học hôm đó.
 - **Lịch ôn thông minh:** dùng thuật toán FSRS-5, tự tính ngày nào nên ôn lại từ nào.
 
+## Bản Android (0.1 — đang thử nghiệm)
+
+Bản cho điện thoại Android vừa mới ra, còn đang làm dở. **Tải về dùng thử được ngay,
+nhưng chưa có đủ tính năng như bản iPhone và Mac.**
+
+**Đã có:**
+
+- Toàn bộ từ điển 10.908 từ HSK 1–6, nằm sẵn trong máy, tra được khi không có mạng.
+- Lộ trình HSK 1–6 và danh sách từ từng cấp.
+- Tra từ bằng chữ Hán, bằng pinyin (gõ có dấu hay không đều được) hoặc bằng nghĩa tiếng Việt.
+- Nghe phát âm chuẩn từng từ.
+
+**Chưa có:** chấm điểm phát âm, chấm thanh điệu, tập viết chữ từng nét, bài tập,
+hội thoại AI, lịch ôn FSRS. Những phần này đang được làm tiếp.
+
+Lần đầu mở app hơi lâu vì máy phải chép từ điển ra, những lần sau vào ngay.
+
 ## Yêu cầu hệ thống
 
 | Hệ điều hành | Yêu cầu |
 | --- | --- |
 | iPhone / iPad | iOS 17 trở lên |
 | Mac | macOS 14 trở lên |
+| Android | Android 6 trở lên |
 
 > Phần chấm phát âm cần cấp quyền micro và nhận diện giọng nói cho app.
+
+> File .apk tải thẳng từ web nên lần đầu cài, Android sẽ hỏi cho phép cài ứng dụng
+> từ nguồn này — bấm đồng ý là cài được.
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
