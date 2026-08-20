@@ -5,8 +5,8 @@ nenTang: ["macOS", "Windows"]
 phienBan: "3.1"
 ngayCapNhat: 2026-07-28
 linkTai: "#"
-linkTaiMac: ""
-linkTaiWin: ""
+linkTaiMac: "https://drive.google.com/drive/folders/1H4_8vjaSDXycp7ipmrjllNTJoOzl7IKH"
+linkTaiWin: "https://drive.google.com/file/d/1_-iKyFSRi-bT8dZk-d0haR0K4cvvH5oE/view?usp=sharing"
 dungLuong: "khoảng 135 MB (Mac) · 160 MB (Windows)"
 anhIcon: "/icon/gia-lap-vi-tri.png"
 icon: "📍"
