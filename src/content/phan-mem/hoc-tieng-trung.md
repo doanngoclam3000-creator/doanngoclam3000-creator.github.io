@@ -4,7 +4,8 @@ moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm �
 nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "2.0"
 ngayCapNhat: 2026-08-21
-ghiChuCapNhat: "Đã có bản cho máy tính Windows, kèm bài tập và lịch ôn thông minh."
+ghiChuCapNhat: "Máy Mac tải thẳng về được rồi. Bản Windows có thêm bài tập và lịch ôn thông minh."
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-mac-2.0/HocTiengTrung-2.0.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-windows-0.3/HocTiengTrung-0.3.0-Windows.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
@@ -35,6 +36,25 @@ thuTu: 3
 - **Bài học có phụ đề:** 3 dòng Hán · pinyin · Việt, chữ sáng lên theo giọng đọc để đọc theo.
 - **"Hôm nay học gì":** cuối ngày app dựng lại một đoạn hội thoại từ đúng những từ bạn học hôm đó.
 - **Lịch ôn thông minh:** dùng thuật toán FSRS-5, tự tính ngày nào nên ôn lại từ nào.
+
+## Cài trên máy Mac
+
+Tải file `.dmg` về, mở ra rồi kéo **Học Tiếng Trung** vào thư mục **Applications**.
+
+> **Lần đầu mở, macOS sẽ báo "không mở được vì Apple không kiểm tra được phần mềm
+> độc hại".** Đây là cảnh báo mặc định cho phần mềm tải ngoài App Store, không phải
+> phần mềm bị lỗi hay có virus.
+>
+> Cách mở: vào thư mục **Applications**, **bấm chuột phải** vào Học Tiếng Trung rồi
+> chọn **Mở** (Open), sau đó bấm **Mở** một lần nữa ở bảng hiện ra. Chỉ phải làm
+> đúng một lần đầu tiên; từ lần sau bấm đúp là chạy bình thường.
+>
+> Nếu bấm chuột phải vẫn không được, vào **Cài đặt hệ thống → Quyền riêng tư và
+> Bảo mật**, kéo xuống dưới sẽ thấy dòng nhắc về Học Tiếng Trung, bấm **Vẫn mở**
+> (Open Anyway).
+
+Phần mềm được ký bằng chứng chỉ nhà phát triển Apple mang tên **LAM DOAN NGOC** —
+mở phần mềm ra anh chị có thể tự kiểm chứng tên này.
 
 ## Bản Windows (0.3 — đang thử nghiệm)
 

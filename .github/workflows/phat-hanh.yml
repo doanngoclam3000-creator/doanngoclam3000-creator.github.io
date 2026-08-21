@@ -48,6 +48,10 @@ jobs:
             "Sửa lỗi ảnh bị tối, thêm trang điểm. Có bản cho macOS và Windows." \
             public/tai/ChinhSuaAnh-1.6.dmg public/tai/ChinhSuaAnh-1.6-Windows.exe
 
+          taoBan "hoc-tieng-trung-mac-2.0" "Học Tiếng Trung — macOS 2.0" \
+            "Bản đầy đủ tính năng cho máy Mac. Lần đầu mở phải bấm chuột phải rồi chọn Mở — xem hướng dẫn trên trang." \
+            public/tai/HocTiengTrung-2.0.dmg
+
           taoBan "hoc-tieng-trung-windows-0.3" "Học Tiếng Trung — Windows 0.3" \
             "Thêm bài tập và lịch ôn thông minh FSRS-5. Giải nén rồi chạy file Setup để cài." \
             public/tai/HocTiengTrung-0.3.0-Windows.zip
