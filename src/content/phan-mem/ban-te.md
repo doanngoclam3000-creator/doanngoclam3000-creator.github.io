@@ -5,10 +5,11 @@ nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "1.8"
 banToiThieu: "1.8"
 ngayCapNhat: 2026-08-21
-ghiChuCapNhat: "Đã có bản cho máy tính Windows. Ra bản mới là phần mềm tự báo và bắt cập nhật."
+ghiChuCapNhat: "Đã có bản cho máy tính Windows và bản cho Mac tải thẳng từ web. Ra bản mới là phần mềm tự báo và bắt cập nhật."
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-windows-1.8/BanTe-Windows-1.8.0.zip"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-mac-1.8/BanTe-1.8-build28.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
-dungLuong: "khoảng 110 MB (Windows)"
+dungLuong: "khoảng 110 MB (Windows) · 3 MB (Mac)"
 anhIcon: "/icon/ban-te.png"
 icon: "💱"
 mauNen: "#059669"
@@ -64,6 +65,17 @@ Mỗi máy giữ sổ riêng. Muốn hai bên khớp nhau: ở máy đang có s�
 > Nhập dữ liệu là ghi đè toàn bộ sổ đang có trên máy đó. Phần mềm tự giữ một bản
 > sao trước khi ghi đè, phòng khi nhập nhầm.
 
-> Bản cho Mac đang chờ Apple kiểm duyệt, có ngay khi xong.
+## Cài trên Mac
+
+Tải file `.dmg` ở nút **Tải cho macOS**, mở file rồi kéo **Bán Tệ** vào thư mục
+**Applications**. Phần mềm đã được Apple kiểm duyệt (notarize) nên mở là chạy,
+máy không báo chặn.
+
+Khi có bản mới, phần mềm tự báo ngay trên máy và yêu cầu cập nhật trước khi dùng
+tiếp. Dữ liệu và key bản quyền giữ nguyên sau khi cập nhật.
+
+Bản Mac đồng bộ tự động với iPhone qua iCloud khi hai máy đăng nhập **cùng một
+tài khoản Apple**. Khác tài khoản, hoặc muốn khớp với máy Windows, thì dùng
+**Xuất / Nhập dữ liệu** như trên.
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
