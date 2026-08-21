@@ -1,46 +1,50 @@
 :root {
   --nen: #ffffff;
-  --nen-phu: #f6f8fb;
+  --nen-phu: #faf8ff;
   --nen-the: #ffffff;
-  --vien: #e4e9f0;
-  --chu: #10151f;
-  --chu-nhat: #5b6675;
-  --chinh: #2563eb;
-  --chinh-dam: #1d4ed8;
-  --chinh-nhat: #eff4ff;
-  --bong: 0 1px 2px rgba(16,21,31,.04), 0 8px 24px rgba(16,21,31,.06);
-  --bong-cao: 0 2px 4px rgba(16,21,31,.05), 0 16px 40px rgba(16,21,31,.10);
+  --vien: #e9e2f7;
+  --chu: #1b1430;
+  --chu-nhat: #665c80;
+  --chinh: #7c3aed;
+  --chinh-dam: #6d28d9;
+  --chinh-nhat: #f4eeff;
+  --bong: 0 1px 2px rgba(76,29,149,.05), 0 8px 24px rgba(76,29,149,.07);
+  --bong-cao: 0 2px 4px rgba(76,29,149,.06), 0 16px 40px rgba(76,29,149,.13);
   --bo-goc: 14px;
   --rong: 1140px;
 }
 html[data-theme='dark'] {
-  --nen: #05070a;
-  --nen-phu: #0a0d13;
-  --nen-the: #0e1219;
-  --vien: #1c222d;
-  --chu: #f2f5fa;
-  --chu-nhat: #96a1b3;
-  --chinh: #60a5fa;
-  --chinh-dam: #93c5fd;
-  --chinh-nhat: #101a2c;
+  --nen: #0d0818;
+  --nen-phu: #140d24;
+  --nen-the: #17102a;
+  --vien: #2b1f47;
+  --chu: #f4f0ff;
+  --chu-nhat: #a99ec4;
+  --chinh: #a78bfa;
+  --chinh-dam: #c4b5fd;
+  --chinh-nhat: #1e1438;
   --bong: 0 1px 2px rgba(0,0,0,.6), 0 8px 24px rgba(0,0,0,.5);
   --bong-cao: 0 2px 4px rgba(0,0,0,.6), 0 18px 48px rgba(0,0,0,.7);
 }
 html[data-theme='dark'] body {
   background:
-    radial-gradient(900px 500px at 12% -10%, rgba(37,99,235,.10), transparent 60%),
-    radial-gradient(800px 480px at 88% 4%, rgba(124,58,237,.09), transparent 62%),
+    radial-gradient(900px 500px at 12% -10%, rgba(124,58,237,.16), transparent 60%),
+    radial-gradient(800px 480px at 88% 4%, rgba(167,139,250,.10), transparent 62%),
     var(--nen);
   background-attachment: fixed;
 }
-html[data-theme='dark'] .the { background: linear-gradient(180deg, #10151d, #0c1016); }
+html[data-theme='dark'] .the { background: linear-gradient(180deg, #1a1230, #150e26); }
 html[data-theme='dark'] .the:hover { border-color: color-mix(in srgb, var(--chinh) 45%, var(--vien)); }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   overflow-x: hidden;
-  background: var(--nen);
+  background:
+    radial-gradient(900px 520px at 10% -8%, rgba(124,58,237,.07), transparent 60%),
+    radial-gradient(760px 460px at 92% 2%, rgba(167,139,250,.09), transparent 62%),
+    var(--nen);
+  background-attachment: fixed;
   color: var(--chu);
   font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 16px;
