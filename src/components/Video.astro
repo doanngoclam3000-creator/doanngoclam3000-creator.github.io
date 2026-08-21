@@ -17,6 +17,11 @@ const yt = idYouTube(src);
       />
     : <video src={src} controls preload="metadata" playsinline />}
 </div>
+{yt && (
+  <p class="loi-thoat-video">
+    Khung video không hiện? <a href={`https://youtu.be/${yt}`} target="_blank" rel="noopener">Mở thẳng trên YouTube</a>
+  </p>
+)}
 
 <style>
   .khung-video {
@@ -24,4 +29,6 @@ const yt = idYouTube(src);
     border-radius: 14px; overflow: hidden; border: 1px solid var(--vien); background: #000;
   }
   .khung-video iframe, .khung-video video { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  /* Vai khach chan quang cao hoac mang chan YouTube se thay o den, cho ho loi khac */
+  .loi-thoat-video { margin: -1.2rem 0 1.8rem; font-size: .9rem; color: var(--chu-nhat); text-align: right; }
 </style>
