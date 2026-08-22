@@ -1,6 +1,6 @@
 ---
-ten: "Phần Mềm Trao Đổi Nhân Dân Tệ"
-moTa: "Tính và ghi sổ giao dịch trao đổi nhân dân tệ: nhập số tệ ra ngay tiền Việt và tiền lãi, lưu lại lịch sử, dùng được trên máy tính lẫn iPhone."
+ten: "Phần Mềm Quản Lý Kho Tệ"
+moTa: "Quản lý kho nhân dân tệ: theo dõi số tệ còn lại, ghi sổ từng lần mua bán, tự tính tiền Việt và lợi nhuận. Dùng được trên máy tính lẫn iPhone."
 nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "1.8"
 banToiThieu: "1.8"
@@ -19,7 +19,7 @@ thuTu: 2
 
 ## Giới thiệu
 
-**Phần Mềm Trao Đổi Nhân Dân Tệ** dành cho người làm dịch vụ chuyển tiền và trao đổi nhân dân tệ. Thay vì bấm máy tính rồi ghi vào sổ tay, bạn nhập một lần — phần mềm tính xong tiền, lưu lại giao dịch và cộng dồn lãi cho bạn.
+**Phần Mềm Quản Lý Kho Tệ** dành cho người làm dịch vụ chuyển tiền và mua bán nhân dân tệ. Thay vì bấm máy tính rồi ghi vào sổ tay, bạn nhập một lần — phần mềm tính xong tiền, lưu lại giao dịch và cộng dồn lãi cho bạn.
 
 ### Tính năng chính
 

@@ -1,5 +1,5 @@
 ---
-tieuDe: "Trao Đổi Nhân Dân Tệ 1.8: xuất nhập dữ liệu giữa Mac và iPhone dễ hơn"
+tieuDe: "Quản Lý Kho Tệ 1.8: xuất nhập dữ liệu giữa Mac và iPhone dễ hơn"
 moTa: "Bản 1.8 làm lại chức năng xuất nhập dữ liệu, thêm sao lưu tự động và cảnh báo khi hai máy lệch sổ."
 ngayDang: 2026-08-15
 chuyenMuc: "cap-nhat"
