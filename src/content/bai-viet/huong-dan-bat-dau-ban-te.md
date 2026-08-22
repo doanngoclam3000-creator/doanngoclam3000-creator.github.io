@@ -1,5 +1,5 @@
 ---
-tieuDe: "Bắt đầu với Bán Tệ: ghi giao dịch đầu tiên trong 3 phút"
+tieuDe: "Bắt đầu với phần mềm Trao Đổi Nhân Dân Tệ: ghi giao dịch đầu tiên trong 3 phút"
 moTa: "Hướng dẫn từng bước cách đặt tỉ giá, ghi giao dịch bán tệ đầu tiên và xem báo cáo lãi trong ngày."
 ngayDang: 2026-08-08
 chuyenMuc: "huong-dan"
@@ -7,7 +7,7 @@ thuocPhanMem: "ban-te"
 tags: ["bán tệ", "hướng dẫn", "người mới"]
 ---
 
-Bài này dành cho bạn vừa cài Bán Tệ lần đầu.
+Bài này dành cho bạn vừa cài phần mềm lần đầu.
 
 ## Bước 1: Đặt tỉ giá
 

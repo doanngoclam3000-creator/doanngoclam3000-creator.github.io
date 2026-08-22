@@ -1,6 +1,6 @@
 ---
-ten: "Bán Tệ"
-moTa: "Công cụ tính và ghi sổ giao dịch mua bán nhân dân tệ, dùng được trên máy tính lẫn iPhone."
+ten: "Phần Mềm Trao Đổi Nhân Dân Tệ"
+moTa: "Tính và ghi sổ giao dịch trao đổi nhân dân tệ: nhập số tệ ra ngay tiền Việt và tiền lãi, lưu lại lịch sử, dùng được trên máy tính lẫn iPhone."
 nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "1.8"
 banToiThieu: "1.8"
@@ -19,7 +19,7 @@ thuTu: 2
 
 ## Giới thiệu
 
-**Bán Tệ** dành cho người làm dịch vụ chuyển tiền và mua bán nhân dân tệ. Thay vì bấm máy tính rồi ghi vào sổ tay, bạn nhập một lần — phần mềm tính xong tiền, lưu lại giao dịch và cộng dồn lãi cho bạn.
+**Phần Mềm Trao Đổi Nhân Dân Tệ** dành cho người làm dịch vụ chuyển tiền và trao đổi nhân dân tệ. Thay vì bấm máy tính rồi ghi vào sổ tay, bạn nhập một lần — phần mềm tính xong tiền, lưu lại giao dịch và cộng dồn lãi cho bạn.
 
 ### Tính năng chính
 
@@ -67,7 +67,7 @@ Mỗi máy giữ sổ riêng. Muốn hai bên khớp nhau: ở máy đang có s�
 
 ## Cài trên Mac
 
-Tải file `.dmg` ở nút **Tải cho macOS**, mở file rồi kéo **Bán Tệ** vào thư mục
+Tải file `.dmg` ở nút **Tải cho macOS**, mở file rồi kéo **phần mềm** vào thư mục
 **Applications**. Phần mềm đã được Apple kiểm duyệt (notarize) nên mở là chạy,
 máy không báo chặn.
 
