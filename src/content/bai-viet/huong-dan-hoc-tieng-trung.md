@@ -2,6 +2,7 @@
 tieuDe: "Bắt đầu với Học Tiếng Trung: học từ, luyện nói và viết chữ"
 moTa: "Hướng dẫn dùng app Học Tiếng Trung: chọn phạm vi HSK, học thẻ từ, luyện phát âm có chấm thanh điệu và viết chữ Hán chấm từng nét."
 ngayDang: 2026-08-17
+anh: "/anh/hoc-tieng-trung/1-man-hinh-chinh.svg"
 chuyenMuc: "huong-dan"
 thuocPhanMem: "hoc-tieng-trung"
 tags: ["học tiếng trung", "HSK", "hướng dẫn"]
@@ -15,15 +16,21 @@ Lần đầu vào phần luyện nói, app xin quyền **micro** và **nhận di
 
 ## Bước 2: Chọn phạm vi học
 
+![Màn hình chính với chuỗi ngày học](/anh/hoc-tieng-trung/1-man-hinh-chinh.svg)
+
 Vào **Cài đặt** chọn mức HSK bạn muốn học tới. Người mới nên bắt đầu từ **HSK 1–2** rồi nâng dần, đừng bật hết 1–6 ngay — mỗi ngày app sẽ đẩy quá nhiều từ mới.
 
 ## Bước 3: Học từ mới mỗi ngày
+
+![Thẻ từ với chữ Hán, pinyin và nghĩa](/anh/hoc-tieng-trung/2-the-tu.svg)
 
 Vào **Học hôm nay**. App dùng thuật toán lịch ôn FSRS-5 để tự chọn: vài từ mới cộng với những từ cũ sắp đến ngày quên.
 
 Với mỗi từ bạn sẽ thấy chữ Hán, pinyin, nghĩa tiếng Việt và ví dụ. Chạm vào loa để nghe đọc; muốn nghe chậm thì giảm tốc độ trong cài đặt.
 
 ## Bước 4: Luyện nói và sửa thanh điệu
+
+![Chấm điểm phát âm và thanh điệu](/anh/hoc-tieng-trung/3-luyen-noi.svg)
 
 Bấm nút micro rồi đọc từ đó. App làm hai việc:
 
@@ -34,9 +41,13 @@ Bấm nút micro rồi đọc từ đó. App làm hai việc:
 
 ## Bước 5: Viết chữ Hán
 
+![Viết chữ Hán, app chấm từng nét](/anh/hoc-tieng-trung/4-luyen-viet.svg)
+
 Vào phần **Viết** và viết chữ bằng ngón tay. App chấm **từng nét** theo đúng thứ tự nét chuẩn — viết đúng hình nhưng sai thứ tự vẫn bị báo sai, vì thứ tự nét mới là thứ giúp bạn nhớ chữ lâu.
 
 ## Bước 6: Đọc bài và hội thoại
+
+![Hội thoại với AI trong vốn từ đã học](/anh/hoc-tieng-trung/5-hoi-thoai-ai.svg)
 
 - **Đọc bài:** chạm vào bất kỳ từ nào trong bài để tra nghĩa ngay tại chỗ. Câu nào không hiểu thì bấm dịch.
 - **Chủ đề tự chọn:** gõ chủ đề bạn quan tâm, ví dụ *"nhắn tin với xưởng 1688"*, app soạn một bài đọc chỉ dùng những từ bạn đã học.
