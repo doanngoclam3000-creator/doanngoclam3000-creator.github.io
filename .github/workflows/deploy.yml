@@ -4,9 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
-  # Dung lai moi ngay de con so luot truy cap o chan trang duoc cap nhat
+  # Dung lai moi gio de con so luot truy cap o chan trang luon moi
   schedule:
-    - cron: '15 1 * * *'
+    - cron: '7 * * * *'
 
 permissions:
   contents: read

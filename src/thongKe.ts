@@ -7,13 +7,14 @@ import { CAUHINH, CHUYEN_MUC } from './config';
 const CHO_TOI_DA = 6000;      // moi lenh goi cho toi da 6 giay
 const CUNG_LUC = 24;          // goi 24 duong mot luc cho build nhanh
 
-async function demMotDuong(goc: string, duong: string): Promise<number> {
+async function demMotDuong(goc: string, duong: string, tuNgay?: string): Promise<number> {
   const dungLai = new AbortController();
   const hen = setTimeout(() => dungLai.abort(), CHO_TOI_DA);
   try {
-    // GoatCounter nhan duong dan da bo dau gach dau
+    // GoatCounter nhan duong dan da bo dau gach dau, va moc thoi gian theo NGAY
     const d = duong.replace(/^\//, '');
-    const r = await fetch(`${goc}/counter/${d}.json`, { signal: dungLai.signal });
+    const them = tuNgay ? `?start=${tuNgay}` : '';
+    const r = await fetch(`${goc}/counter/${d}.json${them}`, { signal: dungLai.signal });
     if (!r.ok) return 0;
     const j = await r.json();
     return Number(String(j.count).replace(/[^0-9]/g, '')) || 0;
@@ -24,8 +25,13 @@ async function demMotDuong(goc: string, duong: string): Promise<number> {
   }
 }
 
-/** Tra ve tong so luot truy cap, hoac null neu khong lay duoc. */
-export async function demLuotTruyCap(): Promise<number | null> {
+export interface SoLieu {
+  tong: number;      // tu luc mo website
+  homNay: number;    // trong ngay hom nay
+}
+
+/** Tra ve so lieu truy cap, hoac null neu khong lay duoc. */
+export async function demLuotTruyCap(): Promise<SoLieu | null> {
   if (!CAUHINH.goatCounter) return null;
   const goc = `https://${CAUHINH.goatCounter}.goatcounter.com`;
 
@@ -39,17 +45,27 @@ export async function demLuotTruyCap(): Promise<number | null> {
     ...baiViet.map((b) => `/bai-viet/${b.id}/`),
   ];
 
+  // Hom nay theo gio Viet Nam
+  const gioVN = new Date(Date.now() + 7 * 3600 * 1000);
+  const ngayHomNay = gioVN.toISOString().slice(0, 10);
+
   let tong = 0;
+  let homNay = 0;
   let laySach = false;
+
   for (let i = 0; i < duong.length; i += CUNG_LUC) {
     const nhom = duong.slice(i, i + CUNG_LUC);
-    const so = await Promise.all(nhom.map((d) => demMotDuong(goc, d)));
-    for (const n of so) {
+    const [soTong, soNgay] = await Promise.all([
+      Promise.all(nhom.map((d) => demMotDuong(goc, d))),
+      Promise.all(nhom.map((d) => demMotDuong(goc, d, ngayHomNay))),
+    ]);
+    for (const n of soTong) {
       tong += n;
       if (n > 0) laySach = true;
     }
+    for (const n of soNgay) homNay += n;
   }
 
   // Khong lay duoc gi ca thi coi nhu that bai, an o thong ke di
-  return laySach ? tong : null;
+  return laySach ? { tong, homNay } : null;
 }

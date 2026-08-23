@@ -21,8 +21,9 @@ const luot = await demLuotTruyCap();
       {luot !== null && (
         <div class="thong-ke">
           <span class="cham-song"></span>
-          <span id="tk-online" hidden></span>
-          <b>{luot.toLocaleString('vi-VN')}</b> lượt truy cập
+          <span><b>{luot.tong.toLocaleString('vi-VN')}</b> lượt truy cập</span>
+          <span class="ngan">·</span>
+          <span>hôm nay <b>{luot.homNay.toLocaleString('vi-VN')}</b></span>
         </div>
       )}
     </div>
@@ -84,22 +85,3 @@ const luot = await demLuotTruyCap();
   @media (max-width: 520px) { .luoi-chan { grid-template-columns: 1fr; } }
 </style>
 
-{CAUHINH.goatCounter && (
-<script define:vars={{ ma: CAUHINH.goatCounter }}>
-  // So luot tong da duoc in san luc dung trang. Doan nay chi lay them
-  // so nguoi dang xem trong 5 phut gan nhat. Bi chan thi bo qua, khong sao.
-  (async () => {
-    try {
-      const den = new Date();
-      const tu = new Date(den.getTime() - 5 * 60 * 1000);
-      const chuoi = (d) => d.toISOString().slice(0, 19) + 'Z';
-      const r = await fetch(`https://${ma}.goatcounter.com/counter/TOTAL.json?start=${chuoi(tu)}&end=${chuoi(den)}`);
-      if (!r.ok) return;
-      const d = await r.json();
-      const n = Math.max(1, Number(String(d.count).replace(/[^0-9]/g, '')) || 1);
-      const o = document.getElementById('tk-online');
-      if (o) { o.textContent = `${n} đang xem · `; o.hidden = false; }
-    } catch {}
-  })();
-</script>
-)}
