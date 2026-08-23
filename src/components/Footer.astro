@@ -1,8 +1,10 @@
 ---
 import { CAUHINH, CHUYEN_MUC } from '../config';
 import { getCollection } from 'astro:content';
+import { demLuotTruyCap } from '../thongKe';
 const dsPhanMem = (await getCollection('phan-mem')).sort((a, b) => a.data.thuTu - b.data.thuTu).slice(0, 6);
 const nam = new Date().getFullYear();
+const luot = await demLuotTruyCap();
 ---
 <footer class="chan">
   <div class="khung luoi-chan">
@@ -16,12 +18,11 @@ const nam = new Date().getFullYear();
         {CAUHINH.youtube && <a href={CAUHINH.youtube} target="_blank" rel="noopener">YouTube</a>}
         <a href="/rss.xml">RSS</a>
       </div>
-      {CAUHINH.goatCounter && (
-        <div class="thong-ke" id="thong-ke" hidden>
+      {luot !== null && (
+        <div class="thong-ke">
           <span class="cham-song"></span>
-          <span id="tk-online">–</span> đang xem
-          <span class="ngan">·</span>
-          <b id="tk-tong">–</b> lượt truy cập
+          <span id="tk-online" hidden></span>
+          <b>{luot.toLocaleString('vi-VN')}</b> lượt truy cập
         </div>
       )}
     </div>
@@ -85,43 +86,20 @@ const nam = new Date().getFullYear();
 
 {CAUHINH.goatCounter && (
 <script define:vars={{ ma: CAUHINH.goatCounter }}>
-  // Lay so luot truy cap tu GoatCounter. Hong thi an luon o thong ke,
-  // khong de lai dau gach ngang tren chan trang.
-  if (ma) {
-    const o = document.getElementById('thong-ke');
-    const goc = `https://${ma}.goatcounter.com/counter`;
-
-    const soGon = (n) => Number(n).toLocaleString('vi-VN');
-
-    async function layTong() {
-      const r = await fetch(`${goc}/TOTAL.json`);
-      if (!r.ok) throw new Error('khong lay duoc');
-      const d = await r.json();
-      return String(d.count).replace(/[^0-9]/g, '');
-    }
-
-    // GoatCounter khong cho biet so nguoi dang xem, nen dem trong 5 phut gan nhat
-    async function layGanDay() {
+  // So luot tong da duoc in san luc dung trang. Doan nay chi lay them
+  // so nguoi dang xem trong 5 phut gan nhat. Bi chan thi bo qua, khong sao.
+  (async () => {
+    try {
       const den = new Date();
       const tu = new Date(den.getTime() - 5 * 60 * 1000);
       const chuoi = (d) => d.toISOString().slice(0, 19) + 'Z';
-      const r = await fetch(`${goc}/TOTAL.json?start=${chuoi(tu)}&end=${chuoi(den)}`);
-      if (!r.ok) return null;
+      const r = await fetch(`https://${ma}.goatcounter.com/counter/TOTAL.json?start=${chuoi(tu)}&end=${chuoi(den)}`);
+      if (!r.ok) return;
       const d = await r.json();
-      return String(d.count).replace(/[^0-9]/g, '');
-    }
-
-    (async () => {
-      try {
-        const tong = await layTong();
-        document.getElementById('tk-tong').textContent = soGon(tong);
-        const gan = await layGanDay();
-        document.getElementById('tk-online').textContent = gan ? soGon(Math.max(1, Number(gan))) : '1';
-        o.hidden = false;
-      } catch {
-        o.remove();
-      }
-    })();
-  }
+      const n = Math.max(1, Number(String(d.count).replace(/[^0-9]/g, '')) || 1);
+      const o = document.getElementById('tk-online');
+      if (o) { o.textContent = `${n} đang xem · `; o.hidden = false; }
+    } catch {}
+  })();
 </script>
 )}
