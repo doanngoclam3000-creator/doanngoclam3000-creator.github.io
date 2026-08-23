@@ -16,6 +16,14 @@ const nam = new Date().getFullYear();
         {CAUHINH.youtube && <a href={CAUHINH.youtube} target="_blank" rel="noopener">YouTube</a>}
         <a href="/rss.xml">RSS</a>
       </div>
+      {CAUHINH.goatCounter && (
+        <div class="thong-ke" id="thong-ke" hidden>
+          <span class="cham-song"></span>
+          <span id="tk-online">–</span> đang xem
+          <span class="ngan">·</span>
+          <b id="tk-tong">–</b> lượt truy cập
+        </div>
+      )}
     </div>
     <div>
       <h4>Phần mềm</h4>
@@ -54,7 +62,64 @@ const nam = new Date().getFullYear();
   .luoi-chan li a:hover { color: var(--chinh); }
   .mxh { display: flex; gap: .9rem; margin-top: 1rem; font-size: .9rem; font-weight: 500; flex-wrap: wrap; }
   .wechat { color: var(--chu-nhat); }
+  .thong-ke {
+    display: flex; align-items: center; gap: .35rem; flex-wrap: wrap;
+    margin-top: .9rem; font-size: .82rem; color: var(--chu-nhat);
+  }
+  .thong-ke b { color: var(--chu); font-weight: 600; }
+  .thong-ke .ngan { opacity: .45; }
+  .cham-song {
+    width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34,197,94,.55); animation: dap 2.2s ease-out infinite;
+  }
+  @keyframes dap {
+    0%   { box-shadow: 0 0 0 0 rgba(34,197,94,.55); }
+    70%  { box-shadow: 0 0 0 7px rgba(34,197,94,0); }
+    100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
+  }
+  @media (prefers-reduced-motion: reduce) { .cham-song { animation: none; } }
   .ban-quyen { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--vien); }
   @media (max-width: 860px) { .luoi-chan { grid-template-columns: 1fr 1fr; gap: 28px; } }
   @media (max-width: 520px) { .luoi-chan { grid-template-columns: 1fr; } }
 </style>
+
+<script define:vars={{ ma: CAUHINH.goatCounter }}>
+  // Lay so luot truy cap tu GoatCounter. Hong thi an luon o thong ke,
+  // khong de lai dau gach ngang tren chan trang.
+  if (ma) {
+    const o = document.getElementById('thong-ke');
+    const goc = `https://${ma}.goatcounter.com/counter`;
+
+    const soGon = (n) => Number(n).toLocaleString('vi-VN');
+
+    async function layTong() {
+      const r = await fetch(`${goc}/TOTAL.json`);
+      if (!r.ok) throw new Error('khong lay duoc');
+      const d = await r.json();
+      return String(d.count).replace(/[^0-9]/g, '');
+    }
+
+    // GoatCounter khong cho biet so nguoi dang xem, nen dem trong 5 phut gan nhat
+    async function layGanDay() {
+      const den = new Date();
+      const tu = new Date(den.getTime() - 5 * 60 * 1000);
+      const chuoi = (d) => d.toISOString().slice(0, 19) + 'Z';
+      const r = await fetch(`${goc}/TOTAL.json?start=${chuoi(tu)}&end=${chuoi(den)}`);
+      if (!r.ok) return null;
+      const d = await r.json();
+      return String(d.count).replace(/[^0-9]/g, '');
+    }
+
+    (async () => {
+      try {
+        const tong = await layTong();
+        document.getElementById('tk-tong').textContent = soGon(tong);
+        const gan = await layGanDay();
+        document.getElementById('tk-online').textContent = gan ? soGon(Math.max(1, Number(gan))) : '1';
+        o.hidden = false;
+      } catch {
+        o.remove();
+      }
+    })();
+  }
+</script>

@@ -9,6 +9,10 @@ export const CAUHINH = {
   zalo: '',
   wechat: 'tieuphung1409',
   wechatQR: '/anh/wechat-qr.jpg',
+  // Ma trang tren GoatCounter de dem luot truy cap.
+  // Dang ky mien phi o goatcounter.com roi dien ma vao day, vi du 'phanmemtq'.
+  // De trong thi khong dem va khong hien o thong ke.
+  goatCounter: '',
   email: 'luc.tieu.phung1409@gmail.com',
   youtube: '',
   // Anh banner o trang chu. Thay bang anh cua ban:
