@@ -21,6 +21,8 @@ thuTu: 2
 
 **Phần Mềm Quản Lý Kho Tệ** dành cho người làm dịch vụ chuyển tiền và mua bán nhân dân tệ. Thay vì bấm máy tính rồi ghi vào sổ tay, bạn nhập một lần — phần mềm tính xong tiền, lưu lại giao dịch và cộng dồn lãi cho bạn.
 
+![Ghi một giao dịch bán tệ](/anh/quan-ly-kho-te/2-ghi-giao-dich.svg)
+
 ### Tính năng chính
 
 - **Tính tiền tức thì:** nhập số tệ, hiện ngay số tiền Việt khách phải trả và phần lãi bạn được.
@@ -31,6 +33,8 @@ thuTu: 2
 - **Sao lưu tự động:** phần mềm giữ lại nhiều bản sao lưu gần nhất, lỡ tay xoá nhầm vẫn khôi phục được.
 
 ## Đồng bộ giữa Mac và iPhone
+
+![Sổ giao dịch và thống kê](/anh/quan-ly-kho-te/3-so-thong-ke.svg)
 
 Bản Mac và bản iPhone giữ sổ riêng trên từng máy. Khi hai bên lệch nhau, dùng **Xuất dữ liệu** ở máy đang có sổ đúng, gửi file sang máy kia rồi bấm **Nhập dữ liệu**. Trước khi ghi đè, phần mềm hiện bảng so sánh số giao dịch của hai bên để bạn cân nhắc.
 

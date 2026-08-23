@@ -21,6 +21,8 @@ thuTu: 5
 
 **Chỉnh Sửa Ảnh** gom những việc sửa ảnh hay phải làm nhất vào một ứng dụng nhẹ, thao tác bằng ngón tay, không cần học Photoshop và không cần tài khoản.
 
+![Màn hình chính với đủ công cụ](/anh/chinh-sua-anh/1-chon-anh.svg)
+
 ### Tính năng chính
 
 - **Cắt và xoay:** cắt theo tỉ lệ có sẵn hoặc tự do, xoay và lật ảnh.
@@ -34,6 +36,10 @@ thuTu: 5
 - **Trang điểm tự động:** phần mềm tự tìm môi, má, mắt và lông mày rồi tô đúng chỗ — da trắng sáng, son môi, má hồng, mắt đen rõ, lông mày đậm. Bấm xong vẫn chỉnh lại từng mức được.
 
 ## Dùng cho việc gì
+
+![Xoá vật thể thừa khỏi ảnh](/anh/chinh-sua-anh/2-xoa-vat-the.svg)
+
+![Làm phẳng ảnh chụp giấy tờ](/anh/chinh-sua-anh/3-lam-phang-giay-to.svg)
 
 - Nắn thẳng và làm sạch ảnh chụp giấy tờ trước khi gửi đi.
 - Xoá logo, vết bẩn hoặc người lạ trong ảnh sản phẩm trước khi đăng bán.

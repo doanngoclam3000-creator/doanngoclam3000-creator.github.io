@@ -22,6 +22,8 @@ Có hai bản dùng chung một hệ khoá kích hoạt: một bản cho **macOS
 
 Từ bản 4.0, phần mềm điều khiển được **cả iPhone lẫn máy Android**.
 
+![Chọn vị trí ngay trên bản đồ](/anh/gia-lap-vi-tri/1-chon-vi-tri.svg)
+
 ### Tính năng chính
 
 - **Chọn điểm trên bản đồ:** bấm thẳng vào bản đồ, hoặc nhập toạ độ kinh độ – vĩ độ nếu bạn có sẵn.
@@ -33,6 +35,10 @@ Từ bản 4.0, phần mềm điều khiển được **cả iPhone lẫn máy A
 - **Vị trí gần đây:** nhớ 12 vị trí vừa dùng, bấm một cái là quay lại chỗ cũ.
 - **Nhấp lên bản đồ là đổi luôn:** khỏi phải bấm thêm nút xác nhận.
 - **Hiện vị trí thật của máy tính:** mở lên là bản đồ đã ở đúng chỗ bạn đang ngồi.
+
+![Mô phỏng di chuyển theo tuyến đường](/anh/gia-lap-vi-tri/2-mo-phong-di-chuyen.svg)
+
+![Nhận cả iPhone lẫn máy Android](/anh/gia-lap-vi-tri/3-nhan-may.svg)
 
 ## Yêu cầu hệ thống
 

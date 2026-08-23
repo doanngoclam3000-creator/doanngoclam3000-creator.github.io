@@ -22,6 +22,8 @@ thuTu: 3
 > Danh sách tính năng dưới đây là của **bản iPhone, iPad và Mac**. Bản Windows
 > mới ra, hiện chưa có đủ — xem mục *Bản Windows* ở cuối trang.
 
+![Màn hình chính với chuỗi ngày học](/anh/hoc-tieng-trung/1-man-hinh-chinh.svg)
+
 ### Tính năng chính
 
 - **5.456 từ HSK 1–6**, mỗi từ có chữ Hán, pinyin, nghĩa tiếng Việt và ví dụ.
@@ -76,6 +78,10 @@ diện giọng nói; muốn chấm phát âm thì dùng bản iPhone hoặc Mac.
 
 > Bản Windows chưa mua chứng chỉ ký nên lần đầu chạy, Windows SmartScreen sẽ hiện
 > bảng xanh "Windows protected your PC" — bấm **More info** rồi **Run anyway**.
+
+![Chấm điểm phát âm và cả thanh điệu](/anh/hoc-tieng-trung/3-luyen-noi.svg)
+
+![Viết chữ Hán, chấm từng nét](/anh/hoc-tieng-trung/4-luyen-viet.svg)
 
 ## Yêu cầu hệ thống
 

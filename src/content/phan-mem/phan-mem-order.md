@@ -21,6 +21,8 @@ thuTu: 5
 
 **Phần Mềm Order** dành cho người làm dịch vụ đặt hàng hộ Trung Quốc. Thay vì gõ Excel và bấm máy tính, bạn dán link sản phẩm là phần mềm dựng xong đơn và tính đủ tiền.
 
+![Màn hình chính chia 3 nhóm chức năng](/anh/phan-mem-order/1-man-hinh-chinh.svg)
+
 ### Tính năng chính
 
 - **Tạo đơn bằng cách dán link:** dán một loạt link 1688/Taobao, phần mềm tự tách thành từng shop và từng mã hàng.
@@ -34,6 +36,10 @@ thuTu: 5
 - **Danh sách cần nhắn:** phần mềm nhắc những khách đang chờ bạn trả lời.
 - **Báo cáo:** doanh thu, lợi nhuận, số đơn theo tháng.
 - **Lưu trên máy:** dữ liệu nằm trong máy bạn, không đẩy lên đám mây.
+
+![Dán link 1688 là ra đơn](/anh/phan-mem-order/2-tao-don-dan-link.svg)
+
+![Kho Trung Quốc và tra kiện hàng](/anh/phan-mem-order/6-kho-tq-van-don.svg)
 
 ## Yêu cầu hệ thống
 
