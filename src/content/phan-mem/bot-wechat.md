@@ -25,6 +25,8 @@ nhắn vào nhóm đúng giờ, gửi thông báo cho cả danh sách khách, đ
 Điều quan trọng nhất: **bot làm việc trong lúc bạn vẫn đang dùng máy**. Bạn chat với
 khách quan trọng, bot lo phần còn lại — không tranh chuột, không tranh bàn phím của bạn.
 
+![Màn hình chính với hai công tắc và nhật ký](/anh/bot-wechat/1-tong-quan.svg)
+
 ### Bốn việc bot làm
 
 - **Trả lời khách bằng AI.** Khách nhắn tới, bot đọc rồi trả lời bằng tiếng Việt theo
@@ -38,6 +40,8 @@ khách quan trọng, bot lo phần còn lại — không tranh chuột, không t
   mỗi bài một khung giờ riêng — sáng một bài, trưa một bài, tối một bài.
 
 Riêng bản Mac còn có **kết bạn hàng loạt** từ những nhóm bạn đang tham gia.
+
+![Dạy bot đóng vai và chọn người được trả lời](/anh/bot-wechat/2-tra-loi-khach.svg)
 
 ## Bot nhớ ngữ cảnh cuộc trò chuyện
 
@@ -55,6 +59,10 @@ câu chuyện cũ không lẫn vào câu chuyện mới.
 - **Nhật ký viết bằng tiếng người.** *"Chị Lan hỏi về giá"*, *"Đã trả lời Chị Lan"* — không
   phải dòng mã khó hiểu. Tiền AI hiện bằng đồng, không hiện chữ token.
 
+![Hẹn giờ nhắn nhóm theo thứ trong tuần](/anh/bot-wechat/3-hen-gio-nhan-nhom.svg)
+
+![Nhắn hàng loạt, chèn tên từng người](/anh/bot-wechat/4-nhan-hang-loat.svg)
+
 ## Cần chuẩn bị gì
 
 Phần trả lời bằng AI dùng **API key của Google Gemini** — bạn tự lấy, miễn phí, và tiền
@@ -62,6 +70,8 @@ AI trả thẳng cho Google chứ không qua chúng tôi. Trong phần mềm có
 kèm hướng dẫn từng bước. Google cho một lượng dùng miễn phí mỗi ngày, đủ cho shop nhỏ.
 
 Hai phần còn lại — hẹn giờ nhắn nhóm và nhắn tin hàng loạt — **không cần API key**.
+
+![Đặt lịch đăng bài lên Bảng tin](/anh/bot-wechat/5-bang-tin.svg)
 
 ## Yêu cầu hệ thống
 

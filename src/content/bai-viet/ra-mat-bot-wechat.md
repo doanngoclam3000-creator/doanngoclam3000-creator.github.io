@@ -2,6 +2,7 @@
 tieuDe: "Ra mắt Bot WeChat: để AI trả lời khách thay bạn"
 moTa: "Phần mềm mới cho người bán hàng qua WeChat. AI đọc tin khách rồi trả lời bằng tiếng Việt, hẹn giờ nhắn nhóm, nhắn hàng loạt, đăng bài lên Bảng tin. Có bản Mac và Windows, dùng thử miễn phí 7 ngày."
 ngayDang: 2026-08-23
+anh: "/anh/bot-wechat/1-tong-quan.svg"
 chuyenMuc: "tin-tuc"
 thuocPhanMem: "bot-wechat"
 tags: ["bot wechat", "ra mắt", "ai"]
@@ -12,6 +13,8 @@ Hôm nay ra mắt **Bot WeChat** — phần mềm cho những ai bán hàng, chu
 qua WeChat và mỗi ngày phải trả lời hàng trăm tin giống nhau.
 
 ## Bốn việc bot làm thay bạn
+
+![Màn hình chính của Bot WeChat](/anh/bot-wechat/1-tong-quan.svg)
 
 **Trả lời khách bằng AI.** Bạn viết một đoạn mô tả công việc, kiểu *"Bạn là nhân viên tư vấn
 của shop, trả lời ngắn gọn bằng tiếng Việt, không chắc thì nói sẽ hỏi lại chủ shop, tuyệt đối
@@ -29,6 +32,8 @@ một bài — cứ thêm lịch là được.
 
 ## Bot làm việc trong lúc bạn vẫn dùng máy
 
+![Dạy bot cách trả lời khách](/anh/bot-wechat/2-tra-loi-khach.svg)
+
 Đây là điều được chăm chút nhất. Bạn vẫn chat với khách quan trọng, bot lo phần còn lại ở phía
 sau. Việc gửi tin vào cuộc trò chuyện đang mở chạy hoàn toàn ngầm — không cướp chuột, không
 cướp bàn phím.
@@ -39,6 +44,10 @@ làm, xong thì trả con trỏ về đúng chỗ cũ.
 
 ## Bạn giữ quyền quyết định
 
+![Hẹn giờ nhắn nhóm](/anh/bot-wechat/3-hen-gio-nhan-nhom.svg)
+
+![Nhắn tin hàng loạt](/anh/bot-wechat/4-nhan-hang-loat.svg)
+
 Mặc định bot **chỉ trả lời những người bạn tự tay chọn**. Trả lời nhầm một đối tác làm ăn phiền
 hơn nhiều so với chậm một tin, nên phần mềm chọn cách thận trọng. Muốn bot trả lời tất cả thì
 bật một nút.
@@ -47,6 +56,8 @@ Phần trả lời khách và phần hẹn giờ là hai công tắc riêng. N�
 không phải sắm API key.
 
 ## Cần chuẩn bị gì
+
+![Đăng bài lên Bảng tin theo giờ](/anh/bot-wechat/5-bang-tin.svg)
 
 Phần AI dùng **API key của Google Gemini** — bạn tự lấy, miễn phí, tiền AI trả thẳng cho Google
 chứ không qua chúng tôi. Trong phần mềm có nút mở trang lấy khoá kèm hướng dẫn từng bước. Google
