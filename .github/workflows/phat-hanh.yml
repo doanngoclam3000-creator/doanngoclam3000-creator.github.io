@@ -36,6 +36,10 @@ jobs:
             fi
           }
 
+          taoBan "bot-wechat-1.0" "Bot WeChat 1.0" \
+            "Bản đầu tiên. AI trả lời khách WeChat, hẹn giờ nhắn nhóm, nhắn tin hàng loạt, đăng bài lên Bảng tin. Có bản cho macOS và Windows. Dùng thử miễn phí 7 ngày." \
+            public/tai/BotWeChat-1.0.dmg public/tai/BotWeChat-1.0-Windows.exe
+
           taoBan "phan-mem-order-2.7" "Phần Mềm Order 2.7" \
             "Bản Windows và Android tự đọc được hành trình vận đơn. Đăng nhập 1688 một lần ngay trong phần mềm." \
             public/tai/PhanMemOrder-2.7.dmg public/tai/PhanMemOrder-2.7.0-Windows.zip public/tai/PhanMemOrder-2.7.0.apk
