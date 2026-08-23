@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nenAnh" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#f8f5ff"/><stop offset="100%" stop-color="#ece3fb"/>
+  </linearGradient>
+  <filter id="bong" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#3b2560" flood-opacity="0.22"/>
+  </filter>
+  <filter id="bongnho" x="-40%" y="-40%" width="180%" height="180%">
+    <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#3b2560" flood-opacity="0.16"/>
+  </filter>
+  <clipPath id="manhinh"><rect x="652" y="56" width="316" height="648" rx="34"/></clipPath>
+</defs>
+<rect width="1200" height="760" fill="url(#nenAnh)"/>
+<g>
+  <circle cx="96" cy="104" r="34" fill="#7c3aed"/>
+  <text x="96" y="116" font-size="34" font-weight="700" fill="#ffffff" text-anchor="middle">5</text>
+  <text x="152" y="116" font-size="33" font-weight="700" fill="#241a3d">So sánh và lưu ảnh</text>
+  <text x="56" y="186" font-size="20.5" fill="#584f6e"><tspan>Bấm giữ nút </tspan><tspan font-weight="700" fill="#241a3d">So sánh</tspan><tspan> để xem lại ảnh gốc —</tspan></text>
+  <text x="56" y="223" font-size="20.5" fill="#584f6e"><tspan>thả ra là về ảnh đã chỉnh.</tspan></text>
+  <text x="56" y="297" font-size="20.5" fill="#584f6e"><tspan>Ưng rồi thì chọn </tspan><tspan font-weight="700" fill="#241a3d">Kích cỡ in</tspan><tspan> nếu cần ảnh thẻ,</tspan></text>
+  <text x="56" y="334" font-size="20.5" fill="#584f6e"><tspan>rồi bấm </tspan><tspan font-weight="700" fill="#241a3d">Lưu ảnh</tspan><tspan> và chọn nơi lưu.</tspan></text>
+  <text x="56" y="408" font-size="20.5" fill="#584f6e"><tspan>Ảnh gốc không bị đụng tới, luôn còn nguyên.</tspan></text>
+</g>
+<g filter="url(#bong)">
+  <rect x="640" y="44" width="340" height="672" rx="46" fill="#2a2136"/>
+  <rect x="646" y="50" width="328" height="660" rx="41" fill="#181022"/>
+  <rect x="652" y="56" width="316" height="648" rx="34" fill="#f5f5f6"/>
+</g>
+<rect x="758.0" y="68" width="104" height="30" rx="15" fill="#181022"/>
+<text x="682" y="96" font-size="14" font-weight="600" fill="#1d2430">9:41</text>
+<g fill="#1d2430">
+  <rect x="896" y="80" width="17" height="11" rx="2.5" opacity="0.85"/>
+  <rect x="920" y="79" width="26" height="13" rx="4" fill="none" stroke="#1d2430" stroke-width="1.6" opacity="0.6"/>
+  <rect x="923" y="81.5" width="18" height="8" rx="2" opacity="0.85"/>
+</g>
+<rect x="754.0" y="686" width="112" height="5" rx="2.5" fill="#181022" opacity="0.35"/><g clip-path="url(#manhinh)"><rect x="652" y="104" width="316" height="600" fill="#f5f5f6"/>
+  <text x="670" y="148" font-size="26" font-weight="700" fill="#1d2430">So sánh</text>
+  <rect x="666" y="168" width="288" height="208" rx="14" fill="#ffffff" stroke="#dcdde0"/>
+  <defs>
+    <linearGradient id="troi680182" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cfe3f5" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#eaf2f9" stop-opacity="0.55"/>
+    </linearGradient>
+  </defs>
+  <rect x="680" y="182" width="126" height="180" rx="10" fill="url(#troi680182)"/>
+  <circle cx="743.0" cy="254.0" r="21.42" fill="#e8c9a8" opacity="0.55"/>
+  <path d="M 705.2 362 Q 743.0 275.6 780.8 362 Z" fill="#7f9dc4" opacity="0.55"/>
+  <path d="M 721.58 236.0 q 21.42 -18.0 42.84 0" fill="#4a3728" opacity="0.55"/>
+  <defs>
+    <linearGradient id="troi814182" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#cfe3f5" stop-opacity="1.0"/>
+      <stop offset="100%" stop-color="#eaf2f9" stop-opacity="1.0"/>
+    </linearGradient>
+  </defs>
+  <rect x="814" y="182" width="126" height="180" rx="10" fill="url(#troi814182)"/>
+  <circle cx="877.0" cy="254.0" r="21.42" fill="#e8c9a8" opacity="1.0"/>
+  <path d="M 839.2 362 Q 877.0 275.6 914.8 362 Z" fill="#7f9dc4" opacity="1.0"/>
+  <path d="M 855.58 236.0 q 21.42 -18.0 42.84 0" fill="#4a3728" opacity="1.0"/>
+  <text x="743" y="378" font-size="11" fill="#66707e" text-anchor="middle">Gốc</text>
+  <text x="877" y="378" font-size="11" font-weight="700" fill="#7c3aed" text-anchor="middle">Đã chỉnh</text>
+  <rect x="666" y="396" width="288" height="46" rx="11" fill="#ffffff" stroke="#dcdde0"/>
+  <text x="680" y="427" font-size="13" font-weight="600" fill="#1d2430">Kích cỡ in</text>
+  <text x="940" y="427" font-size="13" font-weight="700" fill="#2f6fd0" text-anchor="end">3x4 cm ▾</text>
+  <rect x="666" y="450" width="288" height="46" rx="11" fill="#ffffff" stroke="#dcdde0"/>
+  <text x="680" y="481" font-size="13" font-weight="600" fill="#1d2430">Màu nền</text>
+  <text x="940" y="481" font-size="13" font-weight="700" fill="#2f6fd0" text-anchor="end">Xanh ▾</text>
+  <rect x="666" y="508" width="288" height="48" rx="24.0" fill="#2e9e63"/>
+  <text x="810.0" y="537.4" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Lưu ảnh</text>
+</g>
+  <rect x="660" y="502" width="300" height="60" rx="16" fill="none" stroke="#f59e0b" stroke-width="3"/>
+<g>
+  <path d="M 890 524 l 30 26 l -13 3 l 7 15 l -7 3 l -7 -15 l -10 8 z"
+        fill="#241a3d" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/>
+</g>
+</svg>
