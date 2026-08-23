@@ -83,6 +83,7 @@ const nam = new Date().getFullYear();
   @media (max-width: 520px) { .luoi-chan { grid-template-columns: 1fr; } }
 </style>
 
+{CAUHINH.goatCounter && (
 <script define:vars={{ ma: CAUHINH.goatCounter }}>
   // Lay so luot truy cap tu GoatCounter. Hong thi an luon o thong ke,
   // khong de lai dau gach ngang tren chan trang.
@@ -123,3 +124,4 @@ const nam = new Date().getFullYear();
     })();
   }
 </script>
+)}
