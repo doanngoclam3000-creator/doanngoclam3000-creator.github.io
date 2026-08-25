@@ -54,7 +54,7 @@ const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => 
       <a href="/phan-mem" class="xem-them">Tất cả →</a>
     </div>
     <div class="luoi luoi-3">
-      {phanMem.slice(0, 6).map((pm) => <ThePhanMem pm={pm} />)}
+      {phanMem.map((pm) => <ThePhanMem pm={pm} />)}
     </div>
   </section>
 

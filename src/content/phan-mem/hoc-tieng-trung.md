@@ -2,17 +2,17 @@
 ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.0"
-ngayCapNhat: 2026-08-21
-ghiChuCapNhat: "Máy Mac tải thẳng về được rồi. Bản Windows có thêm bài tập và lịch ôn thông minh."
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-mac-2.0/HocTiengTrung-2.0.dmg"
+phienBan: "2.1"
+ngayCapNhat: 2026-08-25
+ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Bản Mac và iPhone lên 2.1"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.1/HocTiengTrung-2.1.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-windows-0.3/HocTiengTrung-0.3.0-Windows.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
 noiBat: true
-thuTu: 3
+thuTu: 5
 ---
 
 ## Giới thiệu
@@ -23,6 +23,8 @@ thuTu: 3
 > mới ra, hiện chưa có đủ — xem mục *Bản Windows* ở cuối trang.
 
 ![Màn hình chính với chuỗi ngày học](/anh/hoc-tieng-trung/1-man-hinh-chinh.svg)
+
+![Thẻ từ có chữ Hán, pinyin và nghĩa](/anh/hoc-tieng-trung/2-the-tu.svg)
 
 ### Tính năng chính
 
@@ -82,6 +84,8 @@ diện giọng nói; muốn chấm phát âm thì dùng bản iPhone hoặc Mac.
 ![Chấm điểm phát âm và cả thanh điệu](/anh/hoc-tieng-trung/3-luyen-noi.svg)
 
 ![Viết chữ Hán, chấm từng nét](/anh/hoc-tieng-trung/4-luyen-viet.svg)
+
+![Hội thoại với AI trong vốn từ đã học](/anh/hoc-tieng-trung/5-hoi-thoai-ai.svg)
 
 ## Yêu cầu hệ thống
 

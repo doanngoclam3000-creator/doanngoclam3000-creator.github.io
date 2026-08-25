@@ -2,14 +2,14 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
 nenTang: ["macOS", "Windows"]
-phienBan: "1.0"
+phienBan: "1.1"
 banToiThieu: "1.0"
-ngayCapNhat: 2026-08-23
-ghiChuCapNhat: "Bản đầu tiên. Có bản cho Mac và bản cho Windows. Dùng thử miễn phí 7 ngày."
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.0/BotWeChat-1.0.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.0/BotWeChat-1.0-Windows.exe"
-gia: "100.000đ / tháng — dùng thử miễn phí 7 ngày"
-dungLuong: "khoảng 2 MB (Mac) · 63 MB (Windows)"
+ngayCapNhat: 2026-08-25
+ghiChuCapNhat: "- Bản Windows đổi sang file nén .zip: giải nén ra chạy luôn\n- Icon phần mềm hiện đúng trên máy tính\n- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Dùng thử miễn phí tăng lên 10 ngày"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.1/BotWeChat-1.1.dmg"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.1/BotWeChat-1.1-Windows.zip"
+gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
+dungLuong: "khoảng 2 MB (Mac) · 58 MB (Windows, file nén)"
 anhIcon: "/icon/bot-wechat.png"
 icon: "🤖"
 mauNen: "#0ea5e9"
@@ -108,10 +108,10 @@ WeChat chạy quyền cao hơn thì phần mềm phải chạy quyền ngang b�
 
 ## Giá và dùng thử
 
-Cài xong **tự có 7 ngày dùng thử miễn phí**, không phải nhập gì, không phải trả trước.
+Cài xong **tự có 10 ngày dùng thử miễn phí**, không phải nhập gì, không phải trả trước.
 
-Hết 7 ngày, phần mềm xin key bản quyền — **100.000đ cho một tháng**. Mua nhiều tháng thì
-rẻ hơn: 3 tháng 280.000đ, 6 tháng 520.000đ, một năm 950.000đ.
+Hết 10 ngày, phần mềm xin key bản quyền — **150.000đ cho một tháng**. Mua nhiều tháng thì
+rẻ hơn: 3 tháng 300.000đ, 6 tháng 500.000đ, một năm 900.000đ.
 
 Cách mua: mở phần mềm, bấm **Bản quyền**, chép dòng **Mã máy** gửi cho chúng tôi, chuyển
 khoản rồi nhận key. Key khoá theo máy nên chỉ dùng được đúng máy đó.

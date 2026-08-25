@@ -2,19 +2,19 @@
 ten: "Chỉnh Sửa Ảnh"
 moTa: "Bộ công cụ sửa ảnh gọn nhẹ: cắt xoay, xoá vật thể thừa, làm phẳng ảnh chụp giấy tờ, thêm chữ, ghép lớp."
 nenTang: ["Windows", "macOS", "iOS"]
-phienBan: "1.6"
+phienBan: "1.7"
 banToiThieu: "1.6"
-ghiChuCapNhat: "- Sửa lỗi ảnh bị tối đi sau khi chỉnh (thanh Độ mịn da làm ảnh tối tới 35%)\n- Sửa thanh Độ sáng: trước kéo nhẹ đã cháy trắng hoặc đen sì\n- Sửa lỗi xoay ảnh bị khuyết viền\n- Thêm 7 bộ lọc làm sẵn: Tự nhiên, Rạng rỡ, Son đỏ, Hàn Quốc, Ảnh thẻ chuẩn, Cổ điển\n- Thêm trang điểm: da trắng sáng, son môi, má hồng, mắt đen rõ, lông mày đậm\n- Đã có bản cho máy tính Windows"
-ngayCapNhat: 2026-08-20
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.6/ChinhSuaAnh-1.6.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.6/ChinhSuaAnh-1.6-Windows-BoCai.zip"
+ghiChuCapNhat: "- Bản Windows nay có icon riêng của phần mềm\n- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Đóng dấu bản quyền, chống sao chép phần mềm"
+ngayCapNhat: 2026-08-25
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.7/ChinhSuaAnh-1.7.dmg"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.7/ChinhSuaAnh-1.7-Windows-BoCai.zip"
 linkTaiIOS: "https://testflight.apple.com/join/HdU95ZUW"
 dungLuong: "Mac 1,2 MB · Windows 93 MB (file nén)"
 anhIcon: "/icon/chinh-sua-anh.png"
 icon: "🖼️"
 mauNen: "#dc2626"
 noiBat: false
-thuTu: 5
+thuTu: 7
 ---
 
 ## Giới thiệu
@@ -40,6 +40,10 @@ thuTu: 5
 ![Xoá vật thể thừa khỏi ảnh](/anh/chinh-sua-anh/2-xoa-vat-the.svg)
 
 ![Làm phẳng ảnh chụp giấy tờ](/anh/chinh-sua-anh/3-lam-phang-giay-to.svg)
+
+![Trang điểm tự động](/anh/chinh-sua-anh/4-trang-diem.svg)
+
+![So sánh trước/sau và lưu ảnh](/anh/chinh-sua-anh/5-so-sanh-luu.svg)
 
 - Nắn thẳng và làm sạch ảnh chụp giấy tờ trước khi gửi đi.
 - Xoá logo, vết bẩn hoặc người lạ trong ảnh sản phẩm trước khi đăng bán.

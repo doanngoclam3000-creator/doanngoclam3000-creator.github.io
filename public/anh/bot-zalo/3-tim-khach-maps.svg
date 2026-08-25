@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen3" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#eaf1ff"/><stop offset="100%" stop-color="#dbe6ff"/>
+  </linearGradient>
+  <filter id="bong3" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#123a7a" flood-opacity="0.20"/>
+  </filter>
+</defs>
+<rect width="1200" height="760" fill="url(#nen3)"/>
+<g>
+  <circle cx="96" cy="104" r="34" fill="#2b7cff"/>
+  <text x="96" y="115" font-size="30" font-weight="700" fill="#ffffff" text-anchor="middle">📍</text>
+  <text x="152" y="116" font-size="33" font-weight="700" fill="#12294d">Tìm khách quanh khu vực</text>
+  <text x="56" y="186" font-size="20.5" fill="#3f5170"><tspan>Gõ nghề và khu vực, bot mở Google Maps lấy </tspan><tspan font-weight="700" fill="#12294d">tên, số điện thoại, địa chỉ</tspan><tspan>.</tspan></text>
+</g>
+<!-- o tim kiem -->
+<rect x="56" y="232" width="620" height="46" rx="12" fill="#ffffff" stroke="#cdddf7"/>
+<text x="80" y="261" font-size="17" fill="#12294d">tiệm nail Cầu Giấy</text>
+<rect x="690" y="232" width="130" height="46" rx="12" fill="#2b7cff"/>
+<text x="755" y="261" font-size="16" font-weight="700" fill="#ffffff" text-anchor="middle">Tìm</text>
+<!-- ban do trai -->
+<g filter="url(#bong3)">
+  <rect x="56" y="300" width="520" height="400" rx="20" fill="#e8eef7"/>
+</g>
+<g clip-path="url(#none)">
+  <rect x="56" y="300" width="520" height="400" rx="20" fill="#dde8f3"/>
+  <path d="M56 430 L280 470 L420 400 L576 450" stroke="#ffffff" stroke-width="10" fill="none" opacity="0.9"/>
+  <path d="M180 300 L220 500 L300 700" stroke="#ffffff" stroke-width="8" fill="none" opacity="0.8"/>
+  <path d="M56 560 L340 600 L576 560" stroke="#ffffff" stroke-width="7" fill="none" opacity="0.7"/>
+  <g fill="#ea4335">
+    <circle cx="200" cy="420" r="12"/><circle cx="330" cy="470" r="12"/><circle cx="270" cy="560" r="12"/><circle cx="430" cy="520" r="12"/><circle cx="150" cy="520" r="12"/>
+  </g>
+</g>
+<!-- danh sach ket qua phai -->
+<g filter="url(#bong3)">
+  <rect x="600" y="300" width="544" height="400" rx="20" fill="#ffffff"/>
+</g>
+<g font-size="14">
+  <g transform="translate(624,324)">
+    <rect width="496" height="80" rx="13" fill="#fafcff" stroke="#e6eef9"/>
+    <text x="20" y="34" font-size="17" font-weight="700" fill="#12294d">Nail House Cầu Giấy</text>
+    <text x="20" y="58" font-size="14" fill="#5b6b86">📞 0987 654 321 · 12 Trần Thái Tông</text>
+  </g>
+  <g transform="translate(624,414)">
+    <rect width="496" height="80" rx="13" fill="#fafcff" stroke="#e6eef9"/>
+    <text x="20" y="34" font-size="17" font-weight="700" fill="#12294d">Tiệm Nail Ngọc Anh</text>
+    <text x="20" y="58" font-size="14" fill="#5b6b86">📞 0912 333 888 · 88 Cầu Giấy</text>
+  </g>
+  <g transform="translate(624,504)">
+    <rect width="496" height="80" rx="13" fill="#fafcff" stroke="#e6eef9"/>
+    <text x="20" y="34" font-size="17" font-weight="700" fill="#12294d">Nail &amp; Spa Hương</text>
+    <text x="20" y="58" font-size="14" fill="#5b6b86">📞 0908 121 314 · 5 Dương Đình Nghệ</text>
+  </g>
+  <rect x="624" y="596" width="496" height="82" rx="13" fill="#eefaf1" stroke="#c7ecd2"/>
+  <text x="644" y="632" font-size="16" font-weight="700" fill="#12294d">Đã lấy 38 cửa hàng — có số điện thoại</text>
+  <text x="644" y="658" font-size="14" fill="#5b6b86">Chuyển thẳng sang kết bạn &amp; nhắn tin hàng loạt</text>
+</g>
+</svg>

@@ -2,19 +2,19 @@
 ten: "Bot Zalo"
 moTa: "Trợ lý tự động cho Zalo: quét đủ thành viên nhóm (cả cộng đồng nghìn người), kết bạn và nhắn tin hàng loạt, đăng bài vào nhiều nhóm, hẹn giờ, mời vào nhóm, tìm khách quanh khu vực qua Google Maps. Xem và trả lời tin nhắn ngay trong phần mềm."
 nenTang: ["macOS", "Windows"]
-phienBan: "1.0"
-banToiThieu: "1.0"
-ngayCapNhat: 2026-08-24
-ghiChuCapNhat: "Bản đầu tiên. Có bản cho Mac và bản cho Windows. Dùng thử miễn phí 1 ngày."
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.0/BotZalo-1.0.0-mac-arm64.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.0/BotZalo-1.0.0-Windows.zip"
-gia: "150.000đ / tháng — dùng thử miễn phí 1 ngày"
+phienBan: "1.1"
+banToiThieu: "1.1"
+ngayCapNhat: 2026-08-25
+ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Dùng thử miễn phí tăng lên 10 ngày"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.1/BotZalo-1.1.0-mac-arm64.dmg"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.1/BotZalo-1.1.0-Windows.zip"
+gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 116 MB (Mac) · 120 MB (Windows)"
 anhIcon: "/icon/bot-zalo.png"
 icon: "💬"
 mauNen: "#2b7cff"
 noiBat: true
-thuTu: 1
+thuTu: 2
 ---
 
 ## Giới thiệu
@@ -23,6 +23,8 @@ thuTu: 1
 thành viên một nhóm, kết bạn và nhắn tin cho họ, đăng bài vào nhiều nhóm cùng lúc, hẹn
 giờ gửi tự động, và tìm khách hàng quanh khu vực qua Google Maps. Tất cả chạy **ngay trên
 máy bạn**, không qua máy chủ trung gian, dữ liệu khách hàng nằm trong máy bạn.
+
+![Bảng điều khiển Bot Zalo](/anh/bot-zalo/1-tong-quan.svg)
 
 ### Những việc Bot Zalo làm
 
@@ -41,6 +43,10 @@ máy bạn**, không qua máy chủ trung gian, dữ liệu khách hàng nằm t
   hàng — đổ thẳng sang danh bạ để nhắn tin.
 - **Xem và trả lời tin nhắn.** Có sẵn Zalo web ngay trong phần mềm, đổi qua lại giữa nhiều
   tài khoản để chăm sóc khách từng người.
+
+![Quét đủ thành viên nhóm](/anh/bot-zalo/2-quet-thanh-vien.svg)
+
+![Tìm khách quanh khu vực qua Google Maps](/anh/bot-zalo/3-tim-khach-maps.svg)
 
 ## Nhiều tài khoản, mỗi tài khoản một phiên
 
@@ -81,8 +87,8 @@ tin thêm** rồi **Vẫn chạy**. Những lần sau không hỏi lại.
 
 ## Giá và dùng thử
 
-Cài xong **tự có 1 ngày dùng thử miễn phí**, không phải nhập gì. Hết hạn, phần mềm xin key
-bản quyền — **150.000đ một tháng**, 3 tháng 250.000đ, 6 tháng 400.000đ, một năm 500.000đ.
+Cài xong **tự có 10 ngày dùng thử miễn phí**, không phải nhập gì. Hết hạn, phần mềm xin key
+bản quyền — **150.000đ một tháng**, 3 tháng 300.000đ, 6 tháng 500.000đ, một năm 900.000đ.
 
 Cách mua: mở phần mềm, chép dòng **Mã máy**, quét mã QR ngay trong phần mềm để chuyển khoản,
 rồi gửi mã máy cho chúng tôi nhận key. Key khoá theo máy nên chỉ dùng được đúng máy đó.

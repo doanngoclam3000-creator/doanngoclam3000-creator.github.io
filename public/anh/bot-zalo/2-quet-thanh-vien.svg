@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen2" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#eaf1ff"/><stop offset="100%" stop-color="#dbe6ff"/>
+  </linearGradient>
+  <filter id="bong2" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#123a7a" flood-opacity="0.20"/>
+  </filter>
+</defs>
+<rect width="1200" height="760" fill="url(#nen2)"/>
+<g>
+  <circle cx="96" cy="104" r="34" fill="#2b7cff"/>
+  <text x="96" y="115" font-size="30" font-weight="700" fill="#ffffff" text-anchor="middle">👥</text>
+  <text x="152" y="116" font-size="33" font-weight="700" fill="#12294d">Quét đủ thành viên nhóm</text>
+  <text x="56" y="186" font-size="20.5" fill="#3f5170"><tspan>Dán link nhóm, bấm một nút là ra </tspan><tspan font-weight="700" fill="#12294d">danh sách kèm tên và ảnh</tspan><tspan>.</tspan></text>
+  <text x="56" y="223" font-size="20.5" fill="#3f5170">Kể cả cộng đồng lớn nghìn người — lấy đủ, không bị chặn ở vài người.</text>
+</g>
+<g filter="url(#bong2)">
+  <rect x="56" y="280" width="1088" height="420" rx="22" fill="#ffffff"/>
+</g>
+<!-- thanh cong cu -->
+<rect x="56" y="280" width="1088" height="64" rx="22" fill="#f3f7ff"/>
+<rect x="56" y="320" width="1088" height="24" fill="#f3f7ff"/>
+<rect x="88" y="298" width="470" height="30" rx="8" fill="#ffffff" stroke="#cdddf7"/>
+<text x="104" y="318" font-size="14" fill="#8493ab">https://zalo.me/g/nhom-ban-si-quang-chau</text>
+<rect x="574" y="296" width="150" height="34" rx="9" fill="#2b7cff"/>
+<text x="649" y="318" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Quét ngay</text>
+<text x="1000" y="318" font-size="15" font-weight="700" fill="#12b76a">1.284 người</text>
+<!-- luoi thanh vien -->
+<g>
+  <!-- tao 4 hang x 6 cot the nguoi -->
+  <g font-size="12.5">
+    <!-- row generator done inline -->
+    <g transform="translate(88,368)">
+      <g><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#8fbaff"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">H</text><text x="58" y="31" font-weight="700" fill="#12294d">Hương Nguyễn</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    </g>
+    <g transform="translate(258,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#ffb38f"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">T</text><text x="58" y="31" font-weight="700" fill="#12294d">Trang Lê</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    <g transform="translate(428,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#9f8fff"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">M</text><text x="58" y="31" font-weight="700" fill="#12294d">Minh Trần</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    <g transform="translate(598,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#8fe0c0"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">D</text><text x="58" y="31" font-weight="700" fill="#12294d">Dũng Phạm</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    <g transform="translate(768,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#ff9fbf"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">L</text><text x="58" y="31" font-weight="700" fill="#12294d">Lan Anh</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    <g transform="translate(938,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#8fbaff"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">Q</text><text x="58" y="31" font-weight="700" fill="#12294d">Quân Đỗ</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+  </g>
+  <g transform="translate(0,82)" font-size="12.5">
+    <g transform="translate(88,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#ffcf8f"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">N</text><text x="58" y="31" font-weight="700" fill="#12294d">Ngọc Bùi</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    <g transform="translate(258,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#8fd0ff"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">V</text><text x="58" y="31" font-weight="700" fill="#12294d">Vy Hoàng</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    <g transform="translate(428,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#c68fff"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">P</text><text x="58" y="31" font-weight="700" fill="#12294d">Phúc Vũ</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    <g transform="translate(598,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#8fe0a0"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">T</text><text x="58" y="31" font-weight="700" fill="#12294d">Tú Mai</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    <g transform="translate(768,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#ffa8a8"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">K</text><text x="58" y="31" font-weight="700" fill="#12294d">Khánh Ly</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+    <g transform="translate(938,368)"><rect width="160" height="70" rx="12" fill="#fafcff" stroke="#e2ebfb"/><circle cx="30" cy="35" r="18" fill="#8fbaff"/><text x="30" y="40" font-size="15" fill="#fff" text-anchor="middle" font-weight="700">S</text><text x="58" y="31" font-weight="700" fill="#12294d">Sơn Hà</text><text x="58" y="50" fill="#6b7a92">Đã chọn ✓</text></g>
+  </g>
+</g>
+<rect x="88" y="612" width="1024" height="54" rx="13" fill="#2b7cff"/>
+<text x="600" y="646" font-size="17" font-weight="700" fill="#ffffff" text-anchor="middle">Kết bạn &amp; nhắn tin cho 1.284 người đã chọn</text>
+</svg>

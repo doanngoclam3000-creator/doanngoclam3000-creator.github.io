@@ -1,20 +1,20 @@
 ---
 ten: "Phần Mềm Order"
 moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tính tiền theo tỉ giá lẻ/sỉ, quản lý kho TQ, công nợ và báo cáo."
-nenTang: ["iOS", "macOS", "Windows", "Android"]
-phienBan: "2.7"
+nenTang: ["iOS", "macOS", "Windows"]
+phienBan: "2.8"
 banToiThieu: "2.7"
-ngayCapNhat: 2026-08-21
-ghiChuCapNhat: "- Bản Windows đổi sang file nén .zip: giải nén ra chạy luôn, không phải cài đặt\n- Bản Windows và Android tự đọc được hành trình vận đơn\n- Đăng nhập 1688 một lần ngay trong phần mềm, sau đó tự lấy hành trình về\n- Dịch sẵn những câu hay gặp của hãng chuyển phát sang tiếng Việt\n- Tự điền tình trạng kiện và kéo hàng sang bước Về kho TQ khi đã ký nhận"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.0-Windows.zip"
-linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.0.apk"
+ngayCapNhat: 2026-08-25
+ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com
+- Đóng dấu bản quyền, chống sao chép phần mềm"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.8/PhanMemOrder-2.8.dmg"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.8/PhanMemOrder-2.8.0-Windows.zip"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"
 icon: "🧾"
 mauNen: "#f59e0b"
 noiBat: true
-thuTu: 5
+thuTu: 4
 ---
 
 ## Giới thiệu
@@ -39,6 +39,12 @@ thuTu: 5
 
 ![Dán link 1688 là ra đơn](/anh/phan-mem-order/2-tao-don-dan-link.svg)
 
+![Chốt giá cho từng mã hàng](/anh/phan-mem-order/3-chot-gia.svg)
+
+![Copy báo giá gửi thẳng khách](/anh/phan-mem-order/4-copy-bao-gia.svg)
+
+![Công nợ và báo cáo](/anh/phan-mem-order/5-cong-no-bao-cao.svg)
+
 ![Kho Trung Quốc và tra kiện hàng](/anh/phan-mem-order/6-kho-tq-van-don.svg)
 
 ## Yêu cầu hệ thống
@@ -48,6 +54,5 @@ thuTu: 5
 | iPhone / iPad | iOS 17 trở lên |
 | Mac | macOS 14 trở lên |
 | Windows | Windows 10 trở lên (64-bit) — tải file nén, giải nén ra chạy luôn |
-| Android | Android 6.0 trở lên |
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
