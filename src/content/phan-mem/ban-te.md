@@ -8,7 +8,7 @@ ngayCapNhat: 2026-08-25
 ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com
 - Đóng dấu bản quyền, chống sao chép phần mềm"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-1.9/BanTe-Windows-1.9.0.zip"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-1.9/BanTe-1.9-build29.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-mac-1.8/BanTe-1.8-build28.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
 dungLuong: "khoảng 110 MB (Windows) · 3 MB (Mac)"
 anhIcon: "/icon/ban-te.png"

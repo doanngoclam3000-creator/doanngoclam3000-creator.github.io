@@ -7,7 +7,7 @@ banToiThieu: "2.6"
 ngayCapNhat: 2026-08-25
 ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com
 - Đóng dấu bản quyền, chống sao chép phần mềm"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.8/PhanMemOrder-2.8.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.8/PhanMemOrder-2.8.0-Windows.zip"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"

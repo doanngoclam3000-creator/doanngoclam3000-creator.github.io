@@ -5,7 +5,7 @@ nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "2.1"
 ngayCapNhat: 2026-08-25
 ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Bản Mac và iPhone lên 2.1"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.1/HocTiengTrung-2.1.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-mac-2.0/HocTiengTrung-2.0.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-windows-0.3/HocTiengTrung-0.3.0-Windows.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
