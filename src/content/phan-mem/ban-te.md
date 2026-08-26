@@ -3,7 +3,7 @@ ten: "Phần Mềm Quản Lý Kho Tệ"
 moTa: "Quản lý kho nhân dân tệ: theo dõi số tệ còn lại, ghi sổ từng lần mua bán, tự tính tiền Việt và lợi nhuận. Dùng được trên máy tính lẫn iPhone."
 nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "1.9"
-banToiThieu: "1.9"
+banToiThieu: "1.8"
 ngayCapNhat: 2026-08-25
 ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com
 - Đóng dấu bản quyền, chống sao chép phần mềm"

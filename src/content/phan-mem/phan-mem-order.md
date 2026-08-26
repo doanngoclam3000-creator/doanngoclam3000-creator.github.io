@@ -3,7 +3,7 @@ ten: "Phần Mềm Order"
 moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tính tiền theo tỉ giá lẻ/sỉ, quản lý kho TQ, công nợ và báo cáo."
 nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "2.8"
-banToiThieu: "2.7"
+banToiThieu: "2.6"
 ngayCapNhat: 2026-08-25
 ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com
 - Đóng dấu bản quyền, chống sao chép phần mềm"
