@@ -2,10 +2,11 @@
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
 nenTang: ["macOS", "Windows"]
-phienBan: "4.2"
-ngayCapNhat: 2026-08-25
+phienBan: "5.0"
+ngayCapNhat: 2026-08-26
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-4.2/GiaLapViTri-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-4.2/GiaLapViTri-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.0/GiaLapViTri-Windows.zip"
+ghiChuCapNhat: "- Bản Windows 5.0: giao diện mới, chọn iOS/Android, chạm bản đồ là đổi vị trí ngay, key + QR tự mở khoá\n- Bản Mac 5.0 đang chờ công chứng"
 dungLuong: "132 MB (Mac) · 194 MB (Windows, file nén)"
 gia: "300.000đ / tháng"
 video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
