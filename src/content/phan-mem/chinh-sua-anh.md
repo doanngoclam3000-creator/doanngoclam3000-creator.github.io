@@ -3,7 +3,7 @@ ten: "Chỉnh Sửa Ảnh"
 moTa: "Bộ công cụ sửa ảnh gọn nhẹ: cắt xoay, xoá vật thể thừa, làm phẳng ảnh chụp giấy tờ, thêm chữ, ghép lớp."
 nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "1.7"
-banToiThieu: "1.6"
+banToiThieu: "1.7"
 ghiChuCapNhat: "- Bản Windows nay có icon riêng của phần mềm\n- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Đóng dấu bản quyền, chống sao chép phần mềm"
 ngayCapNhat: 2026-08-25
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.7/ChinhSuaAnh-1.7.dmg"
