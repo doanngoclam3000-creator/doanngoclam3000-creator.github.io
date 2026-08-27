@@ -5,11 +5,11 @@ nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "2.2"
 banToiThieu: "1.8"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Sửa lỗi mã QR chuyển khoản không hiện lên\n- Thêm mã QR mua/gia hạn ngay trong tab Tổng Số Tiền, đang còn hạn cũng gia hạn được\n- Chuyển khoản xong phần mềm tự cộng ngày, không phải gửi mã máy xin key"
+ghiChuCapNhat: "- Bản Windows gọn lại thành một file cài đặt, không còn phải giải nén cả thư mục\n- Sửa lỗi mã QR chuyển khoản không hiện lên\n- Thêm mã QR mua/gia hạn ngay trong tab Tổng Số Tiền, đang còn hạn cũng gia hạn được\n- Chuyển khoản xong phần mềm tự cộng ngày, không phải gửi mã máy xin key"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.2/BanTe-Windows-2.2.0.zip"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-mac-1.8/BanTe-1.8-build28.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
-dungLuong: "khoảng 110 MB (Windows) · 3 MB (Mac)"
+dungLuong: "khoảng 78 MB (Windows) · 3 MB (Mac)"
 anhIcon: "/icon/ban-te.png"
 icon: "💱"
 mauNen: "#059669"
@@ -50,12 +50,16 @@ Bản Mac và bản iPhone giữ sổ riêng trên từng máy. Khi hai bên l�
 
 ## Cài trên máy tính Windows
 
-Tải file `.zip` ở nút **Tải cho Windows**, giải nén ra một thư mục rồi chạy
-**Ban Te.exe** bên trong. Không phải cài đặt gì thêm.
+Tải file `.zip` ở nút **Tải cho Windows**, giải nén ra được **một file cài đặt duy
+nhất**. Bấm đúp vào file đó, phần mềm tự cài xong rồi mở lên luôn, đồng thời tạo sẵn
+biểu tượng ngoài màn hình nền và trong menu Start.
 
 Lần đầu chạy, Windows có thể báo *"Windows đã bảo vệ máy tính của bạn"* vì phần mềm
 chưa mua chứng chỉ ký số — bấm **Thông tin thêm** rồi **Vẫn chạy**. Những lần sau
 không hỏi lại nữa.
+
+> Bản mới cứ tải về cài đè lên bản cũ, không phải gỡ đi trước. Sổ sách và key bản
+> quyền nằm riêng ngoài phần mềm nên cài lại hay gỡ ra đều không mất.
 
 Khi có bản mới, phần mềm tự báo ngay trên máy và yêu cầu cập nhật trước khi dùng
 tiếp. Dữ liệu và key bản quyền giữ nguyên sau khi cập nhật.
