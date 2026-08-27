@@ -2,12 +2,12 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
 nenTang: ["macOS", "Windows"]
-phienBan: "1.1"
+phienBan: "1.2"
 banToiThieu: "1.0"
 ngayCapNhat: 2026-08-25
 ghiChuCapNhat: "- Bản Windows đổi sang file nén .zip: giải nén ra chạy luôn\n- Icon phần mềm hiện đúng trên máy tính\n- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Dùng thử miễn phí tăng lên 10 ngày"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.0/BotWeChat-1.0.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.1/BotWeChat-1.1-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.2/BotWeChat-1.2-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 2 MB (Mac) · 58 MB (Windows, file nén)"
 anhIcon: "/icon/bot-wechat.png"
