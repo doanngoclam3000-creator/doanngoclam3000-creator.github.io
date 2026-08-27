@@ -2,11 +2,11 @@
 ten: "Phần Mềm Quản Lý Kho Tệ"
 moTa: "Quản lý kho nhân dân tệ: theo dõi số tệ còn lại, ghi sổ từng lần mua bán, tự tính tiền Việt và lợi nhuận. Dùng được trên máy tính lẫn iPhone."
 nenTang: ["Windows", "macOS", "iOS"]
-phienBan: "2.2"
+phienBan: "2.3"
 banToiThieu: "1.8"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Bản Windows gọn lại thành một file cài đặt, không còn phải giải nén cả thư mục\n- Sửa lỗi mã QR chuyển khoản không hiện lên\n- Thêm mã QR mua/gia hạn ngay trong tab Tổng Số Tiền, đang còn hạn cũng gia hạn được\n- Chuyển khoản xong phần mềm tự cộng ngày, không phải gửi mã máy xin key"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.2/BanTe-Windows-2.2.0.zip"
+ghiChuCapNhat: "- Bản Windows làm lại giao diện theo đúng bản iPhone, nhìn thoáng và dễ bấm hơn\n- Bản Windows có thêm Tệ Bán Chéo và Tiền Chuyển Ra / Chuyển Vào\n- Tab Số Dư NH hiện logo ngân hàng\n- Bản Windows gọn lại thành một file cài đặt, không còn phải giải nén cả thư mục\n- Sửa lỗi mã QR chuyển khoản không hiện lên\n- Thêm mã QR mua/gia hạn ngay trong tab Tổng Số Tiền, đang còn hạn cũng gia hạn được\n- Chuyển khoản xong phần mềm tự cộng ngày, không phải gửi mã máy xin key"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.3/BanTe-Windows-2.3.0.zip"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-mac-1.8/BanTe-1.8-build28.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
 dungLuong: "khoảng 78 MB (Windows) · 3 MB (Mac)"
