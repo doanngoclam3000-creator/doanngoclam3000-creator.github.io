@@ -2,12 +2,12 @@
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.0"
-ngayCapNhat: 2026-08-26
+phienBan: "5.1"
+ngayCapNhat: 2026-08-27
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-4.2/GiaLapViTri-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.0/GiaLapViTri-Windows.zip"
-ghiChuCapNhat: "- Bản Windows 5.0: giao diện mới, chọn iOS/Android, chạm bản đồ là đổi vị trí ngay, key + QR tự mở khoá\n- Bản Mac 5.0 đang chờ công chứng"
-dungLuong: "132 MB (Mac) · 194 MB (Windows, file nén)"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.1/GiaLapViTri-5.1-Windows.zip"
+ghiChuCapNhat: "- Bản Windows 5.1: sửa lỗi giải nén ra tên file bị vỡ nên bấm không chạy được\n- Máy chưa cài driver Apple thì phần mềm nói rõ và chỉ chỗ cài, thay vì chỉ báo chung chung \"chưa thấy máy\"\n- Thêm hướng dẫn có hình ngay trong phần mềm\n- Chấm vị trí trên bản đồ nhấp nháy như bản Mac, thêm ô tìm địa chỉ\n- Bản Mac 5.0 đang chờ công chứng"
+dungLuong: "132 MB (Mac) · 189 MB (Windows, file nén)"
 gia: "300.000đ / tháng"
 video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
 anhIcon: "/icon/gia-lap-vi-tri.png"
@@ -47,12 +47,12 @@ Từ bản 4.0, phần mềm điều khiển được **cả iPhone lẫn máy A
 | Thiết bị | Yêu cầu |
 | --- | --- |
 | Máy tính Mac | macOS 12 Monterey trở lên |
-| Máy tính Windows | Windows 10 hoặc 11, 64-bit |
+| Máy tính Windows | Windows 10 hoặc 11, 64-bit — có cài app **Apple Devices** |
 | iPhone | iOS 16 trở lên, đã bật Chế độ nhà phát triển |
 | Máy Android | Android 7 trở lên, đã bật Gỡ lỗi USB |
 | Kết nối | Cáp truyền dữ liệu (cáp chỉ sạc sẽ không nhận máy) |
 
-Bản Windows đã kèm sẵn trình điều khiển của Apple, không phải cài thêm gì.
+Trên Windows phải cài sẵn app **Apple Devices** (tải miễn phí ở Microsoft Store) thì máy tính mới đọc được iPhone qua cáp. Cài xong mở nó lên một lần rồi hãy mở Giả Lập Vị Trí. Nếu quên, phần mềm sẽ tự nhắc và có nút mở thẳng trang cài.
 
 ## Giá
 

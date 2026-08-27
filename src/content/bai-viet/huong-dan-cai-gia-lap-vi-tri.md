@@ -18,11 +18,17 @@ Làm theo đúng thứ tự dưới đây là dùng được. Cả hai hệ đi�
 
 ## A. Nếu bạn dùng Windows
 
-### 1. Chạy file cài đặt
-Chạy file `GiaLapViTri-Windows.exe`. Windows có thể hiện một bảng cảnh báo màu xanh — bấm **More info**, rồi bấm **Run anyway**.
+### 1. Cài app Apple Devices trước
+Đây là bước hay bị bỏ qua nhất, và bỏ qua là phần mềm **không nhìn thấy iPhone** dù cắm cáp thế nào.
 
-### 2. Cài Apple Devices nếu máy hỏi
-Trong lúc cài, nếu máy hỏi có cài **Apple Devices** không thì bấm **Yes**. Cài xong hãy **khởi động lại máy tính**.
+Windows không tự biết đọc iPhone. Phải có app **Apple Devices** của chính Apple (miễn phí, tải ở Microsoft Store — hoặc cài iTunes tải từ apple.com, đừng dùng bản iTunes cũ trên Microsoft Store). Cài xong **mở app đó lên một lần** để Windows nạp trình điều khiển, rồi hãy sang bước sau.
+
+### 2. Giải nén và chạy
+Giải nén file `GiaLapViTri-5.1-Windows.zip`, mở thư mục vừa giải nén ra rồi chạy `GiaLapViTri.exe`.
+
+Windows có thể hiện một bảng cảnh báo màu xanh — bấm **More info**, rồi bấm **Run anyway**. Phần mềm chưa mua chữ ký số của Microsoft nên lần đầu nào cũng bị hỏi như vậy.
+
+> Giải nén xong hãy để nguyên cả thư mục, đừng lôi riêng file `GiaLapViTri.exe` ra chỗ khác — phần mềm cần các file nằm cạnh nó.
 
 ### 3. Chuẩn bị iPhone
 - Cắm cáp iPhone vào máy tính, trên iPhone bấm **Tin cậy máy tính này**.
@@ -31,6 +37,14 @@ Trong lúc cài, nếu máy hỏi có cài **Apple Devices** không thì bấm *
 
 ### 4. Kích hoạt
 Mở phần mềm, quét mã QR hiện trong đó để thanh toán. Vài giây sau phần mềm tự kích hoạt và dùng được ngay.
+
+### Nếu phần mềm báo "Chưa thấy thiết bị nào"
+
+Từ bản 5.1, phần mềm tự dò xem thiếu gì và hiện luôn cách sửa. Ba nguyên nhân theo thứ tự hay gặp:
+
+1. **Chưa cài Apple Devices** — quay lại bước 1. Phần mềm sẽ hiện một khung màu cam kèm nút mở thẳng trang cài.
+2. **Cáp chỉ sạc được, không truyền được dữ liệu** — cáp rẻ tiền thường chỉ có hai dây điện. Đổi sang cáp đi kèm máy, và cắm thẳng vào máy tính chứ đừng qua bộ chia (hub).
+3. **iPhone chưa bấm Tin cậy** — mở khoá màn hình iPhone, bảng "Tin cậy máy tính này?" sẽ hiện lên, bấm **Tin cậy** rồi nhập mật mã.
 
 ---
 
