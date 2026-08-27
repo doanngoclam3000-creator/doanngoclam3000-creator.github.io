@@ -3,8 +3,8 @@ ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "2.1"
-ngayCapNhat: 2026-08-25
-ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Bản Mac và iPhone lên 2.1"
+ngayCapNhat: 2026-08-28
+ghiChuCapNhat: "- Bản Windows: thêm mã QR chuyển khoản ngay trong phần mềm — chuyển xong TỰ mở khoá, không phải gửi mã máy chờ key\n- Bản Windows: giao diện dựng lại theo bản iPhone, có lộ trình HSK và vòng tiến độ từng cấp\n- Bản Windows: dùng thử 10 ngày như bản Mac"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-mac-2.0/HocTiengTrung-2.0.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
 linkTaiWin: "https://phanmemtq.com/tai/HocTiengTrung-2.2.0-Windows.zip"
@@ -60,10 +60,13 @@ Tải file `.dmg` về, mở ra rồi kéo **Học Tiếng Trung** vào thư m�
 Phần mềm được ký bằng chứng chỉ nhà phát triển Apple mang tên **LAM DOAN NGOC** —
 mở phần mềm ra anh chị có thể tự kiểm chứng tên này.
 
-## Bản Windows (2.2 — đang thử nghiệm)
+## Bản Windows (2.2)
 
 Bản cho máy tính Windows. Tải về được một
 file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-2.2.0-Setup.exe` để cài.
+
+Giao diện dựng lại theo bản iPhone: lộ trình HSK 1–6 trên nền tranh thuỷ mặc,
+mỗi cấp có vòng tiến độ riêng, bấm vào cấp nào là học ngay cấp đó.
 
 Đã có: từ điển 10.908 từ nằm sẵn trong máy, lộ trình HSK, tra từ, nghe phát âm,
 tập viết chữ Hán chấm từng nét (viết bằng chuột), **bài tập trắc nghiệm** và
@@ -73,6 +76,11 @@ toán FSRS-5, từ nào trả lời sai sẽ được hỏi lại sớm hơn.
 **Chưa có:** chấm điểm phát âm, chấm thanh điệu, hội thoại AI. Riêng phần chấm
 phát âm thì Windows không làm được — công nghệ dựng bản Windows không có nhận
 diện giọng nói; muốn chấm phát âm thì dùng bản iPhone hoặc Mac.
+
+**Dùng thử 10 ngày**, sau đó cần key bản quyền. Mua ngay trong phần mềm: chọn
+gói, quét mã QR bằng app ngân hàng, chuyển khoản xong phần mềm **tự mở khoá** —
+không phải gửi mã máy rồi ngồi chờ key. Ai muốn nhắn shop lấy key tay thì vẫn
+có ô dán key như cũ.
 
 > **Phần nghe phát âm trên Windows cần máy có sẵn giọng đọc tiếng Trung.** Máy nào
 > chưa cài thì vào *Settings → Time & Language → Speech* thêm gói tiếng Trung
