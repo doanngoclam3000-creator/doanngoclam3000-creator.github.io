@@ -18,24 +18,26 @@ Làm theo đúng thứ tự dưới đây là dùng được. Cả hai hệ đi�
 
 ## A. Nếu bạn dùng Windows
 
-### 1. Cài app Apple Devices trước
-Đây là bước hay bị bỏ qua nhất, và bỏ qua là phần mềm **không nhìn thấy iPhone** dù cắm cáp thế nào.
+### 1. Giải nén
+Bấm **chuột phải** vào file `.zip` vừa tải về → **Extract All...** → **Extract**. Đợi giải nén xong hẳn.
 
-Windows không tự biết đọc iPhone. Phải có app **Apple Devices** của chính Apple (miễn phí, tải ở Microsoft Store — hoặc cài iTunes tải từ apple.com, đừng dùng bản iTunes cũ trên Microsoft Store). Cài xong **mở app đó lên một lần** để Windows nạp trình điều khiển, rồi hãy sang bước sau.
+Bên trong chỉ có **một file duy nhất**: `GiaLapViTri-Setup.exe`, kèm tờ hướng dẫn.
 
-### 2. Giải nén
-Bấm **chuột phải** vào file `.zip` vừa tải về → **Extract All...** → **Extract**. Máy nào có sẵn **7-Zip** hoặc **WinRAR** thì nên giải nén bằng hai phần mềm đó — cửa sổ nén sẵn của Windows đôi khi bỏ sót tệp mà không báo, thiếu tệp là phần mềm không dò được iPhone.
+> Đừng bấm chạy khi còn đang xem bên trong file .zip — phải giải nén ra đã.
 
-**Đợi giải nén xong hẳn** rồi mới sang bước sau. Bên trong có một thư mục tên `GiaLapViTri`.
-
-> Đừng mở file .zip lên rồi kéo ruột nó ra ngoài, cũng đừng bấm chạy khi còn đang xem bên trong file .zip.
-
-### 3. Chạy phần mềm
-Mở thư mục `GiaLapViTri`, bấm đúp vào `GiaLapViTri.exe`.
+### 2. Cài phần mềm
+Bấm đúp vào `GiaLapViTri-Setup.exe`.
 
 Windows sẽ hiện một bảng cảnh báo màu xanh — bấm **More info**, rồi bấm **Run anyway**. Phần mềm chưa mua chữ ký số của Microsoft nên lần đầu nào cũng bị hỏi như vậy.
 
-> **Để nguyên cả thư mục.** Đừng tách riêng file `GiaLapViTri.exe` ra Desktop hay chỗ khác — nó cần mấy chục file nằm cùng thư mục. Tách ra sẽ báo lỗi *"The code execution cannot proceed because ffmpeg.dll was not found"*. Muốn để ngoài Desktop cho tiện thì kéo **cả thư mục** ra, hoặc chuột phải vào file .exe chọn **Send to → Desktop (create shortcut)**.
+Phần mềm tự cài rồi tự mở. Từ lần sau chỉ cần bấm biểu tượng **Gia Lap Vi Tri** ngoài màn hình Desktop — không cần giữ lại file .zip hay file Setup nữa.
+
+> Bản cũ (giải nén ra cả một thư mục) thì xoá thư mục đó đi cho gọn. Key bản quyền đã nhập vẫn còn nguyên, không phải nhập lại.
+
+### 3. Cài driver Apple (chỉ khi dùng iPhone)
+Windows không tự biết đọc iPhone, phải có driver của Apple. **Driver đã nằm sẵn trong phần mềm**: mở phần mềm, chọn **iOS**, chỗ báo *"Máy tính chưa có driver Apple"* thì bấm nút **Cài driver Apple ngay**. Windows hỏi quyền quản trị thì bấm **Yes**, đợi một hai phút là xong — không phải đi tải iTunes 200 MB nữa.
+
+Máy nào không hiện nút đó thì cài tay app **Apple Devices** ở Microsoft Store (hoặc iTunes tải từ apple.com, đừng dùng bản iTunes cũ trên Microsoft Store), rồi mở lên một lần.
 
 ### 4. Chuẩn bị iPhone
 - Cắm cáp iPhone vào máy tính rồi **mở khoá màn hình**, iPhone sẽ hỏi một trong hai bảng:
