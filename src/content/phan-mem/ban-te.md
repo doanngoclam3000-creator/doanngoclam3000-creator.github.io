@@ -2,11 +2,11 @@
 ten: "Phần Mềm Quản Lý Kho Tệ"
 moTa: "Quản lý kho nhân dân tệ: theo dõi số tệ còn lại, ghi sổ từng lần mua bán, tự tính tiền Việt và lợi nhuận. Dùng được trên máy tính lẫn iPhone."
 nenTang: ["Windows", "macOS", "iOS"]
-phienBan: "1.12"
+phienBan: "2.2"
 banToiThieu: "1.8"
-ngayCapNhat: 2026-08-27
-ghiChuCapNhat: "- Thêm mã QR chuyển khoản ngay trong phần mềm\n- Chuyển khoản xong phần mềm TỰ mở khoá và cộng ngày, không phải nhắn shop xin key"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-1.12/BanTe-Windows-1.12.0.zip"
+ngayCapNhat: 2026-08-28
+ghiChuCapNhat: "- Sửa lỗi mã QR chuyển khoản không hiện lên\n- Thêm mã QR mua/gia hạn ngay trong tab Tổng Số Tiền, đang còn hạn cũng gia hạn được\n- Chuyển khoản xong phần mềm tự cộng ngày, không phải gửi mã máy xin key"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.2/BanTe-Windows-2.2.0.zip"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-mac-1.8/BanTe-1.8-build28.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
 dungLuong: "khoảng 110 MB (Windows) · 3 MB (Mac)"
@@ -59,6 +59,24 @@ không hỏi lại nữa.
 
 Khi có bản mới, phần mềm tự báo ngay trên máy và yêu cầu cập nhật trước khi dùng
 tiếp. Dữ liệu và key bản quyền giữ nguyên sau khi cập nhật.
+
+## Mua và gia hạn bản quyền
+
+Phần mềm cho dùng thử miễn phí trước, hết hạn thì mua tiếp ngay trong phần mềm —
+**không phải nhắn tin xin key**:
+
+1. Máy tính Windows: vào tab **Tổng Số Tiền**, kéo xuống mục **Bản quyền**.
+   Trên Mac: bấm vào huy hiệu **"Còn … ngày · Gia hạn"** ở góc dưới bên phải.
+   Máy đã hết hạn thì mã hiện thẳng ngay màn hình khoá.
+2. Chọn gói (1 tháng / 3 tháng / 6 tháng / 1 năm) rồi **quét mã QR** bằng app ngân hàng.
+   Số tiền và nội dung chuyển khoản đã điền sẵn trong mã, không phải gõ tay.
+3. Chuyển khoản xong ngồi yên vài giây, phần mềm tự nhận tiền và **tự cộng ngày**.
+
+Chuyển thiếu tiền thì chưa mở khoá được nhưng tiền không mất — chuyển bù cho đủ là
+mở ngay. Chuyển dư cũng được giữ lại để trừ vào lần gia hạn sau.
+
+> Mỗi máy một mã riêng, nên dùng cả máy tính lẫn Mac thì mỗi máy mua một lần.
+> Ghi sai nội dung chuyển khoản thì nhắn shop, shop cấp key nhập tay được.
 
 ## Chuyển sổ giữa máy tính và iPhone
 
