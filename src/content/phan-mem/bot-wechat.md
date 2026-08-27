@@ -1,15 +1,14 @@
 ---
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
-nenTang: ["macOS", "Windows"]
-phienBan: "1.5"
+nenTang: ["macOS"]
+phienBan: "1.4"
 banToiThieu: "1.0"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Bản Windows: sửa lỗi ô đen sì sau các công tắc và các thẻ bên phải trống trơn\n- Bản Windows: cửa sổ mở ra rộng hơn cho vừa nội dung, nút bánh răng ⚙ gom Bản quyền và Dò giao diện\n- Bản Windows đã có đủ: kèm bán sản phẩm, chỉ trả lời ngoài giờ, không trả lời chữ Trung Quốc, ô tìm tên khách, sổ giao dịch, ChatGPT\n- Số phiên bản hiện ngay trên cửa sổ để biết mình đang chạy bản nào"
+ghiChuCapNhat: "- Thêm phần BÁN NHÂN DÂN TỆ: đặt bảng giá theo từng hình thức, AI báo giá, khách chốt là tự dựng đơn\n- Bảng tính tệ trong phần mềm và ngay trong khung chat: gõ 4v2+23499 ali TQ là ra tiền Việt\n- Tự đọc số tiền trên ảnh bill khách gửi, cộng dồn nhiều lần chuyển, đủ tiền thì cảm ơn khách\n- Nhắc khách chuyển khoản khi chốt đơn đã lâu mà chưa thấy tiền\n- Bot trả lời nhanh hơn khoảng hai lần và không còn bỏ sót khách tên một chữ\n- Phần mềm nay chỉ còn bản cho máy Mac"
 linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.4.dmg"
-linkTaiWin: "https://phanmemtq.com/tai/BotWeChat-1.5-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
-dungLuong: "khoảng 3 MB (Mac) · 58 MB (Windows, file nén)"
+dungLuong: "khoảng 3 MB"
 anhIcon: "/icon/bot-wechat.png"
 icon: "🤖"
 mauNen: "#0ea5e9"
@@ -97,7 +96,6 @@ Hai phần còn lại — hẹn giờ nhắn nhóm và nhắn tin hàng loạt �
 | Thiết bị | Yêu cầu |
 | --- | --- |
 | Mac | macOS 14 trở lên. Phải cấp quyền Trợ năng cho phần mềm. |
-| Máy tính Windows | Windows 10 trở lên, loại 64-bit |
 | WeChat | Đã cài và đăng nhập sẵn trên máy |
 
 ## Cài trên Mac
@@ -113,17 +111,6 @@ Lần đầu chạy, phần mềm sẽ xin **quyền Trợ năng** — đây là
 bot không đọc và không gõ được vào WeChat. Vào *Cài đặt hệ thống → Quyền riêng tư & Bảo mật
 → Trợ năng*, bật công tắc cho **Bot WeChat**. Phần mềm tự nhận ra khi được cấp quyền, không
 phải khởi động lại.
-
-## Cài trên máy tính Windows
-
-Chỉ có một file `BotWeChat.exe`. Chép vào đâu cũng chạy — **không phải cài .NET hay bất cứ
-thứ gì khác**.
-
-Lần đầu chạy, Windows có thể báo *"Windows đã bảo vệ máy tính của bạn"* vì phần mềm chưa mua
-chứng chỉ ký số — bấm **Thông tin thêm** rồi **Vẫn chạy**. Những lần sau không hỏi lại.
-
-Nếu bot không điều khiển được WeChat, bấm chuột phải vào file rồi chọn **Run as administrator**:
-WeChat chạy quyền cao hơn thì phần mềm phải chạy quyền ngang bằng mới ra lệnh được.
 
 ## Giá và dùng thử
 
