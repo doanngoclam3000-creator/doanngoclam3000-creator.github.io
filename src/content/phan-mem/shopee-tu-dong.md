@@ -2,14 +2,14 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.3.0"
+phienBan: "5.3.1"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-27
 ghiChuCapNhat: "- Tự cấp key khi khách chuyển khoản qua SePay\n- Bảo vệ mã nguồn bằng bytecode\n- Đăng, chép sản phẩm sang shop khác; tính giá bán trừ phí Shopee"
-linkTaiMac: "https://phanmemtq.com/tai/ShopeeTuDong-5.3.0-macOS.dmg"
-linkTaiWin: "https://phanmemtq.com/tai/ShopeeTuDong-5.3.0-Windows.zip"
+linkTaiMac: "https://phanmemtq.com/tai/ShopeeTuDong-5.3.1-macOS.dmg"
+linkTaiWin: "https://phanmemtq.com/tai/ShopeeTuDong-5.3.1.exe"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
-dungLuong: "khoảng 90 MB (Mac) · 31 MB (Windows)"
+dungLuong: "khoảng 86 MB (Mac .dmg) · 55 MB (Windows .exe — một file, bấm là chạy)"
 anhIcon: "/icon/shopee-tu-dong.png"
 icon: "🛒"
 mauNen: "#ee4d2d"

@@ -2,14 +2,14 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
 nenTang: ["macOS", "Windows"]
-phienBan: "1.2"
+phienBan: "1.3"
 banToiThieu: "1.0"
-ngayCapNhat: 2026-08-25
-ghiChuCapNhat: "- Bản Windows đổi sang file nén .zip: giải nén ra chạy luôn\n- Icon phần mềm hiện đúng trên máy tính\n- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Dùng thử miễn phí tăng lên 10 ngày"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.0/BotWeChat-1.0.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.2/BotWeChat-1.2-Windows.zip"
+ngayCapNhat: 2026-08-27
+ghiChuCapNhat: "- Thêm phần BÁN NHÂN DÂN TỆ: đặt bảng giá theo từng hình thức, AI báo giá cho khách, khách chốt là tự dựng đơn\n- Bảng tính tệ ngay trong phần mềm và ngay trong khung chat: gõ 4v2+23499 ali TQ là ra tiền Việt\n- Nhắc khách chuyển khoản khi chốt đơn đã lâu mà chưa thấy tiền\n- Riêng bản Mac: tự đọc số tiền trên ảnh bill khách gửi, cộng dồn nhiều lần chuyển, đủ tiền thì cảm ơn khách\n- Bot trả lời nhanh hơn khoảng hai lần và không còn bỏ sót khách tên một chữ"
+linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.3.dmg"
+linkTaiWin: "https://phanmemtq.com/tai/BotWeChat-1.3-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
-dungLuong: "khoảng 2 MB (Mac) · 58 MB (Windows, file nén)"
+dungLuong: "khoảng 3 MB (Mac) · 58 MB (Windows, file nén)"
 anhIcon: "/icon/bot-wechat.png"
 icon: "🤖"
 mauNen: "#0ea5e9"
@@ -38,6 +38,24 @@ khách quan trọng, bot lo phần còn lại — không tranh chuột, không t
   đúng một tin. Gõ `{ten}` ở chỗ muốn chèn tên người nhận.
 - **Đăng bài lên Bảng tin.** Chọn ảnh, viết nội dung, đặt giờ. Đặt bao nhiêu bài cũng được,
   mỗi bài một khung giờ riêng — sáng một bài, trưa một bài, tối một bài.
+
+### Dành riêng cho nghề đổi tệ
+
+Bật **Kèm bán nhân dân tệ** là bot biết luôn bảng giá của bạn:
+
+- **Mỗi hình thức một giá.** Alipay Trung Quốc, Alipay Việt Nam, WeChat, thẻ ngân hàng,
+  thanh toán hộ — bạn đặt giá riêng cho từng loại, AI hỏi khách trả bằng hình thức nào
+  rồi báo đúng giá đó. Không bao giờ tự giảm giá, không tự bịa.
+- **Khách chốt là có đơn.** AI nhận ra lúc khách đồng ý, tự dựng một đơn nháp vào sổ
+  Bán tệ. Bạn chuyển tệ xong thì bấm xác nhận, lúc đó đơn mới vào sổ và cộng vào lãi.
+- **Bảng tính tệ.** Gõ `4v2+23499 ali TQ` là ra ngay `65.499 × 3.895 = 255.118.605đ`.
+  Dùng được cả trong phần mềm (mục **Bot tuỳ chỉnh**) lẫn gõ thẳng vào khung chat WeChat.
+  `v` là vạn: `2v` = 20.000, `2v3499` = 23.499, `4v2` = 42.000.
+- **Nhắc khách chuyển khoản.** Chốt đơn đã lâu mà chưa thấy tiền, bot tự nhắn nhắc một
+  câu lịch sự — bạn đặt sau bao nhiêu phút thì nhắc và nhắc tối đa mấy lần.
+- **Đọc bill khách gửi (bản Mac).** Khách gửi ảnh chuyển khoản, phần mềm đọc số tiền
+  ngay trên ảnh, cộng dồn nếu khách chuyển làm nhiều lần, còn thiếu thì báo thiếu bao
+  nhiêu, đủ rồi thì cảm ơn khách. Ảnh mã QR hay bill bằng tệ thì bỏ qua, không tính nhầm.
 
 Riêng bản Mac còn có **kết bạn hàng loạt** từ những nhóm bạn đang tham gia.
 
