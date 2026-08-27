@@ -2,13 +2,12 @@
 ten: "Phần Mềm Order"
 moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tính tiền theo tỉ giá lẻ/sỉ, quản lý kho TQ, công nợ và báo cáo."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.9"
+phienBan: "2.10"
 banToiThieu: "2.8"
-ngayCapNhat: 2026-08-25
-ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com
-- Đóng dấu bản quyền, chống sao chép phần mềm"
+ngayCapNhat: 2026-08-27
+ghiChuCapNhat: "- Nhận key số ngày tuỳ chỉnh\n- Neo bản quyền vào Registry: xoá thư mục dữ liệu cũng không nhập lại được key cũ\n- File nén bọc trong một thư mục, hết cảnh thiếu ffmpeg.dll"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.9/PhanMemOrder-2.9.0-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.10/PhanMemOrder-2.10.0-Windows.zip"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"
 icon: "🧾"

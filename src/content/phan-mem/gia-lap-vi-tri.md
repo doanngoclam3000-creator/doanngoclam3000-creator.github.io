@@ -2,11 +2,11 @@
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.4"
+phienBan: "5.5"
 ngayCapNhat: 2026-08-27
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-4.2/GiaLapViTri-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.4/GiaLapViTri-5.4-Windows.zip"
-ghiChuCapNhat: "- Nút “Bật dịch vụ Apple” nay xin quyền quản trị nên bật được thật\n- Nhắc bấm “Cho phép” ở bảng hỏi truy cập ảnh và video trên iPhone đời mới\n- Nhận được key số ngày tuỳ chỉnh cấp theo lối cũ\n- Sửa lỗi phần mềm không dò được iPhone dù đã cắm cáp\n- File nén bọc trong một thư mục, hết cảnh giải nén ra báo thiếu ffmpeg.dll\n- Không thấy máy Android thì nói rõ vướng ở đâu\n- Thêm hướng dẫn có hình ngay trong phần mềm, chấm vị trí nhấp nháy, ô tìm địa chỉ\n- Bản Mac 5.0 đang chờ công chứng"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.5/GiaLapViTri-5.5-Windows.zip"
+ghiChuCapNhat: "- Neo bản quyền vào Registry: xoá thư mục dữ liệu cũng không nhập lại được key cũ để cộng thêm ngày\n- Nút “Bật dịch vụ Apple” xin quyền quản trị nên bật được thật\n- Nhắc bấm “Cho phép” ở bảng hỏi truy cập ảnh và video trên iPhone đời mới\n- Nhận key số ngày tuỳ chỉnh cấp theo lối cũ\n- Sửa lỗi không dò được iPhone dù đã cắm cáp\n- File nén bọc trong một thư mục, hết cảnh thiếu ffmpeg.dll"
 dungLuong: "132 MB (Mac) · 195 MB (Windows, file nén)"
 gia: "300.000đ / tháng"
 video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
