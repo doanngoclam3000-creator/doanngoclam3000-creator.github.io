@@ -2,12 +2,12 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
 nenTang: ["macOS", "Windows"]
-phienBan: "1.4"
+phienBan: "1.5"
 banToiThieu: "1.0"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Bản Windows làm lại toàn bộ giao diện cho giống bản Mac: thẻ bo góc, công tắc gạt, ô tick xanh, thẻ chức năng có biểu tượng\n- Bản Windows thêm: kèm bán sản phẩm, chỉ trả lời ngoài giờ hành chính, không trả lời khách nhắn chữ Trung Quốc, ô tìm tên khách\n- Bản Windows thêm sổ giao dịch và chọn ChatGPT thay Gemini\n- Sửa lỗi bản Windows bắt chuyển khoản ngay dù chưa dùng thử ngày nào, và lỗi không mở lên được\n- Số phiên bản hiện ngay trên cửa sổ để biết mình đang chạy bản nào"
+ghiChuCapNhat: "- Bản Windows: sửa lỗi ô đen sì sau các công tắc và các thẻ bên phải trống trơn\n- Bản Windows: cửa sổ mở ra rộng hơn cho vừa nội dung, nút bánh răng ⚙ gom Bản quyền và Dò giao diện\n- Bản Windows đã có đủ: kèm bán sản phẩm, chỉ trả lời ngoài giờ, không trả lời chữ Trung Quốc, ô tìm tên khách, sổ giao dịch, ChatGPT\n- Số phiên bản hiện ngay trên cửa sổ để biết mình đang chạy bản nào"
 linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.4.dmg"
-linkTaiWin: "https://phanmemtq.com/tai/BotWeChat-1.4-Windows.zip"
+linkTaiWin: "https://phanmemtq.com/tai/BotWeChat-1.5-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 3 MB (Mac) · 58 MB (Windows, file nén)"
 anhIcon: "/icon/bot-wechat.png"
