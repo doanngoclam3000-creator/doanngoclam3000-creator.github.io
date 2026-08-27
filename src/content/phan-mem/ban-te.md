@@ -2,11 +2,11 @@
 ten: "Phần Mềm Quản Lý Kho Tệ"
 moTa: "Quản lý kho nhân dân tệ: theo dõi số tệ còn lại, ghi sổ từng lần mua bán, tự tính tiền Việt và lợi nhuận. Dùng được trên máy tính lẫn iPhone."
 nenTang: ["Windows", "macOS", "iOS"]
-phienBan: "1.11"
+phienBan: "1.12"
 banToiThieu: "1.8"
 ngayCapNhat: 2026-08-27
-ghiChuCapNhat: "- Neo bản quyền vào Registry: xoá thư mục dữ liệu cũng không nhập lại được key cũ\n- File nén bọc trong một thư mục, hết cảnh giải nén ra báo thiếu ffmpeg.dll"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-1.11/BanTe-Windows-1.11.0.zip"
+ghiChuCapNhat: "- Thêm mã QR chuyển khoản ngay trong phần mềm\n- Chuyển khoản xong phần mềm TỰ mở khoá và cộng ngày, không phải nhắn shop xin key"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-1.12/BanTe-Windows-1.12.0.zip"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-mac-1.8/BanTe-1.8-build28.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
 dungLuong: "khoảng 110 MB (Windows) · 3 MB (Mac)"
