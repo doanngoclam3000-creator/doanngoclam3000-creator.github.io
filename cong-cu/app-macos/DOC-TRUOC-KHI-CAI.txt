@@ -13,7 +13,7 @@ LAN MO DAU TIEN:
 YEU CAU:
   - macOS 12 tro len
   - Da cai Node.js (tai tai nodejs.org, chon ban LTS)
-  - Thu muc website nam o: ~/Documents/WebPhanMem
+  - Thu muc website nam o: ~/Desktop/phần mềm đang sửa/WebPhanMem
     (Neu de cho khac, phan mem se hoi de ban tu chon)
 
 CACH DUNG:
