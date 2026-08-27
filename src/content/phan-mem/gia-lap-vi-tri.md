@@ -2,12 +2,12 @@
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.6"
+phienBan: "5.7"
 ngayCapNhat: 2026-08-27
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-4.2/GiaLapViTri-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.6/GiaLapViTri-5.6-Windows.zip"
-ghiChuCapNhat: "- Bản đồ không hiện ở một số mạng: phần mềm tự đổi sang nguồn bản đồ khác, có thêm bản đồ Trung Quốc và ô chọn nguồn ngay trên bản đồ\n- Tìm địa chỉ có nguồn dự phòng khi mạng chặn, và dán thẳng toạ độ (23.129, 113.264) vào ô tìm cũng nhảy tới luôn\n- Sửa lỗi kéo bản đồ quá mép ra toạ độ sai (kinh độ 405)\n- Sửa lỗi không dò được iPhone, báo “No module named xml”, ở máy đã cài sẵn Python\n- Báo rõ khi bộ cài bị thiếu tệp do giải nén thiếu hoặc bị diệt virus dọn mất"
-dungLuong: "132 MB (Mac) · 195 MB (Windows, file nén)"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.7/GiaLapViTri-5.7-Windows.zip"
+ghiChuCapNhat: "- Bản Windows kèm sẵn driver Apple: bấm một nút trong phần mềm là cài xong, không phải đi tải iTunes nữa\n- Bản đồ không hiện ở một số mạng: phần mềm tự đổi sang nguồn bản đồ khác, có thêm bản đồ Trung Quốc và ô chọn nguồn ngay trên bản đồ\n- Tìm địa chỉ có nguồn dự phòng khi mạng chặn, và dán thẳng toạ độ (23.129, 113.264) vào ô tìm cũng nhảy tới luôn\n- Sửa lỗi kéo bản đồ quá mép ra toạ độ sai (kinh độ 405)\n- Sửa lỗi không dò được iPhone, báo “No module named xml”, ở máy đã cài sẵn Python\n- Báo rõ khi bộ cài bị thiếu tệp do giải nén thiếu hoặc bị diệt virus dọn mất"
+dungLuong: "132 MB (Mac) · 231 MB (Windows, file nén, đã kèm driver Apple)"
 gia: "300.000đ / tháng"
 video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
 anhIcon: "/icon/gia-lap-vi-tri.png"
