@@ -1,5 +1,5 @@
 ---
-tieuDe: "Giả Lập Vị Trí 5.2 cho Windows: nhận iPhone trở lại"
+tieuDe: "Giả Lập Vị Trí 5.3 cho Windows: nhận iPhone trở lại"
 moTa: "Bản 5.1 cắm cáp vào vẫn không dò ra iPhone vì bộ Python đi kèm thiếu một gói dành riêng cho Windows. Bản 5.2 sửa chuyện đó."
 ngayDang: 2026-08-27
 chuyenMuc: "cap-nhat"
@@ -8,7 +8,7 @@ tags: ["giả lập vị trí", "windows", "cập nhật"]
 noiBat: true
 ---
 
-Bản **5.2** phát hành cho Windows. Ai đang dùng 5.0 hoặc 5.1 đều nên tải bản này.
+Bản **5.3** phát hành cho Windows. Ai đang dùng bản 5.0, 5.1 hay 5.2 đều nên tải bản này.
 
 ## Sửa lỗi không dò được iPhone
 
@@ -47,6 +47,12 @@ Phần mềm tự kiểm tra máy tính rồi nói thẳng vấn đề:
 - iPhone chưa bấm Tin cậy, hoặc đang khoá màn hình → nói rõ từng trường hợp.
 
 Cắm cáp vào là phần mềm tự nhận, không phải bấm "Tìm lại" nữa.
+
+## Nhận lại các key cấp theo lối cũ
+
+Loại key mở khoá theo **số ngày** (thay vì theo gói tháng) hồi đầu đánh dấu bằng chữ `D` ở đầu, sau đổi sang chữ `N`. Phần mềm chỉ hiểu chữ `N`, nên khách nào cầm key cấp theo lối cũ thì nhập vào chỉ báo cụt lủn *"Key không đúng"* — dù key đó hoàn toàn hợp lệ.
+
+Từ bản 5.3 phần mềm nhận cả hai. Key cũ, key mới, key theo gói tháng đều dùng được, và vẫn gắn với đúng một máy như trước.
 
 ## File nén nay bọc trong một thư mục
 
