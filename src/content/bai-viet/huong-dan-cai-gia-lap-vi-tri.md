@@ -24,7 +24,7 @@ Làm theo đúng thứ tự dưới đây là dùng được. Cả hai hệ đi�
 Windows không tự biết đọc iPhone. Phải có app **Apple Devices** của chính Apple (miễn phí, tải ở Microsoft Store — hoặc cài iTunes tải từ apple.com, đừng dùng bản iTunes cũ trên Microsoft Store). Cài xong **mở app đó lên một lần** để Windows nạp trình điều khiển, rồi hãy sang bước sau.
 
 ### 2. Giải nén
-Bấm **chuột phải** vào file `GiaLapViTri-5.4-Windows.zip` → **Extract All...** → **Extract**.
+Bấm **chuột phải** vào file `.zip` vừa tải về → **Extract All...** → **Extract**. Máy nào có sẵn **7-Zip** hoặc **WinRAR** thì nên giải nén bằng hai phần mềm đó — cửa sổ nén sẵn của Windows đôi khi bỏ sót tệp mà không báo, thiếu tệp là phần mềm không dò được iPhone.
 
 **Đợi giải nén xong hẳn** rồi mới sang bước sau. Bên trong có một thư mục tên `GiaLapViTri`.
 
