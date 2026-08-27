@@ -2,12 +2,12 @@
 ten: "Phần Mềm Order"
 moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tính tiền theo tỉ giá lẻ/sỉ, quản lý kho TQ, công nợ và báo cáo."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.11"
+phienBan: "2.12"
 banToiThieu: "2.8"
-ngayCapNhat: 2026-08-27
-ghiChuCapNhat: "- Thêm mã QR chuyển khoản ngay trong phần mềm\n- Chuyển khoản xong phần mềm TỰ mở khoá và cộng ngày, không phải nhắn shop xin key"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.7/PhanMemOrder-2.7.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.11/PhanMemOrder-2.11.0-Windows.zip"
+ngayCapNhat: 2026-08-28
+ghiChuCapNhat: "- Sửa lỗi mã QR không hiện trên bản Windows\n- Bản Mac nhận tiền chuyển khoản trở lại, tự cộng ngày\n- Bản quyền và nút quét mã QR đưa ra ngay Trang chủ, không phải vào Cài đặt"
+linkTaiMac: "https://phanmemtq.com/tai/PhanMemOrder-2.12.dmg"
+linkTaiWin: "https://phanmemtq.com/tai/PhanMemOrder-2.12.0-Windows.zip"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"
 icon: "🧾"
