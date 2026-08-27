@@ -2,13 +2,13 @@
 ten: "Bot Zalo"
 moTa: "Trợ lý tự động cho Zalo: quét đủ thành viên nhóm (cả cộng đồng nghìn người), kết bạn và nhắn tin hàng loạt, đăng bài vào nhiều nhóm, hẹn giờ, mời vào nhóm, tìm khách quanh khu vực qua Google Maps. Xem và trả lời tin nhắn ngay trong phần mềm."
 nenTang: ["macOS", "Windows"]
-phienBan: "1.9"
+phienBan: "2.0"
 banToiThieu: "1.1"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Đăng nhập Zalo MỘT LẦN là xong — các tab Quét & Tương tác, Đăng bài, Hẹn giờ tự tải nhóm, không phải bấm “Tải nhóm”\n- Tab Tài khoản Zalo gọn lại: mọi thao tác nằm ngay trên thẻ tài khoản\n- Thêm chức năng Kiểm tra proxy (báo IP thoát và độ trễ)\n- Bản Windows giải nén ra đúng MỘT file .exe"
+ghiChuCapNhat: "- Dùng thử rút còn 2 ngày\n- Đăng nhập Zalo MỘT LẦN — các tab tự tải nhóm, không phải bấm “Tải nhóm”\n- Tab Tài khoản Zalo gọn lại, thêm chức năng Kiểm tra proxy\n- Bản Windows giải nén ra đúng MỘT file .exe"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.1/BotZalo-1.1.0-mac-arm64.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.9/BotZalo-1.9-Windows.zip"
-gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.0/BotZalo-2.0-Windows.zip"
+gia: "150.000đ / tháng — dùng thử miễn phí 2 ngày"
 dungLuong: "75 MB (Windows) — giải nén ra đúng một file .exe"
 anhIcon: "/icon/bot-zalo.png"
 icon: "💬"
@@ -87,11 +87,11 @@ tin thêm** rồi **Vẫn chạy**. Những lần sau không hỏi lại.
 
 ## Giá và dùng thử
 
-Cài xong **tự có 10 ngày dùng thử miễn phí**, không phải nhập gì. Hết hạn, phần mềm xin key
+Cài xong **tự có 2 ngày dùng thử miễn phí**, không phải nhập gì. Hết hạn, phần mềm xin key
 bản quyền — **150.000đ một tháng**, 3 tháng 300.000đ, 6 tháng 500.000đ, một năm 900.000đ.
 
-Cách mua: mở phần mềm, chép dòng **Mã máy**, quét mã QR ngay trong phần mềm để chuyển khoản,
-rồi gửi mã máy cho chúng tôi nhận key. Key khoá theo máy nên chỉ dùng được đúng máy đó.
+Cách mua: mở phần mềm, quét mã QR ngay trong phần mềm để chuyển khoản. Tiền về là phần mềm
+**tự cộng ngày**, không phải nhắn ai xin key. Hạn khoá theo máy nên chỉ dùng được đúng máy đó.
 
 ## Vài điều nói trước cho thật
 
