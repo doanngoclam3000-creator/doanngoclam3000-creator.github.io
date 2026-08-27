@@ -2,12 +2,12 @@
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.8"
+phienBan: "5.9"
 ngayCapNhat: 2026-08-27
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-4.2/GiaLapViTri-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.8/GiaLapViTri-5.8-Windows.zip"
-ghiChuCapNhat: "- Chuyển khoản xong phần mềm TỰ mở khoá và cộng ngày, không phải nhắn shop xin key (cứ 6 giây tự dò một lần)"
-dungLuong: "132 MB (Mac) · 231 MB (Windows, file nén, đã kèm driver Apple)"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.9/GiaLapViTri-5.9-Windows.zip"
+ghiChuCapNhat: "- Sửa lỗi iPhone iOS 17 trở lên báo “No such service: com.apple.instruments.dtservicehub”: ảnh đĩa nhà phát triển nay kèm sẵn trong phần mềm, mạng chặn GitHub vẫn kết nối được\n- iPhone đời cũ (iOS 16 trở xuống, kể cả 14.4) dùng được: kèm sẵn ảnh đĩa cho 14.4, đời khác thì tự tải qua nguồn dự phòng\n- Báo đúng bệnh khi chưa bật Chế độ nhà phát triển hoặc máy còn mật mã, thay vì một dòng lỗi khó hiểu\n- Chuyển khoản xong phần mềm TỰ mở khoá và cộng ngày, không phải nhắn shop xin key (cứ 6 giây tự dò một lần)"
+dungLuong: "132 MB (Mac) · 265 MB (Windows, file nén, đã kèm driver Apple và ảnh đĩa nhà phát triển)"
 gia: "300.000đ / tháng"
 video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
 anhIcon: "/icon/gia-lap-vi-tri.png"
