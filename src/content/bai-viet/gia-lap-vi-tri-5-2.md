@@ -48,6 +48,16 @@ Phần mềm tự kiểm tra máy tính rồi nói thẳng vấn đề:
 
 Cắm cáp vào là phần mềm tự nhận, không phải bấm "Tìm lại" nữa.
 
+## File nén nay bọc trong một thư mục
+
+Trước đây mở file .zip ra là thấy 18 thứ nằm lổn nhổn ngay ở gốc. Ai kéo thẳng đống đó vào Downloads thì mười mấy nghìn tệp đổ lẫn vào chỗ có sẵn, và nếu bấm chạy khi máy còn đang chép dở thì Windows báo:
+
+> The code execution cannot proceed because ffmpeg.dll was not found.
+
+Không phải phần mềm hỏng — chỉ là `GiaLapViTri.exe` chưa có đủ các tệp nằm cạnh nó.
+
+Giờ mở file .zip ra chỉ thấy **một thư mục `GiaLapViTri`**, bên trong có sẵn tờ `DOC-TRUOC-KHI-CHAY.txt`. Cứ giải nén xong, mở thư mục đó, chạy `GiaLapViTri.exe`. Muốn để ra Desktop thì kéo cả thư mục, hoặc tạo lối tắt.
+
 ## Hướng dẫn nằm ngay trong phần mềm
 
 Thêm mục hướng dẫn có hình, chia ba thẻ: **iPhone / iPad**, **Android**, và **Cài trình điều khiển Windows**. Phần iPhone dùng đúng bộ ảnh chụp màn hình chỉ chỗ bật Chế độ nhà phát triển.

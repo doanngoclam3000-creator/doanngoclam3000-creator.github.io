@@ -23,19 +23,26 @@ Làm theo đúng thứ tự dưới đây là dùng được. Cả hai hệ đi�
 
 Windows không tự biết đọc iPhone. Phải có app **Apple Devices** của chính Apple (miễn phí, tải ở Microsoft Store — hoặc cài iTunes tải từ apple.com, đừng dùng bản iTunes cũ trên Microsoft Store). Cài xong **mở app đó lên một lần** để Windows nạp trình điều khiển, rồi hãy sang bước sau.
 
-### 2. Giải nén và chạy
-Giải nén file `GiaLapViTri-5.2-Windows.zip`, mở thư mục vừa giải nén ra rồi chạy `GiaLapViTri.exe`.
+### 2. Giải nén
+Bấm **chuột phải** vào file `GiaLapViTri-5.2-Windows.zip` → **Extract All...** → **Extract**.
 
-Windows có thể hiện một bảng cảnh báo màu xanh — bấm **More info**, rồi bấm **Run anyway**. Phần mềm chưa mua chữ ký số của Microsoft nên lần đầu nào cũng bị hỏi như vậy.
+**Đợi giải nén xong hẳn** rồi mới sang bước sau. Bên trong có một thư mục tên `GiaLapViTri`.
 
-> Giải nén xong hãy để nguyên cả thư mục, đừng lôi riêng file `GiaLapViTri.exe` ra chỗ khác — phần mềm cần các file nằm cạnh nó.
+> Đừng mở file .zip lên rồi kéo ruột nó ra ngoài, cũng đừng bấm chạy khi còn đang xem bên trong file .zip.
 
-### 3. Chuẩn bị iPhone
+### 3. Chạy phần mềm
+Mở thư mục `GiaLapViTri`, bấm đúp vào `GiaLapViTri.exe`.
+
+Windows sẽ hiện một bảng cảnh báo màu xanh — bấm **More info**, rồi bấm **Run anyway**. Phần mềm chưa mua chữ ký số của Microsoft nên lần đầu nào cũng bị hỏi như vậy.
+
+> **Để nguyên cả thư mục.** Đừng tách riêng file `GiaLapViTri.exe` ra Desktop hay chỗ khác — nó cần mấy chục file nằm cùng thư mục. Tách ra sẽ báo lỗi *"The code execution cannot proceed because ffmpeg.dll was not found"*. Muốn để ngoài Desktop cho tiện thì kéo **cả thư mục** ra, hoặc chuột phải vào file .exe chọn **Send to → Desktop (create shortcut)**.
+
+### 4. Chuẩn bị iPhone
 - Cắm cáp iPhone vào máy tính, trên iPhone bấm **Tin cậy máy tính này**.
 - Vào **Cài đặt → Quyền riêng tư & Bảo mật → Chế độ nhà phát triển**, bật lên.
 - **Khởi động lại iPhone.**
 
-### 4. Kích hoạt
+### 5. Kích hoạt
 Mở phần mềm, quét mã QR hiện trong đó để thanh toán. Vài giây sau phần mềm tự kích hoạt và dùng được ngay.
 
 ### Nếu phần mềm báo "Chưa thấy thiết bị nào"
