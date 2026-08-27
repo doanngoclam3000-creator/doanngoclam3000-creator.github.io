@@ -24,7 +24,7 @@ Làm theo đúng thứ tự dưới đây là dùng được. Cả hai hệ đi�
 Windows không tự biết đọc iPhone. Phải có app **Apple Devices** của chính Apple (miễn phí, tải ở Microsoft Store — hoặc cài iTunes tải từ apple.com, đừng dùng bản iTunes cũ trên Microsoft Store). Cài xong **mở app đó lên một lần** để Windows nạp trình điều khiển, rồi hãy sang bước sau.
 
 ### 2. Giải nén và chạy
-Giải nén file `GiaLapViTri-5.1-Windows.zip`, mở thư mục vừa giải nén ra rồi chạy `GiaLapViTri.exe`.
+Giải nén file `GiaLapViTri-5.2-Windows.zip`, mở thư mục vừa giải nén ra rồi chạy `GiaLapViTri.exe`.
 
 Windows có thể hiện một bảng cảnh báo màu xanh — bấm **More info**, rồi bấm **Run anyway**. Phần mềm chưa mua chữ ký số của Microsoft nên lần đầu nào cũng bị hỏi như vậy.
 
@@ -40,7 +40,7 @@ Mở phần mềm, quét mã QR hiện trong đó để thanh toán. Vài giây 
 
 ### Nếu phần mềm báo "Chưa thấy thiết bị nào"
 
-Từ bản 5.1, phần mềm tự dò xem thiếu gì và hiện luôn cách sửa. Ba nguyên nhân theo thứ tự hay gặp:
+Phần mềm tự dò xem thiếu gì và hiện luôn cách sửa. Ba nguyên nhân theo thứ tự hay gặp:
 
 1. **Chưa cài Apple Devices** — quay lại bước 1. Phần mềm sẽ hiện một khung màu cam kèm nút mở thẳng trang cài.
 2. **Cáp chỉ sạc được, không truyền được dữ liệu** — cáp rẻ tiền thường chỉ có hai dây điện. Đổi sang cáp đi kèm máy, và cắm thẳng vào máy tính chứ đừng qua bộ chia (hub).

@@ -1,6 +1,6 @@
 ---
-tieuDe: "Giả Lập Vị Trí 5.1 cho Windows: sửa lỗi tải về bấm không chạy"
-moTa: "Bản 5.0 giải nén ra tên file bị vỡ nên nhiều máy bấm vào không chạy được. Bản 5.1 sửa chuyện đó, và nói rõ khi máy tính còn thiếu trình điều khiển của Apple."
+tieuDe: "Giả Lập Vị Trí 5.2 cho Windows: nhận iPhone trở lại"
+moTa: "Bản 5.1 cắm cáp vào vẫn không dò ra iPhone vì bộ Python đi kèm thiếu một gói dành riêng cho Windows. Bản 5.2 sửa chuyện đó."
 ngayDang: 2026-08-27
 chuyenMuc: "cap-nhat"
 thuocPhanMem: "gia-lap-vi-tri"
@@ -8,13 +8,31 @@ tags: ["giả lập vị trí", "windows", "cập nhật"]
 noiBat: true
 ---
 
-Bản **5.1** phát hành cho Windows. Ai đang dùng 5.0 mà thấy phần mềm không chạy hoặc không nhận iPhone thì tải bản này.
+Bản **5.2** phát hành cho Windows. Ai đang dùng 5.0 hoặc 5.1 đều nên tải bản này.
+
+## Sửa lỗi không dò được iPhone
+
+Bản 5.1 cắm cáp vào vẫn báo "Chưa thấy thiết bị nào", kèm dòng lỗi:
+
+> ModuleNotFoundError: No module named 'win32security'
+
+Bộ Python đi kèm phần mềm được đóng gói trên máy Mac. Trong danh sách thư viện của `pymobiledevice3` có một gói ghi rõ "chỉ cài khi chạy trên Windows" — đóng gói trên máy Mac nên điều kiện đó không đúng và gói bị bỏ qua. Sang máy Windows chạy thì thiếu, và thiếu ngay ở bước đầu tiên nên không dò được máy nào cả.
+
+Bản 5.2 đã kèm đủ gói đó. Cắm cáp là nhận máy như thường.
+
+## Không thấy máy Android thì nói rõ vướng ở đâu
+
+Trước đây máy Android không hiện ra thì chỉ báo cụt lủn "Chưa thấy máy. Bật Gỡ lỗi USB." Giờ phần mềm phân biệt được từng trường hợp:
+
+- **Điện thoại chưa cho phép gỡ lỗi USB** — nhắc nhìn màn hình điện thoại để bấm OK.
+- **Máy đang offline** — bảo rút cáp cắm lại.
+- **Không thấy gì cả** — nhắc bật Gỡ lỗi USB, dùng cáp truyền dữ liệu, và khi cắm nhớ chọn chế độ Truyền tệp (MTP) chứ đừng để "Chỉ sạc".
 
 ## Sửa lỗi tải về bấm không chạy
 
 Bản 5.0 đóng gói với tên file có dấu tiếng Việt. File nén được tạo trên máy Mac, mà cách nén đó không đánh dấu bảng mã cho Windows biết, nên sang máy Windows giải nén ra thì cái tên biến thành một dãy ký tự vỡ vụn. Nhiều máy bấm vào không mở được gì cả.
 
-Bản 5.1 đổi tên file thành `GiaLapViTri.exe` không dấu. Tên hiện trên cửa sổ phần mềm vẫn là "Giả Lập Vị Trí" như cũ.
+Từ bản 5.1 đổi tên file thành `GiaLapViTri.exe` không dấu. Tên hiện trên cửa sổ phần mềm vẫn là "Giả Lập Vị Trí" như cũ.
 
 ## Nói rõ khi máy tính thiếu trình điều khiển Apple
 
@@ -22,7 +40,7 @@ Bản 5.1 đổi tên file thành `GiaLapViTri.exe` không dấu. Tên hiện tr
 
 Trước đây gặp cảnh đó phần mềm chỉ báo cụt lủn "Chưa thấy máy. Cắm cáp + Tin cậy." — đọc xong không biết phải làm gì tiếp.
 
-Từ 5.1, phần mềm tự kiểm tra máy tính rồi nói thẳng vấn đề:
+Phần mềm tự kiểm tra máy tính rồi nói thẳng vấn đề:
 
 - Chưa cài Apple Devices → hiện khung cảnh báo kèm **nút mở thẳng trang cài**.
 - Đã cài nhưng dịch vụ đang tắt → có nút bật lại ngay trong phần mềm.

@@ -2,12 +2,12 @@
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.1"
+phienBan: "5.2"
 ngayCapNhat: 2026-08-27
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-4.2/GiaLapViTri-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.1/GiaLapViTri-5.1-Windows.zip"
-ghiChuCapNhat: "- Bản Windows 5.1: sửa lỗi giải nén ra tên file bị vỡ nên bấm không chạy được\n- Máy chưa cài driver Apple thì phần mềm nói rõ và chỉ chỗ cài, thay vì chỉ báo chung chung \"chưa thấy máy\"\n- Thêm hướng dẫn có hình ngay trong phần mềm\n- Chấm vị trí trên bản đồ nhấp nháy như bản Mac, thêm ô tìm địa chỉ\n- Bản Mac 5.0 đang chờ công chứng"
-dungLuong: "132 MB (Mac) · 189 MB (Windows, file nén)"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.2/GiaLapViTri-5.2-Windows.zip"
+ghiChuCapNhat: "- Sửa lỗi phần mềm không dò được iPhone dù đã cắm cáp\n- Không thấy máy Android thì nói rõ vướng ở đâu (chưa cho phép gỡ lỗi USB, máy offline…)\n- Sửa lỗi tải về giải nén ra tên file bị vỡ nên bấm không chạy được\n- Máy chưa cài driver Apple thì phần mềm chỉ luôn chỗ cài\n- Thêm hướng dẫn có hình ngay trong phần mềm, chấm vị trí nhấp nháy, thêm ô tìm địa chỉ\n- Bản Mac 5.0 đang chờ công chứng"
+dungLuong: "132 MB (Mac) · 195 MB (Windows, file nén)"
 gia: "300.000đ / tháng"
 video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
 anhIcon: "/icon/gia-lap-vi-tri.png"
