@@ -24,7 +24,7 @@ Làm theo đúng thứ tự dưới đây là dùng được. Cả hai hệ đi�
 Windows không tự biết đọc iPhone. Phải có app **Apple Devices** của chính Apple (miễn phí, tải ở Microsoft Store — hoặc cài iTunes tải từ apple.com, đừng dùng bản iTunes cũ trên Microsoft Store). Cài xong **mở app đó lên một lần** để Windows nạp trình điều khiển, rồi hãy sang bước sau.
 
 ### 2. Giải nén
-Bấm **chuột phải** vào file `GiaLapViTri-5.3-Windows.zip` → **Extract All...** → **Extract**.
+Bấm **chuột phải** vào file `GiaLapViTri-5.4-Windows.zip` → **Extract All...** → **Extract**.
 
 **Đợi giải nén xong hẳn** rồi mới sang bước sau. Bên trong có một thư mục tên `GiaLapViTri`.
 
@@ -38,7 +38,9 @@ Windows sẽ hiện một bảng cảnh báo màu xanh — bấm **More info**, 
 > **Để nguyên cả thư mục.** Đừng tách riêng file `GiaLapViTri.exe` ra Desktop hay chỗ khác — nó cần mấy chục file nằm cùng thư mục. Tách ra sẽ báo lỗi *"The code execution cannot proceed because ffmpeg.dll was not found"*. Muốn để ngoài Desktop cho tiện thì kéo **cả thư mục** ra, hoặc chuột phải vào file .exe chọn **Send to → Desktop (create shortcut)**.
 
 ### 4. Chuẩn bị iPhone
-- Cắm cáp iPhone vào máy tính, trên iPhone bấm **Tin cậy máy tính này**.
+- Cắm cáp iPhone vào máy tính rồi **mở khoá màn hình**, iPhone sẽ hỏi một trong hai bảng:
+  - **"Tin cậy máy tính này?"** → bấm **Tin cậy** → nhập mật mã.
+  - iPhone đời mới hỏi **"Cho phép thiết bị này truy cập ảnh và video?"** → bấm **Cho phép**. Bấm "Từ chối" là máy tính không nối được với iPhone, dù phần mềm không hề đụng tới ảnh của bạn.
 - Vào **Cài đặt → Quyền riêng tư & Bảo mật → Chế độ nhà phát triển**, bật lên.
 - **Khởi động lại iPhone.**
 
@@ -51,7 +53,8 @@ Phần mềm tự dò xem thiếu gì và hiện luôn cách sửa. Ba nguyên n
 
 1. **Chưa cài Apple Devices** — quay lại bước 1. Phần mềm sẽ hiện một khung màu cam kèm nút mở thẳng trang cài.
 2. **Cáp chỉ sạc được, không truyền được dữ liệu** — cáp rẻ tiền thường chỉ có hai dây điện. Đổi sang cáp đi kèm máy, và cắm thẳng vào máy tính chứ đừng qua bộ chia (hub).
-3. **iPhone chưa bấm Tin cậy** — mở khoá màn hình iPhone, bảng "Tin cậy máy tính này?" sẽ hiện lên, bấm **Tin cậy** rồi nhập mật mã.
+3. **iPhone chưa bấm Tin cậy** — mở khoá màn hình iPhone rồi bấm **Tin cậy** (hoặc **Cho phép** ở bảng hỏi truy cập ảnh và video).
+4. **Dịch vụ "Apple Mobile Device" đang tắt** — phần mềm hiện sẵn nút **Bật dịch vụ**. Bấm vào, Windows hỏi quyền quản trị thì bấm **Yes**. Nếu lỡ bấm No thì bấm lại nút đó, hoặc chuột phải vào `GiaLapViTri.exe` chọn **Run as administrator**.
 
 ---
 
