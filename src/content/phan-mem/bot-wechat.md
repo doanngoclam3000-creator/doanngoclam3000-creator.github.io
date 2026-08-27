@@ -2,12 +2,12 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
 nenTang: ["macOS", "Windows"]
-phienBan: "1.3"
+phienBan: "1.4"
 banToiThieu: "1.0"
-ngayCapNhat: 2026-08-27
-ghiChuCapNhat: "- Thêm phần BÁN NHÂN DÂN TỆ: đặt bảng giá theo từng hình thức, AI báo giá cho khách, khách chốt là tự dựng đơn\n- Bảng tính tệ ngay trong phần mềm và ngay trong khung chat: gõ 4v2+23499 ali TQ là ra tiền Việt\n- Nhắc khách chuyển khoản khi chốt đơn đã lâu mà chưa thấy tiền\n- Tự đọc số tiền trên ảnh bill khách gửi, cộng dồn nhiều lần chuyển, đủ tiền thì cảm ơn khách — nay có cả trên Windows\n- Bản Windows thêm: sổ giao dịch, chọn ChatGPT thay Gemini, và sửa lỗi không cho dùng thử\n- Bot trả lời nhanh hơn khoảng hai lần và không còn bỏ sót khách tên một chữ"
-linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.3.dmg"
-linkTaiWin: "https://phanmemtq.com/tai/BotWeChat-1.3-Windows.zip"
+ngayCapNhat: 2026-08-28
+ghiChuCapNhat: "- Bản Windows làm lại toàn bộ giao diện cho giống bản Mac: thẻ bo góc, công tắc gạt, ô tick xanh, thẻ chức năng có biểu tượng\n- Bản Windows thêm: kèm bán sản phẩm, chỉ trả lời ngoài giờ hành chính, không trả lời khách nhắn chữ Trung Quốc, ô tìm tên khách\n- Bản Windows thêm sổ giao dịch và chọn ChatGPT thay Gemini\n- Sửa lỗi bản Windows bắt chuyển khoản ngay dù chưa dùng thử ngày nào, và lỗi không mở lên được\n- Số phiên bản hiện ngay trên cửa sổ để biết mình đang chạy bản nào"
+linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.4.dmg"
+linkTaiWin: "https://phanmemtq.com/tai/BotWeChat-1.4-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 3 MB (Mac) · 58 MB (Windows, file nén)"
 anhIcon: "/icon/bot-wechat.png"
