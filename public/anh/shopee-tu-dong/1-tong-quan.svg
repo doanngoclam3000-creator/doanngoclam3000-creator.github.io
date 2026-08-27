@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff1ec"/><stop offset="100%" stop-color="#ffe0d5"/></linearGradient>
+  <linearGradient id="cam" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ee4d2d"/><stop offset="100%" stop-color="#ff7337"/></linearGradient>
+  <filter id="bong" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#7a2412" flood-opacity="0.20"/></filter>
+</defs>
+<rect width="1200" height="760" fill="url(#nen)"/>
+<circle cx="96" cy="104" r="34" fill="url(#cam)"/>
+<text x="96" y="116" font-size="30" text-anchor="middle">🛒</text>
+<text x="152" y="112" font-size="33" font-weight="700" fill="#3d1409">Shopee Tự Động — một màn hình, đủ việc bán hàng</text>
+<text x="56" y="182" font-size="20.5" fill="#6b4a3f"><tspan>Đăng nhập shop </tspan><tspan font-weight="700" fill="#3d1409">một lần</tspan><tspan>, sau đó chạy ngầm — không mở trình duyệt, không hiện trang Shopee.</tspan></text>
+<text x="56" y="219" font-size="20.5" fill="#6b4a3f">Dữ liệu shop nằm trong máy bạn.</text>
+<g filter="url(#bong)">
+  <rect x="56" y="270" width="1088" height="440" rx="24" fill="#ffffff"/>
+  <rect x="56" y="270" width="1088" height="70" rx="24" fill="url(#cam)"/>
+  <rect x="56" y="316" width="1088" height="24" fill="#ee4d2d"/>
+  <text x="88" y="314" font-size="21" font-weight="700" fill="#ffffff">🛒 Quản Lý Shop Shopee</text>
+  <text x="1050" y="314" font-size="16" fill="#ffffff" opacity=".9">Thoát</text>
+</g>
+<g font-size="16.5">
+  <g><rect x="88" y="372" width="335" height="92" rx="14" fill="#fff5f2" stroke="#ffd7c9"/><text x="112" y="410" font-size="26">📦</text><text x="152" y="406" font-size="18" font-weight="700" fill="#3d1409">Đơn hàng</text><text x="152" y="432" font-size="14.5" fill="#8a6a5e">Tự hiện đơn mới · in vận đơn PDF · xác nhận đơn</text></g>
+  <g><rect x="440" y="372" width="335" height="92" rx="14" fill="#fff5f2" stroke="#ffd7c9"/><text x="464" y="410" font-size="26">🏷️</text><text x="504" y="406" font-size="18" font-weight="700" fill="#3d1409">Sản phẩm</text><text x="504" y="432" font-size="14.5" fill="#8a6a5e">Sửa giá/tồn hàng loạt · đăng · chép sản phẩm</text></g>
+  <g><rect x="792" y="372" width="320" height="92" rx="14" fill="#fff5f2" stroke="#ffd7c9"/><text x="816" y="410" font-size="26">⭐</text><text x="856" y="406" font-size="18" font-weight="700" fill="#3d1409">Đánh giá</text><text x="856" y="432" font-size="14.5" fill="#8a6a5e">Trả lời theo mức sao, có mẫu sẵn</text></g>
+  <g><rect x="88" y="478" width="335" height="92" rx="14" fill="#fff5f2" stroke="#ffd7c9"/><text x="112" y="516" font-size="26">💬</text><text x="152" y="512" font-size="18" font-weight="700" fill="#3d1409">Chat khách</text><text x="152" y="538" font-size="14.5" fill="#8a6a5e">Nhắn chữ &amp; gửi ảnh · tự tránh spam</text></g>
+  <g><rect x="440" y="478" width="335" height="92" rx="14" fill="#fff5f2" stroke="#ffd7c9"/><text x="464" y="516" font-size="26">🎁</text><text x="504" y="512" font-size="18" font-weight="700" fill="#3d1409">Khuyến mãi</text><text x="504" y="538" font-size="14.5" fill="#8a6a5e">Flash Sale · mã giảm · chương trình Shopee</text></g>
+  <g><rect x="792" y="478" width="320" height="92" rx="14" fill="#fff5f2" stroke="#ffd7c9"/><text x="816" y="516" font-size="26">🧮</text><text x="856" y="512" font-size="18" font-weight="700" fill="#3d1409">Tính giá bán</text><text x="856" y="538" font-size="14.5" fill="#8a6a5e">Trừ phí Shopee, ra lãi thực mỗi đơn</text></g>
+  <g><rect x="88" y="600" width="1024" height="74" rx="14" fill="#f2fbf3" stroke="#bfe6c4"/><text x="118" y="644" font-size="24">✅</text><text x="156" y="636" font-size="17" font-weight="700" fill="#1e6b34">Đăng nhập một lần cho mỗi shop — thêm bao nhiêu shop cũng được</text><text x="156" y="662" font-size="14.5" fill="#4a7a56">Mật khẩu cất trong Keychain của máy, không lưu trần trong file.</text></g>
+</g>
+</svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen2" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff1ec"/><stop offset="100%" stop-color="#ffe0d5"/></linearGradient>
+  <filter id="bong2" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#7a2412" flood-opacity="0.18"/></filter>
+</defs>
+<rect width="1200" height="720" fill="url(#nen2)"/>
+<text x="56" y="86" font-size="30" font-weight="700" fill="#3d1409">📦 Đơn hàng — tự hiện đơn mới, in vận đơn ra PDF</text>
+<text x="56" y="128" font-size="19.5" fill="#6b4a3f">Có đơn mới là phần mềm kêu và hiện lên. Chọn đơn rồi in vận đơn — file PDF lưu thẳng vào máy.</text>
+<g filter="url(#bong2)">
+  <rect x="56" y="160" width="1088" height="500" rx="20" fill="#ffffff"/>
+  <!-- thanh cong cu -->
+  <rect x="80" y="184" width="180" height="40" rx="10" fill="#fff2ee" stroke="#ffcdbb"/><text x="100" y="210" font-size="15.5" fill="#ee4d2d">Chờ lấy hàng ▾</text>
+  <rect x="272" y="184" width="150" height="40" rx="10" fill="#ee4d2d"/><text x="292" y="210" font-size="15.5" font-weight="700" fill="#fff">⬇ Tải đơn</text>
+  <rect x="452" y="184" width="185" height="40" rx="10" fill="#ee4d2d"/><text x="472" y="210" font-size="15.5" font-weight="700" fill="#fff">✅ Xác nhận đơn</text>
+  <rect x="655" y="184" width="165" height="40" rx="10" fill="#f0f0f0"/><text x="675" y="210" font-size="15.5" fill="#333">🖨 In đơn chưa in</text>
+  <!-- tu dong -->
+  <rect x="80" y="238" width="360" height="34" rx="8" fill="#fffbe9" stroke="#f3e2a8"/><text x="98" y="261" font-size="14.5" fill="#8a6a20">🔔 Tự hiện đơn mới — mỗi 1 phút · 🔔 Tự động xác nhận</text>
+  <!-- bang don -->
+  <line x1="80" y1="292" x2="1120" y2="292" stroke="#eee"/>
+  <text x="96" y="314" font-size="13.5" font-weight="700" fill="#999">MÃ ĐƠN</text><text x="300" y="314" font-size="13.5" font-weight="700" fill="#999">NGƯỜI MUA</text><text x="470" y="314" font-size="13.5" font-weight="700" fill="#999">SẢN PHẨM</text><text x="900" y="314" font-size="13.5" font-weight="700" fill="#999">TIỀN</text><text x="1000" y="314" font-size="13.5" font-weight="700" fill="#999">TRẠNG THÁI</text>
+  <g font-size="14.5" fill="#3d1409">
+    <rect x="80" y="330" width="1040" height="1" fill="#f2f2f2"/>
+    <rect x="80" y="332" width="1040" height="56" fill="#fffaf8"/>
+    <text x="96" y="366" font-weight="700" fill="#ee4d2d">260827F4CH</text><text x="300" y="366" fill="#555">huuthotran529</text><text x="470" y="360" fill="#333">Dây micro canon 3.5 cho mic thu âm</text><text x="470" y="380" font-size="12.5" fill="#999">Phân loại: 3 mét</text><text x="900" y="366" fill="#333">19.999đ</text><rect x="1000" y="348" width="96" height="26" rx="13" fill="#fff2ee"/><text x="1048" y="366" font-size="13" fill="#ee4d2d" text-anchor="middle">Chờ xác nhận</text>
+    <text x="96" y="424" font-weight="700" fill="#ee4d2d">2608259UU</text><text x="300" y="424" fill="#555">huchnhhuchnh</text><text x="470" y="424" fill="#333">Dây livestream 3.5mm ra 2 tai nghe</text><text x="900" y="424" fill="#333">28.000đ</text><rect x="1000" y="406" width="96" height="26" rx="13" fill="#eefaf0"/><text x="1048" y="424" font-size="13" fill="#1e8e3e" text-anchor="middle">Đã giao</text>
+    <line x1="80" y1="448" x2="1120" y2="448" stroke="#f2f2f2"/>
+    <text x="96" y="484" font-weight="700" fill="#ee4d2d">2608234B1</text><text x="300" y="484" fill="#555">utsmartphone</text><text x="470" y="484" fill="#333">Chân micro mini để bàn</text><text x="900" y="484" fill="#333">45.000đ</text><rect x="1000" y="466" width="96" height="26" rx="13" fill="#eef4ff"/><text x="1048" y="484" font-size="13" fill="#2b6fd6" text-anchor="middle">Đang giao</text>
+  </g>
+  <!-- ket qua in -->
+  <rect x="80" y="520" width="1040" height="110" rx="14" fill="#f2fbf3" stroke="#bfe6c4"/>
+  <text x="104" y="556" font-size="24">🖨</text>
+  <text x="144" y="552" font-size="17" font-weight="700" fill="#1e6b34">In vận đơn ra file PDF — như phần mềm cũ, không mở web Shopee</text>
+  <text x="144" y="580" font-size="14.5" fill="#4a7a56">Phần mềm tự hỏi Shopee đơn nào chưa in, gộp vào một file PDF rồi mở lên. Nhiều đơn in một lượt.</text>
+  <text x="144" y="606" font-size="13.5" fill="#6a9a76">Lưu tại: ~/Library/Application Support/ShopeeTuDong/vandon/</text>
+</g>
+</svg>

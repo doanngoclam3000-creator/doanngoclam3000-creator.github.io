@@ -17,54 +17,61 @@ noiBat: true
 thuTu: 1
 ---
 
-## Giới thiệu
+## Một màn hình, đủ việc bán hàng Shopee
 
-**Shopee Tự Động** làm hộ bạn những việc bán hàng lặp đi lặp lại trên Shopee, **ngay trên
-máy bạn**: tải đơn, xác nhận đơn, in vận đơn, sửa giá và tồn kho hàng loạt, đăng sản phẩm
-mới, trả lời đánh giá, nhắn tin cho khách. Đăng nhập shop **một lần**, sau đó phần mềm tự
-dùng phiên đã lưu — **không mở trình duyệt, không hiện trang Shopee**, dữ liệu shop nằm
-trong máy bạn.
+**Shopee Tự Động** gom mọi việc bán hàng lặp đi lặp lại vào một phần mềm chạy **ngay trên
+máy bạn**: tải đơn, xác nhận đơn, in vận đơn, sửa giá và tồn kho, đăng và chép sản phẩm,
+trả lời đánh giá, nhắn tin cho khách, tính giá bán. Đăng nhập shop **một lần**, sau đó phần
+mềm tự dùng phiên đã lưu — **không mở trình duyệt, không hiện trang Shopee**, dữ liệu shop
+nằm trong máy bạn.
 
-### Đơn hàng
+![Tổng quan Shopee Tự Động](/anh/shopee-tu-dong/1-tong-quan.svg)
+
+## Đơn hàng — không phải ngồi canh
 
 - **Tải đơn theo trạng thái** — Tất cả, Chờ xác nhận, Chờ lấy hàng, Đang giao, Đã giao,
   Hoàn thành, Trả hàng/Hoàn tiền/Huỷ. Trạng thái và ghi chú dịch sẵn sang tiếng Việt.
-- **Tự hiện đơn mới.** Bật một lần, có đơn mới là phần mềm kêu và hiện lên, không phải
+- **Tự hiện đơn mới.** Bật một lần, có đơn mới là phần mềm kêu và hiện lên — không phải
   bấm tải lại.
-- **Xác nhận đơn** — chọn đơn rồi bấm, hoặc bật **tự động xác nhận** đơn mới.
-- **In vận đơn ra file PDF** — in đơn đã chọn, hoặc chỉ **in đơn chưa in** (phần mềm tự
-  hỏi Shopee đơn nào chưa in). File PDF lưu thẳng vào máy.
+- **Xác nhận đơn** ngay trên phần mềm, chọn đơn rồi bấm; hoặc bật **tự động xác nhận** đơn mới.
+- **In vận đơn ra file PDF** — in đơn đã chọn, hoặc chỉ **in đơn chưa in** (phần mềm tự hỏi
+  Shopee đơn nào chưa in rồi gộp vào một file). Giống hệt phần mềm cũ, không mở web Shopee.
 
-### Sản phẩm
+![Màn hình đơn hàng và in vận đơn](/anh/shopee-tu-dong/2-don-hang.svg)
 
-- **Sửa giá và tồn kho hàng loạt** — chọn nhiều sản phẩm, đổi giá hoặc tồn một lần.
-- **Sửa từng sản phẩm** ngay trong phần mềm: tên, bài viết, ảnh, phân loại, giá, tồn —
-  có sẵn bộ công cụ viết bài.
-- **Đăng sản phẩm mới** — chọn ngành hàng, ảnh, giá, tồn, phân loại; có nút **tự viết
-  bài** soạn sẵn khung mô tả.
+## Sản phẩm — đăng mới, sửa hàng loạt, chép nhanh
+
+- **Sửa giá và tồn kho hàng loạt** — chọn nhiều sản phẩm, đổi một lần.
+- **Sửa từng sản phẩm** ngay trong phần mềm: tên, bài viết, ảnh, phân loại, giá, tồn.
+- **Đăng sản phẩm mới** — chọn ngành hàng, ảnh, giá, tồn, phân loại; có sẵn **bộ công cụ
+  viết bài** và nút **✨ Tự viết bài** soạn sẵn khung mô tả.
 - **Chép sản phẩm** — dán link một sản phẩm hoặc cả link shop (kể cả shop khác), phần mềm
-  lấy về ảnh, bài viết, phân loại để bạn sửa lại và đăng sang shop của mình.
+  lấy về ảnh, bài viết, phân loại; bạn sửa lại rồi đăng sang shop của mình.
 
-### Chăm sóc khách & marketing
+![Đăng và chép sản phẩm](/anh/shopee-tu-dong/3-san-pham.svg)
+
+## Chăm sóc khách &amp; marketing
 
 - **Trả lời đánh giá** theo từng mức sao, có mẫu sẵn.
 - **Nhắn tin cho khách** — gửi chữ và **gửi ảnh**, gửi hàng loạt có giãn cách an toàn.
-  Phần mềm tự nhận biết khách nào Shopee đang chặn gửi tiếp để **không spam**.
-- **Khuyến mãi & chương trình Shopee** — xem Flash Sale, mã giảm giá, và các chương trình
-  Shopee đang mở; có chương trình mới phần mềm báo cho bạn.
+  Phần mềm tự nhận biết khách nào Shopee đang chặn gửi tiếp để **không spam nhầm**.
+- **Khuyến mãi &amp; chương trình Shopee** — xem Flash Sale, mã giảm giá, và các chương
+  trình Shopee đang mở; có chương trình mới phần mềm báo cho bạn.
 
-### Tính giá bán
+## Tính giá bán — biết lãi thực trước khi bán
 
-Máy tính giá bán riêng cho Shopee: nhập giá vốn và các mức phí (thanh toán, hoa hồng theo
-ngành hàng, thuế, quảng cáo), phần mềm tính ra **lãi thực trên mỗi đơn** và **giá hoà
-vốn**. Muốn lãi bao nhiêu thì gợi ý luôn nên bán giá nào. Lưu được mức phí theo từng ngành
-hàng để lần sau chọn nhanh.
+Máy tính giá riêng cho Shopee: nhập giá vốn và các mức phí (thanh toán, hoa hồng theo ngành
+hàng, thuế, quảng cáo), phần mềm tính ra **lãi thực trên mỗi đơn** và **giá hoà vốn**. Muốn
+lãi bao nhiêu thì gợi ý luôn nên bán giá nào. Lưu được mức phí theo từng ngành hàng để lần
+sau chọn nhanh.
+
+![Máy tính giá bán trừ phí Shopee](/anh/shopee-tu-dong/4-tinh-gia.svg)
 
 ## Đăng nhập một lần, chạy ngầm
 
-Thêm bao nhiêu shop cũng được, mỗi shop đăng nhập một lần và phần mềm tự nhớ phiên. Mọi
-thao tác chạy **ngầm**, không bung cửa sổ trình duyệt ra màn hình. Mật khẩu trên máy Mac
-cất trong Keychain của hệ thống, **không lưu trần trong file**.
+Thêm bao nhiêu shop cũng được, mỗi shop đăng nhập một lần và phần mềm tự nhớ phiên. Mọi thao
+tác chạy **ngầm**, không bung cửa sổ trình duyệt ra màn hình. Trên máy Mac, mật khẩu cất
+trong Keychain của hệ thống — **không lưu trần trong file**.
 
 ## Cài đặt
 

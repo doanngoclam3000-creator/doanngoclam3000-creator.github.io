@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#fff1ec"/><stop offset="100%" stop-color="#ffe0d5"/></linearGradient>
+  <linearGradient id="cam3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ee4d2d"/><stop offset="100%" stop-color="#ff7337"/></linearGradient>
+  <filter id="bong3" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="14" stdDeviation="22" flood-color="#7a2412" flood-opacity="0.18"/></filter>
+</defs>
+<rect width="1200" height="720" fill="url(#nen3)"/>
+<text x="56" y="86" font-size="30" font-weight="700" fill="#3d1409">🏷️ Đăng &amp; chép sản phẩm ngay trong phần mềm</text>
+<text x="56" y="128" font-size="19.5" fill="#6b4a3f">Đăng sản phẩm mới với đầy đủ công cụ viết bài. Hoặc dán link để chép sản phẩm — kể cả từ shop khác.</text>
+<!-- Cot trai: dang moi -->
+<g filter="url(#bong3)">
+  <rect x="56" y="160" width="520" height="500" rx="20" fill="#ffffff"/>
+  <rect x="56" y="160" width="520" height="56" rx="20" fill="url(#cam3)"/>
+  <text x="84" y="196" font-size="18" font-weight="700" fill="#fff">➕ Đăng sản phẩm mới</text>
+  <text x="84" y="252" font-size="14" fill="#999">Ngành hàng</text>
+  <rect x="84" y="262" width="200" height="34" rx="8" fill="#f7f7f7" stroke="#e3e3e3"/><text x="98" y="285" font-size="13.5" fill="#555">Thiết Bị Âm Thanh ▾</text>
+  <rect x="296" y="262" width="200" height="34" rx="8" fill="#f7f7f7" stroke="#e3e3e3"/><text x="310" y="285" font-size="13.5" fill="#555">Cáp âm thanh ▾</text>
+  <text x="84" y="330" font-size="14" fill="#999">Tên sản phẩm</text>
+  <rect x="84" y="340" width="412" height="34" rx="8" fill="#f7f7f7" stroke="#e3e3e3"/><text x="98" y="363" font-size="13.5" fill="#333">Dây micro canon cái ra 3.5...</text>
+  <!-- bo cong cu viet bai -->
+  <rect x="84" y="388" width="412" height="34" rx="8" fill="#fafafa" stroke="#eee"/>
+  <text x="98" y="410" font-size="14" font-weight="700" fill="#555">B</text><text x="122" y="410" font-size="14" fill="#555">U</text><text x="150" y="410" font-size="13" fill="#555">✅ 🔥 ⭐ 🚚</text><rect x="360" y="394" width="128" height="22" rx="6" fill="#fff2ee"/><text x="374" y="410" font-size="12.5" fill="#ee4d2d">✨ Tự viết bài</text>
+  <rect x="84" y="428" width="412" height="90" rx="8" fill="#fbfbfb" stroke="#eee"/><text x="98" y="452" font-size="12.5" fill="#777">🔥 DÂY MICRO CANON CÁI RA 3.5</text><text x="98" y="474" font-size="12.5" fill="#aaa">⭐ Giới thiệu · ✅ Điểm nổi bật · 📦 Thông tin...</text>
+  <!-- anh -->
+  <g><rect x="84" y="536" width="60" height="60" rx="8" fill="#ffe8e0"/><rect x="152" y="536" width="60" height="60" rx="8" fill="#ffe8e0"/><rect x="220" y="536" width="60" height="60" rx="8" fill="#ffe8e0"/><rect x="288" y="536" width="60" height="60" rx="8" fill="#fff" stroke="#ee4d2d" stroke-dasharray="4 3"/><text x="318" y="572" font-size="24" fill="#ee4d2d" text-anchor="middle">＋</text></g>
+  <rect x="84" y="612" width="200" height="36" rx="9" fill="#ee4d2d"/><text x="184" y="636" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">🚀 Đăng lên Shopee</text>
+</g>
+<!-- Cot phai: chep -->
+<g filter="url(#bong3)">
+  <rect x="600" y="160" width="544" height="500" rx="20" fill="#ffffff"/>
+  <rect x="600" y="160" width="544" height="56" rx="20" fill="#3d1409"/>
+  <text x="628" y="196" font-size="18" font-weight="700" fill="#fff">📋 Chép sản phẩm</text>
+  <rect x="628" y="248" width="360" height="36" rx="9" fill="#f7f7f7" stroke="#e3e3e3"/><text x="644" y="271" font-size="13" fill="#888">Dán link sản phẩm / link shop...</text>
+  <rect x="1000" y="248" width="112" height="36" rx="9" fill="#ee4d2d"/><text x="1056" y="271" font-size="13.5" font-weight="700" fill="#fff" text-anchor="middle">🔍 Lấy</text>
+  <rect x="628" y="308" width="484" height="70" rx="12" fill="#fff8f5" stroke="#ffdccd"/>
+  <text x="648" y="336" font-size="13" fill="#a06a55">Chép được cả bài viết, ảnh, phân loại của sản phẩm —</text>
+  <text x="648" y="358" font-size="13" fill="#a06a55">tải ảnh về rồi đưa lên lại thành ảnh của bạn. Nên đổi ảnh, viết lại bài.</text>
+  <g><rect x="628" y="398" width="90" height="90" rx="10" fill="#eee"/><text x="673" y="450" font-size="30" text-anchor="middle">🎧</text></g>
+  <text x="736" y="426" font-size="15.5" font-weight="700" fill="#3d1409">Móc treo thanh xà đơn</text>
+  <text x="736" y="452" font-size="13.5" fill="#888">9 ảnh · 6 phân loại · giá gốc 45.000đ</text>
+  <text x="736" y="476" font-size="13" fill="#aaa">lấy từ shop khác → sửa rồi đăng sang shop bạn</text>
+  <rect x="628" y="512" width="230" height="34" rx="8" fill="#f7f7f7" stroke="#e3e3e3"/><text x="642" y="535" font-size="13" fill="#555">Chép sang: mic thu âm ▾</text>
+  <rect x="628" y="558" width="120" height="34" rx="8" fill="#fafafa" stroke="#eee"/><text x="642" y="581" font-size="13" fill="#555">Giá: 65.000</text>
+  <rect x="760" y="558" width="120" height="34" rx="8" fill="#fafafa" stroke="#eee"/><text x="774" y="581" font-size="13" fill="#555">Tồn: 100</text>
+  <rect x="628" y="606" width="260" height="38" rx="9" fill="#ee4d2d"/><text x="758" y="631" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">📋 Chép sang shop đã chọn</text>
+</g>
+</svg>
