@@ -2,12 +2,12 @@
 ten: "Bot Zalo"
 moTa: "Trợ lý tự động cho Zalo: quét đủ thành viên nhóm (cả cộng đồng nghìn người), kết bạn và nhắn tin hàng loạt, đăng bài vào nhiều nhóm, hẹn giờ, mời vào nhóm, tìm khách quanh khu vực qua Google Maps. Xem và trả lời tin nhắn ngay trong phần mềm."
 nenTang: ["macOS", "Windows"]
-phienBan: "1.8"
+phienBan: "1.9"
 banToiThieu: "1.1"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Tab Tài khoản Zalo gọn lại: chỉ còn Đăng nhập bằng Zalo Web + Kiểm tra proxy\n- Tên tài khoản app tự lấy từ Zalo, không phải tự đặt\n- Sửa lỗi nút thêm tài khoản không chạy nên không hiện được chỗ quét mã QR\n- Bản Windows giải nén ra đúng MỘT file .exe"
+ghiChuCapNhat: "- Đăng nhập Zalo MỘT LẦN là xong — các tab Quét & Tương tác, Đăng bài, Hẹn giờ tự tải nhóm, không phải bấm “Tải nhóm”\n- Tab Tài khoản Zalo gọn lại: mọi thao tác nằm ngay trên thẻ tài khoản\n- Thêm chức năng Kiểm tra proxy (báo IP thoát và độ trễ)\n- Bản Windows giải nén ra đúng MỘT file .exe"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.1/BotZalo-1.1.0-mac-arm64.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.8/BotZalo-1.8-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.9/BotZalo-1.9-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
 dungLuong: "75 MB (Windows) — giải nén ra đúng một file .exe"
 anhIcon: "/icon/bot-zalo.png"
