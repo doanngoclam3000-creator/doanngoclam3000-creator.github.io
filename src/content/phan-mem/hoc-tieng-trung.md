@@ -2,12 +2,12 @@
 ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.1"
+phienBan: "2.3"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Bản Windows: thêm mã QR chuyển khoản ngay trong phần mềm — chuyển xong TỰ mở khoá, không phải gửi mã máy chờ key\n- Bản Windows: giao diện dựng lại theo bản iPhone, có lộ trình HSK và vòng tiến độ từng cấp\n- Bản Windows: dùng thử 10 ngày như bản Mac"
+ghiChuCapNhat: "- Bản Windows: thêm HỘI THOẠI AI — nói chuyện bằng đúng vốn từ bạn đã học, có pinyin, nghĩa và nút gợi ý khi bí\n- Bản Windows: thêm 7 TRÒ CHƠI, chơi cũng là ôn từ, kết quả tính vào lịch ôn\n- Bản Windows: mã QR chuyển khoản ngay trong phần mềm — chuyển xong TỰ mở khoá, không phải gửi mã máy chờ key\n- Bản Windows: giao diện dựng lại theo bản iPhone, có lộ trình HSK và vòng tiến độ từng cấp"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-mac-2.0/HocTiengTrung-2.0.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiWin: "https://phanmemtq.com/tai/HocTiengTrung-2.2.0-Windows.zip"
+linkTaiWin: "https://phanmemtq.com/tai/HocTiengTrung-2.3.0-Windows.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
@@ -60,10 +60,10 @@ Tải file `.dmg` về, mở ra rồi kéo **Học Tiếng Trung** vào thư m�
 Phần mềm được ký bằng chứng chỉ nhà phát triển Apple mang tên **LAM DOAN NGOC** —
 mở phần mềm ra anh chị có thể tự kiểm chứng tên này.
 
-## Bản Windows (2.2)
+## Bản Windows (2.3)
 
 Bản cho máy tính Windows. Tải về được một
-file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-2.2.0-Setup.exe` để cài.
+file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-2.3.0-Setup.exe` để cài.
 
 Giao diện dựng lại theo bản iPhone: lộ trình HSK 1–6 trên nền tranh thuỷ mặc,
 mỗi cấp có vòng tiến độ riêng, bấm vào cấp nào là học ngay cấp đó.
@@ -73,9 +73,20 @@ tập viết chữ Hán chấm từng nét (viết bằng chuột), **bài tập
 **lịch ôn thông minh** — phần mềm tự tính hôm nào nên ôn lại từ nào theo thuật
 toán FSRS-5, từ nào trả lời sai sẽ được hỏi lại sớm hơn.
 
-**Chưa có:** chấm điểm phát âm, chấm thanh điệu, hội thoại AI. Riêng phần chấm
-phát âm thì Windows không làm được — công nghệ dựng bản Windows không có nhận
-diện giọng nói; muốn chấm phát âm thì dùng bản iPhone hoặc Mac.
+**Hội thoại với AI** (mới ở bản 2.3): 32 chủ đề từ chào hỏi, gọi món, mặc cả
+cho tới phỏng vấn xin việc. AI chỉ dùng đúng những từ bạn đã học nên lúc nào
+cũng hiểu được; mỗi câu có chữ Hán, pinyin, nghĩa tiếng Việt, nút nghe lại và
+nút gợi ý khi bí. Phần này dùng khoá AI miễn phí bạn tự lấy bằng tài khoản
+Google của mình — trong phần mềm có nút mở thẳng trang lấy khoá và hướng dẫn
+từng bước.
+
+**Bảy trò chơi** (mới ở bản 2.3): ghép cặp, nghe chọn chữ, đoán thanh điệu,
+chọn nghĩa nhanh, chọn pinyin, lật thẻ trí nhớ, đúng hay sai. Chơi cũng là ôn
+— mỗi lượt đúng sai đều được tính vào lịch ôn, và mỗi trò có kỷ lục riêng.
+
+**Chưa có:** chấm điểm phát âm, chấm thanh điệu, nhập vai, phần văn hoá. Riêng
+phần chấm phát âm thì Windows không làm được — công nghệ dựng bản Windows
+không có nhận diện giọng nói; muốn chấm phát âm thì dùng bản iPhone hoặc Mac.
 
 **Dùng thử 10 ngày**, sau đó cần key bản quyền. Mua ngay trong phần mềm: chọn
 gói, quét mã QR bằng app ngân hàng, chuyển khoản xong phần mềm **tự mở khoá** —
