@@ -5,7 +5,7 @@ nenTang: ["macOS", "Windows"]
 phienBan: "1.3"
 banToiThieu: "1.0"
 ngayCapNhat: 2026-08-27
-ghiChuCapNhat: "- Thêm phần BÁN NHÂN DÂN TỆ: đặt bảng giá theo từng hình thức, AI báo giá cho khách, khách chốt là tự dựng đơn\n- Bảng tính tệ ngay trong phần mềm và ngay trong khung chat: gõ 4v2+23499 ali TQ là ra tiền Việt\n- Nhắc khách chuyển khoản khi chốt đơn đã lâu mà chưa thấy tiền\n- Riêng bản Mac: tự đọc số tiền trên ảnh bill khách gửi, cộng dồn nhiều lần chuyển, đủ tiền thì cảm ơn khách\n- Bot trả lời nhanh hơn khoảng hai lần và không còn bỏ sót khách tên một chữ"
+ghiChuCapNhat: "- Thêm phần BÁN NHÂN DÂN TỆ: đặt bảng giá theo từng hình thức, AI báo giá cho khách, khách chốt là tự dựng đơn\n- Bảng tính tệ ngay trong phần mềm và ngay trong khung chat: gõ 4v2+23499 ali TQ là ra tiền Việt\n- Nhắc khách chuyển khoản khi chốt đơn đã lâu mà chưa thấy tiền\n- Tự đọc số tiền trên ảnh bill khách gửi, cộng dồn nhiều lần chuyển, đủ tiền thì cảm ơn khách — nay có cả trên Windows\n- Bản Windows thêm: sổ giao dịch, chọn ChatGPT thay Gemini, và sửa lỗi không cho dùng thử\n- Bot trả lời nhanh hơn khoảng hai lần và không còn bỏ sót khách tên một chữ"
 linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.3.dmg"
 linkTaiWin: "https://phanmemtq.com/tai/BotWeChat-1.3-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
@@ -53,9 +53,10 @@ Bật **Kèm bán nhân dân tệ** là bot biết luôn bảng giá của bạn
   `v` là vạn: `2v` = 20.000, `2v3499` = 23.499, `4v2` = 42.000.
 - **Nhắc khách chuyển khoản.** Chốt đơn đã lâu mà chưa thấy tiền, bot tự nhắn nhắc một
   câu lịch sự — bạn đặt sau bao nhiêu phút thì nhắc và nhắc tối đa mấy lần.
-- **Đọc bill khách gửi (bản Mac).** Khách gửi ảnh chuyển khoản, phần mềm đọc số tiền
-  ngay trên ảnh, cộng dồn nếu khách chuyển làm nhiều lần, còn thiếu thì báo thiếu bao
-  nhiêu, đủ rồi thì cảm ơn khách. Ảnh mã QR hay bill bằng tệ thì bỏ qua, không tính nhầm.
+- **Đọc bill khách gửi.** Khách gửi ảnh chuyển khoản, phần mềm đọc số tiền ngay trên
+  ảnh, cộng dồn nếu khách chuyển làm nhiều lần, còn thiếu thì báo thiếu bao nhiêu, đủ
+  rồi thì cảm ơn khách. Ảnh mã QR hay bill bằng tệ thì bỏ qua, không tính nhầm. Số tiền
+  đọc được vào thẳng **sổ giao dịch** để cuối ngày đối soát, xuất ra Excel được.
 
 Riêng bản Mac còn có **kết bạn hàng loạt** từ những nhóm bạn đang tham gia.
 
