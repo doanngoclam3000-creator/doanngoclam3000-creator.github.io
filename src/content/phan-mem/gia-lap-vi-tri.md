@@ -2,11 +2,11 @@
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.5"
+phienBan: "5.6"
 ngayCapNhat: 2026-08-27
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-4.2/GiaLapViTri-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.5/GiaLapViTri-5.5-Windows.zip"
-ghiChuCapNhat: "- Neo bản quyền vào Registry: xoá thư mục dữ liệu cũng không nhập lại được key cũ để cộng thêm ngày\n- Nút “Bật dịch vụ Apple” xin quyền quản trị nên bật được thật\n- Nhắc bấm “Cho phép” ở bảng hỏi truy cập ảnh và video trên iPhone đời mới\n- Nhận key số ngày tuỳ chỉnh cấp theo lối cũ\n- Sửa lỗi không dò được iPhone dù đã cắm cáp\n- File nén bọc trong một thư mục, hết cảnh thiếu ffmpeg.dll"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.6/GiaLapViTri-5.6-Windows.zip"
+ghiChuCapNhat: "- Bản đồ không hiện ở một số mạng: phần mềm tự đổi sang nguồn bản đồ khác, có thêm bản đồ Trung Quốc và ô chọn nguồn ngay trên bản đồ\n- Tìm địa chỉ có nguồn dự phòng khi mạng chặn, và dán thẳng toạ độ (23.129, 113.264) vào ô tìm cũng nhảy tới luôn\n- Sửa lỗi kéo bản đồ quá mép ra toạ độ sai (kinh độ 405)\n- Sửa lỗi không dò được iPhone, báo “No module named xml”, ở máy đã cài sẵn Python\n- Báo rõ khi bộ cài bị thiếu tệp do giải nén thiếu hoặc bị diệt virus dọn mất"
 dungLuong: "132 MB (Mac) · 195 MB (Windows, file nén)"
 gia: "300.000đ / tháng"
 video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
