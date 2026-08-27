@@ -2,12 +2,12 @@
 ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.3"
+phienBan: "2.4"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Bản Windows: thêm HỘI THOẠI AI — nói chuyện bằng đúng vốn từ bạn đã học, có pinyin, nghĩa và nút gợi ý khi bí\n- Bản Windows: thêm 7 TRÒ CHƠI, chơi cũng là ôn từ, kết quả tính vào lịch ôn\n- Bản Windows: mã QR chuyển khoản ngay trong phần mềm — chuyển xong TỰ mở khoá, không phải gửi mã máy chờ key\n- Bản Windows: giao diện dựng lại theo bản iPhone, có lộ trình HSK và vòng tiến độ từng cấp"
+ghiChuCapNhat: "- Bản Windows nay có ĐỦ MƯỜI mục như bản Mac: Hôm nay, Trò chơi, Hội thoại, Nhập vai, Trung Quốc, Trợ lý AI, Tra từ, Tiến độ, Kết nối AI, Thông tin\n- Nhập vai: 9 cảnh có mục tiêu phải làm xong, đóng vai xong AI nhận xét\n- Trung Quốc: 9 bài về lịch sử, lễ tết, nghệ thuật, đời sống — đọc được cả khi mất mạng\n- Trợ lý AI: dịch hai chiều Việt ↔ Trung và giảng từng câu tiếng Trung\n- Tiến độ: chuỗi ngày, biểu đồ 30 ngày, tiến độ từng cấp HSK\n- Đổi nền xanh / trắng / đen, và đặt giờ nhắc học"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-mac-2.0/HocTiengTrung-2.0.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiWin: "https://phanmemtq.com/tai/HocTiengTrung-2.3.0-Windows.zip"
+linkTaiWin: "https://phanmemtq.com/tai/HocTiengTrung-2.4.0-Windows.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
@@ -60,10 +60,10 @@ Tải file `.dmg` về, mở ra rồi kéo **Học Tiếng Trung** vào thư m�
 Phần mềm được ký bằng chứng chỉ nhà phát triển Apple mang tên **LAM DOAN NGOC** —
 mở phần mềm ra anh chị có thể tự kiểm chứng tên này.
 
-## Bản Windows (2.3)
+## Bản Windows (2.4)
 
 Bản cho máy tính Windows. Tải về được một
-file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-2.3.0-Setup.exe` để cài.
+file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-2.4.0-Setup.exe` để cài.
 
 Giao diện dựng lại theo bản iPhone: lộ trình HSK 1–6 trên nền tranh thuỷ mặc,
 mỗi cấp có vòng tiến độ riêng, bấm vào cấp nào là học ngay cấp đó.
@@ -73,25 +73,38 @@ tập viết chữ Hán chấm từng nét (viết bằng chuột), **bài tập
 **lịch ôn thông minh** — phần mềm tự tính hôm nào nên ôn lại từ nào theo thuật
 toán FSRS-5, từ nào trả lời sai sẽ được hỏi lại sớm hơn.
 
-**Hội thoại với AI** (mới ở bản 2.3): 32 chủ đề từ chào hỏi, gọi món, mặc cả
-cho tới phỏng vấn xin việc. AI chỉ dùng đúng những từ bạn đã học nên lúc nào
-cũng hiểu được; mỗi câu có chữ Hán, pinyin, nghĩa tiếng Việt, nút nghe lại và
-nút gợi ý khi bí. Phần này dùng khoá AI miễn phí bạn tự lấy bằng tài khoản
-Google của mình — trong phần mềm có nút mở thẳng trang lấy khoá và hướng dẫn
-từng bước.
+**Hội thoại với AI**: 32 chủ đề từ chào hỏi, gọi món, mặc cả cho tới phỏng
+vấn xin việc. AI chỉ dùng đúng những từ bạn đã học nên lúc nào cũng hiểu được;
+mỗi câu có chữ Hán, pinyin, nghĩa tiếng Việt, nút nghe lại và nút gợi ý khi bí.
 
-**Bảy trò chơi** (mới ở bản 2.3): ghép cặp, nghe chọn chữ, đoán thanh điệu,
-chọn nghĩa nhanh, chọn pinyin, lật thẻ trí nhớ, đúng hay sai. Chơi cũng là ôn
-— mỗi lượt đúng sai đều được tính vào lịch ôn, và mỗi trò có kỷ lục riêng.
+**Nhập vai**: 9 cảnh như gọi món ở nhà hàng, bắt taxi, nhận phòng khách sạn.
+Khác hội thoại phiếm ở chỗ mỗi cảnh là một việc phải làm cho xong — có vai của
+bạn, có danh sách mục tiêu, làm đủ thì cảnh mới khép và AI nhận xét bạn nói
+được gì, còn vướng ở đâu.
 
-**Chưa có:** chấm điểm phát âm, chấm thanh điệu, nhập vai, phần văn hoá. Riêng
-phần chấm phát âm thì Windows không làm được — công nghệ dựng bản Windows
-không có nhận diện giọng nói; muốn chấm phát âm thì dùng bản iPhone hoặc Mac.
+**Bảy trò chơi**: ghép cặp, nghe chọn chữ, đoán thanh điệu, chọn nghĩa nhanh,
+chọn pinyin, lật thẻ trí nhớ, đúng hay sai. Chơi cũng là ôn — mỗi lượt đúng sai
+đều được tính vào lịch ôn, và mỗi trò có kỷ lục riêng.
 
-**Dùng thử 10 ngày**, sau đó cần key bản quyền. Mua ngay trong phần mềm: chọn
-gói, quét mã QR bằng app ngân hàng, chuyển khoản xong phần mềm **tự mở khoá** —
-không phải gửi mã máy rồi ngồi chờ key. Ai muốn nhắn shop lấy key tay thì vẫn
-có ô dán key như cũ.
+**Trung Quốc**: 9 bài về lịch sử, lễ tết, nghệ thuật và đời sống, viết sẵn
+trong máy nên mất mạng vẫn đọc được, mỗi bài kèm vài chữ Hán đáng nhớ.
+
+**Trợ lý AI**: dịch đoạn văn hai chiều Việt ↔ Trung, và "giảng câu này" —
+dán một câu tiếng Trung vào là được giải thích nghĩa cả câu, vai trò từng từ
+và điểm ngữ pháp đáng nhớ.
+
+**Tiến độ**: chuỗi ngày học liên tiếp, biểu đồ 30 ngày gần nhất, và phần trăm
+đã học của từng cấp HSK.
+
+Phần hội thoại, nhập vai và trợ lý AI dùng khoá AI miễn phí bạn tự lấy bằng
+tài khoản Google của mình — trong phần mềm có nút mở thẳng trang lấy khoá,
+hướng dẫn từng bước và nút thử xem khoá chạy được chưa.
+
+**Chưa có:** chấm điểm phát âm và chấm thanh điệu — Windows không làm được vì
+công nghệ dựng bản Windows không có nhận diện giọng nói; muốn chấm phát âm thì
+dùng bản iPhone hoặc Mac. Phần nhắc học trên Windows nhắc ngay trong phần mềm
+(tới giờ mà chưa học thì màn chính hiện dải nhắc), không đẩy thông báo ra
+ngoài hệ thống như bản Mac.
 
 > **Phần nghe phát âm trên Windows cần máy có sẵn giọng đọc tiếng Trung.** Máy nào
 > chưa cài thì vào *Settings → Time & Language → Speech* thêm gói tiếng Trung
