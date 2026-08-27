@@ -7,7 +7,7 @@ ngayCapNhat: 2026-08-25
 ghiChuCapNhat: "- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Bản Mac và iPhone lên 2.1"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-mac-2.0/HocTiengTrung-2.0.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-windows-0.3/HocTiengTrung-0.3.0-Windows.zip"
+linkTaiWin: "https://phanmemtq.com/tai/HocTiengTrung-2.2.0-Windows.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
@@ -60,10 +60,10 @@ Tải file `.dmg` về, mở ra rồi kéo **Học Tiếng Trung** vào thư m�
 Phần mềm được ký bằng chứng chỉ nhà phát triển Apple mang tên **LAM DOAN NGOC** —
 mở phần mềm ra anh chị có thể tự kiểm chứng tên này.
 
-## Bản Windows (0.3 — đang thử nghiệm)
+## Bản Windows (2.2 — đang thử nghiệm)
 
 Bản cho máy tính Windows. Tải về được một
-file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-0.3.0-Setup.exe` để cài.
+file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-2.2.0-Setup.exe` để cài.
 
 Đã có: từ điển 10.908 từ nằm sẵn trong máy, lộ trình HSK, tra từ, nghe phát âm,
 tập viết chữ Hán chấm từng nét (viết bằng chuột), **bài tập trắc nghiệm** và
