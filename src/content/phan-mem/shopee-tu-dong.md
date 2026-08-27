@@ -7,7 +7,7 @@ banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-27
 ghiChuCapNhat: "- Bản Windows đóng gói MỘT file .exe, cửa sổ riêng (không mở Chrome cho giao diện)\n- Chrome chỉ bật khi đăng nhập shop, tự điền tài khoản"
 linkTaiMac: "https://phanmemtq.com/tai/ShopeeTuDong-5.4.0-macOS.dmg"
-linkTaiWin: "https://phanmemtq.com/tai/ShopeeTuDong-5.4.0-Windows.exe"
+linkTaiWin: "https://phanmemtq.com/tai/ShopeeTuDong-5.4.0-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 86 MB — Mac (.dmg) · Windows (.exe một file, cửa sổ riêng)"
 anhIcon: "/icon/shopee-tu-dong.png"
