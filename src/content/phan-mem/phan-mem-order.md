@@ -13,7 +13,7 @@ anhIcon: "/icon/phan-mem-order.png"
 icon: "🧾"
 mauNen: "#f59e0b"
 noiBat: true
-thuTu: 4
+thuTu: 5
 ---
 
 ## Giới thiệu

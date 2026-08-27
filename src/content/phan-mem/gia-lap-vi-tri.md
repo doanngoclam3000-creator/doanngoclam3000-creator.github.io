@@ -13,7 +13,7 @@ video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
 anhIcon: "/icon/gia-lap-vi-tri.png"
 icon: "📍"
 mauNen: "#7c3aed"
-thuTu: 6
+thuTu: 7
 ---
 
 ## Giới thiệu
