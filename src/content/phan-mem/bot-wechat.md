@@ -133,7 +133,7 @@ Hết 10 ngày, phần mềm xin key bản quyền — **150.000đ cho một th�
 rẻ hơn: 3 tháng 300.000đ, 6 tháng 500.000đ, một năm 900.000đ.
 
 Cách mua: mở phần mềm, bấm **Bản quyền**, chép dòng **Mã máy** gửi cho chúng tôi, chuyển
-khoản rồi nhận key. Key khoá theo máy nên chỉ dùng được đúng máy đó.
+khoản — tiền về là phần mềm tự cộng ngày, không phải nhắn ai. Hạn khoá theo máy nên chỉ dùng được đúng máy đó.
 
 ## Vài điều nói trước cho thật
 

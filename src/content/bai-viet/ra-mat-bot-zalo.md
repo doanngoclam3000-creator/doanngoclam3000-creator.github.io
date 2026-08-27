@@ -45,7 +45,7 @@ Bản Mac là file `.dmg`, bản Windows là file `.zip` giải nén ra chạy t
 thêm gì. Cài xong **tự có 1 ngày dùng thử miễn phí**, không phải nhập gì trước.
 
 Sau đó là **150.000đ một tháng**, mua nhiều tháng thì rẻ hơn. Mua bằng cách quét mã QR ngay
-trong phần mềm rồi gửi mã máy để nhận key — key khoá theo máy.
+trong phần mềm — tiền về là phần mềm tự cộng ngày, không phải nhắn ai xin key. Hạn khoá theo máy.
 
 ## Nói trước cho thật
 
