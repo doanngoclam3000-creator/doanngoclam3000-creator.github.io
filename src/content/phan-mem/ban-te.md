@@ -5,15 +5,7 @@ nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "2.3"
 banToiThieu: "1.8"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Bản Windows làm lại giao diện theo đúng bản iPhone, nhìn thoáng và dễ bấm hơn
-- Gõ số tự chấm cách nghìn: gõ 10000 hiện ngay 10.000
-- Sửa lỗi gõ phím bị khựng
-- Thêm Tệ Bán Chéo, Tiền Chuyển Ra / Chuyển Vào, Khách Hàng Hôm Nay
-- Báo Cáo Lợi Nhuận có các nút Reset như bản iPhone
-- Tab Số Dư NH hiện logo ngân hàng
-- Gia hạn bản quyền: bấm thẳng vào nhãn số ngày ở góc trên là ra mã QR
-- Bản Windows gọn lại thành một file cài đặt, không còn phải giải nén cả thư mục
-- Sửa lỗi mã QR chuyển khoản không hiện lên"
+ghiChuCapNhat: "- Bản Windows làm lại giao diện theo đúng bản iPhone, nhìn thoáng và dễ bấm hơn\n- Gõ số tự chấm cách nghìn: gõ 10000 hiện ngay 10.000\n- Sửa lỗi gõ phím bị khựng\n- Thêm Tệ Bán Chéo, Tiền Chuyển Ra / Chuyển Vào, Khách Hàng Hôm Nay\n- Báo Cáo Lợi Nhuận có các nút Reset như bản iPhone\n- Tab Số Dư NH hiện logo ngân hàng\n- Gia hạn bản quyền: bấm thẳng vào nhãn số ngày ở góc trên là ra mã QR\n- Bản Windows gọn lại thành một file cài đặt, không còn phải giải nén cả thư mục\n- Sửa lỗi mã QR chuyển khoản không hiện lên"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.3/BanTe-Windows-2.3.0.zip"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-mac-1.8/BanTe-1.8-build28.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
