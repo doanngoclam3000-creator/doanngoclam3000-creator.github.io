@@ -7,7 +7,7 @@ banToiThieu: "2.8"
 ngayCapNhat: 2026-08-28
 ghiChuCapNhat: "- Sửa lỗi mã QR không hiện trên bản Windows\n- Bản Mac nhận tiền chuyển khoản trở lại, tự cộng ngày\n- Bản quyền và nút quét mã QR đưa ra ngay Trang chủ, không phải vào Cài đặt"
 linkTaiMac: "https://phanmemtq.com/tai/PhanMemOrder-2.12.dmg"
-linkTaiWin: "https://phanmemtq.com/tai/PhanMemOrder-2.12.0-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.12/PhanMemOrder-2.12.0-Windows.zip"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"
 icon: "🧾"
