@@ -2,12 +2,12 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.4.6"
+phienBan: "5.4.7"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Sửa lỗi bản Windows không mở được (do bytecode lệch kiến trúc chip)\n- Bản Windows: một file .exe, cửa sổ riêng, không mở Chrome cho giao diện"
-linkTaiMac: "https://phanmemtq.com/tai/ShopeeTuDong-5.4.6-macOS.dmg"
-linkTaiWin: "https://phanmemtq.com/tai/ShopeeTuDong-5.4.6-Windows.zip"
+ghiChuCapNhat: "- Đơn đã in vẫn in lại được; đơn đang vận chuyển thì không in (báo rõ)\n- Bản Windows lấy được dữ liệu Shopee sau đăng nhập"
+linkTaiMac: "https://phanmemtq.com/tai/ShopeeTuDong-5.4.7-macOS.dmg"
+linkTaiWin: "https://phanmemtq.com/tai/ShopeeTuDong-5.4.7-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 86 MB — Mac (.dmg) · Windows (.exe một file, cửa sổ riêng)"
 anhIcon: "/icon/shopee-tu-dong.png"
