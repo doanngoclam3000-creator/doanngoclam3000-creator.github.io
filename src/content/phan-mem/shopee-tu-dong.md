@@ -2,14 +2,14 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.4.9"
+phienBan: "5.5.0"
 banToiThieu: "5.0.0"
-ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- In vận đơn hiện thẳng lên màn hình để in ngay (không lưu file), nhanh hơn\n- Đơn đã in vẫn in lại được; đơn đang vận chuyển thì không in"
+ngayCapNhat: 2026-08-29
+ghiChuCapNhat: "- In vận đơn nhanh hơn nhiều: bấm là hiện cửa sổ in trong khoảng 2 giây, MỖI ĐƠN MỘT TRANG\n- Thêm chế độ in “vừa với giấy”, chọn được khổ nhiệt hoặc A4\n- Tab Đơn hàng mở ra chỉ hiện đơn Chờ xác nhận; tự canh đơn mới mỗi 10 giây\n- Tự động chuẩn bị hàng rút xuống dưới 5 giây\n- Xuất Excel có kẻ bảng rõ ràng từng mục\n- Tab Sản phẩm: xóa là mất hẳn, tải lại thấy ngay; tự cập nhật mỗi 5 giây\n- “Đang bán” chỉ hiện hàng còn trong kho; sản phẩm ẩn có nút cho hiện lại\n- Đăng sản phẩm: thêm phân loại Size và Màu sắc, bảng size và bảo hành theo từng ngành hàng\n- Chép sản phẩm: dán link shop đối thủ là ra hết sản phẩm, chọn từng cái hoặc chép tất cả\n- Tab Tin nhắn: tự nhắn khách theo trạng thái đơn, có sẵn mẫu tin, sửa được\n- Tab Đánh giá: xem được quá 20 đánh giá, có mẫu trả lời sẵn theo số sao\n- Gõ số tự chấm cách nghìn: gõ 100000 hiện ngay 100.000\n- Bản quyền chuyển sang khóa ở máy chủ: xóa phần mềm cài lại VẪN CÒN HẠN, không bị mất ngày\n- Chuyển khoản xong phần mềm TỰ cộng ngày, không phải nhắn shop xin key\n- Bấm biểu tượng chìa khóa ở góc trên là ra mã QR gia hạn\n- Bản Windows giải nén ra đúng MỘT file .exe, chạy lần đầu tự tạo lối tắt ngoài Desktop"
 linkTaiMac: "https://phanmemtq.com/tai/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://phanmemtq.com/tai/ShopeeTuDong-5.4.9-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.0/ShopeeTuDong-5.5.0-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
-dungLuong: "khoảng 86 MB — Mac (.dmg) · Windows (.exe một file, cửa sổ riêng)"
+dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
 icon: "🛒"
 mauNen: "#ee4d2d"
