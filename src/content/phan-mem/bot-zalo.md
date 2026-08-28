@@ -6,7 +6,7 @@ phienBan: "2.0"
 banToiThieu: "1.1"
 ngayCapNhat: 2026-08-28
 ghiChuCapNhat: "- Dùng thử rút còn 2 ngày\n- Đăng nhập Zalo MỘT LẦN — các tab tự tải nhóm, không phải bấm “Tải nhóm”\n- Tab Tài khoản Zalo gọn lại, thêm chức năng Kiểm tra proxy\n- Bản Windows giải nén ra đúng MỘT file .exe"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-1.1/BotZalo-1.1.0-mac-arm64.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.0/BotZalo-2.0.0-mac-arm64.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.0/BotZalo-2.0-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 2 ngày"
 dungLuong: "75 MB (Windows) — giải nén ra đúng một file .exe"
