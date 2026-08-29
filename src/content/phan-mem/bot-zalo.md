@@ -2,12 +2,13 @@
 ten: "Bot Zalo"
 moTa: "Trợ lý tự động cho Zalo: quét đủ thành viên nhóm (cả cộng đồng nghìn người), kết bạn và nhắn tin hàng loạt, đăng bài vào nhiều nhóm, hẹn giờ, mời vào nhóm, tìm khách quanh khu vực qua Google Maps. Xem và trả lời tin nhắn ngay trong phần mềm."
 nenTang: ["macOS", "Windows"]
-phienBan: "2.1.0"
+phienBan: "2.2.0"
 banToiThieu: "1.1"
-ngayCapNhat: 2026-08-29
-ghiChuCapNhat: "- Bản quyền chuyển sang máy chủ cấp phép: xoá phần mềm cài lại không xin thêm được ngày dùng thử\n- Mất mạng vẫn dùng bình thường trong 7 ngày, chỉ lần mở đầu tiên trên máy mới là cần mạng\n- Chuyển khoản xong phần mềm tự mở khoá, không phải nhắn tin xin key\n- Vá lỗ hổng bảo mật trong bản 2.0: gỡ khoá truy cập cổng thanh toán từng nằm trong phần mềm"
+ngayCapNhat: 2026-08-30
+ghiChuCapNhat: "- Thêm Trợ lý AI: tự trả lời khách trên Zalo, tư vấn theo bảng giá của shop\n- Khách gửi ảnh thì trợ lý xem ảnh rồi tư vấn; khách đòi xem hàng thì gửi ảnh sản phẩm luôn\n- Bảng chốt đơn ngay trong phần mềm: sản phẩm, số lượng, tên, SĐT, địa chỉ, trạng thái, xuất CSV\n- Cập nhật ngay trong phần mềm, chỉ tải gói nhỏ ~245KB thay vì cả bản đầy đủ\n- Mọi việc chạy dài đều có nút Dừng: kết bạn, nhắn tin, đăng bài, mời nhóm, lấy số\n- Sửa lỗi mở phần mềm lên không hiện dữ liệu đã lưu"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.0/BotZalo-2.0.0-mac-arm64.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.1.0/BotZalo-2.1.0-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.0/BotZalo-2.2.0-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.0/ban-2.2.0-80cf6121.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 2 ngày"
 dungLuong: "77 MB (Windows) — giải nén ra đúng một file .exe"
 anhIcon: "/icon/bot-zalo.png"
