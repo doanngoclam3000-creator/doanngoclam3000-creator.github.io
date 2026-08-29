@@ -15,6 +15,9 @@ export const CAUHINH = {
   goatCounter: 'phanmemtq',
   email: 'luc.tieu.phung1409@gmail.com',
   youtube: '',
+  // Bat popup bao phien ban moi khi khach vao website (hien 1 lan moi ban).
+  // Doi thanh false neu muon tat han.
+  thongBaoBanMoi: true,
   // Anh banner o trang chu. Thay bang anh cua ban:
   // bo file vao thu muc public/ roi doi duong dan o day, vi du '/banner.jpg'
   anhBanner: '/banner.svg',

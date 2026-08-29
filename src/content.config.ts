@@ -24,6 +24,8 @@ const phanMem = defineCollection({
     linkTaiIOS: z.string().optional(),
     linkTaiAndroid: z.string().optional(),
     dungLuong: z.string().optional(),
+    // Cong them vao so luot tai (danh cho ban da phat cho khach ngoai website)
+    luotTaiThem: z.number().optional(),
     anh: z.string().optional(),
     video: z.string().optional(),
     anhIcon: z.string().optional(),

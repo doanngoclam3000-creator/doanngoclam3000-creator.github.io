@@ -1,6 +1,8 @@
 ---
 import { dinhDangNgay } from '../config';
+import { demLuotTai, dinhDangLuot } from '../luotTai';
 const { pm } = Astro.props;
+const luot = await demLuotTai(pm.id);
 ---
 <article class="the pm" style={`--mau:${pm.data.mauNen}`}>
   <a href={`/phan-mem/${pm.id}`} class="dinh">
@@ -18,7 +20,10 @@ const { pm } = Astro.props;
     <div class="chan-the">
       <a href={`/phan-mem/${pm.id}`} class="nut nut-vien nut-nho">Xem chi tiết</a>
     </div>
-    <span class="chu-nhat nho">Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
+    <div class="dong-cuoi chu-nhat nho">
+      <span>Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
+      {luot && luot.tong > 0 && <span class="luot-tai">⬇ <b>{dinhDangLuot(luot.tong)}</b> lượt tải</span>}
+    </div>
   </div>
 </article>
 
@@ -39,4 +44,7 @@ const { pm } = Astro.props;
   .chip { font-size: .75rem; font-weight: 500; padding: .2rem .55rem; border-radius: 6px; background: var(--nen-phu); border: 1px solid var(--vien); color: var(--chu-nhat); }
   .chan-the { display: flex; align-items: center; margin-top: auto; padding-top: .4rem; }
   .nut-nho { padding: .45rem .8rem; font-size: .85rem; }
+  .dong-cuoi { display: flex; align-items: center; justify-content: space-between; gap: .6rem; flex-wrap: wrap; }
+  .luot-tai { white-space: nowrap; }
+  .luot-tai b { color: var(--chu); font-weight: 700; }
 </style>

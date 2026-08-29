@@ -5,6 +5,7 @@ import KhoiTai from '../../components/KhoiTai.astro';
 import Video from '../../components/Video.astro';
 import { getCollection, render } from 'astro:content';
 import { dinhDangNgay } from '../../config';
+import { demLuotTai, dinhDangLuot } from '../../luotTai';
 
 export async function getStaticPaths() {
   const ds = await getCollection('phan-mem');
@@ -12,6 +13,7 @@ export async function getStaticPaths() {
 }
 const { pm } = Astro.props;
 const { Content } = await render(pm);
+const luot = await demLuotTai(pm.id);
 const coLinkTai = [pm.data.linkTaiMac, pm.data.linkTaiWin, pm.data.linkTaiIOS, pm.data.linkTaiAndroid, pm.data.linkTai]
   .some((l) => l && l !== '#');
 const lienQuan = (await getCollection('bai-viet'))
@@ -33,6 +35,7 @@ const lienQuan = (await getCollection('bai-viet'))
           {pm.data.phienBan && <span class="chip">Phiên bản {pm.data.phienBan}</span>}
           {pm.data.nenTang.map((n: string) => <span class="chip">{n}</span>)}
           <span class="chip">Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
+          {luot && luot.tong > 0 && <span class="chip chip-tai">⬇ {dinhDangLuot(luot.tong)} lượt tải</span>}
         </div>
         {coLinkTai && (
           <div class="hd">
@@ -82,6 +85,7 @@ const lienQuan = (await getCollection('bai-viet'))
   .mo-ta { font-size: 1.08rem; opacity: .93; max-width: 620px; }
   .chips { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1rem 0 1.4rem; }
   .chip { font-size: .82rem; font-weight: 500; background: rgba(255,255,255,.18); padding: .28rem .7rem; border-radius: 999px; }
+  .chip-tai { background: rgba(255,255,255,.28); font-weight: 600; }
   .hd { display: flex; gap: .6rem; flex-wrap: wrap; }
   .nut-tai-ve { background: #fff; color: #111; }
   .nut-tai-ve:hover { background: #f1f5f9; color: #111; transform: translateY(-1px); }

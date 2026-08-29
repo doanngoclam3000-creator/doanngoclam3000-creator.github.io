@@ -1,21 +1,27 @@
 ---
 import { dinhDangNgay } from '../config';
+import { demLuotTai, duongDanDem, dinhDangLuot } from '../luotTai';
 const { pm } = Astro.props;
+
+const luot = await demLuotTai(pm.id);
+const soCuaKenh = (k: string) => (luot?.theoKenh as Record<string, number> | undefined)?.[k] ?? 0;
 
 const laTestFlight = (u?: string) => !!u && u.includes('testflight.apple.com');
 
 const nut = [
-  { link: pm.data.linkTaiMac, ten: 'MacBook / iMac', phu: 'macOS · file .dmg', icon: '', tf: false },
-  { link: pm.data.linkTaiWin, ten: 'Máy tính Windows', phu: 'Windows · file .exe', icon: '⊞', tf: false },
+  { kenh: 'mac', link: pm.data.linkTaiMac, ten: 'MacBook / iMac', phu: 'macOS · file .dmg', icon: '', tf: false },
+  { kenh: 'windows', link: pm.data.linkTaiWin, ten: 'Máy tính Windows', phu: 'Windows · file .exe', icon: '⊞', tf: false },
   {
+    kenh: 'ios',
     link: pm.data.linkTaiIOS,
     ten: 'iPhone / iPad',
     phu: laTestFlight(pm.data.linkTaiIOS) ? 'iOS · qua TestFlight' : 'iOS',
     icon: '',
     tf: laTestFlight(pm.data.linkTaiIOS),
   },
-  { link: pm.data.linkTaiAndroid, ten: 'Điện thoại Android', phu: 'Android · file .apk', icon: '🤖', tf: false },
-].filter((n) => n.link && n.link !== '#');
+  { kenh: 'android', link: pm.data.linkTaiAndroid, ten: 'Điện thoại Android', phu: 'Android · file .apk', icon: '🤖', tf: false },
+].filter((n) => n.link && n.link !== '#')
+ .map((n) => ({ ...n, soTai: soCuaKenh(n.kenh), duongDem: duongDanDem(pm.id, n.kenh) }));
 
 const coTestFlight = nut.some((n) => n.tf);
 
@@ -38,6 +44,9 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
           {pm.data.phienBan && <><b>Phiên bản {pm.data.phienBan}</b><span class="cach">·</span></>}
           <span>Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
           {pm.data.dungLuong && <><span class="cach">·</span><span>{pm.data.dungLuong}</span></>}
+          {luot && luot.tong > 0 && (
+            <><span class="cach">·</span><span class="tong-tai">⬇ <b>{dinhDangLuot(luot.tong)}</b> lượt tải</span></>
+          )}
         </p>
         {pm.data.ghiChuCapNhat && <p class="ghi-chu">Bản mới: {pm.data.ghiChuCapNhat}</p>}
       </div>
@@ -45,19 +54,31 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
 
     <div class="phai">
       {nut.map((n) => (
-        <a href={n.link} class:list={['nut-tai', n.tf && 'nut-tf']} target={n.tf ? '_blank' : undefined} rel={n.tf ? 'noopener' : undefined}>
+        <a
+          href={n.link}
+          class:list={['nut-tai', n.tf && 'nut-tf']}
+          target={n.tf ? '_blank' : undefined}
+          rel={n.tf ? 'noopener' : undefined}
+          data-tai={n.tf ? undefined : n.duongDem}
+        >
           <span class="nut-icon">{n.icon}</span>
           <span class="nut-chu">
             <b>{n.ten}</b>
-            <small>{n.phu}</small>
+            <small>{n.phu}{n.soTai > 0 && <> · <b class="so-tai">{dinhDangLuot(n.soTai)}</b> lượt tải</>}</small>
           </span>
           <span class="mui">↓</span>
         </a>
       ))}
       {dungLinkChung && (
-        <a href={pm.data.linkTai} class="nut-tai">
+        <a href={pm.data.linkTai} class="nut-tai" data-tai={duongDanDem(pm.id, 'chung')}>
           <span class="nut-icon">⬇</span>
-          <span class="nut-chu"><b>Tải về máy</b><small>{pm.data.nenTang.join(' · ')}</small></span>
+          <span class="nut-chu">
+            <b>Tải về máy</b>
+            <small>
+              {pm.data.nenTang.join(' · ')}
+              {soCuaKenh('chung') > 0 && <> · <b class="so-tai">{dinhDangLuot(soCuaKenh('chung'))}</b> lượt tải</>}
+            </small>
+          </span>
           <span class="mui">↓</span>
         </a>
       )}
@@ -68,12 +89,26 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
         </p>
       )}
       {pm.data.linkTaiPhu && pm.data.linkTaiPhu !== '#' && (
-        <a href={pm.data.linkTaiPhu} class="link-phu">Link dự phòng (nếu link trên tải chậm)</a>
+        <a href={pm.data.linkTaiPhu} class="link-phu" data-tai={duongDanDem(pm.id, 'du-phong')}>
+          Link dự phòng (nếu link trên tải chậm)
+          {soCuaKenh('du-phong') > 0 && <> — {dinhDangLuot(soCuaKenh('du-phong'))} lượt tải</>}
+        </a>
       )}
     </div>
   </div>
 </section>
 )}
+
+<script is:inline>
+  // Ghi nhan cu bam nut tai, de dem duoc ca nhung link khong nam tren GitHub
+  document.querySelectorAll('a[data-tai]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      var g = window.goatcounter;
+      if (!g || typeof g.count !== 'function') return;
+      g.count({ path: a.dataset.tai, title: 'Tai ve ' + a.dataset.tai, event: false });
+    });
+  });
+</script>
 
 <style>
   .khoi-tai {
@@ -94,6 +129,8 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
   .khoi-tai h2 { margin: 0 0 .25rem; font-size: 1.3rem; }
   .chi-tiet { margin: 0; font-size: .9rem; color: var(--chu-nhat); }
   .chi-tiet b { color: var(--chu); }
+  .tong-tai { white-space: nowrap; }
+  .so-tai { font-weight: 700; opacity: 1; }
   .cach { margin: 0 .45rem; opacity: .5; }
   .ghi-chu { margin: .4rem 0 0; font-size: .86rem; color: var(--mau); }
   html[data-theme='dark'] .ghi-chu { color: color-mix(in srgb, var(--mau) 65%, #fff); }
