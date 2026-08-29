@@ -2,14 +2,14 @@
 ten: "Bot Zalo"
 moTa: "Trợ lý tự động cho Zalo: quét đủ thành viên nhóm (cả cộng đồng nghìn người), kết bạn và nhắn tin hàng loạt, đăng bài vào nhiều nhóm, hẹn giờ, mời vào nhóm, tìm khách quanh khu vực qua Google Maps. Xem và trả lời tin nhắn ngay trong phần mềm."
 nenTang: ["macOS", "Windows"]
-phienBan: "2.0"
+phienBan: "2.1.0"
 banToiThieu: "1.1"
-ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Dùng thử rút còn 2 ngày\n- Đăng nhập Zalo MỘT LẦN — các tab tự tải nhóm, không phải bấm “Tải nhóm”\n- Tab Tài khoản Zalo gọn lại, thêm chức năng Kiểm tra proxy\n- Bản Windows giải nén ra đúng MỘT file .exe"
+ngayCapNhat: 2026-08-29
+ghiChuCapNhat: "- Bản quyền chuyển sang máy chủ cấp phép: xoá phần mềm cài lại không xin thêm được ngày dùng thử\n- Mất mạng vẫn dùng bình thường trong 7 ngày, chỉ lần mở đầu tiên trên máy mới là cần mạng\n- Chuyển khoản xong phần mềm tự mở khoá, không phải nhắn tin xin key\n- Vá lỗ hổng bảo mật trong bản 2.0: gỡ khoá truy cập cổng thanh toán từng nằm trong phần mềm"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.0/BotZalo-2.0.0-mac-arm64.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.0/BotZalo-2.0-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.1.0/BotZalo-2.1.0-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 2 ngày"
-dungLuong: "75 MB (Windows) — giải nén ra đúng một file .exe"
+dungLuong: "77 MB (Windows) — giải nén ra đúng một file .exe"
 anhIcon: "/icon/bot-zalo.png"
 icon: "💬"
 mauNen: "#2b7cff"
