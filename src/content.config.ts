@@ -17,6 +17,10 @@ const phanMem = defineCollection({
     linkTaiPhu: z.string().optional(),
     linkTaiMac: z.string().optional(),
     linkTaiWin: z.string().optional(),
+    // Goi CAP NHAT NHANH: chi chua phan doi giua hai ban (~300KB) thay vi
+    // ca ban day du. Phan mem tai goi nay ve, kiem chu ky roi khoi dong lai.
+    linkGoiMac: z.string().optional(),
+    linkGoiWin: z.string().optional(),
     linkTaiIOS: z.string().optional(),
     linkTaiAndroid: z.string().optional(),
     dungLuong: z.string().optional(),

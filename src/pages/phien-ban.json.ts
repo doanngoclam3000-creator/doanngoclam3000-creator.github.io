@@ -39,6 +39,12 @@ export const GET: APIRoute = async ({ site }) => {
         ios: p.data.linkTaiIOS || null,
         android: p.data.linkTaiAndroid || null,
       },
+      // Goi cap nhat nhanh (~300KB). Co goi thi phan mem hien nut
+      // "Cap nhat ngay"; khong co thi lui ve nut tai ban day du.
+      goi: {
+        mac: p.data.linkGoiMac || null,
+        windows: p.data.linkGoiWin || null,
+      },
       // Phien ban THEO TUNG NEN TANG, doc tu chinh ten tep tai ve.
       // Vi sao can: mot phan mem co the ra ban Windows truoc, ban Mac sau.
       // Chi co mot so phien ban chung thi may Mac bi bao "co ban moi" roi tai

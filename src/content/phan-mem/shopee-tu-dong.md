@@ -2,12 +2,13 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.5.4"
+phienBan: "5.5.5"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-30
-ghiChuCapNhat: "- In vận đơn nay chạy vừa MỌI máy in nhãn: chọn “Khổ khác — tự đo” rồi gõ đúng số đo cuộn giấy của bạn (20–500 mm)\n- Sửa lỗi in lệch: khổ 10×15 trước đây dùng nhầm kích thước A6 thật (105×148 mm), nay đúng 100×150 mm\n- Thêm sẵn các khổ 10×18, 10×10, 7,6×13 và 5×3\n- Thêm ô co giãn phần trăm: nhãn tràn mép thì hạ xuống 90–95\n- Phần mềm nhớ khổ giấy đã chọn, lần in sau tự áp dụng, không phải chọn lại\n- Dưới mã vận đơn hiện rõ “Đã in” hay “Chưa in” — hỏi thẳng Shopee nên in bằng cách nào cũng đúng"
+ghiChuCapNhat: "- Có bản mới thì bấm luôn nút “Cập nhật ngay” trong phần mềm: tải gói khoảng 300 KB rồi tự khởi động lại, xong sau vài giây — không phải tải lại 87 MB nữa\n- Gói cập nhật được máy chủ bản quyền ký; phần mềm kiểm chữ ký trước khi dùng, sai một byte là bỏ qua và chạy tiếp bản cũ\n- Nút “Tải bản đầy đủ” vẫn còn cho những lần cần thay cả phần lõi\n- Lưu ý: từ 5.5.5 trở đi mới có nút này. Ai đang dùng 5.5.4 hoặc cũ hơn hãy tải bản đầy đủ MỘT lần, từ đó về sau chỉ cần bấm nút"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.4/ShopeeTuDong-5.5.4-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.5/ShopeeTuDong-5.5.5-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.5/ban-5.5.5.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
