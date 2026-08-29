@@ -27,6 +27,9 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npm run build
+        env:
+          # De lay so luot tai tu GitHub Releases ma khong bi chan vi goi qua nhieu
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
