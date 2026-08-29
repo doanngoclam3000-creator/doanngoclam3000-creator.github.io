@@ -2,12 +2,12 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.5.2"
+phienBan: "5.5.3"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-29
-ghiChuCapNhat: "- Sửa lỗi phần mềm tự khai sai phiên bản — bản 5.5.1 khai mình là 5.5.0 nên cài xong vẫn bị nhắc cập nhật mãi\n- Thông báo cập nhật nay xét theo đúng hệ điều hành, Windows và macOS không dùng chung một số nữa\n- Bỏ bộ đếm cộng dồn ở khung tự động xác nhận, chỉ còn dòng cho biết lần quét gần nhất"
+ghiChuCapNhat: "- Đơn chưa xác nhận được nay hiện rõ lý do bằng chữ đỏ ngay dưới cột Trạng thái\n- Lý do lấy đúng từ câu Shopee trả về khi bấm hụt, ví dụ “Đang Điều Phối ĐVVC”\n- Đơn xác nhận xong thì dòng đỏ tự mất; đơn đã có mã vận đơn không hiện gì"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.2/ShopeeTuDong-5.5.2-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.3/ShopeeTuDong-5.5.3-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
