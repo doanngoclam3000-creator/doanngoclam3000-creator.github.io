@@ -2,12 +2,12 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.5.0"
+phienBan: "5.5.1"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-29
-ghiChuCapNhat: "- In vận đơn nhanh hơn nhiều: bấm là hiện cửa sổ in trong khoảng 2 giây, MỖI ĐƠN MỘT TRANG\n- Thêm chế độ in “vừa với giấy”, chọn được khổ nhiệt hoặc A4\n- Tab Đơn hàng mở ra chỉ hiện đơn Chờ xác nhận; tự canh đơn mới mỗi 10 giây\n- Tự động chuẩn bị hàng rút xuống dưới 5 giây\n- Xuất Excel có kẻ bảng rõ ràng từng mục\n- Tab Sản phẩm: xóa là mất hẳn, tải lại thấy ngay; tự cập nhật mỗi 5 giây\n- “Đang bán” chỉ hiện hàng còn trong kho; sản phẩm ẩn có nút cho hiện lại\n- Đăng sản phẩm: thêm phân loại Size và Màu sắc, bảng size và bảo hành theo từng ngành hàng\n- Chép sản phẩm: dán link shop đối thủ là ra hết sản phẩm, chọn từng cái hoặc chép tất cả\n- Tab Tin nhắn: tự nhắn khách theo trạng thái đơn, có sẵn mẫu tin, sửa được\n- Tab Đánh giá: xem được quá 20 đánh giá, có mẫu trả lời sẵn theo số sao\n- Gõ số tự chấm cách nghìn: gõ 100000 hiện ngay 100.000\n- Bản quyền chuyển sang khóa ở máy chủ: xóa phần mềm cài lại VẪN CÒN HẠN, không bị mất ngày\n- Chuyển khoản xong phần mềm TỰ cộng ngày, không phải nhắn shop xin key\n- Bấm biểu tượng chìa khóa ở góc trên là ra mã QR gia hạn\n- Bản Windows giải nén ra đúng MỘT file .exe, chạy lần đầu tự tạo lối tắt ngoài Desktop"
+ghiChuCapNhat: "- Sửa lỗi TỰ ĐỘNG XÁC NHẬN ĐƠN không chạy — nay bật công tắc là phần mềm tự bấm "Chuẩn bị hàng"\n- Chạy nền 10 giây một lần, không phụ thuộc bạn đang mở mục nào hay đang ở tab nào\n- Quét cả "Chờ xác nhận" lẫn "Chờ lấy hàng"; đơn chưa có mã vận đơn là đơn cần bấm\n- Đơn Shopee đang điều phối đơn vị vận chuyển thì tự thử lại 2 phút một lần cho tới khi được\n- Xác nhận trượt là hiện rõ lý do ngay trên khung, không còn im lặng\n- Mở tab Đơn hàng vào thẳng mục "Chờ lấy hàng" — nơi có đơn cần xử lý\n- Nút "Xác nhận đơn đã chọn" nhận cả đơn ở "Chờ lấy hàng" (trước đây từ chối)"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.0/ShopeeTuDong-5.5.0-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.1/ShopeeTuDong-5.5.1-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
