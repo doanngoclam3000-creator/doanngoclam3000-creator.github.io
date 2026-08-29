@@ -5,7 +5,7 @@ nenTang: ["macOS", "Windows"]
 phienBan: "5.5.1"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-29
-ghiChuCapNhat: "- Sửa lỗi TỰ ĐỘNG XÁC NHẬN ĐƠN không chạy — nay bật công tắc là phần mềm tự bấm "Chuẩn bị hàng"\n- Chạy nền 10 giây một lần, không phụ thuộc bạn đang mở mục nào hay đang ở tab nào\n- Quét cả "Chờ xác nhận" lẫn "Chờ lấy hàng"; đơn chưa có mã vận đơn là đơn cần bấm\n- Đơn Shopee đang điều phối đơn vị vận chuyển thì tự thử lại 2 phút một lần cho tới khi được\n- Xác nhận trượt là hiện rõ lý do ngay trên khung, không còn im lặng\n- Mở tab Đơn hàng vào thẳng mục "Chờ lấy hàng" — nơi có đơn cần xử lý\n- Nút "Xác nhận đơn đã chọn" nhận cả đơn ở "Chờ lấy hàng" (trước đây từ chối)"
+ghiChuCapNhat: "- Sửa lỗi TỰ ĐỘNG XÁC NHẬN ĐƠN không chạy — nay bật công tắc là phần mềm tự bấm “Chuẩn bị hàng”\n- Chạy nền 10 giây một lần, không phụ thuộc bạn đang mở mục nào hay đang ở tab nào\n- Quét cả “Chờ xác nhận” lẫn “Chờ lấy hàng”; đơn chưa có mã vận đơn là đơn cần bấm\n- Đơn Shopee đang điều phối đơn vị vận chuyển thì tự thử lại 2 phút một lần cho tới khi được\n- Xác nhận trượt là hiện rõ lý do ngay trên khung, không còn im lặng\n- Mở tab Đơn hàng vào thẳng mục “Chờ lấy hàng” — nơi có đơn cần xử lý\n- Nút “Xác nhận đơn đã chọn” nhận cả đơn ở “Chờ lấy hàng” (trước đây từ chối)"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.1/ShopeeTuDong-5.5.1-Windows.zip"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
