@@ -2,14 +2,14 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.6.1"
+phienBan: "5.6.3"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-30
 mienPhi: true
-ghiChuCapNhat: "- Sửa lỗi của bản 5.6.0: phần mềm đi bấm lại những đơn đã xác nhận xong, mỗi đơn tốn 16 giây, rồi tô chữ đỏ “Chưa xác nhận” lên đơn hoàn toàn bình thường\n- Đơn đã có mã vận đơn là đã chuẩn bị hàng xong — phần mềm không đụng tới nữa và không báo gì cả\n- Vẫn giữ các sửa lỗi thật: tìm đúng nút Chuẩn bị hàng kể cả khi Shopee chèn dấu cách đặc biệt hay bảng lồng nhiều lớp, và không bao giờ bấm nhầm nút của đơn khác\n- Hai công tắc Tự canh đơn mới và Tự động xác nhận nhớ trạng thái qua lần mở lại\n- Khi mọi đơn đều đã xác nhận, khung chẩn đoán ghi rõ “đang chờ đơn mới” để biết chắc phần mềm vẫn đang chạy"
+ghiChuCapNhat: "- Tick ô “In bằng Chrome” một lần, từ đó bấm In là vận đơn mở bằng Chrome và hộp thoại in tự bật lên — không phải bấm thêm bước nào\n- Hộp thoại của Chrome hỏi thẳng trình điều khiển máy in nên có đủ: chọn máy in nhãn, chọn khổ giấy của chính máy in (ví dụ 100mm × 150mm), và Fit to printable area\n- Trước đây hộp thoại in nằm trong phần mềm nên không đọc được khổ giấy của máy in nhãn, nhãn in ra hay bị lệch\n- Chrome chạy bằng hồ sơ riêng, không đụng vào Chrome cá nhân của bạn\n- Bỏ tick là quay lại in trong cửa sổ phần mềm như cũ, ô “Vừa với giấy” vẫn còn"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.1/ShopeeTuDong-5.6.1-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.1/ban-5.6.1-6ffab4eb.goi"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.3/ShopeeTuDong-5.6.3-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.3/ban-5.6.3-ae022c5e.goi"
 gia: "Miễn phí"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
