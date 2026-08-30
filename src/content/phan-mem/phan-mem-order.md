@@ -2,13 +2,13 @@
 ten: "Phần Mềm Order"
 moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tính tiền theo tỉ giá lẻ/sỉ, quản lý kho TQ, công nợ và báo cáo."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.12"
+phienBan: "2.13"
 banToiThieu: "2.8"
-ngayCapNhat: 2026-08-28
+ngayCapNhat: 2026-08-30
 mienPhi: true
-ghiChuCapNhat: "- Sửa lỗi mã QR không hiện trên bản Windows\n- Bản Mac nhận tiền chuyển khoản trở lại, tự cộng ngày\n- Bản quyền và nút quét mã QR đưa ra ngay Trang chủ, không phải vào Cài đặt"
+ghiChuCapNhat: "- Bản Windows nay có bộ cài: cài một lần, sau này có bản mới chỉ bấm Cập nhật ngay trong phần mềm\n- Dán link 1688/Taobao là tự lấy ảnh, tên tiếng Việt, giá và cước ship nội địa\n- Ô Màu và Size thành ô chọn, lấy đúng danh sách shop đang bán\n- Gõ tiền tự thêm dấu chấm: 100000 thành 100.000\n- Chọn Tỉnh/Thành và Phường/Xã theo bộ máy hai cấp mới\n- Màn Đơn hàng lọc theo khách, trạng thái, khoảng ngày, đơn còn nợ"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.12/PhanMemOrder-2.12.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.12/PhanMemOrder-2.12.0-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-latest/PhanMemOrder-2.13.0-Windows-Setup.exe"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"
 icon: "🧾"
