@@ -2,13 +2,13 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.6.5"
+phienBan: "5.6.6"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-31
-ghiChuCapNhat: "- Sửa đúng nguyên nhân đơn mới không được tự xác nhận: phần mềm đọc bảng đơn lúc còn rỗng rồi kết luận không thấy đơn\n- Phép kiểm “trang đã tải xong chưa” trước đây chỉ tìm chữ Chờ lấy hàng — mà chữ đó nằm sẵn ở thanh menu bên trái nên hiện ra ngay, trong khi bảng đơn còn đang tải\n- Nay phải thấy mã đơn thật mới coi là tải xong, và chờ đúng mã đơn đang cần hiện ra rồi mới bấm\n- Bảng rỗng thật thì không báo nhầm là lỗi tải trang nữa"
+ghiChuCapNhat: "- Sửa ba lỗi khiến đơn mới không được tự xác nhận, cả ba tìm ra nhờ chính dòng chẩn đoán của bản trước\n- Bảng đơn của Shopee nằm trong khung nhúng (iframe) nên phần mềm không thấy mã đơn nào — nay quét cả trang ngoài lẫn các khung nhúng\n- Mẫu dò mã đơn dùng ranh giới từ nên không khớp khi chữ trên trang nối liền nhau không có dấu cách\n- Trong hộp thoại Chuẩn bị hàng phải chọn “Đơn vị vận chuyển đến lấy hàng” thì nút Xác nhận mới bấm được — trước đây phần mềm chỉ chọn khung giờ rồi bấm luôn nên nút còn mờ\n- Câu báo lỗi nay kèm số khung nhúng và số khung đọc được, để lần sau lần ra ngay"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.5/ShopeeTuDong-5.6.5-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.5/ban-5.6.5-33495ade.goi"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.6/ShopeeTuDong-5.6.6-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.6/ban-5.6.6-3b6d8739.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
