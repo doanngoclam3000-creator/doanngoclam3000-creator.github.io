@@ -2,12 +2,13 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.5.7"
+phienBan: "5.5.8"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-30
-ghiChuCapNhat: "- Sửa lỗi mở phần mềm hai lần làm hỏng bản đang dùng: bấm gì cũng báo “Failed to fetch”. Nay chỉ cho một bản chạy một lúc, bấm mở thêm thì đưa cửa sổ đang có lên trước mặt\n- Máy chủ trong phần mềm có dừng thì hiện thông báo rõ ràng, không im lặng như trước\n- Sửa nhãn “Đã in / Chưa in” dựng ra rồi nhưng không bao giờ đổi màu\n- Nhẹ máy hơn khi canh đơn: chỉ hỏi Shopee đơn nào đã in khi bạn tự bấm tải đơn, không hỏi mỗi 10 giây nữa — máy yếu sẽ không còn bị nghẽn làm hỏng việc tự động xác nhận đơn\n- Bản này phải tải đầy đủ, không bấm nút “Cập nhật ngay” được: phần sửa nằm ở lớp vỏ phần mềm, gói nhỏ không thay được"
+ghiChuCapNhat: "- Sửa lỗi tự động xác nhận đơn báo “Trang đơn hàng của Shopee chưa tải xong” liên tục. Thật ra trang vẫn tốt — phần mềm lấy nhầm nút “Chuẩn bị hàng” làm mốc để biết trang đã tải xong hay chưa, nên lúc không đơn nào bấm được thì tưởng là hỏng\n- Đơn chưa bấm được nay hiện đúng lý do bằng chữ đỏ dưới cột Trạng thái, ví dụ “Đơn này không có nút Chuẩn bị hàng”\n- Mỗi lượt quét nhanh hơn: chờ tối đa 6 giây thay vì 25 giây\n- Bản này bấm nút “Cập nhật ngay” là xong, gói khoảng 300 KB"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.7/ShopeeTuDong-5.5.7-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.8/ShopeeTuDong-5.5.8-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.5.8/ban-5.5.8-701bbe0a.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
