@@ -2,13 +2,13 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.6.8"
+phienBan: "5.6.9"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-31
-ghiChuCapNhat: "- Tìm ra đúng nguyên nhân đơn mới không được tự xác nhận: phần mềm đứng ở trang /portal/sale/order trần, mà trang đó không hiển thị đơn nào\n- Tab bị để ở trang trần từ lúc mở Chrome lần đầu và sau mỗi lần in vận đơn; phép kiểm cũ chấp nhận trang trần nên không chuyển sang trang có đơn\n- Nay mở Chrome và in vận đơn xong đều đưa tab về trang có đơn, và trước khi xác nhận phải đúng trang mới làm tiếp\n- Phòng hờ: vẫn thấy 0 đơn thì vào lại đúng trang một lần nữa rồi mới kết luận"
+ghiChuCapNhat: "- Hiện mã vận đơn của MỌI đơn vị vận chuyển: Giao Hàng Nhanh, GHTK, J&T, Ninja Van, VNPost… trước đây chỉ nhận mã SPXVN của Shopee Express nên các đơn khác để trống cột Vận đơn\n- Hậu quả nặng hơn đã được gỡ: phần mềm coi “chưa có mã vận đơn là chưa xác nhận” nên cứ thử xác nhận lại mãi những đơn Giao Hàng Nhanh vốn đã xong từ lâu\n- Nay căn cứ vào tên trường dữ liệu chứ không đoán theo hình dạng mã; đã thử 11 tình huống kể cả không được nhầm mã đơn thành mã vận đơn"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.8/ShopeeTuDong-5.6.8-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.8/ban-5.6.8-d64167f1.goi"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.9/ShopeeTuDong-5.6.9-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.9/ban-5.6.9-c3c8b1f6.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
