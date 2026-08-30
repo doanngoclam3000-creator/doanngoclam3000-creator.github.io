@@ -5,12 +5,11 @@ nenTang: ["macOS", "Windows"]
 phienBan: "5.6.3"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-30
-mienPhi: true
 ghiChuCapNhat: "- Tick ô “In bằng Chrome” một lần, từ đó bấm In là vận đơn mở bằng Chrome và hộp thoại in tự bật lên — không phải bấm thêm bước nào\n- Hộp thoại của Chrome hỏi thẳng trình điều khiển máy in nên có đủ: chọn máy in nhãn, chọn khổ giấy của chính máy in (ví dụ 100mm × 150mm), và Fit to printable area\n- Trước đây hộp thoại in nằm trong phần mềm nên không đọc được khổ giấy của máy in nhãn, nhãn in ra hay bị lệch\n- Chrome chạy bằng hồ sơ riêng, không đụng vào Chrome cá nhân của bạn\n- Bỏ tick là quay lại in trong cửa sổ phần mềm như cũ, ô “Vừa với giấy” vẫn còn"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.3/ShopeeTuDong-5.6.3-Windows.zip"
 linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.3/ban-5.6.3-ae022c5e.goi"
-gia: "Miễn phí"
+gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
 icon: "🛒"
