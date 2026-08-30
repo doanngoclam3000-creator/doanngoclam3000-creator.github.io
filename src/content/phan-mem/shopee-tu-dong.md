@@ -5,6 +5,7 @@ nenTang: ["macOS", "Windows"]
 phienBan: "5.6.1"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-30
+mienPhi: true
 ghiChuCapNhat: "- Sửa lỗi của bản 5.6.0: phần mềm đi bấm lại những đơn đã xác nhận xong, mỗi đơn tốn 16 giây, rồi tô chữ đỏ “Chưa xác nhận” lên đơn hoàn toàn bình thường\n- Đơn đã có mã vận đơn là đã chuẩn bị hàng xong — phần mềm không đụng tới nữa và không báo gì cả\n- Vẫn giữ các sửa lỗi thật: tìm đúng nút Chuẩn bị hàng kể cả khi Shopee chèn dấu cách đặc biệt hay bảng lồng nhiều lớp, và không bao giờ bấm nhầm nút của đơn khác\n- Hai công tắc Tự canh đơn mới và Tự động xác nhận nhớ trạng thái qua lần mở lại\n- Khi mọi đơn đều đã xác nhận, khung chẩn đoán ghi rõ “đang chờ đơn mới” để biết chắc phần mềm vẫn đang chạy"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.1/ShopeeTuDong-5.6.1-Windows.zip"
