@@ -13,6 +13,8 @@ const phanMem = defineCollection({
     ghiChuCapNhat: z.string().optional(),
     ngayCapNhat: z.coerce.date(),
     gia: z.string().optional(),
+    // Bat len de hien nhan do MIEN PHI canh ten phan mem
+    mienPhi: z.boolean().default(false),
     linkTai: z.string().optional(),
     linkTaiPhu: z.string().optional(),
     linkTaiMac: z.string().optional(),

@@ -9,7 +9,10 @@ const luot = await demLuotTai(pm.id);
     {pm.data.anhIcon
       ? <img class="icon-anh" src={pm.data.anhIcon} alt={pm.data.ten} loading="lazy" width="72" height="72" />
       : <span class="icon">{pm.data.icon}</span>}
-    {pm.data.phienBan && <span class="ver">v{pm.data.phienBan}</span>}
+    <span class="nhan-phai">
+      {pm.data.mienPhi && <span class="mien-phi">Miễn phí</span>}
+      {pm.data.phienBan && <span class="ver">v{pm.data.phienBan}</span>}
+    </span>
   </a>
   <div class="than">
     <h3><a href={`/phan-mem/${pm.id}`}>{pm.data.ten}</a></h3>
@@ -35,6 +38,13 @@ const luot = await demLuotTai(pm.id);
   .icon { font-size: 2.6rem; filter: drop-shadow(0 2px 6px rgba(0,0,0,.25)); }
   .icon-anh { width: 72px; height: 72px; border-radius: 17px; box-shadow: 0 6px 18px rgba(0,0,0,.35); }
   .ver { background: rgba(255,255,255,.2); color: #fff; font-size: .78rem; font-weight: 600; padding: .2rem .6rem; border-radius: 999px; }
+  .nhan-phai { display: flex; align-items: center; gap: .4rem; }
+  .mien-phi {
+    background: #dc2626; color: #fff; font-size: .74rem; font-weight: 800;
+    letter-spacing: .04em; text-transform: uppercase;
+    padding: .22rem .6rem; border-radius: 999px;
+    box-shadow: 0 3px 10px rgba(220, 38, 38, .45);
+  }
   .than { padding: 18px; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
   .than h3 { margin: 0; font-size: 1.15rem; }
   .than h3 a { color: var(--chu); }

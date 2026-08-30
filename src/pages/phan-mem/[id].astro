@@ -32,6 +32,7 @@ const lienQuan = (await getCollection('bai-viet'))
         <h1>{pm.data.ten}</h1>
         <p class="mo-ta">{pm.data.moTa}</p>
         <div class="chips">
+          {pm.data.mienPhi && <span class="chip chip-mien-phi">Miễn phí</span>}
           {pm.data.phienBan && <span class="chip">Phiên bản {pm.data.phienBan}</span>}
           {pm.data.nenTang.map((n: string) => <span class="chip">{n}</span>)}
           <span class="chip">Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
@@ -86,6 +87,10 @@ const lienQuan = (await getCollection('bai-viet'))
   .chips { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1rem 0 1.4rem; }
   .chip { font-size: .82rem; font-weight: 500; background: rgba(255,255,255,.18); padding: .28rem .7rem; border-radius: 999px; }
   .chip-tai { background: rgba(255,255,255,.28); font-weight: 600; }
+  .chip-mien-phi {
+    background: #dc2626; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .28);
+  }
   .hd { display: flex; gap: .6rem; flex-wrap: wrap; }
   .nut-tai-ve { background: #fff; color: #111; }
   .nut-tai-ve:hover { background: #f1f5f9; color: #111; transform: translateY(-1px); }
