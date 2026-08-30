@@ -10,7 +10,7 @@ ghiChuCapNhat: "- Sửa lỗi của bản 5.6.0: phần mềm đi bấm lại nh
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.1/ShopeeTuDong-5.6.1-Windows.zip"
 linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.6.1/ban-5.6.1-6ffab4eb.goi"
-gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
+gia: "Miễn phí"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
 icon: "🛒"
