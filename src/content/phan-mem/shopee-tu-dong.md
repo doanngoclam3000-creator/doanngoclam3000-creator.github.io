@@ -2,13 +2,13 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.8.2"
+phienBan: "5.8.3"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-09-01
-ghiChuCapNhat: "- Sửa lỗi xác minh xong mà tải đơn báo “token not found”: cùng tên SPC_ST nhưng của shopee.vn là phiên người mua, của banhang.shopee.vn mới là phiên người bán; phần mềm từng vớ nhầm phiên người mua nên đăng nhập xong vẫn không ra đơn\n- Nay chỉ nhận phiên người bán; mới có phiên người mua thì tự vào lại Kênh Người Bán tới khi Shopee cấp phiên người bán thật\n- Bảng shop gọn lại: bỏ ba cột FullName, Note và Xem trên Chrome"
+ghiChuCapNhat: "- Sửa lỗi 5.8.2 lọc cookie quá gắt: phiên người bán nhiều khi nằm ở tên miền dùng chung .shopee.vn nên bị loại nhầm, báo mãi “còn thiếu SPC_ST” dù đã đăng nhập, cửa sổ Chrome không đóng\n- Nay xác nhận đăng nhập bằng cách gọi thử API đơn ngay trong tab; xong là đóng cửa sổ Chrome ngay\n- Đã lưu phiên thì không hiện Chrome nữa: tải đơn chạy bằng cookie, tự xác nhận chạy Chrome ẩn, Chrome chỉ bật khi bấm Đăng nhập lấy phiên mới"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.2/ShopeeTuDong-5.8.2-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.2/ban-5.8.2-d3b19580.goi"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.3/ShopeeTuDong-5.8.3-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.3/ban-5.8.3-ef1cfb81.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
