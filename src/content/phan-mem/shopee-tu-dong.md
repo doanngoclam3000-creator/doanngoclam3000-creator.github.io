@@ -2,13 +2,13 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.8.0"
+phienBan: "5.8.1"
 banToiThieu: "5.0.0"
-ngayCapNhat: 2026-08-31
-ghiChuCapNhat: "- Sửa lỗi phần mềm bấm Xác nhận mà Shopee không nhận: trang Kênh Người Bán viết bằng React, nhiều nút chỉ nghe thao tác chuột thật chứ không nghe lệnh bấm trơn\n- Nay mọi cú bấm đều giả lập đủ chuỗi pointerdown, mousedown, mouseup, click kèm cuộn tới đúng chỗ\n- Hộp thoại Giao Đơn Hàng có hai thẻ và Shopee chọn sẵn thẻ “Đơn Vị Vận Chuyển Đến Lấy Hàng”; phần mềm chỉ đụng vào thẻ đó và chỉ khi chưa được chọn, không bao giờ đổi sang tự mang ra bưu cục"
+ngayCapNhat: 2026-09-01
+ghiChuCapNhat: "- Tự bấm nút Đăng nhập bằng chuột thật: điền xong tài khoản là bấm luôn, không thấy nút thì thử lại tới khi bấm trúng (Shopee chỉ nhận cú bấm chuột thật nên trước đây điền xong nút vẫn không ăn)\n- Hết cảnh trang tự F5 ở màn xác minh: khi Shopee bật Security check hay “Verify by Email Link”, phần mềm nhận ra và ngừng kéo trang đi, kéo cửa sổ ra trước mặt cho bạn xác minh\n- Cửa sổ đăng nhập hết nhảy loạn; bảng shop thêm cột FullName và Note, tách riêng nút Xem trên Chrome và nút Đăng nhập"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.0/ShopeeTuDong-5.8.0-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.0/ban-5.8.0-768a6c79.goi"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.1/ShopeeTuDong-5.8.1-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.1/ban-5.8.1-97ddbbac.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
