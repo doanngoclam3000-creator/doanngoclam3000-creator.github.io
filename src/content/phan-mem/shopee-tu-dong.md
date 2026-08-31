@@ -2,13 +2,13 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.7.7"
+phienBan: "5.7.8"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-31
-ghiChuCapNhat: "- Sửa lỗi bấm Đăng nhập mà không có cửa sổ nào hiện ra: phần mềm chạy sẵn một Chrome ẩn cho mỗi shop, nên chỉ điều hướng cái cửa sổ vô hình đó rồi đếm ngược hết 4 phút\n- Nay bấm Đăng nhập là đóng hẳn Chrome ẩn rồi mở lại một cửa sổ thật, và kéo về giữa màn hình\n- Đây cũng là vòng luẩn quẩn làm hỏng tự động xác nhận: phiên Chrome hết hạn nên Shopee đá về trang đăng nhập, mà muốn đăng nhập lại thì không có cửa sổ nào"
+ghiChuCapNhat: "- Cửa sổ đăng nhập nay nhảy hẳn lên trước mặt: bản trước đã mở được cửa sổ thật nhưng nó nằm sau cửa sổ phần mềm nên nhìn vào tưởng không có gì\n- Dòng trạng thái nhắc thêm: không thấy thì bấm Alt + Tab để chuyển sang cửa sổ Chrome"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.7.7/ShopeeTuDong-5.7.7-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.7.7/ban-5.7.7-6de57eae.goi"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.7.8/ShopeeTuDong-5.7.8-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.7.8/ban-5.7.8-18300377.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
