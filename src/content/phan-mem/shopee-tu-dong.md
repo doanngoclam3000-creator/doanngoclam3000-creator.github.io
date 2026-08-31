@@ -2,13 +2,13 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.7.5"
+phienBan: "5.7.6"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-08-31
-ghiChuCapNhat: "- Mỗi tab có ô chọn shop riêng: Đơn hàng, Sản phẩm, Đánh giá, Chat — không phải kéo lên đầu cửa sổ mới đổi được shop\n- Tất cả các ô cùng trỏ về một lựa chọn, đổi ở tab nào thì các tab khác đổi theo\n- Tab Chép sản phẩm nói rõ “Chép sang shop” là shop đích, kèm dòng nhắc sản phẩm chép về sẽ nằm ở shop nào"
+ghiChuCapNhat: "- Không xác nhận được đơn thì nói rõ vì sao: nếu shop hết phiên đăng nhập, phần mềm báo thẳng “hết phiên — vào tab Shop bấm Đăng nhập lại”\n- Câu “Trang đơn hàng chưa tải xong” trước đây không đúng sự thật: trang không hề đang tải, mà cửa sổ Chrome đang nằm ở một trang khác hẳn\n- Lỗi nay hiện ngay dưới dòng đơn bằng chữ đỏ, không chỉ nằm trong khung chẩn đoán nhỏ\n- Thôi thử lại vô ích: cả lượt hỏng thì giãn dần 2 phút, 4, 8… tối đa 30 phút, thay vì cứ 10 giây thử lại hàng trăm lần"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.7.5/ShopeeTuDong-5.7.5-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.7.5/ban-5.7.5-06ce24c7.goi"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.7.6/ShopeeTuDong-5.7.6-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.7.6/ban-5.7.6-c4a83d0a.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
