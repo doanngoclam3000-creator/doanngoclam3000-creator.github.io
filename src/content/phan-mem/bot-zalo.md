@@ -11,6 +11,7 @@ linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.
 linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.0/ban-2.2.0-80cf6121.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 2 ngày"
 dungLuong: "77 MB (Windows) — giải nén ra đúng một file .exe"
+video: "https://www.youtube.com/watch?v=nhAeWN_W8BM"
 anhIcon: "/icon/bot-zalo.png"
 icon: "💬"
 mauNen: "#2b7cff"
