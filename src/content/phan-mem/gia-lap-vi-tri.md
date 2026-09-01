@@ -1,7 +1,7 @@
 ---
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
-nenTang: ["macOS", "Windows"]
+nenTang: ["macOS", "Windows", "iOS"]
 phienBan: "5.15"
 ngayCapNhat: 2026-08-28
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-4.2/GiaLapViTri-macOS.dmg"
