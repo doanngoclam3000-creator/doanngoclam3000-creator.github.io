@@ -52,6 +52,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 img { max-width: 100%; display: block; }
+
+/* An la an that: nhieu lop o day co dat display (vi du .nut, .the) nen de
+   nguyen thi thuoc tinh hidden cua HTML bi de bep, phan tu van hien ra. */
+[hidden] { display: none !important; }
 a { color: var(--chinh); text-decoration: none; }
 a:hover { color: var(--chinh-dam); }
 h1, h2, h3, h4 { line-height: 1.25; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 .5em; }
