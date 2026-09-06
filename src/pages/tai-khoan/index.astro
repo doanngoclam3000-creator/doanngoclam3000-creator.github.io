@@ -28,7 +28,6 @@ import '../../styles/tai-khoan.css';
       <div class="thanh-tab" id="tabs">
         <button data-tab="nap" class="on" type="button">Nạp tiền</button>
         <button data-tab="mua" type="button">Mua key</button>
-        <button data-tab="link" type="button">Tạo link</button>
         <button data-tab="don" type="button">Key đã mua</button>
         <button data-tab="rut" type="button">Rút tiền</button>
         <button data-tab="lich-su" type="button">Lịch sử</button>
@@ -84,40 +83,6 @@ import '../../styles/tai-khoan.css';
           </label>
 
           <button class="nut nut-chinh" id="mua-nut" type="button">Mua ngay</button>
-        </div>
-      </section>
-
-      <section data-o="link" hidden>
-        <div class="hop">
-          <h2>Tạo link affiliate</h2>
-          <p class="loi-mo">
-            Dán link <b>Shopee</b> hoặc <b>TikTok</b>, nhận link rút gọn của riêng bạn.
-            Đăng lên video; ai bấm vào mua hàng thì hoa hồng về ví bạn.
-          </p>
-          <div class="loi" id="lk-loi" hidden></div>
-          <div class="duoc" id="lk-duoc" hidden></div>
-
-          <label class="o o-rong-het">
-            <span>Link sản phẩm</span>
-            <input type="url" id="lk-url" placeholder="https://shopee.vn/… hoặc https://vt.tiktok.com/…" />
-          </label>
-          <label class="o o-vua">
-            <span>Đặt tên cho dễ nhớ (không bắt buộc)</span>
-            <input type="text" id="lk-ten" maxlength="80" placeholder="VD: Máy xay sinh tố" />
-          </label>
-          <button class="nut nut-chinh" id="lk-nut" type="button">Tạo link</button>
-        </div>
-
-        <div class="hop">
-          <h2>Link của tôi <span class="chu-nhat nho" id="lk-dem"></span></h2>
-          <div class="cuon"><table class="bang">
-            <thead><tr>
-              <th>Ngày</th><th>Tên</th><th>Link ngắn</th><th>Sàn</th>
-              <th class="phai">Lượt bấm</th><th>Bấm gần nhất</th><th></th>
-            </tr></thead>
-            <tbody id="lk-than"></tbody>
-          </table></div>
-          <div class="trong" id="lk-trong" hidden>Chưa tạo link nào.</div>
         </div>
       </section>
 
@@ -236,7 +201,6 @@ import '../../styles/tai-khoan.css';
         document.querySelectorAll('section[data-o]').forEach(function (s) {
           s.hidden = s.dataset.o !== ten;
         });
-        if (ten === 'link') taiLink();
         if (ten === 'don') taiDon();
         if (ten === 'rut') taiRut();
         if (ten === 'lich-su') { lsCuoi = 0; $('ls-than').innerHTML = ''; taiLichSu(); }
@@ -371,90 +335,6 @@ import '../../styles/tai-khoan.css';
           V.baoLoi('mua-loi', err);
         }
         $('mua-nut').disabled = false; $('mua-nut').textContent = 'Mua ngay';
-      });
-
-      // ---------- Tao link affiliate ----------
-      $('lk-nut').addEventListener('click', async function () {
-        V.baoLoi('lk-loi', ''); $('lk-duoc').hidden = true;
-        var u = $('lk-url').value.trim();
-        if (!u) return V.baoLoi('lk-loi', new Error('Dán link sản phẩm vào đã.'));
-        this.disabled = true; this.textContent = 'Đang tạo…';
-        try {
-          var kq = await V.goi('/tao-link', { url: u, ten: $('lk-ten').value.trim() });
-          $('lk-duoc').innerHTML = theKetQua(kq);
-          $('lk-duoc').hidden = false;
-          $('lk-url').value = ''; $('lk-ten').value = '';
-          await taiLink();
-        } catch (err) { V.baoLoi('lk-loi', err); }
-        this.disabled = false; this.textContent = 'Tạo link';
-      });
-
-      // The ket qua sau khi tao link. Co gia san pham thi hien tien that,
-      // chua lay duoc gia thi hien theo phan tram - khong bia so.
-      function theKetQua(kq) {
-        var t = kq.tien || {};
-        var sp = kq.sanPham || null;
-        var hh = sp && sp.gia
-          ? '<b>' + V.tien(Math.round(sp.gia * t.tiLeBan / 100)) + '</b>'
-          : '<b>tới ' + t.tiLeBan + '%</b> giá trị đơn';
-
-        return '<div class="lk-xong">✓ Link affiliate đã sẵn sàng</div>' +
-          '<div class="lk-o">' +
-            '<span class="ma-link">' + kq.link + '</span>' +
-            '<button class="nut nut-vien nho" data-chep-link="' + kq.link + '" type="button">Chép</button>' +
-            '<a class="nut nut-vien nho" href="' + kq.link + '" target="_blank" rel="noopener">Mở</a>' +
-          '</div>' +
-          (t.chay
-            ? '<div class="lk-sp">' +
-                (sp && sp.anh ? '<img src="' + sp.anh + '" alt="" loading="lazy" />' : '') +
-                '<div>' +
-                  '<div class="lk-hh">💰 Hoa hồng ước tính: ' + hh + '</div>' +
-                  (sp && sp.gia ? '<div class="nho">🏷️ Giá gốc: ' + V.tien(sp.gia) + '</div>' : '') +
-                  (sp && sp.ten ? '<div class="nho">' + sp.ten + '</div>' : '') +
-                '</div>' +
-              '</div>'
-            : '<div class="nho dat-tren"><b>Không phải lỗi:</b> ' + (t.tenNen || 'Sàn') +
-              ' đang duyệt tài khoản affiliate của phanmemtq.com nên link chưa sinh hoa hồng. ' +
-              'Cứ đăng link ngay bây giờ — lượt bấm vẫn được ghi, duyệt xong là mọi link cũ ' +
-              'tự động ra tiền, không phải tạo lại.</div>');
-      }
-
-      async function taiLink() {
-        var kq = await V.goi('/link-cua-toi');
-        var ds = kq.link || [];
-        $('lk-dem').textContent = ds.length ? '(' + ds.length + ')' : '';
-        $('lk-trong').hidden = ds.length > 0;
-        $('lk-than').innerHTML = ds.map(function (l) {
-          var link = l.link;
-          return '<tr><td class="nho">' + V.ngay(l.tao_luc) + '</td>' +
-            '<td>' + (l.ten || '—') + '</td>' +
-            '<td><span class="ma-link">' + link + '</span> ' +
-            '<button class="chep" data-chep-link="' + link + '" type="button">chép</button></td>' +
-            '<td>' + (l.nen === 'shopee' ? 'Shopee' : 'TikTok') + '</td>' +
-            '<td class="phai"><b>' + l.luot + '</b></td>' +
-            '<td class="nho">' + (l.bam_cuoi ? V.ngay(l.bam_cuoi) : '—') + '</td>' +
-            '<td><button class="chep" data-xoa-link="' + l.ma + '" type="button">xoá</button></td></tr>';
-        }).join('');
-      }
-
-      // Chep / xoa link
-      document.addEventListener('click', async function (e) {
-        var b = e.target.closest('button');
-        if (!b) return;
-        if (b.dataset.chepLink) {
-          chep(b.dataset.chepLink, b);
-        } else if (b.dataset.xoaLink) {
-          if (b.dataset.sanSang !== '1') {
-            b.dataset.sanSang = '1';
-            b.textContent = 'xoá thật?';
-            setTimeout(function () { b.dataset.sanSang = '0'; b.textContent = 'xoá'; }, 5000);
-            return;
-          }
-          try {
-            await V.goi('/xoa-link', { ma: b.dataset.xoaLink });
-            await taiLink();
-          } catch (err) { V.baoLoi('lk-loi', err); }
-        }
       });
 
       // ---------- Don da mua ----------
