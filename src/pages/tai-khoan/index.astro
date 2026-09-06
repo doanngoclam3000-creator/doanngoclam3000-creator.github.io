@@ -79,7 +79,7 @@ import '../../styles/tai-khoan.css';
 
           <label class="o o-hep" id="o-ma-may">
             <span>Mã máy</span>
-            <input type="text" id="mua-may" maxlength="6" placeholder="VD: A7K2Q9" maxlength="16" class="o-ma" />
+            <input type="text" id="mua-may" maxlength="24" placeholder="VD: MAY-A7K2Q9" class="o-ma" />
             <small>Mở phần mềm, vào mục <b>Bản quyền</b> rồi chép mã máy 6 ký tự.</small>
           </label>
 
@@ -314,7 +314,7 @@ import '../../styles/tai-khoan.css';
         $('mua-luuy').hidden = !pm.luuY;
         $('o-ma-may').querySelector('small').innerHTML = pm.tuDong
           ? 'Mở đúng phần mềm bạn muốn kích hoạt (máy tính hay iPhone), vào mục ' +
-            '<b>Bản quyền</b> rồi chép mã máy ở đó.'
+            '<b>Bản quyền</b> rồi chép mã máy ở đó. Chép cả cụm <b>MAY-XXXXXX</b> cũng được.'
           : 'Phần mềm này cấp key tay. Có mã máy thì điền vào để chủ shop cấp nhanh hơn.';
         $('mua-goi').innerHTML = pm.goi.map(function (g) {
           return '<button type="button" data-goi="' + g.ma + '"><b>' + g.ten + '</b><span>' +
@@ -341,7 +341,10 @@ import '../../styles/tai-khoan.css';
       $('mua-nut').addEventListener('click', async function () {
         V.baoLoi('mua-loi', ''); $('mua-duoc').hidden = true;
         if (!goiDangChon) return V.baoLoi('mua-loi', new Error('Chọn gói trước đã.'));
-        var may = $('mua-may').value.trim().toUpperCase();
+        // Phan mem hien ma may dang MAY-XXXXXX, nhung phan de ky key la doan
+        // SAU dau gach. Khach chep ca cum hay chep moi doan sau deu nhan.
+        var may = $('mua-may').value.trim().toUpperCase()
+          .replace(/^MAY[-\s]+/, '').replace(/[^A-Z0-9]/g, '');
         if (pmDangChon.tuDong && (may.length < 4 || may.length > 16)) {
           return V.baoLoi('mua-loi', new Error('Chép thiếu mã máy rồi. Mở phần mềm, vào mục Bản quyền lấy đúng mã.'));
         }

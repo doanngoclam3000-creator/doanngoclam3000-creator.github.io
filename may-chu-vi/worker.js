@@ -810,7 +810,11 @@ export default {
       const goi = pm && pm.goi.find((g) => g.ma === String(b.goi || ''));
       if (!pm || !goi) return J({ loi: 'Không có phần mềm hoặc gói này' }, 400);
 
-      const may = String(b.maMay || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+      // Phan mem hien ma may dang MAY-XXXXXX nhung ky key bang doan SAU dau
+      // gach (ban Windows: mamayText.slice(4)). Khach chep ca cum thi bo tien
+      // to di, khong thi key ky ra sai va kich hoat khong duoc.
+      const may = String(b.maMay || '').trim().toUpperCase()
+        .replace(/^MAY[-\s]+/, '').replace(/[^A-Z0-9]/g, '');
       const tuDong = capTuDong(env, pm);
       // Ca hai kieu deu can ma may: kieu mayChu de cong ngay dung may, kieu
       // tuKy de ky key rieng cho may do.
