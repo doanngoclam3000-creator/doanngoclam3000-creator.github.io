@@ -126,3 +126,10 @@ html[data-theme='dark'] .tt-huy, html[data-theme='dark'] .tt-tu_choi { backgroun
 html[data-theme='dark'] .luu-y { background: #2a1e05; border-color: #b45309; color: #fcd34d; }
 .nut.nguy { color: #dc2626; border-color: #fecaca; }
 .nut.nguy:hover { border-color: #dc2626; color: #b91c1c; }
+
+/* Bang link rut gon cua cong tac vien */
+.o-rong-het { max-width: 640px; }
+.ma-link {
+  font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .84rem;
+  word-break: break-all;
+}

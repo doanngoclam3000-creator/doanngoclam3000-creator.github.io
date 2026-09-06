@@ -8,6 +8,9 @@ NGAN_HANG = "MSB"
 SO_TK = "96886693052700"
 CHU_TK = "DOAN NGOC LAM"
 NGUON = "https://phanmemtq.com"
+# Goc cua link rut gon cho cong tac vien. Dat rieng vi phanmemtq.com la
+# trang tinh tren GitHub Pages, khong tu chuyen huong duoc.
+NEN_LINK = "https://go.phanmemtq.workers.dev"
 PHI_RUT = "0"
 RUT_TOI_THIEU = "50000"
 HOA_HONG = "10"

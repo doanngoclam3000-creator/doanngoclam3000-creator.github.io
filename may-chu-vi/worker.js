@@ -270,6 +270,50 @@ function capTuDong(env, pm) {
   return pm.kieu === 'tuKy';
 }
 
+// ---------------- Link rut gon cho cong tac vien ----------------
+// Chi nhan link cua may san buon minh dang lam affiliate. Khong mo rong bua:
+// cho dan link bat ky la thanh cho ai cung dung web minh de rut gon link la,
+// dinh lua dao thi minh chiu.
+const NEN_TANG = [
+  { ten: 'shopee', mien: ['shopee.vn', 'shp.ee', 's.shopee.vn'] },
+  { ten: 'tiktok', mien: ['tiktok.com', 'vt.tiktok.com', 'vm.tiktok.com', 'shop.tiktok.com'] },
+];
+
+function nhanNenTang(u) {
+  let host;
+  try {
+    const d = new URL(u);
+    if (d.protocol !== 'https:' && d.protocol !== 'http:') return null;
+    host = d.hostname.toLowerCase().replace(/^www\./, '');
+  } catch { return null; }
+  for (const n of NEN_TANG) {
+    if (n.mien.some((m) => host === m || host.endsWith('.' + m))) return n.ten;
+  }
+  return null;
+}
+
+// Doi link goc thanh link co gan ma affiliate CUA CHU SHOP, kem sub_id la ma
+// cong tac vien de biet don nao cua ai.
+//
+// CHUA co tai khoan affiliate thi tra ve nguyen link goc - link van bam duoc,
+// van dem duoc luot, chi la chua ra tien. Khai SHOPEE_AFF_ID / TIKTOK_AFF_ID
+// la tu dong gan vao, khong phai sua cho nao khac.
+function linkAffiliate(env, url, nen, maCtv) {
+  try {
+    const d = new URL(url);
+    if (nen === 'shopee' && env.SHOPEE_AFF_ID) {
+      d.searchParams.set('af_id', env.SHOPEE_AFF_ID);
+      d.searchParams.set('sub_id', maCtv);
+    } else if (nen === 'tiktok' && env.TIKTOK_AFF_ID) {
+      d.searchParams.set('aff_id', env.TIKTOK_AFF_ID);
+      d.searchParams.set('sub_id', maCtv);
+    } else {
+      return url;
+    }
+    return d.toString();
+  } catch { return url; }
+}
+
 // ---------------- Tra loi + CORS ----------------
 function dauCORS(env, req) {
   const nguon = req.headers.get('origin') || '';
@@ -383,6 +427,21 @@ export default {
     const than = async () => { try { return await req.json(); } catch { return {}; } };
 
     // ============ CONG KHAI ============
+
+    // ---- Bam vao link rut gon -> day sang cho ban hang ----
+    // Duong nay CONG KHAI va phai nhanh: doc mot dong, dem luot roi day di luon.
+    if (req.method === 'GET' && p.startsWith('/l/')) {
+      const ma = p.slice(3);
+      const lk = await env.DB.prepare('SELECT * FROM lien_ket WHERE ma=?').bind(ma).first();
+      if (!lk) return new Response('Link không tồn tại hoặc đã bị xoá.', { status: 404 });
+      // Dem luot nhung khong bat khach cho: loi o day khong duoc chan duong di
+      try {
+        await env.DB.prepare('UPDATE lien_ket SET luot=luot+1, bam_cuoi=? WHERE ma=?')
+          .bind(Date.now(), ma).run();
+      } catch { /* dem hut mot luot con hon chan khach */ }
+      const di = linkAffiliate(env, lk.dich, lk.nen, 'ctv' + lk.nguoi);
+      return new Response(null, { status: 302, headers: { location: di, 'cache-control': 'no-store' } });
+    }
 
     if (p === '/' || p === '/khoe') return J({ ok: true, ten: 'vi-phanmemtq' });
 
@@ -655,6 +714,62 @@ export default {
       if (!cua) return J({ loi: 'Không có phần mềm này' }, 404);
       await ghiNoiO(env, req, toi.id);
       return J({ link: cua });
+    }
+
+    // ---- Tao link rut gon ----
+    if (req.method === 'POST' && p === '/tao-link') {
+      if (!toi) return canDN();
+      if (toi.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
+      const b = await than();
+      const dich = String(b.url || '').trim();
+      const nen = nhanNenTang(dich);
+      if (!nen) {
+        return J({ loi: 'Chỉ nhận link Shopee hoặc TikTok. Dán lại đúng link sản phẩm giúp tôi.' }, 400);
+      }
+      if (dich.length > 1500) return J({ loi: 'Link dài quá' }, 400);
+
+      const dem = await env.DB.prepare('SELECT COUNT(*) n FROM lien_ket WHERE nguoi=?').bind(toi.id).first();
+      if (Number(dem.n) >= 500) return J({ loi: 'Bạn đã tạo 500 link rồi, xoá bớt link cũ đi' }, 429);
+
+      let ma = null;
+      for (let lan = 0; lan < 6 && !ma; lan++) {
+        const thu = chuoiNgauNhien(7);
+        try {
+          await env.DB.prepare(
+            'INSERT INTO lien_ket (ma,nguoi,dich,nen,ten,tao_luc) VALUES (?,?,?,?,?,?)')
+            .bind(thu, toi.id, dich, nen, String(b.ten || '').trim().slice(0, 80) || null, Date.now()).run();
+          ma = thu;
+        } catch (e) {
+          if (!String(e).includes('UNIQUE')) throw e;   // trung ma -> boc ma khac
+        }
+      }
+      if (!ma) return J({ loi: 'Không tạo được link, thử lại' }, 500);
+      return J({
+        ok: true, ma, nen,
+        link: (env.NEN_LINK || (env.NGUON || 'https://phanmemtq.com')) + '/l/' + ma,
+        sanSang: !!(nen === 'shopee' ? env.SHOPEE_AFF_ID : env.TIKTOK_AFF_ID),
+      });
+    }
+
+    // ---- Link cua toi ----
+    if (p === '/link-cua-toi') {
+      if (!toi) return canDN();
+      const r = await env.DB.prepare(
+        'SELECT ma,dich,nen,ten,luot,bam_cuoi,tao_luc FROM lien_ket WHERE nguoi=? ORDER BY tao_luc DESC LIMIT 200')
+        .bind(toi.id).all();
+      return J({
+        goc: env.NEN_LINK || (env.NGUON || 'https://phanmemtq.com'),
+        link: r.results || [],
+      });
+    }
+
+    // ---- Xoa link cua chinh minh ----
+    if (req.method === 'POST' && p === '/xoa-link') {
+      if (!toi) return canDN();
+      const b = await than();
+      await env.DB.prepare('DELETE FROM lien_ket WHERE ma=? AND nguoi=?')
+        .bind(String(b.ma || ''), toi.id).run();
+      return J({ ok: true });
     }
 
     // ---- Thong tin nap tien ----

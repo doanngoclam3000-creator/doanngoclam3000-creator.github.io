@@ -1,0 +1,12 @@
+# May chu rut gon link cho cong tac vien.
+# Chi lam mot viec: nhan go.phanmemtq.workers.dev/<ma> roi day sang may chu vi
+# xu ly. Tach ra chi de duong dan NGAN, dan vao mo ta video cho de nhin.
+name = "go"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+# Noi thang sang may chu vi, khong goi qua Internet (Cloudflare chan Worker
+# goi HTTP sang Worker khac cung tai khoan - loi 1042).
+[[services]]
+binding = "VI"
+service = "vi-phanmemtq"
