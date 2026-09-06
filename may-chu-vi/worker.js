@@ -69,6 +69,11 @@ const PHAN_MEM = {
   },
   'gia-lap-vi-tri': {
     ten: 'Giả Lập Vị Trí', kieu: 'tuKy', tienTo: 'GL', bienSecret: 'SECRET_GL',
+    // Ban iPhone (TestFlight) la app khac han, mo khoa bang cach chuyen khoan
+    // ngay trong app va KHONG co o nhap key - mua o day la mua nham.
+    luuY: 'Key này chỉ dùng cho bản máy tính (Windows / macOS). ' +
+      'Bản iPhone cài qua TestFlight mở khoá bằng cách chuyển khoản ngay trong ứng dụng, ' +
+      'không nhập key — đừng mua ở đây.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 300000 },
       { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 800000 },
@@ -78,6 +83,8 @@ const PHAN_MEM = {
   },
   'ban-te': {
     ten: 'Phần Mềm Quản Lý Kho Tệ', kieu: 'tuKy', tienTo: 'BT', bienSecret: 'SECRET_BT',
+    luuY: 'Mã máy lấy trong chính phần mềm. Bản iPhone không tìm thấy mã máy 6 ký tự thì ' +
+      'mua thẳng trong ứng dụng, đừng mua ở đây.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
       { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
@@ -87,6 +94,9 @@ const PHAN_MEM = {
   },
   'hoc-tieng-trung': {
     ten: 'Học Tiếng Trung', kieu: 'tuKy', tienTo: 'HT', bienSecret: 'SECRET_HT',
+    // Ban iPhone dung chung ma nguon Flutter voi ban may tinh, cung o nhap key
+    // va cung cach tinh ma may -> key mua o day dung duoc ca hai.
+    luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone — mỗi máy một mã máy riêng.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
       { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
@@ -311,6 +321,7 @@ export default {
         phanMem: Object.entries(PHAN_MEM).map(([ma, m]) => ({
           ma, ten: m.ten,
           tuDong: capTuDong(env, m),
+          luuY: m.luuY || '',
           goi: m.goi.map((g) => ({ ma: g.ma, ten: g.ten, ngay: g.ngay, gia: g.gia })),
         })),
       });

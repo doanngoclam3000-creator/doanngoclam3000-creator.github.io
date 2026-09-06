@@ -69,6 +69,7 @@ import '../../styles/tai-khoan.css';
             <span>Phần mềm</span>
             <select id="mua-pm"></select>
           </label>
+          <p class="luu-y" id="mua-luuy" hidden></p>
 
           <div class="o">
             <span>Chọn gói</span>
@@ -272,6 +273,8 @@ import '../../styles/tai-khoan.css';
       function veGoi() {
         var pm = bangGia.phanMem.find(function (x) { return x.ma === $('mua-pm').value; });
         pmDangChon = pm; goiDangChon = null;
+        $('mua-luuy').textContent = pm.luuY || '';
+        $('mua-luuy').hidden = !pm.luuY;
         $('o-ma-may').querySelector('small').innerHTML = pm.tuDong
           ? 'Mở phần mềm, vào mục <b>Bản quyền</b> rồi chép mã máy 6 ký tự.'
           : 'Phần mềm này cấp key tay. Có mã máy thì điền vào để chủ shop cấp nhanh hơn.';

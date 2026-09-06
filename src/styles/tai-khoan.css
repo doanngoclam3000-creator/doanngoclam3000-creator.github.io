@@ -116,3 +116,11 @@ html[data-theme='dark'] .tt-huy, html[data-theme='dark'] .tt-tu_choi { backgroun
   background: var(--nen); border: 1px solid var(--vien); border-radius: 8px;
 }
 .o-rong { width: 320px; max-width: 100%; }
+
+/* Dong luu y phia duoi o chon phan mem khi mua key */
+.luu-y {
+  margin: -.4rem 0 1rem; padding: .6rem .8rem; border-radius: 10px;
+  background: #fffbeb; border: 1px solid #fcd34d; color: #92400e;
+  font-size: .86rem; line-height: 1.55; max-width: 560px;
+}
+html[data-theme='dark'] .luu-y { background: #2a1e05; border-color: #b45309; color: #fcd34d; }

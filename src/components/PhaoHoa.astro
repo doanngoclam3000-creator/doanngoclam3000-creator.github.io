@@ -1,0 +1,145 @@
+---
+// Phao hoa ban tren banner trang chu. Ve bang canvas, nam duoi chu (z-index 1)
+// nen khong che noi dung va khong an chuot.
+---
+<canvas class="phao-hoa" aria-hidden="true"></canvas>
+
+<style>
+  .phao-hoa {
+    position: absolute; inset: 0; z-index: 1;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    opacity: .95;
+  }
+  /* Nen sang thi giam lai keo phao hoa lan at chu */
+  html:not([data-theme='dark']) .phao-hoa { opacity: .55; }
+  @media (prefers-reduced-motion: reduce) { .phao-hoa { display: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var canvas = document.querySelector('.phao-hoa');
+    if (!canvas) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var khung = canvas.parentElement;
+    var ctx = canvas.getContext('2d');
+    var W = 0, H = 0, dpr = 1;
+
+    function doLai() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = khung.clientWidth;
+      H = khung.clientHeight;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    doLai();
+    if (window.ResizeObserver) new ResizeObserver(doLai).observe(khung);
+    else window.addEventListener('resize', doLai);
+
+    // Mau tim - hong - vang cho hop tong mau cua web
+    var MAU = ['#a78bfa', '#7c3aed', '#c026d3', '#f472b6', '#fbbf24', '#60a5fa', '#34d399'];
+    var G = 0.045;          // trong luc
+    var phaoBay = [];       // qua phao dang bay len
+    var tan = [];           // dom sang sau khi no
+
+    function ngauNhien(a, b) { return a + Math.random() * (b - a); }
+
+    // Lay do cao cua hang nut Dang nhap de phao no dung ngang do,
+    // khong thi doan dai 35% chieu cao banner.
+    function mocCao() {
+      var n = khung.querySelector('.hero-nut');
+      if (!n) return H * 0.35;
+      var a = n.getBoundingClientRect(), b = khung.getBoundingClientRect();
+      return a.top - b.top;
+    }
+
+    function banMot() {
+      if (W < 40 || H < 40) return;
+      var moc = mocCao();
+      // No quanh hang nut: tren mot chut hoac thap hon mot chut cho do deu
+      var dich = ngauNhien(moc - 46, moc + 34);
+      if (dich < H * 0.06) dich = H * 0.06;
+      if (dich > H * 0.82) dich = H * 0.82;
+      // Tu do cao can toi ma tinh nguoc ra luc ban, khong la phao het da giua chung
+      var vy = Math.sqrt(2 * G * (H - dich)) * ngauNhien(1, 1.03);
+      phaoBay.push({
+        x: ngauNhien(W * 0.1, W * 0.9),
+        y: H,
+        vx: ngauNhien(-0.5, 0.5),
+        vy: -vy,
+        dich: dich,
+        mau: MAU[(Math.random() * MAU.length) | 0]
+      });
+    }
+
+    function no(p) {
+      var soDom = 46 + ((Math.random() * 26) | 0);
+      var vong = ngauNhien(1.6, 3.1);
+      for (var i = 0; i < soDom; i++) {
+        var goc = (Math.PI * 2 * i) / soDom + ngauNhien(-0.08, 0.08);
+        var toc = vong * ngauNhien(0.35, 1);
+        tan.push({
+          x: p.x, y: p.y,
+          vx: Math.cos(goc) * toc,
+          vy: Math.sin(goc) * toc,
+          song: 1,
+          rui: ngauNhien(0.008, 0.017),
+          mau: p.mau
+        });
+      }
+    }
+
+    var luot = 0, dang = true, hienRa = true;
+
+    function ve() {
+      requestAnimationFrame(ve);
+      if (!dang || !hienRa) return;
+
+      // Xoa dan de lai vet duoi sang
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.fillStyle = 'rgba(0,0,0,.18)';
+      ctx.fillRect(0, 0, W, H);
+      ctx.globalCompositeOperation = 'lighter';
+
+      luot++;
+      // Trung binh khoang 1,4 giay mot qua
+      if (luot % 84 === 0 || (luot % 84 === 42 && Math.random() < 0.45)) banMot();
+
+      var i, p;
+      for (i = phaoBay.length - 1; i >= 0; i--) {
+        p = phaoBay[i];
+        p.x += p.vx; p.y += p.vy; p.vy += G;
+        ctx.fillStyle = p.mau;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+        if (p.vy >= 0 || p.y <= p.dich) { no(p); phaoBay.splice(i, 1); }
+      }
+
+      for (i = tan.length - 1; i >= 0; i--) {
+        p = tan[i];
+        p.x += p.vx; p.y += p.vy;
+        p.vy += G * 0.75;
+        p.vx *= 0.985; p.vy *= 0.985;
+        p.song -= p.rui;
+        if (p.song <= 0) { tan.splice(i, 1); continue; }
+        ctx.globalAlpha = p.song;
+        ctx.fillStyle = p.mau;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 1.9, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      ctx.globalCompositeOperation = 'source-over';
+    }
+    requestAnimationFrame(ve);
+
+    // Cuon qua banner hoac chuyen tab thi dung han cho do ton pin
+    document.addEventListener('visibilitychange', function () { dang = !document.hidden; });
+    if (window.IntersectionObserver) {
+      new IntersectionObserver(function (mp) { hienRa = mp[0].isIntersecting; }).observe(khung);
+    }
+  })();
+</script>

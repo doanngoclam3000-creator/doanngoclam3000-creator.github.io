@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ThePhanMem from '../components/ThePhanMem.astro';
+import PhaoHoa from '../components/PhaoHoa.astro';
 import TheBaiViet from '../components/TheBaiViet.astro';
 import { getCollection } from 'astro:content';
 import { CAUHINH, CHUYEN_MUC } from '../config';
@@ -23,6 +24,7 @@ const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => 
 <Layout>
   <section class="hero" style={`--anh-banner:url(${CAUHINH.anhBanner})`}>
     <div class="anh-nen" role="presentation"></div>
+    <PhaoHoa />
     <div class="icon-bay" aria-hidden="true">
       {iconBay.map((x) => (
         <img
