@@ -1,0 +1,78 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CAUHINH } from '../config';
+---
+<Layout
+  tieuDe="Điều khoản sử dụng"
+  moTa="Điều khoản khi dùng tài khoản, ví tiền và key phần mềm trên phanmemtq.com."
+>
+  <article class="khung-hep bai">
+    <h1>Điều khoản sử dụng</h1>
+    <p class="ngay">Cập nhật ngày 06/09/2026</p>
+
+    <p>
+      Dùng tài khoản và ví tiền trên <b>phanmemtq.com</b> nghĩa là bạn đồng ý với những
+      điều dưới đây. Chúng tôi viết đúng như thực tế đang chạy, không cài chữ nhỏ.
+    </p>
+
+    <h2>Tài khoản</h2>
+    <ul>
+      <li>Mỗi người một tài khoản, khai đúng email và số điện thoại để còn liên hệ được.</li>
+      <li>Bạn tự giữ mật khẩu. Ai đăng nhập được vào tài khoản thì tiêu được tiền trong ví đó.</li>
+      <li>Chúng tôi có quyền khoá tài khoản gian lận: chuyển khoản giả, đòi hoàn tiền sai sự thật, phá hoại hệ thống.</li>
+    </ul>
+
+    <h2>Ví tiền</h2>
+    <ul>
+      <li>Tiền vào ví bằng chuyển khoản ngân hàng, ghi <b>đúng nội dung</b> hiện trong mục Nạp tiền. Ghi sai thì tiền không tự vào, phải nhắn chúng tôi cộng tay.</li>
+      <li>Tiền trong ví <b>chỉ để mua key phần mềm của chúng tôi</b>, không phải dịch vụ thanh toán, không chuyển được cho người khác.</li>
+      <li>Ví <b>không sinh lãi</b>.</li>
+    </ul>
+
+    <h2>Mua key</h2>
+    <ul>
+      <li>Key gắn với <b>mã máy</b> bạn nhập. Nhập sai mã máy thì key không dùng được — kiểm tra kỹ trước khi bấm mua.</li>
+      <li>Cấp key xong là <b>không hoàn tiền</b>, trừ khi lỗi từ phía chúng tôi. Cấp không thành công thì hệ thống tự hoàn tiền ngay vào ví.</li>
+      <li>Key mua ở đây dùng cho bản máy tính. Bản iPhone của một số phần mềm mở khoá theo cách riêng ngay trong ứng dụng — đọc dòng lưu ý ở mục Mua key trước khi trả tiền.</li>
+      <li>Không được bán lại, chia sẻ hay can thiệp vào key. Phát hiện là thu hồi, không hoàn tiền.</li>
+    </ul>
+
+    <h2>Rút tiền</h2>
+    <ul>
+      <li>Chỉ rút được về tài khoản ngân hàng <b>đứng tên chính bạn</b> đã khai trong mục Tài khoản.</li>
+      <li>Rút tối thiểu 50.000đ. Yêu cầu được chuyển khoản tay trong giờ làm việc, thường trong ngày.</li>
+      <li>Tên chủ tài khoản không khớp thì chúng tôi từ chối và hoàn tiền lại vào ví.</li>
+    </ul>
+
+    <h2>Phần mềm</h2>
+    <ul>
+      <li>Phần mềm bán theo thời hạn. Hết hạn thì gia hạn tiếp, dữ liệu của bạn vẫn còn nguyên.</li>
+      <li>Chúng tôi cố gắng giữ phần mềm chạy tốt nhưng không cam kết không bao giờ lỗi. Gặp lỗi thì báo, chúng tôi sửa.</li>
+      <li>Bạn tự chịu trách nhiệm về cách mình dùng phần mềm, nhất là khi phần mềm làm việc trên tài khoản của bên thứ ba.</li>
+    </ul>
+
+    <h2>Thay đổi điều khoản</h2>
+    <p>
+      Có sửa gì thì chúng tôi cập nhật ngay trang này kèm ngày sửa. Thay đổi lớn ảnh hưởng
+      tới tiền hoặc key thì chúng tôi báo trước.
+    </p>
+
+    <h2>Liên hệ</h2>
+    <p>
+      Có gì chưa rõ, nhắn thẳng cho chúng tôi:
+      <a href={`mailto:${CAUHINH.email}`}>{CAUHINH.email}</a>
+      {CAUHINH.facebook && <> hoặc <a href={CAUHINH.facebook} target="_blank" rel="noopener">Facebook</a></>}.
+      Xem thêm <a href="/chinh-sach-rieng-tu/">Chính sách quyền riêng tư</a>.
+    </p>
+  </article>
+
+  <style>
+    .bai { padding: 3rem 20px 4rem; }
+    .bai h1 { font-size: 2rem; margin: 0 0 .4rem; }
+    .bai h2 { font-size: 1.15rem; margin: 2rem 0 .6rem; }
+    .bai p, .bai li { line-height: 1.75; }
+    .bai ul { padding-left: 1.2rem; }
+    .bai li { margin-bottom: .4rem; }
+    .ngay { color: var(--chu-nhat); font-size: .9rem; margin: 0 0 2rem; }
+  </style>
+</Layout>

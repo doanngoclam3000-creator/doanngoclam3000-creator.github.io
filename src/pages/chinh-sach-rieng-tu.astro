@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { CAUHINH } from '../config';
+---
+<Layout
+  tieuDe="Chính sách quyền riêng tư"
+  moTa="Phần Mềm Việt thu thập những gì, dùng để làm gì và giữ trong bao lâu."
+>
+  <article class="khung-hep bai">
+    <h1>Chính sách quyền riêng tư</h1>
+    <p class="ngay">Cập nhật ngày 06/09/2026</p>
+
+    <p>
+      Trang này nói rõ <b>phanmemtq.com</b> thu thập thông tin gì của bạn, dùng để làm gì,
+      giữ trong bao lâu và bạn có quyền gì. Viết ngắn gọn, không vòng vo.
+    </p>
+
+    <h2>Xem website thì chúng tôi biết gì</h2>
+    <p>
+      Chỉ đọc bài viết và xem phần mềm thì bạn <b>không cần tài khoản</b> và chúng tôi
+      không lưu gì về bạn ngoài số lượt truy cập được đếm ẩn danh (GoatCounter) — công cụ này
+      không đặt cookie theo dõi và không dựng hồ sơ cá nhân.
+    </p>
+
+    <h2>Có tài khoản ví thì chúng tôi giữ gì</h2>
+    <p>Khi bạn đăng ký tài khoản để nạp tiền và mua key, chúng tôi lưu:</p>
+    <ul>
+      <li><b>Tên tài khoản, email, số điện thoại</b> — để bạn đăng nhập và để chúng tôi liên hệ khi có việc.</li>
+      <li><b>Mật khẩu đã băm</b> — chúng tôi <b>không</b> giữ mật khẩu thật của bạn và không đọc được nó.</li>
+      <li><b>Số dư ví và toàn bộ lịch sử giao dịch</b> — nạp, mua key, hoàn tiền, hoa hồng, rút tiền.</li>
+      <li><b>Đơn mua key</b>: phần mềm, gói, mã máy bạn nhập và key đã cấp.</li>
+      <li><b>Tài khoản ngân hàng</b> (tên ngân hàng, số tài khoản, tên chủ tài khoản) — chỉ khi bạn tự khai để rút tiền.</li>
+      <li><b>Địa chỉ IP và thời điểm đăng nhập gần nhất</b> — để đối chiếu khi có tranh chấp về tiền.</li>
+    </ul>
+
+    <h2>Đăng nhập bằng Google</h2>
+    <p>
+      Nếu bạn chọn đăng nhập bằng Google, chúng tôi chỉ nhận <b>địa chỉ email và tên</b> mà Google
+      cung cấp, dùng đúng vào việc tạo và nhận diện tài khoản của bạn. Chúng tôi
+      <b>không</b> đọc Gmail, Drive, danh bạ hay bất cứ dữ liệu nào khác trong tài khoản Google
+      của bạn, và không bao giờ xin thêm quyền ngoài email với tên.
+    </p>
+
+    <h2>Chúng tôi không làm gì với dữ liệu của bạn</h2>
+    <ul>
+      <li>Không bán, không cho thuê, không trao đổi dữ liệu với bên nào.</li>
+      <li>Không gửi thư quảng cáo. Thư duy nhất bạn nhận là thư đặt lại mật khẩu khi chính bạn yêu cầu.</li>
+      <li>Không dùng dữ liệu để chạy quảng cáo hay chấm điểm bạn.</li>
+    </ul>
+
+    <h2>Ai được xem</h2>
+    <p>
+      Chỉ chủ shop xem được, và chỉ để xử lý đơn hàng, yêu cầu rút tiền và hỗ trợ bạn. Ngoài ra
+      dữ liệu nằm trên máy chủ Cloudflare (lưu trữ) và đi qua Brevo (gửi thư đặt lại mật khẩu) —
+      hai dịch vụ này xử lý thay chúng tôi, không được dùng dữ liệu vào việc riêng.
+    </p>
+
+    <h2>Giữ trong bao lâu</h2>
+    <p>
+      Dữ liệu tài khoản được giữ chừng nào tài khoản còn tồn tại. Riêng <b>lịch sử giao dịch</b>
+      phải giữ lâu hơn để đối chiếu sổ sách khi có tranh chấp về tiền, kể cả sau khi bạn xoá
+      tài khoản — nhưng khi đó chúng tôi chỉ giữ phần liên quan tới dòng tiền.
+    </p>
+
+    <h2>Quyền của bạn</h2>
+    <p>
+      Bạn có quyền xem, sửa hoặc yêu cầu xoá dữ liệu của mình bất cứ lúc nào. Tên, số điện thoại
+      và mật khẩu bạn tự sửa được trong mục <a href="/tai-khoan/">Ví của tôi</a>. Muốn xoá hẳn tài
+      khoản thì nhắn cho chúng tôi, chúng tôi xoá và báo lại cho bạn.
+    </p>
+
+    <h2>Liên hệ</h2>
+    <p>
+      Có gì thắc mắc về dữ liệu của bạn, nhắn thẳng cho chúng tôi:
+      <a href={`mailto:${CAUHINH.email}`}>{CAUHINH.email}</a>
+      {CAUHINH.facebook && <> hoặc <a href={CAUHINH.facebook} target="_blank" rel="noopener">Facebook</a></>}.
+    </p>
+  </article>
+
+  <style>
+    .bai { padding: 3rem 20px 4rem; }
+    .bai h1 { font-size: 2rem; margin: 0 0 .4rem; }
+    .bai h2 { font-size: 1.15rem; margin: 2rem 0 .6rem; }
+    .bai p, .bai li { line-height: 1.75; }
+    .bai ul { padding-left: 1.2rem; }
+    .bai li { margin-bottom: .4rem; }
+    .ngay { color: var(--chu-nhat); font-size: .9rem; margin: 0 0 2rem; }
+  </style>
+</Layout>
