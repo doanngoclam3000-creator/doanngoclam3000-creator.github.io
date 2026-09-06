@@ -23,7 +23,7 @@ export default {
       return new Response('Link không đúng.', { status: 404 });
     }
 
-    const chuyen = new Request('https://vi-phanmemtq.phanmemtq.workers.dev/l/' + ma, {
+    const chuyen = new Request('https://vi-phanmemtq.ay-hu.workers.dev/l/' + ma, {
       method: 'GET',
       headers: req.headers,
       redirect: 'manual',

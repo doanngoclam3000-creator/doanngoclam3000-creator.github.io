@@ -68,7 +68,10 @@ const PHAN_MEM = {
     ],
   },
   'gia-lap-vi-tri': {
-    ten: 'Giả Lập Vị Trí', kieu: 'tuKy', tienTo: 'GL', bienSecret: 'SECRET_GL',
+    // Kieu 'kho': key KHONG gan may, lay tu worker kho-key. Nho vay MOT key dan
+    // duoc o ca ban Windows, macOS lan ban iPhone (app Vi Tri Wi-Fi), nhung kho
+    // giu so nen moi ung dung chi kich hoat duoc mot may.
+    ten: 'Giả Lập Vị Trí', kieu: 'kho', tienTo: 'GL', maKho: 'gia-lap-vi-tri',
     luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone cài qua TestFlight.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 300000 },
@@ -258,12 +261,30 @@ async function taoKeyMay(secret, tienTo, maGoi, maMay) {
 }
 const maMayHopLe = (m) => /^[A-Z0-9]{4,16}$/.test(m) && [...m].every((c) => BO_KY_TU.includes(c));
 
+// Kieu 'kho': khong tu ky ma xin kho-key cap. Kho giu so "key nao da dung o may
+// nao", nen mot key dung duoc mot lan o MOI phan mem cung nhom.
+async function xinKeyTuKho(env, pm, maGoi) {
+  if (!env.KHO_KEY_URL || !env.KHO_KEY_KHOA) throw new Error('Chưa cài kho key');
+  const r = await fetch(env.KHO_KEY_URL + '/cap', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'x-khoa': env.KHO_KEY_KHOA },
+    body: JSON.stringify({ app: pm.maKho, goi: maGoi }),
+  });
+  const o = await r.json().catch(() => ({}));
+  if (!r.ok || !o.keys || !o.keys[0]) throw new Error(o.loi || 'Kho key không cấp được');
+  return o.keys[0];
+}
+
 // Phan mem nay cap key tu dong duoc khong: phai co du khoa bi mat da nap.
 function capTuDong(env, pm) {
+  if (pm.kieu === 'kho') return !!(env.KHO_KEY_URL && env.KHO_KEY_KHOA);
   if (!env[pm.bienSecret]) return false;
   if (pm.kieu === 'mayChu') return !!(env['MC_' + pm.tienTo] && env['QT_' + pm.tienTo]);
   return pm.kieu === 'tuKy';
 }
+
+// Phan mem kieu 'kho' khong gan key vao may nao nen KHONG hoi ma may.
+const canMaMay = (pm) => pm.kieu !== 'kho';
 
 // ---------------- Link rut gon cho cong tac vien ----------------
 // Chi nhan link cua may san buon minh dang lam affiliate. Khong mo rong bua:
@@ -445,9 +466,20 @@ async function laySanPham(env, url, nen) {
 function dauCORS(env, req) {
   const nguon = req.headers.get('origin') || '';
   const chapNhan = [env.NGUON || 'https://phanmemtq.com', 'https://www.phanmemtq.com',
+    'https://doanngoclam3000-creator.github.io',
+    'http://phanmemtq.com', 'http://www.phanmemtq.com',
     'http://localhost:4321', 'http://127.0.0.1:4321'];
+  // Tra dung cai nguon khach gui len, khong thi trinh duyet chan va trang bao
+  // "Khong noi duoc may chu" du may chu van song. Hay gap nhat tren dien thoai:
+  // khach bam link cu (github.io) hoac mo trong trinh duyet cua Zalo/Facebook,
+  // nguon gui len khac phanmemtq.com nen bi chan het.
+  //
+  // Mo rong the nay khong ha thap bao mat: phien dang nhap nam o header
+  // Authorization chu khong phai cookie, ma token thi luu trong localStorage
+  // cua phanmemtq.com - trang khac khong doc duoc.
+  const choPhep = chapNhan.includes(nguon) ? nguon : (env.NGUON || 'https://phanmemtq.com');
   return {
-    'access-control-allow-origin': chapNhan.includes(nguon) ? nguon : (env.NGUON || 'https://phanmemtq.com'),
+    'access-control-allow-origin': choPhep,
     'access-control-allow-methods': 'GET,POST,OPTIONS',
     'access-control-allow-headers': 'content-type,authorization',
     'access-control-max-age': '86400',
@@ -946,7 +978,7 @@ export default {
       const tuDong = capTuDong(env, pm);
       // Ca hai kieu deu can ma may: kieu mayChu de cong ngay dung may, kieu
       // tuKy de ky key rieng cho may do.
-      if (tuDong && !maMayHopLe(may)) {
+      if (tuDong && canMaMay(pm) && !maMayHopLe(may)) {
         return J({ loi: 'Mã máy không đúng. Mở phần mềm, vào mục Bản quyền rồi chép đúng mã máy ở đó.' }, 400);
       }
 
@@ -992,6 +1024,33 @@ export default {
         return J({
           ok: true, don: donId, choTay: true, soDu: kq.soDu,
           nhan: 'Đã nhận đơn. Phần mềm này chưa cấp key tự động — chủ shop sẽ gửi key trong ít phút.',
+        });
+      }
+
+      // ---- Kieu kho: xin kho-key mot key KHONG gan may ----
+      // Key nay dan duoc o ban Windows, macOS lan ban iPhone; kho giu so nen moi
+      // ung dung chi kich hoat duoc mot may, dung roi thi may khac chiu.
+      if (pm.kieu === 'kho') {
+        let key;
+        try {
+          key = await xinKeyTuKho(env, pm, goi.ma);
+        } catch (e) {
+          // Da tru tien roi ma khong lay duoc key thi de don o trang thai cho
+          // tay, chu shop cap sau - tuyet doi khong nuot tien roi bao loi suong.
+          await env.DB.prepare("UPDATE don_key SET trang_thai='cho_tay' WHERE id=?").bind(donId).run();
+          await traHoaHong();
+          return J({
+            ok: true, don: donId, choTay: true, soDu: kq.soDu,
+            nhan: 'Đã nhận đơn nhưng máy chủ cấp key đang bận — chủ shop sẽ gửi key trong ít phút.',
+          });
+        }
+        await env.DB.prepare("UPDATE don_key SET trang_thai='xong', key=? WHERE id=?")
+          .bind(key, donId).run();
+        await traHoaHong();
+        return J({
+          ok: true, don: donId, key, soNgay: goi.ngay, soDu: kq.soDu,
+          nhan: 'Key đã cấp xong. Dán key này vào ' + pm.ten + ' trên máy tính, hoặc vào app trên iPhone — ' +
+            'mỗi ứng dụng dùng được một lần, cộng ' + goi.ngay + ' ngày.',
         });
       }
 

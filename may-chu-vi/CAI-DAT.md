@@ -6,7 +6,7 @@ tài khoản ngân hàng của chính họ.
 
 - **Mã nguồn:** `worker.js` (Cloudflare Worker)
 - **Kho dữ liệu:** D1 `vi-phanmemtq` — id `a253f3c6-cebd-409c-9500-996325069b57`
-- **Địa chỉ:** `https://vi-phanmemtq.phanmemtq.workers.dev`
+- **Địa chỉ:** `https://vi-phanmemtq.ay-hu.workers.dev`
 - **Trang khách:** `/tai-khoan/dang-ky/`, `/tai-khoan/dang-nhap/`, `/tai-khoan/`
 - **Trang chủ shop:** `/tai-khoan/quan-tri/`
 
@@ -30,7 +30,7 @@ Vào <https://my.sepay.vn> → **Webhooks** → *Thêm webhook*:
 | Ô | Điền |
 |---|---|
 | Tên | `vi phanmemtq` |
-| URL | `https://vi-phanmemtq.phanmemtq.workers.dev/webhook/sepay` |
+| URL | `https://vi-phanmemtq.ay-hu.workers.dev/webhook/sepay` |
 | Kiểu xác thực | API Key |
 | API Key | *token webhook mà `cai-dat.cjs` in ra* |
 | Tài khoản | Tất cả |

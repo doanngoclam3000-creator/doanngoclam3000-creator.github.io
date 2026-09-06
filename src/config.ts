@@ -20,7 +20,7 @@ export const CAUHINH = {
   thongBaoBanMoi: true,
   // May chu vi tien / tai khoan khach (Cloudflare Worker).
   // De trong thi an het cac trang tai khoan.
-  mayChuVi: 'https://vi-phanmemtq.phanmemtq.workers.dev',
+  mayChuVi: 'https://vi-phanmemtq.ay-hu.workers.dev',
   // Anh banner o trang chu. Thay bang anh cua ban:
   // bo file vao thu muc public/ roi doi duong dan o day, vi du '/banner.jpg'
   anhBanner: '/banner.svg',

@@ -1,6 +1,7 @@
 name = "vi-phanmemtq"
 main = "worker.js"
 compatibility_date = "2024-09-23"
+account_id = "e77b9a362ae739411ed4e9193682fa1d"
 
 # Tai khoan ngan hang nhan tien nap (dung chung voi cac phan mem)
 [vars]
@@ -10,7 +11,7 @@ CHU_TK = "DOAN NGOC LAM"
 NGUON = "https://phanmemtq.com"
 # Goc cua link rut gon cho cong tac vien. Dat rieng vi phanmemtq.com la
 # trang tinh tren GitHub Pages, khong tu chuyen huong duoc.
-NEN_LINK = "https://go.phanmemtq.workers.dev"
+NEN_LINK = "https://go.ay-hu.workers.dev"
 # Ma affiliate cua chu shop. Da nop don Shopee ngay 07/09/2026 bang tai khoan
 # michaiphong, dang cho duyet (Shopee tra loi qua email trong 10 ngay lam viec).
 # Duyet xong: vao affiliate.shopee.vn > Tai khoan cua toi, chep "Affiliate ID"
@@ -57,7 +58,7 @@ GOOGLE_CLIENT_ID = "158985395154-mg5spi6jkvk8636con1v12jap959lebs.apps.googleuse
 [[d1_databases]]
 binding = "DB"
 database_name = "vi-phanmemtq"
-database_id = "a253f3c6-cebd-409c-9500-996325069b57"
+database_id = "e0c7abe2-8615-47e0-8d9f-57170c029694"
 
 # Noi thang sang ba may chu ban quyen.
 # KHONG goi bang fetch tới dia chi workers.dev cua chung duoc: Cloudflare chan
