@@ -37,6 +37,11 @@ const phanMem = defineCollection({
     mauNen: z.string().default('#2563eb'),
     icon: z.string().default('📦'),
     noiBat: z.boolean().default(false),
+    // An bai khoi trang web nhung VAN giu trong phien-ban.json. Dung cho phan
+    // mem khong ban rieng nua nhung app tren may khach van hoi vao day de biet
+    // co ban moi — bo han thi app khong bao gio duoc nhac cap nhat, va nhung
+    // may dang bi khoa vi ban cu cung mat luon nut tai ban moi.
+    an: z.boolean().default(false),
     thuTu: z.number().default(99),
   }),
 });

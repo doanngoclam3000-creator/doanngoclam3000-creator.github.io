@@ -2,7 +2,10 @@
 import { CAUHINH, CHUYEN_MUC } from '../config';
 import { getCollection } from 'astro:content';
 import { demLuotTruyCap } from '../thongKe';
-const dsPhanMem = (await getCollection('phan-mem')).sort((a, b) => a.data.thuTu - b.data.thuTu).slice(0, 6);
+const dsPhanMem = (await getCollection('phan-mem'))
+  .filter((p) => !p.data.an)
+  .sort((a, b) => a.data.thuTu - b.data.thuTu)
+  .slice(0, 6);
 const nam = new Date().getFullYear();
 const luot = await demLuotTruyCap();
 ---

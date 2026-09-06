@@ -37,7 +37,7 @@ export async function demLuotTruyCap(): Promise<SoLieu | null> {
 
   // Gom moi duong dan cua website
   const baiViet = await getCollection('bai-viet');
-  const phanMem = await getCollection('phan-mem');
+  const phanMem = (await getCollection('phan-mem')).filter((p) => !p.data.an);
   const duong = [
     '/', '/phan-mem/', '/bai-viet/', '/gioi-thieu/', '/lien-he/',
     ...Object.keys(CHUYEN_MUC).map((m) => `/chuyen-muc/${m}/`),

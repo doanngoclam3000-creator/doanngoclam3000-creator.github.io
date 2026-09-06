@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { CAUHINH } from '../config';
 import { getCollection } from 'astro:content';
-const soPM = (await getCollection('phan-mem')).length;
+const soPM = (await getCollection('phan-mem')).filter((p) => !p.data.an).length;
 const soBai = (await getCollection('bai-viet')).length;
 ---
 <Layout tieuDe="Giới thiệu" moTa={`Giới thiệu về ${CAUHINH.tenSite} và tác giả ${CAUHINH.tacGia}.`}>

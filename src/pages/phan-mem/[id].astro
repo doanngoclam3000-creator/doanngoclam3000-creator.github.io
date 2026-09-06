@@ -8,7 +8,8 @@ import { dinhDangNgay } from '../../config';
 import { demLuotTai, dinhDangLuot } from '../../luotTai';
 
 export async function getStaticPaths() {
-  const ds = await getCollection('phan-mem');
+  // Muc an van nam trong phien-ban.json nhung khong co trang rieng tren web.
+  const ds = (await getCollection('phan-mem')).filter((p) => !p.data.an);
   return ds.map((pm) => ({ params: { id: pm.id }, props: { pm } }));
 }
 const { pm } = Astro.props;

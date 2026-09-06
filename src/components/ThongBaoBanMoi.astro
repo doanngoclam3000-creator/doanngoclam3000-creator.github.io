@@ -5,7 +5,7 @@
 import { getCollection } from 'astro:content';
 import { CAUHINH, dinhDangNgay } from '../config';
 
-const dsPhanMem = await getCollection('phan-mem');
+const dsPhanMem = (await getCollection('phan-mem')).filter((p) => !p.data.an);
 const moiNhat = dsPhanMem
   .slice()
   .sort((a, b) => +b.data.ngayCapNhat - +a.data.ngayCapNhat)[0];

@@ -16,6 +16,11 @@ anhIcon: "/icon/vi-tri-wifi.png"
 icon: "📶"
 mauNen: "#0284c7"
 noiBat: false
+# Bản iPhone của Giả Lập Vị Trí, không bán riêng nên ẩn bài khỏi web.
+# Vẫn phải giữ mục này: app trên máy khách hỏi phien-ban.json bằng mã
+# "vi-tri-wifi" để biết có bản mới; bỏ hẳn là app không bao giờ được nhắc
+# cập nhật, và máy đang bị khoá vì bản cũ cũng mất luôn nút tải bản mới.
+an: true
 thuTu: 9
 ---
 

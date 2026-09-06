@@ -7,7 +7,9 @@ import { getCollection } from 'astro:content';
 import { CAUHINH, CHUYEN_MUC } from '../config';
 import { sapXepBai } from '../sapXep';
 
-const phanMem = (await getCollection('phan-mem')).sort((a, b) => a.data.thuTu - b.data.thuTu);
+const phanMem = (await getCollection('phan-mem'))
+  .filter((p) => !p.data.an)
+  .sort((a, b) => a.data.thuTu - b.data.thuTu);
 const baiViet = sapXepBai(await getCollection('bai-viet'));
 const baiMoi = baiViet.slice(0, 6);
 
