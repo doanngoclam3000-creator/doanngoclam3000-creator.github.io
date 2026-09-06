@@ -2,15 +2,13 @@
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
 nenTang: ["macOS", "Windows", "iOS"]
-phienBan: "5.16"
-banToiThieu: "5.16"
+phienBan: "5.17"
+banToiThieu: "5.17"
 ngayCapNhat: 2026-09-07
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.16/GiaLapViTri-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.16/GiaLapViTri-5.16-Windows.zip"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.17/GiaLapViTri-macOS.dmg"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.17/GiaLapViTri-5.17-Windows.zip"
 linkTaiIOS: "https://testflight.apple.com/join/KYYj3Bfd"
-ghiChuCapNhat: "- Key mua trên web nay dùng được cho cả bản Windows, macOS và bản iPhone
-- Mỗi key chỉ kích hoạt được một máy; cài lại chính máy đó vẫn dùng lại được key cũ
-- Key cấp riêng cho từng máy như trước vẫn chạy bình thường, không cần mạng"
+ghiChuCapNhat: "- Chuyển máy chủ bản quyền sang hạ tầng mới của phanmemtq.com\n- Key mua trên web dùng được cho cả Windows, macOS và bản iPhone; mỗi ứng dụng kích hoạt được một máy\n- Bắt buộc cập nhật: bản cũ trỏ vào máy chủ sắp ngừng chạy"
 dungLuong: "132 MB (Mac) · 683 MB (Windows, bộ cài trong file nén)"
 gia: "300.000đ / tháng"
 video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
