@@ -35,7 +35,13 @@ HH_TIKTOK = "20"
 HH_SHOPEE = "24"
 # Cong tac vien duoc huong bao nhieu PHAN TRAM cua so hoa hong do, con lai la
 # cua chu shop. Doi so nay la trang web hien so tien moi ngay, khong phai sua ma.
-CHIA_CTV = "70"
+#
+# 75 nghia la: TikTok tra 20% gia tri don -> khach 15%, chu shop 5%.
+#              Shopee tra 24%             -> khach 18%, chu shop 6%.
+# Chia theo TI LE chu khong chot cung "khach duoc 15 diem", vi hoa hong that
+# tuy nganh hang - gap mon chi tra 8% ma van cat cho khach 15 diem la chu shop
+# bu tien tui.
+CHIA_CTV = "75"
 PHI_RUT = "0"
 RUT_TOI_THIEU = "50000"
 HOA_HONG = "10"

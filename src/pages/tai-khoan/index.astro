@@ -103,9 +103,10 @@ import '../../styles/tai-khoan.css';
             </label>
             <div class="tien-luoi" id="lk-tien-luoi"></div>
             <p class="nho">
-              Đây là mức <b>tối đa</b> của sàn — hoa hồng thật tuỳ ngành hàng, đồ điện tử
-              thường thấp hơn đồ gia dụng. Tiền vào ví sau khi sàn đối soát xong đơn
-              (TikTok khoảng 30 ngày), đơn bị huỷ hoặc trả hàng thì không tính.
+              Đây là <b>số dự tính</b>, chưa phải tiền đã vào ví. Mức trên là mức
+              <b>tối đa</b> của sàn — hoa hồng thật tuỳ ngành hàng, đồ điện tử thường
+              thấp hơn đồ gia dụng. Tiền chỉ được cộng vào ví sau khi sàn đối soát
+              xong đơn (TikTok khoảng 30 ngày); đơn bị huỷ hoặc trả hàng thì không tính.
             </p>
           </div>
 
@@ -403,7 +404,8 @@ import '../../styles/tai-khoan.css';
               ? '<div class="dat-tren">Bán được đơn <b>' + V.tien(giaThu()) + '</b> thì bạn nhận ' +
                 '<b class="tien-to">' + V.tien(giaThu() * kq.tien.tiLeBan / 100) + '</b> ' +
                 '<span class="nho">(' + kq.tien.tenNen + ' trả tới ' + kq.tien.tiLeSan +
-                '%, bạn hưởng ' + kq.tien.tiLeCtv + '% phần đó)</span></div>'
+                '% giá trị đơn: bạn ' + kq.tien.tiLeBan + '%, phanmemtq ' + kq.tien.tiLeChu +
+                '%)</span></div>'
               : '') +
             (kq.sanSang ? '' :
               '<div class="nho dat-tren"><b>Không phải lỗi:</b> sàn đang duyệt tài khoản ' +
@@ -432,7 +434,8 @@ import '../../styles/tai-khoan.css';
           return '<div class="tien-o' + (h.chay ? '' : ' cho') + '">' +
             '<div class="tien-nen">' + h.tenNen + (h.chay ? '' : ' <span class="nho">(đang chờ sàn duyệt)</span>') + '</div>' +
             '<div class="tien-to">' + V.tien(Math.round(gia * h.tiLeBan / 100)) + '</div>' +
-            '<div class="nho">tới ' + h.tiLeBan + '% giá trị đơn</div></div>';
+            '<div class="nho">Sàn trả tới ' + h.tiLeSan + '% giá trị đơn: ' +
+            '<b>bạn ' + h.tiLeBan + '%</b>, phanmemtq ' + h.tiLeChu + '%</div></div>';
         }).join('');
       }
 

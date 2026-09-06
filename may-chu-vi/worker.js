@@ -289,6 +289,9 @@ function bangHoaHong(env) {
       tiLeCtv: tiLeCtv(env),
       // lam tron 2 so le cho khoi ra 13.999999999999998
       tiLeBan: Math.round(san * tiLeCtv(env)) / 100,
+      // Phan con lai la cua chu shop. Tinh bang HIEU chu khong tinh rieng, de
+      // hai so cong lai luon dung bang muc san tra - khong lech vi lam tron.
+      tiLeChu: Math.round(san * 100 - san * tiLeCtv(env)) / 100,
       chay: coAccessTrade(env, n.ten) || (n.ten === 'shopee' && !!env.SHOPEE_AFF_ID),
     };
   });
