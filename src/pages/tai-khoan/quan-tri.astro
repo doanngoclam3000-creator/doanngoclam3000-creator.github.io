@@ -149,6 +149,7 @@ import '../../styles/tai-khoan.css';
             '</td><td>' + n.ma_nap + '</td><td class="phai"><b>' + V.tien(n.so_du) +
             '</b></td><td class="phai">' + V.tien(n.da_nap) +
             '</td><td><button class="nut nut-vien" data-mo-tien="' + n.id + '">Cộng/trừ</button> ' +
+            '<button class="nut nut-vien" data-datlai="' + n.id + '">Link đặt lại MK</button> ' +
             '<button class="nut nut-vien" data-khoa="' + n.id + '" data-dang="' + (n.khoa ? 1 : 0) + '">' +
             (n.khoa ? 'Mở khoá' : 'Khoá') + '</button></td></tr>' +
             '<tr data-o-tien="' + n.id + '" hidden><td colspan="6">' +
@@ -203,6 +204,17 @@ import '../../styles/tai-khoan.css';
               ghiChu: oCua('ghichu', d.luuTien) || 'Chủ shop điều chỉnh',
             });
             taiKhach().catch(bao); taiTongQuan().catch(bao);
+          } else if (d.datlai) {
+            bao('');
+            var kq = await qt('/admin/link-dat-lai', { nguoi: Number(d.datlai) });
+            // Hien ngay trong bang de chep gui cho khach qua Zalo/Messenger
+            var o = document.querySelector('[data-o-tien="' + d.datlai + '"]');
+            if (o) {
+              o.hidden = false;
+              o.querySelector('td').innerHTML =
+                '<div class="nho">Gửi đường dẫn này cho khách, dùng được một lần trong 30 phút:</div>' +
+                '<div class="the-key" style="font-size:.8rem">' + kq.duongDan + '</div>';
+            }
           } else if (d.khoa) {
             bao('');
             await qt('/admin/khoa', { nguoi: Number(d.khoa), khoa: d.dang !== '1' });

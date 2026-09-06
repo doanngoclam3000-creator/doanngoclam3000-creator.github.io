@@ -1,0 +1,86 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/tai-khoan.css';
+---
+<Layout tieuDe="Đặt lại mật khẩu" moTa="Đặt mật khẩu mới cho tài khoản ví phanmemtq.com." anGoogle={true}>
+  <div class="tk-trang">
+    <div class="tk-hep">
+      <div class="tk-tieu">
+        <h1>Đặt mật khẩu mới</h1>
+        <p>Gõ mật khẩu mới hai lần rồi lưu. Các máy đang đăng nhập sẽ bị đăng xuất hết.</p>
+      </div>
+
+      <div class="hop">
+        <div class="loi" id="loi" hidden></div>
+        <div class="duoc" id="duoc" hidden></div>
+        <form id="form">
+          <label class="o">
+            <span>Mật khẩu mới</span>
+            <input type="password" id="mk1" required minlength="8" autocomplete="new-password" />
+            <small>Ít nhất 8 ký tự.</small>
+          </label>
+          <label class="o">
+            <span>Nhập lại mật khẩu mới</span>
+            <input type="password" id="mk2" required minlength="8" autocomplete="new-password" />
+            <small id="khop">Gõ lại đúng mật khẩu ở trên cho chắc.</small>
+          </label>
+          <button class="nut nut-chinh nut-day" id="nut" type="submit">Lưu mật khẩu mới</button>
+        </form>
+      </div>
+
+      <p class="duoi-form"><a href="/tai-khoan/dang-nhap/">Về trang đăng nhập</a></p>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById('form');
+      var nut = document.getElementById('nut');
+      var mk1 = document.getElementById('mk1');
+      var mk2 = document.getElementById('mk2');
+      var nhac = document.getElementById('khop');
+      var ma = new URLSearchParams(location.search).get('ma') || '';
+
+      if (!ma) {
+        form.hidden = true;
+        window.VI.baoLoi('loi', new Error(
+          'Đường dẫn thiếu mã đặt lại. Vào lại mục Quên mật khẩu để xin đường dẫn mới.'));
+      }
+
+      function soatKhop() {
+        if (mk2.value && mk1.value !== mk2.value) {
+          nhac.textContent = 'Hai ô mật khẩu chưa giống nhau.';
+          nhac.style.color = '#dc2626';
+        } else {
+          nhac.textContent = 'Gõ lại đúng mật khẩu ở trên cho chắc.';
+          nhac.style.color = '';
+        }
+      }
+      mk1.addEventListener('input', soatKhop);
+      mk2.addEventListener('input', soatKhop);
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        window.VI.baoLoi('loi', '');
+        if (mk1.value !== mk2.value) {
+          mk2.focus();
+          return window.VI.baoLoi('loi', new Error('Hai ô mật khẩu chưa giống nhau. Gõ lại giúp tôi.'));
+        }
+        nut.disabled = true; nut.textContent = 'Đang lưu…';
+        try {
+          var kq = await window.VI.goi('/dat-lai-mat-khau', { ma: ma, matKhau: mk1.value });
+          // Đổi xong là vào thẳng ví luôn, khỏi bắt đăng nhập lại
+          window.VI.datToken(kq.token);
+          var o = document.getElementById('duoc');
+          o.textContent = 'Đã đổi mật khẩu xong. Đang đưa bạn vào ví…';
+          o.hidden = false;
+          form.hidden = true;
+          setTimeout(function () { location.href = '/tai-khoan/'; }, 1200);
+        } catch (err) {
+          window.VI.baoLoi('loi', err);
+          nut.disabled = false; nut.textContent = 'Lưu mật khẩu mới';
+        }
+      });
+    })();
+  </script>
+</Layout>

@@ -173,6 +173,76 @@ async function docToken(env, token) {
   } catch { return null; }
 }
 
+// ---------------- Ma dat lai mat khau ----------------
+// Ky rieng bang tien to 'datlai:' de token phien KHONG dung lam ma dat lai
+// duoc va nguoc lai. Kem phien_ver nen dat lai xong (phien_ver tang) la ma
+// cu chet luon - bam hai lan cung chi doi duoc mot lan.
+const HAN_MA_DAT_LAI = 30 * 60 * 1000;   // 30 phut
+
+async function taoMaDatLai(env, nd) {
+  const than = b64urlMa(JSON.stringify({ u: nd.id, v: nd.phien_ver, h: Date.now() + HAN_MA_DAT_LAI }));
+  return than + '.' + b64urlMa(nhiPhanToHex(await hmac(env.KHOA_PHIEN, 'datlai:' + than)));
+}
+async function docMaDatLai(env, ma) {
+  const [than, ky] = String(ma || '').split('.');
+  if (!than || !ky) return null;
+  const dung = b64urlMa(nhiPhanToHex(await hmac(env.KHOA_PHIEN, 'datlai:' + than)));
+  if (!bangNhau(ky, dung)) return null;
+  try {
+    const o = JSON.parse(b64urlGiai(than));
+    if (!o.h || o.h < Date.now()) return null;
+    return o;
+  } catch { return null; }
+}
+
+// ---------------- Gui thu ----------------
+// Cloudflare Workers khong tu gui mail duoc, phai qua mot dich vu. Khai bao
+// khoa nao thi dung dich vu do; chua khai bao cai nao thi tra ve khong gui
+// duoc, va chu shop van lay duoc duong dan tay o trang quan tri.
+async function guiThu(env, den, tieuDe, html) {
+  const tu = env.MAIL_TU || 'Phan Mem Viet <no-reply@phanmemtq.com>';
+  try {
+    if (env.RESEND_KEY) {
+      const r = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', authorization: 'Bearer ' + env.RESEND_KEY },
+        body: JSON.stringify({ from: tu, to: [den], subject: tieuDe, html }),
+      });
+      if (r.ok) return { ok: true };
+      return { ok: false, loi: 'Resend: ' + (await r.text()).slice(0, 200) };
+    }
+    if (env.BREVO_KEY) {
+      const khop = tu.match(/^(.*)<(.+)>$/);
+      const r = await fetch('https://api.brevo.com/v3/smtp/email', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'api-key': env.BREVO_KEY },
+        body: JSON.stringify({
+          sender: { name: (khop ? khop[1] : 'Phan Mem Viet').trim(), email: khop ? khop[2] : tu },
+          to: [{ email: den }], subject: tieuDe, htmlContent: html,
+        }),
+      });
+      if (r.ok) return { ok: true };
+      return { ok: false, loi: 'Brevo: ' + (await r.text()).slice(0, 200) };
+    }
+  } catch (e) {
+    return { ok: false, loi: 'khong goi duoc dich vu gui thu: ' + e };
+  }
+  return { ok: false, loi: 'chua khai bao dich vu gui thu' };
+}
+
+function thuDatLai(tenDn, duongDan) {
+  return '<div style="font-family:system-ui,Segoe UI,Arial,sans-serif;font-size:15px;line-height:1.6;color:#1b1430">' +
+    '<p>Chào <b>' + tenDn + '</b>,</p>' +
+    '<p>Có người vừa xin đặt lại mật khẩu cho tài khoản của bạn trên <b>phanmemtq.com</b>. ' +
+    'Bấm nút dưới đây để đặt mật khẩu mới:</p>' +
+    '<p><a href="' + duongDan + '" style="display:inline-block;background:#7c3aed;color:#fff;' +
+    'text-decoration:none;padding:12px 22px;border-radius:10px;font-weight:700">Đặt mật khẩu mới</a></p>' +
+    '<p style="color:#665c80;font-size:13px">Đường dẫn này chỉ dùng được <b>một lần</b> và hết hạn sau <b>30 phút</b>. ' +
+    'Nếu không phải bạn xin đặt lại thì cứ bỏ qua thư này, mật khẩu cũ vẫn nguyên.</p>' +
+    '<p style="color:#665c80;font-size:12px;word-break:break-all">Nút không bấm được thì chép đường dẫn này vào trình duyệt:<br>' +
+    duongDan + '</p></div>';
+}
+
 // ---------------- Sinh key ban quyen ----------------
 // Kieu 'mayChu' (Bot Zalo, Shopee Tu Dong): giong het ham taoKey ben may chu
 // ban quyen cua tung phan mem.
@@ -401,6 +471,43 @@ export default {
       await env.DB.prepare('UPDATE nguoi_dung SET sai_lan=0, khoa_den=0 WHERE id=?').bind(nd.id).run();
       await ghiNoiO(env, req, nd.id);
       return J({ token: await taoToken(env, nd), nguoi: hoSo(nd) });
+    }
+
+    // ---- Quen mat khau: gui thu kem duong dan dat lai ----
+    if (req.method === 'POST' && p === '/quen-mat-khau') {
+      const b = await than();
+      const nhap = String(b.taiKhoan || b.email || '').trim().toLowerCase();
+      // Luon tra ve ok: khong de nguoi la do xem email/ten nao co that
+      if (!nhap) return J({ ok: true });
+      const nd = await env.DB.prepare(
+        'SELECT * FROM nguoi_dung WHERE email=?1 OR lower(ten_dn)=?1').bind(nhap).first();
+      if (!nd || nd.khoa) return J({ ok: true });
+
+      const ma = await taoMaDatLai(env, nd);
+      const duongDan = (env.NGUON || 'https://phanmemtq.com') +
+        '/tai-khoan/dat-lai-mat-khau/?ma=' + encodeURIComponent(ma);
+      const kq = await guiThu(env, nd.email, 'Đặt lại mật khẩu phanmemtq.com',
+        thuDatLai(nd.ten_dn || nd.email, duongDan));
+      // Gui hong thi van tra ok cho khach, nhung ghi lai de chu shop biet
+      return J({ ok: true, guiDuoc: !!kq.ok });
+    }
+
+    // ---- Dat mat khau moi bang ma trong thu ----
+    if (req.method === 'POST' && p === '/dat-lai-mat-khau') {
+      const b = await than();
+      const o = await docMaDatLai(env, b.ma);
+      if (!o) return J({ loi: 'Đường dẫn đã hết hạn hoặc đã dùng rồi. Xin đặt lại lần nữa.' }, 400);
+      if (String(b.matKhau || '').length < 8) return J({ loi: 'Mật khẩu phải từ 8 ký tự trở lên' }, 400);
+      const nd = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE id=?').bind(o.u).first();
+      if (!nd || Number(nd.phien_ver) !== Number(o.v)) {
+        return J({ loi: 'Đường dẫn đã hết hạn hoặc đã dùng rồi. Xin đặt lại lần nữa.' }, 400);
+      }
+      // Tang phien_ver: ma nay chet luon va moi may dang dang nhap cung bi day ra
+      const moi = await env.DB.prepare(
+        'UPDATE nguoi_dung SET mat_khau=?, phien_ver=phien_ver+1, sai_lan=0, khoa_den=0 WHERE id=? RETURNING *')
+        .bind(await bamMatKhau(String(b.matKhau)), nd.id).first();
+      await ghiNoiO(env, req, moi.id);
+      return J({ ok: true, token: await taoToken(env, moi), nguoi: hoSo(moi) });
     }
 
     // ============ CAN DANG NHAP ============
@@ -712,6 +819,20 @@ export default {
           ghiChu: String(b.ghiChu || 'Chủ shop điều chỉnh').slice(0, 200),
         });
         return J(kq.ok ? { ok: true, soDu: kq.soDu } : { loi: kq.loi }, kq.ok ? 200 : 400);
+      }
+
+      // Lay duong dan dat lai mat khau de gui tay cho khach (Zalo, Messenger...)
+      // Dung khi chua khai bao dich vu gui thu, hoac thu khong den duoc.
+      if (req.method === 'POST' && p === '/admin/link-dat-lai') {
+        const b = await than();
+        const nd = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE id=?').bind(Number(b.nguoi)).first();
+        if (!nd) return J({ loi: 'Không tìm thấy tài khoản' }, 404);
+        const ma = await taoMaDatLai(env, nd);
+        return J({
+          ok: true,
+          duongDan: (env.NGUON || 'https://phanmemtq.com') +
+            '/tai-khoan/dat-lai-mat-khau/?ma=' + encodeURIComponent(ma),
+        });
       }
 
       // Khoa / mo khoa tai khoan

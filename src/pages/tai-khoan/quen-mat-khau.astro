@@ -1,0 +1,62 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/tai-khoan.css';
+---
+<Layout tieuDe="Quên mật khẩu" moTa="Lấy lại mật khẩu tài khoản ví phanmemtq.com qua email.">
+  <div class="tk-trang">
+    <div class="tk-hep">
+      <div class="tk-tieu">
+        <h1>Quên mật khẩu</h1>
+        <p>Gõ tên tài khoản hoặc email, chúng tôi gửi đường dẫn đặt lại mật khẩu về email của bạn.</p>
+      </div>
+
+      <div class="hop">
+        <div class="loi" id="loi" hidden></div>
+        <div class="duoc" id="duoc" hidden></div>
+        <form id="form">
+          <label class="o">
+            <span>Tên tài khoản hoặc email</span>
+            <input type="text" id="taiKhoan" required autocomplete="username" />
+          </label>
+          <button class="nut nut-chinh nut-day" id="nut" type="submit">Gửi đường dẫn đặt lại</button>
+        </form>
+      </div>
+
+      <p class="duoi-form">
+        Nhớ ra rồi? <a href="/tai-khoan/dang-nhap/">Đăng nhập</a> ·
+        Chưa có tài khoản? <a href="/tai-khoan/dang-ky/">Đăng ký</a>
+      </p>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById('form');
+      var nut = document.getElementById('nut');
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        window.VI.baoLoi('loi', '');
+        document.getElementById('duoc').hidden = true;
+        nut.disabled = true; nut.textContent = 'Đang gửi…';
+        try {
+          var kq = await window.VI.goi('/quen-mat-khau', {
+            taiKhoan: document.getElementById('taiKhoan').value.trim(),
+          });
+          var o = document.getElementById('duoc');
+          // Máy chủ cố ý luôn trả "xong" để người lạ không dò được email nào có thật
+          o.innerHTML = kq.guiDuoc
+            ? 'Đã gửi thư rồi. Mở hộp thư (kể cả mục <b>Spam</b>) và bấm đường dẫn trong thư. ' +
+              'Đường dẫn dùng được một lần, hết hạn sau 30 phút.'
+            : 'Nếu tài khoản có thật, thư đặt lại sẽ tới trong ít phút. ' +
+              'Chờ mãi không thấy thì nhắn cho chủ shop để được cấp đường dẫn đặt lại.';
+          o.hidden = false;
+          form.hidden = true;
+        } catch (err) {
+          window.VI.baoLoi('loi', err);
+          nut.disabled = false; nut.textContent = 'Gửi đường dẫn đặt lại';
+        }
+      });
+    })();
+  </script>
+</Layout>
