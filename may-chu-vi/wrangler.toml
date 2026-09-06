@@ -11,6 +11,14 @@ NGUON = "https://phanmemtq.com"
 # Goc cua link rut gon cho cong tac vien. Dat rieng vi phanmemtq.com la
 # trang tinh tren GitHub Pages, khong tu chuyen huong duoc.
 NEN_LINK = "https://go.phanmemtq.workers.dev"
+# Ma affiliate cua chu shop. Da nop don Shopee ngay 07/09/2026 bang tai khoan
+# michaiphong, dang cho duyet (Shopee tra loi qua email trong 10 ngay lam viec).
+# Duyet xong: vao affiliate.shopee.vn > Tai khoan cua toi, chep "Affiliate ID"
+# (con goi la af_id) dan vao dong duoi roi bo dau # di, chay lai cai-dat.cjs.
+# Bat len la TOAN BO link cong tac vien da tao truoc do tu dong ra tien,
+# khong ai phai tao lai link.
+# SHOPEE_AFF_ID = "..."
+# TIKTOK_AFF_ID = "..."
 PHI_RUT = "0"
 RUT_TOI_THIEU = "50000"
 HOA_HONG = "10"
