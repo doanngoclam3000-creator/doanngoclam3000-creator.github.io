@@ -375,6 +375,72 @@ function linkAffiliate(env, url, nen, maCtv) {
   } catch { return url; }
 }
 
+// ---------------- Doc ten / gia san pham ----------------
+// Ca Shopee lan TikTok deu tra trang rong cho may (da thu: khong og:title,
+// khong gia), nen phai hoi API AccessTrade. Chua khai AT_API_KEY thi bo qua,
+// trang vi tu chuyen sang hien hoa hong theo phan tram.
+//
+// Hong o day KHONG duoc lam hong viec tao link: moi loi deu tra ve null.
+function maSanPham(url, nen) {
+  try {
+    const d = new URL(url);
+    if (nen === 'shopee') {
+      // .../ten-san-pham-i.<shop_id>.<item_id>
+      const m = d.pathname.match(/-i\.(\d+)\.(\d+)/);
+      return m ? { shop: m[1], mon: m[2] } : null;
+    }
+    // TikTok: /view/product/<id>
+    const m = d.pathname.match(/\/product\/(\d+)/);
+    return m ? { mon: m[1] } : null;
+  } catch { return null; }
+}
+
+// Cong tac vien hay dan link rut gon (vt.tiktok.com/ZSxxx, shp.ee/xxx) - loai
+// nay khong co ma san pham trong duong dan, phai di theo chuyen huong moi ra.
+const MIEN_NGAN = ['vt.tiktok.com', 'vm.tiktok.com', 'shp.ee', 's.shopee.vn'];
+
+async function moRong(url) {
+  try {
+    const host = new URL(url).hostname.toLowerCase().replace(/^www\./, '');
+    if (!MIEN_NGAN.includes(host)) return url;
+    const r = await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(3500) });
+    return r.url || url;
+  } catch { return url; }
+}
+
+async function laySanPham(env, url, nen) {
+  if (!env.AT_API_KEY) return null;
+  const ma = maSanPham(await moRong(url), nen);
+  if (!ma) return null;
+
+  // AccessTrade doi product_id chu khong nhan link. Shopee ghep shop_id voi
+  // item_id; chua chac dinh dang nao dung nen thu lan luot, cai nao ra thi lay.
+  const thu = nen === 'shopee'
+    ? [ma.shop + '_' + ma.mon, ma.mon, ma.shop + '-' + ma.mon]
+    : [ma.mon];
+  const cho = nen === 'shopee' ? 'shopee' : 'tiktokshop';
+
+  for (const id of thu) {
+    try {
+      const r = await fetch(
+        'https://api.accesstrade.vn/v1/product_detail?merchant=' + cho +
+        '&product_id=' + encodeURIComponent(id) + '&transaction_id=0',
+        { headers: { Authorization: 'Token ' + env.AT_API_KEY }, signal: AbortSignal.timeout(3500) });
+      if (!r.ok) continue;
+      const j = await r.json();
+      const sp = (j && (j.data && j.data[0] ? j.data[0] : j.data)) || null;
+      if (!sp || !sp.name) continue;
+      const gia = Number(sp.discount || sp.price || 0);
+      return {
+        ten: String(sp.name).slice(0, 120),
+        anh: sp.image || null,
+        gia: gia > 0 ? gia : null,
+      };
+    } catch { /* thu dinh dang tiep theo */ }
+  }
+  return null;
+}
+
 // ---------------- Tra loi + CORS ----------------
 function dauCORS(env, req) {
   const nguon = req.headers.get('origin') || '';
@@ -810,11 +876,7 @@ export default {
         link: duongLinkNgan(env, ma),
         sanSang: coAccessTrade(env, nen) || (nen === 'shopee' && !!env.SHOPEE_AFF_ID),
         tien: bangHoaHong(env).find((h) => h.nen === nen),
-        // Ten/anh/gia san pham. Ca Shopee lan TikTok deu tra ve trang rong cho
-        // may (da thu: khong co og:title, khong co gia), nen KHONG boi duoc gia
-        // tu link. Muon hien so tien that phai qua API AccessTrade - chua co
-        // access key nen tam de trong; trang vi tu chuyen sang hien theo %.
-        sanPham: null,
+        sanPham: await laySanPham(env, dich, nen),
       });
     }
 
