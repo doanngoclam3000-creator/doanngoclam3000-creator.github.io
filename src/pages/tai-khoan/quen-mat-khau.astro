@@ -40,16 +40,15 @@ import '../../styles/tai-khoan.css';
         document.getElementById('duoc').hidden = true;
         nut.disabled = true; nut.textContent = 'Đang gửi…';
         try {
-          var kq = await window.VI.goi('/quen-mat-khau', {
+          await window.VI.goi('/quen-mat-khau', {
             taiKhoan: document.getElementById('taiKhoan').value.trim(),
           });
           var o = document.getElementById('duoc');
-          // Máy chủ cố ý luôn trả "xong" để người lạ không dò được email nào có thật
-          o.innerHTML = kq.guiDuoc
-            ? 'Đã gửi thư rồi. Mở hộp thư (kể cả mục <b>Spam</b>) và bấm đường dẫn trong thư. ' +
-              'Đường dẫn dùng được một lần, hết hạn sau 30 phút.'
-            : 'Nếu tài khoản có thật, thư đặt lại sẽ tới trong ít phút. ' +
-              'Chờ mãi không thấy thì nhắn cho chủ shop để được cấp đường dẫn đặt lại.';
+          // Luôn một câu như nhau, dù tài khoản có thật hay không — để người lạ
+          // không dò được email nào đã đăng ký trên web.
+          o.innerHTML = 'Nếu tài khoản có thật, thư đặt lại mật khẩu sẽ tới trong ít phút. ' +
+            'Nhớ xem cả mục <b>Spam</b>. Đường dẫn trong thư dùng được một lần, hết hạn sau 30 phút.' +
+            '<br><br>Chờ mãi không thấy thư thì nhắn cho chủ shop để được cấp đường dẫn đặt lại.';
           o.hidden = false;
           form.hidden = true;
         } catch (err) {

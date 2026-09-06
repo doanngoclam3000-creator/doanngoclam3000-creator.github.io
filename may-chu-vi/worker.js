@@ -486,10 +486,12 @@ export default {
       const ma = await taoMaDatLai(env, nd);
       const duongDan = (env.NGUON || 'https://phanmemtq.com') +
         '/tai-khoan/dat-lai-mat-khau/?ma=' + encodeURIComponent(ma);
-      const kq = await guiThu(env, nd.email, 'Đặt lại mật khẩu phanmemtq.com',
+      await guiThu(env, nd.email, 'Đặt lại mật khẩu phanmemtq.com',
         thuDatLai(nd.ten_dn || nd.email, duongDan));
-      // Gui hong thi van tra ok cho khach, nhung ghi lai de chu shop biet
-      return J({ ok: true, guiDuoc: !!kq.ok });
+      // Tra ve DUNG MOT cau cho moi truong hop - co tai khoan hay khong, gui
+      // duoc thu hay khong. Tra khac nhau la nguoi la do ra duoc email nao da
+      // dang ky tren web.
+      return J({ ok: true });
     }
 
     // ---- Dat mat khau moi bang ma trong thu ----
