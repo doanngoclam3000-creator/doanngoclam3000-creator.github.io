@@ -3,7 +3,7 @@ ten: "Vị Trí Wi-Fi"
 moTa: "Đổi vị trí iPhone theo đường Wi-Fi: cài một lần, dán toạ độ là máy báo đang ở nơi bạn chọn. Không cần máy tính, không cần Chế độ nhà phát triển."
 nenTang: ["iOS"]
 phienBan: "1.4"
-banToiThieu: "1.3"
+banToiThieu: "1.4"
 ngayCapNhat: 2026-09-07
 ghiChuCapNhat: "- Nhận luôn key Giả Lập Vị Trí (mã bắt đầu bằng GL): mua bản máy tính thì dán key đó vào đây cũng chạy
 - Mỗi key chỉ kích hoạt được một máy — dùng ở máy tính rồi thì iPhone không dùng lại key đó nữa
