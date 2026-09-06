@@ -132,3 +132,22 @@ không thành dịch vụ trung gian thanh toán (thứ cần giấy phép của
 Và một cái bẫy của Astro: HTML do script chèn ra sau **không** mang dấu phạm vi
 `data-astro-cid-*`, nên style viết trong `<style>` của trang không ăn vào. Mọi lớp
 dùng cho phần chèn động phải nằm trong `src/styles/tai-khoan.css`.
+
+## Link tải bị khoá sau đăng nhập
+
+HTML của website **không còn chứa link tải thật**, chỉ còn mã phần mềm. Bấm nút tải
+là trang hỏi `GET /lien-ket?pm=<mã>` kèm token; chưa đăng nhập thì bị đẩy sang trang
+đăng nhập.
+
+Bảng link nằm trong `lien-ket.json`, sinh tự động từ `src/content/phan-mem/*.md` bằng
+`lay-lien-ket.cjs` — chạy sẵn trong `npm run build` và trong `cai-dat.cjs`. **Đổi link
+tải trong tệp .md thì phải chạy lại `node cai-dat.cjs`**, không thì Worker vẫn trả link cũ.
+
+**Cổng này chặn người vào web bình thường, không chặn được người cố tìm.** Link tải
+vẫn nằm ở hai chỗ công khai:
+- `phanmemtq.com/phien-ban.json` — các app đã phát hành gọi vào đó để tự cập nhật,
+  bỏ đi là hỏng nút cập nhật của khách cũ.
+- Kho GitHub của website là kho công khai, mở `src/content/phan-mem/*.md` là thấy.
+
+Muốn khoá chặt thật thì phải chuyển file cài đặt sang chỗ khác (ví dụ Cloudflare R2)
+rồi cho Worker ký đường dẫn tạm — lúc đó mới không ai lấy được link vĩnh viễn.
