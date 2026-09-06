@@ -27,7 +27,7 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
       <a href="/gioi-thieu" class:list={['muc', dangO('/gioi-thieu') && 'dang-o']}>Giới thiệu</a>
       <a href="/lien-he" class:list={['muc', dangO('/lien-he') && 'dang-o']}>Liên hệ</a>
       <a href="/tai-khoan/dang-nhap" class:list={['muc', 'chi-khach']} id="menu-dang-nhap">Đăng nhập</a>
-      <a href="/tai-khoan" class:list={['muc', dangO('/tai-khoan') && 'dang-o']} id="menu-vi" hidden>Ví của tôi</a>
+      <a href="/tai-khoan" class:list={['muc', dangO('/tai-khoan') && 'dang-o']} id="menu-vi" hidden>Ví của tôi <b class="so-du" id="so-du-menu">0đ</b></a>
     </nav>
 
     <div class="phai">
@@ -35,7 +35,7 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
         <span class="hien-sang">🌙</span><span class="hien-toi">☀️</span>
       </button>
       <a href="/tai-khoan/dang-nhap/" class="nut nut-vien nut-dn" id="nut-dang-nhap">Đăng nhập</a>
-      <a href="/tai-khoan/" class="nut nut-vien nut-dn" id="nut-vi" hidden>Ví của tôi</a>
+      <a href="/tai-khoan/" class="nut nut-vien nut-dn" id="nut-vi" hidden>Ví của tôi <b class="so-du" id="so-du-nut">0đ</b></a>
       <a href="/phan-mem" class="nut nut-chinh nut-tai">Tải phần mềm</a>
       <button id="mo-menu" class="nut-tron chi-mobile" aria-label="Mở menu">☰</button>
     </div>
@@ -58,7 +58,20 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
   .menu { display: flex; align-items: center; gap: .25rem; margin-left: 1rem; }
   .muc {
     padding: .5rem .8rem; border-radius: 9px; color: var(--chu-nhat); font-weight: 500; font-size: .95rem;
+    /* Khong co dong nay thi man hinh hep mot chut la "Phan mem", "Bai viet",
+       "Gioi thieu"... deu bi be doi thanh hai dong, menu cao gap doi va rat xau. */
+    white-space: nowrap;
   }
+  /* So du hien ngay canh chu "Vi cua toi" */
+  .so-du {
+    margin-left: .35rem; padding: .1rem .4rem; border-radius: 6px;
+    background: var(--chinh-nhat); color: var(--chinh);
+    font-size: .82em; font-weight: 700; white-space: nowrap;
+  }
+  /* "Dang nhap" / "Vi cua toi" NAM TRONG MENU chi danh cho man hinh hep.
+     O man rong da co hai nut ben phai lam dung viec do - de ca hai vua trung
+     lap vua chiem cho, day menu vo thanh hai dong. */
+  .menu #menu-dang-nhap, .menu #menu-vi { display: none; }
   .muc:hover { background: var(--nen-phu); color: var(--chu); }
   .dang-o { color: var(--chinh); background: var(--chinh-nhat); }
   .tha-xuong { position: relative; }
@@ -83,8 +96,16 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
   .chi-mobile { display: none; }
   .nut-dn { white-space: nowrap; }
 
+  /* Khoang giua: van du cho mot hang, chi can bop thua lai */
+  @media (max-width: 1150px) {
+    .menu { gap: 0; margin-left: .4rem; }
+    .muc { padding: .5rem .55rem; font-size: .9rem; }
+    .phai { gap: .4rem; }
+  }
+
   @media (max-width: 900px) {
     .nut-tai, .nut-dn { display: none; }
+    .menu #menu-dang-nhap:not([hidden]), .menu #menu-vi:not([hidden]) { display: block; }
     .chi-mobile { display: grid; }
     .menu {
       position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch;
@@ -121,5 +142,18 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
       var e = document.getElementById(id);
       if (e) e.hidden = false;
     });
+
+    // Hien SO DU ngay tren thanh menu, thay cho viec phai vao trang vi moi biet.
+    // De san "0d" trong HTML roi thay so that khi may chu tra ve: khong thi
+    // luc trang vua hien, cho so du con trong lam menu giat mot cai.
+    if (window.VI) {
+      window.VI.goi('/toi').then(function (k) {
+        var so = window.VI.tien((k.nguoi && k.nguoi.soDu) || 0);
+        ['so-du-menu', 'so-du-nut'].forEach(function (id) {
+          var e = document.getElementById(id);
+          if (e) e.textContent = so;
+        });
+      }).catch(function () { /* mat mang hoac het phien - cu de 0d */ });
+    }
   })();
 </script>
