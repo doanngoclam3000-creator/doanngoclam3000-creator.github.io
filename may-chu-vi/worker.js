@@ -215,13 +215,13 @@ const hoSo = (nd) => ({
 
 const emailHopLe = (e) => /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(e);
 
-// Cloudflare doan san thanh pho / quoc gia tu duong truyen - ghi lai de chu shop
-// biet khach o dau ma khong phai hoi. Ghi de moi lan dang nhap.
+// Ghi IP va lan cuoi khach vao. KHONG ghi thanh pho nua: Cloudflare chi doan
+// theo duong truyen nen hay ra sai tinh, doc vao de hieu nham hon la khong co.
+// Dia chi that thi lay o o "Dia chi" khach tu khai.
 function ghiNoiO(env, req, uid) {
   const ip = req.headers.get('cf-connecting-ip') || '';
-  const noi = [req.cf && req.cf.city, req.cf && req.cf.country].filter(Boolean).join(', ');
-  return env.DB.prepare('UPDATE nguoi_dung SET ip=?, noi=?, lan_cuoi=? WHERE id=?')
-    .bind(ip, noi, Date.now(), uid).run();
+  return env.DB.prepare('UPDATE nguoi_dung SET ip=?, lan_cuoi=? WHERE id=?')
+    .bind(ip, Date.now(), uid).run();
 }
 
 export default {
@@ -593,7 +593,7 @@ export default {
       if (p === '/admin/nguoi') {
         const q = '%' + String(url.searchParams.get('q') || '').trim().toLowerCase() + '%';
         const r = await env.DB.prepare(
-          'SELECT id,email,ten,dien_thoai,dia_chi,ip,noi,lan_cuoi,so_du,vai_tro,ma_nap,' +
+          'SELECT id,email,ten,dien_thoai,dia_chi,ip,lan_cuoi,so_du,vai_tro,ma_nap,' +
           'da_nap,da_rut,hh_kiem,khoa,tao_luc' +
           ' FROM nguoi_dung WHERE lower(email) LIKE ?1 OR lower(ten) LIKE ?1 OR ma_nap LIKE ?1' +
           ' OR lower(dia_chi) LIKE ?1 OR dien_thoai LIKE ?1' +

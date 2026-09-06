@@ -35,6 +35,11 @@ import '../../styles/tai-khoan.css';
             <small>Ít nhất 8 ký tự.</small>
           </label>
           <label class="o">
+            <span>Nhập lại mật khẩu</span>
+            <input type="password" id="matKhau2" required minlength="8" autocomplete="new-password" />
+            <small id="khop-mk">Gõ lại đúng mật khẩu ở trên cho chắc.</small>
+          </label>
+          <label class="o">
             <span>Mã giới thiệu (nếu có)</span>
             <input type="text" id="gioiThieu" placeholder="Bỏ trống nếu không có" />
           </label>
@@ -53,10 +58,31 @@ import '../../styles/tai-khoan.css';
       var gt = new URLSearchParams(location.search).get('gt');
       if (gt) document.getElementById('gioiThieu').value = gt;
 
+      var mk1 = document.getElementById('matKhau');
+      var mk2 = document.getElementById('matKhau2');
+      var nhac = document.getElementById('khop-mk');
+
+      // Bao ngay luc go, khong doi bam nut moi biet go lech
+      function soatKhop() {
+        if (mk2.value && mk1.value !== mk2.value) {
+          nhac.textContent = 'Hai ô mật khẩu chưa giống nhau.';
+          nhac.style.color = '#dc2626';
+        } else {
+          nhac.textContent = 'Gõ lại đúng mật khẩu ở trên cho chắc.';
+          nhac.style.color = '';
+        }
+      }
+      mk1.addEventListener('input', soatKhop);
+      mk2.addEventListener('input', soatKhop);
+
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        nut.disabled = true; nut.textContent = 'Đang tạo…';
         window.VI.baoLoi('loi', '');
+        if (mk1.value !== mk2.value) {
+          mk2.focus();
+          return window.VI.baoLoi('loi', new Error('Hai ô mật khẩu chưa giống nhau. Gõ lại giúp tôi.'));
+        }
+        nut.disabled = true; nut.textContent = 'Đang tạo…';
         try {
           var kq = await window.VI.goi('/dk', {
             email: document.getElementById('email').value.trim(),
