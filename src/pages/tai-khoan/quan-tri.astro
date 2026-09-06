@@ -120,7 +120,7 @@ import '../../styles/tai-khoan.css';
         var k = await qt('/admin/rut');
         $('rut-trong').hidden = k.yeuCau.length > 0;
         $('rut-than').innerHTML = k.yeuCau.map(function (y) {
-          return '<tr><td>' + V.ngay(y.luc) + '</td><td>' + y.email + '</td><td class="phai"><b>' +
+          return '<tr><td>' + V.ngay(y.luc) + '</td><td><b>' + (y.ten_dn || y.email) + '</b></td><td class="phai"><b>' +
             V.tien(y.thuc_nhan) + '</b></td><td>' + y.ngan_hang + '<br>' + y.so_tk + '<br>' + y.chu_tk +
             '</td><td><button class="nut nut-chinh" data-tra="' + y.id + '">Đã trả</button> ' +
             '<button class="nut nut-vien" data-mo-tuchoi="' + y.id + '">Từ chối</button></td></tr>' +
@@ -135,7 +135,7 @@ import '../../styles/tai-khoan.css';
         var k = await qt('/admin/don');
         $('don-trong').hidden = k.don.length > 0;
         $('don-than').innerHTML = k.don.map(function (d) {
-          return '<tr><td>' + V.ngay(d.luc) + '</td><td>' + d.email + '</td><td>' + d.ten_pm +
+          return '<tr><td>' + V.ngay(d.luc) + '</td><td><b>' + (d.ten_dn || d.email) + '</b></td><td>' + d.ten_pm +
             '</td><td>' + d.so_ngay + ' ngày</td><td>' + (d.ma_may || '—') + '</td><td class="phai">' +
             V.tien(d.gia) + '</td><td><input class="o-nho" data-key="' + d.id +
             '" placeholder="Dán key rồi Enter" /></td></tr>';

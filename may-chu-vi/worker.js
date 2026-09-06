@@ -24,31 +24,77 @@ const VONG_BAM = 100000; // so vong PBKDF2 - Cloudflare Workers CHAN qua 100.000
                          // de cao hon la ham nem loi 1101 (chay o may thi khong lo ra)
 
 // ---- Danh muc phan mem ban duoc bang vi ----
-// tienTo + secret: sinh key ngay tai day, giong het may chu ban quyen cua
-// phan mem do. Khong co thi capTay = true -> don nam cho chu shop cap key.
+//
+// MA GOI va GIA phai TRUNG bang gia trong chinh phan mem do, khong duoc doan:
+// ma goi sai la key cap ra khong doc duoc, gia sai la khach so bi thu thieu.
+// Hai kieu cap key, phan mem nao cung cap TU DONG, khong phai cho duyet:
+//
+//   kieu 'mayChu' - phan mem hoi may chu ban quyen moi lan mo (Bot Zalo,
+//     Shopee Tu Dong). Mua xong goi thang /admin/sua cua may chu do de cong
+//     ngay cho ma may; khach khong phai nhap key.
+//
+//   kieu 'tuKy'   - phan mem giu khoa bi mat ngay trong may khach va tu kiem
+//     key (Bot WeChat, Gia Lap Vi Tri, Quan Ly Kho Te, Hoc Tieng Trung).
+//     Key dang <TIENTO><6 ky tu><10 ky tu chu ky>, chu ky la HMAC-SHA256 cua
+//     "<6 ky tu>|<ma may>". Sinh ngay tai day, khong can goi di dau.
 const PHAN_MEM = {
-  'bot-zalo':        { ten: 'Bot Zalo',                 goc: 150000, tienTo: 'BZ',  bienSecret: 'SECRET_BZ' },
-  'shopee-tu-dong':  { ten: 'Shopee Tự Động',           goc: 150000, tienTo: 'ST',  bienSecret: 'SECRET_ST' },
+  'bot-zalo': {
+    ten: 'Bot Zalo', kieu: 'mayChu', tienTo: 'BZ', bienSecret: 'SECRET_BZ',
+    goi: [
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
+      { ma: 'H', ten: '6 tháng', ngay: 180, gia: 500000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+    ],
+  },
+  'shopee-tu-dong': {
+    ten: 'Shopee Tự Động', kieu: 'mayChu', tienTo: 'ST', bienSecret: 'SECRET_ST',
+    goi: [
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
+      { ma: 'H', ten: '6 tháng', ngay: 180, gia: 500000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+    ],
+  },
   // Phan Mem Order dang phat hanh MIEN PHI (website co nhan do "MIEN PHI") nen
-  // khong ban key. Muon ban lai thi bo dau // o dong duoi.
-  // 'phan-mem-order':  { ten: 'Phan Mem Order',        goc: 150000, tienTo: 'PMO', bienSecret: 'SECRET_PMO' },
-  'bot-wechat':      { ten: 'Bot WeChat',               goc: 150000, capTay: true },
-  'gia-lap-vi-tri':  { ten: 'Giả Lập Vị Trí',           goc: 300000, capTay: true },
-  // Hai phan mem duoi day website CHUA cong bo gia - dang tam de 150k/thang,
-  // sua so 'goc' o day roi chay lai cai-dat.cjs neu gia that khac.
-  'ban-te':          { ten: 'Phần Mềm Quản Lý Kho Tệ',  goc: 150000, capTay: true },
-  'hoc-tieng-trung': { ten: 'Học Tiếng Trung',          goc: 150000, capTay: true },
+  // khong ban key.
+  'bot-wechat': {
+    ten: 'Bot WeChat', kieu: 'tuKy', tienTo: 'BW', bienSecret: 'SECRET_BW',
+    goi: [
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 500000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+    ],
+  },
+  'gia-lap-vi-tri': {
+    ten: 'Giả Lập Vị Trí', kieu: 'tuKy', tienTo: 'GL', bienSecret: 'SECRET_GL',
+    goi: [
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 300000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 800000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 1500000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 2500000 },
+    ],
+  },
+  'ban-te': {
+    ten: 'Phần Mềm Quản Lý Kho Tệ', kieu: 'tuKy', tienTo: 'BT', bienSecret: 'SECRET_BT',
+    goi: [
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 500000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+    ],
+  },
+  'hoc-tieng-trung': {
+    ten: 'Học Tiếng Trung', kieu: 'tuKy', tienTo: 'HT', bienSecret: 'SECRET_HT',
+    goi: [
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 500000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+    ],
+  },
 };
-
-// He so gia: 1 thang x1, 3 thang x2, 6 thang x3.3333, 1 nam x6
-// -> phan mem 150k ra dung bang gia cu 150/300/500/900.
-const GOI = [
-  { ma: 'M', ten: '1 tháng', ngay: 30,  he: 1 },
-  { ma: 'Q', ten: '3 tháng', ngay: 90,  he: 2 },
-  { ma: 'H', ten: '6 tháng', ngay: 180, he: 3.3333 },
-  { ma: 'Y', ten: '1 năm',   ngay: 365, he: 6 },
-];
-const giaGoi = (goc, he) => Math.round((goc * he) / 1000) * 1000;
 
 // ---------------- Tien ich chung ----------------
 const nhiPhanToHex = (b) => [...new Uint8Array(b)].map((x) => x.toString(16).padStart(2, '0')).join('');
@@ -118,12 +164,31 @@ async function docToken(env, token) {
 }
 
 // ---------------- Sinh key ban quyen ----------------
-// Giong het ham taoKey ben may chu ban quyen tung phan mem.
+// Kieu 'mayChu' (Bot Zalo, Shopee Tu Dong): giong het ham taoKey ben may chu
+// ban quyen cua tung phan mem.
 async function taoKey(secret, tienTo, maGoi, maMay) {
   const than = maGoi + maMay;
   return tienTo + '-' + than + '-' + await hmacHex(secret, 'may:' + than, 8);
 }
+
+// Kieu 'tuKy' (Bot WeChat, Gia Lap Vi Tri, Quan Ly Kho Te, Hoc Tieng Trung):
+// key 18 ky tu = 2 ky tu tien to + 6 ky tu than + 10 ky tu chu ky.
+// Than: ky tu dau la ma goi, 5 ky tu sau la ngau nhien - ben doc khong dung
+// den, chi can khop voi cai da ky. Phan mem gach het dau gach noi truoc khi
+// doc nen viet co gach cho de nhin.
+async function taoKeyMay(secret, tienTo, maGoi, maMay) {
+  const than = maGoi + chuoiNgauNhien(5);
+  const chuKy = await hmacHex(secret, than + '|' + maMay, 10);
+  return tienTo + '-' + than + '-' + chuKy;
+}
 const maMayHopLe = (m) => /^[A-Z0-9]{6}$/.test(m) && [...m].every((c) => BO_KY_TU.includes(c));
+
+// Phan mem nay cap key tu dong duoc khong: phai co du khoa bi mat da nap.
+function capTuDong(env, pm) {
+  if (!env[pm.bienSecret]) return false;
+  if (pm.kieu === 'mayChu') return !!(env['MC_' + pm.tienTo] && env['QT_' + pm.tienTo]);
+  return pm.kieu === 'tuKy';
+}
 
 // ---------------- Tra loi + CORS ----------------
 function dauCORS(env, req) {
@@ -245,8 +310,8 @@ export default {
       return J({
         phanMem: Object.entries(PHAN_MEM).map(([ma, m]) => ({
           ma, ten: m.ten,
-          tuDong: !m.capTay && !!(env[m.bienSecret] && env['MC_' + m.tienTo] && env['QT_' + m.tienTo]),
-          goi: GOI.map((g) => ({ ma: g.ma, ten: g.ten, ngay: g.ngay, gia: giaGoi(m.goc, g.he) })),
+          tuDong: capTuDong(env, m),
+          goi: m.goi.map((g) => ({ ma: g.ma, ten: g.ten, ngay: g.ngay, gia: g.gia })),
         })),
       });
     }
@@ -418,16 +483,18 @@ export default {
       const b = await than();
       const maPm = String(b.phanMem || '');
       const pm = PHAN_MEM[maPm];
-      const goi = GOI.find((g) => g.ma === String(b.goi || ''));
+      const goi = pm && pm.goi.find((g) => g.ma === String(b.goi || ''));
       if (!pm || !goi) return J({ loi: 'Không có phần mềm hoặc gói này' }, 400);
 
       const may = String(b.maMay || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
-      const tuDong = !pm.capTay && env[pm.bienSecret] && env['MC_' + pm.tienTo] && env['QT_' + pm.tienTo];
+      const tuDong = capTuDong(env, pm);
+      // Ca hai kieu deu can ma may: kieu mayChu de cong ngay dung may, kieu
+      // tuKy de ky key rieng cho may do.
       if (tuDong && !maMayHopLe(may)) {
         return J({ loi: 'Mã máy không đúng. Mở phần mềm, vào mục Bản quyền để chép mã máy 6 ký tự.' }, 400);
       }
 
-      const gia = giaGoi(pm.goc, goi.he);
+      const gia = goi.gia;
       const donId = 'D' + Date.now().toString(36).toUpperCase() + chuoiNgauNhien(4);
 
       // Tru tien + ghi don trong CUNG mot giao dich.
@@ -469,6 +536,19 @@ export default {
         return J({
           ok: true, don: donId, choTay: true, soDu: kq.soDu,
           nhan: 'Đã nhận đơn. Phần mềm này chưa cấp key tự động — chủ shop sẽ gửi key trong ít phút.',
+        });
+      }
+
+      // ---- Kieu tuKy: ky key ngay tai day, khong goi di dau, khong cho duyet ----
+      if (pm.kieu === 'tuKy') {
+        const key = await taoKeyMay(env[pm.bienSecret], pm.tienTo, goi.ma, may);
+        await env.DB.prepare("UPDATE don_key SET trang_thai='xong', key=? WHERE id=?")
+          .bind(key, donId).run();
+        await traHoaHong();
+        return J({
+          ok: true, don: donId, key, soNgay: goi.ngay, soDu: kq.soDu,
+          nhan: 'Key đã cấp xong. Mở ' + pm.ten + ', vào mục Bản quyền, dán key vào rồi bấm Kích hoạt — cộng ngay ' +
+            goi.ngay + ' ngày cho máy ' + may + '.',
         });
       }
 
@@ -644,7 +724,7 @@ export default {
         if (req.method === 'GET') {
           const tt = url.searchParams.get('trangThai') || 'cho_tay';
           const r = await env.DB.prepare(
-            'SELECT d.*, n.email FROM don_key d JOIN nguoi_dung n ON n.id=d.nguoi' +
+            'SELECT d.*, n.email, n.ten_dn FROM don_key d JOIN nguoi_dung n ON n.id=d.nguoi' +
             ' WHERE d.trang_thai=? ORDER BY d.luc DESC LIMIT 100').bind(tt).all();
           return J({ don: r.results || [] });
         }
@@ -661,7 +741,7 @@ export default {
         if (req.method === 'GET') {
           const tt = url.searchParams.get('trangThai') || 'cho';
           const r = await env.DB.prepare(
-            'SELECT y.*, n.email FROM yeu_cau_rut y JOIN nguoi_dung n ON n.id=y.nguoi' +
+            'SELECT y.*, n.email, n.ten_dn FROM yeu_cau_rut y JOIN nguoi_dung n ON n.id=y.nguoi' +
             ' WHERE y.trang_thai=? ORDER BY y.luc DESC LIMIT 100').bind(tt).all();
           return J({ yeuCau: r.results || [] });
         }
