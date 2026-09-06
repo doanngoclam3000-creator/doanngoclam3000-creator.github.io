@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ThongBaoBanMoi from '../components/ThongBaoBanMoi.astro';
+import ViJS from '../components/ViJS.astro';
 import { CAUHINH } from '../config';
 
 interface Props { tieuDe?: string; moTa?: string; anh?: string; loai?: string; anGoogle?: boolean; }
@@ -49,6 +50,7 @@ const url = new URL(Astro.url.pathname, Astro.site);
   )}
 </head>
 <body>
+  <ViJS />
   <Header />
   <main><slot /></main>
   <Footer />

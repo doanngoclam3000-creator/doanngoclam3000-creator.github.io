@@ -44,7 +44,13 @@ if (fs.existsSync(tepSanPham)) {
   console.log('  ! khong thay ' + tepSanPham + ' - cac phan mem se phai cap key tay');
 }
 
-// ---- 3. Nap len Worker roi trien khai ----
+// ---- 3. Lay lai bang link tai tu src/content/phan-mem/*.md ----
+// Bat buoc, khong duoc bo: Worker giu bang nay de tra link cho khach da dang
+// nhap. Quen chay la khach van tai duoc ban CU.
+require('child_process').execFileSync(process.execPath, [path.join(thuMuc, 'lay-lien-ket.cjs')],
+  { stdio: 'inherit' });
+
+// ---- 4. Nap len Worker roi trien khai ----
 const tepTam = path.join(os.tmpdir(), 'vi-bien-' + Date.now() + '.json');
 fs.writeFileSync(tepTam, JSON.stringify(bien));
 // shell: true - tu Node 24, spawn thang tep .cmd tren Windows la bao EINVAL

@@ -53,12 +53,17 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
     </div>
 
     <div class="phai">
+      <p class="nhac-dn" id="nhac-dn">
+        🔒 Phải <b>đăng nhập</b> mới tải được.
+        <a href="/tai-khoan/dang-nhap/">Đăng nhập</a> hoặc <a href="/tai-khoan/dang-ky/">đăng ký miễn phí</a>.
+      </p>
       {nut.map((n) => (
         <a
-          href={n.link}
+          href="/tai-khoan/dang-nhap/"
           class:list={['nut-tai', n.tf && 'nut-tf']}
-          target={n.tf ? '_blank' : undefined}
-          rel={n.tf ? 'noopener' : undefined}
+          data-pm={pm.id}
+          data-kenh={n.kenh}
+          data-tf={n.tf ? '1' : undefined}
           data-tai={n.tf ? undefined : n.duongDem}
         >
           <span class="nut-icon">{n.icon}</span>
@@ -70,7 +75,7 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
         </a>
       ))}
       {dungLinkChung && (
-        <a href={pm.data.linkTai} class="nut-tai" data-tai={duongDanDem(pm.id, 'chung')}>
+        <a href="/tai-khoan/dang-nhap/" class="nut-tai" data-pm={pm.id} data-kenh="chung" data-tai={duongDanDem(pm.id, 'chung')}>
           <span class="nut-icon">⬇</span>
           <span class="nut-chu">
             <b>Tải về máy</b>
@@ -89,7 +94,7 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
         </p>
       )}
       {pm.data.linkTaiPhu && pm.data.linkTaiPhu !== '#' && (
-        <a href={pm.data.linkTaiPhu} class="link-phu" data-tai={duongDanDem(pm.id, 'du-phong')}>
+        <a href="/tai-khoan/dang-nhap/" class="link-phu" data-pm={pm.id} data-kenh="du-phong" data-tai={duongDanDem(pm.id, 'du-phong')}>
           Link dự phòng (nếu link trên tải chậm)
           {soCuaKenh('du-phong') > 0 && <> — {dinhDangLuot(soCuaKenh('du-phong'))} lượt tải</>}
         </a>
@@ -108,6 +113,61 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
       g.count({ path: a.dataset.tai, title: 'Tai ve ' + a.dataset.tai, event: false });
     });
   });
+</script>
+
+<script is:inline>
+  // Khoa link tai: HTML khong con giu link that nua, chi co ma phan mem.
+  // Dang nhap roi thi hoi may chu vi lay link, chua thi bam nut la ra trang
+  // dang nhap (dia chi san trong href).
+  (function () {
+    var nut = document.querySelectorAll('a[data-kenh]');
+    if (!nut.length) return;
+    var nhac = document.getElementById('nhac-dn');
+    var daDN = function () { return !!(window.VI && window.VI.token()); };
+    var dangLay = null;
+
+    function layLink() {
+      var pm = nut[0].dataset.pm;
+      dangLay = dangLay || window.VI.goi('/lien-ket?pm=' + encodeURIComponent(pm))
+        .then(function (kq) { return kq.link || {}; });
+      return dangLay;
+    }
+
+    function gan(link) {
+      nut.forEach(function (a) {
+        var l = link[a.dataset.kenh];
+        if (!l) return;
+        a.href = l;
+        if (a.dataset.tf) { a.target = '_blank'; a.rel = 'noopener'; }
+      });
+    }
+
+    if (daDN()) {
+      if (nhac) nhac.hidden = true;
+      layLink().then(gan).catch(function () {});
+    }
+
+    nut.forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (!daDN()) return;                       // de href dan sang trang dang nhap
+        if (a.href.indexOf('/tai-khoan/') === -1) return;  // da co link that roi
+        // Chua kip lay link ma khach bam luon: giu lai, lay xong moi di
+        e.preventDefault();
+        layLink().then(function (link) {
+          gan(link);
+          var l = link[a.dataset.kenh];
+          if (!l) return;
+          if (a.dataset.tf) window.open(l, '_blank', 'noopener');
+          else window.location.href = l;
+        }).catch(function (err) {
+          if (nhac) {
+            nhac.hidden = false;
+            nhac.textContent = err && err.message ? err.message : 'Không lấy được link tải.';
+          }
+        });
+      });
+    });
+  })();
 </script>
 
 <style>
@@ -157,6 +217,12 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
     margin: .3rem 0 0; font-size: .82rem; line-height: 1.55; color: var(--chu-nhat); text-align: center;
   }
   .nhac-tf b { color: var(--chu); }
+  .nhac-dn {
+    margin: 0 0 .2rem; padding: .55rem .8rem; border-radius: 10px; text-align: center;
+    font-size: .85rem; line-height: 1.5;
+    background: var(--chinh-nhat); color: var(--chu); border: 1px dashed var(--chinh);
+  }
+  .nhac-dn a { color: var(--chinh); font-weight: 700; }
   .link-phu { font-size: .84rem; color: var(--chu-nhat); text-align: center; margin-top: .2rem; }
   .link-phu:hover { color: var(--chinh); }
 

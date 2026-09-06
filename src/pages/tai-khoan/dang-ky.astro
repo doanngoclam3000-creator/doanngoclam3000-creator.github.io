@@ -1,10 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import ViJS from '../../components/ViJS.astro';
 import '../../styles/tai-khoan.css';
 ---
 <Layout tieuDe="Đăng ký tài khoản" moTa="Tạo tài khoản để nạp tiền vào ví và mua key phần mềm ngay trên website.">
-  <ViJS />
   <div class="tk-trang">
     <div class="tk-hep">
       <div class="tk-tieu">
@@ -26,6 +24,10 @@ import '../../styles/tai-khoan.css';
           <label class="o">
             <span>Số điện thoại</span>
             <input type="tel" id="dienThoai" autocomplete="tel" placeholder="09xx xxx xxx" />
+          </label>
+          <label class="o">
+            <span>Địa chỉ</span>
+            <input type="text" id="diaChi" placeholder="Số nhà, đường, phường/xã, tỉnh/thành" />
           </label>
           <label class="o">
             <span>Mật khẩu</span>
@@ -60,6 +62,7 @@ import '../../styles/tai-khoan.css';
             email: document.getElementById('email').value.trim(),
             ten: document.getElementById('ten').value.trim(),
             dienThoai: document.getElementById('dienThoai').value.trim(),
+            diaChi: document.getElementById('diaChi').value.trim(),
             matKhau: document.getElementById('matKhau').value,
             gioiThieu: document.getElementById('gioiThieu').value.trim(),
           });

@@ -12,6 +12,11 @@
 //  Cai dat: xem CAI-DAT.md
 // =============================================================
 
+// Bang link tai, sinh tu src/content/phan-mem/*.md bang lay-lien-ket.cjs.
+// Trang web KHONG con de link that trong HTML nua - phai dang nhap, hoi day
+// moi lay duoc. Doi link trong tep .md thi nho chay lai `node cai-dat.cjs`.
+import LIEN_KET from './lien-ket.json';
+
 const BO_KY_TU = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // bo I O 0 1 cho khoi doc nham
 const NGAY = 86400 * 1000;
 const HAN_TOKEN = 30 * NGAY;
@@ -201,6 +206,7 @@ const laQuanTri = (req, env) =>
 // Ho so gui ve trinh duyet - khong bao gio kem mat khau
 const hoSo = (nd) => ({
   id: nd.id, email: nd.email, ten: nd.ten || '', dienThoai: nd.dien_thoai || '',
+  diaChi: nd.dia_chi || '',
   soDu: Number(nd.so_du), vaiTro: nd.vai_tro, maNap: nd.ma_nap,
   daNap: Number(nd.da_nap), daRut: Number(nd.da_rut), hhKiem: Number(nd.hh_kiem),
   nganHang: nd.ngan_hang || '', soTk: nd.so_tk || '', chuTk: nd.chu_tk || '',
@@ -208,6 +214,15 @@ const hoSo = (nd) => ({
 });
 
 const emailHopLe = (e) => /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(e);
+
+// Cloudflare doan san thanh pho / quoc gia tu duong truyen - ghi lai de chu shop
+// biet khach o dau ma khong phai hoi. Ghi de moi lan dang nhap.
+function ghiNoiO(env, req, uid) {
+  const ip = req.headers.get('cf-connecting-ip') || '';
+  const noi = [req.cf && req.cf.city, req.cf && req.cf.country].filter(Boolean).join(', ');
+  return env.DB.prepare('UPDATE nguoi_dung SET ip=?, noi=?, lan_cuoi=? WHERE id=?')
+    .bind(ip, noi, Date.now(), uid).run();
+}
 
 export default {
   async fetch(req, env) {
@@ -258,9 +273,10 @@ export default {
       for (let lan = 0; lan < 6 && !nd; lan++) {
         try {
           nd = await env.DB.prepare(
-            'INSERT INTO nguoi_dung (email,ten,dien_thoai,mat_khau,ma_nap,nguoi_gt,tao_luc)' +
-            ' VALUES (?,?,?,?,?,?,?) RETURNING *')
+            'INSERT INTO nguoi_dung (email,ten,dien_thoai,dia_chi,mat_khau,ma_nap,nguoi_gt,tao_luc)' +
+            ' VALUES (?,?,?,?,?,?,?,?) RETURNING *')
             .bind(email, String(b.ten || '').trim().slice(0, 80), String(b.dienThoai || '').trim().slice(0, 20),
+              String(b.diaChi || '').trim().slice(0, 200),
               bam, chuoiNgauNhien(6), nguoiGt, Date.now()).first();
         } catch (e) {
           if (!String(e).includes('UNIQUE')) throw e;   // trung ma_nap -> boc ma khac
@@ -269,6 +285,7 @@ export default {
         }
       }
       if (!nd) return J({ loi: 'Không tạo được tài khoản, thử lại' }, 500);
+      await ghiNoiO(env, req, nd.id);
       return J({ token: await taoToken(env, nd), nguoi: hoSo(nd) });
     }
 
@@ -293,6 +310,7 @@ export default {
       }
       if (nd.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
       await env.DB.prepare('UPDATE nguoi_dung SET sai_lan=0, khoa_den=0 WHERE id=?').bind(nd.id).run();
+      await ghiNoiO(env, req, nd.id);
       return J({ token: await taoToken(env, nd), nguoi: hoSo(nd) });
     }
 
@@ -330,6 +348,28 @@ export default {
       await env.DB.prepare('UPDATE nguoi_dung SET ngan_hang=?, so_tk=?, chu_tk=? WHERE id=?')
         .bind(nh, stk, ctk, toi.id).run();
       return J({ ok: true });
+    }
+
+    // ---- Sua ho so: ten, dien thoai, dia chi ----
+    if (req.method === 'POST' && p === '/ho-so') {
+      if (!toi) return canDN();
+      const b = await than();
+      await env.DB.prepare('UPDATE nguoi_dung SET ten=?, dien_thoai=?, dia_chi=? WHERE id=?')
+        .bind(String(b.ten || '').trim().slice(0, 80), String(b.dienThoai || '').trim().slice(0, 20),
+          String(b.diaChi || '').trim().slice(0, 200), toi.id).run();
+      return J({ ok: true });
+    }
+
+    // ---- Link tai that: CHI tra ve khi da dang nhap ----
+    // Trang web chi mang ma phan mem, bam nut la hoi day.
+    if (p === '/lien-ket') {
+      if (!toi) return canDN();
+      if (toi.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
+      const ma = String(url.searchParams.get('pm') || '');
+      const cua = LIEN_KET[ma];
+      if (!cua) return J({ loi: 'Không có phần mềm này' }, 404);
+      await ghiNoiO(env, req, toi.id);
+      return J({ link: cua });
     }
 
     // ---- Thong tin nap tien ----
@@ -553,8 +593,10 @@ export default {
       if (p === '/admin/nguoi') {
         const q = '%' + String(url.searchParams.get('q') || '').trim().toLowerCase() + '%';
         const r = await env.DB.prepare(
-          'SELECT id,email,ten,dien_thoai,so_du,vai_tro,ma_nap,da_nap,da_rut,hh_kiem,khoa,tao_luc' +
+          'SELECT id,email,ten,dien_thoai,dia_chi,ip,noi,lan_cuoi,so_du,vai_tro,ma_nap,' +
+          'da_nap,da_rut,hh_kiem,khoa,tao_luc' +
           ' FROM nguoi_dung WHERE lower(email) LIKE ?1 OR lower(ten) LIKE ?1 OR ma_nap LIKE ?1' +
+          ' OR lower(dia_chi) LIKE ?1 OR dien_thoai LIKE ?1' +
           ' ORDER BY id DESC LIMIT 100').bind(q).all();
         return J({ nguoi: r.results || [] });
       }

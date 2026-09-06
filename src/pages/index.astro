@@ -39,8 +39,13 @@ const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => 
       <p class="mo-ta">{CAUHINH.moTa}</p>
       <div class="hero-nut">
         <a href="/phan-mem" class="nut nut-chinh">Xem tất cả phần mềm</a>
-        <a href="/bai-viet" class="nut nut-vien">Đọc bài viết</a>
+        <a href="/tai-khoan/dang-nhap/" class="nut nut-vien" id="hero-dang-nhap">Đăng nhập</a>
+        <a href="/tai-khoan/" class="nut nut-vien" id="hero-vi" hidden>Ví của tôi</a>
       </div>
+      <p class="nhac-tai">
+        🔒 Phải <b>đăng nhập</b> mới tải phần mềm được.
+        <a href="/tai-khoan/dang-ky/">Đăng ký miễn phí</a> — nạp tiền vào ví là mua key được ngay.
+      </p>
     </div>
     <div class="dom"></div>
   </section>
@@ -115,6 +120,12 @@ const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => 
   .to-mau { background: linear-gradient(120deg, #7c3aed, #a855f7 55%, #c026d3); -webkit-background-clip: text; background-clip: text; color: transparent; }
   .mo-ta { font-size: 1.1rem; color: var(--chu-nhat); margin: 1.2rem auto 2rem; max-width: 640px; }
   .hero-nut { display: flex; gap: .8rem; justify-content: center; flex-wrap: wrap; }
+  .nhac-tai {
+    margin: 1rem auto 0; max-width: 520px; font-size: .88rem; line-height: 1.6;
+    color: var(--chu-nhat); text-align: center;
+  }
+  .nhac-tai b { color: var(--chu); }
+  .nhac-tai a { color: var(--chinh); font-weight: 700; }
   .dom {
     position: absolute; inset: 0; z-index: 1; pointer-events: none;
     background:
@@ -161,3 +172,15 @@ const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => 
     .o-cm small { display: none; }
   }
 </style>
+
+<script is:inline>
+  (function () {
+    if (!localStorage.getItem('vi-token')) return;
+    var a = document.getElementById('hero-dang-nhap');
+    var b = document.getElementById('hero-vi');
+    if (a) a.hidden = true;
+    if (b) b.hidden = false;
+    var n = document.querySelector('.nhac-tai');
+    if (n) n.hidden = true;
+  })();
+</script>

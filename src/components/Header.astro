@@ -26,13 +26,16 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
       </div>
       <a href="/gioi-thieu" class:list={['muc', dangO('/gioi-thieu') && 'dang-o']}>Giới thiệu</a>
       <a href="/lien-he" class:list={['muc', dangO('/lien-he') && 'dang-o']}>Liên hệ</a>
-      <a href="/tai-khoan" class:list={['muc', dangO('/tai-khoan') && 'dang-o']}>Ví của tôi</a>
+      <a href="/tai-khoan/dang-nhap" class:list={['muc', 'chi-khach']} id="menu-dang-nhap">Đăng nhập</a>
+      <a href="/tai-khoan" class:list={['muc', dangO('/tai-khoan') && 'dang-o']} id="menu-vi" hidden>Ví của tôi</a>
     </nav>
 
     <div class="phai">
       <button id="doi-giao-dien" class="nut-tron" aria-label="Đổi giao diện sáng/tối" title="Sáng / Tối">
         <span class="hien-sang">🌙</span><span class="hien-toi">☀️</span>
       </button>
+      <a href="/tai-khoan/dang-nhap/" class="nut nut-vien nut-dn" id="nut-dang-nhap">Đăng nhập</a>
+      <a href="/tai-khoan/" class="nut nut-vien nut-dn" id="nut-vi" hidden>Ví của tôi</a>
       <a href="/phan-mem" class="nut nut-chinh nut-tai">Tải phần mềm</a>
       <button id="mo-menu" class="nut-tron chi-mobile" aria-label="Mở menu">☰</button>
     </div>
@@ -78,9 +81,10 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
   .nut-tron:hover { background: var(--nen-phu); }
   html[data-theme='dark'] .hien-sang, html:not([data-theme='dark']) .hien-toi { display: none; }
   .chi-mobile { display: none; }
+  .nut-dn { white-space: nowrap; }
 
   @media (max-width: 900px) {
-    .nut-tai { display: none; }
+    .nut-tai, .nut-dn { display: none; }
     .chi-mobile { display: grid; }
     .menu {
       position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch;
@@ -102,4 +106,20 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
   document.getElementById('mo-menu')?.addEventListener('click', () => {
     document.getElementById('menu')?.classList.toggle('mo');
   });
+</script>
+
+<script is:inline>
+  // Da dang nhap thi doi "Dang nhap" thanh "Vi cua toi".
+  // Chay ngay tai day cho khoi nhay chu luc trang vua hien ra.
+  (function () {
+    if (!localStorage.getItem('vi-token')) return;
+    ['nut-dang-nhap', 'menu-dang-nhap'].forEach(function (id) {
+      var e = document.getElementById(id);
+      if (e) e.hidden = true;
+    });
+    ['nut-vi', 'menu-vi'].forEach(function (id) {
+      var e = document.getElementById(id);
+      if (e) e.hidden = false;
+    });
+  })();
 </script>
