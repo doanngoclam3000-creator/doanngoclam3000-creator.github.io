@@ -297,6 +297,15 @@ function nhanNenTang(u) {
 // Ma chien dich AccessTrade cho tung san. AccessTrade la mang trung gian:
 // mot tai khoan chay duoc CA Shopee lan TikTok Shop, va quan trong hon la no
 // cho gan sub1 - nho the moi biet don nao cua cong tac vien nao.
+// btoa() chi nuot duoc byte 0-255 nen link co dau tieng Viet la no nem loi.
+// Doi ra UTF-8 truoc roi moi ma hoa.
+function base64Utf8(chuoi) {
+  const byte = new TextEncoder().encode(chuoi);
+  let tho = '';
+  for (const b of byte) tho += String.fromCharCode(b);
+  return btoa(tho);
+}
+
 const CHIEN_DICH_AT = (env, nen) => (nen === 'shopee' ? env.AT_CD_SHOPEE : env.AT_CD_TIKTOK);
 
 // Co ban tai khoan AccessTrade cho san nay chua?
@@ -319,10 +328,12 @@ const coAccessTrade = (env, nen) => !!(env.AT_PUB_ID && CHIEN_DICH_AT(env, nen))
 function linkAffiliate(env, url, nen, maCtv) {
   try {
     if (coAccessTrade(env, nen)) {
-      const d = new URL('https://go.isclix.com/deep_link/' + env.AT_PUB_ID + '/' + CHIEN_DICH_AT(env, nen));
-      d.searchParams.set('url', url);
+      // Dinh dang lay TU chinh cong cu Deep Link cua AccessTrade (da doi chieu):
+      //   /deep_link/v6/<publisher>/<chien dich>?url_enc=<base64 link goc>&sub1=<ctv>
+      // Luu y: la url_enc (base64) chu KHONG phai url thuong.
+      const d = new URL('https://go.isclix.com/deep_link/v6/' + env.AT_PUB_ID + '/' + CHIEN_DICH_AT(env, nen));
+      d.searchParams.set('url_enc', base64Utf8(url));
       d.searchParams.set('sub1', maCtv);
-      d.searchParams.set('utm_source', 'phanmemtq');
       return d.toString();
     }
 

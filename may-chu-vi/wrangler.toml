@@ -22,11 +22,14 @@ NEN_LINK = "https://go.phanmemtq.workers.dev"
 # AccessTrade: mang trung gian, mot tai khoan chay duoc CA Shopee lan TikTok Shop.
 # BAT BUOC phai co neu muon link TikTok ra tien - TikTok khong cho gan tay ma
 # affiliate vao link san pham nhu Shopee.
-# Lay o accesstrade.vn > Cong cu > Tao link: publisher id va ma chien dich nam
-# ngay trong duong go.isclix.com/deep_link/<publisher>/<chien dich>
-# AT_PUB_ID   = "..."
+# Hai so nay lay tu chinh duong link cong cu Deep Link sinh ra:
+#   go.isclix.com/deep_link/v6/<AT_PUB_ID>/<ma chien dich>
+AT_PUB_ID = "7063328966579580240"
+# TIKTOK SHOP CPS - da duyet 07/09/2026, hoa hong 20%/don.
+AT_CD_TIKTOK = "6648523843406889655"
+# Shopee Smartlink - nop 07/09/2026, dang CHO DUYET. Duyet xong vao chien dich
+# bam "Tao link ngay", ma chien dich nam trong duong dan (campaign_id=...).
 # AT_CD_SHOPEE = "..."
-# AT_CD_TIKTOK = "..."
 PHI_RUT = "0"
 RUT_TOI_THIEU = "50000"
 HOA_HONG = "10"
