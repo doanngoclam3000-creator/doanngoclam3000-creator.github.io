@@ -47,8 +47,9 @@ if (fs.existsSync(tepSanPham)) {
 // ---- 3. Nap len Worker roi trien khai ----
 const tepTam = path.join(os.tmpdir(), 'vi-bien-' + Date.now() + '.json');
 fs.writeFileSync(tepTam, JSON.stringify(bien));
-const chay = (...tv) => execFileSync(process.platform === 'win32' ? 'npx.cmd' : 'npx',
-  ['--yes', 'wrangler@latest', ...tv], { cwd: thuMuc, stdio: 'inherit' });
+// shell: true - tu Node 24, spawn thang tep .cmd tren Windows la bao EINVAL
+const chay = (...tv) => execFileSync('npx', ['--yes', 'wrangler@latest', ...tv],
+  { cwd: thuMuc, stdio: 'inherit', shell: process.platform === 'win32' });
 try {
   console.log('\n== Nap bien bi mat ==');
   chay('secret', 'bulk', tepTam);

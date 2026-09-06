@@ -23,9 +23,13 @@ const VONG_BAM = 210000; // so vong PBKDF2
 const PHAN_MEM = {
   'bot-zalo':        { ten: 'Bot Zalo',                 goc: 150000, tienTo: 'BZ',  bienSecret: 'SECRET_BZ' },
   'shopee-tu-dong':  { ten: 'Shopee Tu Dong',           goc: 150000, tienTo: 'ST',  bienSecret: 'SECRET_ST' },
-  'phan-mem-order':  { ten: 'Phan Mem Order',           goc: 150000, tienTo: 'PMO', bienSecret: 'SECRET_PMO' },
+  // Phan Mem Order dang phat hanh MIEN PHI (website co nhan do "MIEN PHI") nen
+  // khong ban key. Muon ban lai thi bo dau // o dong duoi.
+  // 'phan-mem-order':  { ten: 'Phan Mem Order',        goc: 150000, tienTo: 'PMO', bienSecret: 'SECRET_PMO' },
   'bot-wechat':      { ten: 'Bot WeChat',               goc: 150000, capTay: true },
   'gia-lap-vi-tri':  { ten: 'Gia Lap Vi Tri',           goc: 300000, capTay: true },
+  // Hai phan mem duoi day website CHUA cong bo gia - dang tam de 150k/thang,
+  // sua so 'goc' o day roi chay lai cai-dat.cjs neu gia that khac.
   'ban-te':          { ten: 'Phan Mem Quan Ly Kho Te',  goc: 150000, capTay: true },
   'hoc-tieng-trung': { ten: 'Hoc Tieng Trung',          goc: 150000, capTay: true },
 };
