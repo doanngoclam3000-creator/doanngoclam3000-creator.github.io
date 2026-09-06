@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import '../../styles/tai-khoan.css';
+import NutGoogle from '../../components/NutGoogle.astro';
 ---
 <Layout tieuDe="Đăng ký tài khoản" moTa="Tạo tài khoản để nạp tiền vào ví và mua key phần mềm ngay trên website.">
   <div class="tk-trang">
@@ -42,6 +43,7 @@ import '../../styles/tai-khoan.css';
           </label>
           <button class="nut nut-chinh nut-day" id="nut" type="submit">Đăng ký</button>
         </form>
+        <NutGoogle />
       </div>
 
       <p class="duoi-form">Đã có tài khoản? <a href="/tai-khoan/dang-nhap/">Đăng nhập</a></p>

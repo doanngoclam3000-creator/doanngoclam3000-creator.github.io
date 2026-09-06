@@ -1,0 +1,61 @@
+---
+// Nut "Dang nhap bang Google".
+// Chi hien khi may chu vi bao la da bat (co Client ID) - chua bat thi trang
+// van chay binh thuong, khong hong cho nao.
+---
+<div class="google-boc" id="google-boc" hidden>
+  <div class="vach"><span>hoặc</span></div>
+  <div id="google-nut"></div>
+  <div class="loi" id="google-loi" hidden></div>
+</div>
+
+<script is:inline>
+  (function () {
+    var boc = document.getElementById('google-boc');
+    if (!boc || !window.VI) return;
+
+    function nhanMa(kq) {
+      window.VI.baoLoi('google-loi', '');
+      window.VI.goi('/google', { idToken: kq.credential })
+        .then(function (o) {
+          window.VI.datToken(o.token);
+          var ve = new URLSearchParams(location.search).get('ve') || '/tai-khoan/';
+          location.href = ve;
+        })
+        .catch(function (e) { window.VI.baoLoi('google-loi', e); });
+    }
+
+    function veNut(clientId) {
+      var t = document.createElement('script');
+      t.src = 'https://accounts.google.com/gsi/client';
+      t.async = true;
+      t.onload = function () {
+        if (!window.google || !google.accounts || !google.accounts.id) return;
+        google.accounts.id.initialize({ client_id: clientId, callback: nhanMa });
+        google.accounts.id.renderButton(document.getElementById('google-nut'), {
+          theme: document.documentElement.dataset.theme === 'dark' ? 'filled_black' : 'outline',
+          size: 'large', width: 320, shape: 'pill', locale: 'vi',
+          text: 'continue_with',
+        });
+        boc.hidden = false;
+      };
+      document.head.appendChild(t);
+    }
+
+    window.VI.goi('/cau-hinh')
+      .then(function (c) { if (c.googleClientId) veNut(c.googleClientId); })
+      .catch(function () { /* khong lay duoc thi thoi, van dang nhap tay duoc */ });
+  })();
+</script>
+
+<style>
+  .google-boc { margin-top: 1.1rem; }
+  .vach {
+    display: flex; align-items: center; gap: .8rem;
+    color: var(--chu-nhat); font-size: .85rem; margin-bottom: 1rem;
+  }
+  .vach::before, .vach::after {
+    content: ''; flex: 1; height: 1px; background: var(--vien);
+  }
+  #google-nut { display: flex; justify-content: center; }
+</style>

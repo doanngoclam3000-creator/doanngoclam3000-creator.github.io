@@ -14,6 +14,9 @@ HOA_HONG = "10"
 # Dia chi gui thu quen mat khau. PHAI la dia chi da xac minh ben Brevo,
 # khong thi Brevo tu choi khong gui.
 MAIL_TU = "Phần Mềm Việt <doanngoclam3000@gmail.com>"
+# Client ID cua nut "Dang nhap bang Google" (du an doanlam tren Google Cloud).
+# Chuoi nay cong khai, khong phai bi mat.
+GOOGLE_CLIENT_ID = "158985395154-mg5spi6jkvk8636con1v12jap959lebs.apps.googleusercontent.com"
 
 # Kho du lieu: D1 (SQLite). Tien bac PHAI dung D1 chu khong dung KV -
 # KV la "eventually consistent", hai may chu doc cung luc ra so du cu.

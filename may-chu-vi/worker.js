@@ -351,6 +351,7 @@ const laQuanTri = (req, env) =>
 // Ho so gui ve trinh duyet - khong bao gio kem mat khau
 const hoSo = (nd) => ({
   id: nd.id, email: nd.email, tenDn: nd.ten_dn || '', dienThoai: nd.dien_thoai || '',
+  coGoogle: !!nd.google_sub,
   soDu: Number(nd.so_du), vaiTro: nd.vai_tro, maNap: nd.ma_nap,
   daNap: Number(nd.da_nap), daRut: Number(nd.da_rut), hhKiem: Number(nd.hh_kiem),
   nganHang: nd.ngan_hang || '', soTk: nd.so_tk || '', chuTk: nd.chu_tk || '',
@@ -384,6 +385,12 @@ export default {
     // ============ CONG KHAI ============
 
     if (p === '/' || p === '/khoe') return J({ ok: true, ten: 'vi-phanmemtq' });
+
+    // Trang web hoi xem co bat dang nhap Google khong, va Client ID la gi.
+    // Client ID cong khai nen tra thang duoc.
+    if (p === '/cau-hinh') {
+      return J({ googleClientId: env.GOOGLE_CLIENT_ID || '' });
+    }
 
     // ---- Bang gia ----
     if (p === '/bang-gia') {
@@ -510,6 +517,87 @@ export default {
         .bind(await bamMatKhau(String(b.matKhau)), nd.id).first();
       await ghiNoiO(env, req, moi.id);
       return J({ ok: true, token: await taoToken(env, moi), nguoi: hoSo(moi) });
+    }
+
+    // ---- Dang nhap bang Google ----
+    // Trang gui len "ID token" Google vua cap. Nho CHINH Google kiem ho chu
+    // khong tu go lai phep kiem chu ky - it ma hon va khong so viet sai cho
+    // hiem. Van phai tu doi chieu aud/iss/exp: tokeninfo tra ve token that
+    // nhung co the la token cap cho MOT TRANG KHAC.
+    if (req.method === 'POST' && p === '/google') {
+      if (!env.GOOGLE_CLIENT_ID) return J({ loi: 'Chưa bật đăng nhập Google' }, 501);
+      const b = await than();
+      const idToken = String(b.idToken || '');
+      if (!idToken) return J({ loi: 'Thiếu mã Google' }, 400);
+
+      let g;
+      try {
+        const r = await fetch('https://oauth2.googleapis.com/tokeninfo?id_token=' + encodeURIComponent(idToken));
+        g = await r.json();
+        if (!r.ok) return J({ loi: 'Google không nhận mã này' }, 401);
+      } catch {
+        return J({ loi: 'Không hỏi được Google, thử lại' }, 502);
+      }
+
+      const issDung = g.iss === 'accounts.google.com' || g.iss === 'https://accounts.google.com';
+      const conHan = Number(g.exp || 0) * 1000 > Date.now();
+      if (!issDung || g.aud !== env.GOOGLE_CLIENT_ID || !conHan) {
+        return J({ loi: 'Mã Google không hợp lệ' }, 401);
+      }
+      if (g.email_verified !== true && g.email_verified !== 'true') {
+        return J({ loi: 'Email Google này chưa được xác minh' }, 401);
+      }
+      const email = String(g.email || '').trim().toLowerCase();
+      const sub = String(g.sub || '');
+      if (!email || !sub) return J({ loi: 'Google không trả về email' }, 401);
+
+      // 1) Da noi Google roi thi vao thang
+      let nd = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE google_sub=?').bind(sub).first();
+
+      // 2) Chua noi: co tai khoan cung email thi noi vao tai khoan do
+      if (!nd) {
+        nd = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE email=?').bind(email).first();
+        if (nd) {
+          await env.DB.prepare('UPDATE nguoi_dung SET google_sub=? WHERE id=?').bind(sub, nd.id).run();
+        }
+      }
+
+      // 3) Van chua co thi mo tai khoan moi
+      if (!nd) {
+        // Ten tai khoan lay tu phan truoc dau @, bo ky tu la; trung thi them so
+        let goc = email.split('@')[0].replace(/[^A-Za-z0-9._-]/g, '').slice(0, 24) || 'nguoidung';
+        if (goc.length < 3) goc = goc + 'abc'.slice(0, 3 - goc.length);
+        let tenDn = goc;
+        for (let lan = 0; lan < 20; lan++) {
+          const trung = await env.DB.prepare('SELECT id FROM nguoi_dung WHERE lower(ten_dn)=?')
+            .bind(tenDn.toLowerCase()).first();
+          if (!trung) break;
+          tenDn = goc.slice(0, 20) + Math.floor(Math.random() * 9000 + 1000);
+        }
+        // Mat khau ngau nhien dai: tai khoan nay dang nhap bang Google, muon
+        // dang nhap bang mat khau thi bam "Quen mat khau" de tu dat.
+        const mkNgau = chuoiNgauNhien(24) + chuoiNgauNhien(24);
+        for (let lan = 0; lan < 6 && !nd; lan++) {
+          try {
+            nd = await env.DB.prepare(
+              'INSERT INTO nguoi_dung (email,ten_dn,mat_khau,ma_nap,google_sub,tao_luc)' +
+              ' VALUES (?,?,?,?,?,?) RETURNING *')
+              .bind(email, tenDn, await bamMatKhau(mkNgau), chuoiNgauNhien(6), sub, Date.now()).first();
+          } catch (e) {
+            if (!String(e).includes('UNIQUE')) throw e;
+            const lai = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE google_sub=? OR email=?')
+              .bind(sub, email).first();
+            if (lai) { nd = lai; break; }
+          }
+        }
+      }
+
+      if (!nd) return J({ loi: 'Không tạo được tài khoản, thử lại' }, 500);
+      if (nd.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
+      await env.DB.prepare('UPDATE nguoi_dung SET sai_lan=0, khoa_den=0 WHERE id=?').bind(nd.id).run();
+      await ghiNoiO(env, req, nd.id);
+      const moi = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE id=?').bind(nd.id).first();
+      return J({ token: await taoToken(env, moi), nguoi: hoSo(moi) });
     }
 
     // ============ CAN DANG NHAP ============
