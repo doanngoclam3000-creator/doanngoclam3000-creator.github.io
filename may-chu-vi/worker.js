@@ -69,11 +69,7 @@ const PHAN_MEM = {
   },
   'gia-lap-vi-tri': {
     ten: 'Giả Lập Vị Trí', kieu: 'tuKy', tienTo: 'GL', bienSecret: 'SECRET_GL',
-    // Ban iPhone (TestFlight) la app khac han, mo khoa bang cach chuyen khoan
-    // ngay trong app va KHONG co o nhap key - mua o day la mua nham.
-    luuY: 'Key này chỉ dùng cho bản máy tính (Windows / macOS). ' +
-      'Bản iPhone cài qua TestFlight mở khoá bằng cách chuyển khoản ngay trong ứng dụng, ' +
-      'không nhập key — đừng mua ở đây.',
+    luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone cài qua TestFlight.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 300000 },
       { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 800000 },
@@ -83,8 +79,7 @@ const PHAN_MEM = {
   },
   'ban-te': {
     ten: 'Phần Mềm Quản Lý Kho Tệ', kieu: 'tuKy', tienTo: 'BT', bienSecret: 'SECRET_BT',
-    luuY: 'Mã máy lấy trong chính phần mềm. Bản iPhone không tìm thấy mã máy 6 ký tự thì ' +
-      'mua thẳng trong ứng dụng, đừng mua ở đây.',
+    luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone. Mỗi máy một mã máy riêng.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
       { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
@@ -96,7 +91,7 @@ const PHAN_MEM = {
     ten: 'Học Tiếng Trung', kieu: 'tuKy', tienTo: 'HT', bienSecret: 'SECRET_HT',
     // Ban iPhone dung chung ma nguon Flutter voi ban may tinh, cung o nhap key
     // va cung cach tinh ma may -> key mua o day dung duoc ca hai.
-    luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone — mỗi máy một mã máy riêng.',
+    luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone. Mỗi máy một mã máy riêng.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
       { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
@@ -261,7 +256,7 @@ async function taoKeyMay(secret, tienTo, maGoi, maMay) {
   const chuKy = await hmacHex(secret, than + '|' + maMay, 10);
   return tienTo + '-' + than + '-' + chuKy;
 }
-const maMayHopLe = (m) => /^[A-Z0-9]{6}$/.test(m) && [...m].every((c) => BO_KY_TU.includes(c));
+const maMayHopLe = (m) => /^[A-Z0-9]{4,16}$/.test(m) && [...m].every((c) => BO_KY_TU.includes(c));
 
 // Phan mem nay cap key tu dong duoc khong: phai co du khoa bi mat da nap.
 function capTuDong(env, pm) {
@@ -278,6 +273,13 @@ const NEN_TANG = [
   { ten: 'shopee', mien: ['shopee.vn', 'shp.ee', 's.shopee.vn'] },
   { ten: 'tiktok', mien: ['tiktok.com', 'vt.tiktok.com', 'vm.tiktok.com', 'shop.tiktok.com'] },
 ];
+
+// Co NEN_LINK (may chu go) thi dung duong ngan nhat: go.../<ma>.
+// Khong co thi rot ve /l/<ma> ngay tren may chu vi.
+function duongLinkNgan(env, ma) {
+  if (env.NEN_LINK) return env.NEN_LINK.replace(/\/+$/, '') + '/' + ma;
+  return (env.NGUON || 'https://phanmemtq.com') + '/l/' + ma;
+}
 
 function nhanNenTang(u) {
   let host;
@@ -746,7 +748,7 @@ export default {
       if (!ma) return J({ loi: 'Không tạo được link, thử lại' }, 500);
       return J({
         ok: true, ma, nen,
-        link: (env.NEN_LINK || (env.NGUON || 'https://phanmemtq.com')) + '/l/' + ma,
+        link: duongLinkNgan(env, ma),
         sanSang: !!(nen === 'shopee' ? env.SHOPEE_AFF_ID : env.TIKTOK_AFF_ID),
       });
     }
@@ -758,8 +760,7 @@ export default {
         'SELECT ma,dich,nen,ten,luot,bam_cuoi,tao_luc FROM lien_ket WHERE nguoi=? ORDER BY tao_luc DESC LIMIT 200')
         .bind(toi.id).all();
       return J({
-        goc: env.NEN_LINK || (env.NGUON || 'https://phanmemtq.com'),
-        link: r.results || [],
+        link: (r.results || []).map((l) => ({ ...l, link: duongLinkNgan(env, l.ma) })),
       });
     }
 
@@ -814,7 +815,7 @@ export default {
       // Ca hai kieu deu can ma may: kieu mayChu de cong ngay dung may, kieu
       // tuKy de ky key rieng cho may do.
       if (tuDong && !maMayHopLe(may)) {
-        return J({ loi: 'Mã máy không đúng. Mở phần mềm, vào mục Bản quyền để chép mã máy 6 ký tự.' }, 400);
+        return J({ loi: 'Mã máy không đúng. Mở phần mềm, vào mục Bản quyền rồi chép đúng mã máy ở đó.' }, 400);
       }
 
       const gia = goi.gia;

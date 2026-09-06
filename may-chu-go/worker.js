@@ -11,7 +11,10 @@
 export default {
   async fetch(req, env) {
     const url = new URL(req.url);
-    const ma = url.pathname.replace(/^\/+/, '').split('/')[0];
+    // Nhan ca hai kieu: /AbC123 (ngan, dung tu gio) va /l/AbC123 (kieu cu).
+    // Link da dang len video roi thi khong sua duoc, nen phai nhan mai ve sau.
+    const doan = url.pathname.replace(/^\/+/, '').split('/').filter(Boolean);
+    const ma = doan[0] === 'l' ? (doan[1] || '') : (doan[0] || '');
 
     if (!ma) {
       return Response.redirect('https://phanmemtq.com/tai-khoan/', 302);
