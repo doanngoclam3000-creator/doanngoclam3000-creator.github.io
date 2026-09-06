@@ -269,6 +269,31 @@ function capTuDong(env, pm) {
 // Chi nhan link cua may san buon minh dang lam affiliate. Khong mo rong bua:
 // cho dan link bat ky la thanh cho ai cung dung web minh de rut gon link la,
 // dinh lua dao thi minh chiu.
+// Bao nhieu phan tram gia tri don hang thi SAN tra ve, va cong tac vien duoc
+// huong bao nhieu phan trong so do. De o bien moi truong cho de chinh.
+//
+// Day la muc TOI DA cua san: hoa hong that con tuy nganh hang (do dien tu thap
+// hon do gia dung...), nen cho khach xem thi phai ghi ro la "toi".
+const tiLeSan = (env, nen) =>
+  Number((nen === 'shopee' ? env.HH_SHOPEE : env.HH_TIKTOK) || 0);
+const tiLeCtv = (env) => Number(env.CHIA_CTV || 70);
+
+// Khach chi quan tam mot con so: ban duoc bao nhieu phan tram gia tri don.
+function bangHoaHong(env) {
+  return NEN_TANG.map((n) => {
+    const san = tiLeSan(env, n.ten);
+    return {
+      nen: n.ten,
+      tenNen: n.ten === 'shopee' ? 'Shopee' : 'TikTok Shop',
+      tiLeSan: san,
+      tiLeCtv: tiLeCtv(env),
+      // lam tron 2 so le cho khoi ra 13.999999999999998
+      tiLeBan: Math.round(san * tiLeCtv(env)) / 100,
+      chay: coAccessTrade(env, n.ten) || (n.ten === 'shopee' && !!env.SHOPEE_AFF_ID),
+    };
+  });
+}
+
 const NEN_TANG = [
   { ten: 'shopee', mien: ['shopee.vn', 'shp.ee', 's.shopee.vn'] },
   { ten: 'tiktok', mien: ['tiktok.com', 'vt.tiktok.com', 'vm.tiktok.com', 'shop.tiktok.com'] },
@@ -781,6 +806,7 @@ export default {
         ok: true, ma, nen,
         link: duongLinkNgan(env, ma),
         sanSang: coAccessTrade(env, nen) || (nen === 'shopee' && !!env.SHOPEE_AFF_ID),
+        tien: bangHoaHong(env).find((h) => h.nen === nen),
       });
     }
 
@@ -792,6 +818,7 @@ export default {
         .bind(toi.id).all();
       return J({
         link: (r.results || []).map((l) => ({ ...l, link: duongLinkNgan(env, l.ma) })),
+        tien: bangHoaHong(env),
       });
     }
 

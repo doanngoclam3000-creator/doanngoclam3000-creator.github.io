@@ -30,6 +30,12 @@ AT_CD_TIKTOK = "6648523843406889655"
 # Shopee Smartlink - nop 07/09/2026, dang CHO DUYET. Duyet xong vao chien dich
 # bam "Tao link ngay", ma chien dich nam trong duong dan (campaign_id=...).
 # AT_CD_SHOPEE = "..."
+# Hoa hong san tra (% gia tri don, muc TOI DA - tuy nganh hang ma thap hon).
+HH_TIKTOK = "20"
+HH_SHOPEE = "24"
+# Cong tac vien duoc huong bao nhieu PHAN TRAM cua so hoa hong do, con lai la
+# cua chu shop. Doi so nay la trang web hien so tien moi ngay, khong phai sua ma.
+CHIA_CTV = "70"
 PHI_RUT = "0"
 RUT_TOI_THIEU = "50000"
 HOA_HONG = "10"
