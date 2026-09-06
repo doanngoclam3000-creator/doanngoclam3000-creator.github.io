@@ -11,6 +11,9 @@ NGUON = "https://phanmemtq.com"
 PHI_RUT = "0"
 RUT_TOI_THIEU = "50000"
 HOA_HONG = "10"
+# Dia chi gui thu quen mat khau. PHAI la dia chi da xac minh ben Brevo,
+# khong thi Brevo tu choi khong gui.
+MAIL_TU = "Phần Mềm Việt <doanngoclam3000@gmail.com>"
 
 # Kho du lieu: D1 (SQLite). Tien bac PHAI dung D1 chu khong dung KV -
 # KV la "eventually consistent", hai may chu doc cung luc ra so du cu.

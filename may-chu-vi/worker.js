@@ -823,6 +823,19 @@ export default {
         return J(kq.ok ? { ok: true, soDu: kq.soDu } : { loi: kq.loi }, kq.ok ? 200 : 400);
       }
 
+      // Gui mot thu thu de biet dich vu gui thu con chay khong.
+      // Khoa API cua Brevo tu het han sau 90 ngay khong dung den, nen thinh
+      // thoang bam nut nay mot cai vua de kiem tra vua de giu khoa song.
+      if (req.method === 'POST' && p === '/admin/thu-mail') {
+        const b = await than();
+        const den = String(b.den || '').trim();
+        if (!emailHopLe(den)) return J({ loi: 'Email không hợp lệ' }, 400);
+        const kq = await guiThu(env, den, 'Thư thử từ ví phanmemtq.com',
+          '<p>Đây là thư thử. Nhận được thư này nghĩa là chức năng ' +
+          '<b>quên mật khẩu</b> gửi thư được bình thường.</p>');
+        return J(kq.ok ? { ok: true, den } : { loi: kq.loi }, kq.ok ? 200 : 502);
+      }
+
       // Lay duong dan dat lai mat khau de gui tay cho khach (Zalo, Messenger...)
       // Dung khi chua khai bao dich vu gui thu, hoac thu khong den duoc.
       if (req.method === 'POST' && p === '/admin/link-dat-lai') {

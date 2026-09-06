@@ -50,6 +50,21 @@ import '../../styles/tai-khoan.css';
         </div>
 
         <div class="hop">
+          <h2>Gửi thư thử</h2>
+          <p class="loi-mo">
+            Bấm để kiểm tra chức năng <b>quên mật khẩu</b> còn gửi thư được không.
+            Khoá Brevo tự hết hạn sau 90 ngày không dùng tới, nên thỉnh thoảng bấm một cái
+            vừa để kiểm tra vừa để giữ khoá sống.
+          </p>
+          <div class="duoc" id="thu-duoc" hidden></div>
+          <label class="o o-vua">
+            <span>Gửi tới email</span>
+            <input type="email" id="thu-den" value="doanngoclam3000@gmail.com" />
+          </label>
+          <button class="nut nut-vien" id="thu-nut" type="button">Gửi thư thử</button>
+        </div>
+
+        <div class="hop">
           <h2>Khách hàng</h2>
           <label class="o o-vua">
             <span>Tìm theo tên tài khoản, email, mã nạp hoặc số điện thoại</span>
@@ -159,6 +174,17 @@ import '../../styles/tai-khoan.css';
             '<button class="nut nut-vien" data-dong-tien="' + n.id + '">Thôi</button></td></tr>';
         }).join('');
       }
+      $('thu-nut').addEventListener('click', async function () {
+        bao(''); $('thu-duoc').hidden = true;
+        this.disabled = true; this.textContent = 'Đang gửi…';
+        try {
+          var kq = await qt('/admin/thu-mail', { den: $('thu-den').value.trim() });
+          $('thu-duoc').textContent = 'Đã gửi tới ' + kq.den + '. Mở hộp thư xem (nhớ xem cả mục Spam).';
+          $('thu-duoc').hidden = false;
+        } catch (err) { bao(err); }
+        this.disabled = false; this.textContent = 'Gửi thư thử';
+      });
+
       $('kh-nut').addEventListener('click', function () { taiKhach().catch(bao); });
       $('kh-tim').addEventListener('keydown', function (e) { if (e.key === 'Enter') taiKhach().catch(bao); });
 
