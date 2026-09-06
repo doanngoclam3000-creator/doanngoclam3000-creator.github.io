@@ -18,7 +18,15 @@ NEN_LINK = "https://go.phanmemtq.workers.dev"
 # Bat len la TOAN BO link cong tac vien da tao truoc do tu dong ra tien,
 # khong ai phai tao lai link.
 # SHOPEE_AFF_ID = "..."
-# TIKTOK_AFF_ID = "..."
+#
+# AccessTrade: mang trung gian, mot tai khoan chay duoc CA Shopee lan TikTok Shop.
+# BAT BUOC phai co neu muon link TikTok ra tien - TikTok khong cho gan tay ma
+# affiliate vao link san pham nhu Shopee.
+# Lay o accesstrade.vn > Cong cu > Tao link: publisher id va ma chien dich nam
+# ngay trong duong go.isclix.com/deep_link/<publisher>/<chien dich>
+# AT_PUB_ID   = "..."
+# AT_CD_SHOPEE = "..."
+# AT_CD_TIKTOK = "..."
 PHI_RUT = "0"
 RUT_TOI_THIEU = "50000"
 HOA_HONG = "10"

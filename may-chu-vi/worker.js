@@ -294,25 +294,45 @@ function nhanNenTang(u) {
   return null;
 }
 
-// Doi link goc thanh link co gan ma affiliate CUA CHU SHOP, kem sub_id la ma
-// cong tac vien de biet don nao cua ai.
+// Ma chien dich AccessTrade cho tung san. AccessTrade la mang trung gian:
+// mot tai khoan chay duoc CA Shopee lan TikTok Shop, va quan trong hon la no
+// cho gan sub1 - nho the moi biet don nao cua cong tac vien nao.
+const CHIEN_DICH_AT = (env, nen) => (nen === 'shopee' ? env.AT_CD_SHOPEE : env.AT_CD_TIKTOK);
+
+// Co ban tai khoan AccessTrade cho san nay chua?
+const coAccessTrade = (env, nen) => !!(env.AT_PUB_ID && CHIEN_DICH_AT(env, nen));
+
+// Con duong "ai an hoa hong" cho tung san. Hai san chay hai kieu KHAC HAN nhau:
 //
-// CHUA co tai khoan affiliate thi tra ve nguyen link goc - link van bam duoc,
-// van dem duoc luot, chi la chua ra tien. Khai SHOPEE_AFF_ID / TIKTOK_AFF_ID
-// la tu dong gan vao, khong phai sua cho nao khac.
+//  - Shopee: dan them af_id + sub_id vao chinh link san pham la xong.
+//  - TikTok Shop: KHONG lam kieu do duoc. TikTok chi tinh hoa hong cho link do
+//    chinh no sinh ra trong app (Share > Copy Link), dan tay aff_id vao link
+//    tiktok.com la link van chay nhung khong ai duoc dong nao.
+//
+// Nen voi TikTok phai di qua mang trung gian (AccessTrade): ho sinh ra duong
+// go.isclix.com/deep_link/... boc lay link goc, va nhan sub1 de tach don theo
+// tung cong tac vien.
+//
+// Thu tu uu tien: AccessTrade truoc (chay duoc ca hai san), khong co thi quay
+// ve gan tay af_id cua Shopee. Chua khai gi ca thi tra ve nguyen link goc -
+// link van bam duoc, van dem duoc luot, chi la chua ra tien.
 function linkAffiliate(env, url, nen, maCtv) {
   try {
+    if (coAccessTrade(env, nen)) {
+      const d = new URL('https://go.isclix.com/deep_link/' + env.AT_PUB_ID + '/' + CHIEN_DICH_AT(env, nen));
+      d.searchParams.set('url', url);
+      d.searchParams.set('sub1', maCtv);
+      d.searchParams.set('utm_source', 'phanmemtq');
+      return d.toString();
+    }
+
     const d = new URL(url);
     if (nen === 'shopee' && env.SHOPEE_AFF_ID) {
       d.searchParams.set('af_id', env.SHOPEE_AFF_ID);
       d.searchParams.set('sub_id', maCtv);
-    } else if (nen === 'tiktok' && env.TIKTOK_AFF_ID) {
-      d.searchParams.set('aff_id', env.TIKTOK_AFF_ID);
-      d.searchParams.set('sub_id', maCtv);
-    } else {
-      return url;
+      return d.toString();
     }
-    return d.toString();
+    return url;
   } catch { return url; }
 }
 
@@ -749,7 +769,7 @@ export default {
       return J({
         ok: true, ma, nen,
         link: duongLinkNgan(env, ma),
-        sanSang: !!(nen === 'shopee' ? env.SHOPEE_AFF_ID : env.TIKTOK_AFF_ID),
+        sanSang: coAccessTrade(env, nen) || (nen === 'shopee' && !!env.SHOPEE_AFF_ID),
       });
     }
 
