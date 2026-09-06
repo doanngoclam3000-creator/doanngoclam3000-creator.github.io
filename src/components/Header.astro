@@ -144,6 +144,14 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
     }
     .menu.mo { opacity: 1; visibility: visible; transform: none; }
 
+    /* Menu dang dong thi TUYET DOI khong duoc an cham cua khach.
+       .menu chi mo di bang opacity/visibility chu van chiem cho, ma .bang ben
+       duoi lai tu dat visibility: visible de mo ra khi cham - thanh ra cac link
+       chuyen muc nam de len giua banner trang chu. Cham nut "Dang nhap" tren
+       dien thoai la nhay sang /chuyen-muc/... chu khong vao duoc trang dang nhap. */
+    .menu:not(.mo) { pointer-events: none; }
+    .menu:not(.mo) .bang { visibility: hidden; }
+
     /* Moi dong menu la mot vien thuoc bo tron */
     .menu .muc {
       position: relative; z-index: 1;
