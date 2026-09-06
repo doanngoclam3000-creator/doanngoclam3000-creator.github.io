@@ -5,8 +5,8 @@ import Footer from '../components/Footer.astro';
 import ThongBaoBanMoi from '../components/ThongBaoBanMoi.astro';
 import { CAUHINH } from '../config';
 
-interface Props { tieuDe?: string; moTa?: string; anh?: string; loai?: string; }
-const { tieuDe, moTa = CAUHINH.moTa, anh, loai = 'website' } = Astro.props;
+interface Props { tieuDe?: string; moTa?: string; anh?: string; loai?: string; anGoogle?: boolean; }
+const { tieuDe, moTa = CAUHINH.moTa, anh, loai = 'website', anGoogle = false } = Astro.props;
 const tieuDeDayDu = tieuDe ? `${tieuDe} — ${CAUHINH.tenSite}` : `${CAUHINH.tenSite} — ${CAUHINH.khauHieu}`;
 const url = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -18,6 +18,7 @@ const url = new URL(Astro.url.pathname, Astro.site);
   <title>{tieuDeDayDu}</title>
   <meta name="description" content={moTa} />
   <link rel="canonical" href={url} />
+  {anGoogle && <meta name="robots" content="noindex, nofollow" />}
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="alternate" type="application/rss+xml" title={CAUHINH.tenSite} href="/rss.xml" />
   <meta property="og:type" content={loai} />

@@ -18,6 +18,9 @@ export const CAUHINH = {
   // Bat popup bao phien ban moi khi khach vao website (hien 1 lan moi ban).
   // Doi thanh false neu muon tat han.
   thongBaoBanMoi: true,
+  // May chu vi tien / tai khoan khach (Cloudflare Worker).
+  // De trong thi an het cac trang tai khoan.
+  mayChuVi: 'https://vi-phanmemtq.phanmemtq.workers.dev',
   // Anh banner o trang chu. Thay bang anh cua ban:
   // bo file vao thu muc public/ roi doi duong dan o day, vi du '/banner.jpg'
   anhBanner: '/banner.svg',

@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ViJS from '../../components/ViJS.astro';
+import '../../styles/tai-khoan.css';
+---
+<Layout tieuDe="Đăng ký tài khoản" moTa="Tạo tài khoản để nạp tiền vào ví và mua key phần mềm ngay trên website.">
+  <ViJS />
+  <div class="tk-trang">
+    <div class="tk-hep">
+      <div class="tk-tieu">
+        <h1>Tạo tài khoản</h1>
+        <p>Nạp tiền vào ví rồi mua key phần mềm ngay, không phải chờ đối chiếu chuyển khoản.</p>
+      </div>
+
+      <div class="the">
+        <div class="loi" id="loi" hidden></div>
+        <form id="form">
+          <label class="o">
+            <span>Email</span>
+            <input type="email" id="email" required autocomplete="email" placeholder="ban@gmail.com" />
+          </label>
+          <label class="o">
+            <span>Họ tên</span>
+            <input type="text" id="ten" required autocomplete="name" placeholder="Nguyễn Văn A" />
+          </label>
+          <label class="o">
+            <span>Số điện thoại</span>
+            <input type="tel" id="dienThoai" autocomplete="tel" placeholder="09xx xxx xxx" />
+          </label>
+          <label class="o">
+            <span>Mật khẩu</span>
+            <input type="password" id="matKhau" required minlength="8" autocomplete="new-password" />
+            <small>Ít nhất 8 ký tự.</small>
+          </label>
+          <label class="o">
+            <span>Mã giới thiệu (nếu có)</span>
+            <input type="text" id="gioiThieu" placeholder="Bỏ trống nếu không có" />
+          </label>
+          <button class="nut nut-chinh nut-day" id="nut" type="submit">Đăng ký</button>
+        </form>
+      </div>
+
+      <p class="duoi-form">Đã có tài khoản? <a href="/tai-khoan/dang-nhap/">Đăng nhập</a></p>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById('form');
+      var nut = document.getElementById('nut');
+      var gt = new URLSearchParams(location.search).get('gt');
+      if (gt) document.getElementById('gioiThieu').value = gt;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        nut.disabled = true; nut.textContent = 'Đang tạo…';
+        window.VI.baoLoi('loi', '');
+        try {
+          var kq = await window.VI.goi('/dk', {
+            email: document.getElementById('email').value.trim(),
+            ten: document.getElementById('ten').value.trim(),
+            dienThoai: document.getElementById('dienThoai').value.trim(),
+            matKhau: document.getElementById('matKhau').value,
+            gioiThieu: document.getElementById('gioiThieu').value.trim(),
+          });
+          window.VI.datToken(kq.token);
+          location.href = '/tai-khoan/';
+        } catch (err) {
+          window.VI.baoLoi('loi', err);
+          nut.disabled = false; nut.textContent = 'Đăng ký';
+        }
+      });
+    })();
+  </script>
+</Layout>

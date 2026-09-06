@@ -6,7 +6,12 @@ export const SITE = 'https://phanmemtq.com';
 
 export default defineConfig({
   site: SITE,
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // Trang vi tien va quan tri khong dua len Google
+      filter: (trang) => !trang.includes('/tai-khoan/'),
+    }),
+  ],
   markdown: {
     shikiConfig: { theme: 'github-dark', wrap: true },
   },

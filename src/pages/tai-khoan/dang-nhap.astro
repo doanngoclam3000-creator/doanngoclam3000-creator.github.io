@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ViJS from '../../components/ViJS.astro';
+import '../../styles/tai-khoan.css';
+---
+<Layout tieuDe="Đăng nhập" moTa="Đăng nhập để xem ví tiền, mua key phần mềm và rút tiền.">
+  <ViJS />
+  <div class="tk-trang">
+    <div class="tk-hep">
+      <div class="tk-tieu">
+        <h1>Đăng nhập</h1>
+        <p>Vào ví tiền, mua key và xem lịch sử giao dịch.</p>
+      </div>
+
+      <div class="the">
+        <div class="loi" id="loi" hidden></div>
+        <form id="form">
+          <label class="o">
+            <span>Email</span>
+            <input type="email" id="email" required autocomplete="email" />
+          </label>
+          <label class="o">
+            <span>Mật khẩu</span>
+            <input type="password" id="matKhau" required autocomplete="current-password" />
+          </label>
+          <button class="nut nut-chinh nut-day" id="nut" type="submit">Đăng nhập</button>
+        </form>
+      </div>
+
+      <p class="duoi-form">Chưa có tài khoản? <a href="/tai-khoan/dang-ky/">Đăng ký miễn phí</a></p>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var form = document.getElementById('form');
+      var nut = document.getElementById('nut');
+      var ve = new URLSearchParams(location.search).get('ve') || '/tai-khoan/';
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        nut.disabled = true; nut.textContent = 'Đang vào…';
+        window.VI.baoLoi('loi', '');
+        try {
+          var kq = await window.VI.goi('/dn', {
+            email: document.getElementById('email').value.trim(),
+            matKhau: document.getElementById('matKhau').value,
+          });
+          window.VI.datToken(kq.token);
+          location.href = ve;
+        } catch (err) {
+          window.VI.baoLoi('loi', err);
+          nut.disabled = false; nut.textContent = 'Đăng nhập';
+        }
+      });
+    })();
+  </script>
+</Layout>

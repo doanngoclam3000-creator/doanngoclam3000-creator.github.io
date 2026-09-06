@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ViJS from '../../components/ViJS.astro';
+import '../../styles/tai-khoan.css';
+---
+
+<Layout tieuDe="Quản trị ví" moTa="Trang quản trị ví tiền — chỉ chủ shop dùng." anGoogle={true}>
+  <ViJS />
+  <div class="tk-trang">
+    <div class="khung-rong">
+
+      <div class="tk-dau"><h1>Quản trị ví</h1></div>
+
+      <div class="the" id="o-khoa">
+        <h2>Nhập mã quản trị</h2>
+        <div class="loi" id="qt-loi" hidden></div>
+        <label class="o o-vua">
+          <span>Mã quản trị của máy chủ ví</span>
+          <input type="password" id="qt-ma" autocomplete="off" />
+        </label>
+        <button class="nut nut-chinh" id="qt-vao" type="button">Vào</button>
+      </div>
+
+      <div id="o-chinh" hidden>
+        <div class="the">
+          <h2>Tổng quan</h2>
+          <div class="luoi-so" id="tong-quan"></div>
+        </div>
+
+        <div class="the">
+          <h2>Yêu cầu rút tiền đang chờ</h2>
+          <p class="loi-mo">
+            Chuyển khoản tay cho khách trước, chuyển xong mới bấm <b>Đã trả</b>.
+            Tiền đã bị giữ khỏi ví khách lúc họ gửi yêu cầu, từ chối là hoàn lại ngay.
+          </p>
+          <div class="cuon"><table class="bang">
+            <thead><tr><th>Ngày</th><th>Khách</th><th class="phai">Thực trả</th><th>Ngân hàng</th><th></th></tr></thead>
+            <tbody id="rut-than"></tbody>
+          </table></div>
+          <div class="trong" id="rut-trong" hidden>Không có yêu cầu nào đang chờ.</div>
+        </div>
+
+        <div class="the">
+          <h2>Đơn chờ cấp key tay</h2>
+          <div class="cuon"><table class="bang">
+            <thead><tr><th>Ngày</th><th>Khách</th><th>Phần mềm</th><th>Gói</th><th class="phai">Giá</th><th>Key</th></tr></thead>
+            <tbody id="don-than"></tbody>
+          </table></div>
+          <div class="trong" id="don-trong" hidden>Không có đơn nào đang chờ.</div>
+        </div>
+
+        <div class="the">
+          <h2>Khách hàng</h2>
+          <div class="loi" id="kh-loi" hidden></div>
+          <div class="duoc" id="kh-duoc" hidden></div>
+          <label class="o o-vua">
+            <span>Tìm theo email, tên hoặc mã nạp</span>
+            <input type="search" id="kh-tim" placeholder="Bỏ trống để xem 100 người mới nhất" />
+          </label>
+          <button class="nut nut-vien" id="kh-nut" type="button">Tìm</button>
+          <div class="cuon dat-tren"><table class="bang">
+            <thead><tr><th>Email</th><th>Tên</th><th>Mã nạp</th><th class="phai">Số dư</th><th class="phai">Đã nạp</th><th></th></tr></thead>
+            <tbody id="kh-than"></tbody>
+          </table></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    .loi-mo { color: var(--chu-nhat); font-size: .9rem; margin: 0 0 1rem; }
+    .o-vua { max-width: 360px; }
+    .dat-tren { margin-top: 1.2rem; }
+    .luoi-so { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .8rem; }
+    .luoi-so div { background: var(--nen-phu); border: 1px solid var(--vien); border-radius: 12px; padding: .9rem; }
+    .luoi-so span { display: block; font-size: .8rem; color: var(--chu-nhat); }
+    .luoi-so b { font-size: 1.25rem; }
+    .bang .nut { padding: .3rem .6rem; font-size: .8rem; }
+    .o-nho { width: 190px; padding: .35rem .5rem; font: inherit; font-size: .82rem; color: var(--chu);
+      background: var(--nen); border: 1px solid var(--vien); border-radius: 8px; }
+  </style>
+
+  <script is:inline>
+    (function () {
+      var V = window.VI;
+      var $ = function (id) { return document.getElementById(id); };
+      var ma = '';
+
+      async function qt(duong, than, cach) {
+        var r = await fetch(V.goc + duong, {
+          method: cach || (than ? 'POST' : 'GET'),
+          headers: { 'content-type': 'application/json', authorization: 'Apikey ' + ma },
+          body: than ? JSON.stringify(than) : undefined,
+        });
+        var o = await r.json().catch(function () { return {}; });
+        if (!r.ok) throw new Error(o.loi || ('Máy chủ trả mã ' + r.status));
+        return o;
+      }
+
+      $('qt-vao').addEventListener('click', vao);
+      $('qt-ma').addEventListener('keydown', function (e) { if (e.key === 'Enter') vao(); });
+
+      async function vao() {
+        ma = $('qt-ma').value.trim();
+        V.baoLoi('qt-loi', '');
+        try {
+          await qt('/admin/tong-quan');
+          localStorage.setItem('vi-qt', ma);
+          $('o-khoa').hidden = true;
+          $('o-chinh').hidden = false;
+          taiHet();
+        } catch (err) { V.baoLoi('qt-loi', err); }
+      }
+
+      function taiHet() { taiTongQuan(); taiRut(); taiDon(); taiKhach(); }
+
+      async function taiTongQuan() {
+        var k = await qt('/admin/tong-quan');
+        $('tong-quan').innerHTML =
+          o('Khách hàng', k.khach) + o('Tiền đang nằm trong ví', V.tien(k.tienTrongVi)) +
+          o('Tổng đã nạp', V.tien(k.tongNap)) + o('Yêu cầu rút chờ', k.rutCho) +
+          o('Đơn chờ cấp key', k.donChoTay);
+        function o(n, v) { return '<div><span>' + n + '</span><b>' + v + '</b></div>'; }
+      }
+
+      async function taiRut() {
+        var k = await qt('/admin/rut');
+        $('rut-trong').hidden = k.yeuCau.length > 0;
+        $('rut-than').innerHTML = k.yeuCau.map(function (y) {
+          return '<tr><td>' + V.ngay(y.luc) + '</td><td>' + y.email + '</td><td class="phai"><b>' +
+            V.tien(y.thuc_nhan) + '</b></td><td>' + y.ngan_hang + '<br>' + y.so_tk + '<br>' + y.chu_tk +
+            '</td><td><button class="nut nut-chinh" data-tra="' + y.id + '">Đã trả</button> ' +
+            '<button class="nut nut-vien" data-tuchoi="' + y.id + '">Từ chối</button></td></tr>';
+        }).join('');
+      }
+
+      async function taiDon() {
+        var k = await qt('/admin/don');
+        $('don-trong').hidden = k.don.length > 0;
+        $('don-than').innerHTML = k.don.map(function (d) {
+          return '<tr><td>' + V.ngay(d.luc) + '</td><td>' + d.email + '</td><td>' + d.ten_pm +
+            '</td><td>' + d.so_ngay + ' ngày</td><td class="phai">' + V.tien(d.gia) +
+            '</td><td><input class="o-nho" data-key="' + d.id + '" placeholder="Dán key rồi Enter" /></td></tr>';
+        }).join('');
+      }
+
+      async function taiKhach() {
+        var k = await qt('/admin/nguoi?q=' + encodeURIComponent($('kh-tim').value.trim()));
+        $('kh-than').innerHTML = k.nguoi.map(function (n) {
+          return '<tr><td>' + n.email + (n.khoa ? ' 🔒' : '') + '</td><td>' + (n.ten || '') +
+            '</td><td>' + n.ma_nap + '</td><td class="phai"><b>' + V.tien(n.so_du) +
+            '</b></td><td class="phai">' + V.tien(n.da_nap) +
+            '</td><td><button class="nut nut-vien" data-tien="' + n.id + '">Cộng/trừ</button> ' +
+            '<button class="nut nut-vien" data-khoa="' + n.id + '" data-dang="' + (n.khoa ? 1 : 0) + '">' +
+            (n.khoa ? 'Mở khoá' : 'Khoá') + '</button></td></tr>';
+        }).join('');
+      }
+      $('kh-nut').addEventListener('click', function () { taiKhach(); });
+
+      document.addEventListener('click', async function (e) {
+        var b = e.target.closest('button');
+        if (!b) return;
+        try {
+          if (b.dataset.tra) {
+            if (!confirm('Xác nhận ĐÃ chuyển khoản xong cho khách này?')) return;
+            await qt('/admin/rut', { id: b.dataset.tra, viec: 'tra' });
+            taiHet();
+          } else if (b.dataset.tuchoi) {
+            var ly = prompt('Lý do từ chối (khách sẽ đọc được):', '');
+            if (ly === null) return;
+            await qt('/admin/rut', { id: b.dataset.tuchoi, viec: 'tuChoi', ghiChu: ly });
+            taiHet();
+          } else if (b.dataset.tien) {
+            var s = prompt('Cộng bao nhiêu vào ví? (số âm là trừ)', '0');
+            if (s === null) return;
+            var gc = prompt('Ghi chú (khách đọc được):', 'Chủ shop điều chỉnh');
+            await qt('/admin/tien', { nguoi: Number(b.dataset.tien), soTien: Number(s), ghiChu: gc });
+            taiKhach(); taiTongQuan();
+          } else if (b.dataset.khoa) {
+            await qt('/admin/khoa', { nguoi: Number(b.dataset.khoa), khoa: b.dataset.dang !== '1' });
+            taiKhach();
+          }
+        } catch (err) { alert(err.message || err); }
+      });
+
+      document.addEventListener('keydown', async function (e) {
+        var i = e.target.closest('input[data-key]');
+        if (!i || e.key !== 'Enter') return;
+        try {
+          await qt('/admin/don', { id: i.dataset.key, key: i.value.trim() });
+          taiDon(); taiTongQuan();
+        } catch (err) { alert(err.message || err); }
+      });
+
+      var luu = localStorage.getItem('vi-qt');
+      if (luu) { $('qt-ma').value = luu; vao(); }
+    })();
+  </script>
+</Layout>

@@ -1,0 +1,20 @@
+name = "vi-phanmemtq"
+main = "worker.js"
+compatibility_date = "2024-09-23"
+
+# Tai khoan ngan hang nhan tien nap (dung chung voi cac phan mem)
+[vars]
+NGAN_HANG = "MSB"
+SO_TK = "96886693052700"
+CHU_TK = "DOAN NGOC LAM"
+NGUON = "https://phanmemtq.com"
+PHI_RUT = "0"
+RUT_TOI_THIEU = "50000"
+HOA_HONG = "10"
+
+# Kho du lieu: D1 (SQLite). Tien bac PHAI dung D1 chu khong dung KV -
+# KV la "eventually consistent", hai may chu doc cung luc ra so du cu.
+[[d1_databases]]
+binding = "DB"
+database_name = "vi-phanmemtq"
+database_id = "a253f3c6-cebd-409c-9500-996325069b57"

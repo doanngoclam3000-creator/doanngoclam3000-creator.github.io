@@ -1,0 +1,420 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ViJS from '../../components/ViJS.astro';
+import '../../styles/tai-khoan.css';
+---
+
+<Layout tieuDe="Ví của tôi" moTa="Nạp tiền, mua key phần mềm và rút tiền về ngân hàng.">
+  <ViJS />
+  <div class="tk-trang">
+    <div class="khung-rong">
+
+      <div class="tk-dau">
+        <h1>Ví của tôi</h1>
+        <div class="day">
+          <button class="nut nut-vien" id="nut-thoat" type="button">Đăng xuất</button>
+        </div>
+      </div>
+
+      <div class="o-sodu">
+        <div class="nhan">Số dư khả dụng</div>
+        <div class="tien" id="so-du">…</div>
+        <div class="cot">
+          <div>Đã nạp<b id="da-nap">…</b></div>
+          <div>Đã rút<b id="da-rut">…</b></div>
+          <div>Hoa hồng<b id="hh-kiem">…</b></div>
+          <div>Mã giới thiệu<b id="ma-gt">…</b></div>
+        </div>
+      </div>
+
+      <div class="thanh-tab" id="tabs">
+        <button data-tab="nap" class="on" type="button">Nạp tiền</button>
+        <button data-tab="mua" type="button">Mua key</button>
+        <button data-tab="don" type="button">Key đã mua</button>
+        <button data-tab="rut" type="button">Rút tiền</button>
+        <button data-tab="lich-su" type="button">Lịch sử</button>
+        <button data-tab="ho-so" type="button">Tài khoản</button>
+      </div>
+
+      <section data-o="nap">
+        <div class="the">
+          <h2>Nạp tiền vào ví</h2>
+          <p class="loi-mo">
+            Chuyển khoản đúng <b>nội dung</b> bên dưới. Tiền vào ví tự động sau khoảng 10 giây,
+            không cần nhắn tin cho ai.
+          </p>
+          <label class="o o-hep">
+            <span>Số tiền muốn nạp (không bắt buộc)</span>
+            <input type="number" id="nap-tien" min="0" step="1000" placeholder="Ví dụ 300000" />
+            <small>Điền vào thì mã QR có sẵn số tiền, quét là xong.</small>
+          </label>
+          <div class="qr">
+            <img id="nap-qr" alt="Mã QR chuyển khoản" />
+            <div class="tt">
+              <div class="dong-tt"><span>Ngân hàng</span><b id="nap-nh">…</b></div>
+              <div class="dong-tt"><span>Số tài khoản</span><b><span id="nap-stk">…</span> <button class="chep" data-chep="nap-stk" type="button">chép</button></b></div>
+              <div class="dong-tt"><span>Chủ tài khoản</span><b id="nap-ctk">…</b></div>
+              <div class="dong-tt"><span>Nội dung bắt buộc</span><b><span id="nap-nd">…</span> <button class="chep" data-chep="nap-nd" type="button">chép</button></b></div>
+              <p class="ghi-nho">Ghi sai nội dung thì tiền không tự vào ví, phải nhờ chủ shop cộng tay.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section data-o="mua" hidden>
+        <div class="the">
+          <h2>Mua key bằng tiền trong ví</h2>
+          <div class="loi" id="mua-loi" hidden></div>
+          <div class="duoc" id="mua-duoc" hidden></div>
+
+          <label class="o o-vua">
+            <span>Phần mềm</span>
+            <select id="mua-pm"></select>
+          </label>
+
+          <div class="o">
+            <span>Chọn gói</span>
+            <div class="luoi-goi" id="mua-goi"></div>
+          </div>
+
+          <label class="o o-hep" id="o-ma-may">
+            <span>Mã máy</span>
+            <input type="text" id="mua-may" maxlength="6" placeholder="VD: A7K2Q9" class="o-ma" />
+            <small>Mở phần mềm, vào mục <b>Bản quyền</b> rồi chép mã máy 6 ký tự.</small>
+          </label>
+
+          <button class="nut nut-chinh" id="mua-nut" type="button">Mua ngay</button>
+        </div>
+      </section>
+
+      <section data-o="don" hidden>
+        <div class="the">
+          <h2>Key đã mua</h2>
+          <div class="cuon"><table class="bang">
+            <thead><tr><th>Ngày</th><th>Phần mềm</th><th>Gói</th><th>Mã máy</th><th>Key</th><th class="phai">Giá</th><th>Trạng thái</th></tr></thead>
+            <tbody id="don-than"></tbody>
+          </table></div>
+          <div class="trong" id="don-trong" hidden>Chưa mua key nào.</div>
+        </div>
+      </section>
+
+      <section data-o="rut" hidden>
+        <div class="the">
+          <h2>Rút tiền về ngân hàng</h2>
+          <div class="loi" id="rut-loi" hidden></div>
+          <div class="duoc" id="rut-duoc" hidden></div>
+          <p class="loi-mo">
+            Chỉ rút được về tài khoản ngân hàng <b>đứng tên chính bạn</b> đã khai ở mục Tài khoản.
+            Yêu cầu được chuyển khoản tay trong giờ làm việc, thường trong ngày.
+          </p>
+          <div id="rut-chua-nh" class="loi" hidden>
+            Bạn chưa khai tài khoản ngân hàng. <a href="#ho-so" data-di="ho-so">Khai ngay</a>
+          </div>
+          <div id="rut-form" hidden>
+            <div class="dong-tt"><span>Nhận vào</span><b id="rut-nh">…</b></div>
+            <label class="o o-hep dat-tren">
+              <span>Số tiền muốn rút</span>
+              <input type="number" id="rut-tien" step="1000" />
+              <small id="rut-note"></small>
+            </label>
+            <button class="nut nut-chinh" id="rut-nut" type="button">Gửi yêu cầu rút</button>
+          </div>
+
+          <h2 class="dat-tren">Yêu cầu đã gửi</h2>
+          <div class="cuon"><table class="bang">
+            <thead><tr><th>Ngày</th><th class="phai">Số tiền</th><th>Về</th><th>Trạng thái</th><th>Ghi chú</th></tr></thead>
+            <tbody id="rut-than"></tbody>
+          </table></div>
+          <div class="trong" id="rut-trong" hidden>Chưa có yêu cầu nào.</div>
+        </div>
+      </section>
+
+      <section data-o="lich-su" hidden>
+        <div class="the">
+          <h2>Lịch sử biến động số dư</h2>
+          <div class="cuon"><table class="bang">
+            <thead><tr><th>Thời gian</th><th>Nội dung</th><th class="phai">Số tiền</th><th class="phai">Số dư sau</th></tr></thead>
+            <tbody id="ls-than"></tbody>
+          </table></div>
+          <div class="trong" id="ls-trong" hidden>Chưa có giao dịch nào.</div>
+          <button class="nut nut-vien dat-tren" id="ls-them" type="button" hidden>Xem thêm</button>
+        </div>
+      </section>
+
+      <section data-o="ho-so" hidden>
+        <div class="the">
+          <h2>Tài khoản ngân hàng để rút tiền</h2>
+          <div class="loi" id="nh-loi" hidden></div>
+          <div class="duoc" id="nh-duoc" hidden></div>
+          <label class="o o-vua"><span>Ngân hàng</span><input type="text" id="nh-ten" placeholder="VD: Vietcombank, MB Bank, MSB…" /></label>
+          <label class="o o-vua"><span>Số tài khoản</span><input type="text" id="nh-stk" inputmode="numeric" /></label>
+          <label class="o o-vua"><span>Tên chủ tài khoản</span><input type="text" id="nh-ctk" placeholder="VIET HOA KHONG DAU" class="o-hoa" />
+            <small>Phải trùng tên người đăng ký tài khoản này.</small></label>
+          <button class="nut nut-chinh" id="nh-nut" type="button">Lưu</button>
+        </div>
+
+        <div class="the">
+          <h2>Đổi mật khẩu</h2>
+          <div class="loi" id="mk-loi" hidden></div>
+          <div class="duoc" id="mk-duoc" hidden></div>
+          <label class="o o-vua"><span>Mật khẩu hiện tại</span><input type="password" id="mk-cu" autocomplete="current-password" /></label>
+          <label class="o o-vua"><span>Mật khẩu mới</span><input type="password" id="mk-moi" minlength="8" autocomplete="new-password" /></label>
+          <button class="nut nut-chinh" id="mk-nut" type="button">Đổi mật khẩu</button>
+        </div>
+
+        <div class="the">
+          <h2>Giới thiệu bạn bè</h2>
+          <p class="loi-mo">
+            Ai đăng ký qua đường dẫn này rồi mua key, bạn được cộng hoa hồng thẳng vào ví và rút ra được.
+          </p>
+          <div class="the-key" id="link-gt">…</div>
+          <button class="nut nut-vien dat-tren" id="gt-chep" type="button">Chép đường dẫn</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <style>
+    .loi-mo { color: var(--chu-nhat); font-size: .9rem; margin: 0 0 1rem; }
+    .ghi-nho { color: var(--chu-nhat); font-size: .82rem; margin: .8rem 0 0; }
+    .o-hep { max-width: 280px; }
+    .o-vua { max-width: 360px; }
+    .dat-tren { margin-top: 1.4rem; }
+    .o-ma { text-transform: uppercase; letter-spacing: .12em; font-family: ui-monospace, Consolas, monospace; }
+    .o-hoa { text-transform: uppercase; }
+  </style>
+
+  <script is:inline>
+    (function () {
+      if (!window.VI.canDangNhap()) return;
+      var V = window.VI;
+      var $ = function (id) { return document.getElementById(id); };
+      var toi = null, bangGia = null, pmDangChon = null, goiDangChon = null, lsCuoi = 0;
+
+      // ---------- Tab ----------
+      function moTab(ten) {
+        document.querySelectorAll('#tabs button').forEach(function (b) {
+          b.classList.toggle('on', b.dataset.tab === ten);
+        });
+        document.querySelectorAll('section[data-o]').forEach(function (s) {
+          s.hidden = s.dataset.o !== ten;
+        });
+        if (ten === 'don') taiDon();
+        if (ten === 'rut') taiRut();
+        if (ten === 'lich-su') { lsCuoi = 0; $('ls-than').innerHTML = ''; taiLichSu(); }
+      }
+      $('tabs').addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-tab]');
+        if (b) moTab(b.dataset.tab);
+      });
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('[data-di]');
+        if (a) { e.preventDefault(); moTab(a.dataset.di); }
+        var c = e.target.closest('[data-chep]');
+        if (c) chep(($(c.dataset.chep) || {}).textContent || '', c);
+      });
+      function chep(chu, nut) {
+        navigator.clipboard.writeText(chu).then(function () {
+          var cu = nut.textContent; nut.textContent = 'đã chép';
+          setTimeout(function () { nut.textContent = cu; }, 1400);
+        }).catch(function () {});
+      }
+
+      $('nut-thoat').addEventListener('click', function () { V.thoat(); });
+
+      // ---------- Ho so + so du ----------
+      async function taiToi() {
+        var kq = await V.goi('/toi');
+        toi = kq.nguoi;
+        $('so-du').textContent = V.tien(toi.soDu);
+        $('da-nap').textContent = V.tien(toi.daNap);
+        $('da-rut').textContent = V.tien(toi.daRut);
+        $('hh-kiem').textContent = V.tien(toi.hhKiem);
+        $('ma-gt').textContent = toi.maNap;
+        $('link-gt').textContent = location.origin + '/tai-khoan/dang-ky/?gt=' + toi.maNap;
+        $('nh-ten').value = toi.nganHang;
+        $('nh-stk').value = toi.soTk;
+        $('nh-ctk').value = toi.chuTk;
+      }
+      $('gt-chep').addEventListener('click', function () { chep($('link-gt').textContent, $('gt-chep')); });
+
+      // ---------- Nap tien ----------
+      var hen = null;
+      async function taiNap() {
+        var t = Number($('nap-tien').value) || 0;
+        var kq = await V.goi('/nap?soTien=' + t);
+        $('nap-nh').textContent = kq.nganHang;
+        $('nap-stk').textContent = kq.soTk;
+        $('nap-ctk').textContent = kq.chuTk;
+        $('nap-nd').textContent = kq.noiDung;
+        $('nap-qr').src = kq.qr;
+      }
+      $('nap-tien').addEventListener('input', function () {
+        clearTimeout(hen);
+        hen = setTimeout(function () { taiNap().catch(function () {}); }, 500);
+      });
+
+      // ---------- Mua key ----------
+      function veGoi() {
+        var pm = bangGia.phanMem.find(function (x) { return x.ma === $('mua-pm').value; });
+        pmDangChon = pm; goiDangChon = null;
+        $('o-ma-may').querySelector('small').innerHTML = pm.tuDong
+          ? 'Mở phần mềm, vào mục <b>Bản quyền</b> rồi chép mã máy 6 ký tự.'
+          : 'Phần mềm này cấp key tay. Có mã máy thì điền vào để chủ shop cấp nhanh hơn.';
+        $('mua-goi').innerHTML = pm.goi.map(function (g) {
+          return '<button type="button" data-goi="' + g.ma + '"><b>' + g.ten + '</b><span>' +
+            V.tien(g.gia) + '</span></button>';
+        }).join('');
+      }
+      $('mua-goi').addEventListener('click', function (e) {
+        var b = e.target.closest('button[data-goi]');
+        if (!b) return;
+        goiDangChon = b.dataset.goi;
+        $('mua-goi').querySelectorAll('button').forEach(function (x) {
+          x.classList.toggle('on', x.dataset.goi === goiDangChon);
+        });
+      });
+      async function taiBangGia() {
+        bangGia = await V.goi('/bang-gia');
+        $('mua-pm').innerHTML = bangGia.phanMem.map(function (m) {
+          return '<option value="' + m.ma + '">' + m.ten + (m.tuDong ? '' : ' (cấp tay)') + '</option>';
+        }).join('');
+        veGoi();
+      }
+      $('mua-pm').addEventListener('change', veGoi);
+
+      $('mua-nut').addEventListener('click', async function () {
+        V.baoLoi('mua-loi', ''); $('mua-duoc').hidden = true;
+        if (!goiDangChon) return V.baoLoi('mua-loi', new Error('Chọn gói trước đã.'));
+        var may = $('mua-may').value.trim().toUpperCase();
+        if (pmDangChon.tuDong && may.length !== 6) {
+          return V.baoLoi('mua-loi', new Error('Mã máy phải đúng 6 ký tự.'));
+        }
+        var g = pmDangChon.goi.find(function (x) { return x.ma === goiDangChon; });
+        if (!confirm('Mua ' + pmDangChon.ten + ' — ' + g.ten + ' hết ' + V.tien(g.gia) + '?\nTiền trừ thẳng từ ví.')) return;
+
+        $('mua-nut').disabled = true; $('mua-nut').textContent = 'Đang xử lý…';
+        try {
+          var kq = await V.goi('/mua', { phanMem: pmDangChon.ma, goi: goiDangChon, maMay: may });
+          var html = '<b>' + kq.nhan + '</b>';
+          if (kq.key) html += '<div class="the-key dat-tren">' + kq.key + '</div>';
+          $('mua-duoc').innerHTML = html;
+          $('mua-duoc').hidden = false;
+          await taiToi();
+        } catch (err) {
+          V.baoLoi('mua-loi', err);
+        }
+        $('mua-nut').disabled = false; $('mua-nut').textContent = 'Mua ngay';
+      });
+
+      // ---------- Don da mua ----------
+      var TEN_TT = {
+        xong: 'Xong', cho_tay: 'Chờ cấp key', dang_xu_ly: 'Đang xử lý', huy: 'Đã huỷ',
+        cho: 'Chờ xử lý', da_tra: 'Đã trả', tu_choi: 'Từ chối',
+      };
+      function nhanTT(tt) {
+        return '<span class="nhan-tt tt-' + tt + '">' + (TEN_TT[tt] || tt) + '</span>';
+      }
+      async function taiDon() {
+        var kq = await V.goi('/don');
+        $('don-trong').hidden = kq.don.length > 0;
+        $('don-than').innerHTML = kq.don.map(function (d) {
+          return '<tr><td>' + V.ngay(d.luc) + '</td><td>' + d.ten_pm + '</td><td>' + d.so_ngay +
+            ' ngày</td><td>' + (d.ma_may || '—') + '</td><td>' + (d.key || '—') + '</td><td class="phai">' +
+            V.tien(d.gia) + '</td><td>' + nhanTT(d.trang_thai) + '</td></tr>';
+        }).join('');
+      }
+
+      // ---------- Rut tien ----------
+      async function taiRut() {
+        var kq = await V.goi('/rut');
+        var coNH = !!(toi && toi.soTk);
+        $('rut-chua-nh').hidden = coNH;
+        $('rut-form').hidden = !coNH;
+        if (coNH) {
+          $('rut-nh').textContent = toi.nganHang + ' — ' + toi.soTk + ' — ' + toi.chuTk;
+          $('rut-tien').min = kq.toiThieu;
+          $('rut-tien').max = toi.soDu;
+          $('rut-note').textContent = 'Rút ít nhất ' + V.tien(kq.toiThieu) +
+            (kq.phi ? ', phí ' + V.tien(kq.phi) + ' mỗi lần' : ', không mất phí') +
+            '. Số dư hiện có ' + V.tien(toi.soDu) + '.';
+        }
+        $('rut-trong').hidden = kq.yeuCau.length > 0;
+        $('rut-than').innerHTML = kq.yeuCau.map(function (y) {
+          return '<tr><td>' + V.ngay(y.luc) + '</td><td class="phai">' + V.tien(y.so_tien) + '</td><td>' +
+            y.ngan_hang + ' ' + y.so_tk + '</td><td>' + nhanTT(y.trang_thai) + '</td><td>' +
+            (y.ghi_chu || '') + '</td></tr>';
+        }).join('');
+      }
+      $('rut-nut').addEventListener('click', async function () {
+        V.baoLoi('rut-loi', ''); $('rut-duoc').hidden = true;
+        var t = Number($('rut-tien').value) || 0;
+        if (!confirm('Gửi yêu cầu rút ' + V.tien(t) + ' về ' + toi.nganHang + ' ' + toi.soTk + '?')) return;
+        $('rut-nut').disabled = true;
+        try {
+          var kq = await V.goi('/rut', { soTien: t });
+          $('rut-duoc').textContent = 'Đã gửi yêu cầu ' + kq.id + '. Bạn sẽ nhận ' + V.tien(kq.thucNhan) + '.';
+          $('rut-duoc').hidden = false;
+          $('rut-tien').value = '';
+          await taiToi(); await taiRut();
+        } catch (err) { V.baoLoi('rut-loi', err); }
+        $('rut-nut').disabled = false;
+      });
+
+      // ---------- Lich su ----------
+      var TEN_LOAI = {
+        nap: 'Nạp tiền', mua: 'Mua key', rut: 'Rút tiền', hoan: 'Hoàn tiền',
+        hoahong: 'Hoa hồng', dieuchinh: 'Chủ shop điều chỉnh',
+      };
+      async function taiLichSu() {
+        var kq = await V.goi('/so-cai' + (lsCuoi ? '?truoc=' + lsCuoi : ''));
+        if (!lsCuoi) $('ls-trong').hidden = kq.dong.length > 0;
+        $('ls-than').insertAdjacentHTML('beforeend', kq.dong.map(function (d) {
+          var am = d.so_tien < 0;
+          return '<tr><td>' + V.ngay(d.luc) + '</td><td>' + (TEN_LOAI[d.loai] || d.loai) +
+            (d.ghi_chu ? '<br><small>' + d.ghi_chu + '</small>' : '') +
+            '</td><td class="phai ' + (am ? 'tru' : 'cong') + '">' + (am ? '' : '+') + V.tien(d.so_tien) +
+            '</td><td class="phai">' + V.tien(d.so_du_sau) + '</td></tr>';
+        }).join(''));
+        if (kq.dong.length) lsCuoi = kq.dong[kq.dong.length - 1].id;
+        $('ls-them').hidden = kq.dong.length < 30;
+      }
+      $('ls-them').addEventListener('click', function () { taiLichSu(); });
+
+      // ---------- Ngan hang / mat khau ----------
+      $('nh-nut').addEventListener('click', async function () {
+        V.baoLoi('nh-loi', ''); $('nh-duoc').hidden = true;
+        try {
+          await V.goi('/ngan-hang', {
+            nganHang: $('nh-ten').value, soTk: $('nh-stk').value, chuTk: $('nh-ctk').value,
+          });
+          $('nh-duoc').textContent = 'Đã lưu tài khoản ngân hàng.';
+          $('nh-duoc').hidden = false;
+          await taiToi();
+        } catch (err) { V.baoLoi('nh-loi', err); }
+      });
+      $('mk-nut').addEventListener('click', async function () {
+        V.baoLoi('mk-loi', ''); $('mk-duoc').hidden = true;
+        try {
+          var kq = await V.goi('/doi-mat-khau', { cu: $('mk-cu').value, moi: $('mk-moi').value });
+          V.datToken(kq.token);
+          $('mk-duoc').textContent = 'Đã đổi mật khẩu. Các máy khác đã bị đăng xuất.';
+          $('mk-duoc').hidden = false;
+          $('mk-cu').value = ''; $('mk-moi').value = '';
+        } catch (err) { V.baoLoi('mk-loi', err); }
+      });
+
+      // ---------- Chay ----------
+      (async function () {
+        try {
+          await taiToi();
+          await taiNap();
+          await taiBangGia();
+        } catch (err) {
+          alert(err.message || err);
+        }
+      })();
+    })();
+  </script>
+</Layout>

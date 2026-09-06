@@ -1,0 +1,50 @@
+---
+// Cau noi giua trang tinh (GitHub Pages) va may chu vi (Cloudflare Worker).
+// Token phien de trong localStorage, moi yeu cau gui kem Authorization: Bearer.
+import { CAUHINH } from '../config';
+---
+<script is:inline define:vars={{ GOC: CAUHINH.mayChuVi }}>
+  window.VI = {
+    goc: GOC,
+    token: () => localStorage.getItem('vi-token') || '',
+    datToken: (t) => localStorage.setItem('vi-token', t),
+    thoat: () => { localStorage.removeItem('vi-token'); location.href = '/tai-khoan/dang-nhap/'; },
+
+    // goi('/toi') hoac goi('/mua', {phanMem:..}) - co than la POST
+    async goi(duong, than, cach) {
+      const dau = { 'content-type': 'application/json' };
+      const t = window.VI.token();
+      if (t) dau.authorization = 'Bearer ' + t;
+      let r;
+      try {
+        r = await fetch(window.VI.goc + duong, {
+          method: cach || (than ? 'POST' : 'GET'),
+          headers: dau,
+          body: than ? JSON.stringify(than) : undefined,
+        });
+      } catch (e) {
+        throw new Error('Không nối được máy chủ. Kiểm tra lại mạng rồi thử lại.');
+      }
+      const o = await r.json().catch(() => ({}));
+      if (r.status === 401 && t && duong !== '/dn') { window.VI.thoat(); throw new Error('Phiên đã hết hạn'); }
+      if (!r.ok) throw new Error(o.loi || ('Máy chủ trả mã ' + r.status));
+      return o;
+    },
+
+    tien: (n) => (Number(n) || 0).toLocaleString('vi-VN') + 'đ',
+    ngay: (ms) => new Date(Number(ms)).toLocaleString('vi-VN', {
+      day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit',
+    }),
+    // Chan trang khi chua dang nhap
+    canDangNhap() {
+      if (!window.VI.token()) { location.href = '/tai-khoan/dang-nhap/?ve=' + encodeURIComponent(location.pathname); return false; }
+      return true;
+    },
+    baoLoi(o, e) {
+      const el = typeof o === 'string' ? document.getElementById(o) : o;
+      if (!el) return;
+      el.textContent = e && e.message ? e.message : String(e || '');
+      el.hidden = !el.textContent;
+    },
+  };
+</script>
