@@ -938,6 +938,40 @@ export default {
         });
       }
 
+      // Xoa han mot tai khoan.
+      // Chan hai truong hop de khong xoa nham mat tien cua khach:
+      //  - vi con tien: phai tra lai hoac tru ve 0 truoc
+      //  - con yeu cau rut dang cho: xu ly xong roi hay xoa
+      // Xoa la mat luon so cai va don key cua nguoi do, KHONG lay lai duoc.
+      if (req.method === 'POST' && p === '/admin/xoa-nguoi') {
+        const b = await than();
+        const id = Number(b.nguoi);
+        const nd = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE id=?').bind(id).first();
+        if (!nd) return J({ loi: 'Không tìm thấy tài khoản' }, 404);
+
+        if (Number(nd.so_du) !== 0) {
+          return J({
+            loi: 'Ví còn ' + Number(nd.so_du).toLocaleString('vi-VN') +
+              'đ. Trả lại tiền cho khách hoặc trừ về 0 rồi mới xoá được.',
+          }, 400);
+        }
+        const cho = await env.DB.prepare(
+          "SELECT COUNT(*) n FROM yeu_cau_rut WHERE nguoi=? AND trang_thai='cho'").bind(id).first();
+        if (Number(cho.n) > 0) {
+          return J({ loi: 'Còn yêu cầu rút đang chờ. Trả hoặc từ chối xong rồi mới xoá được.' }, 400);
+        }
+
+        await env.DB.batch([
+          env.DB.prepare('DELETE FROM so_cai WHERE nguoi=?').bind(id),
+          env.DB.prepare('DELETE FROM don_key WHERE nguoi=?').bind(id),
+          env.DB.prepare('DELETE FROM yeu_cau_rut WHERE nguoi=?').bind(id),
+          // Ai duoc nguoi nay gioi thieu thi go moi noi ra, khong xoa lay theo
+          env.DB.prepare('UPDATE nguoi_dung SET nguoi_gt=NULL WHERE nguoi_gt=?').bind(id),
+          env.DB.prepare('DELETE FROM nguoi_dung WHERE id=?').bind(id),
+        ]);
+        return J({ ok: true, tenDn: nd.ten_dn || nd.email });
+      }
+
       // Khoa / mo khoa tai khoan
       if (req.method === 'POST' && p === '/admin/khoa') {
         const b = await than();

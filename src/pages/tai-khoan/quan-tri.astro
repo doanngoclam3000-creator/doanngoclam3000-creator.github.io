@@ -166,7 +166,8 @@ import '../../styles/tai-khoan.css';
             '</td><td><button class="nut nut-vien" data-mo-tien="' + n.id + '">Cộng/trừ</button> ' +
             '<button class="nut nut-vien" data-datlai="' + n.id + '">Link đặt lại MK</button> ' +
             '<button class="nut nut-vien" data-khoa="' + n.id + '" data-dang="' + (n.khoa ? 1 : 0) + '">' +
-            (n.khoa ? 'Mở khoá' : 'Khoá') + '</button></td></tr>' +
+            (n.khoa ? 'Mở khoá' : 'Khoá') + '</button> ' +
+            '<button class="nut nut-vien nguy" data-xoa="' + n.id + '">Xoá</button></td></tr>' +
             '<tr data-o-tien="' + n.id + '" hidden><td colspan="6">' +
             '<input class="o-nho" type="number" step="1000" data-tien="' + n.id + '" placeholder="Số tiền, âm là trừ" /> ' +
             '<input class="o-nho o-rong" data-ghichu="' + n.id + '" placeholder="Ghi chú (khách đọc được)" /> ' +
@@ -241,6 +242,18 @@ import '../../styles/tai-khoan.css';
                 '<div class="nho">Gửi đường dẫn này cho khách, dùng được một lần trong 30 phút:</div>' +
                 '<div class="the-key" style="font-size:.8rem">' + kq.duongDan + '</div>';
             }
+          } else if (d.xoa) {
+            // Bam hai lan cho chac. May chu con chan neu vi con tien hoac
+            // dang co yeu cau rut cho xu ly.
+            if (d.sanSang !== '1') {
+              d.sanSang = '1';
+              b.textContent = 'Xoá thật? Bấm lần nữa';
+              setTimeout(function () { d.sanSang = '0'; b.textContent = 'Xoá'; }, 6000);
+              return;
+            }
+            bao('');
+            await qt('/admin/xoa-nguoi', { nguoi: Number(d.xoa) });
+            taiKhach().catch(bao); taiTongQuan().catch(bao);
           } else if (d.khoa) {
             bao('');
             await qt('/admin/khoa', { nguoi: Number(d.khoa), khoa: d.dang !== '1' });
