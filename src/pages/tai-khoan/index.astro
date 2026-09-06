@@ -283,7 +283,16 @@ import '../../styles/tai-khoan.css';
           return V.baoLoi('mua-loi', new Error('Mã máy phải đúng 6 ký tự.'));
         }
         var g = pmDangChon.goi.find(function (x) { return x.ma === goiDangChon; });
-        if (!confirm('Mua ' + pmDangChon.ten + ' — ' + g.ten + ' hết ' + V.tien(g.gia) + '?\nTiền trừ thẳng từ ví.')) return;
+        // Bấm hai lần thay cho hộp thoại confirm: hộp thoại của trình duyệt
+        // chặn hết thao tác khác, trên điện thoại lại hay bị chặn luôn.
+        if (this.dataset.sanSang !== '1') {
+          this.dataset.sanSang = '1';
+          this.textContent = 'Trừ ' + V.tien(g.gia) + ' từ ví — bấm lần nữa';
+          var nutM = this;
+          setTimeout(function () { nutM.dataset.sanSang = '0'; nutM.textContent = 'Mua ngay'; }, 6000);
+          return;
+        }
+        this.dataset.sanSang = '0';
 
         $('mua-nut').disabled = true; $('mua-nut').textContent = 'Đang xử lý…';
         try {
@@ -341,7 +350,15 @@ import '../../styles/tai-khoan.css';
       $('rut-nut').addEventListener('click', async function () {
         V.baoLoi('rut-loi', ''); $('rut-duoc').hidden = true;
         var t = Number($('rut-tien').value) || 0;
-        if (!confirm('Gửi yêu cầu rút ' + V.tien(t) + ' về ' + toi.nganHang + ' ' + toi.soTk + '?')) return;
+        if (this.dataset.sanSang !== '1') {
+          this.dataset.sanSang = '1';
+          this.textContent = 'Rút ' + V.tien(t) + ' về ' + toi.soTk + ' — bấm lần nữa';
+          var nutR = this;
+          setTimeout(function () { nutR.dataset.sanSang = '0'; nutR.textContent = 'Gửi yêu cầu rút'; }, 6000);
+          return;
+        }
+        this.dataset.sanSang = '0';
+        this.textContent = 'Gửi yêu cầu rút';
         $('rut-nut').disabled = true;
         try {
           var kq = await V.goi('/rut', { soTien: t });
@@ -403,7 +420,10 @@ import '../../styles/tai-khoan.css';
           await taiNap();
           await taiBangGia();
         } catch (err) {
-          alert(err.message || err);
+          var oLoi = document.createElement('div');
+          oLoi.className = 'loi';
+          oLoi.textContent = err.message || err;
+          document.querySelector('.o-sodu').after(oLoi);
         }
       })();
     })();

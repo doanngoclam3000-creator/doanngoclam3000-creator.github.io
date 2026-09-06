@@ -115,3 +115,4 @@ html[data-theme='dark'] .tt-huy, html[data-theme='dark'] .tt-tu_choi { backgroun
   width: 190px; padding: .35rem .5rem; font: inherit; font-size: .82rem; color: var(--chu);
   background: var(--nen); border: 1px solid var(--vien); border-radius: 8px;
 }
+.o-rong { width: 320px; max-width: 100%; }

@@ -22,6 +22,8 @@ import '../../styles/tai-khoan.css';
       </div>
 
       <div id="o-chinh" hidden>
+        <div class="loi" id="qt-bao" hidden></div>
+
         <div class="hop">
           <h2>Tổng quan</h2>
           <div class="luoi-so" id="tong-quan"></div>
@@ -43,7 +45,7 @@ import '../../styles/tai-khoan.css';
         <div class="hop">
           <h2>Đơn chờ cấp key tay</h2>
           <div class="cuon"><table class="bang">
-            <thead><tr><th>Ngày</th><th>Khách</th><th>Phần mềm</th><th>Gói</th><th class="phai">Giá</th><th>Key</th></tr></thead>
+            <thead><tr><th>Ngày</th><th>Khách</th><th>Phần mềm</th><th>Gói</th><th>Mã máy</th><th class="phai">Giá</th><th>Key</th></tr></thead>
             <tbody id="don-than"></tbody>
           </table></div>
           <div class="trong" id="don-trong" hidden>Không có đơn nào đang chờ.</div>
@@ -51,8 +53,6 @@ import '../../styles/tai-khoan.css';
 
         <div class="hop">
           <h2>Khách hàng</h2>
-          <div class="loi" id="kh-loi" hidden></div>
-          <div class="duoc" id="kh-duoc" hidden></div>
           <label class="o o-vua">
             <span>Tìm theo email, tên hoặc mã nạp</span>
             <input type="search" id="kh-tim" placeholder="Bỏ trống để xem 100 người mới nhất" />
@@ -68,16 +68,15 @@ import '../../styles/tai-khoan.css';
     </div>
   </div>
 
-
   <script is:inline>
     (function () {
       var V = window.VI;
       var $ = function (id) { return document.getElementById(id); };
       var ma = '';
 
-      async function qt(duong, than, cach) {
+      async function qt(duong, than) {
         var r = await fetch(V.goc + duong, {
-          method: cach || (than ? 'POST' : 'GET'),
+          method: than ? 'POST' : 'GET',
           headers: { 'content-type': 'application/json', authorization: 'Apikey ' + ma },
           body: than ? JSON.stringify(than) : undefined,
         });
@@ -85,6 +84,10 @@ import '../../styles/tai-khoan.css';
         if (!r.ok) throw new Error(o.loi || ('Máy chủ trả mã ' + r.status));
         return o;
       }
+
+      // Bao loi ngay tren trang, khong dung alert/confirm/prompt cua trinh duyet:
+      // hop thoai cua trinh duyet chan het thao tac khac cho toi khi bam OK.
+      function bao(e) { V.baoLoi('qt-bao', e); if (e) window.scrollTo({ top: 0, behavior: 'smooth' }); }
 
       $('qt-vao').addEventListener('click', vao);
       $('qt-ma').addEventListener('keydown', function (e) { if (e.key === 'Enter') vao(); });
@@ -101,7 +104,10 @@ import '../../styles/tai-khoan.css';
         } catch (err) { V.baoLoi('qt-loi', err); }
       }
 
-      function taiHet() { taiTongQuan(); taiRut(); taiDon(); taiKhach(); }
+      function taiHet() {
+        taiTongQuan().catch(bao); taiRut().catch(bao);
+        taiDon().catch(bao); taiKhach().catch(bao);
+      }
 
       async function taiTongQuan() {
         var k = await qt('/admin/tong-quan');
@@ -119,7 +125,11 @@ import '../../styles/tai-khoan.css';
           return '<tr><td>' + V.ngay(y.luc) + '</td><td>' + y.email + '</td><td class="phai"><b>' +
             V.tien(y.thuc_nhan) + '</b></td><td>' + y.ngan_hang + '<br>' + y.so_tk + '<br>' + y.chu_tk +
             '</td><td><button class="nut nut-chinh" data-tra="' + y.id + '">Đã trả</button> ' +
-            '<button class="nut nut-vien" data-tuchoi="' + y.id + '">Từ chối</button></td></tr>';
+            '<button class="nut nut-vien" data-mo-tuchoi="' + y.id + '">Từ chối</button></td></tr>' +
+            '<tr data-o-tuchoi="' + y.id + '" hidden><td colspan="5">' +
+            '<input class="o-nho o-rong" data-lydo="' + y.id + '" placeholder="Lý do từ chối (khách đọc được)" /> ' +
+            '<button class="nut nut-chinh" data-tuchoi="' + y.id + '">Xác nhận từ chối và hoàn tiền</button> ' +
+            '<button class="nut nut-vien" data-dong-tuchoi="' + y.id + '">Thôi</button></td></tr>';
         }).join('');
       }
 
@@ -128,8 +138,9 @@ import '../../styles/tai-khoan.css';
         $('don-trong').hidden = k.don.length > 0;
         $('don-than').innerHTML = k.don.map(function (d) {
           return '<tr><td>' + V.ngay(d.luc) + '</td><td>' + d.email + '</td><td>' + d.ten_pm +
-            '</td><td>' + d.so_ngay + ' ngày</td><td class="phai">' + V.tien(d.gia) +
-            '</td><td><input class="o-nho" data-key="' + d.id + '" placeholder="Dán key rồi Enter" /></td></tr>';
+            '</td><td>' + d.so_ngay + ' ngày</td><td>' + (d.ma_may || '—') + '</td><td class="phai">' +
+            V.tien(d.gia) + '</td><td><input class="o-nho" data-key="' + d.id +
+            '" placeholder="Dán key rồi Enter" /></td></tr>';
         }).join('');
       }
 
@@ -139,46 +150,77 @@ import '../../styles/tai-khoan.css';
           return '<tr><td>' + n.email + (n.khoa ? ' 🔒' : '') + '</td><td>' + (n.ten || '') +
             '</td><td>' + n.ma_nap + '</td><td class="phai"><b>' + V.tien(n.so_du) +
             '</b></td><td class="phai">' + V.tien(n.da_nap) +
-            '</td><td><button class="nut nut-vien" data-tien="' + n.id + '">Cộng/trừ</button> ' +
+            '</td><td><button class="nut nut-vien" data-mo-tien="' + n.id + '">Cộng/trừ</button> ' +
             '<button class="nut nut-vien" data-khoa="' + n.id + '" data-dang="' + (n.khoa ? 1 : 0) + '">' +
-            (n.khoa ? 'Mở khoá' : 'Khoá') + '</button></td></tr>';
+            (n.khoa ? 'Mở khoá' : 'Khoá') + '</button></td></tr>' +
+            '<tr data-o-tien="' + n.id + '" hidden><td colspan="6">' +
+            '<input class="o-nho" type="number" step="1000" data-tien="' + n.id + '" placeholder="Số tiền, âm là trừ" /> ' +
+            '<input class="o-nho o-rong" data-ghichu="' + n.id + '" placeholder="Ghi chú (khách đọc được)" /> ' +
+            '<button class="nut nut-chinh" data-luu-tien="' + n.id + '">Lưu</button> ' +
+            '<button class="nut nut-vien" data-dong-tien="' + n.id + '">Thôi</button></td></tr>';
         }).join('');
       }
-      $('kh-nut').addEventListener('click', function () { taiKhach(); });
+      $('kh-nut').addEventListener('click', function () { taiKhach().catch(bao); });
+      $('kh-tim').addEventListener('keydown', function (e) { if (e.key === 'Enter') taiKhach().catch(bao); });
+
+      function moDong(ten, id, hien) {
+        var tr = document.querySelector('[data-o-' + ten + '="' + id + '"]');
+        if (tr) tr.hidden = !hien;
+      }
+      var oCua = function (ten, id) {
+        return (document.querySelector('[data-' + ten + '="' + id + '"]') || {}).value || '';
+      };
 
       document.addEventListener('click', async function (e) {
         var b = e.target.closest('button');
         if (!b) return;
+        var d = b.dataset;
         try {
-          if (b.dataset.tra) {
-            if (!confirm('Xác nhận ĐÃ chuyển khoản xong cho khách này?')) return;
-            await qt('/admin/rut', { id: b.dataset.tra, viec: 'tra' });
+          if (d.moTuchoi) { moDong('tuchoi', d.moTuchoi, true); return; }
+          if (d.dongTuchoi) { moDong('tuchoi', d.dongTuchoi, false); return; }
+          if (d.moTien) { moDong('tien', d.moTien, true); return; }
+          if (d.dongTien) { moDong('tien', d.dongTien, false); return; }
+
+          if (d.tra) {
+            // Bam hai lan thay cho hop thoai xac nhan
+            if (d.sanSang !== '1') {
+              d.sanSang = '1';
+              b.textContent = 'Đã chuyển khoản rồi? Bấm lần nữa';
+              setTimeout(function () { d.sanSang = '0'; b.textContent = 'Đã trả'; }, 6000);
+              return;
+            }
+            bao('');
+            await qt('/admin/rut', { id: d.tra, viec: 'tra' });
             taiHet();
-          } else if (b.dataset.tuchoi) {
-            var ly = prompt('Lý do từ chối (khách sẽ đọc được):', '');
-            if (ly === null) return;
-            await qt('/admin/rut', { id: b.dataset.tuchoi, viec: 'tuChoi', ghiChu: ly });
+          } else if (d.tuchoi) {
+            bao('');
+            await qt('/admin/rut', { id: d.tuchoi, viec: 'tuChoi', ghiChu: oCua('lydo', d.tuchoi) });
             taiHet();
-          } else if (b.dataset.tien) {
-            var s = prompt('Cộng bao nhiêu vào ví? (số âm là trừ)', '0');
-            if (s === null) return;
-            var gc = prompt('Ghi chú (khách đọc được):', 'Chủ shop điều chỉnh');
-            await qt('/admin/tien', { nguoi: Number(b.dataset.tien), soTien: Number(s), ghiChu: gc });
-            taiKhach(); taiTongQuan();
-          } else if (b.dataset.khoa) {
-            await qt('/admin/khoa', { nguoi: Number(b.dataset.khoa), khoa: b.dataset.dang !== '1' });
-            taiKhach();
+          } else if (d.luuTien) {
+            bao('');
+            var so = Number(oCua('tien', d.luuTien));
+            if (!so) return bao(new Error('Nhập số tiền đã — số âm là trừ.'));
+            await qt('/admin/tien', {
+              nguoi: Number(d.luuTien), soTien: so,
+              ghiChu: oCua('ghichu', d.luuTien) || 'Chủ shop điều chỉnh',
+            });
+            taiKhach().catch(bao); taiTongQuan().catch(bao);
+          } else if (d.khoa) {
+            bao('');
+            await qt('/admin/khoa', { nguoi: Number(d.khoa), khoa: d.dang !== '1' });
+            taiKhach().catch(bao);
           }
-        } catch (err) { alert(err.message || err); }
+        } catch (err) { bao(err); }
       });
 
       document.addEventListener('keydown', async function (e) {
         var i = e.target.closest('input[data-key]');
         if (!i || e.key !== 'Enter') return;
         try {
+          bao('');
           await qt('/admin/don', { id: i.dataset.key, key: i.value.trim() });
-          taiDon(); taiTongQuan();
-        } catch (err) { alert(err.message || err); }
+          taiDon().catch(bao); taiTongQuan().catch(bao);
+        } catch (err) { bao(err); }
       });
 
       var luu = localStorage.getItem('vi-qt');
