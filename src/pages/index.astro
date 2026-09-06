@@ -148,6 +148,23 @@ const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => 
   }
   @media (prefers-reduced-motion: reduce) { .icon-bay img { animation: none; } }
   @media (max-width: 900px) { .icon-bay img { opacity: .28 !important; } }
+  /* Dung moc 900px chu khong phai 640px: dien thoai man to va luc xoay ngang
+     van rong hon 640px, de moc cu thi may do van hien nguyen doan chu dai. */
+  @media (max-width: 900px) {
+    /* Banner tren dien thoai chi giu nhan, nut bam va dong nhac tai */
+    .hero .mo-ta { display: none; }
+    .nhac-tai .an-hep { display: none; }
+    .tieu-de-phan .chu-nhat { display: none; }
+    /* Tieu de lon: giau khoi mat nhung KHONG xoa han khoi trang, vi Google
+       doc ban dien thoai de xep hang - dat display:none la mat luon the h1. */
+    .hero h1 {
+      position: absolute; width: 1px; height: 1px;
+      margin: -1px; padding: 0; overflow: hidden;
+      clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+    }
+    .hero .nhan { margin-bottom: 1.4rem; display: inline-block; }
+  }
+
   @media (max-width: 640px) { .icon-bay img:nth-child(n+3) { display: none; } }
   .phan { padding: 64px 20px 0; }
   .tieu-de-phan { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 26px; flex-wrap: wrap; }
@@ -166,12 +183,6 @@ const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => 
   @media (max-width: 640px) {
     .hero-trong { padding: 48px 16px 56px; }
     .mo-ta { font-size: 1rem; margin: 1rem auto 1.6rem; }
-    /* Man hinh dien thoai chu it moi de doc: bo doan gioi thieu dai o banner,
-       bo cau mo ta duoi moi tieu de muc, giu lai chu tieu de va nut bam. */
-    .hero .mo-ta { display: none; }
-    .hero h1 { margin-top: .9rem; }
-    .nhac-tai .an-hep { display: none; }
-    .tieu-de-phan .chu-nhat { display: none; }
     .hero-nut .nut { flex: 1 1 100%; justify-content: center; }
     .phan { padding: 44px 16px 0; }
     .tieu-de-phan { margin-bottom: 18px; align-items: flex-start; }
