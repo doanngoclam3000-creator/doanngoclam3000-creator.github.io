@@ -386,9 +386,10 @@ import '../../styles/tai-khoan.css';
           o.innerHTML = 'Xong! Đây là link của bạn:' +
             '<div class="the-key dat-tren">' + kq.link + '</div>' +
             (kq.sanSang ? '' :
-              '<div class="nho dat-tren">Link bấm được và đã đếm lượt, nhưng <b>chưa ra tiền</b> ' +
-              'vì chủ shop chưa nối xong tài khoản affiliate với sàn. Nối xong là các link cũ ' +
-              'tự chạy, không phải tạo lại.</div>');
+              '<div class="nho dat-tren"><b>Không phải lỗi:</b> sàn đang duyệt tài khoản ' +
+              'affiliate của phanmemtq.com nên link chưa sinh hoa hồng. Bạn cứ đăng link ngay ' +
+              'bây giờ — lượt bấm vẫn được ghi, duyệt xong là mọi link cũ tự động ra tiền, ' +
+              'không phải tạo lại link nào.</div>');
           o.hidden = false;
           $('lk-url').value = ''; $('lk-ten').value = '';
           await taiLink();
