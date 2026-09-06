@@ -17,7 +17,7 @@ import '../../styles/tai-khoan.css';
       </div>
 
       <div class="o-sodu">
-        <div class="nhan">Số dư khả dụng</div>
+        <div class="nhan-so">Số dư khả dụng</div>
         <div class="tien" id="so-du">…</div>
         <div class="cot">
           <div>Đã nạp<b id="da-nap">…</b></div>
@@ -37,7 +37,7 @@ import '../../styles/tai-khoan.css';
       </div>
 
       <section data-o="nap">
-        <div class="the">
+        <div class="hop">
           <h2>Nạp tiền vào ví</h2>
           <p class="loi-mo">
             Chuyển khoản đúng <b>nội dung</b> bên dưới. Tiền vào ví tự động sau khoảng 10 giây,
@@ -62,7 +62,7 @@ import '../../styles/tai-khoan.css';
       </section>
 
       <section data-o="mua" hidden>
-        <div class="the">
+        <div class="hop">
           <h2>Mua key bằng tiền trong ví</h2>
           <div class="loi" id="mua-loi" hidden></div>
           <div class="duoc" id="mua-duoc" hidden></div>
@@ -88,7 +88,7 @@ import '../../styles/tai-khoan.css';
       </section>
 
       <section data-o="don" hidden>
-        <div class="the">
+        <div class="hop">
           <h2>Key đã mua</h2>
           <div class="cuon"><table class="bang">
             <thead><tr><th>Ngày</th><th>Phần mềm</th><th>Gói</th><th>Mã máy</th><th>Key</th><th class="phai">Giá</th><th>Trạng thái</th></tr></thead>
@@ -99,7 +99,7 @@ import '../../styles/tai-khoan.css';
       </section>
 
       <section data-o="rut" hidden>
-        <div class="the">
+        <div class="hop">
           <h2>Rút tiền về ngân hàng</h2>
           <div class="loi" id="rut-loi" hidden></div>
           <div class="duoc" id="rut-duoc" hidden></div>
@@ -130,7 +130,7 @@ import '../../styles/tai-khoan.css';
       </section>
 
       <section data-o="lich-su" hidden>
-        <div class="the">
+        <div class="hop">
           <h2>Lịch sử biến động số dư</h2>
           <div class="cuon"><table class="bang">
             <thead><tr><th>Thời gian</th><th>Nội dung</th><th class="phai">Số tiền</th><th class="phai">Số dư sau</th></tr></thead>
@@ -142,7 +142,7 @@ import '../../styles/tai-khoan.css';
       </section>
 
       <section data-o="ho-so" hidden>
-        <div class="the">
+        <div class="hop">
           <h2>Tài khoản ngân hàng để rút tiền</h2>
           <div class="loi" id="nh-loi" hidden></div>
           <div class="duoc" id="nh-duoc" hidden></div>
@@ -153,7 +153,7 @@ import '../../styles/tai-khoan.css';
           <button class="nut nut-chinh" id="nh-nut" type="button">Lưu</button>
         </div>
 
-        <div class="the">
+        <div class="hop">
           <h2>Đổi mật khẩu</h2>
           <div class="loi" id="mk-loi" hidden></div>
           <div class="duoc" id="mk-duoc" hidden></div>
@@ -162,7 +162,7 @@ import '../../styles/tai-khoan.css';
           <button class="nut nut-chinh" id="mk-nut" type="button">Đổi mật khẩu</button>
         </div>
 
-        <div class="the">
+        <div class="hop">
           <h2>Giới thiệu bạn bè</h2>
           <p class="loi-mo">
             Ai đăng ký qua đường dẫn này rồi mua key, bạn được cộng hoa hồng thẳng vào ví và rút ra được.
@@ -175,15 +175,6 @@ import '../../styles/tai-khoan.css';
     </div>
   </div>
 
-  <style>
-    .loi-mo { color: var(--chu-nhat); font-size: .9rem; margin: 0 0 1rem; }
-    .ghi-nho { color: var(--chu-nhat); font-size: .82rem; margin: .8rem 0 0; }
-    .o-hep { max-width: 280px; }
-    .o-vua { max-width: 360px; }
-    .dat-tren { margin-top: 1.4rem; }
-    .o-ma { text-transform: uppercase; letter-spacing: .12em; font-family: ui-monospace, Consolas, monospace; }
-    .o-hoa { text-transform: uppercase; }
-  </style>
 
   <script is:inline>
     (function () {

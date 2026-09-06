@@ -5,12 +5,12 @@
 .tk-tieu h1 { font-size: 1.7rem; margin: 0 0 .4rem; }
 .tk-tieu p { color: var(--chu-nhat); margin: 0; font-size: .95rem; }
 
-.the {
+.hop {
   background: var(--nen-the); border: 1px solid var(--vien);
   border-radius: var(--bo-goc); box-shadow: var(--bong); padding: 1.4rem;
 }
-.the + .the { margin-top: 1rem; }
-.the h2 { font-size: 1.05rem; margin: 0 0 1rem; }
+.hop + .hop { margin-top: 1rem; }
+.hop h2 { font-size: 1.05rem; margin: 0 0 1rem; }
 
 .o { display: block; margin-bottom: .9rem; }
 .o span { display: block; font-size: .85rem; font-weight: 600; margin-bottom: .35rem; color: var(--chu-nhat); }
@@ -44,7 +44,7 @@ html[data-theme='dark'] .duoc { background: #06261a; color: #86efac; border-colo
   background: linear-gradient(135deg, #7c3aed, #4c1d95); color: #fff;
   border-radius: var(--bo-goc); padding: 1.5rem; margin-bottom: 1.2rem;
 }
-.o-sodu .nhan { font-size: .85rem; opacity: .85; }
+.o-sodu .nhan-so { font-size: .85rem; opacity: .85; }
 .o-sodu .tien { font-size: 2.1rem; font-weight: 800; letter-spacing: -.02em; margin: .2rem 0 .8rem; }
 .o-sodu .cot { display: flex; gap: 1.6rem; flex-wrap: wrap; font-size: .85rem; opacity: .9; }
 .o-sodu b { display: block; font-size: 1rem; }
@@ -93,3 +93,25 @@ html[data-theme='dark'] .tt-huy, html[data-theme='dark'] .tt-tu_choi { backgroun
 .luoi-goi b { display: block; font-size: .95rem; }
 .luoi-goi span { display: block; font-size: .9rem; color: var(--chinh); font-weight: 700; margin-top: .25rem; }
 .trong { text-align: center; color: var(--chu-nhat); padding: 1.6rem 0; font-size: .9rem; }
+
+/* ---- Dung chung cho trang vi va trang quan tri ----
+   De o day chu khong de trong <style> cua tung trang: Astro gan dau pham vi
+   (data-astro-cid-...) cho the co san luc dung trang, con the do script chen
+   ra sau thi khong co dau do nen style trong trang khong an vao. */
+.loi-mo { color: var(--chu-nhat); font-size: .9rem; margin: 0 0 1rem; }
+.ghi-nho { color: var(--chu-nhat); font-size: .82rem; margin: .8rem 0 0; }
+.o-hep { max-width: 280px; }
+.o-vua { max-width: 360px; }
+.dat-tren { margin-top: 1.4rem; }
+.o-ma { text-transform: uppercase; letter-spacing: .12em; font-family: ui-monospace, Consolas, monospace; }
+.o-hoa { text-transform: uppercase; }
+
+.luoi-so { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .8rem; }
+.luoi-so div { background: var(--nen-phu); border: 1px solid var(--vien); border-radius: 12px; padding: .9rem; }
+.luoi-so span { display: block; font-size: .8rem; color: var(--chu-nhat); }
+.luoi-so b { font-size: 1.25rem; }
+.bang .nut { padding: .3rem .6rem; font-size: .8rem; }
+.o-nho {
+  width: 190px; padding: .35rem .5rem; font: inherit; font-size: .82rem; color: var(--chu);
+  background: var(--nen); border: 1px solid var(--vien); border-radius: 8px;
+}

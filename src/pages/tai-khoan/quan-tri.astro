@@ -11,7 +11,7 @@ import '../../styles/tai-khoan.css';
 
       <div class="tk-dau"><h1>Quản trị ví</h1></div>
 
-      <div class="the" id="o-khoa">
+      <div class="hop" id="o-khoa">
         <h2>Nhập mã quản trị</h2>
         <div class="loi" id="qt-loi" hidden></div>
         <label class="o o-vua">
@@ -22,12 +22,12 @@ import '../../styles/tai-khoan.css';
       </div>
 
       <div id="o-chinh" hidden>
-        <div class="the">
+        <div class="hop">
           <h2>Tổng quan</h2>
           <div class="luoi-so" id="tong-quan"></div>
         </div>
 
-        <div class="the">
+        <div class="hop">
           <h2>Yêu cầu rút tiền đang chờ</h2>
           <p class="loi-mo">
             Chuyển khoản tay cho khách trước, chuyển xong mới bấm <b>Đã trả</b>.
@@ -40,7 +40,7 @@ import '../../styles/tai-khoan.css';
           <div class="trong" id="rut-trong" hidden>Không có yêu cầu nào đang chờ.</div>
         </div>
 
-        <div class="the">
+        <div class="hop">
           <h2>Đơn chờ cấp key tay</h2>
           <div class="cuon"><table class="bang">
             <thead><tr><th>Ngày</th><th>Khách</th><th>Phần mềm</th><th>Gói</th><th class="phai">Giá</th><th>Key</th></tr></thead>
@@ -49,7 +49,7 @@ import '../../styles/tai-khoan.css';
           <div class="trong" id="don-trong" hidden>Không có đơn nào đang chờ.</div>
         </div>
 
-        <div class="the">
+        <div class="hop">
           <h2>Khách hàng</h2>
           <div class="loi" id="kh-loi" hidden></div>
           <div class="duoc" id="kh-duoc" hidden></div>
@@ -68,18 +68,6 @@ import '../../styles/tai-khoan.css';
     </div>
   </div>
 
-  <style>
-    .loi-mo { color: var(--chu-nhat); font-size: .9rem; margin: 0 0 1rem; }
-    .o-vua { max-width: 360px; }
-    .dat-tren { margin-top: 1.2rem; }
-    .luoi-so { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .8rem; }
-    .luoi-so div { background: var(--nen-phu); border: 1px solid var(--vien); border-radius: 12px; padding: .9rem; }
-    .luoi-so span { display: block; font-size: .8rem; color: var(--chu-nhat); }
-    .luoi-so b { font-size: 1.25rem; }
-    .bang .nut { padding: .3rem .6rem; font-size: .8rem; }
-    .o-nho { width: 190px; padding: .35rem .5rem; font: inherit; font-size: .82rem; color: var(--chu);
-      background: var(--nen); border: 1px solid var(--vien); border-radius: 8px; }
-  </style>
 
   <script is:inline>
     (function () {

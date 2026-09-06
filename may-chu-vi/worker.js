@@ -15,7 +15,8 @@
 const BO_KY_TU = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // bo I O 0 1 cho khoi doc nham
 const NGAY = 86400 * 1000;
 const HAN_TOKEN = 30 * NGAY;
-const VONG_BAM = 210000; // so vong PBKDF2
+const VONG_BAM = 100000; // so vong PBKDF2 - Cloudflare Workers CHAN qua 100.000,
+                         // de cao hon la ham nem loi 1101 (chay o may thi khong lo ra)
 
 // ---- Danh muc phan mem ban duoc bang vi ----
 // tienTo + secret: sinh key ngay tai day, giong het may chu ban quyen cua
