@@ -91,25 +91,9 @@ import '../../styles/tai-khoan.css';
         <div class="hop">
           <h2>Tạo link affiliate</h2>
           <p class="loi-mo">
-            Dán link sản phẩm <b>Shopee</b> hoặc <b>TikTok</b>, bấm Tạo link là ra một
-            đường dẫn ngắn của riêng bạn. Đăng link đó lên video; ai bấm vào mua hàng
-            thì đơn được ghi cho bạn.
+            Dán link <b>Shopee</b> hoặc <b>TikTok</b>, nhận link rút gọn của riêng bạn.
+            Đăng lên video; ai bấm vào mua hàng thì hoa hồng về ví bạn.
           </p>
-          <div class="bang-tien" id="lk-tien" hidden>
-            <div class="tien-dau">Bán được hàng thì bạn nhận bao nhiêu?</div>
-            <label class="o o-hep">
-              <span>Thử với đơn hàng trị giá</span>
-              <input type="number" id="lk-gia" min="0" step="10000" value="500000" />
-            </label>
-            <div class="tien-luoi" id="lk-tien-luoi"></div>
-            <p class="nho">
-              Đây là <b>số dự tính</b>, chưa phải tiền đã vào ví. Mức trên là mức
-              <b>tối đa</b> của sàn — hoa hồng thật tuỳ ngành hàng, đồ điện tử thường
-              thấp hơn đồ gia dụng. Tiền chỉ được cộng vào ví sau khi sàn đối soát
-              xong đơn (TikTok khoảng 30 ngày); đơn bị huỷ hoặc trả hàng thì không tính.
-            </p>
-          </div>
-
           <div class="loi" id="lk-loi" hidden></div>
           <div class="duoc" id="lk-duoc" hidden></div>
 
@@ -397,54 +381,46 @@ import '../../styles/tai-khoan.css';
         this.disabled = true; this.textContent = 'Đang tạo…';
         try {
           var kq = await V.goi('/tao-link', { url: u, ten: $('lk-ten').value.trim() });
-          var o = $('lk-duoc');
-          o.innerHTML = 'Xong! Đây là link của bạn:' +
-            '<div class="the-key dat-tren">' + kq.link + '</div>' +
-            (kq.tien && kq.tien.chay
-              ? '<div class="dat-tren">Bán được đơn <b>' + V.tien(giaThu()) + '</b> thì bạn nhận ' +
-                '<b class="tien-to">' + V.tien(giaThu() * kq.tien.tiLeBan / 100) + '</b> ' +
-                '<span class="nho">(' + kq.tien.tenNen + ' trả tới ' + kq.tien.tiLeSan +
-                '% giá trị đơn: bạn ' + kq.tien.tiLeBan + '%, phanmemtq ' + kq.tien.tiLeChu +
-                '%)</span></div>'
-              : '') +
-            (kq.sanSang ? '' :
-              '<div class="nho dat-tren"><b>Không phải lỗi:</b> sàn đang duyệt tài khoản ' +
-              'affiliate của phanmemtq.com nên link chưa sinh hoa hồng. Bạn cứ đăng link ngay ' +
-              'bây giờ — lượt bấm vẫn được ghi, duyệt xong là mọi link cũ tự động ra tiền, ' +
-              'không phải tạo lại link nào.</div>');
-          o.hidden = false;
+          $('lk-duoc').innerHTML = theKetQua(kq);
+          $('lk-duoc').hidden = false;
           $('lk-url').value = ''; $('lk-ten').value = '';
           await taiLink();
         } catch (err) { V.baoLoi('lk-loi', err); }
         this.disabled = false; this.textContent = 'Tạo link';
       });
 
-      var lkTien = [];
+      // The ket qua sau khi tao link. Co gia san pham thi hien tien that,
+      // chua lay duoc gia thi hien theo phan tram - khong bia so.
+      function theKetQua(kq) {
+        var t = kq.tien || {};
+        var sp = kq.sanPham || null;
+        var hh = sp && sp.gia
+          ? '<b>' + V.tien(Math.round(sp.gia * t.tiLeBan / 100)) + '</b>'
+          : '<b>tới ' + t.tiLeBan + '%</b> giá trị đơn';
 
-      function giaThu() {
-        var g = Number($('lk-gia').value);
-        return g > 0 ? g : 0;
+        return '<div class="lk-xong">✓ Link affiliate đã sẵn sàng</div>' +
+          '<div class="lk-o">' +
+            '<span class="ma-link">' + kq.link + '</span>' +
+            '<button class="nut nut-vien nho" data-chep-link="' + kq.link + '" type="button">Chép</button>' +
+            '<a class="nut nut-vien nho" href="' + kq.link + '" target="_blank" rel="noopener">Mở</a>' +
+          '</div>' +
+          (t.chay
+            ? '<div class="lk-sp">' +
+                (sp && sp.anh ? '<img src="' + sp.anh + '" alt="" loading="lazy" />' : '') +
+                '<div>' +
+                  '<div class="lk-hh">💰 Hoa hồng ước tính: ' + hh + '</div>' +
+                  (sp && sp.gia ? '<div class="nho">🏷️ Giá gốc: ' + V.tien(sp.gia) + '</div>' : '') +
+                  (sp && sp.ten ? '<div class="nho">' + sp.ten + '</div>' : '') +
+                '</div>' +
+              '</div>'
+            : '<div class="nho dat-tren"><b>Không phải lỗi:</b> ' + (t.tenNen || 'Sàn') +
+              ' đang duyệt tài khoản affiliate của phanmemtq.com nên link chưa sinh hoa hồng. ' +
+              'Cứ đăng link ngay bây giờ — lượt bấm vẫn được ghi, duyệt xong là mọi link cũ ' +
+              'tự động ra tiền, không phải tạo lại.</div>');
       }
-
-      function veBangTien() {
-        if (!lkTien.length) return;
-        $('lk-tien').hidden = false;
-        var gia = giaThu();
-        $('lk-tien-luoi').innerHTML = lkTien.map(function (h) {
-          return '<div class="tien-o' + (h.chay ? '' : ' cho') + '">' +
-            '<div class="tien-nen">' + h.tenNen + (h.chay ? '' : ' <span class="nho">(đang chờ sàn duyệt)</span>') + '</div>' +
-            '<div class="tien-to">' + V.tien(Math.round(gia * h.tiLeBan / 100)) + '</div>' +
-            '<div class="nho">Sàn trả tới ' + h.tiLeSan + '% giá trị đơn: ' +
-            '<b>bạn ' + h.tiLeBan + '%</b>, phanmemtq ' + h.tiLeChu + '%</div></div>';
-        }).join('');
-      }
-
-      $('lk-gia').addEventListener('input', veBangTien);
 
       async function taiLink() {
         var kq = await V.goi('/link-cua-toi');
-        lkTien = kq.tien || [];
-        veBangTien();
         var ds = kq.link || [];
         $('lk-dem').textContent = ds.length ? '(' + ds.length + ')' : '';
         $('lk-trong').hidden = ds.length > 0;

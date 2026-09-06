@@ -134,20 +134,18 @@ html[data-theme='dark'] .luu-y { background: #2a1e05; border-color: #b45309; col
   word-break: break-all;
 }
 
-/* Bang "ban duoc bao nhieu tien" o tab Tao link */
-.bang-tien {
-  background: var(--nen-phu); border: 1px solid var(--vien);
-  border-radius: var(--bo-goc); padding: 14px 16px; margin-bottom: 18px;
-}
-.tien-dau { font-weight: 600; margin-bottom: 4px; }
-.tien-luoi {
-  display: grid; gap: 10px; margin: 12px 0 6px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-}
-.tien-o {
+/* The ket qua sau khi tao link o tab Tao link */
+.lk-xong { font-weight: 600; margin-bottom: 10px; }
+.lk-o {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
   background: var(--nen-the); border: 1px solid var(--vien);
-  border-radius: 10px; padding: 10px 12px;
+  border-radius: 10px; padding: 8px 10px;
 }
-.tien-o.cho { opacity: .6; }
-.tien-nen { font-size: .84rem; color: var(--chu-nhat); margin-bottom: 2px; }
-.tien-to { font-size: 1.15rem; font-weight: 700; color: var(--chinh); }
+.lk-o .ma-link { flex: 1 1 240px; }
+.nut.nho { padding: 5px 12px; font-size: .82rem; }
+.lk-sp { display: flex; gap: 12px; align-items: flex-start; margin-top: 12px; }
+.lk-sp img {
+  width: 64px; height: 64px; object-fit: cover; flex: none;
+  border-radius: 8px; border: 1px solid var(--vien);
+}
+.lk-hh { font-weight: 600; margin-bottom: 2px; }

@@ -810,6 +810,11 @@ export default {
         link: duongLinkNgan(env, ma),
         sanSang: coAccessTrade(env, nen) || (nen === 'shopee' && !!env.SHOPEE_AFF_ID),
         tien: bangHoaHong(env).find((h) => h.nen === nen),
+        // Ten/anh/gia san pham. Ca Shopee lan TikTok deu tra ve trang rong cho
+        // may (da thu: khong co og:title, khong co gia), nen KHONG boi duoc gia
+        // tu link. Muon hien so tien that phai qua API AccessTrade - chua co
+        // access key nen tam de trong; trang vi tu chuyen sang hien theo %.
+        sanPham: null,
       });
     }
 
