@@ -4,7 +4,7 @@
 CREATE TABLE IF NOT EXISTS nguoi_dung (
   id         INTEGER PRIMARY KEY AUTOINCREMENT,
   email      TEXT    NOT NULL UNIQUE,
-  ten        TEXT,
+  ten_dn     TEXT,                     -- ten tai khoan, dang nhap duoc bang ten nay hoac email
   dien_thoai TEXT,
   mat_khau   TEXT    NOT NULL,          -- pbkdf2$vong$muoi$bam
   ma_nap     TEXT    NOT NULL UNIQUE,   -- 6 ky tu, noi dung chuyen khoan = NAP<ma_nap>
@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS nguoi_dung (
   phien_ver  INTEGER NOT NULL DEFAULT 1, -- doi mat khau thi tang len, token cu het hieu luc
   tao_luc    INTEGER NOT NULL
 );
+CREATE UNIQUE INDEX IF NOT EXISTS nguoi_dung_ten_dn ON nguoi_dung(lower(ten_dn));
 
 -- So cai: MOI dong tien deu co mot dong o day, khong bao gio sua/xoa.
 CREATE TABLE IF NOT EXISTS so_cai (

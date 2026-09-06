@@ -145,9 +145,8 @@ import '../../styles/tai-khoan.css';
           <div class="loi" id="hs-loi" hidden></div>
           <div class="duoc" id="hs-duoc" hidden></div>
           <label class="o o-vua"><span>Email</span><input type="text" id="hs-email" disabled /></label>
-          <label class="o o-vua"><span>Họ tên</span><input type="text" id="hs-ten" /></label>
+          <label class="o o-vua"><span>Tên tài khoản</span><input type="text" id="hs-ten" disabled /></label>
           <label class="o o-vua"><span>Số điện thoại</span><input type="tel" id="hs-dt" /></label>
-          <label class="o o-vua"><span>Địa chỉ</span><input type="text" id="hs-diachi" placeholder="Số nhà, đường, phường/xã, tỉnh/thành" /></label>
           <button class="nut nut-chinh" id="hs-nut" type="button">Lưu</button>
         </div>
 
@@ -238,17 +237,14 @@ import '../../styles/tai-khoan.css';
         $('nh-stk').value = toi.soTk;
         $('nh-ctk').value = toi.chuTk;
         $('hs-email').value = toi.email;
-        $('hs-ten').value = toi.ten;
+        $('hs-ten').value = toi.tenDn;
         $('hs-dt').value = toi.dienThoai;
-        $('hs-diachi').value = toi.diaChi || '';
       }
 
       $('hs-nut').addEventListener('click', async function () {
         V.baoLoi('hs-loi', ''); $('hs-duoc').hidden = true;
         try {
-          await V.goi('/ho-so', {
-            ten: $('hs-ten').value, dienThoai: $('hs-dt').value, diaChi: $('hs-diachi').value,
-          });
+          await V.goi('/ho-so', { dienThoai: $('hs-dt').value });
           $('hs-duoc').textContent = 'Đã lưu thông tin.';
           $('hs-duoc').hidden = false;
           await taiToi();

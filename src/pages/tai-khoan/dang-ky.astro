@@ -14,20 +14,9 @@ import '../../styles/tai-khoan.css';
         <div class="loi" id="loi" hidden></div>
         <form id="form">
           <label class="o">
-            <span>Email</span>
-            <input type="email" id="email" required autocomplete="email" placeholder="ban@gmail.com" />
-          </label>
-          <label class="o">
-            <span>Họ tên</span>
-            <input type="text" id="ten" required autocomplete="name" placeholder="Nguyễn Văn A" />
-          </label>
-          <label class="o">
-            <span>Số điện thoại</span>
-            <input type="tel" id="dienThoai" autocomplete="tel" placeholder="09xx xxx xxx" />
-          </label>
-          <label class="o">
-            <span>Địa chỉ</span>
-            <input type="text" id="diaChi" placeholder="Số nhà, đường, phường/xã, tỉnh/thành" />
+            <span>Tên tài khoản</span>
+            <input type="text" id="tenDn" required minlength="3" maxlength="30" autocomplete="username" placeholder="vidu: lam2026" />
+            <small id="nhac-ten">Dùng để đăng nhập. Chữ không dấu, số và dấu . _ - ; từ 3 đến 30 ký tự.</small>
           </label>
           <label class="o">
             <span>Mật khẩu</span>
@@ -38,6 +27,14 @@ import '../../styles/tai-khoan.css';
             <span>Nhập lại mật khẩu</span>
             <input type="password" id="matKhau2" required minlength="8" autocomplete="new-password" />
             <small id="khop-mk">Gõ lại đúng mật khẩu ở trên cho chắc.</small>
+          </label>
+          <label class="o">
+            <span>Email</span>
+            <input type="email" id="email" required autocomplete="email" placeholder="ban@gmail.com" />
+          </label>
+          <label class="o">
+            <span>Số điện thoại</span>
+            <input type="tel" id="dienThoai" autocomplete="tel" placeholder="09xx xxx xxx" />
           </label>
           <label class="o">
             <span>Mã giới thiệu (nếu có)</span>
@@ -58,26 +55,41 @@ import '../../styles/tai-khoan.css';
       var gt = new URLSearchParams(location.search).get('gt');
       if (gt) document.getElementById('gioiThieu').value = gt;
 
+      var oTen = document.getElementById('tenDn');
+      var nhacTen = document.getElementById('nhac-ten');
       var mk1 = document.getElementById('matKhau');
       var mk2 = document.getElementById('matKhau2');
-      var nhac = document.getElementById('khop-mk');
+      var nhacMk = document.getElementById('khop-mk');
 
-      // Bao ngay luc go, khong doi bam nut moi biet go lech
-      function soatKhop() {
-        if (mk2.value && mk1.value !== mk2.value) {
-          nhac.textContent = 'Hai ô mật khẩu chưa giống nhau.';
-          nhac.style.color = '#dc2626';
-        } else {
-          nhac.textContent = 'Gõ lại đúng mật khẩu ở trên cho chắc.';
-          nhac.style.color = '';
-        }
+      var TEN_CHUAN = 'Dùng để đăng nhập. Chữ không dấu, số và dấu . _ - ; từ 3 đến 30 ký tự.';
+      var MK_CHUAN = 'Gõ lại đúng mật khẩu ở trên cho chắc.';
+      var tenHopLe = function (t) { return /^[A-Za-z0-9._-]{3,30}$/.test(t); };
+
+      // Bao ngay luc go, khong doi bam nut moi biet sai
+      function nhac(o, chu, sai) {
+        o.textContent = chu;
+        o.style.color = sai ? '#dc2626' : '';
       }
+      function soatTen() {
+        if (oTen.value && !tenHopLe(oTen.value)) {
+          nhac(nhacTen, 'Tên tài khoản không được có dấu tiếng Việt hay dấu cách. Từ 3 đến 30 ký tự.', true);
+        } else nhac(nhacTen, TEN_CHUAN, false);
+      }
+      function soatKhop() {
+        if (mk2.value && mk1.value !== mk2.value) nhac(nhacMk, 'Hai ô mật khẩu chưa giống nhau.', true);
+        else nhac(nhacMk, MK_CHUAN, false);
+      }
+      oTen.addEventListener('input', soatTen);
       mk1.addEventListener('input', soatKhop);
       mk2.addEventListener('input', soatKhop);
 
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
         window.VI.baoLoi('loi', '');
+        if (!tenHopLe(oTen.value.trim())) {
+          oTen.focus();
+          return window.VI.baoLoi('loi', new Error('Tên tài khoản chỉ gồm chữ không dấu, số và dấu . _ - ; từ 3 đến 30 ký tự.'));
+        }
         if (mk1.value !== mk2.value) {
           mk2.focus();
           return window.VI.baoLoi('loi', new Error('Hai ô mật khẩu chưa giống nhau. Gõ lại giúp tôi.'));
@@ -85,11 +97,10 @@ import '../../styles/tai-khoan.css';
         nut.disabled = true; nut.textContent = 'Đang tạo…';
         try {
           var kq = await window.VI.goi('/dk', {
+            tenDn: oTen.value.trim(),
+            matKhau: mk1.value,
             email: document.getElementById('email').value.trim(),
-            ten: document.getElementById('ten').value.trim(),
             dienThoai: document.getElementById('dienThoai').value.trim(),
-            diaChi: document.getElementById('diaChi').value.trim(),
-            matKhau: document.getElementById('matKhau').value,
             gioiThieu: document.getElementById('gioiThieu').value.trim(),
           });
           window.VI.datToken(kq.token);

@@ -14,8 +14,8 @@ import '../../styles/tai-khoan.css';
         <div class="loi" id="loi" hidden></div>
         <form id="form">
           <label class="o">
-            <span>Email</span>
-            <input type="email" id="email" required autocomplete="email" />
+            <span>Tên tài khoản hoặc email</span>
+            <input type="text" id="taiKhoan" required autocomplete="username" />
           </label>
           <label class="o">
             <span>Mật khẩu</span>
@@ -41,7 +41,7 @@ import '../../styles/tai-khoan.css';
         window.VI.baoLoi('loi', '');
         try {
           var kq = await window.VI.goi('/dn', {
-            email: document.getElementById('email').value.trim(),
+            taiKhoan: document.getElementById('taiKhoan').value.trim(),
             matKhau: document.getElementById('matKhau').value,
           });
           window.VI.datToken(kq.token);

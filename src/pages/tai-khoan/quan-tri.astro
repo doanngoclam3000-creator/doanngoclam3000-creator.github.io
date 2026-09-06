@@ -52,12 +52,12 @@ import '../../styles/tai-khoan.css';
         <div class="hop">
           <h2>Khách hàng</h2>
           <label class="o o-vua">
-            <span>Tìm theo email, tên hoặc mã nạp</span>
+            <span>Tìm theo tên tài khoản, email, mã nạp hoặc số điện thoại</span>
             <input type="search" id="kh-tim" placeholder="Bỏ trống để xem 100 người mới nhất" />
           </label>
           <button class="nut nut-vien" id="kh-nut" type="button">Tìm</button>
           <div class="cuon dat-tren"><table class="bang">
-            <thead><tr><th>Email</th><th>Tên</th><th>Mã nạp</th><th class="phai">Số dư</th><th class="phai">Đã nạp</th><th></th></tr></thead>
+            <thead><tr><th>Tên tài khoản</th><th>Email</th><th>Mã nạp</th><th class="phai">Số dư</th><th class="phai">Đã nạp</th><th></th></tr></thead>
             <tbody id="kh-than"></tbody>
           </table></div>
         </div>
@@ -145,7 +145,7 @@ import '../../styles/tai-khoan.css';
       async function taiKhach() {
         var k = await qt('/admin/nguoi?q=' + encodeURIComponent($('kh-tim').value.trim()));
         $('kh-than').innerHTML = k.nguoi.map(function (n) {
-          return '<tr><td>' + n.email + (n.khoa ? ' 🔒' : '') + '</td><td>' + (n.ten || '') +
+          return '<tr><td><b>' + (n.ten_dn || '') + '</b>' + (n.khoa ? ' 🔒' : '') + '</td><td>' + n.email +
             '</td><td>' + n.ma_nap + '</td><td class="phai"><b>' + V.tien(n.so_du) +
             '</b></td><td class="phai">' + V.tien(n.da_nap) +
             '</td><td><button class="nut nut-vien" data-mo-tien="' + n.id + '">Cộng/trừ</button> ' +

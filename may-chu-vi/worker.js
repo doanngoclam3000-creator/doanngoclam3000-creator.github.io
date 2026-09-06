@@ -205,8 +205,7 @@ const laQuanTri = (req, env) =>
 
 // Ho so gui ve trinh duyet - khong bao gio kem mat khau
 const hoSo = (nd) => ({
-  id: nd.id, email: nd.email, ten: nd.ten || '', dienThoai: nd.dien_thoai || '',
-  diaChi: nd.dia_chi || '',
+  id: nd.id, email: nd.email, tenDn: nd.ten_dn || '', dienThoai: nd.dien_thoai || '',
   soDu: Number(nd.so_du), vaiTro: nd.vai_tro, maNap: nd.ma_nap,
   daNap: Number(nd.da_nap), daRut: Number(nd.da_rut), hhKiem: Number(nd.hh_kiem),
   nganHang: nd.ngan_hang || '', soTk: nd.so_tk || '', chuTk: nd.chu_tk || '',
@@ -214,6 +213,9 @@ const hoSo = (nd) => ({
 });
 
 const emailHopLe = (e) => /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(e);
+// Ten tai khoan: chu KHONG DAU, so va . _ - ; dung de dang nhap nen khong
+// cho dau cach va khong cho dau tieng Viet (go nham dau la khong vao duoc).
+const tenDnHopLe = (t) => /^[A-Za-z0-9._-]{3,30}$/.test(t);
 
 // Ghi IP va lan cuoi khach vao. KHONG ghi thanh pho nua: Cloudflare chi doan
 // theo duong truyen nen hay ra sai tinh, doc vao de hieu nham hon la khong co.
@@ -253,12 +255,19 @@ export default {
     if (req.method === 'POST' && p === '/dk') {
       const b = await than();
       const email = String(b.email || '').trim().toLowerCase();
+      const tenDn = String(b.tenDn || '').trim();
       const mk = String(b.matKhau || '');
+      if (!tenDnHopLe(tenDn)) {
+        return J({ loi: 'Tên tài khoản từ 3 đến 30 ký tự, chỉ gồm chữ không dấu, số và . _ -' }, 400);
+      }
       if (!emailHopLe(email)) return J({ loi: 'Email không hợp lệ' }, 400);
       if (mk.length < 8) return J({ loi: 'Mật khẩu phải từ 8 ký tự trở lên' }, 400);
 
       const daCo = await env.DB.prepare('SELECT id FROM nguoi_dung WHERE email=?').bind(email).first();
       if (daCo) return J({ loi: 'Email này đã có tài khoản' }, 409);
+      const trungTen = await env.DB.prepare('SELECT id FROM nguoi_dung WHERE lower(ten_dn)=?')
+        .bind(tenDn.toLowerCase()).first();
+      if (trungTen) return J({ loi: 'Tên tài khoản này đã có người dùng, chọn tên khác' }, 409);
 
       // Ai gioi thieu: khach dan ma nap cua nguoi gioi thieu
       let nguoiGt = null;
@@ -273,15 +282,17 @@ export default {
       for (let lan = 0; lan < 6 && !nd; lan++) {
         try {
           nd = await env.DB.prepare(
-            'INSERT INTO nguoi_dung (email,ten,dien_thoai,dia_chi,mat_khau,ma_nap,nguoi_gt,tao_luc)' +
-            ' VALUES (?,?,?,?,?,?,?,?) RETURNING *')
-            .bind(email, String(b.ten || '').trim().slice(0, 80), String(b.dienThoai || '').trim().slice(0, 20),
-              String(b.diaChi || '').trim().slice(0, 200),
+            'INSERT INTO nguoi_dung (email,ten_dn,dien_thoai,mat_khau,ma_nap,nguoi_gt,tao_luc)' +
+            ' VALUES (?,?,?,?,?,?,?) RETURNING *')
+            .bind(email, tenDn, String(b.dienThoai || '').trim().slice(0, 20),
               bam, chuoiNgauNhien(6), nguoiGt, Date.now()).first();
         } catch (e) {
           if (!String(e).includes('UNIQUE')) throw e;   // trung ma_nap -> boc ma khac
           const lai = await env.DB.prepare('SELECT id FROM nguoi_dung WHERE email=?').bind(email).first();
           if (lai) return J({ loi: 'Email này đã có tài khoản' }, 409);
+          const lai2 = await env.DB.prepare('SELECT id FROM nguoi_dung WHERE lower(ten_dn)=?')
+            .bind(tenDn.toLowerCase()).first();
+          if (lai2) return J({ loi: 'Tên tài khoản này đã có người dùng, chọn tên khác' }, 409);
         }
       }
       if (!nd) return J({ loi: 'Không tạo được tài khoản, thử lại' }, 500);
@@ -292,13 +303,15 @@ export default {
     // ---- Dang nhap ----
     if (req.method === 'POST' && p === '/dn') {
       const b = await than();
-      const email = String(b.email || '').trim().toLowerCase();
-      const nd = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE email=?').bind(email).first();
+      // Go ten tai khoan hay email deu vao duoc
+      const nhap = String(b.taiKhoan || b.email || '').trim().toLowerCase();
+      const nd = await env.DB.prepare(
+        'SELECT * FROM nguoi_dung WHERE email=?1 OR lower(ten_dn)=?1').bind(nhap).first();
       // Van bam mat khau gia khi khong co tai khoan: tra loi nhanh/cham nhu nhau
       // thi ke la khong do duoc email nao da dang ky.
       const dung = nd ? await khopMatKhau(String(b.matKhau || ''), nd.mat_khau)
         : await khopMatKhau('x', 'pbkdf2$' + VONG_BAM + '$00$00');
-      if (!nd) return J({ loi: 'Email hoặc mật khẩu không đúng' }, 401);
+      if (!nd) return J({ loi: 'Tên tài khoản hoặc mật khẩu không đúng' }, 401);
       if (Number(nd.khoa_den) > Date.now()) {
         return J({ loi: 'Sai quá nhiều lần, thử lại sau ' + Math.ceil((nd.khoa_den - Date.now()) / 60000) + ' phút' }, 429);
       }
@@ -306,7 +319,7 @@ export default {
         const lan = Number(nd.sai_lan) + 1;
         await env.DB.prepare('UPDATE nguoi_dung SET sai_lan=?, khoa_den=? WHERE id=?')
           .bind(lan, lan >= 8 ? Date.now() + 15 * 60000 : 0, nd.id).run();
-        return J({ loi: 'Email hoặc mật khẩu không đúng' }, 401);
+        return J({ loi: 'Tên tài khoản hoặc mật khẩu không đúng' }, 401);
       }
       if (nd.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
       await env.DB.prepare('UPDATE nguoi_dung SET sai_lan=0, khoa_den=0 WHERE id=?').bind(nd.id).run();
@@ -350,13 +363,12 @@ export default {
       return J({ ok: true });
     }
 
-    // ---- Sua ho so: ten, dien thoai, dia chi ----
+    // ---- Sua ho so: so dien thoai ----
     if (req.method === 'POST' && p === '/ho-so') {
       if (!toi) return canDN();
       const b = await than();
-      await env.DB.prepare('UPDATE nguoi_dung SET ten=?, dien_thoai=?, dia_chi=? WHERE id=?')
-        .bind(String(b.ten || '').trim().slice(0, 80), String(b.dienThoai || '').trim().slice(0, 20),
-          String(b.diaChi || '').trim().slice(0, 200), toi.id).run();
+      await env.DB.prepare('UPDATE nguoi_dung SET dien_thoai=? WHERE id=?')
+        .bind(String(b.dienThoai || '').trim().slice(0, 20), toi.id).run();
       return J({ ok: true });
     }
 
@@ -463,7 +475,7 @@ export default {
       // Goi may chu ban quyen cong thang ngay vao ma may, dung duong ma
       // webhook SePay van dung. Khach khong phai nhap key.
       let loiGoi = '';
-      const diaChi = env['MC_' + pm.tienTo].replace(/\/+$/, '') + '/admin/sua';
+      const duongGoi = env['MC_' + pm.tienTo].replace(/\/+$/, '') + '/admin/sua';
       try {
         // Di qua service binding chu KHONG fetch ra dia chi workers.dev:
         // Cloudflare chan mot Worker goi HTTP sang Worker khac cung tai khoan
@@ -471,7 +483,7 @@ export default {
         // dan /admin/sua, ten mien bi bo qua khi di qua binding.
         const noiSang = env['SV_' + pm.tienTo];
         const goiDi = noiSang ? noiSang.fetch.bind(noiSang) : fetch;
-        const r = await goiDi(diaChi, {
+        const r = await goiDi(duongGoi, {
           method: 'POST',
           headers: { 'content-type': 'application/json', authorization: 'Apikey ' + env['QT_' + pm.tienTo] },
           body: JSON.stringify({ may, viec: 'congNgay', soNgay: goi.ngay }),
@@ -482,9 +494,9 @@ export default {
         let t = {};
         try { t = JSON.parse(van); } catch { /* khong phai JSON */ }
         if (!r.ok || !t.ok) {
-          loiGoi = t.loi || ('ma ' + r.status + ' tu ' + diaChi + ' - ' + van.slice(0, 150));
+          loiGoi = t.loi || ('ma ' + r.status + ' tu ' + duongGoi + ' - ' + van.slice(0, 150));
         }
-      } catch (e) { loiGoi = 'khong goi duoc ' + diaChi + ' - ' + e; }
+      } catch (e) { loiGoi = 'khong goi duoc ' + duongGoi + ' - ' + e; }
 
       if (loiGoi) {
         // Khong cap duoc ngay -> tra lai tien ngay, khong de khach mat tien
@@ -593,10 +605,10 @@ export default {
       if (p === '/admin/nguoi') {
         const q = '%' + String(url.searchParams.get('q') || '').trim().toLowerCase() + '%';
         const r = await env.DB.prepare(
-          'SELECT id,email,ten,dien_thoai,dia_chi,ip,lan_cuoi,so_du,vai_tro,ma_nap,' +
+          'SELECT id,email,ten_dn,dien_thoai,ip,lan_cuoi,so_du,vai_tro,ma_nap,' +
           'da_nap,da_rut,hh_kiem,khoa,tao_luc' +
-          ' FROM nguoi_dung WHERE lower(email) LIKE ?1 OR lower(ten) LIKE ?1 OR ma_nap LIKE ?1' +
-          ' OR lower(dia_chi) LIKE ?1 OR dien_thoai LIKE ?1' +
+          ' FROM nguoi_dung WHERE lower(email) LIKE ?1 OR lower(ten_dn) LIKE ?1 OR ma_nap LIKE ?1' +
+          ' OR dien_thoai LIKE ?1' +
           ' ORDER BY id DESC LIMIT 100').bind(q).all();
         return J({ nguoi: r.results || [] });
       }
