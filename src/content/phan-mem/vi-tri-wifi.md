@@ -2,10 +2,10 @@
 ten: "Vị Trí Wi-Fi"
 moTa: "Đổi vị trí iPhone theo đường Wi-Fi: cài một lần, dán toạ độ là máy báo đang ở nơi bạn chọn. Không cần máy tính, không cần Chế độ nhà phát triển."
 nenTang: ["iOS"]
-phienBan: "1.1"
+phienBan: "1.2"
 banToiThieu: "1.1"
-ngayCapNhat: 2026-09-05
-ghiChuCapNhat: "- Hết hạn bản quyền là tự tắt, máy về vị trí mặc định ngay — kể cả khi bạn không mở ứng dụng\n- Ứng dụng tự kiểm tra bản mới trên phanmemtq.com, bản quá cũ sẽ được nhắc cập nhật\n- Chống vặn ngày lùi trên máy để kéo dài hạn dùng"
+ngayCapNhat: 2026-09-06
+ghiChuCapNhat: "- Chuyển khoản xong bấm \"Tôi đã chuyển, kiểm tra ngay\" là ứng dụng tự mở khoá sau vài giây, không phải chờ xin key nữa\n- Chuyển thiếu thì tiền vẫn được nhớ, chuyển bù cho đủ là mở khoá ngay; chuyển dư thì phần dư giữ cho lần gia hạn sau"
 linkTaiIOS: "https://testflight.apple.com/join/KYYj3Bfd"
 gia: "300.000đ / tháng · 800.000đ / 3 tháng · 1.500.000đ / 6 tháng · 2.500.000đ / năm"
 mienPhi: false
