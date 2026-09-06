@@ -115,3 +115,20 @@ chỗ xử lý `viec === 'tra'` trong `/admin/rut`, phần còn lại giữ nguy
 Quy tắc đang áp: chỉ rút được về tài khoản ngân hàng **đứng tên chính khách**, và
 không có đường chuyển tiền giữa hai tài khoản khách với nhau — cố ý làm vậy để ví
 không thành dịch vụ trung gian thanh toán (thứ cần giấy phép của Ngân hàng Nhà nước).
+
+## Ba cái bẫy của Cloudflare đã vấp (đừng sửa ngược lại)
+
+1. **PBKDF2 tối đa 100.000 vòng.** Để 210.000 thì hàm băm mật khẩu ném lỗi, khách
+   đăng ký nhận `error code: 1101`. Chạy `wrangler dev` ở máy KHÔNG lộ ra vì bản
+   chạy máy không áp giới hạn này.
+2. **Worker không fetch sang Worker khác cùng tài khoản được** — trả về 404 kèm
+   `error code: 1042`. Vì vậy phần mua key đi qua **service binding**
+   (`SV_BZ` / `SV_ST` / `SV_PMO` khai trong `wrangler.toml`) chứ không gọi địa chỉ
+   `cap-key-*.workers.dev`. Thêm phần mềm mới có máy chủ bản quyền thì nhớ khai
+   thêm một `[[services]]`, không thì đơn sẽ hỏng và tự hoàn tiền.
+3. **Lớp CSS `.the` đã có sẵn** trong `global.css` (thẻ card, `display:flex`).
+   Trang ví dùng `.hop`. Đặt trùng tên là `el.hidden = true` không ẩn được.
+
+Và một cái bẫy của Astro: HTML do script chèn ra sau **không** mang dấu phạm vi
+`data-astro-cid-*`, nên style viết trong `<style>` của trang không ăn vào. Mọi lớp
+dùng cho phần chèn động phải nằm trong `src/styles/tai-khoan.css`.

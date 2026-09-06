@@ -23,25 +23,25 @@ const VONG_BAM = 100000; // so vong PBKDF2 - Cloudflare Workers CHAN qua 100.000
 // phan mem do. Khong co thi capTay = true -> don nam cho chu shop cap key.
 const PHAN_MEM = {
   'bot-zalo':        { ten: 'Bot Zalo',                 goc: 150000, tienTo: 'BZ',  bienSecret: 'SECRET_BZ' },
-  'shopee-tu-dong':  { ten: 'Shopee Tu Dong',           goc: 150000, tienTo: 'ST',  bienSecret: 'SECRET_ST' },
+  'shopee-tu-dong':  { ten: 'Shopee Tự Động',           goc: 150000, tienTo: 'ST',  bienSecret: 'SECRET_ST' },
   // Phan Mem Order dang phat hanh MIEN PHI (website co nhan do "MIEN PHI") nen
   // khong ban key. Muon ban lai thi bo dau // o dong duoi.
   // 'phan-mem-order':  { ten: 'Phan Mem Order',        goc: 150000, tienTo: 'PMO', bienSecret: 'SECRET_PMO' },
   'bot-wechat':      { ten: 'Bot WeChat',               goc: 150000, capTay: true },
-  'gia-lap-vi-tri':  { ten: 'Gia Lap Vi Tri',           goc: 300000, capTay: true },
+  'gia-lap-vi-tri':  { ten: 'Giả Lập Vị Trí',           goc: 300000, capTay: true },
   // Hai phan mem duoi day website CHUA cong bo gia - dang tam de 150k/thang,
   // sua so 'goc' o day roi chay lai cai-dat.cjs neu gia that khac.
-  'ban-te':          { ten: 'Phan Mem Quan Ly Kho Te',  goc: 150000, capTay: true },
-  'hoc-tieng-trung': { ten: 'Hoc Tieng Trung',          goc: 150000, capTay: true },
+  'ban-te':          { ten: 'Phần Mềm Quản Lý Kho Tệ',  goc: 150000, capTay: true },
+  'hoc-tieng-trung': { ten: 'Học Tiếng Trung',          goc: 150000, capTay: true },
 };
 
 // He so gia: 1 thang x1, 3 thang x2, 6 thang x3.3333, 1 nam x6
 // -> phan mem 150k ra dung bang gia cu 150/300/500/900.
 const GOI = [
-  { ma: 'M', ten: '1 thang', ngay: 30,  he: 1 },
-  { ma: 'Q', ten: '3 thang', ngay: 90,  he: 2 },
-  { ma: 'H', ten: '6 thang', ngay: 180, he: 3.3333 },
-  { ma: 'Y', ten: '1 nam',   ngay: 365, he: 6 },
+  { ma: 'M', ten: '1 tháng', ngay: 30,  he: 1 },
+  { ma: 'Q', ten: '3 tháng', ngay: 90,  he: 2 },
+  { ma: 'H', ten: '6 tháng', ngay: 180, he: 3.3333 },
+  { ma: 'Y', ten: '1 năm',   ngay: 365, he: 6 },
 ];
 const giaGoi = (goc, he) => Math.round((goc * he) / 1000) * 1000;
 
@@ -153,14 +153,15 @@ function traJson(env, req, o, status = 200) {
 //   themCau: ham nhan (soDuSau) tra ve mang cau lenh ghi kem trong cung giao dich
 async function ghiSo(env, uid, { loai, soTien, ghiChu, maNgoai, setThem, themCau }) {
   soTien = Math.round(Number(soTien) || 0);
-  if (!soTien) return { ok: false, loi: 'so tien khong hop le' };
+  if (!soTien) return { ok: false, loi: 'Số tiền không hợp lệ' };
 
   for (let lan = 0; lan < 5; lan++) {
     const nd = await env.DB.prepare('SELECT so_du, khoa FROM nguoi_dung WHERE id=?').bind(uid).first();
-    if (!nd) return { ok: false, loi: 'khong tim thay tai khoan' };
+    if (!nd) return { ok: false, loi: 'Không tìm thấy tài khoản' };
     const truoc = Number(nd.so_du);
     const sau = truoc + soTien;
-    if (sau < 0) return { ok: false, loi: 'so du khong du', soDu: truoc };
+    // thieuTien: co dau rieng de noi goi phan biet, khong phai do chuoi chu
+    if (sau < 0) return { ok: false, thieuTien: true, loi: 'Số dư không đủ', soDu: truoc };
 
     const cau = [
       env.DB.prepare('UPDATE nguoi_dung SET so_du=?1' + (setThem ? ', ' + setThem : '') +
@@ -176,12 +177,12 @@ async function ghiSo(env, uid, { loai, soTien, ghiChu, maNgoai, setThem, themCau
       kq = await env.DB.batch(cau);
     } catch (e) {
       // Trung ma_ngoai = SePay goi lai webhook lan hai -> coi nhu da xu ly
-      if (String(e).includes('UNIQUE')) return { ok: false, trung: true, loi: 'giao dich da xu ly' };
+      if (String(e).includes('UNIQUE')) return { ok: false, trung: true, loi: 'Giao dịch đã xử lý' };
       throw e;
     }
     if (kq[0].meta.changes > 0) return { ok: true, soDu: sau, truoc };
   }
-  return { ok: false, loi: 'may chu dang ban, thu lai sau vai giay' };
+  return { ok: false, loi: 'Máy chủ đang bận, thử lại sau vài giây' };
 }
 
 // ---------------- Doc nguoi dung tu token ----------------
@@ -238,11 +239,11 @@ export default {
       const b = await than();
       const email = String(b.email || '').trim().toLowerCase();
       const mk = String(b.matKhau || '');
-      if (!emailHopLe(email)) return J({ loi: 'Email khong hop le' }, 400);
-      if (mk.length < 8) return J({ loi: 'Mat khau phai tu 8 ky tu tro len' }, 400);
+      if (!emailHopLe(email)) return J({ loi: 'Email không hợp lệ' }, 400);
+      if (mk.length < 8) return J({ loi: 'Mật khẩu phải từ 8 ký tự trở lên' }, 400);
 
       const daCo = await env.DB.prepare('SELECT id FROM nguoi_dung WHERE email=?').bind(email).first();
-      if (daCo) return J({ loi: 'Email nay da co tai khoan' }, 409);
+      if (daCo) return J({ loi: 'Email này đã có tài khoản' }, 409);
 
       // Ai gioi thieu: khach dan ma nap cua nguoi gioi thieu
       let nguoiGt = null;
@@ -264,10 +265,10 @@ export default {
         } catch (e) {
           if (!String(e).includes('UNIQUE')) throw e;   // trung ma_nap -> boc ma khac
           const lai = await env.DB.prepare('SELECT id FROM nguoi_dung WHERE email=?').bind(email).first();
-          if (lai) return J({ loi: 'Email nay da co tai khoan' }, 409);
+          if (lai) return J({ loi: 'Email này đã có tài khoản' }, 409);
         }
       }
-      if (!nd) return J({ loi: 'Khong tao duoc tai khoan, thu lai' }, 500);
+      if (!nd) return J({ loi: 'Không tạo được tài khoản, thử lại' }, 500);
       return J({ token: await taoToken(env, nd), nguoi: hoSo(nd) });
     }
 
@@ -280,24 +281,24 @@ export default {
       // thi ke la khong do duoc email nao da dang ky.
       const dung = nd ? await khopMatKhau(String(b.matKhau || ''), nd.mat_khau)
         : await khopMatKhau('x', 'pbkdf2$' + VONG_BAM + '$00$00');
-      if (!nd) return J({ loi: 'Email hoac mat khau khong dung' }, 401);
+      if (!nd) return J({ loi: 'Email hoặc mật khẩu không đúng' }, 401);
       if (Number(nd.khoa_den) > Date.now()) {
-        return J({ loi: 'Sai qua nhieu lan, thu lai sau ' + Math.ceil((nd.khoa_den - Date.now()) / 60000) + ' phut' }, 429);
+        return J({ loi: 'Sai quá nhiều lần, thử lại sau ' + Math.ceil((nd.khoa_den - Date.now()) / 60000) + ' phút' }, 429);
       }
       if (!dung) {
         const lan = Number(nd.sai_lan) + 1;
         await env.DB.prepare('UPDATE nguoi_dung SET sai_lan=?, khoa_den=? WHERE id=?')
           .bind(lan, lan >= 8 ? Date.now() + 15 * 60000 : 0, nd.id).run();
-        return J({ loi: 'Email hoac mat khau khong dung' }, 401);
+        return J({ loi: 'Email hoặc mật khẩu không đúng' }, 401);
       }
-      if (nd.khoa) return J({ loi: 'Tai khoan dang bi khoa' }, 403);
+      if (nd.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
       await env.DB.prepare('UPDATE nguoi_dung SET sai_lan=0, khoa_den=0 WHERE id=?').bind(nd.id).run();
       return J({ token: await taoToken(env, nd), nguoi: hoSo(nd) });
     }
 
     // ============ CAN DANG NHAP ============
     const toi = await layNguoi(env, req);
-    const canDN = () => J({ loi: 'Chua dang nhap' }, 401);
+    const canDN = () => J({ loi: 'Chưa đăng nhập' }, 401);
 
     if (p === '/toi') {
       if (!toi) return canDN();
@@ -308,8 +309,8 @@ export default {
     if (req.method === 'POST' && p === '/doi-mat-khau') {
       if (!toi) return canDN();
       const b = await than();
-      if (!await khopMatKhau(String(b.cu || ''), toi.mat_khau)) return J({ loi: 'Mat khau cu khong dung' }, 400);
-      if (String(b.moi || '').length < 8) return J({ loi: 'Mat khau moi phai tu 8 ky tu' }, 400);
+      if (!await khopMatKhau(String(b.cu || ''), toi.mat_khau)) return J({ loi: 'Mật khẩu cũ không đúng' }, 400);
+      if (String(b.moi || '').length < 8) return J({ loi: 'Mật khẩu mới phải từ 8 ký tự' }, 400);
       // Tang phien_ver: moi token cu (may khac) het hieu luc ngay
       const nd = await env.DB.prepare('UPDATE nguoi_dung SET mat_khau=?, phien_ver=phien_ver+1 WHERE id=? RETURNING *')
         .bind(await bamMatKhau(String(b.moi)), toi.id).first();
@@ -324,7 +325,7 @@ export default {
       const stk = String(b.soTk || '').replace(/\s/g, '').slice(0, 30);
       const ctk = String(b.chuTk || '').trim().toUpperCase().slice(0, 80);
       if (!nh || !/^[0-9]{6,20}$/.test(stk) || ctk.length < 4) {
-        return J({ loi: 'Thieu ten ngan hang, so tai khoan hoac ten chu tai khoan' }, 400);
+        return J({ loi: 'Thiếu tên ngân hàng, số tài khoản hoặc tên chủ tài khoản' }, 400);
       }
       await env.DB.prepare('UPDATE nguoi_dung SET ngan_hang=?, so_tk=?, chu_tk=? WHERE id=?')
         .bind(nh, stk, ctk, toi.id).run();
@@ -361,17 +362,17 @@ export default {
     // ---- Mua key bang tien trong vi ----
     if (req.method === 'POST' && p === '/mua') {
       if (!toi) return canDN();
-      if (toi.khoa) return J({ loi: 'Tai khoan dang bi khoa' }, 403);
+      if (toi.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
       const b = await than();
       const maPm = String(b.phanMem || '');
       const pm = PHAN_MEM[maPm];
       const goi = GOI.find((g) => g.ma === String(b.goi || ''));
-      if (!pm || !goi) return J({ loi: 'Khong co phan mem hoac goi nay' }, 400);
+      if (!pm || !goi) return J({ loi: 'Không có phần mềm hoặc gói này' }, 400);
 
       const may = String(b.maMay || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
       const tuDong = !pm.capTay && env[pm.bienSecret] && env['MC_' + pm.tienTo] && env['QT_' + pm.tienTo];
       if (tuDong && !maMayHopLe(may)) {
-        return J({ loi: 'Ma may khong dung. Mo phan mem, vao muc Ban quyen de chep ma may 6 ky tu.' }, 400);
+        return J({ loi: 'Mã máy không đúng. Mở phần mềm, vào mục Bản quyền để chép mã máy 6 ký tự.' }, 400);
       }
 
       const gia = giaGoi(pm.goc, goi.he);
@@ -388,7 +389,14 @@ export default {
               tuDong ? 'dang_xu_ly' : 'cho_tay', Date.now(), sau),
         ],
       });
-      if (!kq.ok) return J({ loi: kq.loi === 'so du khong du' ? 'So du khong du. Can ' + gia.toLocaleString('vi-VN') + 'd, dang co ' + Number(kq.soDu || 0).toLocaleString('vi-VN') + 'd.' : kq.loi }, 400);
+      if (!kq.ok) {
+        return J({
+          loi: kq.thieuTien
+            ? 'Số dư không đủ. Cần ' + gia.toLocaleString('vi-VN') + 'đ, đang có ' +
+              Number(kq.soDu || 0).toLocaleString('vi-VN') + 'đ.'
+            : kq.loi,
+        }, 400);
+      }
 
       // Thuong nguoi gioi thieu - loi o day khong duoc lam hong don
       const traHoaHong = async () => {
@@ -398,7 +406,7 @@ export default {
         if (tien > 0) {
           await ghiSo(env, toi.nguoi_gt, {
             loai: 'hoahong', soTien: tien, maNgoai: 'hh:' + donId,
-            ghiChu: 'Hoa hong ' + ti + '% don ' + pm.ten + ' cua ' + toi.email,
+            ghiChu: 'Hoa hồng ' + ti + '% đơn ' + pm.ten + ' của ' + toi.email,
             setThem: 'hh_kiem = hh_kiem + ' + tien,
           }).catch(() => {});
         }
@@ -408,31 +416,44 @@ export default {
         await traHoaHong();
         return J({
           ok: true, don: donId, choTay: true, soDu: kq.soDu,
-          nhan: 'Da nhan don. Phan mem nay chua cap key tu dong - chu shop se gui key trong it phut.',
+          nhan: 'Đã nhận đơn. Phần mềm này chưa cấp key tự động — chủ shop sẽ gửi key trong ít phút.',
         });
       }
 
       // Goi may chu ban quyen cong thang ngay vao ma may, dung duong ma
       // webhook SePay van dung. Khach khong phai nhap key.
       let loiGoi = '';
+      const diaChi = env['MC_' + pm.tienTo].replace(/\/+$/, '') + '/admin/sua';
       try {
-        const r = await fetch(env['MC_' + pm.tienTo].replace(/\/+$/, '') + '/admin/sua', {
+        // Di qua service binding chu KHONG fetch ra dia chi workers.dev:
+        // Cloudflare chan mot Worker goi HTTP sang Worker khac cung tai khoan
+        // (tra ve 404 kem "error code: 1042"). Dia chi o day chi de dat duong
+        // dan /admin/sua, ten mien bi bo qua khi di qua binding.
+        const noiSang = env['SV_' + pm.tienTo];
+        const goiDi = noiSang ? noiSang.fetch.bind(noiSang) : fetch;
+        const r = await goiDi(diaChi, {
           method: 'POST',
           headers: { 'content-type': 'application/json', authorization: 'Apikey ' + env['QT_' + pm.tienTo] },
           body: JSON.stringify({ may, viec: 'congNgay', soNgay: goi.ngay }),
         });
-        const t = await r.json().catch(() => ({}));
-        if (!r.ok || !t.ok) loiGoi = t.loi || ('may chu ban quyen tra ma ' + r.status);
-      } catch (e) { loiGoi = 'khong goi duoc may chu ban quyen'; }
+        // Doc nguyen van roi moi thu doc JSON: hong o tang nao thi cau bao loi
+        // van noi ro duoc, khong chi tro tron mot con so.
+        const van = await r.text();
+        let t = {};
+        try { t = JSON.parse(van); } catch { /* khong phai JSON */ }
+        if (!r.ok || !t.ok) {
+          loiGoi = t.loi || ('ma ' + r.status + ' tu ' + diaChi + ' - ' + van.slice(0, 150));
+        }
+      } catch (e) { loiGoi = 'khong goi duoc ' + diaChi + ' - ' + e; }
 
       if (loiGoi) {
         // Khong cap duoc ngay -> tra lai tien ngay, khong de khach mat tien
         await ghiSo(env, toi.id, {
           loai: 'hoan', soTien: gia, maNgoai: 'hoan:' + donId,
-          ghiChu: 'Hoan tien don ' + donId + ' (' + loiGoi + ')',
+          ghiChu: 'Hoàn tiền đơn ' + donId + ' (' + loiGoi + ')',
           themCau: () => [env.DB.prepare("UPDATE don_key SET trang_thai='huy' WHERE id=?").bind(donId)],
         });
-        return J({ loi: 'Chua cap duoc ban quyen (' + loiGoi + '). Tien da hoan lai vao vi.' }, 502);
+        return J({ loi: 'Chưa cấp được bản quyền (' + loiGoi + '). Tiền đã hoàn lại vào ví.' }, 502);
       }
 
       const key = await taoKey(env[pm.bienSecret], pm.tienTo, goi.ma, may);
@@ -440,7 +461,7 @@ export default {
       await traHoaHong();
       return J({
         ok: true, don: donId, key, soNgay: goi.ngay, soDu: kq.soDu,
-        nhan: 'Da cong ' + goi.ngay + ' ngay cho may ' + may + '. Mo phan mem la dung duoc ngay.',
+        nhan: 'Đã cộng ' + goi.ngay + ' ngày cho máy ' + may + '. Mở phần mềm là dùng được ngay.',
       });
     }
 
@@ -469,21 +490,21 @@ export default {
       const toiThieu = Number(env.RUT_TOI_THIEU || 50000);
       const phi = Number(env.PHI_RUT || 0);
       if (!toi.ngan_hang || !toi.so_tk || !toi.chu_tk) {
-        return J({ loi: 'Chua khai tai khoan ngan hang. Vao muc Ngan hang de khai truoc.' }, 400);
+        return J({ loi: 'Chưa khai tài khoản ngân hàng. Vào mục Tài khoản để khai trước.' }, 400);
       }
-      if (soTien < toiThieu) return J({ loi: 'Rut it nhat ' + toiThieu.toLocaleString('vi-VN') + 'd' }, 400);
-      if (soTien % 1000) return J({ loi: 'So tien phai chan hang nghin' }, 400);
-      if (soTien > Number(toi.so_du)) return J({ loi: 'So du khong du' }, 400);
+      if (soTien < toiThieu) return J({ loi: 'Rút ít nhất ' + toiThieu.toLocaleString('vi-VN') + 'đ' }, 400);
+      if (soTien % 1000) return J({ loi: 'Số tiền phải chẵn hàng nghìn' }, 400);
+      if (soTien > Number(toi.so_du)) return J({ loi: 'Số dư không đủ' }, 400);
 
       const dangCho = await env.DB.prepare("SELECT COUNT(*) n FROM yeu_cau_rut WHERE nguoi=? AND trang_thai='cho'")
         .bind(toi.id).first();
-      if (Number(dangCho.n) >= 3) return J({ loi: 'Dang co 3 yeu cau rut cho xu ly, xong roi hay gui tiep' }, 429);
+      if (Number(dangCho.n) >= 3) return J({ loi: 'Đang có 3 yêu cầu rút chờ xử lý, xong rồi hãy gửi tiếp' }, 429);
 
       const rutId = 'R' + Date.now().toString(36).toUpperCase() + chuoiNgauNhien(4);
       // Tru ngay khi gui yeu cau (giu tien lai), tu choi thi hoan.
       const kq = await ghiSo(env, toi.id, {
         loai: 'rut', soTien: -soTien, maNgoai: 'rut:' + rutId,
-        ghiChu: 'Yeu cau rut ' + soTien.toLocaleString('vi-VN') + 'd ve ' + toi.ngan_hang + ' ' + toi.so_tk,
+        ghiChu: 'Yêu cầu rút ' + soTien.toLocaleString('vi-VN') + 'đ về ' + toi.ngan_hang + ' ' + toi.so_tk,
         themCau: (sau) => [
           env.DB.prepare('INSERT INTO yeu_cau_rut (id,nguoi,so_tien,thuc_nhan,phi,ngan_hang,so_tk,chu_tk,trang_thai,luc)' +
             " SELECT ?1,?2,?3,?4,?5,?6,?7,?8,'cho',?9 FROM nguoi_dung WHERE id=?2 AND so_du=?10")
@@ -517,7 +538,7 @@ export default {
       const maGd = 'sepay:' + (String(b.id || b.referenceCode || '') || Date.now());
       const kq = await ghiSo(env, nd.id, {
         loai: 'nap', soTien: tien, maNgoai: maGd,
-        ghiChu: 'Nap tien tu ' + (b.gateway || 'ngan hang') + ' ' + (b.transactionDate || ''),
+        ghiChu: 'Nạp tiền từ ' + (b.gateway || 'ngân hàng') + ' ' + (b.transactionDate || ''),
         setThem: 'da_nap = da_nap + ' + tien,
       });
       if (kq.trung) return J({ success: true, daXuLy: true });
@@ -543,7 +564,7 @@ export default {
         const b = await than();
         const kq = await ghiSo(env, Number(b.nguoi), {
           loai: 'dieuchinh', soTien: Math.round(Number(b.soTien) || 0),
-          ghiChu: String(b.ghiChu || 'Chu shop dieu chinh').slice(0, 200),
+          ghiChu: String(b.ghiChu || 'Chủ shop điều chỉnh').slice(0, 200),
         });
         return J(kq.ok ? { ok: true, soDu: kq.soDu } : { loi: kq.loi }, kq.ok ? 200 : 400);
       }
@@ -593,7 +614,7 @@ export default {
         const b = await than();
         const id = String(b.id || '');
         const yc = await env.DB.prepare("SELECT * FROM yeu_cau_rut WHERE id=? AND trang_thai='cho'").bind(id).first();
-        if (!yc) return J({ loi: 'khong co yeu cau nay hoac da xu ly' }, 404);
+        if (!yc) return J({ loi: 'Không có yêu cầu này hoặc đã xử lý' }, 404);
 
         if (b.viec === 'tra') {
           // Tien da tru luc gui yeu cau roi, day chi danh dau da chuyen khoan
@@ -607,7 +628,7 @@ export default {
         if (b.viec === 'tuChoi') {
           const kq = await ghiSo(env, yc.nguoi, {
             loai: 'hoan', soTien: Number(yc.so_tien), maNgoai: 'hoanrut:' + id,
-            ghiChu: 'Hoan yeu cau rut ' + id + (b.ghiChu ? ' - ' + String(b.ghiChu).slice(0, 150) : ''),
+            ghiChu: 'Hoàn yêu cầu rút ' + id + (b.ghiChu ? ' - ' + String(b.ghiChu).slice(0, 150) : ''),
             themCau: () => [
               env.DB.prepare("UPDATE yeu_cau_rut SET trang_thai='tu_choi', ghi_chu=?, xong_luc=? WHERE id=? AND trang_thai='cho'")
                 .bind(String(b.ghiChu || '').slice(0, 200), Date.now(), id),

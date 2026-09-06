@@ -18,3 +18,19 @@ HOA_HONG = "10"
 binding = "DB"
 database_name = "vi-phanmemtq"
 database_id = "a253f3c6-cebd-409c-9500-996325069b57"
+
+# Noi thang sang ba may chu ban quyen.
+# KHONG goi bang fetch tới dia chi workers.dev cua chung duoc: Cloudflare chan
+# mot Worker goi HTTP sang Worker khac cung tai khoan (loi 1042). Buoc kieu nay
+# thi loi goi di thang trong noi bo, khong ra Internet, va cung nhanh hon.
+[[services]]
+binding = "SV_BZ"
+service = "cap-key-botzalo"
+
+[[services]]
+binding = "SV_ST"
+service = "cap-key-shopee"
+
+[[services]]
+binding = "SV_PMO"
+service = "cap-key-order"
