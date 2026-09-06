@@ -37,17 +37,22 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
       <a href="/tai-khoan/dang-nhap/" class="nut nut-vien nut-dn" id="nut-dang-nhap">Đăng nhập</a>
       <a href="/tai-khoan/" class="nut nut-vien nut-dn" id="nut-vi" hidden>Ví của tôi <b class="so-du" id="so-du-nut">0đ</b></a>
       <a href="/phan-mem" class="nut nut-chinh nut-tai">Tải phần mềm</a>
-      <button id="mo-menu" class="nut-tron chi-mobile" aria-label="Mở menu">☰</button>
+      <button id="mo-menu" class="nut-tron chi-mobile" aria-label="Mở menu" aria-expanded="false" aria-controls="menu">☰</button>
     </div>
   </div>
 </header>
 
 <style>
-  .dau-trang {
-    position: sticky; top: 0; z-index: 50;
-    background: color-mix(in srgb, var(--nen) 85%, transparent);
-    backdrop-filter: saturate(180%) blur(12px);
-    border-bottom: 1px solid var(--vien);
+  .dau-trang { position: sticky; top: 0; z-index: 50; }
+  /* Lop kinh cua thanh dau trang de rieng o day, KHONG dat thang vao
+     .dau-trang: mot the da lam mo nen thi moi thu ben trong no khong lam mo
+     tiep duoc nua, tam kinh cua menu dien thoai se bi duc va xam ngoet. */
+  .dau-trang::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: color-mix(in srgb, var(--nen) 72%, transparent);
+    backdrop-filter: saturate(190%) blur(20px);
+    -webkit-backdrop-filter: saturate(190%) blur(20px);
+    border-bottom: 1px solid color-mix(in srgb, var(--vien) 70%, transparent);
   }
   .thanh { display: flex; align-items: center; gap: 1rem; height: 64px; }
   .logo { display: flex; align-items: center; gap: .6rem; font-weight: 800; color: var(--chu); font-size: 1.05rem; }
@@ -107,13 +112,67 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
     .nut-tai, .nut-dn { display: none; }
     .menu #menu-dang-nhap:not([hidden]), .menu #menu-vi:not([hidden]) { display: block; }
     .chi-mobile { display: grid; }
+
+    /* Menu kieu kinh long (giot nuoc) nhu iOS 26: mot tam kinh mo noi han ra
+       khoi thanh dau trang, thay vi mot khoi dac dinh sat vao canh man hinh. */
     .menu {
-      position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch;
-      background: var(--nen); border-bottom: 1px solid var(--vien); padding: 10px 16px 18px; gap: .2rem;
-      margin: 0; display: none;
+      position: absolute; top: 70px; left: 10px; right: 10px;
+      flex-direction: column; align-items: stretch;
+      margin: 0; padding: 8px; gap: 2px;
+      display: flex;
+      border-radius: 26px;
+      background: color-mix(in srgb, var(--nen) 58%, transparent);
+      backdrop-filter: saturate(200%) blur(30px);
+      -webkit-backdrop-filter: saturate(200%) blur(30px);
+      border: 1px solid color-mix(in srgb, var(--chu) 12%, transparent);
+      box-shadow:
+        0 1px 0 color-mix(in srgb, #fff 30%, transparent) inset,
+        0 18px 50px rgba(0, 0, 0, .28),
+        0 2px 10px rgba(0, 0, 0, .12);
+      overflow: hidden;
+      /* Dong lai thi thu nho va mo di, khong cat cai bup nhu truoc */
+      opacity: 0; visibility: hidden;
+      transform: translateY(-12px) scale(.94);
+      transform-origin: top right;
+      transition: opacity .2s ease, visibility .2s, transform .38s cubic-bezier(.18, 1.3, .4, 1);
     }
-    .menu.mo { display: flex; }
-    .bang { position: static; width: auto; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding: 0 0 0 .6rem; }
+    /* Vet sang o mep tren cho ra chat mat kinh */
+    .menu::before {
+      content: ''; position: absolute; inset: 0 0 auto; height: 46%;
+      background: linear-gradient(180deg, color-mix(in srgb, #fff 16%, transparent), transparent);
+      pointer-events: none;
+    }
+    .menu.mo { opacity: 1; visibility: visible; transform: none; }
+
+    /* Moi dong menu la mot vien thuoc bo tron */
+    .menu .muc {
+      position: relative; z-index: 1;
+      padding: .78rem 1rem; border-radius: 18px;
+      font-size: 1rem; font-weight: 600; color: var(--chu);
+    }
+    .menu .muc:active { background: color-mix(in srgb, var(--chinh) 18%, transparent); }
+    .menu .dang-o { background: color-mix(in srgb, var(--chinh) 16%, transparent); color: var(--chinh); }
+
+    .bang {
+      position: static; z-index: 1; width: auto; opacity: 1; visibility: visible; transform: none;
+      background: transparent; box-shadow: none; border: none; padding: 0 0 0 .5rem;
+    }
+    .bang a { padding: .55rem .8rem; border-radius: 14px; font-size: .95rem; }
+    /* Tren dien thoai chi can ten chuyen muc, bo dong mo ta dai ben duoi */
+    .bang small { display: none; }
+
+    /* Nut ba gach cung lam bang kinh cho dong bo */
+    .chi-mobile {
+      border-radius: 50%; width: 40px; height: 40px;
+      background: color-mix(in srgb, var(--chu) 7%, transparent);
+      border-color: color-mix(in srgb, var(--chu) 12%, transparent);
+      transition: transform .3s cubic-bezier(.18, 1.3, .4, 1);
+    }
+    .chi-mobile[aria-expanded='true'] { transform: rotate(90deg); background: color-mix(in srgb, var(--chinh) 18%, transparent); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu, .chi-mobile { transition: none; }
   }
 </style>
 
@@ -124,8 +183,32 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
     document.documentElement.dataset.theme = moi;
     localStorage.setItem('giao-dien', moi);
   });
-  document.getElementById('mo-menu')?.addEventListener('click', () => {
-    document.getElementById('menu')?.classList.toggle('mo');
+  const nutMenu = document.getElementById('mo-menu');
+  const menu = document.getElementById('menu');
+
+  function datMenu(mo: boolean) {
+    menu?.classList.toggle('mo', mo);
+    nutMenu?.setAttribute('aria-expanded', String(mo));
+    nutMenu?.setAttribute('aria-label', mo ? 'Đóng menu' : 'Mở menu');
+  }
+
+  nutMenu?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    datMenu(!menu?.classList.contains('mo'));
+  });
+
+  // Tam kinh noi han ra giua trang nen phai dong duoc mot cach tu nhien:
+  // bam ra ngoai, bam vao mot muc, hoac bam phim Esc.
+  document.addEventListener('click', (e) => {
+    if (!menu?.classList.contains('mo')) return;
+    if (menu.contains(e.target as Node)) return;
+    datMenu(false);
+  });
+  menu?.addEventListener('click', (e) => {
+    if ((e.target as HTMLElement).closest('a')) datMenu(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') datMenu(false);
   });
 </script>
 

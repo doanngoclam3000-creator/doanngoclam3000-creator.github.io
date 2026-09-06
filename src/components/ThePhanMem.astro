@@ -21,7 +21,7 @@ const luot = await demLuotTai(pm.id);
       {pm.data.nenTang.map((n: string) => <span class="chip">{n}</span>)}
     </div>
     <div class="chan-the">
-      <a href={`/phan-mem/${pm.id}`} class="nut nut-vien nut-nho">Xem chi tiết</a>
+      <a href={`/phan-mem/${pm.id}`} class="nut nut-vien nut-nho nut-led">Xem chi tiết</a>
     </div>
     <div class="dong-cuoi chu-nhat nho">
       <span>Cập nhật {dinhDangNgay(pm.data.ngayCapNhat)}</span>
@@ -54,6 +54,39 @@ const luot = await demLuotTai(pm.id);
   .chip { font-size: .75rem; font-weight: 500; padding: .2rem .55rem; border-radius: 6px; background: var(--nen-phu); border: 1px solid var(--vien); color: var(--chu-nhat); }
   .chan-the { display: flex; align-items: center; margin-top: auto; padding-top: .4rem; }
   .nut-nho { padding: .45rem .8rem; font-size: .85rem; }
+
+  /* Vong LED chay quanh nut "Xem chi tiet".
+     Khong xoay ca khoi ma xoay diem bat dau cua vong mau, nhu vay vien sang
+     luon om sat bon goc bo tron cua nut. */
+  @property --goc-led {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  .nut-led { position: relative; }
+  .nut-led::before {
+    content: ''; position: absolute; inset: 0; padding: 2px;
+    border-radius: inherit; pointer-events: none;
+    background: conic-gradient(
+      from var(--goc-led),
+      transparent 0 58%,
+      color-mix(in srgb, var(--chinh) 55%, transparent) 70%,
+      var(--chinh) 82%,
+      #f0abfc 88%,
+      transparent 94%
+    );
+    /* Chi giu lai duong vien: che rong long nut di */
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+            mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    animation: chay-led 2.6s linear infinite;
+  }
+  .pm:hover .nut-led::before { animation-duration: 1.2s; }
+  @keyframes chay-led { to { --goc-led: 360deg; } }
+  @media (prefers-reduced-motion: reduce) {
+    .nut-led::before { animation: none; }
+  }
   .dong-cuoi { display: flex; align-items: center; justify-content: space-between; gap: .6rem; flex-wrap: wrap; }
   .luot-tai { white-space: nowrap; }
   .luot-tai b { color: var(--chu); font-weight: 700; }

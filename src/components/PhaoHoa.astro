@@ -58,9 +58,13 @@
     function banMot() {
       if (W < 40 || H < 40) return;
       var moc = mocCao();
-      // No quanh hang nut: tren mot chut hoac thap hon mot chut cho do deu
-      var dich = ngauNhien(moc - 46, moc + 34);
-      if (dich < H * 0.06) dich = H * 0.06;
+      // Tu day banner len toi hang nut, roi bay tiep hon chung ay nua,
+      // nen phao no cao han phia tren dau chu.
+      var dich = H - (H - moc) * 2.45 + ngauNhien(-38, 38);
+      // Man hinh dien thoai banner thap hon nen nhieu qua cham tran cung luc;
+      // cham tran van cho lech nhau chut, khong la chung no thang hang mot duong.
+      var tran = H * 0.05;
+      if (dich < tran) dich = tran + ngauNhien(0, 30);
       if (dich > H * 0.82) dich = H * 0.82;
       // Tu do cao can toi ma tinh nguoc ra luc ban, khong la phao het da giua chung
       var vy = Math.sqrt(2 * G * (H - dich)) * ngauNhien(1, 1.03);
@@ -104,8 +108,10 @@
       ctx.globalCompositeOperation = 'lighter';
 
       luot++;
-      // Trung binh khoang 1,4 giay mot qua
-      if (luot % 84 === 0 || (luot % 84 === 42 && Math.random() < 0.45)) banMot();
+      // Ban day tay: trung binh khoang 2 - 3 qua moi giay
+      if (luot % 26 === 0) banMot();
+      if (luot % 26 === 13 && Math.random() < 0.7) banMot();
+      if (luot % 78 === 0 && Math.random() < 0.5) banMot();   // thinh thoang no chum
 
       var i, p;
       for (i = phaoBay.length - 1; i >= 0; i--) {
