@@ -19,9 +19,16 @@ Tổng cộng mất khoảng **ba phút**.
 
 ![Tổng quan LamVPN](/anh/lam-vpn/1-tong-quan.svg)
 
-## Bước 1 — Mua mã kích hoạt
+## Bước 1 — Lấy mã kích hoạt
 
-LamVPN không có bản dùng thử. Phải có mã mới mở được app.
+### Muốn thử trước cho biết
+
+Đăng nhập **phanmemtq.com**, vào mục **Tài khoản**, chọn LamVPN rồi bấm
+**Dùng thử miễn phí 1 ngày**. Nhận mã ngay, không cần nạp tiền. Mỗi tài khoản một lần.
+
+### Mua mã dùng tiếp
+
+Phải có mã mới mở được app — app không tự cho vào.
 
 1. Vào **phanmemtq.com**, đăng nhập (chưa có thì đăng ký, mất 30 giây).
 2. Vào mục **Tài khoản**, nạp tiền vào số dư. Trang sẽ hiện số tài khoản ngân hàng và

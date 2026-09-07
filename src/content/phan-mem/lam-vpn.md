@@ -6,7 +6,7 @@ phienBan: "1.3"
 banToiThieu: "1.2"
 ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Bản đầu tiên phát hành qua TestFlight, dùng được cho cả iPhone và Mac."
-gia: "80.000đ / tháng — mua 1 năm chỉ 800.000đ, bằng trả 10 tháng dùng 12 tháng"
+gia: "Dùng thử miễn phí 1 ngày · 80.000đ / tháng · 1 năm 800.000đ (trả 10 tháng dùng 12)"
 linkTaiIOS: "https://testflight.apple.com/join/PCtZb1MD"
 dungLuong: "khoảng 60 MB — cài qua TestFlight"
 anhIcon: "/icon/lam-vpn.png"
@@ -102,6 +102,13 @@ ghi lại nội dung bạn xem.** App cũng không có công cụ thống kê ha
 | **1 năm** | **800.000đ** | **66.700đ** |
 
 Mua 1 năm là **trả 10 tháng, dùng 12 tháng** — tiết kiệm 160.000đ so với mua lẻ từng tháng.
+
+### Dùng thử miễn phí 1 ngày
+
+Chưa tin thì thử trước đã. Đăng nhập trên website, vào mục **Tài khoản**, chọn LamVPN rồi bấm
+**Dùng thử miễn phí 1 ngày** — nhận mã ngay, không cần nạp tiền, không cần thẻ.
+
+Mỗi tài khoản nhận được một lần. Thấy chạy nhanh thì mua tiếp, ngày sẽ cộng dồn.
 
 Mua bằng số dư trong tài khoản trên website. Nạp tiền xong, bấm mua là **nhận mã ngay**,
 không phải chờ ai duyệt.
