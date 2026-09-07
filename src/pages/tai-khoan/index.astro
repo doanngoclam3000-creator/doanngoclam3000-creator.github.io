@@ -275,6 +275,11 @@ import '../../styles/tai-khoan.css';
         pmDangChon = pm; goiDangChon = null;
         $('mua-luuy').textContent = pm.luuY || '';
         $('mua-luuy').hidden = !pm.luuY;
+        // Phan mem khong gan key vao may (LamVPN, Gia Lap Vi Tri) thi giau han
+        // o ma may di - hoi cai khach khong co la khach tuong minh lam sai roi
+        // bo cuoc giua chung.
+        $('o-ma-may').hidden = !pm.canMaMay;
+        if (!pm.canMaMay) $('mua-may').value = '';
         $('o-ma-may').querySelector('small').innerHTML = pm.tuDong
           ? 'Mở đúng phần mềm bạn muốn kích hoạt (máy tính hay iPhone), vào mục ' +
             '<b>Bản quyền</b> rồi chép mã máy ở đó. Chép cả cụm <b>MAY-XXXXXX</b> cũng được.'
@@ -308,7 +313,7 @@ import '../../styles/tai-khoan.css';
         // SAU dau gach. Khach chep ca cum hay chep moi doan sau deu nhan.
         var may = $('mua-may').value.trim().toUpperCase()
           .replace(/^MAY[-\s]+/, '').replace(/[^A-Z0-9]/g, '');
-        if (pmDangChon.tuDong && (may.length < 4 || may.length > 16)) {
+        if (pmDangChon.canMaMay && pmDangChon.tuDong && (may.length < 4 || may.length > 16)) {
           return V.baoLoi('mua-loi', new Error('Chép thiếu mã máy rồi. Mở phần mềm, vào mục Bản quyền lấy đúng mã.'));
         }
         var g = pmDangChon.goi.find(function (x) { return x.ma === goiDangChon; });

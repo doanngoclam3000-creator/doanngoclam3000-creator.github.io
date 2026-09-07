@@ -685,6 +685,10 @@ export default {
         phanMem: Object.entries(PHAN_MEM).filter(([, m]) => !m.an).map(([ma, m]) => ({
           ma, ten: m.ten,
           tuDong: capTuDong(env, m),
+          // Giao dien can biet co phai hoi ma may khong. Thieu truong nay thi
+          // trang mua chan het phan mem kieu 'kho' va 'api' vi tuong khach quen
+          // dien ma may, trong khi hai kieu do khong gan key vao may nao ca.
+          canMaMay: canMaMay(m),
           luuY: m.luuY || '',
           goi: m.goi.map((g) => ({ ma: g.ma, ten: g.ten, ngay: g.ngay, gia: g.gia })),
         })),
