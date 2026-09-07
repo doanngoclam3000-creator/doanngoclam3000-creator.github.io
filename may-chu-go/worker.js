@@ -1,7 +1,7 @@
 // =============================================================
-//  RUT GON LINK - go.phanmemtq.workers.dev
+//  RUT GON LINK - go.ay-hu.workers.dev
 //
-//  go.phanmemtq.workers.dev/AbC123  ->  may chu vi /l/AbC123
+//  go.ay-hu.workers.dev/AbC123  ->  may chu vi /l/AbC123
 //
 //  Vi sao tach thanh may chu rieng: chi de duong dan NGAN. Cong tac vien dan
 //  link vao mo ta video, dai qua thi xau va de bi cat.
