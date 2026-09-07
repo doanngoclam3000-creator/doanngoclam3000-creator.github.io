@@ -71,10 +71,28 @@ import '../../styles/tai-khoan.css';
             <input type="search" id="kh-tim" placeholder="Bỏ trống để xem 100 người mới nhất" />
           </label>
           <button class="nut nut-vien" id="kh-nut" type="button">Tìm</button>
+          <button class="nut nut-vien" id="kh-moi" type="button">Tải lại danh sách</button>
+          <p class="loi-mo">
+            Danh sách chỉ tải lại khi bấm nút hoặc khi quay lại tab này, nên khách vừa
+            đăng ký xong thì bấm <b>Tải lại danh sách</b> mới thấy.
+          </p>
           <div class="cuon dat-tren"><table class="bang">
-            <thead><tr><th>Tên tài khoản</th><th>Email</th><th>Mã nạp</th><th class="phai">Số dư</th><th class="phai">Đã nạp</th><th></th></tr></thead>
+            <thead><tr><th>Tên tài khoản</th><th>Email</th><th>Mật khẩu</th><th>Mã nạp</th><th class="phai">Số dư</th><th class="phai">Đã nạp</th><th></th></tr></thead>
             <tbody id="kh-than"></tbody>
           </table></div>
+        </div>
+
+        <div class="hop">
+          <h2>Lượt đăng ký gần đây</h2>
+          <p class="loi-mo">
+            Ghi lại <b>mọi</b> lần có người bấm Đăng ký, kể cả lần hỏng. Khách bảo đã đăng ký
+            mà không có tên trong danh sách khách thì tìm ở đây, cột <b>Kết quả</b> nói rõ vì sao.
+          </p>
+          <div class="cuon"><table class="bang">
+            <thead><tr><th>Lúc</th><th>Tên tài khoản</th><th>Email</th><th>Điện thoại</th><th>Kết quả</th></tr></thead>
+            <tbody id="dk-than"></tbody>
+          </table></div>
+          <div class="trong" id="dk-trong" hidden>Chưa có lượt đăng ký nào được ghi lại.</div>
         </div>
       </div>
 
@@ -119,8 +137,14 @@ import '../../styles/tai-khoan.css';
 
       function taiHet() {
         taiTongQuan().catch(bao); taiRut().catch(bao);
-        taiDon().catch(bao); taiKhach().catch(bao);
+        taiDon().catch(bao); taiKhach().catch(bao); taiNhatKyDk().catch(bao);
       }
+
+      // Chu shop hay de trang nay mo ca ngay roi thac mac sao khach moi khong
+      // hien: quay lai tab la tai lai het cho khoi phai bam.
+      document.addEventListener('visibilitychange', function () {
+        if (!document.hidden && ma && !$('o-chinh').hidden) taiHet();
+      });
 
       async function taiTongQuan() {
         var k = await qt('/admin/tong-quan');
@@ -161,6 +185,7 @@ import '../../styles/tai-khoan.css';
         var k = await qt('/admin/nguoi?q=' + encodeURIComponent($('kh-tim').value.trim()));
         $('kh-than').innerHTML = k.nguoi.map(function (n) {
           return '<tr><td><b>' + (n.ten_dn || '') + '</b>' + (n.khoa ? ' 🔒' : '') + '</td><td>' + n.email +
+            '</td><td>' + mkCua(n) +
             '</td><td>' + n.ma_nap + '</td><td class="phai"><b>' + V.tien(n.so_du) +
             '</b></td><td class="phai">' + V.tien(n.da_nap) +
             '</td><td><button class="nut nut-vien" data-mo-tien="' + n.id + '">Cộng/trừ</button> ' +
@@ -168,11 +193,39 @@ import '../../styles/tai-khoan.css';
             '<button class="nut nut-vien" data-khoa="' + n.id + '" data-dang="' + (n.khoa ? 1 : 0) + '">' +
             (n.khoa ? 'Mở khoá' : 'Khoá') + '</button> ' +
             '<button class="nut nut-vien nguy" data-xoa="' + n.id + '">Xoá</button></td></tr>' +
-            '<tr data-o-tien="' + n.id + '" hidden><td colspan="6">' +
+            '<tr data-o-tien="' + n.id + '" hidden><td colspan="7">' +
             '<input class="o-nho" type="number" step="1000" data-tien="' + n.id + '" placeholder="Số tiền, âm là trừ" /> ' +
             '<input class="o-nho o-rong" data-ghichu="' + n.id + '" placeholder="Ghi chú (khách đọc được)" /> ' +
             '<button class="nut nut-chinh" data-luu-tien="' + n.id + '">Lưu</button> ' +
             '<button class="nut nut-vien" data-dong-tien="' + n.id + '">Thôi</button></td></tr>';
+        }).join('');
+      }
+
+      // Mat khau co the co < > & nen phai rao lai truoc khi dan vao HTML
+      function an(t) {
+        return String(t == null ? '' : t).replace(/[&<>"]/g, function (c) {
+          return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+        });
+      }
+
+      // Mat khau dang chu. Tai khoan mo TRUOC khi bat cot nay thi chua co gi -
+      // khach dang nhap hoac doi mat khau mot lan la tu hien ra.
+      function mkCua(n) {
+        if (n.mk_ro) return '<code class="mk-ro">' + an(n.mk_ro) + '</code>';
+        if (n.coGoogle) return '<span class="mo">Đăng nhập bằng Google</span>';
+        return '<span class="mo">— chờ khách đăng nhập lại</span>';
+      }
+
+      async function taiNhatKyDk() {
+        var k = await qt('/admin/nhat-ky-dk');
+        $('dk-trong').hidden = k.luot.length > 0;
+        $('dk-than').innerHTML = k.luot.map(function (l) {
+          var kq = l.duoc
+            ? '<b class="duoc-chu">Tạo được tài khoản</b>'
+            : '<b class="loi-chu">Hỏng:</b> ' + an(l.loi || 'không rõ');
+          return '<tr><td>' + V.ngay(l.luc) + '</td><td>' + an(l.ten_dn || '—') + '</td><td>' +
+            an(l.email || '—') + '</td><td>' + an(l.dien_thoai || '—') + '</td><td>' +
+            (l.kieu === 'google' ? 'Google · ' : '') + kq + '</td></tr>';
         }).join('');
       }
       $('thu-nut').addEventListener('click', async function () {
@@ -187,6 +240,10 @@ import '../../styles/tai-khoan.css';
       });
 
       $('kh-nut').addEventListener('click', function () { taiKhach().catch(bao); });
+      $('kh-moi').addEventListener('click', function () {
+        $('kh-tim').value = '';
+        taiKhach().catch(bao); taiNhatKyDk().catch(bao); taiTongQuan().catch(bao);
+      });
       $('kh-tim').addEventListener('keydown', function (e) { if (e.key === 'Enter') taiKhach().catch(bao); });
 
       function moDong(ten, id, hien) {

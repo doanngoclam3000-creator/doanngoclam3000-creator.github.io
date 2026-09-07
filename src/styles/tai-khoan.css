@@ -106,6 +106,16 @@ html[data-theme='dark'] .tt-huy, html[data-theme='dark'] .tt-tu_choi { backgroun
 .o-ma { text-transform: uppercase; letter-spacing: .12em; font-family: ui-monospace, Consolas, monospace; }
 .o-hoa { text-transform: uppercase; }
 
+/* Mat khau khach dat, chu shop doc lai cho khach khi ho quen */
+.mk-ro {
+  font-family: ui-monospace, Consolas, monospace; font-size: .88rem;
+  background: var(--nen-phu); border: 1px solid var(--vien); border-radius: 6px;
+  padding: .1rem .35rem; user-select: all; word-break: break-all;
+}
+.mo { color: var(--chu-nhat); font-size: .85rem; }
+.duoc-chu { color: #16a34a; }
+.loi-chu { color: #dc2626; }
+
 .luoi-so { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .8rem; }
 .luoi-so div { background: var(--nen-phu); border: 1px solid var(--vien); border-radius: 12px; padding: .9rem; }
 .luoi-so span { display: block; font-size: .8rem; color: var(--chu-nhat); }
