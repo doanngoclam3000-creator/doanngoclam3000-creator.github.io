@@ -75,3 +75,10 @@ service = "cap-key-shopee"
 [[services]]
 binding = "SV_PMO"
 service = "cap-key-order"
+
+# Kho key (Gia Lap Vi Tri / Vi Tri Wi-Fi). Cung phai noi thang nhu ba cai tren:
+# tu khi don het ve mot tai khoan, goi HTTP sang workers.dev cua chinh minh la
+# Cloudflare chan (loi 1042) - don mua key dung im o trang thai "cho cap key".
+[[services]]
+binding = "SV_KHO"
+service = "kho-key"

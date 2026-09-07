@@ -264,12 +264,16 @@ const maMayHopLe = (m) => /^[A-Z0-9]{4,16}$/.test(m) && [...m].every((c) => BO_K
 // Kieu 'kho': khong tu ky ma xin kho-key cap. Kho giu so "key nao da dung o may
 // nao", nen mot key dung duoc mot lan o MOI phan mem cung nhom.
 async function xinKeyTuKho(env, pm, maGoi) {
-  if (!env.KHO_KEY_URL || !env.KHO_KEY_KHOA) throw new Error('Chưa cài kho key');
-  const r = await fetch(env.KHO_KEY_URL + '/cap', {
+  if (!env.SV_KHO || !env.KHO_KEY_KHOA) throw new Error('Chưa cài kho key');
+  // Di qua service binding chu KHONG fetch ra dia chi workers.dev: kho key nam
+  // cung tai khoan, ma Cloudflare chan mot Worker goi HTTP sang Worker khac
+  // cung tai khoan (loi 1042). Dia chi duoi day chi de dat duong dan.
+  const yc = new Request('https://kho-key/cap', {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-khoa': env.KHO_KEY_KHOA },
     body: JSON.stringify({ app: pm.maKho, goi: maGoi }),
   });
+  const r = await env.SV_KHO.fetch(yc);
   const o = await r.json().catch(() => ({}));
   if (!r.ok || !o.keys || !o.keys[0]) throw new Error(o.loi || 'Kho key không cấp được');
   return o.keys[0];
@@ -277,7 +281,7 @@ async function xinKeyTuKho(env, pm, maGoi) {
 
 // Phan mem nay cap key tu dong duoc khong: phai co du khoa bi mat da nap.
 function capTuDong(env, pm) {
-  if (pm.kieu === 'kho') return !!(env.KHO_KEY_URL && env.KHO_KEY_KHOA);
+  if (pm.kieu === 'kho') return !!(env.SV_KHO && env.KHO_KEY_KHOA);
   if (!env[pm.bienSecret]) return false;
   if (pm.kieu === 'mayChu') return !!(env['MC_' + pm.tienTo] && env['QT_' + pm.tienTo]);
   return pm.kieu === 'tuKy';
@@ -1077,6 +1081,8 @@ export default {
         try {
           key = await xinKeyTuKho(env, pm, goi.ma);
         } catch (e) {
+          // Ghi ro vi sao kho tu choi, khong thi don dung im ma khong ai biet ly do.
+          console.log('kho key tu choi:', (e && e.message) || String(e));
           // Da tru tien roi ma khong lay duoc key thi de don o trang thai cho
           // tay, chu shop cap sau - tuyet doi khong nuot tien roi bao loi suong.
           await env.DB.prepare("UPDATE don_key SET trang_thai='cho_tay' WHERE id=?").bind(donId).run();
