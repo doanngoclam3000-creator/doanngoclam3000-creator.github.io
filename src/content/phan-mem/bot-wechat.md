@@ -2,11 +2,11 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
 nenTang: ["macOS"]
-phienBan: "1.4.3"
-banToiThieu: "1.4.3"
-ngayCapNhat: 2026-09-04
-ghiChuCapNhat: "- Sửa lỗi bật BOT AI là WeChat bị nhảy sang hội thoại khác và tin nhắn tụt xuống cuối: bot không còn tự bấm chuột vào cột chat nữa\n- Công tắc “Tuyệt đối không đụng vào chuột của tôi” nay có tác dụng với cả phần trả lời bằng AI, không riêng phần nhắc tiền\n- Khi bạn cho phép mượn chuột, bot đợi đúng số giây bạn đặt trong Cài đặt mới mượn, và mở hụt vài lần thì tự giãn ra thay vì bấm lại liên tục\n- Không còn bấm nhầm mở lại đúng cuộc đang mở khi tên khách có emoji hay dấu cách lạ"
-linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.4.3.dmg"
+phienBan: "1.4.4"
+banToiThieu: "1.4.4"
+ngayCapNhat: 2026-09-07
+ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
+linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.4.4.dmg"
 gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 3 MB"
 anhIcon: "/icon/bot-wechat.png"
