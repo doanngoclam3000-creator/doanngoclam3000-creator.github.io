@@ -2,13 +2,13 @@
 ten: "Giả Lập Vị Trí"
 moTa: "Thay đổi vị trí GPS hiển thị trên iPhone và máy Android thông qua máy tính, có bản cho macOS và Windows."
 nenTang: ["macOS", "Windows", "iOS"]
-phienBan: "5.18"
+phienBan: "5.19"
 banToiThieu: "5.18"
-ngayCapNhat: 2026-09-07
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.18/GiaLapViTri-macOS.dmg"
+ngayCapNhat: 2026-09-08
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.19-mac/GiaLapViTri-macOS.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.18/GiaLapViTri-5.18-Windows.zip"
 linkTaiIOS: "https://testflight.apple.com/join/KYYj3Bfd"
-ghiChuCapNhat: "- Chuyển sang máy chủ bản quyền mới của phanmemtq.com
+ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
 - Key mua trên web dùng được cho cả Windows, macOS và bản iPhone; mỗi ứng dụng kích hoạt được một máy
 - Bắt buộc cập nhật: bản cũ trỏ vào máy chủ đã ngừng chạy"
 dungLuong: "132 MB (Mac) · 683 MB (Windows, bộ cài trong file nén)"
