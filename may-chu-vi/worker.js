@@ -20,6 +20,20 @@ import LIEN_KET from './lien-ket.json';
 const BO_KY_TU = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // bo I O 0 1 cho khoi doc nham
 const NGAY = 86400 * 1000;
 const HAN_TOKEN = 30 * NGAY;
+
+// ---- Chan lap tai khoan hang loat de xin key dung thu ----
+// Moi thiet bi mo duoc TOI DA 2 tai khoan. De 2 chu khong de 1 vi hai may
+// cung cau hinh (hai laptop cung doi, cung do phan giai) co the ra cung mot
+// dau van; de 1 la chan nham nguoi that.
+const TB_TOI_DA = 2;
+// Moi so dien thoai mo duoc bao nhieu tai khoan. Day la lop chan KHONG lach
+// duoc bang cach doi trinh duyet hay tat bat 4G/5G doi IP.
+const SDT_TOI_DA = 2;
+// Moi duong mang mo duoc bao nhieu tai khoan trong mot ngay. De rong vi ca
+// mot quan net hay mot toa nha chung mot IP.
+const IP_TOI_DA = 4;
+// Moi thiet bi chi nhan MOT ma dung thu cho moi phan mem - du mo du 2 tai khoan.
+const TB_THU_TOI_DA = 1;
 const VONG_BAM = 100000; // so vong PBKDF2 - Cloudflare Workers CHAN qua 100.000,
                          // de cao hon la ham nem loi 1101 (chay o may thi khong lo ra)
 
@@ -312,7 +326,7 @@ async function xinKeyTuKho(env, pm, maGoi) {
 // Dung SHOP_KEY chu KHONG dung khoa quan tri: khoa cua hang chi sinh duoc ma
 // moi, khong xem duoc khach, khong xoa duoc gi. Lo ra thi thiet hai toi da la
 // bi sinh ma rac.
-async function xinKeyTuApi(env, goi, email, donId, ghiChu) {
+async function xinKeyTuApi(env, goi, email, donId, ghiChu, laThu) {
   if (!env.LAMVPN_SHOP_KEY) throw new Error('Chưa cài khoá cửa hàng LamVPN');
   const r = await fetch('https://api.phanmemtq.com/vpn/shop/tao-key', {
     method: 'POST',
@@ -320,6 +334,10 @@ async function xinKeyTuApi(env, goi, email, donId, ghiChu) {
     body: JSON.stringify({
       soNgay: goi.ngay, soMayToiDa: 1, khach: email, donHang: donId,
       ghiChu: ghiChu || 'ban tren website',
+      // Ma dung thu duoc danh dau rieng: may chu LamVPN se tu choi khi may do
+      // da kich hoat mot ma thu roi. Day la cua chan chac nhat, vi no dung o
+      // MAY THAT cai app chu khong o trinh duyet.
+      laThu: !!laThu,
     }),
     signal: AbortSignal.timeout(10000),
   });
@@ -536,7 +554,7 @@ function dauCORS(env, req) {
   return {
     'access-control-allow-origin': choPhep,
     'access-control-allow-methods': 'GET,POST,OPTIONS',
-    'access-control-allow-headers': 'content-type,authorization',
+    'access-control-allow-headers': 'content-type,authorization,x-thiet-bi',
     'access-control-max-age': '86400',
     'vary': 'origin',
   };
@@ -610,6 +628,10 @@ const laQuanTri = (req, env) =>
 const hoSo = (nd) => ({
   id: nd.id, email: nd.email, tenDn: nd.ten_dn || '', dienThoai: nd.dien_thoai || '',
   coGoogle: !!nd.google_sub,
+  // Tai khoan mo bang Google tu truoc khi bat buoc so dien thoai thi con
+  // thieu. Trang /tai-khoan/ thay co la bat bo sung ngay, chua bo sung thi
+  // may chu chan mua key / dung thu / rut tien / tai phan mem.
+  canSoDienThoai: !soDtHopLe(nd.dien_thoai || ''),
   soDu: Number(nd.so_du), vaiTro: nd.vai_tro, maNap: nd.ma_nap,
   daNap: Number(nd.da_nap), daRut: Number(nd.da_rut), hhKiem: Number(nd.hh_kiem),
   nganHang: nd.ngan_hang || '', soTk: nd.so_tk || '', chuTk: nd.chu_tk || '',
@@ -620,6 +642,121 @@ const emailHopLe = (e) => /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i.test(e);
 // Ten tai khoan: chu KHONG DAU, so va . _ - ; dung de dang nhap nen khong
 // cho dau cach va khong cho dau tieng Viet (go nham dau la khong vao duoc).
 const tenDnHopLe = (t) => /^[A-Za-z0-9._-]{3,30}$/.test(t);
+
+// ---- So dien thoai ----
+// Nhan moi kieu khach hay go: "0912 345 678", "+84912345678", "84.912.345.678"
+// -> deu ve mot dang "0912345678" de sau nay do trung cho de.
+function chuanSoDt(s) {
+  let t = String(s || '').replace(/[^0-9+]/g, '');
+  if (t.startsWith('+84')) t = '0' + t.slice(3);
+  else if (t.startsWith('84') && t.length >= 11) t = '0' + t.slice(2);
+  else if (t.startsWith('+')) t = t.slice(1);
+  return t.replace(/\+/g, '');
+}
+// Di dong 10 so (dau 03 05 07 08 09) hoac so ban dau 02 (10-11 so)
+const soDtHopLe = (s) => {
+  const t = chuanSoDt(s);
+  return /^0[35789][0-9]{8}$/.test(t) || /^02[0-9]{8,9}$/.test(t);
+};
+
+// So go bua cho co: 0999999999, 0123456789... Khong biet duoc so co that
+// khong (muon biet phai gui tin nhan OTP), nhung chan duoc nhung so bia lo lieu.
+function soDtRac(s) {
+  const than = chuanSoDt(s).slice(1);
+  if (than.length < 8) return true;
+  if (/^(\d)\1+$/.test(than)) return true;
+  let tang = true, giam = true;
+  for (let i = 1; i < than.length; i++) {
+    if (+than[i] !== +than[i - 1] + 1) tang = false;
+    if (+than[i] !== +than[i - 1] - 1) giam = false;
+  }
+  return tang || giam;
+}
+
+// ---- Dau van thiet bi ----
+// Hai nguon, uu tien cai chac hon:
+//   may:<ma may>  - phan mem tren may khach gui len (MAC tren Windows, UID
+//                   tren Mac). Chac chan nhat nhung chi co khi dang ky tu
+//                   trong phan mem.
+//   tb:<hex>      - trinh duyet tu bam ra tu cau hinh may (xem ViJS.astro).
+//                   Xoa cache / mo cua so an danh van ra dung ma do.
+// Trinh duyet KHONG cho trang web doc dia chi MAC hay IMEI - khong co cach
+// nao lay duoc, nen dau van la thu thay the gan nhat.
+function layMaTb(req, b) {
+  const may = String((b && b.maMay) || '').trim().toUpperCase();
+  if (maMayHopLe(may)) return 'may:' + may;
+  const v = String(req.headers.get('x-thiet-bi') || (b && b.maTb) || '').trim().toLowerCase();
+  return /^tb:[0-9a-f]{16,64}$/.test(v) ? v : '';
+}
+
+// Dem xem thiet bi nay da mo bao nhieu tai khoan.
+// Tra -1 khi chua chay nang-cap-07.sql: khi do bo qua viec chan chu khong
+// chan sach - thieu mot bang khong duoc lam ca website ngung nhan khach moi.
+async function demTaiKhoanTb(env, maTb) {
+  try {
+    const r = await env.DB.prepare('SELECT COUNT(*) AS n FROM thiet_bi WHERE ma_tb=?').bind(maTb).first();
+    return Number(r?.n || 0);
+  } catch (e) { console.log('chua co bang thiet_bi:', String(e).slice(0, 120)); return -1; }
+}
+
+// Dem so tai khoan mo THANH CONG tu mot IP trong khoang thoi gian.
+// Doc o nhat ky dang ky chu khong o nguoi_dung.ip, vi cot do bi ghi de moi
+// lan khach dang nhap lai nen khong con la IP luc dang ky nua.
+async function demDkTheoIp(env, ip, tuLuc) {
+  if (!ip) return 0;
+  try {
+    const r = await env.DB.prepare('SELECT COUNT(*) AS n FROM nhat_ky_dk WHERE ip=? AND duoc=1 AND luc>?')
+      .bind(ip, tuLuc).first();
+    return Number(r?.n || 0);
+  } catch (e) { return -1; }
+}
+
+// Ghi lai "thiet bi nay da mo tai khoan kia". Giu rieng mot bang chu khong
+// chi dua vao cot nguoi_dung.ma_tb: xoa tai khoan ben quan tri la mat dau
+// vet, ke gian xoa di roi dang ky lai ngay duoc.
+async function ghiThietBi(env, req, maTb, uid) {
+  if (!maTb) return;
+  try {
+    await env.DB.prepare(
+      'INSERT OR IGNORE INTO thiet_bi (ma_tb,nguoi,kieu,ip,luc) VALUES (?,?,?,?,?)')
+      .bind(maTb, uid, maTb.startsWith('may:') ? 'may' : 'trinh_duyet',
+        req.headers.get('cf-connecting-ip') || '', Date.now()).run();
+  } catch (e) { /* chua chay nang-cap-07.sql thi bo qua */ }
+}
+
+// Kiem tra truoc khi mo tai khoan moi. Tra chuoi loi neu khong cho, '' neu duoc.
+async function soatMoTaiKhoan(env, req, maTb, sdt) {
+  // Lop 1 - SO DIEN THOAI. Dat truoc vi day la lop chac nhat: doi trinh duyet,
+  // xoa cache hay tat bat 5G doi IP deu khong qua duoc, phai co so khac.
+  if (sdt) {
+    if (soDtRac(sdt)) {
+      return 'Số điện thoại này không có thật. Điền đúng số của bạn giúp tôi, ' +
+        'chủ shop cần liên hệ khi có việc về key.';
+    }
+    const demSdt = await env.DB.prepare('SELECT COUNT(*) AS n FROM nguoi_dung WHERE dien_thoai=?')
+      .bind(chuanSoDt(sdt)).first();
+    if (Number(demSdt?.n || 0) >= SDT_TOI_DA) {
+      return 'Số điện thoại này đã mở ' + SDT_TOI_DA + ' tài khoản rồi. ' +
+        'Đăng nhập lại tài khoản cũ để dùng tiếp nhé.';
+    }
+  }
+  if (!maTb) {
+    return 'Trình duyệt của bạn không gửi được thông tin thiết bị nên không đăng ký được. ' +
+      'Thử tắt chế độ chặn quảng cáo hoặc dùng trình duyệt khác (Chrome, Safari, Edge) rồi đăng ký lại.';
+  }
+  const daCo = await demTaiKhoanTb(env, maTb);
+  if (daCo >= TB_TOI_DA) {
+    return 'Máy này đã mở ' + daCo + ' tài khoản rồi, mỗi máy chỉ được mở tối đa ' +
+      TB_TOI_DA + ' tài khoản. Đăng nhập lại tài khoản cũ để dùng tiếp nhé.';
+  }
+  const ip = req.headers.get('cf-connecting-ip') || '';
+  const demIp = await demDkTheoIp(env, ip, Date.now() - NGAY);
+  if (demIp >= IP_TOI_DA) {
+    return 'Đường mạng này vừa mở quá nhiều tài khoản trong hôm nay. Thử lại sau 24 giờ ' +
+      'hoặc nhắn cho chủ shop để được mở tài khoản.';
+  }
+  return '';
+}
 
 // Ghi IP va lan cuoi khach vao. KHONG ghi thanh pho nua: Cloudflare chi doan
 // theo duong truyen nen hay ra sai tinh, doc vao de hieu nham hon la khong co.
@@ -637,12 +774,23 @@ function ghiNoiO(env, req, uid) {
 async function ghiNhatKyDk(env, req, o) {
   try {
     await env.DB.prepare(
-      'INSERT INTO nhat_ky_dk (luc,kieu,duoc,email,ten_dn,dien_thoai,loi,ip) VALUES (?,?,?,?,?,?,?,?)')
+      'INSERT INTO nhat_ky_dk (luc,kieu,duoc,email,ten_dn,dien_thoai,loi,ip,ma_tb) VALUES (?,?,?,?,?,?,?,?,?)')
       .bind(Date.now(), o.kieu || 'mat_khau', o.duoc ? 1 : 0,
         String(o.email || '').slice(0, 120), String(o.tenDn || '').slice(0, 60),
         String(o.dienThoai || '').slice(0, 20), o.loi ? String(o.loi).slice(0, 200) : null,
-        req.headers.get('cf-connecting-ip') || '').run();
-  } catch (e) { /* bang chua tao thi bo qua */ }
+        req.headers.get('cf-connecting-ip') || '', String(o.maTb || '').slice(0, 80)).run();
+  } catch (e) {
+    // Chua chay nang-cap-07.sql thi chua co cot ma_tb: ghi lai kieu cu, dung
+    // de mat sach nhat ky chi vi thieu mot cot.
+    try {
+      await env.DB.prepare(
+        'INSERT INTO nhat_ky_dk (luc,kieu,duoc,email,ten_dn,dien_thoai,loi,ip) VALUES (?,?,?,?,?,?,?,?)')
+        .bind(Date.now(), o.kieu || 'mat_khau', o.duoc ? 1 : 0,
+          String(o.email || '').slice(0, 120), String(o.tenDn || '').slice(0, 60),
+          String(o.dienThoai || '').slice(0, 20), o.loi ? String(o.loi).slice(0, 200) : null,
+          req.headers.get('cf-connecting-ip') || '').run();
+    } catch (e2) { /* bang chua tao thi bo qua */ }
+  }
 }
 
 // Mat khau dang chu de chu shop doc lai cho khach. Ghi hong thi thoi.
@@ -711,10 +859,11 @@ export default {
       const email = String(b.email || '').trim().toLowerCase();
       const tenDn = String(b.tenDn || '').trim();
       const mk = String(b.matKhau || '');
-      const dienThoai = String(b.dienThoai || '').trim().slice(0, 20);
+      const dienThoai = chuanSoDt(b.dienThoai);
+      const maTb = layMaTb(req, b);
       // Moi duong ra "hong" deu di qua day de chac chan co dong nhat ky
       const hong = async (loi, ma) => {
-        await ghiNhatKyDk(env, req, { kieu: 'mat_khau', duoc: 0, email, tenDn, dienThoai, loi });
+        await ghiNhatKyDk(env, req, { kieu: 'mat_khau', duoc: 0, email, tenDn, dienThoai, loi, maTb });
         return J({ loi }, ma);
       };
       if (!tenDnHopLe(tenDn)) {
@@ -722,6 +871,14 @@ export default {
       }
       if (!emailHopLe(email)) return hong('Email không hợp lệ', 400);
       if (mk.length < 8) return hong('Mật khẩu phải từ 8 ký tự trở lên', 400);
+      // So dien thoai la BAT BUOC - kiem ca o day chu khong chi o trang web,
+      // vi goi thang vao dia chi nay thi trang web khong chan duoc gi.
+      if (!soDtHopLe(dienThoai)) {
+        return hong('Số điện thoại không hợp lệ. Điền số di động 10 chữ số, ví dụ 0912345678.', 400);
+      }
+      // Moi may 2 tai khoan, moi duong mang 4 tai khoan mot ngay
+      const chan = await soatMoTaiKhoan(env, req, maTb, dienThoai);
+      if (chan) return hong(chan, 429);
 
       const daCo = await env.DB.prepare('SELECT id FROM nguoi_dung WHERE email=?').bind(email).first();
       if (daCo) return hong('Email này đã có tài khoản', 409);
@@ -743,12 +900,22 @@ export default {
       for (let lan = 0; lan < 6 && !nd; lan++) {
         try {
           nd = await env.DB.prepare(
-            'INSERT INTO nguoi_dung (email,ten_dn,dien_thoai,mat_khau,mk_ro,ma_nap,nguoi_gt,tao_luc)' +
-            ' VALUES (?,?,?,?,?,?,?,?) RETURNING *')
+            'INSERT INTO nguoi_dung (email,ten_dn,dien_thoai,mat_khau,mk_ro,ma_nap,nguoi_gt,ma_tb,tao_luc)' +
+            ' VALUES (?,?,?,?,?,?,?,?,?) RETURNING *')
             .bind(email, tenDn, dienThoai,
-              bam, mk, chuoiNgauNhien(6), nguoiGt, Date.now()).first();
+              bam, mk, chuoiNgauNhien(6), nguoiGt, maTb, Date.now()).first();
         } catch (e) {
           loiCuoi = String(e).slice(0, 200);
+          // Chua chay nang-cap-07.sql thi chua co cot ma_tb. Van cho khach mo
+          // tai khoan (mat phan chan theo may, con lai giu nguyen) chu khong
+          // de ca website ngung nhan khach vi thieu mot cot.
+          if (/ma_tb/.test(String(e))) {
+            nd = await env.DB.prepare(
+              'INSERT INTO nguoi_dung (email,ten_dn,dien_thoai,mat_khau,mk_ro,ma_nap,nguoi_gt,tao_luc)' +
+              ' VALUES (?,?,?,?,?,?,?,?) RETURNING *')
+              .bind(email, tenDn, dienThoai, bam, mk, chuoiNgauNhien(6), nguoiGt, Date.now()).first();
+            continue;
+          }
           // Trung ma_nap thi vong lap boc ma khac; hong kieu khac thi chiu,
           // nhung PHAI ghi lai ly do vao nhat ky chu khong nem di.
           if (!String(e).includes('UNIQUE')) return hong('Không tạo được tài khoản: ' + loiCuoi, 500);
@@ -760,7 +927,8 @@ export default {
         }
       }
       if (!nd) return hong('Không tạo được tài khoản: ' + loiCuoi, 500);
-      await ghiNhatKyDk(env, req, { kieu: 'mat_khau', duoc: 1, email, tenDn, dienThoai });
+      await ghiNhatKyDk(env, req, { kieu: 'mat_khau', duoc: 1, email, tenDn, dienThoai, maTb });
+      await ghiThietBi(env, req, maTb, nd.id);
       await ghiNoiO(env, req, nd.id);
       return J({ token: await taoToken(env, nd), nguoi: hoSo(nd) });
     }
@@ -845,6 +1013,7 @@ export default {
       const b = await than();
       const idToken = String(b.idToken || '');
       if (!idToken) return J({ loi: 'Thiếu mã Google' }, 400);
+      const maTb = layMaTb(req, b);
 
       let g;
       try {
@@ -880,6 +1049,30 @@ export default {
 
       // 3) Van chua co thi mo tai khoan moi
       if (!nd) {
+        // Vao bang Google cung PHAI co so dien thoai. Trang web chua hoi thi
+        // tra ve co "canSoDienThoai" - trang hien o nhap so roi goi lai day
+        // mot lan nua kem so do. Khong tao tai khoan truoc roi bat bo sung sau,
+        // vi bo sung sau la khach bo qua duoc.
+        const sdt = chuanSoDt(b.dienThoai);
+        if (!soDtHopLe(sdt)) {
+          await ghiNhatKyDk(env, req, {
+            kieu: 'google', duoc: 0, email, maTb,
+            loi: sdt ? 'So dien thoai khong hop le' : 'Chua nhap so dien thoai',
+          });
+          return J({
+            canSoDienThoai: true,
+            loi: sdt
+              ? 'Số điện thoại không hợp lệ. Điền số di động 10 chữ số, ví dụ 0912345678.'
+              : 'Lần đầu vào bằng Google, bạn cần điền số điện thoại để mở tài khoản.',
+          }, 400);
+        }
+        // Moi may 2 tai khoan - chan ca duong Google chu khong chi duong dang ky tay
+        const chan = await soatMoTaiKhoan(env, req, maTb, sdt);
+        if (chan) {
+          await ghiNhatKyDk(env, req, { kieu: 'google', duoc: 0, email, dienThoai: sdt, maTb, loi: chan });
+          return J({ loi: chan }, 429);
+        }
+
         // Ten tai khoan lay tu phan truoc dau @, bo ky tu la; trung thi them so
         let goc = email.split('@')[0].replace(/[^A-Za-z0-9._-]/g, '').slice(0, 24) || 'nguoidung';
         if (goc.length < 3) goc = goc + 'abc'.slice(0, 3 - goc.length);
@@ -896,10 +1089,18 @@ export default {
         for (let lan = 0; lan < 6 && !nd; lan++) {
           try {
             nd = await env.DB.prepare(
-              'INSERT INTO nguoi_dung (email,ten_dn,mat_khau,ma_nap,google_sub,tao_luc)' +
-              ' VALUES (?,?,?,?,?,?) RETURNING *')
-              .bind(email, tenDn, await bamMatKhau(mkNgau), chuoiNgauNhien(6), sub, Date.now()).first();
+              'INSERT INTO nguoi_dung (email,ten_dn,dien_thoai,mat_khau,ma_nap,google_sub,ma_tb,tao_luc)' +
+              ' VALUES (?,?,?,?,?,?,?,?) RETURNING *')
+              .bind(email, tenDn, sdt, await bamMatKhau(mkNgau), chuoiNgauNhien(6), sub, maTb, Date.now()).first();
           } catch (e) {
+            // Chua chay nang-cap-07.sql thi chua co cot ma_tb - van cho vao
+            if (/ma_tb/.test(String(e))) {
+              nd = await env.DB.prepare(
+                'INSERT INTO nguoi_dung (email,ten_dn,dien_thoai,mat_khau,ma_nap,google_sub,tao_luc)' +
+                ' VALUES (?,?,?,?,?,?,?) RETURNING *')
+                .bind(email, tenDn, sdt, await bamMatKhau(mkNgau), chuoiNgauNhien(6), sub, Date.now()).first();
+              break;
+            }
             if (!String(e).includes('UNIQUE')) throw e;
             const lai = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE google_sub=? OR email=?')
               .bind(sub, email).first();
@@ -907,13 +1108,22 @@ export default {
           }
         }
         await ghiNhatKyDk(env, req, {
-          kieu: 'google', duoc: nd ? 1 : 0, email, tenDn,
+          kieu: 'google', duoc: nd ? 1 : 0, email, tenDn, dienThoai: sdt, maTb,
           loi: nd ? null : 'Không tạo được tài khoản qua Google',
         });
+        if (nd) await ghiThietBi(env, req, maTb, nd.id);
       }
 
       if (!nd) return J({ loi: 'Không tạo được tài khoản, thử lại' }, 500);
       if (nd.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
+      // Tai khoan vao bang Google tu TRUOC khi bat buoc so dien thoai: van cho
+      // dang nhap, nhung neu lan nay khach gui kem so thi luu luon.
+      if (!soDtHopLe(nd.dien_thoai || '')) {
+        const sdtBu = chuanSoDt(b.dienThoai);
+        if (soDtHopLe(sdtBu)) {
+          await env.DB.prepare('UPDATE nguoi_dung SET dien_thoai=? WHERE id=?').bind(sdtBu, nd.id).run();
+        }
+      }
       await env.DB.prepare('UPDATE nguoi_dung SET sai_lan=0, khoa_den=0 WHERE id=?').bind(nd.id).run();
       await ghiNoiO(env, req, nd.id);
       const moi = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE id=?').bind(nd.id).first();
@@ -923,6 +1133,14 @@ export default {
     // ============ CAN DANG NHAP ============
     const toi = await layNguoi(env, req);
     const canDN = () => J({ loi: 'Chưa đăng nhập' }, 401);
+    // Tai khoan cu (mo bang Google truoc khi bat buoc so dien thoai) chua co
+    // so thi chan cac viec quan trong lai. Tra kem "canSoDienThoai" de trang
+    // web mo thang o nhap so chu khong chi bao loi suong.
+    const canSdt = () => J({
+      loi: 'Bạn cần bổ sung số điện thoại trước khi dùng tiếp. Vào mục Tài khoản để điền.',
+      canSoDienThoai: true,
+    }, 403);
+    const thieuSdt = () => !!toi && !soDtHopLe(toi.dien_thoai || '');
 
     if (p === '/toi') {
       if (!toi) return canDN();
@@ -961,8 +1179,25 @@ export default {
     if (req.method === 'POST' && p === '/ho-so') {
       if (!toi) return canDN();
       const b = await than();
-      await env.DB.prepare('UPDATE nguoi_dung SET dien_thoai=? WHERE id=?')
-        .bind(String(b.dienThoai || '').trim().slice(0, 20), toi.id).run();
+      // So dien thoai la bat buoc, khong cho xoa trang di. Luu ve mot dang
+      // "0912345678" de con do trung duoc.
+      const sdt = chuanSoDt(b.dienThoai);
+      if (!soDtHopLe(sdt)) {
+        return J({ loi: 'Số điện thoại không hợp lệ. Điền số di động 10 chữ số, ví dụ 0912345678.' }, 400);
+      }
+      if (soDtRac(sdt)) {
+        return J({ loi: 'Số điện thoại này không có thật. Điền đúng số của bạn giúp tôi.' }, 400);
+      }
+      // Khong cho don so: mo 2 tai khoan bang so A roi doi ca hai sang so B la
+      // lai mo tiep duoc bang so A.
+      if (chuanSoDt(toi.dien_thoai) !== sdt) {
+        const demSdt = await env.DB.prepare(
+          'SELECT COUNT(*) AS n FROM nguoi_dung WHERE dien_thoai=? AND id<>?').bind(sdt, toi.id).first();
+        if (Number(demSdt?.n || 0) >= SDT_TOI_DA) {
+          return J({ loi: 'Số điện thoại này đã gắn với ' + SDT_TOI_DA + ' tài khoản khác rồi.' }, 409);
+        }
+      }
+      await env.DB.prepare('UPDATE nguoi_dung SET dien_thoai=? WHERE id=?').bind(sdt, toi.id).run();
       return J({ ok: true });
     }
 
@@ -971,6 +1206,7 @@ export default {
     if (p === '/lien-ket') {
       if (!toi) return canDN();
       if (toi.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
+      if (thieuSdt()) return canSdt();
       const ma = String(url.searchParams.get('pm') || '');
       const cua = LIEN_KET[ma];
       if (!cua) return J({ loi: 'Không có phần mềm này' }, 404);
@@ -982,6 +1218,7 @@ export default {
     if (req.method === 'POST' && p === '/tao-link') {
       if (!toi) return canDN();
       if (toi.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
+      if (thieuSdt()) return canSdt();
       const b = await than();
       const dich = String(b.url || '').trim();
       const nen = nhanNenTang(dich);
@@ -1071,6 +1308,7 @@ export default {
     if (req.method === 'POST' && p === '/dung-thu') {
       if (!toi) return canDN();
       if (toi.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
+      if (thieuSdt()) return canSdt();
       const b = await than();
       const maPm = String(b.phanMem || '');
       const pm = PHAN_MEM[maPm];
@@ -1083,37 +1321,81 @@ export default {
         return J({ loi: 'Bạn đã nhận mã dùng thử của phần mềm này rồi. Mã cũ: ' + (daThu.ma_key || '—') }, 409);
       }
 
-      // Chan lap tai khoan de xin ma thu: mot dia chi IP toi da 3 ma trong 30
-      // ngay. De rong vi mang di dong Trung Quoc gop hang nghin nguoi sau mot IP.
+      // ---- Chan lap tai khoan de xin ma thu ----
+      // Ba lop, vi day la cho khach hay lach nhat: chi can mo them tai khoan
+      // la lai co mot ma mien phi.
       const ipThu = req.headers.get('CF-Connecting-IP') || '';
       const mocThu = Date.now() - 30 * 86400000;
+      const maTbThu = layMaTb(req, b) || toi.ma_tb || '';
+
+      // Lop 1 - theo MAY: moi may chi mot ma cho moi phan mem. Chan o day
+      // moi that su an, vi mot may van mo duoc 2 tai khoan.
+      if (maTbThu) {
+        try {
+          const daThuMay = await env.DB.prepare(
+            'SELECT COUNT(*) AS n FROM dung_thu WHERE ma_tb=? AND phan_mem=?')
+            .bind(maTbThu, maPm).first();
+          if (Number(daThuMay?.n || 0) >= TB_THU_TOI_DA) {
+            return J({
+              loi: 'Máy này đã nhận mã dùng thử của phần mềm này rồi (kể cả bằng tài khoản khác). ' +
+                'Mỗi máy chỉ được thử một lần. Mua gói tháng để dùng tiếp nhé.',
+            }, 429);
+          }
+        } catch (e) { /* chua chay nang-cap-07.sql thi bo lop nay */ }
+      }
+
+      // Lop 2 - theo DUONG MANG: toi da 3 ma trong 30 ngay. De rong vi mang
+      // di dong gop hang nghin nguoi sau mot IP.
       const demIP = await env.DB.prepare('SELECT COUNT(*) AS n FROM dung_thu WHERE ip=? AND luc>?')
         .bind(ipThu, mocThu).first();
       if ((demIP?.n || 0) >= 3) {
         return J({ loi: 'Đường mạng này đã nhận nhiều mã dùng thử rồi. Mua gói tháng để dùng tiếp nhé.' }, 429);
       }
 
+      // Lop 3 - theo SO DIEN THOAI: doi so dien thoai thi phai la so that khac,
+      // kho hon nhieu so voi viec mo them email.
+      const sdtThu = chuanSoDt(toi.dien_thoai);
+      if (sdtThu) {
+        const daThuSdt = await env.DB.prepare(
+          'SELECT COUNT(*) AS n FROM dung_thu d JOIN nguoi_dung n ON n.id=d.nguoi' +
+          ' WHERE n.dien_thoai=? AND d.phan_mem=?').bind(sdtThu, maPm).first();
+        if (Number(daThuSdt?.n || 0) >= 1) {
+          return J({
+            loi: 'Số điện thoại này đã nhận mã dùng thử của phần mềm này rồi. ' +
+              'Mua gói tháng để dùng tiếp nhé.',
+          }, 429);
+        }
+      }
+
       let keyThu;
       try {
-        keyThu = await xinKeyTuApi(env, { ngay: pm.dungThuNgay }, toi.email, 'THU-' + toi.id, 'dung thu');
+        keyThu = await xinKeyTuApi(env, { ngay: pm.dungThuNgay }, toi.email, 'THU-' + toi.id, 'dung thu', true);
       } catch (e) {
         console.log('cap ma dung thu hong:', (e && e.message) || String(e));
         return J({ loi: 'Máy chủ cấp mã đang bận, thử lại sau ít phút.' }, 503);
       }
 
-      await env.DB.prepare('INSERT INTO dung_thu (nguoi,phan_mem,ma_key,ip,luc) VALUES (?,?,?,?,?)')
-        .bind(toi.id, maPm, keyThu, ipThu, Date.now()).run();
+      try {
+        await env.DB.prepare('INSERT INTO dung_thu (nguoi,phan_mem,ma_key,ip,ma_tb,luc) VALUES (?,?,?,?,?,?)')
+          .bind(toi.id, maPm, keyThu, ipThu, maTbThu, Date.now()).run();
+      } catch (e) {
+        // Chua chay nang-cap-07.sql thi chua co cot ma_tb - ghi kieu cu,
+        // dung de mat dau vet chi vi thieu mot cot.
+        await env.DB.prepare('INSERT INTO dung_thu (nguoi,phan_mem,ma_key,ip,luc) VALUES (?,?,?,?,?)')
+          .bind(toi.id, maPm, keyThu, ipThu, Date.now()).run();
+      }
 
       return J({
         ok: true, key: keyThu, soNgay: pm.dungThuNgay,
         nhan: 'Mã dùng thử ' + pm.dungThuNgay + ' ngày đã cấp. Mở ' + pm.ten +
-          ', nhập mã này vào là dùng được ngay. Mỗi tài khoản chỉ nhận một lần.',
+          ', nhập mã này vào là dùng được ngay. Mỗi tài khoản và mỗi máy chỉ thử một lần.',
       });
     }
 
     if (req.method === 'POST' && p === '/mua') {
       if (!toi) return canDN();
       if (toi.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
+      if (thieuSdt()) return canSdt();
       const b = await than();
       const maPm = String(b.phanMem || '');
       const pm = PHAN_MEM[maPm];
@@ -1312,6 +1594,9 @@ export default {
           ' FROM yeu_cau_rut WHERE nguoi=? ORDER BY luc DESC LIMIT 50').bind(toi.id).all();
         return J({ yeuCau: r.results || [], toiThieu: Number(env.RUT_TOI_THIEU || 50000), phi: Number(env.PHI_RUT || 0) });
       }
+
+      // Xem lich su thi thoi, con GUI yeu cau rut tien thi phai co so dien thoai
+      if (thieuSdt()) return canSdt();
 
       const b = await than();
       const soTien = Math.round(Number(b.soTien) || 0);

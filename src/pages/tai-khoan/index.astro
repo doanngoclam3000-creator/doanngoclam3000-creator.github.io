@@ -14,6 +14,14 @@ import '../../styles/tai-khoan.css';
         </div>
       </div>
 
+      <!-- Tai khoan mo bang Google tu truoc khi bat buoc so dien thoai thi con
+           thieu. Chua bo sung thi may chu chan mua key / dung thu / rut tien. -->
+      <div class="loi" id="thieu-dt" hidden>
+        <b>Thiếu số điện thoại.</b> Bạn cần điền số điện thoại thì mới mua key,
+        nhận mã dùng thử, tải phần mềm hay rút tiền được.
+        <a href="#ho-so" data-di="ho-so">Điền ngay</a>
+      </div>
+
       <div class="o-sodu">
         <div class="nhan-so">Số dư khả dụng</div>
         <div class="tien" id="so-du">…</div>
@@ -148,7 +156,8 @@ import '../../styles/tai-khoan.css';
           <div class="duoc" id="hs-duoc" hidden></div>
           <label class="o o-vua"><span>Email</span><input type="text" id="hs-email" disabled /></label>
           <label class="o o-vua"><span>Tên tài khoản</span><input type="text" id="hs-ten" disabled /></label>
-          <label class="o o-vua"><span>Số điện thoại</span><input type="tel" id="hs-dt" /></label>
+          <label class="o o-vua"><span>Số điện thoại</span><input type="tel" id="hs-dt" placeholder="09xx xxx xxx" />
+            <small>Bắt buộc. Số di động 10 chữ số, ví dụ 0912345678.</small></label>
           <button class="nut nut-chinh" id="hs-nut" type="button">Lưu</button>
         </div>
 
@@ -193,6 +202,19 @@ import '../../styles/tai-khoan.css';
       var V = window.VI;
       var $ = function (id) { return document.getElementById(id); };
       var toi = null, bangGia = null, pmDangChon = null, goiDangChon = null, lsCuoi = 0;
+      var daNhacDt = false;
+
+      // Nhan moi kieu khach hay go: "0912 345 678", "+84912345678" -> "0912345678"
+      function chuanDt(t) {
+        var x = String(t || '').replace(/[^0-9+]/g, '');
+        if (x.indexOf('+84') === 0) x = '0' + x.slice(3);
+        else if (x.indexOf('84') === 0 && x.length >= 11) x = '0' + x.slice(2);
+        return x.replace(/\+/g, '');
+      }
+      function dtHopLe(t) {
+        var x = chuanDt(t);
+        return /^0[35789][0-9]{8}$/.test(x) || /^02[0-9]{8,9}$/.test(x);
+      }
 
       // ---------- Tab ----------
       function moTab(ten) {
@@ -241,12 +263,25 @@ import '../../styles/tai-khoan.css';
         $('hs-email').value = toi.email;
         $('hs-ten').value = toi.tenDn;
         $('hs-dt').value = toi.dienThoai;
+
+        // Thieu so dien thoai thi mo thang tab Tai khoan ra, dung de khach
+        // mo tab khac roi bam nut nao cung bao loi ma khong hieu vi sao.
+        $('thieu-dt').hidden = !toi.canSoDienThoai;
+        if (toi.canSoDienThoai && !daNhacDt) {
+          daNhacDt = true;
+          moTab('ho-so');
+          $('hs-dt').focus();
+        }
       }
 
       $('hs-nut').addEventListener('click', async function () {
         V.baoLoi('hs-loi', ''); $('hs-duoc').hidden = true;
+        if (!dtHopLe($('hs-dt').value)) {
+          $('hs-dt').focus();
+          return V.baoLoi('hs-loi', new Error('Điền số điện thoại di động 10 chữ số, ví dụ 0912345678.'));
+        }
         try {
-          await V.goi('/ho-so', { dienThoai: $('hs-dt').value });
+          await V.goi('/ho-so', { dienThoai: chuanDt($('hs-dt').value) });
           $('hs-duoc').textContent = 'Đã lưu thông tin.';
           $('hs-duoc').hidden = false;
           await taiToi();

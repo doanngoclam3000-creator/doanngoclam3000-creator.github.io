@@ -7,6 +7,70 @@ import { CAUHINH } from '../config';
   window.VI = {
     goc: GOC,
     token: () => localStorage.getItem('vi-token') || '',
+
+    // ---- Dau van thiet bi ----
+    // De may chu biet "may nay da mo bao nhieu tai khoan" va "may nay da xin
+    // ma dung thu chua". Truoc day khach cu mo them tai khoan la lai co mot
+    // ma dung thu mien phi.
+    //
+    // Trinh duyet KHONG cho trang web doc dia chi MAC hay IMEI - khong co API
+    // nao het, ke ca xin phep. Thu gan nhat lam duoc la bam mot ma tu cau hinh
+    // may: he dieu hanh, so nhan CPU, bo nho, mui gio, va nhat la net ve cua
+    // canvas + ten card do hoa (moi doi may ve ra mot kieu khac nhau).
+    //
+    // Xoa cache hay mo cua so an danh deu ra dung ma do - vi khong dua vao
+    // cookie hay localStorage ma tinh lai tu dau moi lan.
+    async maThietBi() {
+      if (window.VI._tb) return window.VI._tb;
+      var manh = [];
+      var them = function (x) { try { manh.push(String(x)); } catch (e) { manh.push('?'); } };
+      try {
+        them(navigator.userAgent);
+        them(navigator.platform);
+        them(navigator.hardwareConcurrency || 0);
+        them(navigator.deviceMemory || 0);
+        them((navigator.languages || [navigator.language]).join(','));
+        them(Intl.DateTimeFormat().resolvedOptions().timeZone);
+        them(screen.colorDepth);
+        // Net ve canvas: cung mot dong chu nhung moi doi may/card do hoa ve ra
+        // mot chuoi diem anh khac nhau.
+        try {
+          var c = document.createElement('canvas');
+          c.width = 220; c.height = 40;
+          var v = c.getContext('2d');
+          v.textBaseline = 'top';
+          v.font = '14px Arial';
+          v.fillStyle = '#f60'; v.fillRect(0, 0, 100, 20);
+          v.fillStyle = '#069'; v.fillText('phanmemtq 0123 xin chao', 2, 15);
+          them(c.toDataURL().slice(-160));
+        } catch (e) { them('no-canvas'); }
+        // Ten card do hoa that (VD "Apple M2", "NVIDIA GeForce RTX 3060")
+        try {
+          var g = document.createElement('canvas').getContext('webgl');
+          var d = g && g.getExtension('WEBGL_debug_renderer_info');
+          them(d ? g.getParameter(d.UNMASKED_RENDERER_WEBGL) : 'no-webgl');
+        } catch (e) { them('no-webgl'); }
+      } catch (e) { /* thieu gi thi bam bang cai con lai */ }
+
+      var chuoi = manh.join('|');
+      var hex = '';
+      try {
+        var bam = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(chuoi));
+        hex = Array.from(new Uint8Array(bam)).map(function (x) {
+          return x.toString(16).padStart(2, '0');
+        }).join('').slice(0, 32);
+      } catch (e) {
+        // May chu chi nhan 16-64 ky tu hex, nen bam tay ra du do dai
+        var h1 = 5381, h2 = 52711;
+        for (var i = 0; i < chuoi.length; i++) {
+          h1 = (h1 * 33 ^ chuoi.charCodeAt(i)) >>> 0;
+          h2 = (h2 * 31 ^ chuoi.charCodeAt(i)) >>> 0;
+        }
+        hex = (h1.toString(16).padStart(8, '0') + h2.toString(16).padStart(8, '0')).repeat(2);
+      }
+      window.VI._tb = 'tb:' + hex;
+      return window.VI._tb;
+    },
     datToken: (t) => localStorage.setItem('vi-token', t),
     thoat: () => { localStorage.removeItem('vi-token'); location.href = '/tai-khoan/dang-nhap/'; },
 
@@ -15,6 +79,10 @@ import { CAUHINH } from '../config';
       const dau = { 'content-type': 'application/json' };
       const t = window.VI.token();
       if (t) dau.authorization = 'Bearer ' + t;
+      // Gui kem dau van may o MOI yeu cau. Tinh mot lan roi nho lai nen khong
+      // lam cham cac lan sau. Tinh hong thi van goi binh thuong - may chu chi
+      // bat buoc co dau van o luc MO tai khoan moi.
+      try { dau['x-thiet-bi'] = await window.VI.maThietBi(); } catch (e) { /* thoi */ }
       let r;
       try {
         r = await fetch(window.VI.goc + duong, {
@@ -27,7 +95,14 @@ import { CAUHINH } from '../config';
       }
       const o = await r.json().catch(() => ({}));
       if (r.status === 401 && t && duong !== '/dn') { window.VI.thoat(); throw new Error('Phiên đã hết hạn'); }
-      if (!r.ok) throw new Error(o.loi || ('Máy chủ trả mã ' + r.status));
+      if (!r.ok) {
+        // Giu lai ca cac truong khac may chu gui kem (VD canSoDienThoai) chu
+        // khong chi moi dong chu bao loi - trang goi can biet de mo o nhap.
+        const loi = new Error(o.loi || ('Máy chủ trả mã ' + r.status));
+        Object.keys(o).forEach(function (k) { if (k !== 'loi') loi[k] = o[k]; });
+        loi.ma = r.status;
+        throw loi;
+      }
       return o;
     },
 

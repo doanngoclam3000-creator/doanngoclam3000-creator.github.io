@@ -13,6 +13,7 @@ import NutGoogle from '../../components/NutGoogle.astro';
 
       <div class="hop">
         <div class="loi" id="loi" hidden></div>
+        <p class="loi-mo">Tất cả các ô đều bắt buộc, trừ ô mã giới thiệu.</p>
         <form id="form">
           <label class="o">
             <span>Tên tài khoản</span>
@@ -35,7 +36,8 @@ import NutGoogle from '../../components/NutGoogle.astro';
           </label>
           <label class="o">
             <span>Số điện thoại</span>
-            <input type="tel" id="dienThoai" autocomplete="tel" placeholder="09xx xxx xxx" />
+            <input type="tel" id="dienThoai" required autocomplete="tel" placeholder="09xx xxx xxx" />
+            <small id="nhac-dt">Số di động 10 chữ số. Dùng để chủ shop liên hệ khi có việc về key.</small>
           </label>
           <label class="o">
             <span>Mã giới thiệu (nếu có)</span>
@@ -63,9 +65,24 @@ import NutGoogle from '../../components/NutGoogle.astro';
       var mk2 = document.getElementById('matKhau2');
       var nhacMk = document.getElementById('khop-mk');
 
+      var oDt = document.getElementById('dienThoai');
+      var nhacDt = document.getElementById('nhac-dt');
+
       var TEN_CHUAN = 'Dùng để đăng nhập. Chữ không dấu, số và dấu . _ - ; từ 3 đến 30 ký tự.';
       var MK_CHUAN = 'Gõ lại đúng mật khẩu ở trên cho chắc.';
+      var DT_CHUAN = 'Số di động 10 chữ số. Dùng để chủ shop liên hệ khi có việc về key.';
       var tenHopLe = function (t) { return /^[A-Za-z0-9._-]{3,30}$/.test(t); };
+      // Nhan moi kieu khach hay go: "0912 345 678", "+84912345678" -> "0912345678"
+      var chuanDt = function (t) {
+        var x = String(t || '').replace(/[^0-9+]/g, '');
+        if (x.indexOf('+84') === 0) x = '0' + x.slice(3);
+        else if (x.indexOf('84') === 0 && x.length >= 11) x = '0' + x.slice(2);
+        return x.replace(/\+/g, '');
+      };
+      var dtHopLe = function (t) {
+        var x = chuanDt(t);
+        return /^0[35789][0-9]{8}$/.test(x) || /^02[0-9]{8,9}$/.test(x);
+      };
 
       // Bao ngay luc go, khong doi bam nut moi biet sai
       function nhac(o, chu, sai) {
@@ -81,9 +98,15 @@ import NutGoogle from '../../components/NutGoogle.astro';
         if (mk2.value && mk1.value !== mk2.value) nhac(nhacMk, 'Hai ô mật khẩu chưa giống nhau.', true);
         else nhac(nhacMk, MK_CHUAN, false);
       }
+      function soatDt() {
+        if (oDt.value && !dtHopLe(oDt.value)) {
+          nhac(nhacDt, 'Số điện thoại chưa đúng. Điền số di động 10 chữ số, ví dụ 0912345678.', true);
+        } else nhac(nhacDt, DT_CHUAN, false);
+      }
       oTen.addEventListener('input', soatTen);
       mk1.addEventListener('input', soatKhop);
       mk2.addEventListener('input', soatKhop);
+      oDt.addEventListener('input', soatDt);
 
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
@@ -96,13 +119,17 @@ import NutGoogle from '../../components/NutGoogle.astro';
           mk2.focus();
           return window.VI.baoLoi('loi', new Error('Hai ô mật khẩu chưa giống nhau. Gõ lại giúp tôi.'));
         }
+        if (!dtHopLe(oDt.value)) {
+          oDt.focus();
+          return window.VI.baoLoi('loi', new Error('Điền số điện thoại di động 10 chữ số, ví dụ 0912345678.'));
+        }
         nut.disabled = true; nut.textContent = 'Đang tạo…';
         try {
           var kq = await window.VI.goi('/dk', {
             tenDn: oTen.value.trim(),
             matKhau: mk1.value,
             email: document.getElementById('email').value.trim(),
-            dienThoai: document.getElementById('dienThoai').value.trim(),
+            dienThoai: chuanDt(oDt.value),
             gioiThieu: document.getElementById('gioiThieu').value.trim(),
           });
           window.VI.datToken(kq.token);

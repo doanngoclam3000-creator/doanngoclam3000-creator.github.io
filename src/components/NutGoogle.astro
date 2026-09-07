@@ -7,6 +7,18 @@
   <div class="vach"><span>hoặc</span></div>
   <div id="google-nut"></div>
   <div class="loi" id="google-loi" hidden></div>
+
+  <!-- Lan dau vao bang Google thi may chu doi so dien thoai. Hien o nay ngay
+       tai cho chu khong day sang trang khac, khach dang o giua chung. -->
+  <div class="google-sdt" id="google-sdt" hidden>
+    <p>Còn một bước nữa: điền số điện thoại để mở tài khoản.</p>
+    <label class="o">
+      <span>Số điện thoại</span>
+      <input type="tel" id="google-dt" autocomplete="tel" placeholder="09xx xxx xxx" />
+      <small>Số di động 10 chữ số, ví dụ 0912345678.</small>
+    </label>
+    <button class="nut nut-chinh nut-day" id="google-xong" type="button">Xong, mở tài khoản</button>
+  </div>
 </div>
 
 <script is:inline>
@@ -14,16 +26,58 @@
     var boc = document.getElementById('google-boc');
     if (!boc || !window.VI) return;
 
-    function nhanMa(kq) {
+    var maCuoi = '';   // giu lai ma Google de goi lan hai kem so dien thoai
+    var oSdt = document.getElementById('google-sdt');
+    var oDt = document.getElementById('google-dt');
+
+    function chuanDt(t) {
+      var x = String(t || '').replace(/[^0-9+]/g, '');
+      if (x.indexOf('+84') === 0) x = '0' + x.slice(3);
+      else if (x.indexOf('84') === 0 && x.length >= 11) x = '0' + x.slice(2);
+      return x.replace(/\+/g, '');
+    }
+
+    function vao(idToken, dienThoai) {
       window.VI.baoLoi('google-loi', '');
-      window.VI.goi('/google', { idToken: kq.credential })
+      return window.VI.goi('/google', { idToken: idToken, dienThoai: dienThoai || '' })
         .then(function (o) {
           window.VI.datToken(o.token);
           var ve = new URLSearchParams(location.search).get('ve') || '/tai-khoan/';
           location.href = ve;
         })
-        .catch(function (e) { window.VI.baoLoi('google-loi', e); });
+        .catch(function (e) {
+          // May chu bao "chua co so dien thoai": hien o nhap ngay tai day.
+          // Ma Google chi song vai phut nen phai xong nhanh, khong day khach
+          // sang trang khac roi quay lai.
+          if (e && e.canSoDienThoai) {
+            var daMo = !oSdt.hidden;
+            oSdt.hidden = false;
+            oDt.focus();
+            // Lan dau thi chi mo o ra, khong to do len nhu bao loi. Da mo roi
+            // ma van hong (so sai) thi moi bao.
+            if (daMo) window.VI.baoLoi('google-loi', e);
+            return;
+          }
+          window.VI.baoLoi('google-loi', e);
+        });
     }
+
+    function nhanMa(kq) {
+      maCuoi = kq.credential;
+      vao(maCuoi, oSdt.hidden ? '' : chuanDt(oDt.value));
+    }
+
+    document.getElementById('google-xong').addEventListener('click', function () {
+      var dt = chuanDt(oDt.value);
+      if (!/^0[35789][0-9]{8}$/.test(dt) && !/^02[0-9]{8,9}$/.test(dt)) {
+        return window.VI.baoLoi('google-loi', new Error('Điền số di động 10 chữ số, ví dụ 0912345678.'));
+      }
+      if (!maCuoi) {
+        return window.VI.baoLoi('google-loi',
+          new Error('Mã đăng nhập Google đã hết hạn. Bấm lại nút Google ở trên giúp tôi.'));
+      }
+      vao(maCuoi, dt);
+    });
 
     function veNut(clientId) {
       var t = document.createElement('script');
@@ -58,4 +112,6 @@
     content: ''; flex: 1; height: 1px; background: var(--vien);
   }
   #google-nut { display: flex; justify-content: center; }
+  .google-sdt { margin-top: 1.1rem; }
+  .google-sdt p { margin: 0 0 .7rem; font-size: .92rem; }
 </style>
