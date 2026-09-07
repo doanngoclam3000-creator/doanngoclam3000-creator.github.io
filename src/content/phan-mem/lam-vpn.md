@@ -6,7 +6,7 @@ phienBan: "1.3"
 banToiThieu: "1.2"
 ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Bản đầu tiên phát hành qua TestFlight, dùng được cho cả iPhone và Mac."
-gia: "50.000đ / tháng — mua nhiều tháng thì nhân lên, không phụ thu"
+gia: "80.000đ / tháng — mua 1 năm chỉ 800.000đ, bằng trả 10 tháng dùng 12 tháng"
 linkTaiIOS: "https://testflight.apple.com/join/PCtZb1MD"
 dungLuong: "khoảng 60 MB — cài qua TestFlight"
 anhIcon: "/icon/lam-vpn.png"
@@ -94,13 +94,14 @@ ghi lại nội dung bạn xem.** App cũng không có công cụ thống kê ha
 
 ## Bảng giá
 
-| Gói | Giá |
-|---|---|
-| 1 tháng | 50.000đ |
-| 2 tháng | 100.000đ |
-| 3 tháng | 150.000đ |
-| 6 tháng | 300.000đ |
-| 1 năm | 600.000đ |
+| Gói | Giá | Tính ra mỗi tháng |
+|---|---|---|
+| 1 tháng | 80.000đ | 80.000đ |
+| 3 tháng | 220.000đ | 73.300đ |
+| 6 tháng | 420.000đ | 70.000đ |
+| **1 năm** | **800.000đ** | **66.700đ** |
+
+Mua 1 năm là **trả 10 tháng, dùng 12 tháng** — tiết kiệm 160.000đ so với mua lẻ từng tháng.
 
 Mua bằng số dư trong tài khoản trên website. Nạp tiền xong, bấm mua là **nhận mã ngay**,
 không phải chờ ai duyệt.

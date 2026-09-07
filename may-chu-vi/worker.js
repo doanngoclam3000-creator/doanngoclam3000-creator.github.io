@@ -105,12 +105,15 @@ const PHAN_MEM = {
     // LamVPN - het_han duoc dat khi kich_hoat_luc con rong).
     an: false,
     luuY: 'Một mã dùng được cho cả iPhone, Mac, Android và Windows — nhưng mỗi lúc chỉ một máy. Cần thêm máy thì mua thêm mã.',
+    // Bac gia co giam dan theo do dai: khong giam thi khach khong co ly do gi
+    // tra truoc ca nam, ma thang nao cung la mot dip de ho bo di.
+    // Goi nam = dung 10 thang -> ban duoc bang cau "tra 10 thang, dung 12 thang".
+    // Bo goi 2 thang: nam giua 1 va 3, khong giam gia, khong ai chon.
     goi: [
-      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 50000 },
-      { ma: 'B', ten: '2 tháng', ngay: 60,  gia: 100000 },
-      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 150000 },
-      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 300000 },
-      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 600000 },
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 80000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 220000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 420000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 800000 },
     ],
   },
   'hoc-tieng-trung': {
