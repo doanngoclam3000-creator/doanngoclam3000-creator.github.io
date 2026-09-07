@@ -99,10 +99,11 @@ const PHAN_MEM = {
     // dung. Mot ma dung duoc tren ca iPhone, Mac, Android lan Windows, nhung
     // moi luc chi mot may.
     ten: 'LamVPN', kieu: 'api', tienTo: 'LAM',
-    // TAM AN. Ban iPhone/Mac dang cho Apple duyet TestFlight, ban Android va
-    // Windows chua co - ban key luc nay la khach tra tien xong khong cai duoc
-    // app. Duyet xong thi doi thanh false roi chay lai `npx wrangler deploy`.
-    an: true,
+    // MO BAN tu 08/09/2026. Ban iPhone/Mac con cho Apple duyet TestFlight (1-2
+    // ngay) nhung mua truoc KHONG thiet: so ngay chi bat dau tinh tu luc khach
+    // kich hoat trong app, khong phai luc mua (xem ham kichHoat ben may chu
+    // LamVPN - het_han duoc dat khi kich_hoat_luc con rong).
+    an: false,
     luuY: 'Một mã dùng được cho cả iPhone, Mac, Android và Windows — nhưng mỗi lúc chỉ một máy. Cần thêm máy thì mua thêm mã.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 50000 },

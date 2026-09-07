@@ -17,13 +17,14 @@ thuTu: 7
 an: false
 ---
 
-> ### ⏳ Đang chờ Apple duyệt — mở bán trong 1–2 ngày
+> ### ⏳ App đang chờ Apple duyệt — nhưng mua mã bây giờ được, không thiệt
 >
-> Bản iPhone và Mac đã nộp lên TestFlight, đang chờ Apple xét duyệt (thường 1–2 ngày làm việc).
-> Duyệt xong là **link cài đặt bật lên và mở bán ngay tại đây**. Bạn xem trước cho biết,
-> chưa mua được lúc này.
+> Bản iPhone và Mac đã nộp lên TestFlight, Apple thường duyệt trong **1–2 ngày làm việc**.
 >
-> Bản **Android** và **Windows** đang làm, sẽ dùng chung mã kích hoạt.
+> **Mua trước không mất ngày nào:** số ngày chỉ bắt đầu đếm từ lúc bạn **nhập mã vào app**,
+> không phải từ lúc mua. Mua hôm nay, ba ngày nữa mới kích hoạt thì vẫn đủ nguyên số ngày.
+>
+> Bản **Android** và **Windows** đang làm, sẽ dùng chung mã kích hoạt — không phải mua lại.
 
 ![Tổng quan LamVPN](/anh/lam-vpn/1-tong-quan.svg)
 

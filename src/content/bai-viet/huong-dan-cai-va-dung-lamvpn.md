@@ -14,8 +14,8 @@ không cần biết gì về kỹ thuật.
 
 Tổng cộng mất khoảng **ba phút**.
 
-> **Lưu ý:** bản iPhone và Mac đang chờ Apple duyệt TestFlight (1–2 ngày làm việc). Bài này
-> viết sẵn để bạn nắm trước; duyệt xong là link cài đặt bật lên ở [trang LamVPN](/phan-mem/lam-vpn).
+> **Lưu ý:** app đang chờ Apple duyệt TestFlight (1–2 ngày làm việc). **Mua mã bây giờ vẫn
+> được và không thiệt** — số ngày chỉ đếm từ lúc bạn nhập mã vào app, không phải từ lúc mua.
 
 ![Tổng quan LamVPN](/anh/lam-vpn/1-tong-quan.svg)
 
