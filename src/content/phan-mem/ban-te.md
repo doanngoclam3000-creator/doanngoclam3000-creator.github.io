@@ -6,7 +6,7 @@ phienBan: "2.4"
 banToiThieu: "2.3"
 ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.3/BanTe-Windows-2.3.0.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.4/BanTe-Windows-2.4.0.zip"
 linkTaiMac: "https://phanmemtq.com/tai/BanTe-2.4-build40.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
 dungLuong: "khoảng 78 MB (Windows) · 3 MB (Mac)"
