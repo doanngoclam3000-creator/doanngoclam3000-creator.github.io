@@ -278,6 +278,13 @@ import '../../styles/tai-khoan.css';
         // Phan mem khong gan key vao may (LamVPN, Gia Lap Vi Tri) thi giau han
         // o ma may di - hoi cai khach khong co la khach tuong minh lam sai roi
         // bo cuoc giua chung.
+        // Chi hien nut dung thu voi phan mem co khai dungThuNgay.
+        var nutThu = $('thu-nut');
+        nutThu.hidden = !pm.dungThuNgay;
+        if (pm.dungThuNgay) {
+          nutThu.textContent = 'Dùng thử miễn phí ' + pm.dungThuNgay + ' ngày';
+          nutThu.disabled = false;
+        }
         $('o-ma-may').hidden = !pm.canMaMay;
         if (!pm.canMaMay) $('mua-may').value = '';
         $('o-ma-may').querySelector('small').innerHTML = pm.tuDong
@@ -305,6 +312,22 @@ import '../../styles/tai-khoan.css';
         veGoi();
       }
       $('mua-pm').addEventListener('change', veGoi);
+
+      $('thu-nut').addEventListener('click', async function () {
+        V.baoLoi('mua-loi', ''); $('mua-duoc').hidden = true;
+        var nut = this;
+        nut.disabled = true; nut.textContent = 'Đang xin mã…';
+        try {
+          var kq = await V.goi('/dung-thu', { phanMem: pmDangChon.ma });
+          $('mua-duoc').hidden = false;
+          $('mua-duoc').innerHTML = '<b>' + kq.key + '</b><br><span>' + kq.nhan + '</span>';
+          nut.textContent = 'Đã nhận mã dùng thử';
+        } catch (e) {
+          V.baoLoi('mua-loi', e);
+          nut.disabled = false;
+          nut.textContent = 'Dùng thử miễn phí ' + (pmDangChon.dungThuNgay || 1) + ' ngày';
+        }
+      });
 
       $('mua-nut').addEventListener('click', async function () {
         V.baoLoi('mua-loi', ''); $('mua-duoc').hidden = true;

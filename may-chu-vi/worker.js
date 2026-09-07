@@ -99,6 +99,9 @@ const PHAN_MEM = {
     // dung. Mot ma dung duoc tren ca iPhone, Mac, Android lan Windows, nhung
     // moi luc chi mot may.
     ten: 'LamVPN', kieu: 'api', tienTo: 'LAM',
+    // Cho dung thu MOT ngay, moi tai khoan mot lan. Khach thu thay chay nhanh
+    // that thi 80k khong con la van de - re hon nhieu so voi giam gia.
+    dungThuNgay: 1,
     // MO BAN tu 08/09/2026. Ban iPhone/Mac con cho Apple duyet TestFlight (1-2
     // ngay) nhung mua truoc KHONG thiet: so ngay chi bat dau tinh tu luc khach
     // kich hoat trong app, khong phai luc mua (xem ham kichHoat ben may chu
@@ -309,12 +312,15 @@ async function xinKeyTuKho(env, pm, maGoi) {
 // Dung SHOP_KEY chu KHONG dung khoa quan tri: khoa cua hang chi sinh duoc ma
 // moi, khong xem duoc khach, khong xoa duoc gi. Lo ra thi thiet hai toi da la
 // bi sinh ma rac.
-async function xinKeyTuApi(env, goi, email, donId) {
+async function xinKeyTuApi(env, goi, email, donId, ghiChu) {
   if (!env.LAMVPN_SHOP_KEY) throw new Error('Chưa cài khoá cửa hàng LamVPN');
   const r = await fetch('https://api.phanmemtq.com/vpn/shop/tao-key', {
     method: 'POST',
     headers: { 'content-type': 'application/json', 'x-shop-key': env.LAMVPN_SHOP_KEY },
-    body: JSON.stringify({ soNgay: goi.ngay, soMayToiDa: 1, khach: email, donHang: donId }),
+    body: JSON.stringify({
+      soNgay: goi.ngay, soMayToiDa: 1, khach: email, donHang: donId,
+      ghiChu: ghiChu || 'ban tren website',
+    }),
     signal: AbortSignal.timeout(10000),
   });
   const o = await r.json().catch(() => ({}));
@@ -692,6 +698,7 @@ export default {
           // trang mua chan het phan mem kieu 'kho' va 'api' vi tuong khach quen
           // dien ma may, trong khi hai kieu do khong gan key vao may nao ca.
           canMaMay: canMaMay(m),
+          dungThuNgay: m.dungThuNgay || 0,
           luuY: m.luuY || '',
           goi: m.goi.map((g) => ({ ma: g.ma, ten: g.ten, ngay: g.ngay, gia: g.gia })),
         })),
@@ -1057,6 +1064,53 @@ export default {
     }
 
     // ---- Mua key bang tien trong vi ----
+    // ---- Nhan ma dung thu ----
+    // Moi tai khoan MOT lan cho moi phan mem. Khong hoi ma may, khong tru tien.
+    // Ma thu cap qua dung duong cua hang nhu ma ban, chi khac so ngay va ghi chu
+    // - nho vay ben LamVPN thong ke duoc bao nhieu nguoi da thu.
+    if (req.method === 'POST' && p === '/dung-thu') {
+      if (!toi) return canDN();
+      if (toi.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
+      const b = await than();
+      const maPm = String(b.phanMem || '');
+      const pm = PHAN_MEM[maPm];
+      if (!pm || !pm.dungThuNgay) return J({ loi: 'Phần mềm này không có bản dùng thử' }, 400);
+      if (pm.an) return J({ loi: 'Phần mềm này chưa mở bán' }, 400);
+
+      const daThu = await env.DB.prepare('SELECT ma_key FROM dung_thu WHERE nguoi=? AND phan_mem=?')
+        .bind(toi.id, maPm).first();
+      if (daThu) {
+        return J({ loi: 'Bạn đã nhận mã dùng thử của phần mềm này rồi. Mã cũ: ' + (daThu.ma_key || '—') }, 409);
+      }
+
+      // Chan lap tai khoan de xin ma thu: mot dia chi IP toi da 3 ma trong 30
+      // ngay. De rong vi mang di dong Trung Quoc gop hang nghin nguoi sau mot IP.
+      const ipThu = req.headers.get('CF-Connecting-IP') || '';
+      const mocThu = Date.now() - 30 * 86400000;
+      const demIP = await env.DB.prepare('SELECT COUNT(*) AS n FROM dung_thu WHERE ip=? AND luc>?')
+        .bind(ipThu, mocThu).first();
+      if ((demIP?.n || 0) >= 3) {
+        return J({ loi: 'Đường mạng này đã nhận nhiều mã dùng thử rồi. Mua gói tháng để dùng tiếp nhé.' }, 429);
+      }
+
+      let keyThu;
+      try {
+        keyThu = await xinKeyTuApi(env, { ngay: pm.dungThuNgay }, toi.email, 'THU-' + toi.id, 'dung thu');
+      } catch (e) {
+        console.log('cap ma dung thu hong:', (e && e.message) || String(e));
+        return J({ loi: 'Máy chủ cấp mã đang bận, thử lại sau ít phút.' }, 503);
+      }
+
+      await env.DB.prepare('INSERT INTO dung_thu (nguoi,phan_mem,ma_key,ip,luc) VALUES (?,?,?,?,?)')
+        .bind(toi.id, maPm, keyThu, ipThu, Date.now()).run();
+
+      return J({
+        ok: true, key: keyThu, soNgay: pm.dungThuNgay,
+        nhan: 'Mã dùng thử ' + pm.dungThuNgay + ' ngày đã cấp. Mở ' + pm.ten +
+          ', nhập mã này vào là dùng được ngay. Mỗi tài khoản chỉ nhận một lần.',
+      });
+    }
+
     if (req.method === 'POST' && p === '/mua') {
       if (!toi) return canDN();
       if (toi.khoa) return J({ loi: 'Tài khoản đang bị khoá' }, 403);
