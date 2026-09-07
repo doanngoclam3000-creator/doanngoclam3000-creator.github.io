@@ -83,6 +83,7 @@ import '../../styles/tai-khoan.css';
           </label>
 
           <button class="nut nut-chinh" id="mua-nut" type="button">Mua ngay</button>
+          <button class="nut" id="thu-nut" type="button" hidden>Dùng thử miễn phí</button>
         </div>
       </section>
 
@@ -280,10 +281,12 @@ import '../../styles/tai-khoan.css';
         // bo cuoc giua chung.
         // Chi hien nut dung thu voi phan mem co khai dungThuNgay.
         var nutThu = $('thu-nut');
+        if (nutThu) {
         nutThu.hidden = !pm.dungThuNgay;
         if (pm.dungThuNgay) {
           nutThu.textContent = 'Dùng thử miễn phí ' + pm.dungThuNgay + ' ngày';
           nutThu.disabled = false;
+        }
         }
         $('o-ma-may').hidden = !pm.canMaMay;
         if (!pm.canMaMay) $('mua-may').value = '';
@@ -313,7 +316,10 @@ import '../../styles/tai-khoan.css';
       }
       $('mua-pm').addEventListener('change', veGoi);
 
-      $('thu-nut').addEventListener('click', async function () {
+      // Buoc qua neu thieu nut: mot phan tu thieu KHONG duoc lam chet toan bo
+      // trang vi. Da vap dung loi nay - nut chua co ma JS goi toi, addEventListener
+      // tren null nem loi, moi thu sau do khong chay, so du hien "..." mai.
+      if ($('thu-nut')) $('thu-nut').addEventListener('click', async function () {
         V.baoLoi('mua-loi', ''); $('mua-duoc').hidden = true;
         var nut = this;
         nut.disabled = true; nut.textContent = 'Đang xin mã…';
