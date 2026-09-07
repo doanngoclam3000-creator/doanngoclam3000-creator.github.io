@@ -8,7 +8,7 @@ ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
 linkTaiMac: "https://phanmemtq.com/tai/HocTiengTrung-2.5.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiWin: "https://phanmemtq.com/tai/HocTiengTrung-2.4.0-Windows.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.5/HocTiengTrung-Windows-2.5.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
