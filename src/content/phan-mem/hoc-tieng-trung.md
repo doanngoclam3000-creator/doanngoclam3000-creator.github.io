@@ -2,11 +2,11 @@
 ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.4"
+phienBan: "2.5"
 banToiThieu: "2.4"
-ngayCapNhat: 2026-08-28
-ghiChuCapNhat: "- Bản Windows nay có ĐỦ MƯỜI mục như bản Mac: Hôm nay, Trò chơi, Hội thoại, Nhập vai, Trung Quốc, Trợ lý AI, Tra từ, Tiến độ, Kết nối AI, Thông tin\n- Nhập vai: 9 cảnh có mục tiêu phải làm xong, đóng vai xong AI nhận xét\n- Trung Quốc: 9 bài về lịch sử, lễ tết, nghệ thuật, đời sống — đọc được cả khi mất mạng\n- Trợ lý AI: dịch hai chiều Việt ↔ Trung và giảng từng câu tiếng Trung\n- Tiến độ: chuỗi ngày, biểu đồ 30 ngày, tiến độ từng cấp HSK\n- Đổi nền xanh / trắng / đen, và đặt giờ nhắc học"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-mac-2.4/HocTiengTrung-2.4.dmg"
+ngayCapNhat: 2026-09-08
+ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
+linkTaiMac: "https://phanmemtq.com/tai/HocTiengTrung-2.5.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
 linkTaiWin: "https://phanmemtq.com/tai/HocTiengTrung-2.4.0-Windows.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
