@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="1200" height="860" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen5" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#eef4ff"/><stop offset="100%" stop-color="#dbe6ff"/></linearGradient>
+  <linearGradient id="xanh5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b5fff"/><stop offset="100%" stop-color="#3d84ff"/></linearGradient>
+  <linearGradient id="luc5" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#12a150"/></linearGradient>
+  <filter id="bong5" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#0a2a6b" flood-opacity="0.22"/></filter>
+</defs>
+<rect width="1200" height="860" fill="url(#nen5)"/>
+
+<circle cx="96" cy="104" r="34" fill="url(#xanh5)"/>
+<text x="96" y="116" font-size="30" text-anchor="middle">📥</text>
+<text x="152" y="112" font-size="33" font-weight="700" fill="#0a1f4d">Tải Facebook, TikTok, Zalo… sau khi có VPN</text>
+
+<g filter="url(#bong5)">
+  <rect x="56" y="152" width="1088" height="112" rx="18" fill="#fff4e5"/>
+  <text x="96" y="206" font-size="28">⚠️</text>
+  <text x="146" y="200" font-size="21" font-weight="700" fill="#8a4b00">Bật VPN thôi CHƯA đủ để tải app trên iPhone</text>
+  <text x="146" y="232" font-size="17" fill="#8a4b00">VPN lo phần mạng. Còn việc App Store có cho tải app đó hay không là do KHU VỰC của Apple ID.</text>
+  <text x="146" y="256" font-size="17" fill="#8a4b00">App Store Trung Quốc không có Facebook, Instagram, YouTube, WhatsApp, TikTok bản quốc tế, Zalo.</text>
+</g>
+
+<g filter="url(#bong5)">
+  <rect x="56" y="292" width="352" height="238" rx="18" fill="#ffffff"/>
+  <circle cx="106" cy="342" r="24" fill="url(#xanh5)"/>
+  <text x="106" y="350" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="148" y="350" font-size="20" font-weight="700" fill="#0a1f4d">Bật LamVPN trước</text>
+  <text x="88" y="396" font-size="17" fill="#5b6b8f">Mở app, bấm nút tròn, chờ chữ</text>
+  <text x="88" y="422" font-size="17" fill="#5b6b8f">chuyển thành “Đã kết nối”.</text>
+  <text x="88" y="456" font-size="17" fill="#5b6b8f">Chưa bật VPN mà đổi khu vực thì</text>
+  <text x="88" y="482" font-size="17" fill="#5b6b8f">App Store hay báo lỗi mạng.</text>
+  <rect x="88" y="498" width="288" height="10" rx="5" fill="#e6efff"/>
+</g>
+
+<g filter="url(#bong5)">
+  <rect x="424" y="292" width="352" height="238" rx="18" fill="#ffffff"/>
+  <circle cx="474" cy="342" r="24" fill="url(#xanh5)"/>
+  <text x="474" y="350" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="516" y="350" font-size="20" font-weight="700" fill="#0a1f4d">Đổi khu vực App Store</text>
+  <text x="456" y="392" font-size="17" fill="#5b6b8f">Mở <tspan font-weight="700" fill="#0a1f4d">App Store</tspan> → bấm <tspan font-weight="700" fill="#0a1f4d">ảnh đại diện</tspan></text>
+  <text x="456" y="418" font-size="17" fill="#5b6b8f">góc trên bên phải → bấm <tspan font-weight="700" fill="#0a1f4d">tên bạn</tspan></text>
+  <text x="456" y="444" font-size="17" fill="#5b6b8f">→ <tspan font-weight="700" fill="#0a1f4d">Quốc gia/Vùng</tspan> → Thay đổi</text>
+  <text x="456" y="478" font-size="18" font-weight="700" fill="#0a1f4d">→ chọn 🇻🇳 Việt Nam</text>
+  <rect x="456" y="498" width="288" height="10" rx="5" fill="#e6efff"/>
+</g>
+
+<g filter="url(#bong5)">
+  <rect x="792" y="292" width="352" height="238" rx="18" fill="#ffffff"/>
+  <circle cx="842" cy="342" r="24" fill="url(#luc5)"/>
+  <text x="842" y="350" font-size="21" font-weight="700" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="884" y="350" font-size="20" font-weight="700" fill="#0a1f4d">Tải app như bình thường</text>
+  <text x="824" y="396" font-size="17" fill="#5b6b8f">Mở App Store, tìm tên app,</text>
+  <text x="824" y="422" font-size="17" fill="#5b6b8f">bấm Nhận. Giờ đã thấy đủ:</text>
+  <text x="824" y="462" font-size="26">📘 📷 ▶️ 💬 🎵</text>
+  <text x="824" y="494" font-size="15.5" fill="#8b98b8">Facebook · Instagram · YouTube</text>
+  <text x="824" y="516" font-size="15.5" fill="#8b98b8">Zalo · TikTok · WhatsApp</text>
+</g>
+
+<g filter="url(#bong5)">
+  <rect x="56" y="558" width="530" height="152" rx="18" fill="#ffe8e8"/>
+  <text x="96" y="608" font-size="26">🚫</text>
+  <text x="142" y="602" font-size="20" font-weight="700" fill="#9b1c1c">Tuyệt đối đừng đăng xuất iCloud</text>
+  <text x="96" y="640" font-size="16.5" fill="#9b1c1c">Chỉ đổi khu vực, hoặc chỉ đăng xuất ở mục App Store.</text>
+  <text x="96" y="666" font-size="16.5" fill="#9b1c1c">Đăng xuất iCloud là mất ảnh, danh bạ, tin nhắn đã lưu</text>
+  <text x="96" y="692" font-size="16.5" fill="#9b1c1c">trên máy. Nhiều người mất dữ liệu vì bước này.</text>
+</g>
+
+<g filter="url(#bong5)">
+  <rect x="614" y="558" width="530" height="152" rx="18" fill="#ffffff"/>
+  <text x="654" y="608" font-size="26">💳</text>
+  <text x="700" y="602" font-size="20" font-weight="700" fill="#0a1f4d">Đổi khu vực bị chặn?</text>
+  <text x="654" y="640" font-size="16.5" fill="#5b6b8f">Apple bắt phải huỷ hết gói đăng ký đang chạy và</text>
+  <text x="654" y="666" font-size="16.5" fill="#5b6b8f">tiêu hết số dư trước. Ở mục thanh toán chọn</text>
+  <text x="654" y="692" font-size="16.5" fill="#5b6b8f"><tspan font-weight="700" fill="#0a1f4d">“Không có”</tspan><tspan> là qua được, không cần thẻ Việt Nam.</tspan></text>
+</g>
+
+<g filter="url(#bong5)">
+  <rect x="56" y="738" width="1088" height="86" rx="18" fill="#0a1f4d"/>
+  <text x="96" y="788" font-size="24">🤖</text>
+  <text x="140" y="782" font-size="19" font-weight="700" fill="#ffffff">Máy Android thì sao?</text>
+  <text x="140" y="810" font-size="16.5" fill="#a9bde8">Điện thoại mua ở Trung Quốc thường không có sẵn CH Play. Bật VPN rồi cài CH Play, hoặc tải thẳng file cài từ trang chính chủ của app.</text>
+</g>
+</svg>

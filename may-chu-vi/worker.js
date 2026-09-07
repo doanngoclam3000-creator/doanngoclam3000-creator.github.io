@@ -90,6 +90,28 @@ const PHAN_MEM = {
       { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
     ],
   },
+  'lam-vpn': {
+    // Kieu 'api': khong tu ky key o day ma goi sang may chu rieng cua LamVPN
+    // (api.phanmemtq.com) xin cap. Ben do giu so khach, han dung va khoa rieng
+    // cua tung ma - website chi la cho ban hang.
+    //
+    // KHONG gan ma may: khach nhap ma ngay trong app, app tu bao may nao dang
+    // dung. Mot ma dung duoc tren ca iPhone, Mac, Android lan Windows, nhung
+    // moi luc chi mot may.
+    ten: 'LamVPN', kieu: 'api', tienTo: 'LAM',
+    // TAM AN. Ban iPhone/Mac dang cho Apple duyet TestFlight, ban Android va
+    // Windows chua co - ban key luc nay la khach tra tien xong khong cai duoc
+    // app. Duyet xong thi doi thanh false roi chay lai `npx wrangler deploy`.
+    an: true,
+    luuY: 'Một mã dùng được cho cả iPhone, Mac, Android và Windows — nhưng mỗi lúc chỉ một máy. Cần thêm máy thì mua thêm mã.',
+    goi: [
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 50000 },
+      { ma: 'B', ten: '2 tháng', ngay: 60,  gia: 100000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 150000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 300000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 600000 },
+    ],
+  },
   'hoc-tieng-trung': {
     ten: 'Học Tiếng Trung', kieu: 'tuKy', tienTo: 'HT', bienSecret: 'SECRET_HT',
     // Ban iPhone dung chung ma nguon Flutter voi ban may tinh, cung o nhap key
@@ -279,8 +301,26 @@ async function xinKeyTuKho(env, pm, maGoi) {
   return o.keys[0];
 }
 
+// Kieu 'api': goi sang may chu rieng cua phan mem do xin cap key.
+// Dung SHOP_KEY chu KHONG dung khoa quan tri: khoa cua hang chi sinh duoc ma
+// moi, khong xem duoc khach, khong xoa duoc gi. Lo ra thi thiet hai toi da la
+// bi sinh ma rac.
+async function xinKeyTuApi(env, goi, email, donId) {
+  if (!env.LAMVPN_SHOP_KEY) throw new Error('Chưa cài khoá cửa hàng LamVPN');
+  const r = await fetch('https://api.phanmemtq.com/vpn/shop/tao-key', {
+    method: 'POST',
+    headers: { 'content-type': 'application/json', 'x-shop-key': env.LAMVPN_SHOP_KEY },
+    body: JSON.stringify({ soNgay: goi.ngay, soMayToiDa: 1, khach: email, donHang: donId }),
+    signal: AbortSignal.timeout(10000),
+  });
+  const o = await r.json().catch(() => ({}));
+  if (!r.ok || !o.key) throw new Error(o.error || 'Máy chủ LamVPN không cấp được key');
+  return o.key;
+}
+
 // Phan mem nay cap key tu dong duoc khong: phai co du khoa bi mat da nap.
 function capTuDong(env, pm) {
+  if (pm.kieu === 'api') return !!env.LAMVPN_SHOP_KEY;
   if (pm.kieu === 'kho') return !!(env.SV_KHO && env.KHO_KEY_KHOA);
   if (!env[pm.bienSecret]) return false;
   if (pm.kieu === 'mayChu') return !!(env['MC_' + pm.tienTo] && env['QT_' + pm.tienTo]);
@@ -288,7 +328,8 @@ function capTuDong(env, pm) {
 }
 
 // Phan mem kieu 'kho' khong gan key vao may nao nen KHONG hoi ma may.
-const canMaMay = (pm) => pm.kieu !== 'kho';
+// Kieu 'kho' va 'api' deu khong gan key vao may nao nen KHONG hoi ma may.
+const canMaMay = (pm) => pm.kieu !== 'kho' && pm.kieu !== 'api';
 
 // ---------------- Link rut gon cho cong tac vien ----------------
 // Chi nhan link cua may san buon minh dang lam affiliate. Khong mo rong bua:
@@ -639,7 +680,8 @@ export default {
     // ---- Bang gia ----
     if (p === '/bang-gia') {
       return J({
-        phanMem: Object.entries(PHAN_MEM).map(([ma, m]) => ({
+        // Bo qua phan mem dang an: chua ban duoc thi dung hien trong o chon mua.
+        phanMem: Object.entries(PHAN_MEM).filter(([, m]) => !m.an).map(([ma, m]) => ({
           ma, ten: m.ten,
           tuDong: capTuDong(env, m),
           luuY: m.luuY || '',
@@ -1015,6 +1057,9 @@ export default {
       const pm = PHAN_MEM[maPm];
       const goi = pm && pm.goi.find((g) => g.ma === String(b.goi || ''));
       if (!pm || !goi) return J({ loi: 'Không có phần mềm hoặc gói này' }, 400);
+      // Chan ca o day chu khong chi giau khoi bang gia: nguoi biet duong API
+      // van goi thang /mua duoc.
+      if (pm.an) return J({ loi: 'Phần mềm này chưa mở bán' }, 400);
 
       // Phan mem hien ma may dang MAY-XXXXXX nhung ky key bang doan SAU dau
       // gach (ban Windows: mamayText.slice(4)). Khach chep ca cum thi bo tien
@@ -1070,6 +1115,32 @@ export default {
         return J({
           ok: true, don: donId, choTay: true, soDu: kq.soDu,
           nhan: 'Đã nhận đơn. Phần mềm này chưa cấp key tự động — chủ shop sẽ gửi key trong ít phút.',
+        });
+      }
+
+      // ---- Kieu api: xin may chu rieng cua phan mem cap key ----
+      if (pm.kieu === 'api') {
+        let key;
+        try {
+          key = await xinKeyTuApi(env, goi, toi.email, donId);
+        } catch (e) {
+          console.log('may chu ' + maPm + ' tu choi:', (e && e.message) || String(e));
+          // Da tru tien roi ma khong lay duoc key thi de don o trang thai cho
+          // tay, chu shop cap sau - tuyet doi khong nuot tien roi bao loi suong.
+          await env.DB.prepare("UPDATE don_key SET trang_thai='cho_tay' WHERE id=?").bind(donId).run();
+          await traHoaHong();
+          return J({
+            ok: true, don: donId, choTay: true, soDu: kq.soDu,
+            nhan: 'Đã nhận đơn nhưng máy chủ cấp key đang bận — chủ shop sẽ gửi key trong ít phút.',
+          });
+        }
+        await env.DB.prepare("UPDATE don_key SET trang_thai='xong', key=? WHERE id=?")
+          .bind(key, donId).run();
+        await traHoaHong();
+        return J({
+          ok: true, don: donId, key, soNgay: goi.ngay, soDu: kq.soDu,
+          nhan: 'Key đã cấp xong. Mở LamVPN trên điện thoại hoặc máy tính, nhập mã này vào là dùng được ' +
+            goi.ngay + ' ngày. Gần hết hạn thì mua thêm mã rồi nhập tiếp, ngày sẽ cộng dồn.',
         });
       }
 

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#eef4ff"/><stop offset="100%" stop-color="#dbe6ff"/></linearGradient>
+  <linearGradient id="xanh" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b5fff"/><stop offset="100%" stop-color="#3d84ff"/></linearGradient>
+  <linearGradient id="nutOn" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#12a150"/></linearGradient>
+  <filter id="bong" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#0a2a6b" flood-opacity="0.22"/></filter>
+  <filter id="bongNut" x="-60%" y="-60%" width="220%" height="220%"><feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#12a150" flood-opacity="0.45"/></filter>
+</defs>
+<rect width="1200" height="760" fill="url(#nen)"/>
+
+<circle cx="96" cy="104" r="34" fill="url(#xanh)"/>
+<text x="96" y="116" font-size="30" text-anchor="middle">🛡️</text>
+<text x="152" y="112" font-size="33" font-weight="700" fill="#0a1f4d">LamVPN — một nút, ra thẳng Internet quốc tế</text>
+<text x="56" y="182" font-size="20.5" fill="#41527a"><tspan>Máy chủ </tspan><tspan font-weight="700" fill="#0a1f4d">riêng của chúng tôi</tspan><tspan> ở Tokyo, Seoul, Singapore — không dùng chung với ai.</tspan></text>
+<text x="56" y="219" font-size="20.5" fill="#41527a">Không quảng cáo, không giới hạn dung lượng, không ghi lại trang bạn vào.</text>
+
+<g filter="url(#bong)">
+  <rect x="56" y="266" width="486" height="126" rx="18" fill="#ffffff"/>
+  <text x="88" y="312" font-size="27">⚡</text>
+  <text x="128" y="311" font-size="21" font-weight="700" fill="#0a1f4d">Nhanh hơn VPN giá rẻ</text>
+  <text x="128" y="344" font-size="17.5" fill="#5b6b8f">Dùng VLESS + Reality và Hysteria2 thay cho OpenVPN —</text>
+  <text x="128" y="368" font-size="17.5" fill="#5b6b8f">không bị bóp băng thông, rớt gói vẫn giữ tốc độ.</text>
+</g>
+
+<g filter="url(#bong)">
+  <rect x="56" y="412" width="486" height="126" rx="18" fill="#ffffff"/>
+  <text x="88" y="458" font-size="27">🔑</text>
+  <text x="128" y="457" font-size="21" font-weight="700" fill="#0a1f4d">Nhập mã là chạy</text>
+  <text x="128" y="490" font-size="17.5" fill="#5b6b8f">Không phải khai báo máy chủ, không phải dán cấu hình.</text>
+  <text x="128" y="514" font-size="17.5" fill="#5b6b8f">App tự chọn nơi nhanh nhất với mạng của bạn.</text>
+</g>
+
+<g filter="url(#bong)">
+  <rect x="56" y="558" width="486" height="126" rx="18" fill="#ffffff"/>
+  <text x="88" y="604" font-size="27">📱</text>
+  <text x="128" y="603" font-size="21" font-weight="700" fill="#0a1f4d">Một mã, nhiều nền tảng</text>
+  <text x="128" y="636" font-size="17.5" fill="#5b6b8f">iPhone, iPad và Mac dùng được ngay. Bản Android và</text>
+  <text x="128" y="660" font-size="17.5" fill="#5b6b8f">Windows đang làm, dùng chung mã — không phải mua lại.</text>
+</g>
+
+<g filter="url(#bong)">
+  <rect x="646" y="150" width="360" height="530" rx="46" fill="#0a1230"/>
+  <rect x="660" y="164" width="332" height="502" rx="36" fill="#f6f8ff"/>
+  <rect x="782" y="176" width="88" height="20" rx="10" fill="#0a1230"/>
+
+  <text x="826" y="248" font-size="22" font-weight="700" fill="#0a1f4d" text-anchor="middle">LamVPN</text>
+  <text x="826" y="292" font-size="19" font-weight="700" fill="#12a150" text-anchor="middle">Đã kết nối</text>
+
+  <g filter="url(#bongNut)">
+    <circle cx="826" cy="392" r="70" fill="url(#nutOn)"/>
+  </g>
+  <path d="M826 358 v42" stroke="#ffffff" stroke-width="9" stroke-linecap="round"/>
+  <path d="M793 372 a44 44 0 1 0 66 0" fill="none" stroke="#ffffff" stroke-width="9" stroke-linecap="round"/>
+
+  <rect x="684" y="496" width="284" height="52" rx="14" fill="#ffffff"/>
+  <text x="706" y="528" font-size="17">🗄️</text>
+  <text x="736" y="528" font-size="16.5" fill="#5b6b8f">Máy chủ</text>
+  <text x="948" y="528" font-size="16.5" font-weight="700" fill="#0a1f4d" text-anchor="end">🇯🇵 Tokyo</text>
+
+  <rect x="684" y="556" width="284" height="52" rx="14" fill="#ffffff"/>
+  <text x="706" y="588" font-size="17">⏱️</text>
+  <text x="736" y="588" font-size="16.5" fill="#5b6b8f">Độ trễ</text>
+  <text x="948" y="588" font-size="16.5" font-weight="700" fill="#12a150" text-anchor="end">62 ms</text>
+
+  <rect x="684" y="616" width="284" height="34" rx="10" fill="#eaf7ef"/>
+  <text x="826" y="639" font-size="15" fill="#12a150" text-anchor="middle">Không ghi lại nội dung bạn truy cập</text>
+</g>
+</svg>

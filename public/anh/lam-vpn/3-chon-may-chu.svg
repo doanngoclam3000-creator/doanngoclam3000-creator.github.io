@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen3" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#eef4ff"/><stop offset="100%" stop-color="#dbe6ff"/></linearGradient>
+  <linearGradient id="xanh3" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#0b5fff"/><stop offset="100%" stop-color="#3d84ff"/></linearGradient>
+  <filter id="bong3" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#0a2a6b" flood-opacity="0.22"/></filter>
+</defs>
+<rect width="1200" height="760" fill="url(#nen3)"/>
+
+<circle cx="96" cy="104" r="34" fill="url(#xanh3)"/>
+<text x="96" y="116" font-size="30" text-anchor="middle">🌏</text>
+<text x="152" y="112" font-size="33" font-weight="700" fill="#0a1f4d">Ba nơi để chọn — hoặc để app tự chọn</text>
+<text x="56" y="170" font-size="20.5" fill="#41527a">App đo độ trễ tới từng máy chủ rồi xếp từ nhanh đến chậm. Số càng nhỏ càng nhanh.</text>
+
+<g filter="url(#bong3)">
+  <rect x="56" y="212" width="500" height="118" rx="18" fill="#ffffff"/>
+  <text x="92" y="262" font-size="30">🇯🇵</text>
+  <text x="140" y="258" font-size="22" font-weight="700" fill="#0a1f4d">Tokyo, Nhật Bản</text>
+  <text x="140" y="292" font-size="17" fill="#5b6b8f">Hợp với khách ở miền bắc và miền đông Trung Quốc</text>
+  <rect x="452" y="238" width="76" height="38" rx="12" fill="#eaf7ef"/>
+  <text x="490" y="264" font-size="18" font-weight="700" fill="#12a150" text-anchor="middle">62 ms</text>
+</g>
+
+<g filter="url(#bong3)">
+  <rect x="56" y="350" width="500" height="118" rx="18" fill="#ffffff"/>
+  <text x="92" y="400" font-size="30">🇰🇷</text>
+  <text x="140" y="396" font-size="22" font-weight="700" fill="#0a1f4d">Seoul, Hàn Quốc</text>
+  <text x="140" y="430" font-size="17" fill="#5b6b8f">Gần Sơn Đông, Liêu Ninh, Bắc Kinh</text>
+  <rect x="452" y="376" width="76" height="38" rx="12" fill="#eaf7ef"/>
+  <text x="490" y="402" font-size="18" font-weight="700" fill="#12a150" text-anchor="middle">78 ms</text>
+</g>
+
+<g filter="url(#bong3)">
+  <rect x="56" y="488" width="500" height="118" rx="18" fill="#ffffff"/>
+  <text x="92" y="538" font-size="30">🇸🇬</text>
+  <text x="140" y="534" font-size="22" font-weight="700" fill="#0a1f4d">Singapore</text>
+  <text x="140" y="568" font-size="17" fill="#5b6b8f">Hợp với khách miền nam: Quảng Đông, Phúc Kiến</text>
+  <rect x="452" y="514" width="76" height="38" rx="12" fill="#fff5e6"/>
+  <text x="490" y="540" font-size="18" font-weight="700" fill="#c77700" text-anchor="middle">104 ms</text>
+</g>
+
+<g filter="url(#bong3)">
+  <rect x="56" y="626" width="500" height="82" rx="18" fill="#0a1f4d"/>
+  <text x="92" y="676" font-size="26">⚡</text>
+  <text x="140" y="662" font-size="19" font-weight="700" fill="#ffffff">Để chế độ Tự động</text>
+  <text x="140" y="690" font-size="16" fill="#a9bde8">App luôn chuyển sang máy chủ phản hồi nhanh nhất</text>
+</g>
+
+<g filter="url(#bong3)">
+  <rect x="646" y="212" width="360" height="496" rx="46" fill="#0a1230"/>
+  <rect x="660" y="226" width="332" height="468" rx="36" fill="#f6f8ff"/>
+  <text x="826" y="278" font-size="20" font-weight="700" fill="#0a1f4d" text-anchor="middle">Chọn máy chủ</text>
+
+  <rect x="684" y="300" width="284" height="60" rx="14" fill="#e6efff" stroke="#0b5fff" stroke-width="2"/>
+  <text x="706" y="336" font-size="19">⚡</text>
+  <text x="740" y="330" font-size="16.5" font-weight="700" fill="#0a1f4d">Tự động (nhanh nhất)</text>
+  <text x="740" y="350" font-size="13.5" fill="#5b6b8f">App tự chọn giúp bạn</text>
+  <text x="946" y="336" font-size="19" font-weight="700" fill="#0b5fff" text-anchor="end">✓</text>
+
+  <rect x="684" y="376" width="284" height="52" rx="14" fill="#ffffff"/>
+  <text x="706" y="408" font-size="17">🇯🇵</text>
+  <text x="738" y="402" font-size="15.5" font-weight="700" fill="#0a1f4d">JP-01 Tokyo</text>
+  <text x="738" y="420" font-size="12.5" fill="#8b98b8">VLESS Reality</text>
+  <text x="946" y="409" font-size="15" font-weight="700" fill="#12a150" text-anchor="end">62 ms</text>
+
+  <rect x="684" y="440" width="284" height="52" rx="14" fill="#ffffff"/>
+  <text x="706" y="472" font-size="17">🇰🇷</text>
+  <text x="738" y="466" font-size="15.5" font-weight="700" fill="#0a1f4d">KR-01 Seoul</text>
+  <text x="738" y="484" font-size="12.5" fill="#8b98b8">VLESS Reality</text>
+  <text x="946" y="473" font-size="15" font-weight="700" fill="#12a150" text-anchor="end">78 ms</text>
+
+  <rect x="684" y="504" width="284" height="52" rx="14" fill="#ffffff"/>
+  <text x="706" y="536" font-size="17">🇸🇬</text>
+  <text x="738" y="530" font-size="15.5" font-weight="700" fill="#0a1f4d">SG-01 Singapore</text>
+  <text x="738" y="548" font-size="12.5" fill="#8b98b8">Hysteria2</text>
+  <text x="946" y="537" font-size="15" font-weight="700" fill="#c77700" text-anchor="end">104 ms</text>
+
+  <text x="826" y="612" font-size="13.5" fill="#8b98b8" text-anchor="middle">Số đo lúc đang bật VPN sẽ cao hơn thực tế.</text>
+  <text x="826" y="634" font-size="13.5" fill="#8b98b8" text-anchor="middle">Ngắt kết nối rồi đo lại cho chuẩn.</text>
+</g>
+</svg>
