@@ -217,7 +217,16 @@ import '../../styles/tai-khoan.css';
       }
 
       async function taiNhatKyDk() {
-        var k = await qt('/admin/nhat-ky-dk');
+        // May chu ví chưa cập nhật thì chưa có đường này - báo gọn ngay trong ô
+        // chứ đừng ném lỗi đỏ lên đầu trang làm chủ shop tưởng hỏng cả trang.
+        var k;
+        try { k = await qt('/admin/nhat-ky-dk'); } catch (err) {
+          $('dk-than').innerHTML = '';
+          $('dk-trong').textContent = 'Máy chủ ví chưa cập nhật nên chưa ghi nhật ký đăng ký.';
+          $('dk-trong').hidden = false;
+          return;
+        }
+        $('dk-trong').textContent = 'Chưa có lượt đăng ký nào được ghi lại.';
         $('dk-trong').hidden = k.luot.length > 0;
         $('dk-than').innerHTML = k.luot.map(function (l) {
           var kq = l.duoc
