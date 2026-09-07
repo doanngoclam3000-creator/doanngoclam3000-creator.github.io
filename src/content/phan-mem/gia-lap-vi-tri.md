@@ -9,8 +9,6 @@ linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.18/GiaLapViTri-5.18-Windows.zip"
 linkTaiIOS: "https://testflight.apple.com/join/KYYj3Bfd"
 ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
-- Key mua trên web dùng được cho cả Windows, macOS và bản iPhone; mỗi ứng dụng kích hoạt được một máy
-- Bắt buộc cập nhật: bản cũ trỏ vào máy chủ đã ngừng chạy"
 dungLuong: "132 MB (Mac) · 683 MB (Windows, bộ cài trong file nén)"
 gia: "300.000đ / tháng"
 video: "https://www.youtube.com/watch?v=GC6kPz9QlmQ"
