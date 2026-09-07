@@ -6,7 +6,7 @@ phienBan: "5.9.5"
 banToiThieu: "5.0.0"
 ngayCapNhat: 2026-09-07
 ghiChuCapNhat: "- Từ bản này phần mềm TỰ cập nhật: có bản mới là tự tải, tự dùng, không phải bấm gì\n- Máy chủ bản quyền chuyển sang địa chỉ mới, phần mềm nối thẳng tới đó\n- Xác nhận đơn hỏng thì tự chụp lại màn hình và ghi lại toàn bộ lệnh gửi đi, để dò đúng chỗ sai thay vì đoán\n- Sửa lỗi đăng nhập mãi không xong: bản trước cứ 8 giây lại kéo trang sang Kênh Người Bán, đang gõ tài khoản chưa xong thì bị kéo đi rồi bị đá về trang login trống, nhìn như mở tab mới\n- Nay khi đang ở trang đăng nhập, phần mềm để yên hoàn toàn; đăng nhập xong Shopee tự chuyển sang Kênh Người Bán rồi phần mềm bắt phiên và đóng cửa sổ"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.4-mac/ShopeeTuDong-5.8.4-macOS.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.5/ShopeeTuDong-5.9.5-Windows.zip"
 linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.5/ban-5.9.5-0646806b.goi"
 gia: "150.000đ / tháng — dùng thử miễn phí 7 ngày"

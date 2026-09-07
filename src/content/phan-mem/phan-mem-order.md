@@ -7,7 +7,7 @@ banToiThieu: "2.8"
 ngayCapNhat: 2026-09-07
 mienPhi: true
 ghiChuCapNhat: "- Từ bản này phần mềm TỰ cập nhật: có bản mới là tự tải, tự dùng, không phải bấm gì\n- Máy chủ bản quyền chuyển sang địa chỉ mới, phần mềm nối thẳng tới đó\n- Cấp lại khoá ký bản quyền: cài đè bản này lên là xong, dữ liệu giữ nguyên\n- Bản Windows nay có bộ cài: cài một lần, sau này có bản mới chỉ bấm Cập nhật ngay trong phần mềm\n- Dán link 1688/Taobao là tự lấy ảnh, tên tiếng Việt, giá và cước ship nội địa\n- Ô Màu và Size thành ô chọn, lấy đúng danh sách shop đang bán\n- Gõ tiền tự thêm dấu chấm: 100000 thành 100.000\n- Chọn Tỉnh/Thành và Phường/Xã theo bộ máy hai cấp mới\n- Màn Đơn hàng lọc theo khách, trạng thái, khoảng ngày, đơn còn nợ"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.12/PhanMemOrder-2.12.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.13-mac/PhanMemOrder-2.13.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-latest/PhanMemOrder-2.13.2-Windows-Setup.exe"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"

@@ -1,6 +1,6 @@
 {
   "ban-te": {
-    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-mac-1.8/BanTe-1.8-build28.dmg",
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.3-mac/BanTe-2.3-build39.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.3/BanTe-Windows-2.3.0.zip",
     "ios": "https://testflight.apple.com/join/vUtNFS1Q"
   },
@@ -8,7 +8,7 @@
     "mac": "https://phanmemtq.com/tai/BotWeChat-1.4.3.dmg"
   },
   "bot-zalo": {
-    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.0/BotZalo-2.0.0-mac-arm64.dmg",
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.0-mac/BotZalo-2.2.0-mac-arm64.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.0/BotZalo-2.2.0-Windows.zip"
   },
   "chinh-sua-anh": {
@@ -27,12 +27,12 @@
     "ios": "https://testflight.apple.com/join/K9jqJAg9"
   },
   "phan-mem-order": {
-    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.12/PhanMemOrder-2.12.dmg",
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.13-mac/PhanMemOrder-2.13.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-latest/PhanMemOrder-2.13.0-Windows-Setup.exe",
     "ios": "https://testflight.apple.com/join/hc37nM39"
   },
   "shopee-tu-dong": {
-    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.4.9/ShopeeTuDong-5.4.9-macOS.dmg",
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.4-mac/ShopeeTuDong-5.8.4-macOS.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.8.4/ShopeeTuDong-5.8.4-Windows.zip"
   },
   "vi-tri-wifi": {
