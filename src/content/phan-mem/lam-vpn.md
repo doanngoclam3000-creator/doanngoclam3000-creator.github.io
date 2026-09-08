@@ -1,14 +1,16 @@
 ---
 ten: "LamVPN"
 moTa: "Vào Internet quốc tế ổn định từ Trung Quốc: YouTube, Facebook, Google, Instagram, X. Máy chủ riêng đặt tại Tokyo, Seoul, Singapore — không dùng chung với ai. Nhập mã là chạy, không phải cấu hình gì."
-nenTang: ["iOS", "macOS"]
+nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "1.3"
 banToiThieu: "1.2"
 ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Bản đầu tiên phát hành qua TestFlight, dùng được cho cả iPhone và Mac."
+ghiChuCapNhat: "- Đã có bản Windows: tải ở nút Tải về, kích hoạt cùng mã với iPhone và Mac.
+- Bản iPhone/Mac phát hành qua TestFlight."
 gia: "Dùng thử miễn phí 1 ngày · 80.000đ / tháng · 1 năm 800.000đ (trả 10 tháng dùng 12)"
 linkTaiIOS: "https://testflight.apple.com/join/PCtZb1MD"
-dungLuong: "khoảng 60 MB — cài qua TestFlight"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/lam-vpn-1.2.0/LamVPN-1.2.0-Windows.zip"
+dungLuong: "iPhone/Mac ~60 MB qua TestFlight · Windows 21 MB (bộ cài trong file nén)"
 anhIcon: "/icon/lam-vpn.png"
 icon: "🛡️"
 mauNen: "#0b5fff"
@@ -24,7 +26,7 @@ an: false
 > **Mua trước không mất ngày nào:** số ngày chỉ bắt đầu đếm từ lúc bạn **nhập mã vào app**,
 > không phải từ lúc mua. Mua hôm nay, ba ngày nữa mới kích hoạt thì vẫn đủ nguyên số ngày.
 >
-> Bản **Android** và **Windows** đang làm, sẽ dùng chung mã kích hoạt — không phải mua lại.
+> Bản **Windows** đã có — tải ngay ở nút Tải về. Bản **Android** đang làm, sẽ dùng chung mã kích hoạt — không phải mua lại.
 
 ![Tổng quan LamVPN](/anh/lam-vpn/1-tong-quan.svg)
 
@@ -62,7 +64,7 @@ App đo độ trễ tới từng máy chủ rồi xếp từ nhanh đến chậm
 
 ## Dùng được ở đâu
 
-Hiện có bản **iPhone/iPad** và **Mac**. Bản **Android** và **Windows** đang làm, dùng chung
+Hiện có bản **iPhone/iPad**, **Mac** và **Windows**. Bản **Android** đang làm, dùng chung
 mã kích hoạt — mua bây giờ thì lúc có bản mới không phải mua lại.
 
 Một mã dùng được trên **một máy tại một thời điểm**. Đổi sang máy khác thì nhắn cho chúng tôi
