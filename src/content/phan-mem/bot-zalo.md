@@ -5,11 +5,11 @@ nenTang: ["macOS", "Windows"]
 phienBan: "2.3.0"
 banToiThieu: "2.3.0"
 ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Từ bản này phần mềm TỰ cập nhật: có bản mới là tự tải, tự dùng, không phải bấm gì\n- Máy chủ bản quyền chuyển sang địa chỉ mới, phần mềm nối thẳng tới đó\n- Cấp lại khoá ký bản quyền: bản này cần tải đầy đủ một lần, từ bản sau vẫn cập nhật nhanh ngay trong phần mềm\n- Thêm Trợ lý AI: tự trả lời khách trên Zalo, tư vấn theo bảng giá của shop\n- Khách gửi ảnh thì trợ lý xem ảnh rồi tư vấn; khách đòi xem hàng thì gửi ảnh sản phẩm luôn\n- Bảng chốt đơn ngay trong phần mềm: sản phẩm, số lượng, tên, SĐT, địa chỉ, trạng thái, xuất CSV\n- Cập nhật ngay trong phần mềm, chỉ tải gói nhỏ ~245KB thay vì cả bản đầy đủ\n- Mọi việc chạy dài đều có nút Dừng: kết bạn, nhắn tin, đăng bài, mời nhóm, lấy số\n- Sửa lỗi mở phần mềm lên không hiện dữ liệu đã lưu"
+ghiChuCapNhat: "- Bảng giá mới: 1 tháng 150.000đ, 3 tháng 450.000đ, 1 năm 1.620.000đ (giảm 10%)\n- Bỏ bản dùng thử: mở phần mềm là chọn gói, quét QR chuyển khoản, phần mềm tự mở khoá ngay\n- Máy đang dùng thử hoặc đã mua trước đó giữ nguyên hạn\n- Siết bản quyền: luôn tin phiếu máy chủ cấp mới nhất, quá 14 ngày không xác nhận được với máy chủ thì tạm khoá tới khi nối lại\n- Máy để mở suốt ngày cũng tự hỏi lại máy chủ định kỳ, gia hạn xong không cần mở lại phần mềm\n- Bản 2.2.x tự tải gói ~250KB rồi tự dùng, không phải tải lại bản đầy đủ"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0-mac/BotZalo-2.3.0-mac-arm64.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0/BotZalo-2.3.0-Windows.zip"
 linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0/ban-2.3.0-d8bd0e04.goi"
-gia: "150.000đ / tháng · 3 tháng 450.000đ · 1 năm 1.620.000đ (giảm 10%) — không có bản dùng thử"
+gia: "150.000đ / tháng · 3 tháng 450.000đ · 1 năm 1.620.000đ (giảm 10%) — thu phí ngay, không có bản dùng thử"
 dungLuong: "77 MB (Windows) — giải nén ra đúng một file .exe"
 video: "https://www.youtube.com/watch?v=nhAeWN_W8BM"
 anhIcon: "/icon/bot-zalo.png"
@@ -87,13 +87,19 @@ Giải nén file `.zip` ra một thư mục rồi chạy **Bot Zalo.exe**. Lần
 *"Windows đã bảo vệ máy tính của bạn"* vì phần mềm chưa mua chứng chỉ ký số — bấm **Thông
 tin thêm** rồi **Vẫn chạy**. Những lần sau không hỏi lại.
 
-## Giá và dùng thử
+## Giá
 
-Cài xong **tự có 2 ngày dùng thử miễn phí**, không phải nhập gì. Hết hạn, phần mềm xin key
-bản quyền — **150.000đ một tháng**, 3 tháng 300.000đ, 6 tháng 500.000đ, một năm 900.000đ.
+Bot Zalo là phần mềm **thu phí ngay từ đầu, không có bản dùng thử**. Ba gói:
 
-Cách mua: mở phần mềm, quét mã QR ngay trong phần mềm để chuyển khoản. Tiền về là phần mềm
-**tự cộng ngày**, không phải nhắn ai xin key. Hạn khoá theo máy nên chỉ dùng được đúng máy đó.
+| Gói | Giá |
+| --- | --- |
+| 1 tháng | **150.000đ** |
+| 3 tháng | **450.000đ** |
+| 1 năm | **1.620.000đ** — giảm 10% so với giá gốc 1.800.000đ |
+
+Cách mua: mở phần mềm, chọn gói, quét mã QR ngay trong phần mềm để chuyển khoản. Tiền về là
+phần mềm **tự mở khoá**, không phải nhắn ai xin key. Hạn khoá theo máy nên chỉ dùng được đúng
+máy đó; gia hạn sớm được cộng dồn vào hạn đang có.
 
 ## Vài điều nói trước cho thật
 

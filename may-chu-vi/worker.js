@@ -54,10 +54,10 @@ const VONG_BAM = 100000; // so vong PBKDF2 - Cloudflare Workers CHAN qua 100.000
 const PHAN_MEM = {
   'bot-zalo': {
     ten: 'Bot Zalo', kieu: 'mayChu', tienTo: 'BZ', bienSecret: 'SECRET_BZ',
-    // Gia chot 08/09/2026: thu phi ngay tu dau, KHONG dung thu. Goi nam giam 10%
-    // (12 x 150k = 1.800k -> 1.620k). Bo goi 6 thang khoi bang ban; key 'H' cu
-    // may chu van doc duoc.
-    luuY: 'Không có bản dùng thử. Đăng ký 1 năm được giảm 10%.',
+    // 08/09/2026: thu phi ngay tu dau (khong dung thu), bo goi 6 thang.
+    // Goi nam = 12 thang giam 10% (1.800.000 -> 1.620.000). Key 'H' (6 thang)
+    // doi cu may chu van doc duoc.
+    luuY: 'Không có bản dùng thử. Mua 1 năm được giảm 10% so với mua lẻ từng tháng.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
       { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 450000 },
@@ -154,6 +154,9 @@ const PHAN_MEM = {
     // Ban iPhone dung chung ma nguon Flutter voi ban may tinh, cung o nhap key
     // va cung cach tinh ma may -> key mua o day dung duoc ca hai.
     luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone. Mỗi máy một mã máy riêng.',
+    // 08/09/2026: phat MIEN PHI (cong tac cauHinh:mienPhi tren worker
+    // cap-key-hoctiengtrung). An khoi o mua; bat thu phi lai thi bo dong nay.
+    an: true,
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
       { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },

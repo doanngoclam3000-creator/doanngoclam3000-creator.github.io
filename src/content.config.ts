@@ -10,12 +10,11 @@ const phanMem = defineCollection({
     nenTang: z.array(z.string()).default([]),
     phienBan: z.string().optional(),
     banToiThieu: z.string().optional(),
-    // Moc ep cap nhat RIENG cho tung nen tang. Can no vi mot phan mem co the ra
-    // ban Mac truoc, ban Windows sau: dat banToiThieu chung la khoa luon khach
-    // Windows trong khi ho khong co gi moi de tai. Phan mem doc muc cua nen tang
-    // minh truoc, khong co thi lui ve banToiThieu chung.
-    banToiThieuMac: z.string().optional(),
+    // Muc toi thieu RIENG cho tung nen tang. Ban Windows ra truoc ban Mac la
+    // chuyen thuong, ep ca hai bang mot so thi khach Mac bi khoa oan. Khong
+    // ghi thi lui ve banToiThieu chung.
     banToiThieuWin: z.string().optional(),
+    banToiThieuMac: z.string().optional(),
     banToiThieuIOS: z.string().optional(),
     ghiChuCapNhat: z.string().optional(),
     ngayCapNhat: z.coerce.date(),

@@ -4,12 +4,14 @@ moTa: "Quản lý kho nhân dân tệ: theo dõi số tệ còn lại, ghi sổ 
 nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "2.5"
 banToiThieu: "2.5"
+banToiThieuMac: "2.5"
 ngayCapNhat: 2026-09-08
-gia: "80.000đ / tháng — dùng thử miễn phí 10 ngày · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ"
-ghiChuCapNhat: "- Giá mới: 80.000đ/tháng thay cho 150.000đ, gói năm chỉ bằng 10 tháng\n- Bản quyền chuyển sang máy chủ: hạn dùng do máy chủ ký, không ai sửa được trong máy\n- Hạn dùng đang có được chuyển sang tự động, không phải nhập lại key\n- Lần đầu mở bản này cần có mạng một lát để nhận phiếu bản quyền"
+ghiChuCapNhat: "- Giá mới rẻ hơn: 80.000đ một tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ. Bảng giá và mã QR trong phần mềm đã đổi theo.\n- Siết bản quyền phía máy chủ: chống lùi đồng hồ máy, chống xoá dữ liệu để dùng thử lại, chặn nhập hồ sơ cũ giả mạo. Key và số ngày còn lại của bạn giữ nguyên, không phải nhập lại.
+- Bản Mac và iPhone: hạn dùng nay do máy chủ ký, không ai sửa được trong máy; lần đầu mở cần nối mạng một lát."
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.5/BanTe-Windows-2.5.0.zip"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.5-mac/BanTe-2.5-build41.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
+gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 78 MB (Windows) · 3 MB (Mac)"
 anhIcon: "/icon/ban-te.png"
 icon: "💱"
@@ -67,13 +69,15 @@ tiếp. Dữ liệu và key bản quyền giữ nguyên sau khi cập nhật.
 
 ## Mua và gia hạn bản quyền
 
-Phần mềm cho dùng thử miễn phí trước, hết hạn thì mua tiếp ngay trong phần mềm —
-**không phải nhắn tin xin key**:
+Phần mềm cho **dùng thử miễn phí 10 ngày**, hết hạn thì mua tiếp ngay trong phần mềm —
+**không phải nhắn tin xin key**. Giá: **80.000đ / tháng** · 3 tháng 220.000đ · 6 tháng
+420.000đ · 1 năm 800.000đ (mua gói dài rẻ hơn):
 
 1. Máy tính Windows: vào tab **Tổng Số Tiền**, kéo xuống mục **Bản quyền**.
    Trên Mac: bấm vào huy hiệu **"Còn … ngày · Gia hạn"** ở góc dưới bên phải.
    Máy đã hết hạn thì mã hiện thẳng ngay màn hình khoá.
-2. Chọn gói (1 tháng / 3 tháng / 6 tháng / 1 năm) rồi **quét mã QR** bằng app ngân hàng.
+2. Chọn gói (1 tháng 80.000đ / 3 tháng 220.000đ / 6 tháng 420.000đ / 1 năm 800.000đ)
+   rồi **quét mã QR** bằng app ngân hàng.
    Số tiền và nội dung chuyển khoản đã điền sẵn trong mã, không phải gõ tay.
 3. Chuyển khoản xong ngồi yên vài giây, phần mềm tự nhận tiền và **tự cộng ngày**.
 

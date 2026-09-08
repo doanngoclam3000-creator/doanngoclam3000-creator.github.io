@@ -3,14 +3,14 @@ ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "2.7"
-# CHO TESTFLIGHT: nang len "2.6" sau khi ban iOS 2.7 da song, khong thi khach iPhone ket
-banToiThieu: "2.5"
-banToiThieuMac: "2.7"
+banToiThieu: "2.4"
 banToiThieuWin: "2.6"
-banToiThieuIOS: "2.7"
+banToiThieuMac: "2.7"
+# CHO TESTFLIGHT: dat banToiThieuIOS = "2.7" sau khi ban iOS 2.7 song tren TestFlight
 mienPhi: true
 ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Từ bản này phần mềm MIỄN PHÍ: bỏ hẳn hạn dùng thử và ô nhập key\n- Thêm cấp Mở rộng 7–9 với 4.500 từ theo tần suất\n- Phần mềm cần nối mạng ít nhất 30 ngày một lần để kiểm tra bản mới"
+ghiChuCapNhat: "- Học Tiếng Trung nay MIỄN PHÍ: không còn dùng thử, không phải mua key.\n- Sửa lỗi bản 2.5 tự báo nhầm mình là 2.4.\n- Bản Windows tự nhắc cập nhật riêng, không ép chung với bản Mac/iPhone.\n- Củng cố bảo mật máy chủ bản quyền.
+- Bản Mac và iPhone 2.7: thêm cấp Mở rộng 7–9 với 4.500 từ theo tần suất."
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.7/HocTiengTrung-2.7.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.6/HocTiengTrung-Windows-2.6.zip"
@@ -66,10 +66,14 @@ Tải file `.dmg` về, mở ra rồi kéo **Học Tiếng Trung** vào thư m�
 Phần mềm được ký bằng chứng chỉ nhà phát triển Apple mang tên **LAM DOAN NGOC** —
 mở phần mềm ra anh chị có thể tự kiểm chứng tên này.
 
-## Bản Windows (2.4)
+## Bản Windows (2.6) — miễn phí
 
-Bản cho máy tính Windows. Tải về được một
-file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-2.4.0-Setup.exe` để cài.
+**Học Tiếng Trung hiện phát MIỄN PHÍ** trên mọi nền tảng: không còn dùng thử 10 ngày,
+không phải mua key. Mở phần mềm là học; chỉ cần nối mạng khoảng một tháng một lần
+để phần mềm làm mới, còn lại học offline bình thường.
+
+Bản cho máy tính Windows. Tải về được một file **.zip**, giải nén ra rồi chạy
+`hoc_tieng_trung.exe` (không cần cài).
 
 Giao diện dựng lại theo bản iPhone: lộ trình HSK 1–6 trên nền tranh thuỷ mặc,
 mỗi cấp có vòng tiến độ riêng, bấm vào cấp nào là học ngay cấp đó.

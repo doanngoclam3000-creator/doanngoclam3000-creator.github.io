@@ -3,11 +3,11 @@ ten: "Chỉnh Sửa Ảnh"
 moTa: "Bộ công cụ sửa ảnh gọn nhẹ: cắt xoay, xoá vật thể thừa, làm phẳng ảnh chụp giấy tờ, thêm chữ, ghép lớp."
 nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "1.8"
-# CHO TESTFLIGHT: nang len "1.8" sau khi ban iOS 1.8 da song, khong thi khach iPhone ket
 banToiThieu: "1.7"
-banToiThieuMac: "1.8"
 banToiThieuWin: "1.8"
-ghiChuCapNhat: "- Phần mềm miễn phí, nhưng phải nối mạng ít nhất 30 ngày một lần để kiểm tra bản mới\n- Mốc bắt buộc cập nhật nay được ghi nhớ chắc hơn, tắt mạng không né được"
+banToiThieuMac: "1.8"
+# CHO TESTFLIGHT: dat banToiThieuIOS = "1.8" sau khi ban iOS 1.8 song tren TestFlight
+ghiChuCapNhat: "- Bản Windows tự kiểm tra bản mới ngay lúc mở và mỗi 6 giờ\n- Sẵn sàng khoá bản cũ khi phần mềm chuyển sang thu phí (hiện vẫn miễn phí)\n- Tắt công cụ nhà phát triển ở bản cài đặt, chống sửa để né màn khoá"
 ngayCapNhat: 2026-09-08
 mienPhi: true
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.8-mac/ChinhSuaAnh-1.8.dmg"
@@ -61,6 +61,6 @@ thuTu: 8
 | Mac | macOS 14 trở lên |
 | Máy tính Windows | Windows 10 trở lên, 64-bit |
 
-> **Bản Windows**: tải về được một file nén `.zip`. Bấm chuột phải vào nó, chọn **Extract All** để giải nén, rồi chạy file cài đặt `ChinhSuaAnh-1.6-Windows-BoCai.exe` bên trong. Lần đầu mở, Windows có thể hiện bảng xanh "Windows protected your PC" — bấm **More info** rồi **Run anyway**. Phần nhận diện khuôn mặt chạy ngay trên máy bạn, ảnh không gửi đi đâu cả.
+> **Bản Windows**: tải về được một file nén `.zip`. Bấm chuột phải vào nó, chọn **Extract All** để giải nén, rồi chạy file cài đặt `ChinhSuaAnh-1.8-BoCai.exe` bên trong. Lần đầu mở, Windows có thể hiện bảng xanh "Windows protected your PC" — bấm **More info** rồi **Run anyway**. Phần nhận diện khuôn mặt chạy ngay trên máy bạn, ảnh không gửi đi đâu cả.
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.
