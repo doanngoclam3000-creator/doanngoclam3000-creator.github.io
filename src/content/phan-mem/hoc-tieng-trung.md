@@ -4,15 +4,15 @@ moTa: "Học 15.408 từ có dịch tiếng Việt (HSK 1–6 và 4.500 từ m�
 nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "2.7"
 banToiThieu: "2.6"
-banToiThieuWin: "2.6"
+banToiThieuWin: "2.7"
 banToiThieuMac: "2.7"
 banToiThieuIOS: "2.7"
 mienPhi: true
-ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Bản Mac và iPhone 2.7: mục LƯỢNG TỪ mới — 84 lượng từ hay dùng (杯, 个, 本, 只…) chia nhóm, ví dụ kiểu 一杯水 bấm là đọc, kèm bài luyện chọn lượng từ.\n- Bản Mac và iPhone 2.7: thêm cấp Mở rộng 7–9 với 4.500 từ thông dụng theo tần suất, tổng 15.408 từ.\n- Học Tiếng Trung nay MIỄN PHÍ: không còn dùng thử, không phải mua key.\n- Sửa lỗi bản 2.5 tự báo nhầm mình là 2.4.\n- Bản Windows tự nhắc cập nhật riêng, không ép chung với bản Mac/iPhone.\n- Củng cố bảo mật máy chủ bản quyền."
+ngayCapNhat: 2026-09-09
+ghiChuCapNhat: "- Bản Windows 2.7: có luôn mục LƯỢNG TỪ và cấp Mở rộng 7–9 như bản Mac và iPhone, lộ trình nay 9 mốc.\n- Bản Mac và iPhone 2.7: mục LƯỢNG TỪ mới — 84 lượng từ hay dùng (杯, 个, 本, 只…) chia nhóm, ví dụ kiểu 一杯水 bấm là đọc, kèm bài luyện chọn lượng từ.\n- Bản Mac và iPhone 2.7: thêm cấp Mở rộng 7–9 với 4.500 từ thông dụng theo tần suất, tổng 15.408 từ.\n- Học Tiếng Trung nay MIỄN PHÍ: không còn dùng thử, không phải mua key.\n- Sửa lỗi bản 2.5 tự báo nhầm mình là 2.4.\n- Bản Windows tự nhắc cập nhật riêng, không ép chung với bản Mac/iPhone.\n- Củng cố bảo mật máy chủ bản quyền."
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.7/HocTiengTrung-2.7.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.6/HocTiengTrung-Windows-2.6.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.7/HocTiengTrung-Windows-2.7.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
@@ -25,7 +25,7 @@ thuTu: 8
 **Học Tiếng Trung** là app học tiếng Trung làm riêng cho người Việt. Toàn bộ từ điển nằm sẵn trong máy nên học được cả khi không có mạng, chỉ phần hội thoại AI mới cần mạng.
 
 > Danh sách tính năng dưới đây là của **bản iPhone, iPad và Mac**. Bản Windows
-> mới ra, hiện chưa có đủ — xem mục *Bản Windows* ở cuối trang.
+> có gần đủ, trừ phần chấm điểm phát âm — xem mục *Bản Windows* ở cuối trang.
 
 ![Màn hình chính với chuỗi ngày học](/anh/hoc-tieng-trung/1-man-hinh-chinh.svg)
 
@@ -65,7 +65,7 @@ cảnh báo "không mở được vì Apple không kiểm tra được phần m�
 Phần mềm được ký bằng chứng chỉ nhà phát triển Apple mang tên **LAM DOAN NGOC** —
 mở phần mềm ra anh chị có thể tự kiểm chứng tên này.
 
-## Bản Windows (2.6) — miễn phí
+## Bản Windows (2.7) — miễn phí
 
 **Học Tiếng Trung hiện phát MIỄN PHÍ** trên mọi nền tảng: không còn dùng thử 10 ngày,
 không phải mua key. Mở phần mềm là học; chỉ cần nối mạng khoảng một tháng một lần
@@ -74,10 +74,18 @@ không phải mua key. Mở phần mềm là học; chỉ cần nối mạng kho
 Bản cho máy tính Windows. Tải về được một file **.zip**, giải nén ra rồi chạy
 `hoc_tieng_trung.exe` (không cần cài).
 
-Giao diện dựng lại theo bản iPhone: lộ trình HSK 1–6 trên nền tranh thuỷ mặc,
+Giao diện dựng lại theo bản iPhone: lộ trình 9 mốc trên nền tranh thuỷ mặc,
 mỗi cấp có vòng tiến độ riêng, bấm vào cấp nào là học ngay cấp đó.
 
-Đã có: từ điển 10.908 từ nằm sẵn trong máy, lộ trình HSK, tra từ, nghe phát âm,
+**Từ bản 2.7 bản Windows có đủ 15.408 từ** — HSK 1–6 và ba cấp *Mở rộng 1, 2, 3*
+gồm 4.500 từ thông dụng ngoài HSK, xếp theo tần suất gặp thật nên từ hay dùng
+học trước.
+
+**Lượng từ (量词)**: 84 lượng từ hay dùng như 杯, 个, 本, 只 chia theo sáu nhóm,
+mỗi chữ có phần "dùng cho" và ví dụ kiểu 一杯水 bấm là nghe đọc, kèm khung năm
+điều hay sai và bài luyện mười câu chọn lượng từ đúng cho danh từ.
+
+Đã có: từ điển nằm sẵn trong máy, lộ trình 9 cấp, tra từ, nghe phát âm,
 tập viết chữ Hán chấm từng nét (viết bằng chuột), **bài tập trắc nghiệm** và
 **lịch ôn thông minh** — phần mềm tự tính hôm nào nên ôn lại từ nào theo thuật
 toán FSRS-5, từ nào trả lời sai sẽ được hỏi lại sớm hơn.
