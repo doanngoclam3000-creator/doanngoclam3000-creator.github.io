@@ -3,8 +3,10 @@ ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "2.7"
-banToiThieu: "2.6"
+# CHO TESTFLIGHT: nang len "2.6" sau khi ban iOS 2.7 da song, khong thi khach iPhone ket
+banToiThieu: "2.5"
 banToiThieuMac: "2.7"
+banToiThieuWin: "2.6"
 banToiThieuIOS: "2.7"
 mienPhi: true
 ngayCapNhat: 2026-09-08

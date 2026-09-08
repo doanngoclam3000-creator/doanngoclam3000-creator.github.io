@@ -3,7 +3,10 @@ ten: "Chỉnh Sửa Ảnh"
 moTa: "Bộ công cụ sửa ảnh gọn nhẹ: cắt xoay, xoá vật thể thừa, làm phẳng ảnh chụp giấy tờ, thêm chữ, ghép lớp."
 nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "1.8"
-banToiThieu: "1.8"
+# CHO TESTFLIGHT: nang len "1.8" sau khi ban iOS 1.8 da song, khong thi khach iPhone ket
+banToiThieu: "1.7"
+banToiThieuMac: "1.8"
+banToiThieuWin: "1.8"
 ghiChuCapNhat: "- Phần mềm miễn phí, nhưng phải nối mạng ít nhất 30 ngày một lần để kiểm tra bản mới\n- Mốc bắt buộc cập nhật nay được ghi nhớ chắc hơn, tắt mạng không né được"
 ngayCapNhat: 2026-09-08
 mienPhi: true
