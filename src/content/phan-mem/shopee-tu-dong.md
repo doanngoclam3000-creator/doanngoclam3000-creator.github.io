@@ -5,6 +5,7 @@ nenTang: ["macOS", "Windows"]
 phienBan: "5.9.7"
 banToiThieu: "5.9.6"
 banToiThieuMac: "5.9.7"
+banToiThieuWin: "5.9.6"
 ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Sửa lỗi in đơn ra trang trống “Not found” khi lỡ mở phần mềm hai lần: mỗi lần mở dùng thư mục tạm riêng, giao diện nạp sẵn vào bộ nhớ.\n- Bảng giá mới: 1 tháng 80.000đ · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ. Dùng thử vẫn 7 ngày.\n- Bảo mật bản quyền: phiếu quá hạn mà không nối được máy chủ chỉ dùng thêm 3 ngày rồi phải làm mới; tự hỏi lại máy chủ mỗi 30 phút; chống lùi đồng hồ. Key và số ngày của bạn giữ nguyên, không phải nhập lại."
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.7-mac/ShopeeTuDong-5.9.7-macOS.dmg"

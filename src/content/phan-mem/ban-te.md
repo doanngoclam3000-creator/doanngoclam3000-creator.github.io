@@ -5,6 +5,7 @@ nenTang: ["Windows", "macOS", "iOS"]
 phienBan: "2.5"
 banToiThieu: "2.5"
 banToiThieuMac: "2.5"
+banToiThieuWin: "2.5"
 ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Giá mới rẻ hơn: 80.000đ một tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ. Bảng giá và mã QR trong phần mềm đã đổi theo.\n- Siết bản quyền phía máy chủ: chống lùi đồng hồ máy, chống xoá dữ liệu để dùng thử lại, chặn nhập hồ sơ cũ giả mạo. Key và số ngày còn lại của bạn giữ nguyên, không phải nhập lại.
 - Bản Mac và iPhone: hạn dùng nay do máy chủ ký, không ai sửa được trong máy; lần đầu mở cần nối mạng một lát."

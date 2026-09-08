@@ -4,6 +4,7 @@ moTa: "Trợ lý tự động cho Zalo: quét đủ thành viên nhóm (cả c�
 nenTang: ["macOS", "Windows"]
 phienBan: "2.3.0"
 banToiThieu: "2.3.0"
+banToiThieuWin: "2.3.0"
 ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Bảng giá mới: 1 tháng 150.000đ, 3 tháng 450.000đ, 1 năm 1.620.000đ (giảm 10%)\n- Bỏ bản dùng thử: mở phần mềm là chọn gói, quét QR chuyển khoản, phần mềm tự mở khoá ngay\n- Máy đang dùng thử hoặc đã mua trước đó giữ nguyên hạn\n- Siết bản quyền: luôn tin phiếu máy chủ cấp mới nhất, quá 14 ngày không xác nhận được với máy chủ thì tạm khoá tới khi nối lại\n- Máy để mở suốt ngày cũng tự hỏi lại máy chủ định kỳ, gia hạn xong không cần mở lại phần mềm\n- Bản 2.2.x tự tải gói ~250KB rồi tự dùng, không phải tải lại bản đầy đủ"
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0-mac/BotZalo-2.3.0-mac-arm64.dmg"
