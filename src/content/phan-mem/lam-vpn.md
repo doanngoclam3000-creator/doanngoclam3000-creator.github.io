@@ -1,16 +1,18 @@
 ---
 ten: "LamVPN"
 moTa: "Vào Internet quốc tế ổn định từ Trung Quốc: YouTube, Facebook, Google, Instagram, X. Máy chủ riêng đặt tại Tokyo, Seoul, Singapore — không dùng chung với ai. Nhập mã là chạy, không phải cấu hình gì."
-nenTang: ["iOS", "macOS", "Windows"]
+nenTang: ["iOS", "macOS", "Windows", "Android"]
 phienBan: "1.3"
 banToiThieu: "1.2"
 ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Đã có bản Windows: tải ở nút Tải về, kích hoạt cùng mã với iPhone và Mac.
+ghiChuCapNhat: "- Đã có bản Android: tải file APK ở nút Tải về, kích hoạt cùng mã với iPhone, Mac và Windows.
+- Đã có bản Windows, kích hoạt cùng mã.
 - Bản iPhone/Mac phát hành qua TestFlight."
 gia: "Dùng thử miễn phí 1 ngày · 80.000đ / tháng · 1 năm 800.000đ (trả 10 tháng dùng 12)"
 linkTaiIOS: "https://testflight.apple.com/join/PCtZb1MD"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/lam-vpn-1.2.0/LamVPN-1.2.0-Windows.zip"
-dungLuong: "iPhone/Mac ~60 MB qua TestFlight · Windows 21 MB (bộ cài trong file nén)"
+linkTaiAndroid: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/lam-vpn-android-1.2.0/LamVPN-1.2.0-moi-may.apk"
+dungLuong: "iPhone/Mac ~60 MB qua TestFlight · Windows 21 MB · Android 20–58 MB (file APK)"
 anhIcon: "/icon/lam-vpn.png"
 icon: "🛡️"
 mauNen: "#0b5fff"
@@ -26,7 +28,7 @@ an: false
 > **Mua trước không mất ngày nào:** số ngày chỉ bắt đầu đếm từ lúc bạn **nhập mã vào app**,
 > không phải từ lúc mua. Mua hôm nay, ba ngày nữa mới kích hoạt thì vẫn đủ nguyên số ngày.
 >
-> Bản **Windows** đã có — tải ngay ở nút Tải về. Bản **Android** đang làm, sẽ dùng chung mã kích hoạt — không phải mua lại.
+> Bản **Windows** và **Android** đã có — tải ngay ở nút Tải về, dùng chung mã kích hoạt với iPhone/Mac, không phải mua lại.
 
 ![Tổng quan LamVPN](/anh/lam-vpn/1-tong-quan.svg)
 
@@ -64,11 +66,22 @@ App đo độ trễ tới từng máy chủ rồi xếp từ nhanh đến chậm
 
 ## Dùng được ở đâu
 
-Hiện có bản **iPhone/iPad**, **Mac** và **Windows**. Bản **Android** đang làm, dùng chung
-mã kích hoạt — mua bây giờ thì lúc có bản mới không phải mua lại.
+Có bản cho **iPhone/iPad**, **Mac**, **Windows** và **Android** — tất cả dùng chung một mã
+kích hoạt.
 
 Một mã dùng được trên **một máy tại một thời điểm**. Đổi sang máy khác thì nhắn cho chúng tôi
 để nhả suất cũ, không mất phí. Muốn dùng đồng thời nhiều máy thì mua thêm mã.
+
+### Cài trên Android
+
+Nút **Tải về** cho Android tải file **APK cài được mọi máy** (khoảng 58 MB). Nếu muốn file nhẹ
+hơn, máy đời từ 2018 trở đi tải bản
+[arm64-v8a (20 MB)](https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/lam-vpn-android-1.2.0/LamVPN-1.2.0-arm64-v8a.apk);
+máy cũ 32-bit tải bản
+[armeabi-v7a (20 MB)](https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/lam-vpn-android-1.2.0/LamVPN-1.2.0-armeabi-v7a.apk).
+
+Chép file vào máy rồi bấm cài. Lần đầu Android hỏi *"cho phép cài từ nguồn này"* thì bấm Cho
+phép. Mở app, nhập mã, bấm nút tròn, đồng ý hộp thoại kết nối VPN của Android là xong.
 
 ## Tải Facebook, TikTok, Zalo sau khi có VPN
 
