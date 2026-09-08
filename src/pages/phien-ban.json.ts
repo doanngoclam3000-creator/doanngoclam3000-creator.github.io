@@ -30,6 +30,18 @@ export const GET: APIRoute = async ({ site }) => {
       phienBan: p.data.phienBan ?? null,
       // Phien ban cu hon muc nay thi bat buoc phai cap nhat moi dung tiep duoc
       banToiThieu: p.data.banToiThieu ?? null,
+      // Muc toi thieu THEO NEN TANG: ban moi (tu 09/2026) doc muc nay truoc,
+      // khong co thi lui ve banToiThieu chung. Ban cu chi biet banToiThieu.
+      banToiThieuTheoNenTang: {
+        windows: p.data.banToiThieuWin ?? p.data.banToiThieu ?? null,
+        mac: p.data.banToiThieuMac ?? p.data.banToiThieu ?? null,
+        ios: p.data.banToiThieu ?? null,
+        android: p.data.banToiThieu ?? null,
+      },
+      // Phan mem dang phat MIEN PHI hay khong. Ban mien phi khong co phan
+      // kiem ban quyen, nen khi chuyen sang thu phi thi ban cu doc co nay
+      // de tu khoa va bat tai ban moi.
+      mienPhi: p.data.mienPhi === true,
       ngayCapNhat: p.data.ngayCapNhat.toISOString().slice(0, 10),
       ghiChuCapNhat: p.data.ghiChuCapNhat ?? null,
       nenTang: p.data.nenTang,

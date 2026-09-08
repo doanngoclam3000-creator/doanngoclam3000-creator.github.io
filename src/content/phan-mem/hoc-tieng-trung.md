@@ -2,13 +2,15 @@
 ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.5"
+phienBan: "2.6"
 banToiThieu: "2.4"
+banToiThieuWin: "2.6"
+mienPhi: true
 ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
+ghiChuCapNhat: "- Học Tiếng Trung nay MIỄN PHÍ: không còn dùng thử, không phải mua key.\n- Sửa lỗi bản 2.5 tự báo nhầm mình là 2.4.\n- Bản Windows tự nhắc cập nhật riêng, không ép chung với bản Mac/iPhone.\n- Củng cố bảo mật máy chủ bản quyền."
 linkTaiMac: "https://phanmemtq.com/tai/HocTiengTrung-2.5.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.5/HocTiengTrung-Windows-2.5.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.6/HocTiengTrung-Windows-2.6.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
@@ -61,10 +63,14 @@ Tải file `.dmg` về, mở ra rồi kéo **Học Tiếng Trung** vào thư m�
 Phần mềm được ký bằng chứng chỉ nhà phát triển Apple mang tên **LAM DOAN NGOC** —
 mở phần mềm ra anh chị có thể tự kiểm chứng tên này.
 
-## Bản Windows (2.4)
+## Bản Windows (2.6) — miễn phí
 
-Bản cho máy tính Windows. Tải về được một
-file **.zip**, giải nén ra rồi chạy file `HocTiengTrung-2.4.0-Setup.exe` để cài.
+**Học Tiếng Trung hiện phát MIỄN PHÍ** trên mọi nền tảng: không còn dùng thử 10 ngày,
+không phải mua key. Mở phần mềm là học; chỉ cần nối mạng khoảng một tháng một lần
+để phần mềm làm mới, còn lại học offline bình thường.
+
+Bản cho máy tính Windows. Tải về được một file **.zip**, giải nén ra rồi chạy
+`hoc_tieng_trung.exe` (không cần cài).
 
 Giao diện dựng lại theo bản iPhone: lộ trình HSK 1–6 trên nền tranh thuỷ mặc,
 mỗi cấp có vòng tiến độ riêng, bấm vào cấp nào là học ngay cấp đó.

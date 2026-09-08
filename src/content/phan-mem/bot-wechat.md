@@ -7,7 +7,7 @@ banToiThieu: "1.4.4"
 ngayCapNhat: 2026-09-07
 ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
 linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.4.4.dmg"
-gia: "150.000đ / tháng — dùng thử miễn phí 10 ngày"
+gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 3 MB"
 anhIcon: "/icon/bot-wechat.png"
 icon: "🤖"
@@ -116,8 +116,8 @@ phải khởi động lại.
 
 Cài xong **tự có 10 ngày dùng thử miễn phí**, không phải nhập gì, không phải trả trước.
 
-Hết 10 ngày, phần mềm xin key bản quyền — **150.000đ cho một tháng**. Mua nhiều tháng thì
-rẻ hơn: 3 tháng 300.000đ, 6 tháng 500.000đ, một năm 900.000đ.
+Hết 10 ngày, phần mềm xin key bản quyền — **80.000đ cho một tháng**. Mua nhiều tháng thì
+rẻ hơn: 3 tháng 220.000đ, 6 tháng 420.000đ, một năm 800.000đ.
 
 Cách mua: mở phần mềm, bấm **Bản quyền**, chép dòng **Mã máy** gửi cho chúng tôi, chuyển
 khoản — tiền về là phần mềm tự cộng ngày, không phải nhắn ai. Hạn khoá theo máy nên chỉ dùng được đúng máy đó.

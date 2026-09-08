@@ -42,10 +42,11 @@ chép sang máy khác cũng không đọc được.
 ## Có bản Mac và Windows
 
 Bản Mac là file `.dmg`, bản Windows là file `.zip` giải nén ra chạy thẳng, không phải cài
-thêm gì. Cài xong **tự có 1 ngày dùng thử miễn phí**, không phải nhập gì trước.
+thêm gì. Phần mềm **thu phí ngay từ đầu, không có bản dùng thử**.
 
-Sau đó là **150.000đ một tháng**, mua nhiều tháng thì rẻ hơn. Mua bằng cách quét mã QR ngay
-trong phần mềm — tiền về là phần mềm tự cộng ngày, không phải nhắn ai xin key. Hạn khoá theo máy.
+Giá **150.000đ một tháng**, 3 tháng 450.000đ, mua trọn **1 năm 1.620.000đ (giảm 10%)**. Mua
+bằng cách quét mã QR ngay trong phần mềm — tiền về là phần mềm tự cộng ngày, không phải nhắn
+ai xin key. Hạn khoá theo máy.
 
 ## Nói trước cho thật
 

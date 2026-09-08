@@ -2,13 +2,14 @@
 ten: "Chỉnh Sửa Ảnh"
 moTa: "Bộ công cụ sửa ảnh gọn nhẹ: cắt xoay, xoá vật thể thừa, làm phẳng ảnh chụp giấy tờ, thêm chữ, ghép lớp."
 nenTang: ["Windows", "macOS", "iOS"]
-phienBan: "1.7"
+phienBan: "1.8"
 banToiThieu: "1.7"
-ghiChuCapNhat: "- Bản Windows nay có icon riêng của phần mềm\n- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Đóng dấu bản quyền, chống sao chép phần mềm"
-ngayCapNhat: 2026-08-25
+banToiThieuWin: "1.8"
+ghiChuCapNhat: "- Bản Windows tự kiểm tra bản mới ngay lúc mở và mỗi 6 giờ\n- Sẵn sàng khoá bản cũ khi phần mềm chuyển sang thu phí (hiện vẫn miễn phí)\n- Tắt công cụ nhà phát triển ở bản cài đặt, chống sửa để né màn khoá"
+ngayCapNhat: 2026-09-08
 mienPhi: true
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.7/ChinhSuaAnh-1.7.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.7/ChinhSuaAnh-1.7-Windows-BoCai.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.8/ChinhSuaAnh-1.8-Windows-BoCai.zip"
 linkTaiIOS: "https://testflight.apple.com/join/HdU95ZUW"
 dungLuong: "Mac 1,2 MB · Windows 93 MB (file nén)"
 anhIcon: "/icon/chinh-sua-anh.png"
@@ -58,6 +59,6 @@ thuTu: 8
 | Mac | macOS 14 trở lên |
 | Máy tính Windows | Windows 10 trở lên, 64-bit |
 
-> **Bản Windows**: tải về được một file nén `.zip`. Bấm chuột phải vào nó, chọn **Extract All** để giải nén, rồi chạy file cài đặt `ChinhSuaAnh-1.6-Windows-BoCai.exe` bên trong. Lần đầu mở, Windows có thể hiện bảng xanh "Windows protected your PC" — bấm **More info** rồi **Run anyway**. Phần nhận diện khuôn mặt chạy ngay trên máy bạn, ảnh không gửi đi đâu cả.
+> **Bản Windows**: tải về được một file nén `.zip`. Bấm chuột phải vào nó, chọn **Extract All** để giải nén, rồi chạy file cài đặt `ChinhSuaAnh-1.8-BoCai.exe` bên trong. Lần đầu mở, Windows có thể hiện bảng xanh "Windows protected your PC" — bấm **More info** rồi **Run anyway**. Phần nhận diện khuôn mặt chạy ngay trên máy bạn, ảnh không gửi đi đâu cả.
 
 > Bản cho iPhone và iPad được phát hành qua TestFlight. Xem bài **[Hướng dẫn cài phần mềm trên iPhone qua TestFlight](/bai-viet/huong-dan-cai-qua-testflight)** để làm theo từng bước, có hình minh hoạ.

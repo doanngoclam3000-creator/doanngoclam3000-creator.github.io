@@ -54,20 +54,22 @@ const VONG_BAM = 100000; // so vong PBKDF2 - Cloudflare Workers CHAN qua 100.000
 const PHAN_MEM = {
   'bot-zalo': {
     ten: 'Bot Zalo', kieu: 'mayChu', tienTo: 'BZ', bienSecret: 'SECRET_BZ',
+    // 08/09/2026: thu phi ngay tu dau (khong dung thu), bo goi 6 thang.
+    // Goi nam = 12 thang giam 10% (1.800.000 -> 1.620.000).
+    luuY: 'Mua 1 năm được giảm 10% so với mua lẻ từng tháng.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
-      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
-      { ma: 'H', ten: '6 tháng', ngay: 180, gia: 500000 },
-      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 450000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 1620000 },
     ],
   },
   'shopee-tu-dong': {
     ten: 'Shopee Tự Động', kieu: 'mayChu', tienTo: 'ST', bienSecret: 'SECRET_ST',
     goi: [
-      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
-      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
-      { ma: 'H', ten: '6 tháng', ngay: 180, gia: 500000 },
-      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 80000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 220000 },
+      { ma: 'H', ten: '6 tháng', ngay: 180, gia: 420000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 800000 },
     ],
   },
   // Phan Mem Order dang phat hanh MIEN PHI (website co nhan do "MIEN PHI") nen
@@ -75,10 +77,10 @@ const PHAN_MEM = {
   'bot-wechat': {
     ten: 'Bot WeChat', kieu: 'tuKy', tienTo: 'BW', bienSecret: 'SECRET_BW',
     goi: [
-      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
-      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
-      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 500000 },
-      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 80000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 220000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 420000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 800000 },
     ],
   },
   'gia-lap-vi-tri': {
@@ -98,10 +100,10 @@ const PHAN_MEM = {
     ten: 'Phần Mềm Quản Lý Kho Tệ', kieu: 'tuKy', tienTo: 'BT', bienSecret: 'SECRET_BT',
     luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone. Mỗi máy một mã máy riêng.',
     goi: [
-      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
-      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
-      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 500000 },
-      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 80000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 220000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 420000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 800000 },
     ],
   },
   'lam-vpn': {
@@ -138,6 +140,9 @@ const PHAN_MEM = {
     // Ban iPhone dung chung ma nguon Flutter voi ban may tinh, cung o nhap key
     // va cung cach tinh ma may -> key mua o day dung duoc ca hai.
     luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone. Mỗi máy một mã máy riêng.',
+    // 08/09/2026: phat MIEN PHI (cong tac cauHinh:mienPhi tren worker
+    // cap-key-hoctiengtrung). An khoi o mua; bat thu phi lai thi bo dong nay.
+    an: true,
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
       { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },

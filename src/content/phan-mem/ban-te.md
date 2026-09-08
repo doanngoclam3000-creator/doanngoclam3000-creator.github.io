@@ -2,13 +2,14 @@
 ten: "Phần Mềm Quản Lý Kho Tệ"
 moTa: "Quản lý kho nhân dân tệ: theo dõi số tệ còn lại, ghi sổ từng lần mua bán, tự tính tiền Việt và lợi nhuận. Dùng được trên máy tính lẫn iPhone."
 nenTang: ["Windows", "macOS", "iOS"]
-phienBan: "2.4"
+phienBan: "2.5"
 banToiThieu: "2.3"
 ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.4/BanTe-Windows-2.4.0.zip"
+ghiChuCapNhat: "- Giá mới rẻ hơn: 80.000đ một tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ. Bảng giá và mã QR trong phần mềm đã đổi theo.\n- Siết bản quyền phía máy chủ: chống lùi đồng hồ máy, chống xoá dữ liệu để dùng thử lại, chặn nhập hồ sơ cũ giả mạo. Key và số ngày còn lại của bạn giữ nguyên, không phải nhập lại."
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.5/BanTe-Windows-2.5.0.zip"
 linkTaiMac: "https://phanmemtq.com/tai/BanTe-2.4-build40.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
+gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 78 MB (Windows) · 3 MB (Mac)"
 anhIcon: "/icon/ban-te.png"
 icon: "💱"
@@ -66,13 +67,15 @@ tiếp. Dữ liệu và key bản quyền giữ nguyên sau khi cập nhật.
 
 ## Mua và gia hạn bản quyền
 
-Phần mềm cho dùng thử miễn phí trước, hết hạn thì mua tiếp ngay trong phần mềm —
-**không phải nhắn tin xin key**:
+Phần mềm cho **dùng thử miễn phí 10 ngày**, hết hạn thì mua tiếp ngay trong phần mềm —
+**không phải nhắn tin xin key**. Giá: **80.000đ / tháng** · 3 tháng 220.000đ · 6 tháng
+420.000đ · 1 năm 800.000đ (mua gói dài rẻ hơn):
 
 1. Máy tính Windows: vào tab **Tổng Số Tiền**, kéo xuống mục **Bản quyền**.
    Trên Mac: bấm vào huy hiệu **"Còn … ngày · Gia hạn"** ở góc dưới bên phải.
    Máy đã hết hạn thì mã hiện thẳng ngay màn hình khoá.
-2. Chọn gói (1 tháng / 3 tháng / 6 tháng / 1 năm) rồi **quét mã QR** bằng app ngân hàng.
+2. Chọn gói (1 tháng 80.000đ / 3 tháng 220.000đ / 6 tháng 420.000đ / 1 năm 800.000đ)
+   rồi **quét mã QR** bằng app ngân hàng.
    Số tiền và nội dung chuyển khoản đã điền sẵn trong mã, không phải gõ tay.
 3. Chuyển khoản xong ngồi yên vài giây, phần mềm tự nhận tiền và **tự cộng ngày**.
 
