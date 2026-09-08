@@ -1,6 +1,6 @@
 ---
 ten: "Học Tiếng Trung"
-moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
+moTa: "Học 15.408 từ có dịch tiếng Việt (HSK 1–6 và 4.500 từ mở rộng), bảng lượng từ 杯 个 本 只, nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "2.7"
 banToiThieu: "2.4"
@@ -9,8 +9,7 @@ banToiThieuMac: "2.7"
 # CHO TESTFLIGHT: dat banToiThieuIOS = "2.7" sau khi ban iOS 2.7 song tren TestFlight
 mienPhi: true
 ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Học Tiếng Trung nay MIỄN PHÍ: không còn dùng thử, không phải mua key.\n- Sửa lỗi bản 2.5 tự báo nhầm mình là 2.4.\n- Bản Windows tự nhắc cập nhật riêng, không ép chung với bản Mac/iPhone.\n- Củng cố bảo mật máy chủ bản quyền.
-- Bản Mac và iPhone 2.7: thêm cấp Mở rộng 7–9 với 4.500 từ theo tần suất."
+ghiChuCapNhat: "- Bản Mac và iPhone 2.7: mục LƯỢNG TỪ mới — 84 lượng từ hay dùng (杯, 个, 本, 只…) chia nhóm, ví dụ kiểu 一杯水 bấm là đọc, kèm bài luyện chọn lượng từ.\n- Bản Mac và iPhone 2.7: thêm cấp Mở rộng 7–9 với 4.500 từ thông dụng theo tần suất, tổng 15.408 từ.\n- Học Tiếng Trung nay MIỄN PHÍ: không còn dùng thử, không phải mua key.\n- Sửa lỗi bản 2.5 tự báo nhầm mình là 2.4.\n- Bản Windows tự nhắc cập nhật riêng, không ép chung với bản Mac/iPhone.\n- Củng cố bảo mật máy chủ bản quyền."
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.7/HocTiengTrung-2.7.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.6/HocTiengTrung-Windows-2.6.zip"
@@ -34,7 +33,8 @@ thuTu: 6
 
 ### Tính năng chính
 
-- **5.456 từ HSK 1–6**, mỗi từ có chữ Hán, pinyin, nghĩa tiếng Việt và ví dụ.
+- **15.408 từ để học:** 10.908 từ HSK 1–6 và 4.500 từ thông dụng mở rộng (cấp 7–9, chọn theo tần suất dùng thật), mỗi từ có chữ Hán, pinyin, nghĩa tiếng Việt.
+- **Lượng từ (量词):** 84 lượng từ hay dùng như 杯, 个, 本, 只 chia theo nhóm, mỗi chữ có ví dụ kiểu 一杯水 bấm là đọc, năm điều hay sai (两/二, 一 đổi thanh…) và bài luyện chọn lượng từ đúng cho danh từ.
 - **Nghe phát âm chuẩn:** đọc offline, chỉnh được tốc độ đọc chậm hay nhanh.
 - **Nói và chấm điểm phát âm:** bạn đọc vào micro, app nhận diện giọng rồi so với chữ để chấm.
 - **Chấm cả thanh điệu:** app phân tích cao độ giọng nói và so với đường thanh điệu chuẩn — sai thanh là biết ngay, thứ mà hầu hết app khác bỏ qua.
@@ -51,10 +51,9 @@ thuTu: 6
 
 Tải file `.dmg` về, mở ra rồi kéo **Học Tiếng Trung** vào thư mục **Applications**.
 
-> **Lần đầu mở, macOS sẽ báo "không mở được vì Apple không kiểm tra được phần mềm
-> độc hại".** Đây là cảnh báo mặc định cho phần mềm tải ngoài App Store, không phải
-> phần mềm bị lỗi hay có virus.
->
+Bản mới đã được Apple công chứng nên thường bấm đúp là chạy. Nếu máy vẫn hiện
+cảnh báo "không mở được vì Apple không kiểm tra được phần mềm độc hại":
+
 > Cách mở: vào thư mục **Applications**, **bấm chuột phải** vào Học Tiếng Trung rồi
 > chọn **Mở** (Open), sau đó bấm **Mở** một lần nữa ở bảng hiện ra. Chỉ phải làm
 > đúng một lần đầu tiên; từ lần sau bấm đúp là chạy bình thường.
