@@ -3,10 +3,10 @@ ten: "Học Tiếng Trung"
 moTa: "Học 15.408 từ có dịch tiếng Việt (HSK 1–6 và 4.500 từ mở rộng), bảng lượng từ 杯 个 本 只, nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
 phienBan: "2.7"
-banToiThieu: "2.4"
+banToiThieu: "2.6"
 banToiThieuWin: "2.6"
 banToiThieuMac: "2.7"
-# CHO TESTFLIGHT: dat banToiThieuIOS = "2.7" sau khi ban iOS 2.7 song tren TestFlight
+banToiThieuIOS: "2.7"
 mienPhi: true
 ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Bản Mac và iPhone 2.7: mục LƯỢNG TỪ mới — 84 lượng từ hay dùng (杯, 个, 本, 只…) chia nhóm, ví dụ kiểu 一杯水 bấm là đọc, kèm bài luyện chọn lượng từ.\n- Bản Mac và iPhone 2.7: thêm cấp Mở rộng 7–9 với 4.500 từ thông dụng theo tần suất, tổng 15.408 từ.\n- Học Tiếng Trung nay MIỄN PHÍ: không còn dùng thử, không phải mua key.\n- Sửa lỗi bản 2.5 tự báo nhầm mình là 2.4.\n- Bản Windows tự nhắc cập nhật riêng, không ép chung với bản Mac/iPhone.\n- Củng cố bảo mật máy chủ bản quyền."
