@@ -23,11 +23,13 @@
   },
   "hoc-tieng-trung": {
     "mac": "https://phanmemtq.com/tai/HocTiengTrung-2.5.dmg",
-    "windows": "https://phanmemtq.com/tai/HocTiengTrung-2.4.0-Windows.zip",
+    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.5/HocTiengTrung-Windows-2.5.zip",
     "ios": "https://testflight.apple.com/join/K9jqJAg9"
   },
   "lam-vpn": {
-    "ios": "https://testflight.apple.com/join/PCtZb1MD"
+    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/lam-vpn-1.2.0/LamVPN-1.2.0-Windows.zip",
+    "ios": "https://testflight.apple.com/join/PCtZb1MD",
+    "android": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/lam-vpn-android-1.2.0/LamVPN-1.2.0-moi-may.apk"
   },
   "phan-mem-order": {
     "mac": "https://phanmemtq.com/tai/PhanMemOrder-2.14.dmg",
