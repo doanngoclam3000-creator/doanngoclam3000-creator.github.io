@@ -9,7 +9,7 @@ banToiThieuIOS: "2.15"
 ngayCapNhat: 2026-09-08
 mienPhi: true
 ghiChuCapNhat: "- Gỡ khoá ký bản quyền ra khỏi phần mềm: từ nay không ai làm giả key được\n- Gỡ luôn khoá đọc giao dịch ngân hàng khỏi phần mềm"
-linkTaiMac: "https://phanmemtq.com/tai/PhanMemOrder-2.15.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.15-mac/PhanMemOrder-2.15.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-latest/PhanMemOrder-2.13.2-Windows-Setup.exe"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"

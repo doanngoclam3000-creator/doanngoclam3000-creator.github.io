@@ -6,7 +6,7 @@ phienBan: "1.5.0"
 banToiThieu: "1.5.0"
 ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Giá mới: 80.000đ/tháng thay cho 150.000đ, gói năm chỉ bằng 10 tháng\n- Bản quyền chuyển sang máy chủ: khoá kích hoạt không còn nằm trong phần mềm nên không ai làm giả key được\n- Hạn dùng của bạn được chuyển sang tự động, không phải nhập lại key"
-linkTaiMac: "https://phanmemtq.com/tai/BotWeChat-1.5.0.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.0/BotWeChat-1.5.0.dmg"
 gia: "80.000đ / tháng — dùng thử miễn phí 10 ngày · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ"
 dungLuong: "khoảng 3 MB"
 anhIcon: "/icon/bot-wechat.png"

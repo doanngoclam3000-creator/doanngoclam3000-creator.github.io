@@ -7,7 +7,7 @@ banToiThieu: "1.8"
 ghiChuCapNhat: "- Phần mềm miễn phí, nhưng phải nối mạng ít nhất 30 ngày một lần để kiểm tra bản mới\n- Mốc bắt buộc cập nhật nay được ghi nhớ chắc hơn, tắt mạng không né được"
 ngayCapNhat: 2026-09-08
 mienPhi: true
-linkTaiMac: "https://phanmemtq.com/tai/ChinhSuaAnh-1.8.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.8-mac/ChinhSuaAnh-1.8.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.8/ChinhSuaAnh-1.8-Windows-BoCai.zip"
 linkTaiIOS: "https://testflight.apple.com/join/HdU95ZUW"
 dungLuong: "Mac 1,2 MB · Windows 93 MB (file nén)"

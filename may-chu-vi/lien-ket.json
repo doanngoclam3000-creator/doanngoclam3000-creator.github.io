@@ -1,18 +1,18 @@
 {
   "ban-te": {
-    "mac": "https://phanmemtq.com/tai/BanTe-2.5-build41.dmg",
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.5-mac/BanTe-2.5-build41.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.5/BanTe-Windows-2.5.0.zip",
     "ios": "https://testflight.apple.com/join/vUtNFS1Q"
   },
   "bot-wechat": {
-    "mac": "https://phanmemtq.com/tai/BotWeChat-1.5.0.dmg"
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.0/BotWeChat-1.5.0.dmg"
   },
   "bot-zalo": {
     "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0-mac/BotZalo-2.3.0-mac-arm64.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0/BotZalo-2.3.0-Windows.zip"
   },
   "chinh-sua-anh": {
-    "mac": "https://phanmemtq.com/tai/ChinhSuaAnh-1.8.dmg",
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.8-mac/ChinhSuaAnh-1.8.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.8/ChinhSuaAnh-1.8-Windows-BoCai.zip",
     "ios": "https://testflight.apple.com/join/HdU95ZUW"
   },
@@ -32,7 +32,7 @@
     "android": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/lam-vpn-android-1.2.0/LamVPN-1.2.0-moi-may.apk"
   },
   "phan-mem-order": {
-    "mac": "https://phanmemtq.com/tai/PhanMemOrder-2.15.dmg",
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-2.15-mac/PhanMemOrder-2.15.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-latest/PhanMemOrder-2.13.2-Windows-Setup.exe",
     "ios": "https://testflight.apple.com/join/hc37nM39"
   },
