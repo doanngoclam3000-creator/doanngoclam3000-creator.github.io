@@ -18,7 +18,7 @@ anhIcon: "/icon/ban-te.png"
 icon: "💱"
 mauNen: "#059669"
 noiBat: true
-thuTu: 4
+thuTu: 6
 ---
 
 ## Giới thiệu

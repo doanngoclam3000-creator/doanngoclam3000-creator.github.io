@@ -22,7 +22,7 @@ noiBat: false
 # "vi-tri-wifi" để biết có bản mới; bỏ hẳn là app không bao giờ được nhắc
 # cập nhật, và máy đang bị khoá vì bản cũ cũng mất luôn nút tải bản mới.
 an: true
-thuTu: 9
+thuTu: 10
 ---
 
 ## Giới thiệu

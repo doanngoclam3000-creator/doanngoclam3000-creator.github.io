@@ -17,7 +17,7 @@ anhIcon: "/icon/bot-zalo.png"
 icon: "💬"
 mauNen: "#2b7cff"
 noiBat: true
-thuTu: 3
+thuTu: 4
 ---
 
 ## Giới thiệu

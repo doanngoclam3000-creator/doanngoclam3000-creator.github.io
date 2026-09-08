@@ -17,7 +17,7 @@ anhIcon: "/icon/shopee-tu-dong.png"
 icon: "🛒"
 mauNen: "#ee4d2d"
 noiBat: true
-thuTu: 1
+thuTu: 3
 ---
 
 ## Một màn hình, đủ việc bán hàng Shopee

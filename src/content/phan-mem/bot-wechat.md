@@ -15,7 +15,7 @@ anhIcon: "/icon/bot-wechat.png"
 icon: "🤖"
 mauNen: "#0ea5e9"
 noiBat: true
-thuTu: 2
+thuTu: 5
 ---
 
 ## Giới thiệu

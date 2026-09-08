@@ -17,7 +17,7 @@ anhIcon: "/icon/lam-vpn.png"
 icon: "🛡️"
 mauNen: "#0b5fff"
 noiBat: false
-thuTu: 7
+thuTu: 2
 an: false
 ---
 

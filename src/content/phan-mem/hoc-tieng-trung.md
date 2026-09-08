@@ -17,7 +17,7 @@ anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
 noiBat: true
-thuTu: 6
+thuTu: 8
 ---
 
 ## Giới thiệu

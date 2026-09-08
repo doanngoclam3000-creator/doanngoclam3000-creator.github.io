@@ -18,7 +18,7 @@ anhIcon: "/icon/chinh-sua-anh.png"
 icon: "🖼️"
 mauNen: "#dc2626"
 noiBat: false
-thuTu: 8
+thuTu: 9
 ---
 
 ## Giới thiệu

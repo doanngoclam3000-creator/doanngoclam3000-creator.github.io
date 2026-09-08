@@ -19,7 +19,7 @@ tenVideoPhu: "Giả lập vị trí trên điện thoại — không cần bật
 anhIcon: "/icon/gia-lap-vi-tri.png"
 icon: "📍"
 mauNen: "#7c3aed"
-thuTu: 7
+thuTu: 1
 ---
 
 ## Giới thiệu
