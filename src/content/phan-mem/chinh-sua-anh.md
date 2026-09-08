@@ -2,13 +2,13 @@
 ten: "Chỉnh Sửa Ảnh"
 moTa: "Bộ công cụ sửa ảnh gọn nhẹ: cắt xoay, xoá vật thể thừa, làm phẳng ảnh chụp giấy tờ, thêm chữ, ghép lớp."
 nenTang: ["Windows", "macOS", "iOS"]
-phienBan: "1.7"
-banToiThieu: "1.7"
-ghiChuCapNhat: "- Bản Windows nay có icon riêng của phần mềm\n- Cập nhật bản mới lấy thẳng từ trang phanmemtq.com\n- Đóng dấu bản quyền, chống sao chép phần mềm"
-ngayCapNhat: 2026-08-25
+phienBan: "1.8"
+banToiThieu: "1.8"
+ghiChuCapNhat: "- Phần mềm miễn phí, nhưng phải nối mạng ít nhất 30 ngày một lần để kiểm tra bản mới\n- Mốc bắt buộc cập nhật nay được ghi nhớ chắc hơn, tắt mạng không né được"
+ngayCapNhat: 2026-09-08
 mienPhi: true
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.7/ChinhSuaAnh-1.7.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.7/ChinhSuaAnh-1.7-Windows-BoCai.zip"
+linkTaiMac: "https://phanmemtq.com/tai/ChinhSuaAnh-1.8.dmg"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.8/ChinhSuaAnh-1.8-Windows-BoCai.zip"
 linkTaiIOS: "https://testflight.apple.com/join/HdU95ZUW"
 dungLuong: "Mac 1,2 MB · Windows 93 MB (file nén)"
 anhIcon: "/icon/chinh-sua-anh.png"

@@ -2,13 +2,16 @@
 ten: "Học Tiếng Trung"
 moTa: "Học 5.456 từ HSK 1–6 có dịch tiếng Việt: nghe, nói chấm điểm cả thanh điệu, viết chữ chấm từng nét, hội thoại AI trong vốn từ của bạn."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.5"
-banToiThieu: "2.4"
+phienBan: "2.7"
+banToiThieu: "2.6"
+banToiThieuMac: "2.7"
+banToiThieuIOS: "2.7"
+mienPhi: true
 ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
-linkTaiMac: "https://phanmemtq.com/tai/HocTiengTrung-2.5.dmg"
+ghiChuCapNhat: "- Từ bản này phần mềm MIỄN PHÍ: bỏ hẳn hạn dùng thử và ô nhập key\n- Thêm cấp Mở rộng 7–9 với 4.500 từ theo tần suất\n- Phần mềm cần nối mạng ít nhất 30 ngày một lần để kiểm tra bản mới"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.7/HocTiengTrung-2.7.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.5/HocTiengTrung-Windows-2.5.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.6/HocTiengTrung-Windows-2.6.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"

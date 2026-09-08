@@ -2,12 +2,13 @@
 ten: "Vị Trí Wi-Fi"
 moTa: "Đổi vị trí iPhone theo đường Wi-Fi: cài một lần, dán toạ độ là máy báo đang ở nơi bạn chọn. Không cần máy tính, không cần Chế độ nhà phát triển."
 nenTang: ["iOS"]
-phienBan: "1.8"
+phienBan: "1.9"
 banToiThieu: "1.7"
+banToiThieuIOS: "1.9"
 ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Chuyển sang máy chủ bản quyền mới của phanmemtq.com
-- Nhận cả key Giả Lập Vị Trí (mã bắt đầu bằng GL) lẫn key VW
-- Một key dùng được cả máy tính lẫn iPhone, mỗi ứng dụng một lần"
+ghiChuCapNhat: "- Gỡ khoá ký bản quyền ra khỏi phần mềm: từ nay không ai làm giả key được
+- Sửa lỗi không dán được key dài (key đời mới) vào ô kích hoạt
+- Key mua trên phanmemtq.com vẫn dùng bình thường, không phải đổi"
 linkTaiIOS: "https://testflight.apple.com/join/KYYj3Bfd"
 gia: "300.000đ / tháng · 800.000đ / 3 tháng · 1.500.000đ / 6 tháng · 2.500.000đ / năm"
 mienPhi: false

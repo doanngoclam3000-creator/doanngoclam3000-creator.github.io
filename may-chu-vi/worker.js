@@ -54,31 +54,39 @@ const VONG_BAM = 100000; // so vong PBKDF2 - Cloudflare Workers CHAN qua 100.000
 const PHAN_MEM = {
   'bot-zalo': {
     ten: 'Bot Zalo', kieu: 'mayChu', tienTo: 'BZ', bienSecret: 'SECRET_BZ',
+    // Gia chot 08/09/2026: thu phi ngay tu dau, KHONG dung thu. Goi nam giam 10%
+    // (12 x 150k = 1.800k -> 1.620k). Bo goi 6 thang khoi bang ban; key 'H' cu
+    // may chu van doc duoc.
+    luuY: 'Không có bản dùng thử. Đăng ký 1 năm được giảm 10%.',
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
-      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
-      { ma: 'H', ten: '6 tháng', ngay: 180, gia: 500000 },
-      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 450000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 1620000 },
     ],
   },
   'shopee-tu-dong': {
     ten: 'Shopee Tự Động', kieu: 'mayChu', tienTo: 'ST', bienSecret: 'SECRET_ST',
+    // Gia chot 08/09/2026: bang gia LamVPN (80k/thang, nam = 10 thang).
     goi: [
-      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
-      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
-      { ma: 'H', ten: '6 tháng', ngay: 180, gia: 500000 },
-      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 80000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 220000 },
+      { ma: 'H', ten: '6 tháng', ngay: 180, gia: 420000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 800000 },
     ],
   },
   // Phan Mem Order dang phat hanh MIEN PHI (website co nhan do "MIEN PHI") nen
   // khong ban key.
   'bot-wechat': {
     ten: 'Bot WeChat', kieu: 'tuKy', tienTo: 'BW', bienSecret: 'SECRET_BW',
+    // Key Ed25519 (khi bat DUNG_ED25519) ky bang khoa rieng "bot-wechat-mac",
+    // tien to key doi 2 la BM (ban Mac). Xem taoKeyEd25519.
+    tienToEd: 'BM', bienKhoaRieng: 'KHOARIENG_BW',
+    // Gia chot 08/09/2026: bang gia LamVPN (80k/thang, nam = 10 thang).
     goi: [
-      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
-      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
-      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 500000 },
-      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 80000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 220000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 420000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 800000 },
     ],
   },
   'gia-lap-vi-tri': {
@@ -96,12 +104,17 @@ const PHAN_MEM = {
   },
   'ban-te': {
     ten: 'Phần Mềm Quản Lý Kho Tệ', kieu: 'tuKy', tienTo: 'BT', bienSecret: 'SECRET_BT',
+    // CHUA bat key doi 2 cho Kho Te: ban Windows van kiem key HMAC ngay trong may,
+    // cap key Ed25519 la khach Windows mua xong khong kich hoat duoc. Bat lai bang
+    // cach tra dong 'tienToEd/bienKhoaRieng' ben duoi khi ban Windows da len doi 2.
+    // tienToEd: 'BT', bienKhoaRieng: 'KHOARIENG_BT',
     luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone. Mỗi máy một mã máy riêng.',
+    // Gia chot 08/09/2026: bang gia LamVPN (80k/thang, nam = 10 thang).
     goi: [
-      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 150000 },
-      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 300000 },
-      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 500000 },
-      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 900000 },
+      { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 80000 },
+      { ma: 'Q', ten: '3 tháng', ngay: 90,  gia: 220000 },
+      { ma: 'S', ten: '6 tháng', ngay: 180, gia: 420000 },
+      { ma: 'Y', ten: '1 năm',   ngay: 365, gia: 800000 },
     ],
   },
   'lam-vpn': {
@@ -135,6 +148,9 @@ const PHAN_MEM = {
   },
   'hoc-tieng-trung': {
     ten: 'Học Tiếng Trung', kieu: 'tuKy', tienTo: 'HT', bienSecret: 'SECRET_HT',
+    // MIEN PHI tu 08/09/2026 (ban 2.6 bo han ban quyen). An khoi o chon mua;
+    // giu muc nay de neu sau nay thu phi lai thi chi can bo 'an'.
+    an: true,
     // Ban iPhone dung chung ma nguon Flutter voi ban may tinh, cung o nhap key
     // va cung cach tinh ma may -> key mua o day dung duoc ca hai.
     luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone. Mỗi máy một mã máy riêng.',
@@ -304,6 +320,30 @@ async function taoKeyMay(secret, tienTo, maGoi, maMay) {
 }
 const maMayHopLe = (m) => /^[A-Z0-9]{4,16}$/.test(m) && [...m].every((c) => BO_KY_TU.includes(c));
 
+// ---- Key doi 2: Ed25519 (khong con chuoi bi mat nao nam trong app) ----
+// Bat bang secret DUNG_ED25519 = "1". Key: "<TIENTO>2-<THAN6>-<CHUKY base32 103>",
+// chuoi ky "g|<than>|<maMay>" (gan may). Khoa rieng pkcs8 hex nap qua secret
+// KHOARIENG_<TT> (pm.bienKhoaRieng). Khop bo kiem KiemKeyEd25519.swift trong app
+// va TaoKeyTatCa/web/ky-ed25519.js.
+function base32Ma(bytes) {
+  let bits = 0, giaTri = 0, ra = '';
+  for (const b of bytes) {
+    giaTri = (giaTri << 8) | b; bits += 8;
+    while (bits >= 5) { bits -= 5; ra += BO_KY_TU[(giaTri >> bits) & 31]; }
+  }
+  if (bits > 0) ra += BO_KY_TU[(giaTri << (5 - bits)) & 31];
+  return ra;
+}
+async function taoKeyEd25519(hexPkcs8, tienTo, maGoi, maMay) {
+  const raw = new Uint8Array(hexPkcs8.match(/../g).map((h) => parseInt(h, 16)));
+  const khoa = await crypto.subtle.importKey('pkcs8', raw, { name: 'Ed25519' }, false, ['sign']);
+  const than = maGoi + chuoiNgauNhien(5);
+  const sig = await crypto.subtle.sign({ name: 'Ed25519' }, khoa,
+    new TextEncoder().encode('g|' + than + '|' + maMay));
+  return tienTo + '2-' + than + '-' + base32Ma(new Uint8Array(sig));
+}
+const dungEd25519 = (env, pm) => env.DUNG_ED25519 === '1' && !!pm.bienKhoaRieng && !!env[pm.bienKhoaRieng];
+
 // Kieu 'kho': khong tu ky ma xin kho-key cap. Kho giu so "key nao da dung o may
 // nao", nen mot key dung duoc mot lan o MOI phan mem cung nhom.
 async function xinKeyTuKho(env, pm, maGoi) {
@@ -350,6 +390,7 @@ async function xinKeyTuApi(env, goi, email, donId, ghiChu, laThu) {
 function capTuDong(env, pm) {
   if (pm.kieu === 'api') return !!env.LAMVPN_SHOP_KEY;
   if (pm.kieu === 'kho') return !!(env.SV_KHO && env.KHO_KEY_KHOA);
+  if (pm.kieu === 'tuKy' && dungEd25519(env, pm)) return true;
   if (!env[pm.bienSecret]) return false;
   if (pm.kieu === 'mayChu') return !!(env['MC_' + pm.tienTo] && env['QT_' + pm.tienTo]);
   return pm.kieu === 'tuKy';
@@ -1519,7 +1560,9 @@ export default {
 
       // ---- Kieu tuKy: ky key ngay tai day, khong goi di dau, khong cho duyet ----
       if (pm.kieu === 'tuKy') {
-        const key = await taoKeyMay(env[pm.bienSecret], pm.tienTo, goi.ma, may);
+        const key = dungEd25519(env, pm)
+          ? await taoKeyEd25519(env[pm.bienKhoaRieng], pm.tienToEd || pm.tienTo, goi.ma, may)
+          : await taoKeyMay(env[pm.bienSecret], pm.tienTo, goi.ma, may);
         await env.DB.prepare("UPDATE don_key SET trang_thai='xong', key=? WHERE id=?")
           .bind(key, donId).run();
         await traHoaHong();

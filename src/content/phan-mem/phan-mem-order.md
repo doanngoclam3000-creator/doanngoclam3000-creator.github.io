@@ -2,12 +2,14 @@
 ten: "Phần Mềm Order"
 moTa: "Đặt hàng hộ chuyên nghiệp: dán link 1688 là ra đơn, tự tính tiền theo tỉ giá lẻ/sỉ, quản lý kho TQ, công nợ và báo cáo."
 nenTang: ["iOS", "macOS", "Windows"]
-phienBan: "2.14"
+phienBan: "2.15"
 banToiThieu: "2.8"
+banToiThieuMac: "2.15"
+banToiThieuIOS: "2.15"
 ngayCapNhat: 2026-09-08
 mienPhi: true
-ghiChuCapNhat: "- Nâng cấp bảo mật bản quyền: khoá kích hoạt chuyển sang chữ ký số Ed25519, chống làm giả key. Key cũ của bạn vẫn dùng bình thường, không phải nhập lại."
-linkTaiMac: "https://phanmemtq.com/tai/PhanMemOrder-2.14.dmg"
+ghiChuCapNhat: "- Gỡ khoá ký bản quyền ra khỏi phần mềm: từ nay không ai làm giả key được\n- Gỡ luôn khoá đọc giao dịch ngân hàng khỏi phần mềm"
+linkTaiMac: "https://phanmemtq.com/tai/PhanMemOrder-2.15.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-latest/PhanMemOrder-2.13.2-Windows-Setup.exe"
 linkTaiIOS: "https://testflight.apple.com/join/hc37nM39"
 anhIcon: "/icon/phan-mem-order.png"

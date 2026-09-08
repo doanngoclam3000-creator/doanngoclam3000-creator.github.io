@@ -1,29 +1,29 @@
 {
   "ban-te": {
-    "mac": "https://phanmemtq.com/tai/BanTe-2.4-build40.dmg",
-    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.4/BanTe-Windows-2.4.0.zip",
+    "mac": "https://phanmemtq.com/tai/BanTe-2.5-build41.dmg",
+    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.5/BanTe-Windows-2.5.0.zip",
     "ios": "https://testflight.apple.com/join/vUtNFS1Q"
   },
   "bot-wechat": {
-    "mac": "https://phanmemtq.com/tai/BotWeChat-1.4.4.dmg"
+    "mac": "https://phanmemtq.com/tai/BotWeChat-1.5.0.dmg"
   },
   "bot-zalo": {
-    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.0-mac/BotZalo-2.2.0-mac-arm64.dmg",
-    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.2/BotZalo-2.2.2-Windows.zip"
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0-mac/BotZalo-2.3.0-mac-arm64.dmg",
+    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0/BotZalo-2.3.0-Windows.zip"
   },
   "chinh-sua-anh": {
-    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.7/ChinhSuaAnh-1.7.dmg",
-    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.7/ChinhSuaAnh-1.7-Windows-BoCai.zip",
+    "mac": "https://phanmemtq.com/tai/ChinhSuaAnh-1.8.dmg",
+    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/chinh-sua-anh-1.8/ChinhSuaAnh-1.8-Windows-BoCai.zip",
     "ios": "https://testflight.apple.com/join/HdU95ZUW"
   },
   "gia-lap-vi-tri": {
-    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.19-mac/GiaLapViTri-macOS.dmg",
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.20-mac/GiaLapViTri-5.20-macOS.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.18/GiaLapViTri-5.18-Windows.zip",
     "ios": "https://testflight.apple.com/join/KYYj3Bfd"
   },
   "hoc-tieng-trung": {
-    "mac": "https://phanmemtq.com/tai/HocTiengTrung-2.5.dmg",
-    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.5/HocTiengTrung-Windows-2.5.zip",
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.7/HocTiengTrung-2.7.dmg",
+    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.6/HocTiengTrung-Windows-2.6.zip",
     "ios": "https://testflight.apple.com/join/K9jqJAg9"
   },
   "lam-vpn": {
@@ -32,13 +32,13 @@
     "android": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/lam-vpn-android-1.2.0/LamVPN-1.2.0-moi-may.apk"
   },
   "phan-mem-order": {
-    "mac": "https://phanmemtq.com/tai/PhanMemOrder-2.14.dmg",
+    "mac": "https://phanmemtq.com/tai/PhanMemOrder-2.15.dmg",
     "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/phan-mem-order-latest/PhanMemOrder-2.13.2-Windows-Setup.exe",
     "ios": "https://testflight.apple.com/join/hc37nM39"
   },
   "shopee-tu-dong": {
-    "mac": "https://phanmemtq.com/tai/ShopeeTuDong-5.9.6-macOS.dmg",
-    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.5/ShopeeTuDong-5.9.5-Windows.zip"
+    "mac": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.7-mac/ShopeeTuDong-5.9.7-macOS.dmg",
+    "windows": "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.6/ShopeeTuDong-5.9.6-Windows.zip"
   },
   "vi-tri-wifi": {
     "ios": "https://testflight.apple.com/join/KYYj3Bfd"

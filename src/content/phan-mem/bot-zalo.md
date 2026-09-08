@@ -2,14 +2,14 @@
 ten: "Bot Zalo"
 moTa: "Trợ lý tự động cho Zalo: quét đủ thành viên nhóm (cả cộng đồng nghìn người), kết bạn và nhắn tin hàng loạt, đăng bài vào nhiều nhóm, hẹn giờ, mời vào nhóm, tìm khách quanh khu vực qua Google Maps. Xem và trả lời tin nhắn ngay trong phần mềm."
 nenTang: ["macOS", "Windows"]
-phienBan: "2.2.2"
-banToiThieu: "1.1"
-ngayCapNhat: 2026-09-07
+phienBan: "2.3.0"
+banToiThieu: "2.3.0"
+ngayCapNhat: 2026-09-08
 ghiChuCapNhat: "- Từ bản này phần mềm TỰ cập nhật: có bản mới là tự tải, tự dùng, không phải bấm gì\n- Máy chủ bản quyền chuyển sang địa chỉ mới, phần mềm nối thẳng tới đó\n- Cấp lại khoá ký bản quyền: bản này cần tải đầy đủ một lần, từ bản sau vẫn cập nhật nhanh ngay trong phần mềm\n- Thêm Trợ lý AI: tự trả lời khách trên Zalo, tư vấn theo bảng giá của shop\n- Khách gửi ảnh thì trợ lý xem ảnh rồi tư vấn; khách đòi xem hàng thì gửi ảnh sản phẩm luôn\n- Bảng chốt đơn ngay trong phần mềm: sản phẩm, số lượng, tên, SĐT, địa chỉ, trạng thái, xuất CSV\n- Cập nhật ngay trong phần mềm, chỉ tải gói nhỏ ~245KB thay vì cả bản đầy đủ\n- Mọi việc chạy dài đều có nút Dừng: kết bạn, nhắn tin, đăng bài, mời nhóm, lấy số\n- Sửa lỗi mở phần mềm lên không hiện dữ liệu đã lưu"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.0-mac/BotZalo-2.2.0-mac-arm64.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.2/BotZalo-2.2.2-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.2.2/ban-2.2.2-6186594b.goi"
-gia: "150.000đ / tháng — dùng thử miễn phí 2 ngày"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0-mac/BotZalo-2.3.0-mac-arm64.dmg"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0/BotZalo-2.3.0-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-zalo-2.3.0/ban-2.3.0-d8bd0e04.goi"
+gia: "150.000đ / tháng · 3 tháng 450.000đ · 1 năm 1.620.000đ (giảm 10%) — không có bản dùng thử"
 dungLuong: "77 MB (Windows) — giải nén ra đúng một file .exe"
 video: "https://www.youtube.com/watch?v=nhAeWN_W8BM"
 anhIcon: "/icon/bot-zalo.png"
