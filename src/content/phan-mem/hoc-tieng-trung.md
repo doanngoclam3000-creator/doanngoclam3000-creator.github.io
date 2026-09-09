@@ -9,10 +9,11 @@ banToiThieuMac: "2.7"
 banToiThieuIOS: "2.7"
 mienPhi: true
 ngayCapNhat: 2026-09-09
-ghiChuCapNhat: "- Bản Windows 2.7: có luôn mục LƯỢNG TỪ và cấp Mở rộng 7–9 như bản Mac và iPhone, lộ trình nay 9 mốc.\n- Bản Mac và iPhone 2.7: mục LƯỢNG TỪ mới — 84 lượng từ hay dùng (杯, 个, 本, 只…) chia nhóm, ví dụ kiểu 一杯水 bấm là đọc, kèm bài luyện chọn lượng từ.\n- Bản Mac và iPhone 2.7: thêm cấp Mở rộng 7–9 với 4.500 từ thông dụng theo tần suất, tổng 15.408 từ.\n- Học Tiếng Trung nay MIỄN PHÍ: không còn dùng thử, không phải mua key.\n- Sửa lỗi bản 2.5 tự báo nhầm mình là 2.4.\n- Bản Windows tự nhắc cập nhật riêng, không ép chung với bản Mac/iPhone.\n- Củng cố bảo mật máy chủ bản quyền."
+ghiChuCapNhat: "- Bản Windows 2.8: vẽ lại nền theo phong thuỷ Trung Quốc (mặt trời, bát quái, mây lành, núi, tháp, sóng nước), sửa mốc 2 trên lộ trình bị thanh menu che mất; bản tải về nay chỉ là MỘT tệp .exe chạy ngay.
+- Bản Windows 2.7: có luôn mục LƯỢNG TỪ và cấp Mở rộng 7–9 như bản Mac và iPhone, lộ trình nay 9 mốc.\n- Bản Mac và iPhone 2.7: mục LƯỢNG TỪ mới — 84 lượng từ hay dùng (杯, 个, 本, 只…) chia nhóm, ví dụ kiểu 一杯水 bấm là đọc, kèm bài luyện chọn lượng từ.\n- Bản Mac và iPhone 2.7: thêm cấp Mở rộng 7–9 với 4.500 từ thông dụng theo tần suất, tổng 15.408 từ.\n- Học Tiếng Trung nay MIỄN PHÍ: không còn dùng thử, không phải mua key.\n- Sửa lỗi bản 2.5 tự báo nhầm mình là 2.4.\n- Bản Windows tự nhắc cập nhật riêng, không ép chung với bản Mac/iPhone.\n- Củng cố bảo mật máy chủ bản quyền."
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.7/HocTiengTrung-2.7.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/K9jqJAg9"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.7/HocTiengTrung-Windows-2.7.zip"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/hoc-tieng-trung-2.8/HocTiengTrung-Windows-2.8.zip"
 anhIcon: "/icon/hoc-tieng-trung.png"
 icon: "🀄️"
 mauNen: "#059669"
@@ -65,17 +66,20 @@ cảnh báo "không mở được vì Apple không kiểm tra được phần m�
 Phần mềm được ký bằng chứng chỉ nhà phát triển Apple mang tên **LAM DOAN NGOC** —
 mở phần mềm ra anh chị có thể tự kiểm chứng tên này.
 
-## Bản Windows (2.7) — miễn phí
+## Bản Windows (2.8) — miễn phí
 
 **Học Tiếng Trung hiện phát MIỄN PHÍ** trên mọi nền tảng: không còn dùng thử 10 ngày,
 không phải mua key. Mở phần mềm là học; chỉ cần nối mạng khoảng một tháng một lần
 để phần mềm làm mới, còn lại học offline bình thường.
 
-Bản cho máy tính Windows. Tải về được một file **.zip**, giải nén ra rồi chạy
-`hoc_tieng_trung.exe` (không cần cài).
+Bản cho máy tính Windows. Tải về được một file **.zip**, giải nén ra là có
+đúng **một tệp `HocTiengTrung-2.8.exe`** — bấm đúp là chạy, không cần cài.
+Lần mở đầu tiên phần mềm tự bung ra vài giây, từ lần sau mở ngay.
 
-Giao diện dựng lại theo bản iPhone: lộ trình 9 mốc trên nền tranh thuỷ mặc,
-mỗi cấp có vòng tiến độ riêng, bấm vào cấp nào là học ngay cấp đó.
+Giao diện dựng lại theo bản iPhone: lộ trình 9 mốc trên nền tranh phong thuỷ
+Trung Quốc (mặt trời đỏ, bát quái, mây lành, núi, tháp, sóng nước — có ba kiểu
+nền xanh, trắng, đen), mỗi cấp có vòng tiến độ riêng, bấm vào cấp nào là học
+ngay cấp đó.
 
 **Từ bản 2.7 bản Windows có đủ 15.408 từ** — HSK 1–6 và ba cấp *Mở rộng 1, 2, 3*
 gồm 4.500 từ thông dụng ngoài HSK, xếp theo tần suất gặp thật nên từ hay dùng
