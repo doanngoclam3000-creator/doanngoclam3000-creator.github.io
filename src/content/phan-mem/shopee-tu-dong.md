@@ -2,15 +2,15 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.9.7"
+phienBan: "5.9.13"
 banToiThieu: "5.9.6"
 banToiThieuMac: "5.9.7"
 banToiThieuWin: "5.9.6"
-ngayCapNhat: 2026-09-09
-ghiChuCapNhat: "- Sửa việc TỰ ĐỘNG XÁC NHẬN đơn: các bản trước bắt hụt lệnh xác nhận vì Shopee gửi nó từ một luồng chạy riêng; bản này nghe được cả luồng đó và tự tránh lớp phủ che nút Xác nhận.\n- Sửa lỗi in đơn ra trang trống “Not found” khi lỡ mở phần mềm hai lần.\n- Bảng giá mới: 1 tháng 80.000đ · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ. Dùng thử vẫn 7 ngày; key và số ngày của bạn giữ nguyên."
+ngayCapNhat: 2026-09-10
+ghiChuCapNhat: "- Tự động xác nhận đơn nay gọi thẳng lệnh chuẩn bị hàng của Shopee bằng phiên đăng nhập đã lưu: đơn mới có nút Chuẩn bị hàng là vài giây sau có mã vận đơn, không còn bấm nút trên trang, không còn kẹt hộp thoại.\n- Không mở Chrome ẩn để xác nhận đơn nữa; thoát phần mềm là đóng luôn mọi cửa sổ Chrome Shopee đang chạy.\n- Đơn Shopee chưa mở nút (đang chờ duyệt, chưa thanh toán) được ghi rõ lý do và tự thử lại, tối đa 5 phút một lần.\n- Dòng báo ở bảng đơn ngắn gọn hơn; nút “Xem cửa sổ Shopee” hiện được cửa sổ thật."
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.7-mac/ShopeeTuDong-5.9.7-macOS.dmg"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.8/ShopeeTuDong-5.9.8-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.8/ban-5.9.8-879687c6.goi"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.13/ShopeeTuDong-5.9.13-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.13/ban-5.9.13-84929987.goi"
 gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
