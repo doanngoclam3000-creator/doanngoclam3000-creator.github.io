@@ -74,8 +74,10 @@ Phần mềm cho **dùng thử miễn phí 10 ngày**, hết hạn thì mua ti�
 **không phải nhắn tin xin key**. Giá: **80.000đ / tháng** · 3 tháng 220.000đ · 6 tháng
 420.000đ · 1 năm 800.000đ (mua gói dài rẻ hơn):
 
+### Cách 1 — mua ngay trong phần mềm
+
 1. Máy tính Windows: vào tab **Tổng Số Tiền**, kéo xuống mục **Bản quyền**.
-   Trên Mac: bấm vào huy hiệu **"Còn … ngày · Gia hạn"** ở góc dưới bên phải.
+   Trên Mac và iPhone/iPad: bấm vào huy hiệu **"Còn … ngày · Gia hạn"** ở góc dưới bên phải.
    Máy đã hết hạn thì mã hiện thẳng ngay màn hình khoá.
 2. Chọn gói (1 tháng 80.000đ / 3 tháng 220.000đ / 6 tháng 420.000đ / 1 năm 800.000đ)
    rồi **quét mã QR** bằng app ngân hàng.
@@ -85,7 +87,14 @@ Phần mềm cho **dùng thử miễn phí 10 ngày**, hết hạn thì mua ti�
 Chuyển thiếu tiền thì chưa mở khoá được nhưng tiền không mất — chuyển bù cho đủ là
 mở ngay. Chuyển dư cũng được giữ lại để trừ vào lần gia hạn sau.
 
-> Mỗi máy một mã riêng, nên dùng cả máy tính lẫn Mac thì mỗi máy mua một lần.
+### Cách 2 — mua key trên website
+
+Vào [Ví của tôi](/tai-khoan/) → tab **Mua key** → chọn **Bán Tệ — Quản Lý Kho Tệ**,
+chọn gói rồi dán **mã máy** lấy trong mục Bản quyền của phần mềm. Tiền trừ thẳng
+từ ví, key hiện ra ngay để nhập vào phần mềm. Cách này dùng được cho cả bản Windows,
+bản Mac lẫn bản iPhone.
+
+> Mỗi máy một mã riêng, nên dùng cả máy tính lẫn Mac hay iPhone thì mỗi máy mua một lần.
 > Ghi sai nội dung chuyển khoản thì nhắn shop, shop cấp key nhập tay được.
 
 ## Chuyển sổ giữa máy tính và iPhone

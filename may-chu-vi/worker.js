@@ -103,12 +103,12 @@ const PHAN_MEM = {
     ],
   },
   'ban-te': {
-    ten: 'Phần Mềm Quản Lý Kho Tệ', kieu: 'tuKy', tienTo: 'BT', bienSecret: 'SECRET_BT',
+    ten: 'Bán Tệ — Quản Lý Kho Tệ', kieu: 'tuKy', tienTo: 'BT', bienSecret: 'SECRET_BT',
     // CHUA bat key doi 2 cho Kho Te: ban Windows van kiem key HMAC ngay trong may,
     // cap key Ed25519 la khach Windows mua xong khong kich hoat duoc. Bat lai bang
     // cach tra dong 'tienToEd/bienKhoaRieng' ben duoi khi ban Windows da len doi 2.
     // tienToEd: 'BT', bienKhoaRieng: 'KHOARIENG_BT',
-    luuY: 'Dùng được cho cả bản máy tính lẫn bản iPhone. Mỗi máy một mã máy riêng.',
+    luuY: 'Dùng được cho cả bản Windows, bản Mac lẫn bản iPhone (BanTe trên TestFlight). Mỗi máy một mã máy riêng.',
     // Gia chot 08/09/2026: bang gia LamVPN (80k/thang, nam = 10 thang).
     goi: [
       { ma: 'M', ten: '1 tháng', ngay: 30,  gia: 80000 },
