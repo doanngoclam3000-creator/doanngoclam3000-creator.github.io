@@ -2,13 +2,15 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
 nenTang: ["macOS"]
-phienBan: "1.5.0"
-banToiThieu: "1.5.0"
-ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Giá mới rẻ hơn: 80.000đ một tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ. Bảng giá và mã QR trong phần mềm đã đổi theo.
+phienBan: "1.5.1"
+banToiThieu: "1.5.1"
+ngayCapNhat: 2026-09-10
+ghiChuCapNhat: "- Thêm tuỳ chọn “Trả lời xong thì đóng luôn cửa sổ ngầm của khách đó” trong Cài đặt → Cách trả lời, kèm ô chờ N phút khách không nhắn thêm mới đóng. Bật lên là Dock không còn chất đống cửa sổ WeChat.
+- Lịch gửi nhóm và nút Gửi thử: gửi xong tự đóng những cửa sổ nhóm vừa mở.
+- Giá mới rẻ hơn: 80.000đ một tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ. Bảng giá và mã QR trong phần mềm đã đổi theo.
 - Bản quyền chuyển hẳn sang máy chủ: khoá kích hoạt không còn nằm trong phần mềm nên không ai làm giả key được. Hạn dùng của bạn được chuyển sang tự động, không phải nhập lại key.
 - Lần đầu mở bản này cần nối mạng một lát để nhận phiếu bản quyền."
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.0/BotWeChat-1.5.0.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.1/BotWeChat-1.5.1.dmg"
 gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 3 MB"
 anhIcon: "/icon/bot-wechat.png"
@@ -104,10 +106,10 @@ Hai phần còn lại — hẹn giờ nhắn nhóm và nhắn tin hàng loạt �
 
 Tải file `.dmg`, mở ra rồi kéo **Bot WeChat** vào thư mục Applications.
 
-Lần đầu mở, macOS có thể báo *"không mở được vì Apple chưa kiểm tra được"* — bản này
-đã ký bằng chứng chỉ nhà phát triển nhưng đang chờ Apple duyệt xong khâu công chứng. Cách mở:
-**bấm chuột phải vào Bot WeChat** trong thư mục Applications rồi chọn **Mở**, sau đó bấm **Mở**
-lần nữa ở hộp thoại hiện ra. Chỉ phải làm một lần duy nhất.
+Bản này đã ký bằng chứng chỉ nhà phát triển và được Apple công chứng, nên mở là chạy,
+không bị chặn. Nếu máy vẫn báo *"không mở được vì Apple chưa kiểm tra được"* (thường do tải
+bằng trình duyệt lạ), **bấm chuột phải vào Bot WeChat** trong thư mục Applications rồi chọn
+**Mở**, sau đó bấm **Mở** lần nữa. Chỉ phải làm một lần duy nhất.
 
 Lần đầu chạy, phần mềm sẽ xin **quyền Trợ năng** — đây là quyền bắt buộc, không có nó thì
 bot không đọc và không gõ được vào WeChat. Vào *Cài đặt hệ thống → Quyền riêng tư & Bảo mật
