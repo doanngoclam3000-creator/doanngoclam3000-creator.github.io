@@ -2,14 +2,14 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
 nenTang: ["macOS"]
-phienBan: "1.5.2"
-banToiThieu: "1.5.2"
+phienBan: "1.5.3"
+banToiThieu: "1.5.3"
 ngayCapNhat: 2026-09-12
 ghiChuCapNhat: "- Lịch nhắn nhóm không mở cửa sổ mới nữa: bot bấm chọn nhóm ngay trong cửa sổ WeChat chính, gõ rồi quay lại đúng hội thoại bạn đang xem. Không còn cửa sổ lớn bung ra giữa màn hình.
-- Bot chỉ làm khi bạn đã rời tay khỏi máy 2 giây; đang gõ dở thì lùi lại, lùi quá 3 phút mới gửi luôn.
+- Đang lướt web hay gõ phím thì lịch chờ, bot không bao giờ tự kéo WeChat lên. Chỉ khi bạn rời tay khỏi chuột và bàn phím đủ số giây đặt trong Cài đặt (mặc định 15 giây) bot mới gửi. Lịch “Đúng giờ” lỡ phút thì chờ tới lúc bạn rảnh chứ không bỏ.
 - Nội dung nhiều dòng gửi thành MỘT tin, không bị tách từng dòng như trước.
 - Lịch tự động và nút Gửi thử không còn chạy chồng lên nhau làm lẫn chữ, gửi lặp."
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.2/BotWeChat-1.5.2.dmg"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.3/BotWeChat-1.5.3.dmg"
 gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 3 MB"
 anhIcon: "/icon/bot-wechat.png"
