@@ -2,15 +2,14 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
 nenTang: ["macOS"]
-phienBan: "1.5.1"
-banToiThieu: "1.5.1"
-ngayCapNhat: 2026-09-10
-ghiChuCapNhat: "- Thêm tuỳ chọn “Trả lời xong thì đóng luôn cửa sổ ngầm của khách đó” trong Cài đặt → Cách trả lời, kèm ô chờ N phút khách không nhắn thêm mới đóng. Bật lên là Dock không còn chất đống cửa sổ WeChat.
-- Lịch gửi nhóm và nút Gửi thử: gửi xong tự đóng những cửa sổ nhóm vừa mở.
-- Giá mới rẻ hơn: 80.000đ một tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ. Bảng giá và mã QR trong phần mềm đã đổi theo.
-- Bản quyền chuyển hẳn sang máy chủ: khoá kích hoạt không còn nằm trong phần mềm nên không ai làm giả key được. Hạn dùng của bạn được chuyển sang tự động, không phải nhập lại key.
-- Lần đầu mở bản này cần nối mạng một lát để nhận phiếu bản quyền."
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.1/BotWeChat-1.5.1.dmg"
+phienBan: "1.5.2"
+banToiThieu: "1.5.2"
+ngayCapNhat: 2026-09-12
+ghiChuCapNhat: "- Lịch nhắn nhóm không mở cửa sổ mới nữa: bot bấm chọn nhóm ngay trong cửa sổ WeChat chính, gõ rồi quay lại đúng hội thoại bạn đang xem. Không còn cửa sổ lớn bung ra giữa màn hình.
+- Bot chỉ làm khi bạn đã rời tay khỏi máy 2 giây; đang gõ dở thì lùi lại, lùi quá 3 phút mới gửi luôn.
+- Nội dung nhiều dòng gửi thành MỘT tin, không bị tách từng dòng như trước.
+- Lịch tự động và nút Gửi thử không còn chạy chồng lên nhau làm lẫn chữ, gửi lặp."
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.2/BotWeChat-1.5.2.dmg"
 gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 3 MB"
 anhIcon: "/icon/bot-wechat.png"
