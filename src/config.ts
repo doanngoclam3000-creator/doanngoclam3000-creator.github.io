@@ -6,7 +6,8 @@ export const CAUHINH = {
   tacGia: 'Đoàn Ngọc Lâm',
   // Lien he
   facebook: 'https://www.facebook.com/oanngoclam.324266',
-  zalo: '',
+  zalo: 'https://zalo.me/0971619705',
+  soZalo: '0971619705',
   wechat: 'tieuphung1409',
   wechatQR: '/anh/wechat-qr.jpg',
   // Ma trang tren GoatCounter de dem luot truy cap.
@@ -31,6 +32,7 @@ export const CAUHINH = {
     bat: true,
     file: '/nhac/aloha.mp3',
     ten: 'Aloha',
+    caSi: 'Cool',
     amLuong: 0.5,
   },
 };

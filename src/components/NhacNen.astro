@@ -6,6 +6,7 @@
 // tu phat tieng khi chua cham vao man hinh. Nen o day: thu phat ngay, neu bi
 // chan thi cho toi luc khach cham/keo trang lan dau la phat.
 //
+// Chuyen sang app khac / khoa man hinh nhac van chay (MediaSession).
 // Co nut tron nho goc duoi phai de khach tat/bat. Khach da tat thi nho luon
 // (localStorage), lan sau vao khong tu bat lai. Doi trang van phat tiep tu cho
 // dang nghe do (sessionStorage), khong bi nhay lai tu dau.
@@ -15,7 +16,8 @@ const nhac = CAUHINH.nhacNen;
 const hien = !!(nhac && nhac.bat && nhac.file);
 ---
 {hien && (
-  <div class="nhac-nen" id="nhac-nen" data-file={nhac.file} data-am-luong={String(nhac.amLuong ?? 0.5)} hidden>
+  <div class="nhac-nen" id="nhac-nen" data-file={nhac.file} data-am-luong={String(nhac.amLuong ?? 0.5)}
+    data-ten={nhac.ten ?? ''} data-ca-si={nhac.caSi ?? ''} data-site={CAUHINH.tenSite} hidden>
     <button class="nut-nhac" type="button" aria-label={`Bật / tắt nhạc ${nhac.ten ?? ''}`} title={nhac.ten ?? 'Nhạc nền'}>
       <span class="song" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
       <span class="tat" aria-hidden="true">♪</span>
@@ -39,8 +41,8 @@ const hien = !!(nhac && nhac.bat && nhac.file);
     box-shadow: var(--bong-cao);
     display: grid; place-items: center;
     cursor: pointer; -webkit-tap-highlight-color: transparent;
-    /* Ne thanh dieu huong cua iPhone */
-    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    /* Nam ngay tren nut chat Zalo, ne thanh dieu huong cua iPhone */
+    bottom: calc(82px + env(safe-area-inset-bottom, 0px));
   }
   .nut-nhac:active { transform: scale(.94); }
 
@@ -152,10 +154,21 @@ const hien = !!(nhac && nhac.bat && nhac.file);
       }
     });
 
-    // Chuyen sang app khac thi tam dung, quay lai thi phat tiep (neu chua tat)
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) { if (!audio.paused) audio.pause(); }
-      else if (!daTat) thuPhat();
-    });
+    // Khach chuyen sang app khac hay khoa man hinh thi nhac VAN phat tiep
+    // (khong tam dung). Khai bao ten bai voi he dieu hanh de iPhone/Android
+    // coi day la trinh phat nhac: hien tren man hinh khoa va Control Center,
+    // nho vay khong bi ngat khi trinh duyet chay nen.
+    if ('mediaSession' in navigator) {
+      try {
+        navigator.mediaSession.metadata = new MediaMetadata({
+          title: khung.dataset.ten || 'Nhạc nền',
+          artist: khung.dataset.caSi || '',
+          album: khung.dataset.site || '',
+          artwork: [{ src: location.origin + '/icon/ban-te.png', sizes: '512x512', type: 'image/png' }]
+        });
+        navigator.mediaSession.setActionHandler('play', function () { daTat = false; thuPhat(); });
+        navigator.mediaSession.setActionHandler('pause', function () { audio.pause(); });
+      } catch (e) {}
+    }
   })();
 </script>

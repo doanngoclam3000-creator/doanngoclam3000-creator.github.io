@@ -1,0 +1,148 @@
+---
+// Nut chat noi goc duoi phai moi trang. Bam vao mo hop nho co nut nhan Zalo
+// (va Facebook, email neu co). Zalo mo bang link zalo.me/<so dien thoai>:
+// tren dien thoai se nhay thang vao app Zalo, tren may tinh mo Zalo web.
+import { CAUHINH } from '../config';
+
+const hien = !!CAUHINH.zalo;
+---
+{hien && (
+  <div class="chat-box" id="chat-box">
+    <div class="hop" role="dialog" aria-labelledby="chat-box-tieu-de" hidden>
+      <div class="dau">
+        <span class="cham" aria-hidden="true"></span>
+        <div>
+          <strong id="chat-box-tieu-de">Nhắn tin cho tôi</strong>
+          <small>Thường trả lời trong vài phút</small>
+        </div>
+        <button class="dong" type="button" aria-label="Đóng">×</button>
+      </div>
+      <div class="than">
+        <a class="kenh zalo" href={CAUHINH.zalo} target="_blank" rel="noopener">
+          <span class="bieu-tuong">Zalo</span>
+          <span class="chu">
+            <b>Chat Zalo</b>
+            {CAUHINH.soZalo && <small>{CAUHINH.soZalo}</small>}
+          </span>
+          <span class="mui" aria-hidden="true">›</span>
+        </a>
+        {CAUHINH.facebook && (
+          <a class="kenh fb" href={CAUHINH.facebook} target="_blank" rel="noopener">
+            <span class="bieu-tuong">f</span>
+            <span class="chu"><b>Facebook Messenger</b><small>Nhắn qua Facebook</small></span>
+            <span class="mui" aria-hidden="true">›</span>
+          </a>
+        )}
+        {CAUHINH.email && (
+          <a class="kenh mail" href={`mailto:${CAUHINH.email}`}>
+            <span class="bieu-tuong">@</span>
+            <span class="chu"><b>Gửi email</b><small>{CAUHINH.email}</small></span>
+            <span class="mui" aria-hidden="true">›</span>
+          </a>
+        )}
+      </div>
+    </div>
+
+    <button class="nut-chat" type="button" aria-label="Mở hộp chat" aria-expanded="false">
+      <svg class="icon-chat" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true">
+        <path fill="currentColor" d="M12 3C6.5 3 2 6.9 2 11.7c0 2.6 1.3 4.9 3.4 6.5-.2 1.2-.8 2.5-1.6 3.5 2-.2 3.9-1 5.3-2.1.9.2 1.9.3 2.9.3 5.5 0 10-3.9 10-8.7S17.5 3 12 3z"/>
+      </svg>
+      <span class="icon-dong" aria-hidden="true">×</span>
+    </button>
+  </div>
+)}
+
+<style>
+  .chat-box { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 950; }
+
+  .nut-chat {
+    width: 56px; height: 56px; border-radius: 50%; border: none;
+    background: #0068ff; color: #fff;
+    box-shadow: 0 6px 20px rgba(0,104,255,.45);
+    display: grid; place-items: center; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    transition: transform .2s;
+  }
+  .nut-chat:active { transform: scale(.94); }
+  .icon-dong { display: none; font-size: 30px; line-height: 1; }
+  .chat-box.mo .icon-chat { display: none; }
+  .chat-box.mo .icon-dong { display: block; }
+
+  /* Vong lan toa keo chu y */
+  .nut-chat::before {
+    content: ''; position: absolute; inset: 0; border-radius: 50%;
+    border: 2px solid #0068ff; animation: lan 2.2s ease-out infinite;
+  }
+  .chat-box.mo .nut-chat::before { display: none; }
+  @keyframes lan {
+    0%   { transform: scale(1); opacity: .8; }
+    100% { transform: scale(1.7); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .nut-chat::before { animation: none; } }
+
+  .hop {
+    position: absolute; right: 0; bottom: 68px;
+    width: min(320px, calc(100vw - 28px));
+    background: var(--nen-the); border: 1px solid var(--vien);
+    border-radius: 16px; box-shadow: var(--bong-cao); overflow: hidden;
+    animation: hien-len .22s ease-out;
+    transform-origin: bottom right;
+  }
+  @keyframes hien-len {
+    from { opacity: 0; transform: translateY(10px) scale(.96); }
+    to   { opacity: 1; transform: none; }
+  }
+  .dau {
+    display: flex; align-items: center; gap: 10px;
+    padding: 14px 14px 12px; background: #0068ff; color: #fff;
+  }
+  .dau strong { display: block; font-size: 1rem; }
+  .dau small { display: block; opacity: .85; font-size: .8rem; }
+  .cham { width: 10px; height: 10px; border-radius: 50%; background: #3ddc84; box-shadow: 0 0 0 3px rgba(61,220,132,.3); flex: none; }
+  .dong {
+    margin-left: auto; width: 32px; height: 32px; border: none; border-radius: 50%;
+    background: rgba(255,255,255,.18); color: #fff; font-size: 22px; line-height: 1; cursor: pointer;
+  }
+  .than { padding: 10px; display: grid; gap: 8px; }
+  .kenh {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 12px; text-decoration: none;
+    color: var(--chu); background: var(--nen-phu); border: 1px solid var(--vien);
+  }
+  .kenh:hover { border-color: var(--chinh); }
+  .bieu-tuong {
+    flex: none; width: 40px; height: 40px; border-radius: 10px;
+    display: grid; place-items: center; color: #fff; font-weight: 800; font-size: .95rem;
+  }
+  .zalo .bieu-tuong { background: #0068ff; font-size: .8rem; }
+  .fb .bieu-tuong { background: #1877f2; font-size: 1.3rem; }
+  .mail .bieu-tuong { background: var(--chinh); font-size: 1.2rem; }
+  .chu { display: flex; flex-direction: column; min-width: 0; }
+  .chu b { font-size: .95rem; }
+  .chu small { color: var(--chu-nhat); font-size: .8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .mui { margin-left: auto; color: var(--chu-nhat); font-size: 1.4rem; }
+</style>
+
+<script is:inline>
+  (function () {
+    var khung = document.getElementById('chat-box');
+    if (!khung) return;
+    var nut = khung.querySelector('.nut-chat');
+    var hop = khung.querySelector('.hop');
+    var dong = khung.querySelector('.dong');
+
+    function dat(mo) {
+      khung.classList.toggle('mo', mo);
+      hop.hidden = !mo;
+      nut.setAttribute('aria-expanded', mo ? 'true' : 'false');
+      nut.setAttribute('aria-label', mo ? 'Đóng hộp chat' : 'Mở hộp chat');
+    }
+    nut.addEventListener('click', function () { dat(hop.hidden); });
+    dong.addEventListener('click', function () { dat(false); });
+    // Bam ra ngoai hoac an Esc thi dong
+    document.addEventListener('click', function (e) {
+      if (!hop.hidden && !khung.contains(e.target)) dat(false);
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') dat(false); });
+  })();
+</script>
