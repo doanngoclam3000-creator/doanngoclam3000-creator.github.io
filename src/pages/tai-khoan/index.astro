@@ -521,6 +521,17 @@ import '../../styles/tai-khoan.css';
           await taiToi();
           await taiNap();
           await taiBangGia();
+          // Tu trang phan mem bam "Mua key" sang: ?mua=<ma phan mem>#mua
+          var muaSan = new URLSearchParams(location.search).get('mua');
+          if (muaSan || location.hash === '#mua') {
+            if (muaSan && bangGia.phanMem.some(function (m) { return m.ma === muaSan; })) {
+              $('mua-pm').value = muaSan;
+              veGoi();
+            }
+            moTab('mua');
+            var hop = document.querySelector('section[data-o="mua"]');
+            if (hop) hop.scrollIntoView({ block: 'start' });
+          }
         } catch (err) {
           var oLoi = document.createElement('div');
           oLoi.className = 'loi';

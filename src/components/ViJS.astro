@@ -112,7 +112,7 @@ import { CAUHINH } from '../config';
     }),
     // Chan trang khi chua dang nhap
     canDangNhap() {
-      if (!window.VI.token()) { location.href = '/tai-khoan/dang-nhap/?ve=' + encodeURIComponent(location.pathname); return false; }
+      if (!window.VI.token()) { location.href = '/tai-khoan/dang-nhap/?ve=' + encodeURIComponent(location.pathname + location.search + location.hash); return false; }
       return true;
     },
     baoLoi(o, e) {
