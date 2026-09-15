@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import TheBaiViet from '../../components/TheBaiViet.astro';
+import HienDan from '../../components/HienDan.astro';
 import { getCollection } from 'astro:content';
 import { CHUYEN_MUC } from '../../config';
 import { sapXepBai } from '../../sapXep';
@@ -26,9 +27,10 @@ const baiViet = sapXepBai((await getCollection('bai-viet')).filter((b) => b.data
   </div>
   <div class="khung">
     {baiViet.length > 0
-      ? <div class="luoi luoi-3">{baiViet.map((b) => <TheBaiViet bai={b} />)}</div>
+      ? <div class="luoi luoi-3" data-hien-dan>{baiViet.map((b) => <TheBaiViet bai={b} />)}</div>
       : <p class="chu-nhat trong">Chưa có bài viết nào trong chuyên mục này.</p>}
   </div>
+  <HienDan />
 </Layout>
 <style>
   .dau { padding: 52px 20px 28px; }

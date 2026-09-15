@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import ThePhanMem from '../components/ThePhanMem.astro';
 import PhaoHoa from '../components/PhaoHoa.astro';
 import TheBaiViet from '../components/TheBaiViet.astro';
+import HienDan from '../components/HienDan.astro';
 import { getCollection } from 'astro:content';
 import { CAUHINH, CHUYEN_MUC } from '../config';
 import { sapXepBai } from '../sapXep';
@@ -75,7 +76,7 @@ const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => 
       </div>
       <a href="/bai-viet" class="xem-them">Tất cả →</a>
     </div>
-    <div class="luoi luoi-3">
+    <div class="luoi luoi-3" data-hien-dan>
       {baiMoi.map((b) => <TheBaiViet bai={b} />)}
     </div>
   </section>
@@ -98,6 +99,7 @@ const iconBay = phanMem.filter((p) => p.data.anhIcon).slice(0, 5).map((p, i) => 
       })}
     </div>
   </section>
+  <HienDan />
 </Layout>
 
 <style>

@@ -1,0 +1,76 @@
+---
+// Tren dien thoai: luoi bai viet co data-hien-dan chi hien 1 bai dau,
+// khach keo xuong toi dau thi bai ke tiep truot len hien ra toi do.
+// May tinh (rong hon 640px) khong dong gi - hien het nhu cu.
+// Khong co JS thi cung hien het, vi viec an la do JS them lop vao.
+---
+<script is:inline>
+  (function () {
+    if (!window.matchMedia('(max-width: 640px)').matches) return;
+    var luois = document.querySelectorAll('.luoi[data-hien-dan]');
+    if (!luois.length) return;
+    var giamChuyenDong = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    Array.prototype.forEach.call(luois, function (luoi) {
+      var the = Array.prototype.slice.call(luoi.children);
+      if (the.length < 2) return;
+      var cho = the.slice(1);
+      cho.forEach(function (t) { t.classList.add('cho-hien'); });
+
+      // Moc dat ngay sau luoi: moc lo ra gan day man hinh la hien them mot bai
+      var moc = document.createElement('div');
+      moc.className = 'moc-hien-dan';
+      moc.setAttribute('aria-hidden', 'true');
+      luoi.insertAdjacentElement('afterend', moc);
+
+      var daCuon = false;
+      var dangCho = false;
+
+      function hienMot() {
+        var t = cho.shift();
+        if (!t) { moc.remove(); return false; }
+        t.classList.remove('cho-hien');
+        t.classList.add(giamChuyenDong ? 'hien-lien' : 'hien-ra');
+        return true;
+      }
+
+      function kiemTra() {
+        dangCho = false;
+        if (!cho.length) return;
+        var day = document.documentElement;
+        var khongCuonDuoc = day.scrollHeight <= window.innerHeight + 4;
+        // Chua keo tay ma trang ngan khong cuon duoc thi phai mo them,
+        // khong thi khach ket lai voi mot bai duy nhat.
+        if (!daCuon && !khongCuonDuoc) return;
+        var vt = moc.getBoundingClientRect().top;
+        if (vt < window.innerHeight + 80) {
+          hienMot();
+          // Sau khi hien, moc doi cho; hen kiem lai de lo van con trong tam
+          // thi hien tiep (may man hinh cao) - moi bai cach nhau chut de thay "chay".
+          if (cho.length) setTimeout(kiemTra, 180);
+        }
+      }
+
+      function henKiem() {
+        if (dangCho) return;
+        dangCho = true;
+        requestAnimationFrame(kiemTra);
+      }
+      function lucCuon() {
+        // Chi tinh la "da keo" khi trang thuc su doi vi tri cuon; su kien resize
+        // hay scroll gia (bang thong bao khoa cuon, ban phim hien) khong tinh.
+        if (window.scrollY > 8) daCuon = true;
+        henKiem();
+      }
+
+      window.addEventListener('scroll', lucCuon, { passive: true });
+      window.addEventListener('touchmove', lucCuon, { passive: true });
+      window.addEventListener('resize', henKiem, { passive: true });
+      // Trang qua ngan (1 bai + chan trang chua day man hinh) thi mo dan cho toi khi cuon duoc.
+      // Phai doi trang doc xong: script nay nam truoc chan trang, do ngay luc nay
+      // thi chua co chan trang nen tuong trang ngan, lai mo them mot bai thua.
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', kiemTra);
+      else kiemTra();
+    });
+  })();
+</script>
