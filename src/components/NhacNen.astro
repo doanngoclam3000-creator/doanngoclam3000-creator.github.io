@@ -91,24 +91,57 @@ const hien = !!(nhac && nhac.bat && nhac.file);
     var nut = khung.querySelector('.nut-nhac');
     khung.hidden = false;
 
-    // Doi trang thi nghe tiep tu cho cu
+    // ---- Doi trang van nghe tiep, KHONG phat lai tu dau ----
+    // Moi lan bam sang bai khac la trinh duyet tai trang moi, nhac bi tao lai.
+    // Nen luon ghi "dang nghe toi giay thu may" + "luc nao" vao sessionStorage.
+    // Sang trang moi doc ra, cong them so giay troi qua trong luc chuyen trang
+    // de nghe lien mach nhu chua tung dung.
+    var viTriCu = 0, daTua = false;
     try {
-      var cu = parseFloat(sessionStorage.getItem(KHOA_VI_TRI));
-      if (cu > 0) {
-        audio.addEventListener('loadedmetadata', function () {
-          if (cu < audio.duration) audio.currentTime = cu;
-        }, { once: true });
+      var luu = JSON.parse(sessionStorage.getItem(KHOA_VI_TRI) || 'null');
+      if (luu && luu.t > 0) {
+        var troi = (Date.now() - (luu.luc || Date.now())) / 1000;
+        if (troi < 0 || troi > 90) troi = 0;   // de qua lau thi thoi, khong bu nua
+        viTriCu = luu.t + troi;
       }
     } catch (e) {}
+
+    function tuaLai() {
+      if (daTua || !(viTriCu > 0)) return;
+      var d = audio.duration;
+      var moc = viTriCu;
+      if (d && isFinite(d)) moc = moc % d;        // bu qua cuoi bai thi vong lai
+      else if (!d) { audio.currentTime = moc; return; }  // chua co metadata: dat truoc, dat lai sau
+      try { audio.currentTime = moc; daTua = true; } catch (e) {}
+    }
+    // iPhone khong tai truoc khi chua bam play, nen phai thu tua o nhieu thoi diem:
+    // ngay lap tuc, luc co metadata, luc du du lieu, va luc bat dau phat.
+    tuaLai();
+    audio.addEventListener('loadedmetadata', tuaLai);
+    audio.addEventListener('canplay', tuaLai);
+    audio.addEventListener('playing', function () {
+      // Neu trinh duyet lo lenh tua truoc do ma dang phat tu dau thi tua lai
+      if (!daTua && viTriCu > 1 && audio.currentTime < 1) tuaLai();
+      daTua = true;
+    });
 
     function capNhatNut() {
       khung.classList.toggle('dang-phat', !audio.paused);
     }
     audio.addEventListener('play', capNhatNut);
     audio.addEventListener('pause', capNhatNut);
-    audio.addEventListener('timeupdate', function () {
-      try { sessionStorage.setItem(KHOA_VI_TRI, String(audio.currentTime)); } catch (e) {}
-    });
+
+    function ghiViTri() {
+      // Chua tua xong ma da ghi thi se ghi de so 0 len vi tri cu -> chi ghi sau khi tua
+      if (!daTua && viTriCu > 0) return;
+      try {
+        sessionStorage.setItem(KHOA_VI_TRI, JSON.stringify({ t: audio.currentTime, luc: Date.now() }));
+      } catch (e) {}
+    }
+    audio.addEventListener('timeupdate', ghiViTri);
+    // Ghi lan cuoi ngay truoc khi roi trang (bam sang bai khac)
+    window.addEventListener('pagehide', ghiViTri);
+    window.addEventListener('beforeunload', ghiViTri);
 
     var daTat = false;
     try { daTat = localStorage.getItem(KHOA_TAT) === '1'; } catch (e) {}
