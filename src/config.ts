@@ -8,7 +8,7 @@ export const CAUHINH = {
   facebook: 'https://www.facebook.com/oanngoclam.324266',
   zalo: 'https://zalo.me/0971619705',
   soZalo: '0971619705',
-  wechat: 'tieuphung1409',
+  wechat: 'tieumanthau1409',
   wechatQR: '/anh/wechat-qr.jpg',
   // Ma trang tren GoatCounter de dem luot truy cap.
   // Dang ky mien phi o goatcounter.com roi dien ma vao day, vi du 'phanmemtq'.

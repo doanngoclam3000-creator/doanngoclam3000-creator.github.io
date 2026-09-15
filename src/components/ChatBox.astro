@@ -26,6 +26,18 @@ const hien = !!CAUHINH.zalo;
           </span>
           <span class="mui" aria-hidden="true">›</span>
         </a>
+        {CAUHINH.wechat && (
+          <button class="kenh wechat" type="button" data-chep={CAUHINH.wechat}>
+            <span class="bieu-tuong">We</span>
+            <span class="chu">
+              <b>WeChat <span class="da-chep">— đã chép ID</span></b>
+              <small>{CAUHINH.wechat} · bấm để chép, mở WeChat tìm bạn</small>
+            </span>
+            {CAUHINH.wechatQR
+              ? <a class="qr" href={CAUHINH.wechatQR} target="_blank" rel="noopener" aria-label="Xem mã QR WeChat">QR</a>
+              : <span class="mui" aria-hidden="true">›</span>}
+          </button>
+        )}
         {CAUHINH.facebook && (
           <a class="kenh fb" href={CAUHINH.facebook} target="_blank" rel="noopener">
             <span class="bieu-tuong">f</span>
@@ -116,6 +128,14 @@ const hien = !!CAUHINH.zalo;
   }
   .zalo .bieu-tuong { background: #0068ff; font-size: .8rem; }
   .fb .bieu-tuong { background: #1877f2; font-size: 1.3rem; }
+  .wechat { width: 100%; text-align: left; font: inherit; cursor: pointer; }
+  .wechat .bieu-tuong { background: #07c160; font-size: .95rem; }
+  .da-chep { display: none; color: #07c160; font-weight: 600; font-size: .85rem; }
+  .wechat.vua-chep .da-chep { display: inline; }
+  .qr {
+    margin-left: auto; flex: none; padding: 6px 10px; border-radius: 8px;
+    background: #07c160; color: #fff; font-weight: 700; font-size: .8rem; text-decoration: none;
+  }
   .mail .bieu-tuong { background: var(--chinh); font-size: 1.2rem; }
   .chu { display: flex; flex-direction: column; min-width: 0; }
   .chu b { font-size: .95rem; }
@@ -144,5 +164,29 @@ const hien = !!CAUHINH.zalo;
       if (!hop.hidden && !khung.contains(e.target)) dat(false);
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') dat(false); });
+
+    // WeChat khong co link mo thang: bam la chep ID vao bo nho, khach mo
+    // WeChat dan vao o tim ban. Bam nut QR thi mo anh ma QR, khong chep.
+    var wc = khung.querySelector('.wechat');
+    if (wc) {
+      wc.addEventListener('click', function (e) {
+        if (e.target.closest('.qr')) return;
+        var id = wc.dataset.chep;
+        function xong() {
+          wc.classList.add('vua-chep');
+          setTimeout(function () { wc.classList.remove('vua-chep'); }, 2500);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(id).then(xong, function () { chepCu(id); xong(); });
+        } else { chepCu(id); xong(); }
+      });
+    }
+    function chepCu(t) {
+      var o = document.createElement('textarea');
+      o.value = t; o.style.position = 'fixed'; o.style.opacity = '0';
+      document.body.appendChild(o); o.select();
+      try { document.execCommand('copy'); } catch (err) {}
+      document.body.removeChild(o);
+    }
   })();
 </script>
