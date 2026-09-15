@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ThongBaoBanMoi from '../components/ThongBaoBanMoi.astro';
 import ViJS from '../components/ViJS.astro';
+import NhacNen from '../components/NhacNen.astro';
 import { CAUHINH } from '../config';
 
 interface Props { tieuDe?: string; moTa?: string; anh?: string; loai?: string; anGoogle?: boolean; }
@@ -55,5 +56,6 @@ const url = new URL(Astro.url.pathname, Astro.site);
   <main><slot /></main>
   <Footer />
   <ThongBaoBanMoi />
+  <NhacNen />
 </body>
 </html>

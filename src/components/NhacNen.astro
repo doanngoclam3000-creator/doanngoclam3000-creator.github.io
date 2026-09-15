@@ -1,0 +1,161 @@
+---
+// Nhac nen tu phat khi khach vao web bang DIEN THOAI (may tinh khong phat).
+// File nhac de trong public/nhac/, duong dan chinh o src/config.ts (muc nhacNen).
+//
+// Trinh duyet dien thoai (Safari iPhone, Chrome Android) KHONG cho trang web
+// tu phat tieng khi chua cham vao man hinh. Nen o day: thu phat ngay, neu bi
+// chan thi cho toi luc khach cham/keo trang lan dau la phat.
+//
+// Co nut tron nho goc duoi phai de khach tat/bat. Khach da tat thi nho luon
+// (localStorage), lan sau vao khong tu bat lai. Doi trang van phat tiep tu cho
+// dang nghe do (sessionStorage), khong bi nhay lai tu dau.
+import { CAUHINH } from '../config';
+
+const nhac = CAUHINH.nhacNen;
+const hien = !!(nhac && nhac.bat && nhac.file);
+---
+{hien && (
+  <div class="nhac-nen" id="nhac-nen" data-file={nhac.file} data-am-luong={String(nhac.amLuong ?? 0.5)} hidden>
+    <button class="nut-nhac" type="button" aria-label={`Bật / tắt nhạc ${nhac.ten ?? ''}`} title={nhac.ten ?? 'Nhạc nền'}>
+      <span class="song" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="tat" aria-hidden="true">♪</span>
+    </button>
+  </div>
+)}
+
+<style>
+  /* Chi hien tren dien thoai; may tinh an han */
+  .nhac-nen { display: none; }
+  @media (max-width: 640px), (pointer: coarse) and (max-width: 1024px) {
+    .nhac-nen:not([hidden]) { display: block; }
+  }
+
+  .nut-nhac {
+    position: fixed; right: 14px; bottom: 14px; z-index: 900;
+    width: 46px; height: 46px; border-radius: 50%;
+    border: 1px solid var(--vien);
+    background: var(--nen-the);
+    color: var(--chinh);
+    box-shadow: var(--bong-cao);
+    display: grid; place-items: center;
+    cursor: pointer; -webkit-tap-highlight-color: transparent;
+    /* Ne thanh dieu huong cua iPhone */
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+  }
+  .nut-nhac:active { transform: scale(.94); }
+
+  /* 4 thanh nhay theo nhac khi dang phat */
+  .song { display: none; gap: 2px; align-items: flex-end; height: 18px; }
+  .song i {
+    display: block; width: 3px; border-radius: 2px; background: var(--chinh);
+    animation: nhay .9s ease-in-out infinite;
+  }
+  .song i:nth-child(1) { height: 8px;  animation-delay: 0s; }
+  .song i:nth-child(2) { height: 16px; animation-delay: .2s; }
+  .song i:nth-child(3) { height: 11px; animation-delay: .4s; }
+  .song i:nth-child(4) { height: 14px; animation-delay: .1s; }
+  @keyframes nhay {
+    0%, 100% { transform: scaleY(.4); }
+    50%      { transform: scaleY(1); }
+  }
+  .tat { font-size: 20px; line-height: 1; opacity: .7; }
+  .nhac-nen.dang-phat .song { display: flex; }
+  .nhac-nen.dang-phat .tat { display: none; }
+
+  @media (prefers-reduced-motion: reduce) { .song i { animation: none; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var khung = document.getElementById('nhac-nen');
+    if (!khung) return;
+
+    // Chi phat tren dien thoai / may tinh bang.
+    var laDienThoai =
+      /Android|iPhone|iPad|iPod|Mobile|Windows Phone/i.test(navigator.userAgent) ||
+      // iPad doi moi bao la Mac, phan biet bang cam ung
+      (navigator.maxTouchPoints > 1 && /Mac/i.test(navigator.platform));
+    if (!laDienThoai) return;
+
+    var KHOA_TAT = 'nhac-nen-tat';       // khach da bam tat -> nho luon
+    var KHOA_VI_TRI = 'nhac-nen-vi-tri'; // dang nghe toi giay thu may (trong phien)
+
+    var audio = new Audio(khung.dataset.file);
+    audio.loop = true;
+    audio.preload = 'auto';
+    audio.volume = Math.min(1, Math.max(0, parseFloat(khung.dataset.amLuong) || 0.5));
+    try { audio.setAttribute('playsinline', ''); } catch (e) {}
+
+    var nut = khung.querySelector('.nut-nhac');
+    khung.hidden = false;
+
+    // Doi trang thi nghe tiep tu cho cu
+    try {
+      var cu = parseFloat(sessionStorage.getItem(KHOA_VI_TRI));
+      if (cu > 0) {
+        audio.addEventListener('loadedmetadata', function () {
+          if (cu < audio.duration) audio.currentTime = cu;
+        }, { once: true });
+      }
+    } catch (e) {}
+
+    function capNhatNut() {
+      khung.classList.toggle('dang-phat', !audio.paused);
+    }
+    audio.addEventListener('play', capNhatNut);
+    audio.addEventListener('pause', capNhatNut);
+    audio.addEventListener('timeupdate', function () {
+      try { sessionStorage.setItem(KHOA_VI_TRI, String(audio.currentTime)); } catch (e) {}
+    });
+
+    var daTat = false;
+    try { daTat = localStorage.getItem(KHOA_TAT) === '1'; } catch (e) {}
+
+    // Cham vao dau cung duoc thi phat (lan dau bi trinh duyet chan)
+    var SU_KIEN = ['touchstart', 'touchend', 'click', 'keydown', 'scroll'];
+    function goCho() {
+      SU_KIEN.forEach(function (s) { document.removeEventListener(s, phatKhiCham, true); });
+    }
+    function phatKhiCham() {
+      goCho();
+      if (daTat) return;
+      thuPhat();
+    }
+    function choCham() {
+      SU_KIEN.forEach(function (s) { document.addEventListener(s, phatKhiCham, { capture: true, passive: true }); });
+    }
+
+    function thuPhat() {
+      var p = audio.play();
+      if (p && p.catch) {
+        p.catch(function () {
+          // Bi chan vi chua cham man hinh -> doi cham
+          choCham();
+        });
+      }
+    }
+
+    if (!daTat) thuPhat();
+
+    nut.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (audio.paused) {
+        daTat = false;
+        try { localStorage.removeItem(KHOA_TAT); } catch (err) {}
+        goCho();
+        thuPhat();
+      } else {
+        daTat = true;
+        try { localStorage.setItem(KHOA_TAT, '1'); } catch (err) {}
+        goCho();
+        audio.pause();
+      }
+    });
+
+    // Chuyen sang app khac thi tam dung, quay lai thi phat tiep (neu chua tat)
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { if (!audio.paused) audio.pause(); }
+      else if (!daTat) thuPhat();
+    });
+  })();
+</script>

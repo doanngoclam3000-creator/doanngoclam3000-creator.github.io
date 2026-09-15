@@ -1,0 +1,6 @@
+Bo file nhac nen vao thu muc nay.
+
+Mac dinh website tim file:  public/nhac/aloha.mp3
+Muon doi ten file hay tat nhac: sua muc nhacNen trong src/config.ts
+
+Luu y: GitHub gioi han moi file 100MB. Nhac MP3 128kbps khoang 3-4MB la du.

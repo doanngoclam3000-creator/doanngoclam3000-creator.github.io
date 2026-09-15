@@ -24,6 +24,15 @@ export const CAUHINH = {
   // Anh banner o trang chu. Thay bang anh cua ban:
   // bo file vao thu muc public/ roi doi duong dan o day, vi du '/banner.jpg'
   anhBanner: '/banner.svg',
+  // Nhac nen tu phat khi khach vao web bang DIEN THOAI (may tinh khong phat).
+  // Bo file nhac vao thu muc public/nhac/ roi ghi duong dan o day.
+  // bat: false de tat han. amLuong tu 0 den 1.
+  nhacNen: {
+    bat: true,
+    file: '/nhac/aloha.mp3',
+    ten: 'Aloha',
+    amLuong: 0.5,
+  },
 };
 
 export const CHUYEN_MUC = {
