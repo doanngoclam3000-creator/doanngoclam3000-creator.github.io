@@ -1,6 +1,7 @@
 ---
 // Tren dien thoai: luoi bai viet co data-hien-dan chi hien 1 bai dau,
-// khach keo xuong toi dau thi bai ke tiep truot len hien ra toi do.
+// khach keo xuong cham mep duoi toi dau thi DUNG MOT bai ke tiep truot len hien ra,
+// keo tiep moi ra bai nua - khong bat ra mot luc nhieu bai.
 // May tinh (rong hon 640px) khong dong gi - hien het nhu cu.
 // Khong co JS thi cung hien het, vi viec an la do JS them lop vao.
 ---
@@ -34,20 +35,27 @@
         return true;
       }
 
+      var yLanTruoc = -1e9;
       function kiemTra() {
         dangCho = false;
         if (!cho.length) return;
         var day = document.documentElement;
         var khongCuonDuoc = day.scrollHeight <= window.innerHeight + 4;
-        // Chua keo tay ma trang ngan khong cuon duoc thi phai mo them,
-        // khong thi khach ket lai voi mot bai duy nhat.
-        if (!daCuon && !khongCuonDuoc) return;
-        var vt = moc.getBoundingClientRect().top;
-        if (vt < window.innerHeight + 80) {
+        // Trang ngan khong cuon duoc (1 bai + chan trang chua day man hinh)
+        // thi phai mo them, khong thi khach ket lai voi mot bai duy nhat.
+        if (khongCuonDuoc) {
           hienMot();
-          // Sau khi hien, moc doi cho; hen kiem lai de lo van con trong tam
-          // thi hien tiep (may man hinh cao) - moi bai cach nhau chut de thay "chay".
           if (cho.length) setTimeout(kiemTra, 180);
+          return;
+        }
+        if (!daCuon) return;
+        // Moi lan keo chi hien DUNG MOT bai: phai keo them it nhat 40px so voi
+        // luc hien bai truoc, va moc phai loi han vao trong man hinh.
+        if (Math.abs(window.scrollY - yLanTruoc) < 40) return;
+        var vt = moc.getBoundingClientRect().top;
+        if (vt < window.innerHeight) {
+          yLanTruoc = window.scrollY;
+          hienMot();
         }
       }
 

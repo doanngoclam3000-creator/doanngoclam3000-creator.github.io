@@ -146,9 +146,9 @@ p { margin: 0 0 1em; }
 @media (max-width: 640px) {
   .luoi[data-hien-dan] > .cho-hien { display: none; }
   .moc-hien-dan { height: 1px; }
-  .luoi[data-hien-dan] > .hien-ra { animation: truot-len .5s cubic-bezier(.22,.8,.3,1) both; }
+  .luoi[data-hien-dan] > .hien-ra { animation: truot-len .55s cubic-bezier(.22,.8,.3,1) both; }
   @keyframes truot-len {
-    from { opacity: 0; transform: translateY(36px) scale(.97); }
+    from { opacity: 0; transform: translateY(44px) scale(.96); }
     to   { opacity: 1; transform: none; }
   }
 }
