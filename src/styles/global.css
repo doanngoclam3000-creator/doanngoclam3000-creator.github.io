@@ -146,9 +146,13 @@ p { margin: 0 0 1em; }
 @media (max-width: 640px) {
   .luoi[data-hien-dan] > .cho-hien { display: none; }
   .moc-hien-dan { height: 1px; }
-  .luoi[data-hien-dan] > .hien-ra { animation: truot-len .55s cubic-bezier(.22,.8,.3,1) both; }
-  @keyframes truot-len {
-    from { opacity: 0; transform: translateY(44px) scale(.96); }
+  /* O moi truot NGANG vao, tu ben trai qua phai */
+  .luoi[data-hien-dan] > .hien-ra { animation: truot-tu-trai .6s cubic-bezier(.22,.8,.3,1) both; }
+  @keyframes truot-tu-trai {
+    from { opacity: 0; transform: translateX(-110%); }
+    60%  { opacity: 1; }
     to   { opacity: 1; transform: none; }
   }
+  /* Luc o dang truot tu ngoai vao thi khong de trang bi cuon ngang */
+  .luoi[data-hien-dan] { overflow-x: clip; }
 }
