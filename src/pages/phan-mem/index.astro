@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import ThePhanMem from '../../components/ThePhanMem.astro';
+import HienDan from '../../components/HienDan.astro';
 import { getCollection } from 'astro:content';
 const phanMem = (await getCollection('phan-mem'))
   .filter((p) => !p.data.an)
@@ -12,10 +13,11 @@ const phanMem = (await getCollection('phan-mem'))
     <p class="chu-nhat">Toàn bộ {phanMem.length} phần mềm do tôi tự phát triển. Bấm vào từng phần mềm để xem tính năng, ảnh chụp và link tải.</p>
   </div>
   <div class="khung">
-    <div class="luoi luoi-3">
+    <div class="luoi luoi-3" data-hien-dan>
       {phanMem.map((pm) => <ThePhanMem pm={pm} />)}
     </div>
   </div>
+  <HienDan />
 </Layout>
 <style>
   .dau { padding: 56px 20px 28px; max-width: 760px; }
