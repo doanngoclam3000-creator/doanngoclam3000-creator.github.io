@@ -1,17 +1,21 @@
 ---
 ten: "Bot WeChat"
-moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường."
-nenTang: ["macOS"]
+moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường. Có bản Mac và bản Windows."
+nenTang: ["macOS", "Windows"]
 phienBan: "1.5.3"
 banToiThieu: "1.5.3"
-ngayCapNhat: 2026-09-12
-ghiChuCapNhat: "- Lịch nhắn nhóm không mở cửa sổ mới nữa: bot bấm chọn nhóm ngay trong cửa sổ WeChat chính, gõ rồi quay lại đúng hội thoại bạn đang xem. Không còn cửa sổ lớn bung ra giữa màn hình.
+banToiThieuMac: "1.5.3"
+banToiThieuWin: "1.0.0"
+ngayCapNhat: 2026-09-17
+ghiChuCapNhat: "- Ra mắt bản Windows 1.0.0: một file .exe, không cần cài gì thêm. Bản Windows KHÔNG đụng đến chuột — đọc và gõ vào WeChat hoàn toàn chạy nền. Dùng chung key và cách mua với bản Mac.
+- (Mac 1.5.3) Lịch nhắn nhóm không mở cửa sổ mới nữa: bot bấm chọn nhóm ngay trong cửa sổ WeChat chính, gõ rồi quay lại đúng hội thoại bạn đang xem. Không còn cửa sổ lớn bung ra giữa màn hình.
 - Đang lướt web hay gõ phím thì lịch chờ, bot không bao giờ tự kéo WeChat lên. Chỉ khi bạn rời tay khỏi chuột và bàn phím đủ số giây đặt trong Cài đặt (mặc định 15 giây) bot mới gửi. Lịch “Đúng giờ” lỡ phút thì chờ tới lúc bạn rảnh chứ không bỏ.
 - Nội dung nhiều dòng gửi thành MỘT tin, không bị tách từng dòng như trước.
 - Lịch tự động và nút Gửi thử không còn chạy chồng lên nhau làm lẫn chữ, gửi lặp."
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.3/BotWeChat-1.5.3.dmg"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-win-1.0.0/BotWeChat-1.0.0-Windows.zip"
 gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 10 ngày"
-dungLuong: "khoảng 3 MB"
+dungLuong: "61 MB (Windows) · khoảng 3 MB (macOS) — bản Windows giải nén ra đúng một file .exe"
 anhIcon: "/icon/bot-wechat.png"
 icon: "🤖"
 mauNen: "#0ea5e9"
@@ -60,7 +64,16 @@ Bật **Kèm bán nhân dân tệ** là bot biết luôn bảng giá của bạn
   rồi thì cảm ơn khách. Ảnh mã QR hay bill bằng tệ thì bỏ qua, không tính nhầm. Số tiền
   đọc được vào thẳng **sổ giao dịch** để cuối ngày đối soát, xuất ra Excel được.
 
-Riêng bản Mac còn có **kết bạn hàng loạt** từ những nhóm bạn đang tham gia.
+Cả hai bản đều có **kết bạn hàng loạt** từ những nhóm bạn đang tham gia.
+
+### Bản Windows và bản Mac khác nhau chỗ nào
+
+Bản Windows (mới, 1.0.0) có: trả lời khách bằng AI, hẹn giờ nhắn nhóm, quét danh bạ rồi tích
+chọn người để nhắn, quét nhóm, kết bạn trong nhóm. Ba phần **đăng bài lên Bảng tin**, **bán
+nhân dân tệ** và **đọc bill** hiện mới có trên Mac, sẽ đưa sang Windows sau.
+
+Bù lại, bản Windows **không bao giờ đụng đến chuột**: mọi thao tác đọc và gõ vào WeChat đều
+chạy nền, con trỏ của bạn tự do hoàn toàn — kể cả lúc bot mở một cuộc trò chuyện mới.
 
 ![Dạy bot đóng vai và chọn người được trả lời](/anh/bot-wechat/2-tra-loi-khach.svg)
 
@@ -99,6 +112,7 @@ Hai phần còn lại — hẹn giờ nhắn nhóm và nhắn tin hàng loạt �
 | Thiết bị | Yêu cầu |
 | --- | --- |
 | Mac | macOS 14 trở lên. Phải cấp quyền Trợ năng cho phần mềm. |
+| Máy tính Windows | Windows 10 trở lên, loại 64-bit. Không cần quyền quản trị, không cần cài thêm gì. |
 | WeChat | Đã cài và đăng nhập sẵn trên máy |
 
 ## Cài trên Mac
@@ -115,6 +129,16 @@ bot không đọc và không gõ được vào WeChat. Vào *Cài đặt hệ th
 → Trợ năng*, bật công tắc cho **Bot WeChat**. Phần mềm tự nhận ra khi được cấp quyền, không
 phải khởi động lại.
 
+## Cài trên máy tính Windows
+
+Giải nén file `.zip` ra một thư mục rồi chạy **Bot WeChat.exe** — đúng một file, chép vào
+đâu cũng chạy, không phải cài .NET hay gì khác. Lần đầu Windows có thể báo *"Windows đã bảo
+vệ máy tính của bạn"* vì phần mềm chưa mua chứng chỉ ký số — bấm **Thông tin thêm** rồi
+**Vẫn chạy**, chỉ phải làm một lần.
+
+Bản Windows không xin quyền gì cả: không cần quyền quản trị, không cần cấp quyền trợ năng.
+Mở WeChat lên, đăng nhập sẵn, rồi bấm **Bật bot** là chạy.
+
 ## Giá và dùng thử
 
 Cài xong **tự có 10 ngày dùng thử miễn phí**, không phải nhập gì, không phải trả trước.
@@ -122,14 +146,19 @@ Cài xong **tự có 10 ngày dùng thử miễn phí**, không phải nhập g�
 Hết 10 ngày, phần mềm xin key bản quyền — **80.000đ cho một tháng**. Mua nhiều tháng thì
 rẻ hơn: 3 tháng 220.000đ, 6 tháng 420.000đ, một năm 800.000đ.
 
-Cách mua: mở phần mềm, bấm **Bản quyền**, chép dòng **Mã máy** gửi cho chúng tôi, chuyển
-khoản — tiền về là phần mềm tự cộng ngày, không phải nhắn ai. Hạn khoá theo máy nên chỉ dùng được đúng máy đó.
+Cách mua **giống nhau trên Mac và Windows**: mở phần mềm, bấm **Bản quyền**, chép dòng
+**Mã máy** (dạng `MAY-XXXXXX`) gửi cho chúng tôi, chuyển khoản — tiền về là phần mềm tự cộng
+ngày, không phải nhắn ai. Hạn khoá theo máy nên chỉ dùng được đúng máy đó; máy Mac và máy
+Windows là hai máy khác nhau, mỗi máy một key.
 
 ## Vài điều nói trước cho thật
 
-- **Bot có mượn chuột vài giây** khi cần mở một cuộc trò chuyện mới hoặc đăng bài lên Bảng
-  tin — WeChat không nhận lệnh gửi ngầm cho những việc đó. Con trỏ được trả về đúng chỗ cũ
-  ngay sau đó. Còn việc gửi tin vào cuộc trò chuyện đã mở thì hoàn toàn chạy ngầm.
+- **Bản Mac có mượn chuột vài giây** khi cần mở một cuộc trò chuyện mới hoặc đăng bài lên Bảng
+  tin — WeChat trên Mac không nhận lệnh gửi ngầm cho những việc đó. Con trỏ được trả về đúng
+  chỗ cũ ngay sau đó. **Bản Windows thì không đụng chuột ở bất kỳ bước nào.**
+- **Bản Windows mới ra.** Phần đọc/gõ vào WeChat phụ thuộc phiên bản WeChat Windows bạn đang
+  cài; nếu bot không đọc được, bấm *Kiểm tra WeChat* trong phần mềm rồi gửi kết quả cho chúng
+  tôi để vá — bản vá ra nhanh, không phải mua lại.
 - **Bot chưa đọc được ảnh và tin thoại** khách gửi. Gặp ảnh thì bot bỏ qua chứ không đoán bừa.
 - **Nên đặt tốc độ vừa phải** khi nhắn hàng loạt. Gửi dồn dập cho hàng trăm người trong vài
   phút là cách nhanh nhất để WeChat để ý tới tài khoản của bạn. Phần mềm có sẵn chỗ đặt
