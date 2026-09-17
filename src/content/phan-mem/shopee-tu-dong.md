@@ -2,16 +2,16 @@
 ten: "Shopee Tự Động"
 moTa: "Quản lý shop Shopee ngay trên máy: tải đơn, tự xác nhận đơn, in vận đơn ra PDF, sửa giá/tồn hàng loạt, đăng và chép sản phẩm (cả sang shop khác), trả lời đánh giá, nhắn tin kèm ảnh cho khách, tham gia khuyến mãi, tính giá bán trừ phí Shopee. Đăng nhập một lần, không mở trình duyệt."
 nenTang: ["macOS", "Windows"]
-phienBan: "5.9.13"
+phienBan: "5.9.14"
 banToiThieu: "5.9.6"
 banToiThieuMac: "5.9.13"
 banToiThieuWin: "5.9.6"
-ngayCapNhat: 2026-09-10
-ghiChuCapNhat: "- Tự động xác nhận đơn nay gọi thẳng lệnh chuẩn bị hàng của Shopee bằng phiên đăng nhập đã lưu: đơn mới có nút Chuẩn bị hàng là vài giây sau có mã vận đơn, không còn bấm nút trên trang, không còn kẹt hộp thoại.\n- Không mở Chrome ẩn để xác nhận đơn nữa; thoát phần mềm là đóng luôn mọi cửa sổ Chrome Shopee đang chạy.\n- Đơn Shopee chưa mở nút (đang chờ duyệt, chưa thanh toán) được ghi rõ lý do và tự thử lại, tối đa 5 phút một lần.\n- Dòng báo ở bảng đơn ngắn gọn hơn; nút “Xem cửa sổ Shopee” hiện được cửa sổ thật."
+ngayCapNhat: 2026-09-17
+ghiChuCapNhat: "- Tab đơn hàng tách riêng “Đơn huỷ” và “Trả hàng / Hoàn tiền” để theo dõi từng loại; mục “Đơn huỷ” chỉ hiện đơn đã huỷ.\n- Bỏ ô sổ xuống chọn trạng thái, thay bằng dãy tab bấm thẳng; bấm tab nào là tải ngay đúng loại đơn đó, không còn sót danh sách cũ.\n- Ở mục huỷ / hoàn, cột Trạng thái hiện lý do Shopee ghi thay cho dòng “Chưa xác nhận”; đơn huỷ/hoàn không bị tự xác nhận nhầm."
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.13-mac/ShopeeTuDong-5.9.13-macOS.dmg"
 linkGoiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.13-mac/ban-5.9.13-80ee4f21.goi"
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.13/ShopeeTuDong-5.9.13-Windows.zip"
-linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.13/ban-5.9.13-84929987.goi"
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.14/ShopeeTuDong-5.9.14-Windows.zip"
+linkGoiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/shopee-tu-dong-5.9.14/ban-5.9.14-0ce6a50d.goi"
 gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 7 ngày"
 dungLuong: "khoảng 88 MB — Mac (.dmg) · Windows (.zip, giải nén ra một file .exe)"
 anhIcon: "/icon/shopee-tu-dong.png"
@@ -33,8 +33,9 @@ nằm trong máy bạn.
 
 ## Đơn hàng — không phải ngồi canh
 
-- **Tải đơn theo trạng thái** — Tất cả, Chờ xác nhận, Chờ lấy hàng, Đang giao, Đã giao,
-  Hoàn thành, Trả hàng/Hoàn tiền/Huỷ. Trạng thái và ghi chú dịch sẵn sang tiếng Việt.
+- **Chọn trạng thái bằng dãy tab bấm thẳng** — Tất cả, Chờ xác nhận, Chờ lấy hàng, Đang giao,
+  Đã giao, Hoàn thành, Đơn huỷ, Trả hàng/Hoàn tiền. Bấm tab nào là hiện ngay đúng loại đơn đó;
+  trạng thái và ghi chú dịch sẵn sang tiếng Việt.
 - **Tự hiện đơn mới.** Bật một lần, có đơn mới là phần mềm kêu và hiện lên — không phải
   bấm tải lại.
 - **Xác nhận đơn** ngay trên phần mềm, chọn đơn rồi bấm; hoặc bật **tự động xác nhận** đơn mới.
