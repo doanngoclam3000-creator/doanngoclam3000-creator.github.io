@@ -2,15 +2,14 @@
 ten: "Phần Mềm Quản Lý Kho Tệ"
 moTa: "Quản lý kho nhân dân tệ: theo dõi số tệ còn lại, ghi sổ từng lần mua bán, tự tính tiền Việt và lợi nhuận. Dùng được trên máy tính lẫn iPhone."
 nenTang: ["Windows", "macOS", "iOS"]
-phienBan: "2.5"
-banToiThieu: "2.5"
-banToiThieuMac: "2.5"
-banToiThieuWin: "2.5"
-ngayCapNhat: 2026-09-08
-ghiChuCapNhat: "- Giá mới rẻ hơn: 80.000đ một tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ. Bảng giá và mã QR trong phần mềm đã đổi theo.\n- Siết bản quyền phía máy chủ: chống lùi đồng hồ máy, chống xoá dữ liệu để dùng thử lại, chặn nhập hồ sơ cũ giả mạo. Key và số ngày còn lại của bạn giữ nguyên, không phải nhập lại.
-- Bản Mac và iPhone: hạn dùng nay do máy chủ ký, không ai sửa được trong máy; lần đầu mở cần nối mạng một lát."
-linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.5/BanTe-Windows-2.5.0.zip"
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.5-mac/BanTe-2.5-build41.dmg"
+phienBan: "2.6"
+banToiThieu: "2.6"
+banToiThieuMac: "2.6"
+banToiThieuWin: "2.6"
+ngayCapNhat: 2026-09-19
+ghiChuCapNhat: "- Mới: nút Copy QR trên từng đơn — phần mềm tạo ảnh mã QR chuyển khoản (VietQR) đúng ngân hàng, điền sẵn đúng số tiền của đơn rồi copy luôn, bạn chỉ việc dán vào khung chat gửi khách. Khách quét là ra đúng số tiền, khỏi gõ tay nên không chuyển nhầm.\n- Số tài khoản nhập một lần cho mỗi ngân hàng; ảnh QR không in số tài khoản ra ngoài.\n- Có trên cả bản Windows, Mac và iPhone."
+linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.6/BanTe-Windows-2.6.0.zip"
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/ban-te-2.6-mac/BanTe-2.6-build43.dmg"
 linkTaiIOS: "https://testflight.apple.com/join/vUtNFS1Q"
 gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 10 ngày"
 dungLuong: "khoảng 78 MB (Windows) · 3 MB (Mac)"
@@ -31,6 +30,7 @@ thuTu: 6
 
 - **Tính tiền tức thì:** nhập số tệ, hiện ngay số tiền Việt khách phải trả và phần lãi bạn được.
 - **Hai mức tỉ giá:** đặt sẵn tỉ giá mua vào và bán ra, đổi lúc nào cũng được mà giao dịch cũ vẫn giữ nguyên tỉ giá tại thời điểm ghi.
+- **Copy mã QR gửi khách:** mỗi đơn có nút tạo ảnh QR chuyển khoản đúng ngân hàng, điền sẵn số tiền — dán thẳng vào Zalo, WeChat cho khách quét.
 - **Sổ giao dịch:** mỗi lần bán lưu lại tên khách, số tệ, tỉ giá và thời gian.
 - **Thống kê theo ngày, tuần, tháng:** biết đã bán bao nhiêu tệ, thu về bao nhiêu tiền và lãi bao nhiêu.
 - **Dùng được trên cả Mac và iPhone:** ngồi bàn thì mở Mac, ra ngoài thì dùng điện thoại.
