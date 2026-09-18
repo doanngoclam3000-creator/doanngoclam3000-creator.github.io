@@ -2,17 +2,17 @@
 ten: "Bot WeChat"
 moTa: "Trợ lý tự động cho WeChat: AI trả lời khách thay bạn, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và đăng bài lên Bảng tin. Chạy ngầm trong lúc bạn vẫn dùng máy bình thường. Có bản Mac và bản Windows."
 nenTang: ["macOS", "Windows"]
-phienBan: "1.5.3"
-banToiThieu: "1.5.3"
-banToiThieuMac: "1.5.3"
+phienBan: "1.6.0"
+banToiThieu: "1.6.0"
+banToiThieuMac: "1.6.0"
 banToiThieuWin: "1.0.0"
-ngayCapNhat: 2026-09-17
-ghiChuCapNhat: "- Ra mắt bản Windows 1.0.0: một file .exe, không cần cài gì thêm. Bản Windows KHÔNG đụng đến chuột — đọc và gõ vào WeChat hoàn toàn chạy nền. Dùng chung key và cách mua với bản Mac.
-- (Mac 1.5.3) Lịch nhắn nhóm không mở cửa sổ mới nữa: bot bấm chọn nhóm ngay trong cửa sổ WeChat chính, gõ rồi quay lại đúng hội thoại bạn đang xem. Không còn cửa sổ lớn bung ra giữa màn hình.
-- Đang lướt web hay gõ phím thì lịch chờ, bot không bao giờ tự kéo WeChat lên. Chỉ khi bạn rời tay khỏi chuột và bàn phím đủ số giây đặt trong Cài đặt (mặc định 15 giây) bot mới gửi. Lịch “Đúng giờ” lỡ phút thì chờ tới lúc bạn rảnh chứ không bỏ.
-- Nội dung nhiều dòng gửi thành MỘT tin, không bị tách từng dòng như trước.
-- Lịch tự động và nút Gửi thử không còn chạy chồng lên nhau làm lẫn chữ, gửi lặp."
-linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.5.3/BotWeChat-1.5.3.dmg"
+ngayCapNhat: 2026-09-18
+ghiChuCapNhat: "- (Mac 1.6.0) Bản Mac nay giống bản Windows: bot chuyển sang cuộc trò chuyện khác bằng phím gửi ngầm vào WeChat, không mượn chuột của bạn nữa và không kéo WeChat lên trước màn hình.
+- WeChat nằm dưới ứng dụng khác thì bot mở hội thoại và gửi ngay, không phải chờ bạn rời tay. Chỉ khi bạn đang gõ trong chính WeChat thì bot mới chờ.
+- Trả lời khách xong, bot mở lại đúng cuộc trò chuyện bạn đang xem dở. Bạn tự chuyển sang người khác thì bot thôi không lật lại.
+- Áp dụng cho trả lời khách bằng AI, hẹn giờ nhắn nhóm, nhắn tin hàng loạt và nút Tách cửa sổ.
+- Bản Windows vẫn là 1.0.0, không đổi."
+linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-1.6.0/BotWeChat-1.6.0.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/bot-wechat-win-1.0.0/BotWeChat-1.0.0-Windows.zip"
 gia: "80.000đ / tháng · 3 tháng 220.000đ · 6 tháng 420.000đ · 1 năm 800.000đ — dùng thử miễn phí 10 ngày"
 dungLuong: "61 MB (Windows) · khoảng 3 MB (macOS) — bản Windows giải nén ra đúng một file .exe"
@@ -73,7 +73,8 @@ chọn người để nhắn, quét nhóm, kết bạn trong nhóm. Ba phần **
 nhân dân tệ** và **đọc bill** hiện mới có trên Mac, sẽ đưa sang Windows sau.
 
 Bù lại, bản Windows **không bao giờ đụng đến chuột**: mọi thao tác đọc và gõ vào WeChat đều
-chạy nền, con trỏ của bạn tự do hoàn toàn — kể cả lúc bot mở một cuộc trò chuyện mới.
+chạy nền, con trỏ của bạn tự do hoàn toàn — kể cả lúc bot mở một cuộc trò chuyện mới. Từ bản
+1.6.0, bản Mac cũng mở cuộc trò chuyện mới bằng phím gửi ngầm chứ không mượn chuột nữa.
 
 ![Dạy bot đóng vai và chọn người được trả lời](/anh/bot-wechat/2-tra-loi-khach.svg)
 
@@ -153,9 +154,10 @@ Windows là hai máy khác nhau, mỗi máy một key.
 
 ## Vài điều nói trước cho thật
 
-- **Bản Mac có mượn chuột vài giây** khi cần mở một cuộc trò chuyện mới hoặc đăng bài lên Bảng
-  tin — WeChat trên Mac không nhận lệnh gửi ngầm cho những việc đó. Con trỏ được trả về đúng
-  chỗ cũ ngay sau đó. **Bản Windows thì không đụng chuột ở bất kỳ bước nào.**
+- **Bản Mac chỉ còn mượn chuột vài giây khi đăng bài lên Bảng tin** (và khi nhắn cho người
+  chưa từng trò chuyện) — WeChat trên Mac không nhận lệnh gửi ngầm cho hai việc đó, con trỏ
+  được trả về đúng chỗ cũ ngay sau đó. Còn trả lời khách, hẹn giờ nhắn nhóm, nhắn hàng loạt
+  thì từ bản 1.6.0 đi hết bằng phím gửi ngầm. **Bản Windows thì không đụng chuột ở bất kỳ bước nào.**
 - **Bản Windows mới ra.** Phần đọc/gõ vào WeChat phụ thuộc phiên bản WeChat Windows bạn đang
   cài; nếu bot không đọc được, bấm *Kiểm tra WeChat* trong phần mềm rồi gửi kết quả cho chúng
   tôi để vá — bản vá ra nhanh, không phải mua lại.
