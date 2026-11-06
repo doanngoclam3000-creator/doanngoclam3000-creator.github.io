@@ -1,0 +1,22 @@
+# May chu chuyen tiep cho tinh nang "Quan ly tren dien thoai" cua app Quan Ly Website.
+# May Mac noi WebSocket vao day; dien thoai mo trang nhu web thuong, moi yeu cau
+# duoc chuyen qua WebSocket ve may Mac xu ly. Deploy: cd chuyen-tiep && npx wrangler deploy
+# Khoa BI_MAT dat bang: npx wrangler secret put BI_MAT  (KHONG ghi vao kho ma nguon)
+name = "dieu-khien-web"
+main = "worker.js"
+compatibility_date = "2025-04-01"
+compatibility_flags = ["nodejs_compat"]
+account_id = "e77b9a362ae739411ed4e9193682fa1d"
+
+[assets]
+directory = "./web"
+binding = "ASSETS"
+run_worker_first = true
+
+[[durable_objects.bindings]]
+name = "PHONG"
+class_name = "Phong"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["Phong"]

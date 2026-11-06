@@ -14,6 +14,10 @@ cong-cu/app-macos/build/
 cong-cu/app-macos/icon-tam/
 cong-cu/app-macos/SoanBai
 cong-cu/app-macos/TaoIcon
+cong-cu/quan-ly/app-macos/build/
+cong-cu/quan-ly/app-macos/icon-tam/
+cong-cu/quan-ly/app-macos/QuanLy
+cong-cu/quan-ly/app-macos/TaoIcon
 cong-cu/tam/
 
 # File cai dat KHONG duoc de trong kho - dung app Soan Bai de day len GitHub Releases
@@ -23,3 +27,8 @@ public/tai/
 may-chu-vi/.dev.vars
 may-chu-vi/.wrangler/
 may-chu-vi/.bi-mat.json
+
+# May chu chuyen tiep "Quan ly tren dien thoai": khoa bi mat KHONG day len GitHub
+cong-cu/quan-ly/chuyen-tiep/.bi-mat.json
+cong-cu/quan-ly/chuyen-tiep/.wrangler/
+cong-cu/quan-ly/chuyen-tiep/.dev.vars

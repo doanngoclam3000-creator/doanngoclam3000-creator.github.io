@@ -24,28 +24,42 @@ if (!fs.existsSync(D_BAI) || !fs.existsSync(D_PM)) {
 for (const d of [D_ANH, D_VIDEO]) fs.mkdirSync(d, { recursive: true });
 
 // ---------- Doc/ghi frontmatter ----------
+// Chuoi kep da dong het chua? Dem so gach cheo nguoc truoc dau nhay cuoi.
+function chuoiDaDong(v) {
+  if (v.length < 2 || !v.startsWith('"')) return true;
+  if (!v.endsWith('"')) return false;
+  let n = 0;
+  for (let i = v.length - 2; i >= 0 && v[i] === '\\'; i--) n++;
+  return n % 2 === 0;
+}
+
+function docGiaTri(v) {
+  if (v.startsWith('[') && v.endsWith(']')) {
+    return v.slice(1, -1).split(',').map((x) => x.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
+  }
+  if (v === 'true' || v === 'false') return v === 'true';
+  if (/^-?\d+(\.\d+)?$/.test(v)) return Number(v);
+  if (v.startsWith('"') && v.endsWith('"') && v.length > 1) {
+    try { return JSON.parse(v); } catch {}
+    // Chuoi trai qua nhieu dong that: doi xuong dong that thanh \n roi doc lai
+    try { return JSON.parse(v.replace(/\r?\n/g, '\\n')); } catch {}
+    return v.slice(1, -1);
+  }
+  return v.replace(/^'|'$/g, '');
+}
+
 function tachFrontmatter(vanBan) {
   const m = vanBan.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!m) return { data: {}, noiDung: vanBan };
   const data = {};
-  for (const dong of m[1].split(/\r?\n/)) {
-    const k = dong.match(/^([A-Za-z0-9_]+):\s*(.*)$/);
+  const dong = m[1].split(/\r?\n/);
+  for (let i = 0; i < dong.length; i++) {
+    const k = dong[i].match(/^([A-Za-z0-9_]+):\s*(.*)$/);
     if (!k) continue;
     let v = k[2].trim();
-    if (v.startsWith('[') && v.endsWith(']')) {
-      v = v.slice(1, -1).split(',').map((x) => x.trim().replace(/^["']|["']$/g, '')).filter(Boolean);
-    } else if (v === 'true' || v === 'false') {
-      v = v === 'true';
-    } else if (/^-?\d+(\.\d+)?$/.test(v)) {
-      // So khong dat trong ngoac: doc thanh so, khong phai chuoi
-      v = Number(v);
-    } else if (v.startsWith('"') && v.endsWith('"') && v.length > 1) {
-      // Chuoi co dau nhay: giai ma dung cach de khong bi nhan doi dau \\
-      try { v = JSON.parse(v); } catch { v = v.slice(1, -1); }
-    } else {
-      v = v.replace(/^'|'$/g, '');
-    }
-    data[k[1]] = v;
+    // Chuoi kep viet tran ra nhieu dong: gom het lai roi moi doc
+    while (!chuoiDaDong(v) && i + 1 < dong.length) { i++; v += '\n' + dong[i]; }
+    data[k[1]] = docGiaTri(v);
   }
   return { data, noiDung: m[2] };
 }
@@ -60,11 +74,12 @@ function ghepFrontmatter(data, noiDung) {
     } else if (typeof v === 'boolean') {
       dong.push(`${k}: ${v}`);
     } else if (typeof v === 'number' && Number.isFinite(v)) {
-      // So phai ghi tran, dong ngoac kep vao la hong schema
       dong.push(`${k}: ${v}`);
     } else if (/^\d{4}-\d{2}-\d{2}$/.test(String(v))) {
       dong.push(`${k}: ${v}`);
     } else {
+      // JSON.stringify go gon ca xuong dong thanh \n -> luon nam tron mot dong,
+      // khong bao gio lam vo phan dau tep nhu cach ghi tran truoc day
       dong.push(`${k}: ${JSON.stringify(String(v))}`);
     }
   }

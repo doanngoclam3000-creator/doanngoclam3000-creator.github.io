@@ -1,0 +1,36 @@
+QUAN LY WEBSITE
+===============
+
+CACH CAI:
+  Keo bieu tuong "Quan Ly Website" tha vao thu muc Applications ben canh.
+
+LAN MO DAU TIEN:
+  1. Vao Applications, BAM CHUOT PHAI vao "Quan Ly Website" -> chon Open
+  2. Bam Open mot lan nua
+  3. May hoi quyen truy cap thu muc va o ngoai -> bam CHO PHEP
+  (Chi can lam vay lan dau. Nhung lan sau mo binh thuong.)
+
+YEU CAU:
+  - macOS 12 tro len
+  - Da cai Node.js (tai o nodejs.org, chon ban LTS)
+  - Cam o CODE vao may: ma nguon website nam o
+      /Volumes/CODE/DuAn/WebPhanMem
+    (De cho khac thi phan mem se hoi de ban tu chon)
+  - Muon day file cai dat len GitHub thi can cong cu gh da dang nhap:
+      ~/bin/gh auth login
+
+PHAN MEM LAM DUOC GI:
+  - Tong quan: soat loi ep cap nhat, link tai hong, tinh hinh dung web
+  - Bai viet: viet, sua, xoa, keo tha anh va video
+  - Phan mem: sua moi truong cua trang phan mem, gia, an/hien, gioi han ban cu
+  - Phat hanh: xem tung he dieu hanh dang o ban nao, kiem link tai, ep cap nhat
+  - Vi va lien ket: day bang link tai sang may chu vi tren Cloudflare
+  - Thong ke: luot xem tung trang, luot tai tung phan mem
+  - Cau hinh: sua thong tin chung cua website
+
+PHIM TAT:
+  Cmd + S  luu muc dang sua
+  Cmd + R  tai lai
+  Cmd + P  mo website xem thu
+
+Ban quyen DOAN NGOC LAM - WeChat tieuphung1409

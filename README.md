@@ -2,7 +2,30 @@
 
 Website giới thiệu và phát hành các phần mềm tự phát triển. Chạy bằng [Astro](https://astro.build), tự động deploy lên GitHub Pages mỗi khi push lên nhánh `main`.
 
-## Cách dễ nhất: dùng phần mềm Soạn Bài Website
+## Cách dễ nhất: dùng phần mềm Quản Lý Website
+
+Mở **Quản Lý Website** trong thư mục Applications (cài từ file `Quan Ly Website.dmg`).
+Đây là bảng điều khiển đầy đủ cho website, gồm bảy mục:
+
+| Mục | Làm gì |
+|---|---|
+| Tổng quan | Soát lỗi ép cập nhật, link tải thiếu, bảng liên kết ví lệch, tình hình dựng web trên GitHub |
+| Bài viết | Viết, sửa, xoá, ghim, kéo thả ảnh và video |
+| Phần mềm | Mọi trường của trang phần mềm: giá, ẩn/hiện, gói cập nhật nhanh, ba mức ép theo hệ điều hành |
+| Phát hành | Từng hệ điều hành đang ở bản nào, kiểm link tải còn sống không, ép cập nhật một phần mềm hoặc tất cả |
+| Ví & liên kết | Dựng lại `lien-ket.json` và đẩy máy chủ ví lên Cloudflare |
+| Thống kê | Lượt xem từng trang (GoatCounter) và lượt tải từng phần mềm (GitHub Releases) |
+| Cấu hình | Sửa thông tin chung trong `src/config.ts` |
+
+Dựng lại app sau khi sửa `cong-cu/quan-ly/giao-dien.html` hoặc `cong-cu/quan-ly/may-chu.mjs`:
+
+```bash
+cong-cu/quan-ly/app-macos/dung-app.sh
+```
+
+File DMG mới nằm ngoài Desktop.
+
+## Cách cũ: phần mềm Soạn Bài Website
 
 Mở **Soạn Bài Website** trong thư mục Applications (cài từ file `Soan Bai Website.dmg`). Phần mềm mở ra cửa sổ riêng, trong đó bạn có thể:
 

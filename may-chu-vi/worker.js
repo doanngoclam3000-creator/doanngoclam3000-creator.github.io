@@ -1871,6 +1871,87 @@ export default {
         return J({ loi: 'viec la' }, 400);
       }
 
+      // ---- Ho so day du cua MOT khach: dang ky o dau, mua nhung key nao ----
+      if (p === '/admin/khach') {
+        const id = Number(url.searchParams.get('nguoi'));
+        const nd = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE id=?').bind(id).first();
+        if (!nd) return J({ loi: 'Không tìm thấy tài khoản' }, 404);
+
+        const rong = { results: [] };
+        const [don, soCai, tb, thu, gt] = await Promise.all([
+          env.DB.prepare('SELECT * FROM don_key WHERE nguoi=? ORDER BY luc DESC LIMIT 200').bind(id).all().catch(() => rong),
+          env.DB.prepare('SELECT id,loai,so_tien,so_du_sau,ghi_chu,luc FROM so_cai WHERE nguoi=? ORDER BY id DESC LIMIT 100').bind(id).all().catch(() => rong),
+          env.DB.prepare('SELECT ma_tb,kieu,ip,luc FROM thiet_bi WHERE nguoi=? ORDER BY luc DESC').bind(id).all().catch(() => rong),
+          env.DB.prepare('SELECT phan_mem,ma_key,ip,luc FROM dung_thu WHERE nguoi=? ORDER BY luc DESC').bind(id).all().catch(() => rong),
+          env.DB.prepare('SELECT id,email,ten_dn FROM nguoi_dung WHERE id=?').bind(Number(nd.nguoi_gt) || 0).first().catch(() => null),
+        ]);
+
+        // Nhat ky dang ky khop theo email, ten tai khoan hoac dia chi IP - ke ca lan hong
+        const nk = await env.DB.prepare(
+          'SELECT id,luc,kieu,duoc,email,ten_dn,dien_thoai,loi,ip,ma_tb FROM nhat_ky_dk' +
+          ' WHERE lower(email)=?1 OR lower(ten_dn)=?2 OR (ip IS NOT NULL AND ip=?3)' +
+          ' ORDER BY id DESC LIMIT 40')
+          .bind(String(nd.email || '').toLowerCase(), String(nd.ten_dn || '').toLowerCase(), nd.ip || '~')
+          .all().catch(() => rong);
+
+        // Cung dia chi IP hoac cung thiet bi thi rat co the la mot nguoi mo nhieu nick
+        const maTb = (tb.results || []).map((x) => x.ma_tb);
+        const cauTb = maTb.length ? ' OR ma_tb IN (' + maTb.map(() => '?').join(',') + ')' : '';
+        const trung = await env.DB.prepare(
+          'SELECT id,email,ten_dn,dien_thoai,ip,ma_tb,tao_luc FROM nguoi_dung' +
+          ' WHERE id<>?1 AND ((ip IS NOT NULL AND ip=?2)' + cauTb + ') ORDER BY id DESC LIMIT 30')
+          .bind(id, nd.ip || '~', ...maTb).all().catch(() => rong);
+
+        const soNguoiGt = await env.DB.prepare('SELECT COUNT(*) n FROM nguoi_dung WHERE nguoi_gt=?')
+          .bind(id).first().catch(() => ({ n: 0 }));
+
+        return J({
+          nguoi: {
+            id: nd.id, email: nd.email, tenDn: nd.ten_dn || '', dienThoai: nd.dien_thoai || '',
+            ip: nd.ip || '', maTb: nd.ma_tb || '', diaChi: nd.dia_chi || '',
+            maNap: nd.ma_nap, soDu: nd.so_du, daNap: nd.da_nap, daRut: nd.da_rut, hhKiem: nd.hh_kiem,
+            vaiTro: nd.vai_tro, khoa: !!nd.khoa, saiLan: nd.sai_lan, khoaDen: nd.khoa_den,
+            taoLuc: nd.tao_luc, lanCuoi: nd.lan_cuoi, mkRo: nd.mk_ro || '',
+            coGoogle: !!nd.google_sub, nganHang: nd.ngan_hang || '', soTk: nd.so_tk || '', chuTk: nd.chu_tk || '',
+            nguoiGioiThieu: gt || null, soNguoiGioiThieu: Number(soNguoiGt?.n || 0),
+          },
+          don: don.results || [], soCai: soCai.results || [], thietBi: tb.results || [],
+          dungThu: thu.results || [], nhatKyDk: nk.results || [], nickTrung: trung.results || [],
+        });
+      }
+
+      // ---- Tim don key: ai mua key nao ----
+      if (p === '/admin/don-tim') {
+        const q = '%' + String(url.searchParams.get('q') || '').trim().toLowerCase() + '%';
+        const tt = String(url.searchParams.get('trangThai') || '').trim();
+        const loc = tt ? ' AND d.trang_thai=?2' : '';
+        const cau = env.DB.prepare(
+          'SELECT d.*, n.email, n.ten_dn, n.dien_thoai, n.ip FROM don_key d' +
+          ' JOIN nguoi_dung n ON n.id=d.nguoi' +
+          ' WHERE (lower(n.email) LIKE ?1 OR lower(n.ten_dn) LIKE ?1 OR n.dien_thoai LIKE ?1' +
+          '   OR lower(d.ten_pm) LIKE ?1 OR lower(d.phan_mem) LIKE ?1' +
+          '   OR lower(d.key) LIKE ?1 OR lower(d.ma_may) LIKE ?1)' + loc +
+          ' ORDER BY d.luc DESC LIMIT 200');
+        const r = await (tt ? cau.bind(q, tt) : cau.bind(q)).all().catch(() => ({ results: [] }));
+        return J({ don: r.results || [] });
+      }
+
+      // ---- Dat mat khau moi cho khach ngay tai day ----
+      // Khach quen mat khau ma khong nhan duoc thu thi chu shop dat ho, doc
+      // lai cho khach qua Zalo. Moi may dang dang nhap bi day ra ngay.
+      if (req.method === 'POST' && p === '/admin/dat-mat-khau') {
+        const b = await than();
+        const nd = await env.DB.prepare('SELECT * FROM nguoi_dung WHERE id=?').bind(Number(b.nguoi)).first();
+        if (!nd) return J({ loi: 'Không tìm thấy tài khoản' }, 404);
+        let mk = String(b.matKhau || '').trim();
+        if (!mk) mk = chuoiNgauNhien(4) + chuoiNgauNhien(4).toLowerCase() + Math.floor(10 + Math.random() * 89);
+        if (mk.length < 8) return J({ loi: 'Mật khẩu phải từ 8 ký tự trở lên' }, 400);
+        await env.DB.prepare(
+          'UPDATE nguoi_dung SET mat_khau=?, mk_ro=?, phien_ver=phien_ver+1, sai_lan=0, khoa_den=0 WHERE id=?')
+          .bind(await bamMatKhau(mk), mk, nd.id).run();
+        return J({ ok: true, matKhau: mk, tenDn: nd.ten_dn || nd.email });
+      }
+
       // Tong quan
       if (p === '/admin/tong-quan') {
         const [a, c, d, e] = await env.DB.batch([

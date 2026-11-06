@@ -2,12 +2,12 @@
 ten: "Vị Trí Wi-Fi"
 moTa: "Đổi vị trí iPhone theo đường Wi-Fi: cài một lần, dán toạ độ là máy báo đang ở nơi bạn chọn. Không cần máy tính, không cần Chế độ nhà phát triển."
 nenTang: ["iOS"]
-phienBan: "1.11"
+phienBan: "1.12"
 banToiThieu: "1.7"
 banToiThieuIOS: "1.9"
-ngayCapNhat: 2026-10-14
-ghiChuCapNhat: "- Nhận được key có số ngày lớn (hơn 999 ngày)
-- Bản 1.10: cài đặt một nút Bắt đầu, hồ sơ cấu hình kèm sẵn VPN"
+ngayCapNhat: 2026-11-06
+ghiChuCapNhat: "- Sửa lỗi app báo “Máy chưa tin cậy chứng chỉ” dù đã gạt bật Vi Tri Wi-Fi CA — không phải cài lại hồ sơ, key cũ giữ nguyên
+- Bản 1.11: nhận key có số ngày lớn (hơn 999 ngày)"
 linkTaiIOS: "https://testflight.apple.com/join/KYYj3Bfd"
 gia: "300.000đ / tháng · 800.000đ / 3 tháng · 1.500.000đ / 6 tháng · 2.500.000đ / năm"
 mienPhi: false

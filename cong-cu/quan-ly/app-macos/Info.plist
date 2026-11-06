@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>CFBundleName</key><string>Quản Lý Website</string>
+  <key>CFBundleDisplayName</key><string>Quản Lý Website</string>
+  <key>CFBundleExecutable</key><string>QuanLy</string>
+  <key>CFBundleIdentifier</key><string>com.doanngoclam3000.quanlywebsite</string>
+  <key>CFBundleIconFile</key><string>QuanLy</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>1.2</string>
+  <key>CFBundleVersion</key><string>4</string>
+  <key>LSMinimumSystemVersion</key><string>12.0</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSHumanReadableCopyright</key><string>© 2026 Đoàn Ngọc Lâm</string>
+  <key>NSDocumentsFolderUsageDescription</key>
+  <string>Phần mềm cần đọc và ghi mã nguồn website của bạn.</string>
+  <key>NSDesktopFolderUsageDescription</key>
+  <string>Phần mềm cần đọc thư mục website nếu bạn để website ngoài màn hình.</string>
+  <key>NSDownloadsFolderUsageDescription</key>
+  <string>Phần mềm cần đọc file cài đặt, ảnh và video bạn tải lên.</string>
+  <key>NSRemovableVolumesUsageDescription</key>
+  <string>Mã nguồn website nằm trên ổ cứng ngoài, phần mềm cần đọc ổ đó.</string>
+  <key>NSAppTransportSecurity</key>
+  <dict><key>NSAllowsLocalNetworking</key><true/></dict>
+</dict>
+</plist>

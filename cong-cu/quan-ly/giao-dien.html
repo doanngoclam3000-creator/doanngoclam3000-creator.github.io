@@ -1,0 +1,1617 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="QL Website" />
+<meta name="theme-color" content="#f7f9fc" />
+<link rel="apple-touch-icon" href="/icon-180.png" />
+<title>Quản lý website</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --nen:#ffffff; --nen2:#f7f9fc; --nen3:#eef2f7; --vien:#dce3ec;
+    --chu:#131a24; --mo:#5d6b7d; --xanh:#2563eb; --luc:#059669; --do:#dc2626; --vang:#d97706;
+  }
+  * { box-sizing:border-box; }
+  body { margin:0; height:100vh; overflow:hidden; display:flex;
+    background:var(--nen); color:var(--chu);
+    font-family:'Be Vietnam Pro',-apple-system,BlinkMacSystemFont,sans-serif; font-size:14px; }
+  button { font-family:inherit; cursor:pointer; }
+  input, textarea, select { font-family:inherit; font-size:14px; width:100%; padding:9px 11px;
+    background:#fff; border:1px solid var(--vien); border-radius:8px; color:var(--chu); }
+  input:hover, textarea:hover, select:hover { border-color:#c3cddb; }
+  input:focus, textarea:focus, select:focus { outline:none; border-color:var(--xanh); box-shadow:0 0 0 3px rgba(37,99,235,.12); }
+  a { color:var(--xanh); }
+
+  /* Cot menu */
+  nav { width:206px; flex-shrink:0; background:#12203a; color:#c9d6ea; display:flex; flex-direction:column; }
+  nav .hieu { padding:16px 16px 12px; }
+  nav .hieu b { display:block; font-size:14.5px; color:#fff; }
+  nav .hieu small { font-size:11.5px; color:#7f93b3; }
+  nav .m { display:flex; align-items:center; gap:9px; padding:9px 16px; cursor:pointer; font-size:13.5px; }
+  nav .m:hover { background:#1b2e4f; }
+  nav .m.chon { background:#2563eb; color:#fff; font-weight:500; }
+  nav .m i { font-style:normal; width:18px; text-align:center; }
+  nav .m .so:empty { display:none; }
+  nav .m .so { margin-left:auto; font-size:11px; background:rgba(255,255,255,.14); padding:1px 7px; border-radius:9px; }
+  nav .day { margin-top:auto; padding:12px; }
+  nav .day button { width:100%; padding:9px; border:none; border-radius:8px; background:var(--luc); color:#fff;
+    font-size:13px; font-weight:600; }
+  nav .day button:hover { background:#047857; }
+  nav .day p { margin:8px 2px 0; font-size:11px; color:#8fa4c4; line-height:1.5; }
+
+  /* Cot danh sach */
+  aside { width:268px; flex-shrink:0; background:var(--nen2); border-right:1px solid var(--vien);
+    display:flex; flex-direction:column; }
+  aside.an { display:none; }
+  .tim { padding:12px 12px 8px; }
+  .ds { flex:1; overflow-y:auto; padding:0 8px 8px; }
+  .muc { padding:9px 11px; border-radius:8px; cursor:pointer; border:1px solid transparent; margin-bottom:2px; }
+  .muc:hover { background:var(--nen3); }
+  .muc.chon { background:#e8f0fe; border-color:var(--xanh); }
+  .muc b { font-size:13px; font-weight:500; line-height:1.4; display:-webkit-box;
+    -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .muc small { display:block; color:var(--mo); font-size:11px; margin-top:2px; }
+  .cham { display:inline-block; width:7px; height:7px; border-radius:50%; margin-right:5px; vertical-align:1px; }
+  .day-ds { padding:12px; border-top:1px solid var(--vien); }
+
+  /* Cot chinh */
+  main { flex:1; display:flex; flex-direction:column; min-width:0; }
+  .thanh { display:flex; align-items:center; gap:8px; padding:11px 16px; border-bottom:1px solid var(--vien);
+    background:var(--nen2); box-shadow:0 1px 3px rgba(19,26,36,.05); }
+  .thanh .ten { font-weight:600; flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .nut { padding:8px 14px; border-radius:8px; border:1px solid var(--vien); background:var(--nen3);
+    color:var(--chu); font-size:13px; font-weight:500; }
+  .nut:hover { border-color:var(--xanh); }
+  .nut.chinh { background:var(--xanh); border-color:var(--xanh); color:#fff; }
+  .nut.luc { background:var(--luc); border-color:var(--luc); color:#fff; }
+  .nut.do { color:var(--do); }
+  .nut.nho { padding:5px 10px; font-size:12px; }
+  .nut:disabled { opacity:.45; cursor:not-allowed; }
+  .than { flex:1; overflow-y:auto; padding:18px 22px 46px; }
+  .trong { display:grid; place-items:center; height:100%; color:var(--mo); text-align:center; }
+
+  /* Manh ghep chung */
+  .luoi { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px; }
+  .luoi3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px; margin-bottom:12px; }
+  .o { margin-bottom:12px; }
+  .o label { display:block; font-size:12px; color:var(--mo); margin-bottom:5px; font-weight:500; }
+  .o .goiy { font-size:11px; color:var(--mo); margin-top:4px; }
+  .hopchon { display:flex; align-items:center; gap:7px; font-size:13px; }
+  .hopchon input { width:auto; }
+  textarea.noidung { min-height:340px; resize:vertical; line-height:1.75; font-size:14.5px;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .congcu { display:flex; gap:4px; flex-wrap:wrap; margin-bottom:7px; }
+  .congcu button { padding:5px 10px; font-size:12px; background:var(--nen3); border:1px solid var(--vien);
+    border-radius:6px; color:var(--mo); }
+  .congcu button:hover { color:var(--chu); border-color:var(--xanh); }
+  .taile { border:1px dashed var(--vien); border-radius:10px; padding:14px; text-align:center;
+    color:var(--mo); font-size:13px; cursor:pointer; }
+  .taile:hover { border-color:var(--xanh); background:#f8fbff; }
+  .taile b { color:var(--chu); }
+  .taile.keo { border-color:var(--xanh); background:#eef4ff; color:var(--chu); }
+  .taile-to { padding:20px 14px; line-height:1.6; }
+  .taile-to small { display:block; font-size:12px; }
+  .xemvideo { margin-top:10px; width:100%; max-height:230px; border-radius:10px; background:#000; }
+  .canh { padding:9px 12px; border-radius:8px; font-size:12.5px; margin-bottom:12px; line-height:1.55; }
+  .canh.vang { background:#fff8ec; color:#92400e; border:1px solid #f5d9a8; }
+  .canh.luc { background:#ecfdf5; color:#065f46; border:1px solid #a7e3ca; }
+  .canh.do { background:#fef2f2; color:#b91c1c; border:1px solid #f6c2c2; }
+  .canh.xanh { background:#eff6ff; color:#1e40af; border:1px solid #bfdbfe; }
+  .khoi { border:1px solid var(--vien); border-radius:12px; padding:16px; margin-bottom:14px; background:#fff; }
+  .khoi h3 { margin:0 0 10px; font-size:14.5px; }
+  .khoi p.mota { margin:-4px 0 12px; font-size:12.5px; color:var(--mo); line-height:1.6; }
+  .the-so { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:16px; }
+  .the-so div { border:1px solid var(--vien); border-radius:12px; padding:14px; background:var(--nen2); }
+  .the-so b { display:block; font-size:24px; font-weight:600; line-height:1.2; }
+  .the-so small { color:var(--mo); font-size:12px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; }
+  th, td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--vien); vertical-align:top; }
+  th { font-size:11.5px; text-transform:uppercase; letter-spacing:.4px; color:var(--mo); font-weight:600; }
+  td.so { text-align:right; font-variant-numeric:tabular-nums; }
+  tr:last-child td { border-bottom:none; }
+  .phu { position:fixed; inset:0; background:rgba(15,23,42,.45); display:flex; align-items:center; justify-content:center; z-index:50; }
+  .hop { background:#fff; border-radius:14px; padding:20px 22px; width:440px; max-width:92vw; box-shadow:0 20px 60px rgba(0,0,0,.25); }
+  .hop h3 { margin:0 0 4px; font-size:16px; }
+  .nhanh { display:flex; gap:6px; flex-wrap:wrap; margin-top:6px; }
+  .nhanh button { padding:4px 9px; font-size:12px; border:1px solid var(--vien); border-radius:8px; background:var(--nen2); cursor:pointer; }
+  .nhanh button:hover { border-color:var(--xanh); color:var(--xanh); }
+  .nut.luc { background:#059669; color:#fff; border-color:#059669; }
+  .nut.luc:hover { background:#047857; }
+  .nhan { display:inline-block; padding:1px 7px; border-radius:20px; font-size:11px; font-weight:500; }
+  .nhan.ok { background:#ecfdf5; color:#047857; }
+  .nhan.loi { background:#fef2f2; color:#b91c1c; }
+  .nhan.cho { background:var(--nen3); color:var(--mo); }
+  code { background:var(--nen3); padding:1px 5px; border-radius:5px; font-size:12px; word-break:break-all; }
+
+  .thongbao { position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(80px);
+    background:#fff; border:1px solid var(--vien); padding:11px 20px; border-radius:10px;
+    box-shadow:0 10px 34px rgba(19,26,36,.16); transition:.25s; opacity:0; z-index:99; font-size:13.5px; }
+  .thongbao.hien { transform:translateX(-50%); opacity:1; }
+  .thongbao.loi { border-color:var(--do); color:#b91c1c; }
+  .thongbao.ok { border-color:var(--luc); color:#046c50; }
+  .man { position:fixed; inset:0; background:rgba(19,26,36,.42); backdrop-filter:blur(2px);
+    display:grid; place-items:center; z-index:100; }
+  .hop { background:#fff; border:1px solid var(--vien); border-radius:14px; padding:22px;
+    width:min(620px,92vw); box-shadow:0 24px 60px rgba(19,26,36,.22); }
+  .hop h3 { margin:0 0 12px; font-size:16px; }
+  .hop pre { background:var(--nen3); padding:11px; border-radius:8px; font-size:11.5px; max-height:260px;
+    overflow:auto; color:#3f4a58; white-space:pre-wrap; margin:10px 0 0; }
+  .cuoi { display:flex; gap:8px; justify-content:flex-end; margin-top:16px; }
+  .tienDo { height:5px; background:var(--nen3); border-radius:3px; overflow:hidden; margin-top:9px; }
+  .tienDo i { display:block; height:100%; background:var(--xanh); width:0; transition:.2s; }
+
+  /* Dong canh bao o trang tong quan */
+  .dong-canh { display:flex; gap:10px; align-items:flex-start; padding:9px 2px; border-bottom:1px solid var(--vien); font-size:13px; }
+  .dong-canh:last-child { border-bottom:none; }
+  .dong-canh b, .dong-canh .ten-pm { width:150px; flex-shrink:0; }
+  .dong-canh span.chu { flex:1; min-width:0; line-height:1.55; }
+  .o-tim-kh { width:300px; }
+
+  /* Muc Dien thoai */
+  .dt-qr { display:flex; gap:22px; align-items:flex-start; flex-wrap:wrap; }
+  .dt-qr img { width:220px; height:220px; border:1px solid var(--vien); border-radius:12px; padding:8px; background:#fff; image-rendering:pixelated; }
+  .dt-qr ol { margin:0; padding-left:20px; line-height:1.9; font-size:13.5px; }
+  .gat { position:relative; width:46px; height:27px; border-radius:20px; border:none; background:#c3cddb; transition:.18s; flex-shrink:0; padding:0; }
+  .gat::after { content:''; position:absolute; top:3px; left:3px; width:21px; height:21px; border-radius:50%; background:#fff; transition:.18s; box-shadow:0 1px 3px rgba(0,0,0,.25); }
+  .gat.bat { background:var(--luc); }
+  .gat.bat::after { left:22px; }
+
+  /* The khach / don tren man hinh nho */
+  .the-kh { border:1px solid var(--vien); border-radius:12px; padding:12px 13px; margin-bottom:9px; background:#fff; }
+  .the-kh.khoa { background:#fef2f2; }
+  .the-kh .dau { display:flex; gap:8px; align-items:baseline; }
+  .the-kh .dau b { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:15px; }
+  .the-kh .dau .du { font-weight:600; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .the-kh small { display:block; color:var(--mo); font-size:12.5px; margin-top:3px; line-height:1.5; word-break:break-word; }
+  .the-kh .hang-nut { display:flex; gap:8px; margin-top:10px; }
+  .the-kh .hang-nut .nut { flex:1; }
+
+  /* Bang bao mat ket noi voi may Mac (chi co khi mo tu dien thoai) */
+  #bang-mat { display:none; position:fixed; top:0; left:0; right:0; z-index:200; background:#b91c1c; color:#fff;
+    padding:calc(9px + env(safe-area-inset-top)) 14px 9px; font-size:13.5px; text-align:center; line-height:1.5; }
+  #bang-mat.hien { display:block; }
+
+  /* Man nhap mat khau (chi co khi mo tu dien thoai) */
+  #man-khoa { position:fixed; inset:0; z-index:300; background:#12203a; color:#e6edf8; display:none;
+    align-items:center; justify-content:center; padding:24px; text-align:center; }
+  #man-khoa.hien { display:flex; }
+  #man-khoa .trong-khoa { width:100%; max-width:340px; }
+  #man-khoa h2 { font-size:19px; margin:12px 0 8px; }
+  #man-khoa p { font-size:14px; color:#a9bad6; line-height:1.6; margin:0 0 18px; }
+  #man-khoa input { text-align:center; font-size:18px; padding:13px; border-radius:12px; border:none; }
+  #man-khoa button { width:100%; margin-top:12px; padding:13px; border:none; border-radius:12px; background:var(--xanh);
+    color:#fff; font-size:15.5px; font-weight:600; }
+  #man-khoa .loi-khoa { min-height:20px; margin-top:12px; font-size:13.5px; color:#fca5a5; }
+
+  .nut-menu, .lop-mo, .chi-dd { display:none; }
+
+  /* ================= Man hinh dien thoai ================= */
+  @media (max-width:760px) {
+    body { flex-direction:column; height:100dvh; font-size:15px; }
+    input, textarea, select { font-size:16px; }   /* nho hon 16px la iPhone tu phong to khi bam vao o */
+    nav { position:fixed; top:0; bottom:0; left:0; width:270px; z-index:60; transform:translateX(-105%);
+      transition:transform .22s; padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom); overflow-y:auto; }
+    body.mo-menu nav { transform:none; box-shadow:0 0 60px rgba(0,0,0,.45); }
+    body.mo-menu .lop-mo { display:block; position:fixed; inset:0; background:rgba(15,23,42,.45); z-index:55; }
+    nav .m { padding:13px 18px; font-size:15px; }
+    nav .day button { padding:12px; font-size:14.5px; }
+    .nut-menu { display:inline-flex; align-items:center; justify-content:center; width:40px; height:38px; font-size:19px;
+      border:1px solid var(--vien); border-radius:9px; background:#fff; color:var(--chu); flex-shrink:0; }
+    .chi-dd { display:inline-block; }
+    .an-dd { display:none !important; }
+
+    main { order:1; flex:1; min-height:0; }
+    aside { order:2; width:100%; flex:1; min-height:0; border-right:none; }
+    body.co-ds:not(.dang-sua) main { flex:0 0 auto; }
+    body.co-ds:not(.dang-sua) main .than { display:none; }
+    body.co-ds.dang-sua aside { display:none; }
+    .muc { padding:12px 12px; }
+    .muc b { font-size:14.5px; }
+    .muc small { font-size:12.5px; }
+    .day-ds { padding-bottom:calc(12px + env(safe-area-inset-bottom)); }
+
+    .thanh { flex-wrap:wrap; padding:9px 12px; }
+    .thanh .ten { font-size:15.5px; }
+    #nut-phu { display:flex; gap:6px; flex-wrap:wrap; }
+    #nut-phu:not(:empty) { width:100%; }
+    #nut-phu .nut { padding:8px 11px; font-size:13px; }
+    #nut-phu .nut.chinh { margin-left:auto; padding:8px 20px; }
+    .than { padding:14px 12px calc(46px + env(safe-area-inset-bottom)); -webkit-overflow-scrolling:touch; }
+    .nut { padding:10px 14px; font-size:14px; }
+    .nut.nho { padding:7px 11px; font-size:13px; }
+    .luoi, .luoi3 { grid-template-columns:1fr; gap:0; margin-bottom:0; }
+    .the-so { grid-template-columns:1fr 1fr; gap:8px; }
+    .the-so div { padding:11px 12px; }
+    .the-so b { font-size:18px; }
+    .khoi { padding:14px 13px; }
+    textarea.noidung { min-height:300px; font-size:15px; }
+    .congcu button { padding:8px 11px; font-size:13px; }
+
+    /* Bang rong: vuot ngang thay vi bop chu */
+    .than table { display:block; overflow-x:auto; white-space:nowrap; -webkit-overflow-scrolling:touch; }
+    .than table.xuong-dong { display:table; white-space:normal; }
+    .than table.xuong-dong td { width:auto !important; word-break:break-word; }
+    .dong-canh { flex-wrap:wrap; }
+    .dong-canh b, .dong-canh .ten-pm { width:100%; }
+    .o-tim-kh { width:auto; flex:1 1 0; min-width:0; order:5; }
+    .kh-nut-tim { order:6; }
+    .kh-tu-cn { order:7; flex:1 1 100%; }
+    .kh-dem { display:none; }
+    .hop { padding:18px 16px; max-height:88dvh; overflow-y:auto; }
+    .cuoi .nut, .hop .nut { flex:1; }
+    .thongbao { left:12px; right:12px; bottom:calc(18px + env(safe-area-inset-bottom)); transform:translateY(90px); text-align:center; }
+    .thongbao.hien { transform:none; }
+    .dt-qr img { width:180px; height:180px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="hieu"><b>Quản lý website</b><small id="tt-web">phanmemtq.com</small></div>
+  <div class="m chon" id="mn-tong-quan" onclick="moTrang('tong-quan')"><i>📊</i>Tổng quan<span class="so" id="so-canh"></span></div>
+  <div class="m" id="mn-bai-viet" onclick="moTrang('bai-viet')"><i>📝</i>Bài viết<span class="so" id="so-bai"></span></div>
+  <div class="m" id="mn-phan-mem" onclick="moTrang('phan-mem')"><i>📦</i>Phần mềm<span class="so" id="so-pm"></span></div>
+  <div class="m" id="mn-phat-hanh" onclick="moTrang('phat-hanh')"><i>🚀</i>Phát hành</div>
+  <div class="m" id="mn-khach-hang" onclick="moTrang('khach-hang')"><i>👤</i>Khách hàng<span class="so" id="so-khach"></span></div>
+  <div class="m" id="mn-lien-ket" onclick="moTrang('lien-ket')"><i>🔗</i>Ví &amp; liên kết</div>
+  <div class="m" id="mn-thong-ke" onclick="moTrang('thong-ke')"><i>📈</i>Thống kê</div>
+  <div class="m" id="mn-cau-hinh" onclick="moTrang('cau-hinh')"><i>⚙️</i>Cấu hình</div>
+  <div class="m" id="mn-dien-thoai" onclick="moTrang('dien-thoai')"><i>📱</i>Điện thoại<span class="so" id="so-dt" style="display:none"></span></div>
+  <div class="day">
+    <button onclick="moDang()">Đăng lên web</button>
+    <p id="tt-git">Đang kiểm tra…</p>
+  </div>
+</nav>
+
+<aside id="cot-ds" class="an">
+  <div class="tim"><input id="o-tim" placeholder="Tìm nhanh…" oninput="veDanhSach()" /></div>
+  <div class="ds" id="ds"></div>
+  <div class="day-ds"><button class="nut chinh" style="width:100%" onclick="mucMoi()" id="nut-them">+ Thêm mới</button></div>
+</aside>
+
+<div class="lop-mo" onclick="document.body.classList.remove('mo-menu')"></div>
+<div id="bang-mat"></div>
+<div id="man-khoa"><div class="trong-khoa">
+  <div style="font-size:46px">🔐</div>
+  <h2>Quản lý website</h2>
+  <p id="khoa-chu">Nhập mật khẩu điện thoại đã đặt trong app trên máy Mac.</p>
+  <div id="khoa-o">
+    <input id="khoa-mk" type="password" autocomplete="current-password" placeholder="Mật khẩu" onkeydown="if(event.key==='Enter') moKhoaDt()" />
+    <button onclick="moKhoaDt()" id="khoa-nut">Mở khoá</button>
+  </div>
+  <div class="loi-khoa" id="khoa-loi"></div>
+</div></div>
+
+<main>
+  <div class="thanh">
+    <button class="nut-menu" onclick="document.body.classList.toggle('mo-menu')" aria-label="Mở menu">☰</button>
+    <span class="ten" id="ten-trang">Tổng quan</span>
+    <span id="nut-phu"></span>
+  </div>
+  <div class="than" id="than"><div class="trong">Đang nạp…</div></div>
+</main>
+
+<div class="thongbao" id="tb"></div>
+
+<script>
+const CHUYEN_MUC = {
+  'cap-nhat':{ten:'Cập nhật',mau:'#2563eb'}, 'huong-dan':{ten:'Hướng dẫn',mau:'#059669'},
+  'thu-thuat':{ten:'Thủ thuật',mau:'#d97706'}, 'tin-tuc':{ten:'Tin tức',mau:'#7c3aed'},
+};
+const KENH = [
+  { ma:'mac',     ten:'macOS',   link:'linkTaiMac',     ep:'banToiThieuMac', nhan:/mac/i },
+  { ma:'windows', ten:'Windows', link:'linkTaiWin',     ep:'banToiThieuWin', nhan:/win/i },
+  { ma:'ios',     ten:'iPhone',  link:'linkTaiIOS',     ep:'banToiThieuIOS', nhan:/ios|iphone|ipad/i },
+  { ma:'android', ten:'Android', link:'linkTaiAndroid', ep:null,             nhan:/android/i },
+];
+const coNenTang=(dsNenTang,k)=>(dsNenTang||[]).some(x=>k.nhan.test(String(x)));
+const CONG_WEB = 4322;
+
+let TRANG='tong-quan', LOAI='bai-viet', DULIEU={baiViet:[],phanMem:[]}, DANGCHON=null, IDCU=null;
+
+const $=(id)=>document.getElementById(id);
+const esc=(v)=>String(v??'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const homNay=()=>new Date().toISOString().slice(0,10);
+function bao(t,kieu=''){ const e=$('tb'); e.textContent=t; e.className='thongbao hien '+kieu;
+  clearTimeout(e._t); e._t=setTimeout(()=>e.className='thongbao',3600); }
+// Trang dang mo tu dien thoai qua may chu chuyen tiep, khong phai ngay tren may Mac
+const TU_XA = !['localhost','127.0.0.1'].includes(location.hostname);
+const laDiDong=()=>matchMedia('(max-width:760px)').matches;
+
+// Phien dang nhap bang mat khau dien thoai. localStorage co the bi chan (duyet rieng tu) → giu tam trong bien
+let PHIEN_TAM='';
+function docPhien(){ try{ return localStorage.getItem('qlPhien')||PHIEN_TAM; }catch{ return PHIEN_TAM; } }
+function ghiPhien(p){ PHIEN_TAM=p; try{ p?localStorage.setItem('qlPhien',p):localStorage.removeItem('qlPhien'); }catch{} }
+const dauPhien=()=> TU_XA&&docPhien() ? {'X-Phien':docPhien()} : {};
+
+async function layJson(d,tuyChon){
+  const tc={...(tuyChon||{}), headers:{...((tuyChon||{}).headers||{}), ...dauPhien()}};
+  const r=await fetch(d,tc);
+  const j=await r.json();
+  if(TU_XA && j && (j.macMat||j.saiMa)){ baoMatMac(j); throw new Error(j.loi||'Mất kết nối với máy Mac'); }
+  if(TU_XA && j && j.canMatKhau){ hienManKhoa(j); throw new Error(j.loi||'Cần nhập mật khẩu'); }
+  return j;
+}
+
+// ---- Man nhap mat khau ----
+function hienManKhoa(j){
+  $('man-khoa').classList.add('hien');
+  $('khoa-o').style.display = j&&j.chuaDat ? 'none' : '';
+  $('khoa-chu').innerHTML = j&&j.chuaDat
+    ? 'Chưa đặt mật khẩu điện thoại.<br>Mở app <b>Quản Lý Website</b> trên Mac → mục <b>📱 Điện thoại</b> → đặt mật khẩu, rồi tải lại trang này.'
+    : 'Nhập mật khẩu điện thoại đã đặt trong app trên máy Mac.';
+  if(!(j&&j.chuaDat)) setTimeout(()=>$('khoa-mk').focus(),80);
+}
+let DANG_MO_KHOA=false;
+async function moKhoaDt(){
+  if(DANG_MO_KHOA) return;
+  const mk=$('khoa-mk').value; if(!mk) return;
+  DANG_MO_KHOA=true; $('khoa-nut').textContent='Đang kiểm…'; $('khoa-loi').textContent='';
+  try{
+    const r=await fetch('/api/mo-khoa',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({matKhau:mk})});
+    const j=await r.json();
+    if(j.ok&&j.phien){
+      ghiPhien(j.phien); $('khoa-mk').value=''; $('man-khoa').classList.remove('hien');
+      await nap(); moTrang(TRANG);
+    } else $('khoa-loi').textContent=j.loi||'Không mở được';
+  }catch{ $('khoa-loi').textContent='Không nối được máy Mac'; }
+  DANG_MO_KHOA=false; $('khoa-nut').textContent='Mở khoá';
+}
+
+// ---- Mat ket noi voi may Mac (chi khi mo tu dien thoai) ----
+let DONGHO_MAT=null;
+function baoMatMac(j){
+  const b=$('bang-mat');
+  if(j.saiMa){ b.textContent='🔒 Mã ghép đã đổi. Quét lại mã QR trong app Quản Lý Website trên máy Mac.'; b.className='hien'; return; }
+  b.textContent='💤 Mất kết nối với máy Mac — đang thử lại…'; b.className='hien';
+  if(DONGHO_MAT) return;
+  DONGHO_MAT=setInterval(async()=>{
+    try{
+      const r=await fetch('/api/gh',{headers:dauPhien()}); const k=await r.json();
+      if(k.macMat||k.saiMa) return;
+    }catch{ return; }
+    clearInterval(DONGHO_MAT); DONGHO_MAT=null; b.className='';
+    // Dang go do bai thi de yen, khong ve lai ke mat chu
+    if(!document.body.classList.contains('dang-sua')){ nap(); moTrang(TRANG); }
+    bao('Đã nối lại với máy Mac','ok');
+  },5000);
+}
+const guiJson=(d,than)=>layJson(d,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(than||{})});
+
+// So phien ban doc tu ten tep trong link tai
+function soTuLink(link){
+  if(!link) return null;
+  const ten=String(link).split('/').pop()||'';
+  const m=ten.match(/([0-9]+(?:\.[0-9]+)+)/);
+  return m?m[1]:null;
+}
+function soSanhBan(a,b){
+  const p=(x)=>String(x||'0').split('.').map(n=>Number(n)||0);
+  const A=p(a),B=p(b);
+  for(let i=0;i<Math.max(A.length,B.length);i++){ const x=A[i]||0,y=B[i]||0; if(x!==y) return x>y?1:-1; }
+  return 0;
+}
+
+// ================= Dieu huong =================
+const TEN_TRANG = { 'tong-quan':'Tổng quan', 'bai-viet':'Bài viết', 'phan-mem':'Phần mềm',
+  'phat-hanh':'Phát hành và ép cập nhật', 'khach-hang':'Khách hàng đăng ký và mua key',
+  'lien-ket':'Ví và liên kết tải',
+  'thong-ke':'Thống kê', 'cau-hinh':'Cấu hình website', 'dien-thoai':'Quản lý trên điện thoại' };
+
+function moTrang(t){
+  if(t!=='khach-hang') tatTuCapNhat();
+  if(t!=='dien-thoai') tatDongHoDt();
+  TRANG=t; DANGCHON=null; IDCU=null;
+  document.body.classList.remove('dang-sua','mo-menu');
+  document.body.classList.toggle('co-ds', t==='bai-viet'||t==='phan-mem');
+  for(const k of Object.keys(TEN_TRANG)) $('mn-'+k).classList.toggle('chon',k===t);
+  $('ten-trang').textContent=TEN_TRANG[t];
+  $('nut-phu').innerHTML='';
+  const coDs = (t==='bai-viet'||t==='phan-mem');
+  $('cot-ds').classList.toggle('an',!coDs);
+  if(coDs){
+    LOAI=t;
+    $('nut-them').textContent = t==='bai-viet' ? '+ Viết bài mới' : '+ Thêm phần mềm';
+    veDanhSach();
+    $('than').innerHTML=`<div class="trong"><div><div style="font-size:40px;margin-bottom:10px">${t==='bai-viet'?'📝':'📦'}</div>
+      Chọn một mục bên trái để sửa,<br />hoặc bấm <b>${t==='bai-viet'?'Viết bài mới':'Thêm phần mềm'}</b>.</div></div>`;
+    return;
+  }
+  if(t==='tong-quan') veTongQuan();
+  if(t==='phat-hanh') vePhatHanh();
+  if(t==='khach-hang') veKhachHang();
+  if(t==='lien-ket') veLienKet();
+  if(t==='thong-ke') veThongKe();
+  if(t==='cau-hinh') veCauHinh();
+  if(t==='dien-thoai') veDienThoai();
+}
+
+// Man hinh nho: tu bieu mau quay ve danh sach
+function veLaiDs(){
+  document.body.classList.remove('dang-sua');
+  DANGCHON=null; IDCU=null; veDanhSach();
+  $('ten-trang').textContent=TEN_TRANG[TRANG]; $('nut-phu').innerHTML='';
+}
+
+async function nap(){
+  DULIEU=await layJson('/api/danh-sach');
+  $('so-bai').textContent=DULIEU.baiViet.length;
+  $('so-pm').textContent=DULIEU.phanMem.length;
+  if(TRANG==='bai-viet'||TRANG==='phan-mem') veDanhSach();
+  kiemTraGit();
+}
+
+async function kiemTraGit(){
+  try{
+    const g=await layJson('/api/tong-quan');
+    let chu,mau;
+    if(g.thayDoi.length){ chu=`${g.thayDoi.length} thay đổi chưa đăng`; mau='#fbbf24'; }
+    else if(g.chuaDay>0){ chu=`${g.chuaDay} lần sửa chờ đẩy lên mạng`; mau='#fbbf24'; }
+    else if(g.chuaDay<0){ chu='Chưa nối được GitHub'; mau='#fca5a5'; }
+    else { chu='Đã đăng hết lên web'; mau='#86efac'; }
+    $('tt-git').textContent=chu; $('tt-git').style.color=mau;
+    const nang=g.canhBao.filter(c=>c.muc==='nang').length;
+    $('so-canh').textContent = nang ? nang : '';
+    $('so-canh').style.background = nang ? '#dc2626' : 'rgba(255,255,255,.14)';
+    return g;
+  }catch{ $('tt-git').textContent='Không đọc được git'; return null; }
+}
+
+// ================= Trang tong quan =================
+async function veTongQuan(){
+  $('than').innerHTML='<div class="trong">Đang xem lại website…</div>';
+  const g=await layJson('/api/tong-quan');
+  const nang=g.canhBao.filter(c=>c.muc==='nang');
+  const nhe=g.canhBao.filter(c=>c.muc==='nhe');
+
+  let html = `<div class="the-so">
+    <div><b>${g.soBai}</b><small>bài viết</small></div>
+    <div><b>${g.soPhanMem}</b><small>phần mềm${g.soAn?` (${g.soAn} đang ẩn)`:''}</small></div>
+    <div><b style="color:${g.thayDoi.length||g.chuaDay>0?'#d97706':'#059669'}">${g.thayDoi.length}</b><small>thay đổi chưa lưu vào git</small></div>
+    <div><b style="color:${g.chuaDay>0?'#d97706':'#059669'}">${g.chuaDay<0?'?':g.chuaDay}</b><small>lần sửa chờ đẩy lên mạng</small></div>
+  </div>`;
+
+  if(nang.length){
+    html += `<div class="khoi"><h3><span style="margin-right:5px">⛔</span>Phải sửa trước khi đăng</h3>
+      <p class="mota">Những lỗi này làm khách bị khoá app mà không tải được bản mới.</p>
+      ${nang.map(c=>`<div class="dong-canh"><b>${esc(c.ten)}</b><span class="chu">${esc(c.chu)}</span>
+        <button class="nut nho" onclick="moPhanMem('${c.ma}')">Sửa</button></div>`).join('')}</div>`;
+  } else {
+    html += `<div class="canh luc">Không thấy lỗi nào về ép cập nhật và link tải.</div>`;
+  }
+
+  if(g.lechLienKet.length){
+    html += `<div class="khoi"><h3><span style="margin-right:5px">🔗</span>Link trong máy chủ ví đã cũ</h3>
+      <p class="mota">Nút tải trên website lấy link từ máy chủ ví. ${g.lechLienKet.length} link đang lệch so với bài phần mềm,
+      khách bấm tải sẽ ra bản cũ hoặc không ra gì. Sang mục <b>Ví và liên kết</b> để đẩy lại.</p>
+      <button class="nut chinh" onclick="moTrang('lien-ket')">Mở mục Ví và liên kết</button></div>`;
+  }
+
+  if(nhe.length){
+    html += `<div class="khoi"><h3><span style="margin-right:5px">💬</span>Nhắc nhẹ</h3>${nhe.map(c=>
+      `<div class="dong-canh"><span class="ten-pm">${esc(c.ten)}</span><span class="chu" style="color:var(--mo)">${esc(c.chu)}</span>
+       <button class="nut nho" onclick="moPhanMem('${c.ma}')">Sửa</button></div>`).join('')}</div>`;
+  }
+
+  html += `<div class="khoi"><h3><span style="margin-right:5px">🛠</span>Lần dựng web gần đây trên GitHub</h3><div id="k-dung">Đang hỏi GitHub…</div></div>`;
+  if(g.lanCuoi) html += `<div class="canh xanh">Lần sửa cuối trong git: ${esc(g.lanCuoi.replace('|',' — '))}</div>`;
+  $('than').innerHTML=html;
+
+  const d=await layJson('/api/lan-dung');
+  $('k-dung').innerHTML = !d.co ? '<span style="color:var(--mo)">Không hỏi được GitHub (chưa cài hoặc chưa đăng nhập gh).</span>'
+    : `<table><thead><tr><th>Nội dung</th><th>Lúc</th><th>Kết quả</th></tr></thead><tbody>${d.ds.map(r=>{
+        const xong=r.status==='completed';
+        const ok=r.conclusion==='success';
+        return `<tr><td>${esc(r.displayTitle)}</td><td style="color:var(--mo)">${new Date(r.createdAt).toLocaleString('vi-VN')}</td>
+          <td><span class="nhan ${!xong?'cho':ok?'ok':'loi'}">${!xong?'đang chạy':ok?'xong':'hỏng'}</span></td></tr>`;
+      }).join('')}</tbody></table>`;
+}
+
+function moPhanMem(ma){ moTrang('phan-mem'); setTimeout(()=>moMuc(ma),60); }
+
+// ================= Danh sach ben trai =================
+function veDanhSach(){
+  const tim=($('o-tim').value||'').toLowerCase();
+  const ds=(LOAI==='bai-viet'?DULIEU.baiViet:DULIEU.phanMem)
+    .filter(x=>((x.tieuDe||x.ten||'')+' '+(x.moTa||'')).toLowerCase().includes(tim));
+  $('ds').innerHTML = ds.map(x=>{
+    const cm=CHUYEN_MUC[x.chuyenMuc];
+    const phu = LOAI==='bai-viet'
+      ? `<span class="cham" style="background:${cm?cm.mau:'#666'}"></span>${x.ghim?'📌 ':''}${cm?cm.ten:''} · ${x.ngayDang||''}${x.video?' · 🎬':''}`
+      : `${x.an?'🙈 ẩn · ':''}${(x.nenTang||[]).join(', ')} · v${x.phienBan||'?'}`;
+    return `<div class="muc ${DANGCHON===x.id?'chon':''}" onclick="moMuc('${x.id}')">
+      <b>${esc(x.tieuDe||x.ten||x.id)}</b><small>${phu}</small></div>`;
+  }).join('') || '<div style="padding:16px;color:var(--mo);font-size:13px">Chưa có mục nào.</div>';
+}
+
+async function moMuc(id){
+  DANGCHON=id; IDCU=id; veDanhSach();
+  const r=await layJson(`/api/bai?id=${encodeURIComponent(id)}&loai=${LOAI}`);
+  if(r.loi) return bao(r.loi,'loi');
+  veForm(r.data,r.noiDung,id);
+}
+function mucMoi(){
+  DANGCHON=null; IDCU=null; veDanhSach();
+  if(LOAI==='bai-viet') veForm({tieuDe:'',moTa:'',ngayDang:homNay(),chuyenMuc:'huong-dan',tags:[],noiBat:false,ghim:false},'',null);
+  else veForm({ten:'',moTa:'',nenTang:['macOS'],phienBan:'1.0',ngayCapNhat:homNay(),icon:'📦',mauNen:'#2563eb',thuTu:9,gia:''},'',null);
+}
+
+// ================= Bieu mau bai viet / phan mem =================
+function o(nhan,html,goiy){ return `<div class="o"><label>${nhan}</label>${html}${goiy?`<div class="goiy">${goiy}</div>`:''}</div>`; }
+
+function nutForm(moi){
+  return `<button class="nut chi-dd" onclick="veLaiDs()">← Danh sách</button>
+     <button class="nut" onclick="xemThu()" ${moi?'disabled':''}>${TU_XA?'Xem trên web':'Xem thử'}</button>
+     <button class="nut do" onclick="xoaMuc()" ${moi?'disabled':''}>Xoá</button>
+     <button class="nut chinh" onclick="luuMuc()">Lưu</button>`;
+}
+
+function veForm(d,noiDung,id){
+  const moi=!id;
+  $('ten-trang').textContent = moi ? (LOAI==='bai-viet'?'Bài viết mới':'Phần mềm mới') : id;
+  $('nut-phu').innerHTML = nutForm(moi);
+  document.body.classList.add('dang-sua');
+  const dsPM=DULIEU.phanMem.map(p=>`<option value="${p.id}" ${d.thuocPhanMem===p.id?'selected':''}>${esc(p.ten)}</option>`).join('');
+
+  let html='';
+  if(LOAI==='bai-viet'){
+    html = o('Tiêu đề bài viết',`<input id="f-tieuDe" value="${esc(d.tieuDe)}" placeholder="Ví dụ: Hướng dẫn cài phần mềm trên Mac" />`)
+    + o('Mô tả ngắn',`<textarea id="f-moTa" rows="2" placeholder="1–2 câu, hiện ở trang danh sách và trên Google">${esc(d.moTa)}</textarea>`)
+    + `<div class="luoi">`
+      + o('Chuyên mục',`<select id="f-chuyenMuc">${Object.entries(CHUYEN_MUC).map(([k,v])=>`<option value="${k}" ${d.chuyenMuc===k?'selected':''}>${v.ten}</option>`).join('')}</select>`)
+      + o('Ngày đăng',`<input id="f-ngayDang" type="date" value="${esc(d.ngayDang).slice(0,10)}" />`)
+    + `</div><div class="luoi">`
+      + o('Thuộc phần mềm nào',`<select id="f-thuocPhanMem"><option value="">— Không thuộc phần mềm nào —</option>${dsPM}</select>`)
+      + o('Từ khoá',`<input id="f-tags" value="${esc((d.tags||[]).join(', '))}" placeholder="cách nhau bằng dấu phẩy" />`)
+    + `</div>`
+    + `<div class="o" style="display:flex;gap:22px;flex-wrap:wrap">
+        <label class="hopchon"><input type="checkbox" id="f-ghim" ${d.ghim?'checked':''} /> 📌 Ghim lên đầu danh sách</label>
+        <label class="hopchon"><input type="checkbox" id="f-noiBat" ${d.noiBat?'checked':''} /> Đánh dấu bài nổi bật</label>
+      </div>`
+    + khungVideo(d.video) + khungAnh(d.anh) + khungNoiDung(noiDung,'Nội dung bài viết');
+  } else {
+    html = o('Tên phần mềm',`<input id="f-ten" value="${esc(d.ten)}" />`)
+    + o('Mô tả ngắn',`<textarea id="f-moTa" rows="2">${esc(d.moTa)}</textarea>`)
+    + `<div class="luoi3">`
+      + o('Nền tảng',`<input id="f-nenTang" value="${esc((d.nenTang||[]).join(', '))}" placeholder="macOS, Windows, iOS" />`)
+      + o('Phiên bản đang bán',`<input id="f-phienBan" value="${esc(d.phienBan)}" />`)
+      + o('Ngày cập nhật',`<input id="f-ngayCapNhat" type="date" value="${esc(d.ngayCapNhat).slice(0,10)}" />`)
+    + `</div><div class="luoi3">`
+      + o('Giá bán',`<input id="f-gia" value="${esc(d.gia)}" placeholder="Ví dụ: 500.000đ / vĩnh viễn" />`)
+      + o('Dung lượng file',`<input id="f-dungLuong" value="${esc(d.dungLuong)}" placeholder="khoảng 135 MB" />`)
+      + o('Thứ tự hiển thị',`<input id="f-thuTu" type="number" value="${d.thuTu??9}" />`)
+    + `</div>`
+    + `<div class="o" style="display:flex;gap:22px;flex-wrap:wrap">
+        <label class="hopchon"><input type="checkbox" id="f-mienPhi" ${d.mienPhi?'checked':''} /> Phát miễn phí</label>
+        <label class="hopchon"><input type="checkbox" id="f-noiBat" ${d.noiBat?'checked':''} /> Nổi bật ở trang chủ</label>
+        <label class="hopchon"><input type="checkbox" id="f-an" ${d.an?'checked':''} /> 🙈 Ẩn khỏi website (vẫn giữ trong phien-ban.json)</label>
+      </div>`
+    + `<div class="canh vang">Chỉ ẩn, đừng xoá phần mềm đã giao cho khách. App trên máy khách vẫn hỏi vào đây để biết có bản mới.</div>`
+
+    + `<div class="khoi"><h3>Bắt khách cập nhật</h3>
+       <p class="mota">Máy khách chạy bản cũ hơn số ghi ở đây sẽ bị khoá, phải tải bản mới mới dùng tiếp được.
+       Điền theo từng hệ điều hành, vì bản Windows và bản Mac thường ra lệch ngày nhau.</p>`
+      + `<div class="luoi3">`
+        + o('macOS',`<input id="f-banToiThieuMac" value="${esc(d.banToiThieuMac)}" placeholder="để trống là không ép" />`)
+        + o('Windows',`<input id="f-banToiThieuWin" value="${esc(d.banToiThieuWin)}" placeholder="để trống là không ép" />`)
+        + o('iPhone / iPad',`<input id="f-banToiThieuIOS" value="${esc(d.banToiThieuIOS)}" placeholder="chờ TestFlight duyệt xong hãy điền" />`)
+      + `</div><div class="luoi">`
+        + o('Mức chung (bản cũ đọc ô này)',`<input id="f-banToiThieu" value="${esc(d.banToiThieu)}" placeholder="dùng khi ba ô trên để trống" />`)
+        + o('Ghi chú bản mới',`<input id="f-ghiChuCapNhat" value="${esc(d.ghiChuCapNhat)}" placeholder="Câu ngắn hiện trong bảng nhắc cập nhật" />`)
+      + `</div>`
+      + `<div id="soat-ep"></div></div>`
+
+    + `<div class="khoi"><h3>File tải về</h3>` + khungTaiPhanMem()
+    + `<div class="luoi">`
+      + o('Link tải cho macOS',`<input id="f-linkTaiMac" value="${esc(d.linkTaiMac)}" placeholder="https://… file .dmg" oninput="soatEp()" />`)
+      + o('Link tải cho Windows',`<input id="f-linkTaiWin" value="${esc(d.linkTaiWin)}" placeholder="https://… file .zip hoặc .exe" oninput="soatEp()" />`)
+    + `</div><div class="luoi">`
+      + o('Link tải cho iPhone / iPad',`<input id="f-linkTaiIOS" value="${esc(d.linkTaiIOS)}" placeholder="Link TestFlight" oninput="soatEp()" />`)
+      + o('Link tải cho Android',`<input id="f-linkTaiAndroid" value="${esc(d.linkTaiAndroid)}" placeholder="https://… file .apk" oninput="soatEp()" />`)
+    + `</div><div class="luoi">`
+      + o('Link tải chung',`<input id="f-linkTai" value="${esc(d.linkTai)}" placeholder="Dùng khi không chia theo hệ điều hành" />`)
+      + o('Link dự phòng',`<input id="f-linkTaiPhu" value="${esc(d.linkTaiPhu)}" placeholder="Link thứ hai nếu link chính chậm" />`)
+    + `</div><div class="luoi">`
+      + o('Gói cập nhật nhanh cho macOS',`<input id="f-linkGoiMac" value="${esc(d.linkGoiMac)}" placeholder="gói nhỏ ~300KB, có thì app hiện nút Cập nhật ngay" />`)
+      + o('Gói cập nhật nhanh cho Windows',`<input id="f-linkGoiWin" value="${esc(d.linkGoiWin)}" placeholder="để trống thì khách tải lại bản đầy đủ" />`)
+    + `</div>`
+    + o('Cộng thêm vào lượt tải',`<input id="f-luotTaiThem" type="number" value="${d.luotTaiThem??''}" placeholder="số bản đã phát tay ngoài website" />`)
+    + `</div>`
+
+    + `<div class="khoi"><h3>Hình ảnh và video</h3>`
+      + `<div class="luoi">`
+        + o('Biểu tượng (emoji)',`<input id="f-icon" value="${esc(d.icon)}" />`)
+        + o('Màu nền thẻ',`<input id="f-mauNen" value="${esc(d.mauNen)}" placeholder="#2563eb" />`)
+      + `</div>`
+      + o('Ảnh biểu tượng thật',`<input id="f-anhIcon" value="${esc(d.anhIcon)}" placeholder="/icon/ten-app.png" />`)
+      + khungAnh(d.anh)
+      + khungVideo(d.video)
+      + `<div class="luoi">`
+        + o('Tên video chính',`<input id="f-tenVideo" value="${esc(d.tenVideo)}" placeholder="Hướng dẫn cài đặt" />`)
+        + o('Video phụ',`<input id="f-videoPhu" value="${esc(d.videoPhu)}" placeholder="Link YouTube thứ hai" />`)
+      + `</div>`
+      + o('Tên video phụ',`<input id="f-tenVideoPhu" value="${esc(d.tenVideoPhu)}" placeholder="Hướng dẫn dùng nâng cao" />`)
+    + `</div>`
+    + khungNoiDung(noiDung,'Nội dung trang phần mềm');
+  }
+  $('than').innerHTML=html;
+  ganKeoTha();
+  if(LOAI==='phan-mem'){ ganTaiPhanMem(); soatEp(); }
+  xemLaiAnh(); xemLaiVideo();
+}
+
+// Nhac ngay tren bieu mau neu ep cap nhat vuot qua ban dang co link tai
+function soatEp(){
+  const k=$('soat-ep'); if(!k) return;
+  const canh=[];
+  for(const c of KENH){
+    if(!c.ep) continue;
+    const link=$('f-'+c.link)?.value.trim();
+    const muc=$('f-'+c.ep)?.value.trim() || $('f-banToiThieu')?.value.trim();
+    const so=soTuLink(link);
+    if(muc&&so&&soSanhBan(muc,so)>0) canh.push(`${c.ten}: ép lên ${muc} nhưng link tải mới có bản ${so}`);
+    const nenTang=($('f-nenTang')?.value||'').split(',');
+    if(muc&&!link&&coNenTang(nenTang,c)) canh.push(`${c.ten}: ép lên ${muc} nhưng chưa có link tải`);
+  }
+  k.innerHTML = canh.length
+    ? `<div class="canh do" style="margin:8px 0 0">⛔ ${canh.join('<br>')}<br><b>Khách sẽ bị khoá mà không tải được bản mới.</b></div>`
+    : `<div style="display:flex;gap:8px;margin-top:8px">
+         <button class="nut nho" type="button" onclick="epTheoLink()">Điền mức ép bằng đúng bản đang có link tải</button></div>`;
+}
+function epTheoLink(){
+  let dat=[];
+  for(const c of KENH){
+    if(!c.ep) continue;
+    const so=soTuLink($('f-'+c.link)?.value.trim());
+    if(so){ $('f-'+c.ep).value=so; dat.push(`${c.ten} → ${so}`); }
+  }
+  soatEp();
+  bao(dat.length?('Đã điền: '+dat.join(' · ')+'. Nhớ bấm Lưu.'):'Chưa link nào đọc được số phiên bản', dat.length?'ok':'loi');
+}
+
+function khungVideo(video){
+  return `<div class="o"><label>Video hướng dẫn</label>
+    <input id="f-video" value="${esc(video)}" placeholder="Dán link YouTube, hoặc tải file video lên bên dưới" oninput="xemLaiVideo()" />
+    <div class="goiy"><b>Nên dùng link YouTube</b> — dán vào ô trên là xong, không giới hạn dung lượng. Chỉ chọn file trực tiếp với video ngắn dưới 40 MB.</div>
+    <div id="keo-video" class="taile" style="margin-top:9px"><b>Bấm để chọn file video</b><br><small>hoặc kéo thả vào đây</small></div>
+    <div class="tienDo" id="td-video" style="display:none"><i></i></div>
+    <div id="xem-video"></div></div>`;
+}
+function khungAnh(anh){
+  return `<div class="o"><label>Ảnh bìa</label>
+    <input id="f-anh" value="${esc(anh)}" placeholder="/anh/ten-anh.jpg" oninput="xemLaiAnh()" />
+    <div id="keo-anh" class="taile" style="margin-top:9px"><b>Bấm để chọn ảnh</b><br><small>hoặc kéo thả vào đây</small></div>
+    <div class="tienDo" id="td-anh" style="display:none"><i></i></div>
+    <div id="xem-anh"></div></div>`;
+}
+function khungTaiPhanMem(){
+  if(TU_XA) return `<div class="canh xanh">Đẩy file cài đặt (.dmg, .exe, .apk) lên GitHub chỉ làm được ngay trên máy Mac.
+    Từ điện thoại vẫn sửa được link tải và mức ép cập nhật ở các ô bên dưới.</div>`;
+  return `<div class="o"><label>Đẩy file cài đặt lên GitHub</label>
+    <div id="keo-phanmem" class="taile taile-to">
+      <button type="button" id="nut-chon-phanmem" class="nut chinh" style="margin-bottom:9px">Chọn file trong máy…</button>
+      <small>hoặc kéo thả file vào đây</small>
+      <small style="font-size:11.5px;margin-top:5px;opacity:.85">.dmg cho Mac · .exe hoặc .zip cho Windows · .apk cho Android — tự điền vào đúng ô bên dưới</small>
+    </div>
+    <div class="tienDo" id="td-phanmem" style="display:none"><i></i></div>
+    <div id="tt-phanmem" class="goiy"></div></div>`;
+}
+function khungNoiDung(noiDung,nhan){
+  return `<div class="o"><label>${nhan}</label>
+    <div class="congcu">
+      <button type="button" onclick="chen('## ','','Đề mục lớn')">H2</button>
+      <button type="button" onclick="chen('### ','','Đề mục nhỏ')">H3</button>
+      <button type="button" onclick="chen('**','**','chữ đậm')">Đậm</button>
+      <button type="button" onclick="chen('- ','','mục')">Gạch đầu dòng</button>
+      <button type="button" onclick="chen('1. ','','bước 1')">Đánh số</button>
+      <button type="button" onclick="chen('> ','','ghi chú')">Ghi chú</button>
+      <button type="button" onclick="chenLink()">Chèn link</button>
+      <button type="button" onclick="chenAnhVao()">Chèn ảnh</button>
+      <button type="button" onclick="chen('\\n| Cột 1 | Cột 2 |\\n| --- | --- |\\n| a | b |\\n','','')">Bảng</button>
+      <button type="button" onclick="chen('\\n---\\n','','')">Đường kẻ</button>
+    </div>
+    <textarea id="f-noiDung" class="noidung" placeholder="Viết nội dung ở đây…">${esc(noiDung||'')}</textarea></div>`;
+}
+
+function chen(truoc,sau,mau){
+  const t=$('f-noiDung'); const a=t.selectionStart,b=t.selectionEnd;
+  const chon=t.value.slice(a,b)||mau;
+  t.value=t.value.slice(0,a)+truoc+chon+sau+t.value.slice(b);
+  t.focus(); t.selectionStart=a+truoc.length; t.selectionEnd=a+truoc.length+chon.length;
+}
+function chenLink(){ const u=prompt('Dán địa chỉ link:'); if(u) chen('[',`](${u})`,'chữ hiển thị'); }
+function chenAnhVao(){ const u=$('f-anh')?.value; if(!u) return bao('Tải ảnh lên trước đã','loi'); chen(`\n![Mô tả ảnh](${u})\n`,'',''); }
+
+function xemLaiVideo(){
+  const i=$('f-video'); const k=$('xem-video'); if(!i||!k) return;
+  const v=i.value.trim(); if(!v){ k.innerHTML=''; return; }
+  const yt=v.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/|live\/|v\/)|youtu\.be\/)([A-Za-z0-9_-]{6,})/);
+  k.innerHTML = yt ? `<iframe class="xemvideo" style="aspect-ratio:16/9;border:0" src="https://www.youtube-nocookie.com/embed/${yt[1]}"></iframe>`
+                   : `<video class="xemvideo" src="${v}" controls></video>`;
+}
+function xemLaiAnh(){ const i=$('f-anh'); const k=$('xem-anh'); if(!i||!k) return;
+  const v=i.value.trim(); k.innerHTML = v?`<img class="xemvideo" style="object-fit:contain" src="${v}" />`:''; }
+
+function ganKeoTha(){
+  ganMotO('keo-anh','anh','image/*','f-anh','td-anh',xemLaiAnh);
+  ganMotO('keo-video','video','video/*','f-video','td-video',xemLaiVideo);
+}
+function ganMotO(idO,loai,chapNhan,idInput,idTd,sauKhiXong){
+  const khung=$(idO); if(!khung) return;
+  const chon=document.createElement('input');
+  chon.type='file'; chon.accept=chapNhan; chon.style.display='none';
+  document.body.appendChild(chon);
+  chon.onchange=()=>{ if(chon.files[0]) taiLen(chon.files[0],loai,idInput,idTd,sauKhiXong); chon.value=''; };
+  khung.onclick=()=>chon.click();
+  khung.ondragover=(e)=>{e.preventDefault(); khung.classList.add('keo');};
+  khung.ondragleave=()=>khung.classList.remove('keo');
+  khung.ondrop=(e)=>{e.preventDefault(); khung.classList.remove('keo');
+    const f=e.dataTransfer.files[0]; if(f) taiLen(f,loai,idInput,idTd,sauKhiXong); };
+}
+function taiLen(tep,loai,idInput,idTd,xong){
+  const MB=tep.size/1048576;
+  if(loai==='video'&&MB>40) return bao(`Video ${MB.toFixed(0)} MB quá nặng, sẽ làm phình kho vĩnh viễn. Hãy tải lên YouTube rồi dán link vào ô trên.`,'loi');
+  const td=$(idTd); td.style.display='block'; const thanh=td.querySelector('i');
+  const xhr=new XMLHttpRequest();
+  xhr.open('PUT',`/api/tai-len?loai=${loai}&ten=${encodeURIComponent(tep.name)}`);
+  for(const [k,v] of Object.entries(dauPhien())) xhr.setRequestHeader(k,v);
+  xhr.upload.onprogress=(e)=>{ if(e.lengthComputable) thanh.style.width=(e.loaded/e.total*100)+'%'; };
+  xhr.onload=()=>{ td.style.display='none'; thanh.style.width='0';
+    try{ const r=JSON.parse(xhr.responseText);
+      if(r.url){ $(idInput).value=r.url; xong&&xong(); bao(`Đã tải lên (${MB.toFixed(1)}MB)`,'ok'); }
+      else bao(r.loi||'Tải lên thất bại','loi');
+    }catch{ bao('Tải lên thất bại','loi'); } };
+  xhr.onerror=()=>{ td.style.display='none'; bao('Tải lên thất bại','loi'); };
+  xhr.send(tep);
+}
+
+// ---- Day file cai dat len GitHub Releases ----
+const O_THEO_DUOI = {
+  '.dmg':{o:'f-linkTaiMac',ten:'macOS'}, '.pkg':{o:'f-linkTaiMac',ten:'macOS'},
+  '.exe':{o:'f-linkTaiWin',ten:'Windows'}, '.msi':{o:'f-linkTaiWin',ten:'Windows'},
+  '.apk':{o:'f-linkTaiAndroid',ten:'Android'},
+};
+const MAY = { mac:{o:'f-linkTaiMac',ten:'macOS'}, win:{o:'f-linkTaiWin',ten:'Windows'}, android:{o:'f-linkTaiAndroid',ten:'Android'} };
+function doanTheoTen(ten){
+  const t=ten.toLowerCase();
+  if(/win|windows|pc/.test(t)) return MAY.win;
+  if(/mac|macos|osx|darwin/.test(t)) return MAY.mac;
+  if(/android|apk/.test(t)) return MAY.android;
+  return null;
+}
+let TEP_CHO_CHON=null;
+function hoiChonMay(tep){
+  TEP_CHO_CHON=tep;
+  $('tt-phanmem').innerHTML=`File <b>${esc(tep.name)}</b> dùng cho máy nào?
+    <div style="display:flex;gap:6px;margin-top:8px">
+      <button class="nut nho" onclick="chonMay('mac')">MacBook / iMac</button>
+      <button class="nut nho" onclick="chonMay('win')">Máy tính Windows</button>
+      <button class="nut nho" onclick="chonMay('android')">Điện thoại Android</button>
+      <button class="nut nho" onclick="huyChonMay()">Huỷ</button></div>`;
+}
+function chonMay(k){ const tep=TEP_CHO_CHON; TEP_CHO_CHON=null; $('tt-phanmem').innerHTML=''; if(tep) taiPhanMem(tep,MAY[k]); }
+function huyChonMay(){ TEP_CHO_CHON=null; $('tt-phanmem').innerHTML=''; }
+
+function ganTaiPhanMem(){
+  const khung=$('keo-phanmem'); if(!khung) return;
+  const chon=document.createElement('input');
+  chon.type='file'; chon.accept='.dmg,.pkg,.exe,.msi,.apk,.zip'; chon.style.display='none';
+  document.body.appendChild(chon);
+  chon.onchange=()=>{ if(chon.files[0]) taiPhanMem(chon.files[0]); chon.value=''; };
+  const mo=(e)=>{ if(e) e.stopPropagation(); chon.click(); };
+  $('nut-chon-phanmem').onclick=mo; khung.onclick=mo;
+  khung.ondragover=(e)=>{e.preventDefault(); khung.classList.add('keo');};
+  khung.ondragleave=()=>khung.classList.remove('keo');
+  khung.ondrop=(e)=>{e.preventDefault(); khung.classList.remove('keo');
+    const f=e.dataTransfer.files[0]; if(f) taiPhanMem(f); };
+}
+
+async function taiPhanMem(tep,dichEp){
+  const duoi=(tep.name.match(/\.[^.]+$/)||[''])[0].toLowerCase();
+  let dich=dichEp||O_THEO_DUOI[duoi];
+  if(!dich){
+    dich=doanTheoTen(tep.name);
+    if(!dich){
+      if(duoi==='.zip'||duoi==='.rar'||duoi==='.7z') return hoiChonMay(tep);
+      return bao(`Không nhận ra loại file "${duoi}". Nhận .dmg .pkg .exe .msi .apk .zip`,'loi');
+    }
+  }
+  const phienBan=($('f-phienBan')?$('f-phienBan').value:'').trim();
+  if(!phienBan) return bao('Điền ô Phiên bản trước đã — file sẽ được phát hành theo số này','loi');
+  if(!DANGCHON) return bao('Lưu phần mềm này lại trước khi tải file lên','loi');
+  try{
+    const g=await layJson('/api/gh');
+    if(!g.coGh) return bao('Máy chưa có công cụ gh của GitHub','loi');
+    if(!g.daDangNhap) return bao('Chưa đăng nhập GitHub. Mở Terminal chạy: ~/bin/gh auth login','loi');
+  }catch{ return bao('Không kiểm tra được GitHub','loi'); }
+  const MB=tep.size/1048576;
+  if(MB>2048) return bao('File lớn hơn 2 GB, GitHub không nhận','loi');
+
+  const td=$('td-phanmem'); const thanh=td.querySelector('i'); const tt=$('tt-phanmem');
+  td.style.display='block';
+  tt.textContent=`Đang đẩy ${tep.name} (${MB.toFixed(1)} MB) lên bản phát hành ${DANGCHON}-${phienBan}…`;
+  const xhr=new XMLHttpRequest();
+  xhr.open('PUT',`/api/tai-phan-mem?ma=${encodeURIComponent(DANGCHON)}&phienBan=${encodeURIComponent(phienBan)}&ten=${encodeURIComponent(tep.name)}`);
+  xhr.upload.onprogress=(e)=>{ if(!e.lengthComputable) return;
+    const pt=e.loaded/e.total*100; thanh.style.width=pt+'%';
+    if(pt>=99.5) tt.textContent='Đã nhận đủ file, đang đẩy lên GitHub — chờ chút…'; };
+  xhr.onload=()=>{ td.style.display='none'; thanh.style.width='0';
+    let r={}; try{ r=JSON.parse(xhr.responseText); }catch{}
+    if(r.url){ $(dich.o).value=r.url; soatEp();
+      tt.innerHTML=`Xong. Link ${dich.ten} đã điền vào ô bên dưới. Nhớ bấm <b>Lưu</b>.`;
+      bao(`Đã phát hành ${tep.name} (${MB.toFixed(1)} MB)`,'ok');
+    } else { tt.textContent=''; bao(r.loi||'Đẩy lên thất bại','loi'); } };
+  xhr.onerror=()=>{ td.style.display='none'; tt.textContent=''; bao('Mất kết nối khi đang tải lên','loi'); };
+  xhr.timeout=30*60*1000;
+  xhr.ontimeout=()=>{ td.style.display='none'; tt.textContent=''; bao('Quá lâu, đã dừng','loi'); };
+  xhr.send(tep);
+}
+
+// ---- Luu, xoa, xem thu ----
+async function luuMuc(){
+  const g=(id)=>$(id)?$(id).value.trim():'';
+  const c=(id)=>$(id)?$(id).checked:false;
+  const s=(id)=>{ const v=g(id); return v?Number(v):undefined; };
+  let data,ten;
+  if(LOAI==='bai-viet'){
+    ten=g('f-tieuDe');
+    if(!ten) return bao('Chưa nhập tiêu đề','loi');
+    data={ tieuDe:ten, moTa:g('f-moTa'), ngayDang:g('f-ngayDang')||homNay(), chuyenMuc:g('f-chuyenMuc'),
+      thuocPhanMem:g('f-thuocPhanMem')||undefined, anh:g('f-anh')||undefined, video:g('f-video')||undefined,
+      tags:g('f-tags').split(',').map(x=>x.trim()).filter(Boolean),
+      noiBat:c('f-noiBat'), ghim:c('f-ghim') };
+  } else {
+    ten=g('f-ten');
+    if(!ten) return bao('Chưa nhập tên phần mềm','loi');
+    data={ ten, moTa:g('f-moTa'), nenTang:g('f-nenTang').split(',').map(x=>x.trim()).filter(Boolean),
+      phienBan:g('f-phienBan')||undefined,
+      banToiThieu:g('f-banToiThieu')||undefined, banToiThieuMac:g('f-banToiThieuMac')||undefined,
+      banToiThieuWin:g('f-banToiThieuWin')||undefined, banToiThieuIOS:g('f-banToiThieuIOS')||undefined,
+      ghiChuCapNhat:g('f-ghiChuCapNhat')||undefined, ngayCapNhat:g('f-ngayCapNhat')||homNay(),
+      gia:g('f-gia')||undefined, mienPhi:c('f-mienPhi'),
+      linkTai:g('f-linkTai')||undefined, linkTaiPhu:g('f-linkTaiPhu')||undefined,
+      linkTaiMac:g('f-linkTaiMac')||undefined, linkTaiWin:g('f-linkTaiWin')||undefined,
+      linkTaiIOS:g('f-linkTaiIOS')||undefined, linkTaiAndroid:g('f-linkTaiAndroid')||undefined,
+      linkGoiMac:g('f-linkGoiMac')||undefined, linkGoiWin:g('f-linkGoiWin')||undefined,
+      dungLuong:g('f-dungLuong')||undefined, luotTaiThem:s('f-luotTaiThem'),
+      anh:g('f-anh')||undefined, video:g('f-video')||undefined,
+      tenVideo:g('f-tenVideo')||undefined, videoPhu:g('f-videoPhu')||undefined, tenVideoPhu:g('f-tenVideoPhu')||undefined,
+      anhIcon:g('f-anhIcon')||undefined, icon:g('f-icon')||'📦', mauNen:g('f-mauNen')||'#2563eb',
+      noiBat:c('f-noiBat'), an:c('f-an'), thuTu:Number(g('f-thuTu'))||9 };
+  }
+  const r=await guiJson('/api/luu',{ id:DANGCHON, idCu:IDCU, loai:LOAI, data, noiDung:$('f-noiDung').value });
+  if(r.loi) return bao(r.loi,'loi');
+  DANGCHON=r.id; IDCU=r.id;
+  await nap();
+  $('ten-trang').textContent=r.id;
+  $('nut-phu').innerHTML=nutForm(false);
+  bao(TU_XA?'Đã lưu vào máy Mac. Bấm "Đăng lên web" trong menu ☰ để đưa lên mạng.':'Đã lưu vào máy. Bấm "Đăng lên web" để đưa lên mạng.','ok');
+}
+async function xoaMuc(){
+  if(!DANGCHON) return;
+  if(!confirm('Xoá hẳn mục này? Không khôi phục lại được.\n\nVới phần mềm đã giao cho khách, nên đánh dấu Ẩn thay vì xoá.')) return;
+  await guiJson('/api/xoa',{id:DANGCHON,loai:LOAI});
+  DANGCHON=null; IDCU=null; await nap();
+  moTrang(LOAI);
+  bao('Đã xoá','ok');
+}
+// Tu dien thoai khong voi toi duoc may chu xem thu tren Mac → mo trang that (ban da dang)
+function xemThu(){ if(DANGCHON) window.open(TU_XA?`https://phanmemtq.com/${LOAI}/${DANGCHON}/`:`http://localhost:${CONG_WEB}/${LOAI}/${DANGCHON}`,'_blank'); }
+
+// ================= Trang phat hanh =================
+function vePhatHanh(){
+  $('nut-phu').innerHTML=`<button class="nut" onclick="kiemTatCa()">Kiểm tra tất cả link tải</button>
+    <button class="nut" onclick="vePhatHanh()">Tải lại</button>`;
+  const ds=DULIEU.phanMem;
+  $('than').innerHTML = `<p class="mota" style="margin-top:0;color:var(--mo);font-size:12.5px">
+      Mỗi dòng là một hệ điều hành của một phần mềm. <b>Bản đang có link</b> đọc từ tên file tải về,
+      <b>ép cập nhật</b> là mức bắt khách nâng cấp. Ép cao hơn bản đang có link là khách bị khoá cứng.</p>
+    <div id="bang-ph"></div>
+    <div class="khoi"><h3>Ép cập nhật hàng loạt</h3>
+      <p class="mota">Đặt mức ép của mọi phần mềm đúng bằng bản đang có link tải. Chỉ chạm vào những hệ điều hành đọc được số phiên bản từ link.</p>
+      <button class="nut chinh" onclick="epTatCa()">Ép mọi phần mềm lên bản đang phát hành</button></div>`;
+  veBangPhatHanh({});
+}
+
+function veBangPhatHanh(ketQua){
+  const hang=[];
+  for(const p of DULIEU.phanMem){
+    for(const k of KENH){
+      const link=p[k.link];
+      if(!link && !coNenTang(p.nenTang,k)) continue;
+      const so=soTuLink(link);
+      const muc=k.ep?(p[k.ep]??p.banToiThieu):p.banToiThieu;
+      const thieuLink = !!muc && !link;
+      const xau = (muc&&so&&soSanhBan(muc,so)>0) || thieuLink;
+      const kq=ketQua[p.id+'|'+k.ma];
+      hang.push(`<tr${xau?' style="background:#fef2f2"':''}>
+        <td><b>${esc(p.ten)}</b>${p.an?' <span class="nhan cho">ẩn</span>':''}</td>
+        <td>${k.ten}</td>
+        <td class="so">${p.phienBan||'—'}</td>
+        <td class="so">${so||'—'}</td>
+        <td class="so">${muc?`<b style="color:${xau?'#b91c1c':'#059669'}">${muc}</b>`:'<span style="color:var(--mo)">không ép</span>'}</td>
+        <td>${kq?`<span class="nhan ${kq.ok?'ok':'loi'}">${esc(kq.chu)}</span>`
+              :(link?`<button class="nut nho" onclick="kiemMot('${p.id}','${k.ma}')">Kiểm link</button>`:'<span style="color:var(--mo)">chưa có link</span>')}</td>
+        <td><button class="nut nho" onclick="moPhanMem('${p.id}')">Sửa</button>
+            ${so&&k.ep?`<button class="nut nho" onclick="epMot('${p.id}','${k.ma}')">Ép lên ${so}</button>`:''}</td></tr>`);
+    }
+  }
+  $('bang-ph').innerHTML = `<table><thead><tr>
+      <th>Phần mềm</th><th>Hệ điều hành</th><th class="so">Ghi trên web</th><th class="so">Bản đang có link</th>
+      <th class="so">Ép cập nhật</th><th>Link tải</th><th></th></tr></thead>
+    <tbody>${hang.join('')||'<tr><td colspan="7">Chưa có phần mềm nào.</td></tr>'}</tbody></table>`;
+}
+
+let KQ_LINK={};
+async function kiemMot(ma,kenh){
+  const p=DULIEU.phanMem.find(x=>x.id===ma); const k=KENH.find(x=>x.ma===kenh);
+  KQ_LINK[ma+'|'+kenh]={ok:true,chu:'đang kiểm…'}; veBangPhatHanh(KQ_LINK);
+  KQ_LINK[ma+'|'+kenh]=await guiJson('/api/kiem-link',{link:p[k.link]});
+  veBangPhatHanh(KQ_LINK);
+}
+async function kiemTatCa(){
+  bao('Đang kiểm từng link, chờ chút…');
+  const r=await guiJson('/api/kiem-tat-ca');
+  const hong=r.ds.filter(x=>!x.ok);
+  KQ_LINK={};
+  for(const x of r.ds){
+    const k=KENH.find(c=>c.ten===x.kenh||c.ten.startsWith(x.kenh));
+    if(k) KQ_LINK[x.ma+'|'+k.ma]={ok:x.ok,chu:x.chu};
+  }
+  if(TRANG==='phat-hanh') veBangPhatHanh(KQ_LINK);
+  bao(hong.length?`${hong.length}/${r.ds.length} link không tải được`:`Cả ${r.ds.length} link đều tải được`, hong.length?'loi':'ok');
+}
+async function epMot(ma,kenh){
+  const r=await guiJson('/api/ep-cap-nhat',{ma,kenh:[kenh]});
+  if(r.loi) return bao(r.loi,'loi');
+  await nap(); veBangPhatHanh(KQ_LINK);
+  bao('Đã đặt mức ép: '+r.chu,'ok');
+}
+async function epTatCa(){
+  if(!confirm('Đặt mức ép cập nhật của MỌI phần mềm bằng đúng bản đang có link tải?\n\nKhách chạy bản cũ hơn sẽ bị khoá cho tới khi cập nhật.')) return;
+  let n=0;
+  for(const p of DULIEU.phanMem){
+    const r=await guiJson('/api/ep-cap-nhat',{ma:p.id});
+    if(r.ok) n++;
+  }
+  await nap(); veBangPhatHanh(KQ_LINK);
+  bao(`Đã đặt mức ép cho ${n} phần mềm. Nhớ bấm "Đăng lên web".`,'ok');
+}
+
+// ================= Trang khach hang =================
+// Du lieu nam ben may chu vi (Cloudflare). App chi doc qua duong /api/vi/*,
+// ma quan tri giu trong may, trang khong bao gio nhin thay chuoi do.
+let KH_DS=[], KH_TAB='khach', KH_DONGHO=null, KH_TUCAPNHAT=true, KH_HOSO=null;
+
+function tatTuCapNhat(){ if(KH_DONGHO){ clearInterval(KH_DONGHO); KH_DONGHO=null; } }
+function batTuCapNhat(){
+  tatTuCapNhat();
+  if(!KH_TUCAPNHAT) return;
+  KH_DONGHO=setInterval(()=>{ if(TRANG==='khach-hang') lamMoiKhach(true); }, 15000);
+}
+
+const soTien=(n)=>Number(n||0).toLocaleString('vi-VN')+'đ';
+function gioNgay(t){
+  if(!t) return '—';
+  const d=new Date(Number(t));
+  return d.toLocaleTimeString('vi-VN',{hour:'2-digit',minute:'2-digit'})+' '+d.toLocaleDateString('vi-VN');
+}
+function baoLau(t){
+  if(!t) return 'chưa bao giờ';
+  const giay=Math.floor((Date.now()-Number(t))/1000);
+  if(giay<60) return 'vừa xong';
+  if(giay<3600) return Math.floor(giay/60)+' phút trước';
+  if(giay<86400) return Math.floor(giay/3600)+' giờ trước';
+  const ngay=Math.floor(giay/86400);
+  return ngay<30 ? ngay+' ngày trước' : gioNgay(t);
+}
+const dongHoNay=()=>new Date().toLocaleTimeString('vi-VN');
+
+async function veKhachHang(){
+  $('than').innerHTML='<div class="trong">Đang hỏi máy chủ ví…</div>';
+  const tt=await layJson('/api/vi/trang-thai');
+  if(!tt.diaChi) return $('than').innerHTML='<div class="canh do">Chưa khai địa chỉ máy chủ ví. Mở mục <b>Cấu hình</b> điền ô "Địa chỉ máy chủ ví" rồi quay lại.</div>';
+  if(!tt.coMa) return veNhapMaQuanTri(tt);
+  // Ma cu con luu nhung may chu vi da doi ma: hoi lai ngay cho khoi roi
+  const thu=await layJson('/api/vi/tong-quan');
+  if(thu.loi==='MA_SAI'){
+    veNhapMaQuanTri(tt);
+    $('kh-ma-kq').innerHTML='<div class="canh vang" style="margin-top:12px">Mã đang lưu trong máy không còn đúng — máy chủ ví đã đổi mã. Dán mã hiện tại vào ô trên.</div>';
+    return;
+  }
+
+  $('nut-phu').innerHTML='';
+  $('than').innerHTML=`<div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+      <button class="nut ${KH_TAB==='khach'?'chinh':''}" onclick="doiTabKh('khach')">Danh sách khách</button>
+      <button class="nut ${KH_TAB==='dang-ky'?'chinh':''}" onclick="doiTabKh('dang-ky')">Lượt đăng ký gần đây</button>
+      <button class="nut ${KH_TAB==='don'?'chinh':''}" onclick="doiTabKh('don')">Đơn mua key</button>
+      <span class="kh-dem" style="flex:1"></span>
+      <input id="kh-tim" class="o-tim-kh" placeholder="Tìm tên, email, số điện thoại, mã key…"
+        onkeydown="if(event.key==='Enter') lamMoiKhach()" />
+      <button class="nut kh-nut-tim" onclick="lamMoiKhach()">Tìm</button>
+      <label class="hopchon kh-tu-cn" style="margin:0 2px 0 6px"><input type="checkbox" id="kh-tu" ${KH_TUCAPNHAT?'checked':''}
+        onchange="KH_TUCAPNHAT=this.checked; batTuCapNhat(); lamMoiKhach()" /> Tự cập nhật</label>
+      <span id="kh-luc" class="an-dd" style="font-size:12px;color:var(--mo);min-width:150px"></span>
+    </div>
+    <div id="kh-tong"></div>
+    <div id="kh-than"><div class="trong">Đang nạp…</div></div>`;
+  lamMoiKhach();
+  batTuCapNhat();
+}
+
+function veNhapMaQuanTri(tt){
+  $('nut-phu').innerHTML='';
+  $('than').innerHTML=`<div class="khoi" style="max-width:640px">
+    <h3><span style="margin-right:5px">🔑</span>Nhập mã quản trị của ví</h3>
+    <p class="mota">Dữ liệu khách nằm trên máy chủ ví <code>${esc(tt.diaChi)}</code>.
+      Muốn đọc phải có mã quản trị — đúng chuỗi bạn đang dán vào app <b>Quản Lý Ví</b> bên máy Windows,
+      hoặc ô <code>MA_QUAN_TRI</code> trong <code>may-chu-vi/.bi-mat.json</code>.</p>
+    <div class="o"><label>Mã quản trị</label><input id="kh-ma" placeholder="dán mã vào đây" /></div>
+    <button class="nut chinh" onclick="luuMaQuanTri()">Lưu và mở khoá</button>
+    <p class="mota" style="margin:12px 0 0">Mã lưu riêng trong máy tại <code>${esc(tt.tepMa)}</code>, không nằm trong mã nguồn website.</p>
+    <div id="kh-ma-kq"></div></div>`;
+}
+async function luuMaQuanTri(){
+  const ma=$('kh-ma').value.trim();
+  if(!ma) return bao('Chưa nhập mã','loi');
+  const r=await guiJson('/api/vi/ma-quan-tri',{ma});
+  if(r.loi) return $('kh-ma-kq').innerHTML=`<div class="canh do" style="margin-top:12px">${esc(r.loi)}</div>`;
+  bao('Mã đúng, đã mở khoá','ok');
+  veKhachHang();
+}
+
+function doiTabKh(t){ KH_TAB=t; KH_HOSO=null; veKhachHang(); }
+
+// Loi hay gap: may chu vi con chay ban cu, chua co duong dan moi
+function loiVi(r){
+  if(!r || !r.loi) return null;
+  if(r.loi==='MA_SAI') return '<div class="canh do">Mã quản trị không đúng hoặc đã đổi. <button class="nut nho" onclick="xoaMaQuanTri()">Nhập mã khác</button></div>';
+  if(r.loi==='CHUA_CO_MA') return '<div class="canh vang">Chưa có mã quản trị.</div>';
+  if(/khong co duong nay/i.test(r.loi)) return '<div class="canh vang">Máy chủ ví đang chạy bản cũ, chưa có mục này. Sang mục <b>Ví và liên kết</b> bấm <b>Đẩy lên máy chủ ví</b> rồi quay lại.</div>';
+  return `<div class="canh do">${esc(r.loi)}</div>`;
+}
+async function xoaMaQuanTri(){
+  const tt=await layJson('/api/vi/trang-thai');
+  veNhapMaQuanTri(tt);
+  $('kh-ma-kq').innerHTML='<div class="canh vang" style="margin-top:12px">Mã đang lưu không được máy chủ ví chấp nhận. Dán mã đúng vào ô trên, mã cũ chỉ bị thay khi mã mới chạy được.</div>';
+}
+
+async function lamMoiKhach(nen){
+  if(KH_HOSO) return moHoSo(KH_HOSO, true);   // dang xem mot khach thi lam moi khach do
+  const luc=$('kh-luc'); if(luc) luc.textContent='đang cập nhật…';
+  if(KH_TAB==='khach') await veBangKhach();
+  if(KH_TAB==='dang-ky') await veBangDangKy();
+  if(KH_TAB==='don') await veBangDon();
+  if(luc) luc.textContent='Cập nhật lúc '+dongHoNay();
+}
+
+async function veBangKhach(){
+  const q=encodeURIComponent($('kh-tim')?.value.trim()||'');
+  const [r,tq]=await Promise.all([layJson('/api/vi/khach?q='+q), layJson('/api/vi/tong-quan')]);
+  const loi=loiVi(r); if(loi) return $('kh-than').innerHTML=loi;
+  KH_DS=r.nguoi||[];
+  $('so-khach').textContent = tq.khach ?? KH_DS.length;
+  $('kh-tong').innerHTML = tq.loi ? '' : `<div class="the-so">
+      <div><b>${tq.khach??'—'}</b><small>tài khoản đã đăng ký</small></div>
+      <div><b>${soTien(tq.tienTrongVi)}</b><small>đang nằm trong ví khách</small></div>
+      <div><b>${soTien(tq.tongNap)}</b><small>khách đã nạp từ trước tới nay</small></div>
+      <div><b style="color:${(tq.rutCho||tq.donChoTay)?'#d97706':'#059669'}">${(tq.rutCho||0)+(tq.donChoTay||0)}</b><small>việc đang chờ xử lý</small></div>
+    </div>`;
+  if(laDiDong()) return $('kh-than').innerHTML = KH_DS.map(n=>`<div class="the-kh${n.khoa?' khoa':''}">
+      <div class="dau"><b>${esc(n.ten_dn||'(chưa đặt tên)')}</b>${n.khoa?'<span class="nhan loi">khoá</span>':''}
+        ${n.vai_tro && n.vai_tro!=='khach'?`<span class="nhan cho">${esc(n.vai_tro)}</span>`:''}
+        <span class="du">${soTien(n.so_du)}</span></div>
+      <small>${esc(n.email)}${n.coGoogle?' · Google':''}${n.dien_thoai?' · '+esc(n.dien_thoai):''}</small>
+      <small>Đăng ký ${gioNgay(n.tao_luc)} · vào ${baoLau(n.lan_cuoi)} · đã nạp ${soTien(n.da_nap)}</small>
+      <div class="hang-nut"><button class="nut nho" onclick="moHoSo(${n.id})">Xem hồ sơ</button>
+        <button class="nut nho" onclick="moHopTien(${n.id})">± Tiền</button></div>
+    </div>`).join('') || '<div class="canh xanh">Không có khách nào khớp.</div>';
+
+  $('kh-than').innerHTML = `<table><thead><tr>
+      <th>Tài khoản</th><th>Email</th><th>Số điện thoại</th><th>IP đăng ký</th>
+      <th>Đăng ký lúc</th><th>Vào lần cuối</th><th class="so">Số dư</th><th class="so">Đã nạp</th><th></th></tr></thead>
+    <tbody>${KH_DS.map(n=>`<tr${n.khoa?' style="background:#fef2f2"':''}>
+      <td><b>${esc(n.ten_dn||'(chưa đặt tên)')}</b>${n.khoa?' <span class="nhan loi">khoá</span>':''}
+        ${n.vai_tro && n.vai_tro!=='khach'?` <span class="nhan cho">${esc(n.vai_tro)}</span>`:''}<br>
+        <span style="color:var(--mo);font-size:11.5px">mã nạp ${esc(n.ma_nap)}</span></td>
+      <td>${esc(n.email)}${n.coGoogle?' <span class="nhan cho">Google</span>':''}</td>
+      <td>${esc(n.dien_thoai||'—')}</td>
+      <td><code>${esc(n.ip||'—')}</code></td>
+      <td style="font-size:12px">${gioNgay(n.tao_luc)}</td>
+      <td style="font-size:12px">${baoLau(n.lan_cuoi)}</td>
+      <td class="so">${soTien(n.so_du)}</td>
+      <td class="so">${soTien(n.da_nap)}</td>
+      <td style="white-space:nowrap"><button class="nut nho" onclick="moHoSo(${n.id})">Xem hồ sơ</button>
+        <button class="nut nho" title="Cộng hoặc trừ tiền trong ví khách này" onclick="moHopTien(${n.id})">± Tiền</button></td>
+    </tr>`).join('')||'<tr><td colspan="9">Không có khách nào khớp.</td></tr>'}</tbody></table>`;
+}
+
+async function veBangDangKy(){
+  const r=await layJson('/api/vi/dang-ky');
+  const loi=loiVi(r); if(loi) return $('kh-than').innerHTML=loi;
+  $('kh-tong').innerHTML='';
+  const ds=r.luot||[];
+  $('kh-than').innerHTML=`<p class="mota" style="margin-top:0;color:var(--mo);font-size:12.5px">
+      Ghi cả những lần đăng ký <b>hỏng</b>. Khách bảo "tôi đăng ký rồi" mà không thấy tên thì xem ở đây biết vì sao.</p>
+    <table><thead><tr><th>Lúc</th><th>Kiểu</th><th>Tài khoản</th><th>Email</th><th>Số điện thoại</th><th>IP</th><th>Kết quả</th></tr></thead>
+    <tbody>${ds.map(x=>`<tr${x.duoc?'':' style="background:#fff8ec"'}>
+      <td style="font-size:12px">${gioNgay(x.luc)}<br><span style="color:var(--mo)">${baoLau(x.luc)}</span></td>
+      <td>${x.kieu==='google'?'Google':'Mật khẩu'}</td>
+      <td>${esc(x.ten_dn||'—')}</td><td>${esc(x.email||'—')}</td><td>${esc(x.dien_thoai||'—')}</td>
+      <td><code>${esc(x.ip||'—')}</code></td>
+      <td>${x.duoc?'<span class="nhan ok">tạo được</span>':`<span class="nhan loi">hỏng</span> <span style="font-size:11.5px;color:var(--mo)">${esc(x.loi||'')}</span>`}</td>
+    </tr>`).join('')||'<tr><td colspan="7">Chưa có lượt đăng ký nào.</td></tr>'}</tbody></table>`;
+}
+
+async function veBangDon(){
+  const q=encodeURIComponent($('kh-tim')?.value.trim()||'');
+  const r=await layJson('/api/vi/don?q='+q);
+  const loi=loiVi(r); if(loi) return $('kh-than').innerHTML=loi;
+  const ds=r.don||[];
+  const tong=ds.reduce((t,d)=>t+Number(d.gia||0),0);
+  $('kh-tong').innerHTML=`<div class="canh xanh">${ds.length} đơn · tổng ${soTien(tong)}</div>`;
+  if(laDiDong()) return $('kh-than').innerHTML = ds.map(d=>`<div class="the-kh">
+      <div class="dau"><b>${esc(d.ten_pm)}</b><span class="du">${soTien(d.gia)}</span></div>
+      <small>${esc(d.ten_dn||d.email)} · ${esc(d.goi)} · ${d.so_ngay} ngày ·
+        ${d.trang_thai==='xong'?'<span class="nhan ok">xong</span>':d.trang_thai==='cho_tay'?'<span class="nhan loi">chờ cấp tay</span>':`<span class="nhan cho">${esc(d.trang_thai)}</span>`}</small>
+      <small>${gioNgay(d.luc)} · ${baoLau(d.luc)}</small>
+      <small>Mã máy <code>${esc(d.ma_may||'—')}</code></small>
+      <small>Key <code>${esc(d.key||'—')}</code></small>
+    </div>`).join('') || '<div class="canh xanh">Chưa có đơn nào khớp.</div>';
+  $('kh-than').innerHTML=`<table><thead><tr>
+      <th>Lúc</th><th>Ai mua</th><th>Phần mềm</th><th>Gói</th><th>Mã máy</th><th>Key</th>
+      <th class="so">Giá</th><th>Trạng thái</th></tr></thead>
+    <tbody>${ds.map(d=>`<tr>
+      <td style="font-size:12px">${gioNgay(d.luc)}<br><span style="color:var(--mo)">${baoLau(d.luc)}</span></td>
+      <td><b>${esc(d.ten_dn||d.email)}</b><br><span style="color:var(--mo);font-size:11.5px">${esc(d.dien_thoai||'')} ${esc(d.ip||'')}</span></td>
+      <td>${esc(d.ten_pm)}</td>
+      <td>${esc(d.goi)}<br><span style="color:var(--mo);font-size:11.5px">${d.so_ngay} ngày</span></td>
+      <td><code>${esc(d.ma_may||'—')}</code></td>
+      <td><code>${esc(d.key||'—')}</code></td>
+      <td class="so">${soTien(d.gia)}</td>
+      <td>${d.trang_thai==='xong'?'<span class="nhan ok">xong</span>'
+          :d.trang_thai==='cho_tay'?'<span class="nhan loi">chờ cấp tay</span>'
+          :`<span class="nhan cho">${esc(d.trang_thai)}</span>`}</td>
+    </tr>`).join('')||'<tr><td colspan="8">Chưa có đơn nào khớp.</td></tr>'}</tbody></table>`;
+}
+
+// ---- Ho so mot khach ----
+async function moHoSo(id, giuYen){
+  KH_HOSO=id;
+  if(!giuYen) $('than').innerHTML='<div class="trong">Đang mở hồ sơ…</div>';
+  const r=await layJson('/api/vi/khach-chi-tiet?nguoi='+id);
+  const loi=loiVi(r); if(loi){ $('than').innerHTML=loi; return; }
+  const n=r.nguoi;
+  // Giu KH_DS moi theo, de hop cong/tru tien doc dung so du hien tai
+  const cho=KH_DS.findIndex(x=>x.id===id);
+  const tom={id, ten_dn:n.tenDn, email:n.email, so_du:n.soDu};
+  if(cho>=0) Object.assign(KH_DS[cho],tom); else KH_DS.push(tom);
+  const luc=$('kh-luc'); if(luc) luc.textContent='Cập nhật lúc '+dongHoNay();
+
+  const oThongTin=(nhan,giaTri)=>`<tr><td style="width:190px;color:var(--mo)">${nhan}</td><td>${giaTri}</td></tr>`;
+  $('than').innerHTML=`
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px">
+      <button class="nut" onclick="KH_HOSO=null; veKhachHang()">← Về danh sách</button>
+      <button class="nut" onclick="moHoSo(${id})">Làm mới</button>
+      <b style="margin-left:6px">${esc(n.tenDn||n.email)}</b>
+      <span id="kh-luc" class="an-dd" style="margin-left:auto;font-size:12px;color:var(--mo)">Cập nhật lúc ${dongHoNay()}</span>
+      ${n.khoa?'<span class="nhan loi">đang bị khoá</span>':'<span class="nhan ok">đang dùng bình thường</span>'}
+    </div>
+
+    <div class="khoi"><h3><span style="margin-right:5px">🪪</span>Khách này là ai</h3>
+      <table class="xuong-dong"><tbody>
+        ${oThongTin('Tên tài khoản',`<b>${esc(n.tenDn||'(chưa đặt)')}</b>`)}
+        ${oThongTin('Email',esc(n.email)+(n.coGoogle?' <span class="nhan cho">đăng nhập bằng Google</span>':''))}
+        ${oThongTin('Số điện thoại',`<b>${esc(n.dienThoai||'chưa điền')}</b>`)}
+        ${oThongTin('IP lúc đăng ký / vào gần nhất',`<code>${esc(n.ip||'—')}</code>`)}
+        ${oThongTin('Dấu vân thiết bị',`<code>${esc(n.maTb||'—')}</code>`)}
+        ${oThongTin('Đăng ký lúc',gioNgay(n.taoLuc)+' · '+baoLau(n.taoLuc))}
+        ${oThongTin('Vào lần cuối',gioNgay(n.lanCuoi)+' · '+baoLau(n.lanCuoi))}
+        ${oThongTin('Mã nạp tiền',`<code>NAP${esc(n.maNap)}</code>`)}
+        ${oThongTin('Mật khẩu khách đang dùng', n.mkRo?`<code>${esc(n.mkRo)}</code>`:'<span style="color:var(--mo)">chưa ghi lại (tài khoản cũ, hoặc đăng nhập bằng Google)</span>')}
+        ${oThongTin('Tài khoản ngân hàng', n.soTk?`${esc(n.nganHang)} · ${esc(n.soTk)} · ${esc(n.chuTk)}`:'<span style="color:var(--mo)">chưa khai</span>')}
+        ${oThongTin('Người giới thiệu', n.nguoiGioiThieu?esc(n.nguoiGioiThieu.ten_dn||n.nguoiGioiThieu.email):'<span style="color:var(--mo)">không có</span>')}
+        ${oThongTin('Đã giới thiệu được', n.soNguoiGioiThieu+' người')}
+      </tbody></table>
+    </div>
+
+    <div class="the-so">
+      <div><b>${soTien(n.soDu)}</b><small>đang có trong ví</small></div>
+      <div><b>${soTien(n.daNap)}</b><small>đã nạp</small></div>
+      <div><b>${soTien(n.daRut)}</b><small>đã rút</small></div>
+      <div><b>${r.don.length}</b><small>lần mua key</small></div>
+    </div>
+
+    <div class="khoi"><h3><span style="margin-right:5px">🔑</span>Việc chủ shop làm được</h3>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="nut luc" onclick="moHopTien(${id})">Cộng / trừ tiền vào ví</button>
+        <button class="nut chinh" onclick="datMatKhau(${id})">Đặt mật khẩu mới cho khách</button>
+        <button class="nut" onclick="layLinkDatLai(${id})">Lấy link để khách tự đặt lại</button>
+        <button class="nut ${n.khoa?'':'do'}" onclick="khoaKhach(${id},${n.khoa?0:1})">${n.khoa?'Mở khoá tài khoản':'Khoá tài khoản'}</button>
+      </div>
+      <div id="kh-viec"></div>
+    </div>
+
+    <div class="khoi"><h3><span style="margin-right:5px">🛒</span>Đã mua những key nào</h3>
+      <table><thead><tr><th>Lúc</th><th>Phần mềm</th><th>Gói</th><th>Mã máy</th><th>Key</th><th class="so">Giá</th><th>Trạng thái</th></tr></thead>
+      <tbody>${r.don.map(d=>`<tr>
+        <td style="font-size:12px">${gioNgay(d.luc)}<br><span style="color:var(--mo)">${baoLau(d.luc)}</span></td>
+        <td>${esc(d.ten_pm)}</td><td>${esc(d.goi)} · ${d.so_ngay} ngày</td>
+        <td><code>${esc(d.ma_may||'—')}</code></td><td><code>${esc(d.key||'—')}</code></td>
+        <td class="so">${soTien(d.gia)}</td>
+        <td>${d.trang_thai==='xong'?'<span class="nhan ok">xong</span>':`<span class="nhan loi">${esc(d.trang_thai)}</span>`}</td>
+      </tr>`).join('')||'<tr><td colspan="7">Chưa mua key nào.</td></tr>'}</tbody></table>
+    </div>
+
+    <div class="khoi"><h3><span style="margin-right:5px">🎁</span>Mã dùng thử đã nhận</h3>
+      <table><tbody>${r.dungThu.map(x=>`<tr><td>${esc(x.phan_mem)}</td><td><code>${esc(x.ma_key||'—')}</code></td>
+        <td><code>${esc(x.ip||'—')}</code></td><td style="font-size:12px">${gioNgay(x.luc)}</td></tr>`).join('')
+        ||'<tr><td>Chưa xin mã dùng thử nào.</td></tr>'}</tbody></table>
+    </div>
+
+    <div class="khoi"><h3><span style="margin-right:5px">💻</span>Máy và trình duyệt đã dùng</h3>
+      <table><thead><tr><th>Dấu vân</th><th>Kiểu</th><th>IP</th><th>Lúc</th></tr></thead>
+      <tbody>${r.thietBi.map(x=>`<tr><td><code>${esc(x.ma_tb)}</code></td><td>${x.kieu==='may'?'Phần mềm trên máy':'Trình duyệt'}</td>
+        <td><code>${esc(x.ip||'—')}</code></td><td style="font-size:12px">${gioNgay(x.luc)}</td></tr>`).join('')
+        ||'<tr><td colspan="4">Chưa ghi được thiết bị nào.</td></tr>'}</tbody></table>
+    </div>
+
+    ${r.nickTrung.length?`<div class="khoi"><h3><span style="margin-right:5px">⚠️</span>Nick khác cùng IP hoặc cùng máy</h3>
+      <p class="mota">Rất có thể cùng một người mở nhiều tài khoản để xin mã dùng thử.</p>
+      <table><thead><tr><th>Tài khoản</th><th>Email</th><th>Số điện thoại</th><th>IP</th><th>Đăng ký lúc</th><th></th></tr></thead>
+      <tbody>${r.nickTrung.map(x=>`<tr><td><b>${esc(x.ten_dn||'—')}</b></td><td>${esc(x.email)}</td>
+        <td>${esc(x.dien_thoai||'—')}</td><td><code>${esc(x.ip||'—')}</code></td>
+        <td style="font-size:12px">${gioNgay(x.tao_luc)}</td>
+        <td><button class="nut nho" onclick="moHoSo(${x.id})">Xem</button></td></tr>`).join('')}</tbody></table></div>`:''}
+
+    <div class="khoi"><h3><span style="margin-right:5px">📒</span>Sổ tiền</h3>
+      <table><thead><tr><th>Lúc</th><th>Việc</th><th>Ghi chú</th><th class="so">Số tiền</th><th class="so">Còn lại</th></tr></thead>
+      <tbody>${r.soCai.map(d=>`<tr><td style="font-size:12px">${gioNgay(d.luc)}</td><td>${tenViec(d.loai)}</td>
+        <td style="font-size:12px;color:var(--mo)">${esc(d.ghi_chu||'')}</td>
+        <td class="so" style="color:${Number(d.so_tien)<0?'#b91c1c':'#047857'}">${soTien(d.so_tien)}</td>
+        <td class="so">${soTien(d.so_du_sau)}</td></tr>`).join('')||'<tr><td colspan="5">Chưa có giao dịch nào.</td></tr>'}</tbody></table>
+    </div>
+
+    <div class="khoi"><h3><span style="margin-right:5px">📝</span>Các lần bấm đăng ký khớp khách này</h3>
+      <table><thead><tr><th>Lúc</th><th>Kiểu</th><th>Tài khoản</th><th>Email</th><th>IP</th><th>Kết quả</th></tr></thead>
+      <tbody>${r.nhatKyDk.map(x=>`<tr><td style="font-size:12px">${gioNgay(x.luc)}</td>
+        <td>${x.kieu==='google'?'Google':'Mật khẩu'}</td><td>${esc(x.ten_dn||'—')}</td><td>${esc(x.email||'—')}</td>
+        <td><code>${esc(x.ip||'—')}</code></td>
+        <td>${x.duoc?'<span class="nhan ok">tạo được</span>':`<span class="nhan loi">hỏng</span> ${esc(x.loi||'')}`}</td></tr>`).join('')
+        ||'<tr><td colspan="6">Không có dấu vết đăng ký nào.</td></tr>'}</tbody></table>
+    </div>`;
+}
+
+const TEN_VIEC={nap:'Nạp tiền',mua:'Mua key',rut:'Rút tiền',hoan:'Hoàn tiền',hoahong:'Hoa hồng giới thiệu',dieuchinh:'Chủ shop điều chỉnh'};
+const tenViec=(l)=>TEN_VIEC[l]||esc(l);
+
+// ---- Cong / tru tien tay ----
+// Mo hop thoai tu bang danh sach hay tu ho so deu duoc. Tien duoc ghi thang
+// vao vi tren may chu, khach mo web la thay ngay, so cai tu ghi dong "dieu chinh".
+function moHopTien(id){
+  const n=KH_DS.find(x=>x.id===id);
+  const ten=n?(n.ten_dn||n.email):('khách #'+id);
+  const soDu=n?Number(n.so_du||0):null;
+  document.getElementById('hop-tien')?.remove();
+  const phu=document.createElement('div'); phu.className='phu'; phu.id='hop-tien';
+  phu.innerHTML=`<div class="hop">
+    <h3>💰 Cộng / trừ tiền cho <span style="color:var(--xanh)">${esc(ten)}</span></h3>
+    <p class="mota" style="margin:0 0 14px;font-size:12.5px;color:var(--mo)">${soDu===null?'':'Ví đang có <b>'+soTien(soDu)+'</b>. '}Tiền vào ví ngay, khách mở web là thấy. Trừ quá số dư thì máy chủ từ chối.</p>
+    <div class="o"><label>Số tiền (đồng)</label>
+      <input id="ht-so" type="text" inputmode="numeric" placeholder="VD: 100000" onkeydown="if(event.key==='Enter') guiTien(${id},1)" oninput="this.value=this.value.replace(/[^0-9]/g,'')" />
+      <div class="nhanh">${[20000,50000,100000,200000,500000,1000000].map(v=>`<button type="button" onclick="$('ht-so').value='${v}'">${v.toLocaleString('vi-VN')}</button>`).join('')}</div>
+    </div>
+    <div class="o"><label>Ghi chú (khách nhìn thấy trong sổ tiền của họ)</label>
+      <input id="ht-ghi" placeholder="VD: Tặng thêm vì chuyển khoản thiếu nội dung" maxlength="200" /></div>
+    <div id="ht-kq"></div>
+    <div style="display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;margin-top:6px">
+      <button class="nut" onclick="dongHopTien()">Thôi</button>
+      <button class="nut do" onclick="guiTien(${id},-1)">− Trừ khỏi ví</button>
+      <button class="nut luc" onclick="guiTien(${id},1)">+ Cộng vào ví</button>
+    </div></div>`;
+  phu.addEventListener('click',(e)=>{ if(e.target===phu) dongHopTien(); });
+  document.body.appendChild(phu);
+  setTimeout(()=>$('ht-so').focus(),50);
+}
+function dongHopTien(){ document.getElementById('hop-tien')?.remove(); }
+let DANG_GUI_TIEN=false;
+async function guiTien(id,dau){
+  if(DANG_GUI_TIEN) return;
+  const so=Math.round(Number($('ht-so').value.replace(/\D/g,''))||0);
+  const kq=$('ht-kq');
+  if(!so) { kq.innerHTML='<div class="canh vang" style="margin-bottom:10px">Chưa nhập số tiền.</div>'; return $('ht-so').focus(); }
+  const n=KH_DS.find(x=>x.id===id);
+  const ten=n?(n.ten_dn||n.email):('khách #'+id);
+  if(!confirm((dau>0?'CỘNG ':'TRỪ ')+soTien(so)+(dau>0?' vào':' khỏi')+' ví của '+ten+'?')) return;
+  DANG_GUI_TIEN=true;
+  kq.innerHTML='<div class="trong" style="padding:6px 0">Đang ghi lên máy chủ ví…</div>';
+  const r=await guiJson('/api/vi/tien',{nguoi:id,soTien:so*dau,ghiChu:$('ht-ghi').value.trim()});
+  DANG_GUI_TIEN=false;
+  if(r.loi){ kq.innerHTML=(loiVi(r)||`<div class="canh do">${esc(r.loi)}</div>`).replace('class="canh','style="margin-bottom:10px" class="canh'); return; }
+  dongHopTien();
+  bao((dau>0?'Đã cộng ':'Đã trừ ')+soTien(so)+' · ví còn '+soTien(r.soDu),'ok');
+  if(KH_HOSO) moHoSo(KH_HOSO,true); else lamMoiKhach(true);
+}
+
+async function datMatKhau(id){
+  const mk=prompt('Mật khẩu mới cho khách (bỏ trống thì máy tự đặt một mật khẩu dễ đọc):','');
+  if(mk===null) return;
+  if(mk.trim() && mk.trim().length<8) return bao('Mật khẩu phải từ 8 ký tự','loi');
+  const r=await guiJson('/api/vi/dat-mat-khau',{nguoi:id,matKhau:mk.trim()});
+  if(r.loi) return $('kh-viec').innerHTML=loiVi(r)||`<div class="canh do">${esc(r.loi)}</div>`;
+  $('kh-viec').innerHTML=`<div class="canh luc" style="margin-top:12px">Xong. Đọc lại cho khách:<br>
+    Tài khoản <b>${esc(r.tenDn)}</b> · Mật khẩu mới <code style="font-size:14px">${esc(r.matKhau)}</code><br>
+    Mọi máy đang đăng nhập tài khoản này đã bị đẩy ra.</div>`;
+  bao('Đã đặt mật khẩu mới','ok');
+}
+async function layLinkDatLai(id){
+  const r=await guiJson('/api/vi/link-dat-lai',{nguoi:id});
+  if(r.loi) return $('kh-viec').innerHTML=loiVi(r)||`<div class="canh do">${esc(r.loi)}</div>`;
+  $('kh-viec').innerHTML=`<div class="canh xanh" style="margin-top:12px">Gửi đường dẫn này cho khách (dùng một lần):<br>
+    <code style="word-break:break-all">${esc(r.duongDan)}</code></div>`;
+}
+async function khoaKhach(id,khoa){
+  if(!confirm(khoa?'Khoá tài khoản này? Khách sẽ không đăng nhập được nữa.':'Mở khoá tài khoản này?')) return;
+  const r=await guiJson('/api/vi/khoa',{nguoi:id,khoa});
+  if(r.loi) return bao(r.loi,'loi');
+  bao(khoa?'Đã khoá':'Đã mở khoá','ok');
+  moHoSo(id);
+}
+
+// ================= Trang vi va lien ket =================
+async function veLienKet(){
+  $('than').innerHTML='<div class="trong">Đang xem lại liên kết…</div>';
+  const g=await layJson('/api/tong-quan');
+  let html=`<div class="khoi"><h3>Vì sao có mục này</h3>
+    <p class="mota">Nút tải trên website không chứa link thật. Website chỉ ghi mã phần mềm, còn link thật do máy chủ ví trả về
+    sau khi khách đăng nhập. Vậy nên sửa link tải trong bài phần mềm là chưa đủ:
+    phải đẩy bảng liên kết sang máy chủ ví, không thì nút tải bấm không ra gì.</p></div>`;
+
+  html += g.lechLienKet.length
+    ? `<div class="khoi"><h3><span style="margin-right:5px">⛔</span>${g.lechLienKet.length} link đang lệch</h3>
+       <table><thead><tr><th>Phần mềm</th><th>Kênh</th><th>Trong bài phần mềm</th><th>Máy chủ ví đang trả</th></tr></thead>
+       <tbody>${g.lechLienKet.map(l=>`<tr><td>${esc(l.ma)}</td><td>${esc(l.kenh)}</td>
+         <td><code>${esc(String(l.trongTep).split('/').pop())}</code></td>
+         <td><code>${esc(String(l.trongWorker).split('/').pop())}</code></td></tr>`).join('')}</tbody></table></div>`
+    : `<div class="canh luc">Bảng liên kết trong máy chủ ví khớp với các bài phần mềm.</div>`;
+
+  html += `<div class="khoi"><h3>Việc cần làm</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap">
+      <button class="nut" onclick="chayLienKet()">1. Dựng lại bảng liên kết trong máy</button>
+      <button class="nut chinh" onclick="deployVi()">2. Đẩy lên máy chủ ví (wrangler deploy)</button>
+    </div>
+    <p class="mota" style="margin:12px 0 0">Bước 1 chạy tự động mỗi lần đăng lên web. Bước 2 phải bấm tay, và chỉ chạy được khi máy đã đăng nhập Cloudflare.</p>
+    <div id="nk-vi"></div></div>`;
+  $('than').innerHTML=html;
+}
+async function chayLienKet(){
+  $('nk-vi').innerHTML='<div class="canh xanh">Đang dựng lại bảng liên kết…</div>';
+  const r=await guiJson('/api/lien-ket');
+  $('nk-vi').innerHTML=`<div class="canh ${r.ok?'luc':'do'}">${r.ok?'Xong.':'Hỏng.'}</div><pre>${esc(r.nhatKy)}</pre>`;
+  if(r.ok) veLienKet();
+}
+async function deployVi(){
+  if(!confirm('Đẩy máy chủ ví lên Cloudflare ngay bây giờ?')) return;
+  $('nk-vi').innerHTML='<div class="canh xanh">Đang đẩy lên Cloudflare, có thể mất một phút…</div>';
+  const r=await guiJson('/api/deploy-vi');
+  $('nk-vi').innerHTML=`<div class="canh ${r.ok?'luc':'do'}">${r.ok?'Đã đẩy xong. Nút tải trên web nay trả về link mới.':'Chưa đẩy được. Xem nhật ký bên dưới.'}</div><pre>${esc(r.nhatKy)}</pre>`;
+  bao(r.ok?'Đã đẩy máy chủ ví':'Đẩy máy chủ ví thất bại', r.ok?'ok':'loi');
+}
+
+// ================= Trang thong ke =================
+function veThongKe(){
+  $('than').innerHTML=`<div class="khoi"><h3>Lượt xem trang</h3>
+      <p class="mota">Số lấy trực tiếp từ GoatCounter, mỗi lần xem mất khoảng 10 giây vì phải hỏi từng trang.</p>
+      <button class="nut chinh" onclick="napLuotXem()">Xem lượt truy cập</button><div id="k-xem"></div></div>
+    <div class="khoi"><h3>Lượt tải phần mềm</h3>
+      <p class="mota">Đếm từ GitHub Releases, tính cả các bản cũ. Link TestFlight và file tự host không đếm được ở đây.</p>
+      <button class="nut chinh" onclick="napLuotTai()">Xem lượt tải</button><div id="k-tai"></div></div>`;
+}
+async function napLuotXem(){
+  $('k-xem').innerHTML='<div class="canh xanh">Đang hỏi GoatCounter…</div>';
+  const r=await layJson('/api/thong-ke-xem');
+  if(!r.co) return $('k-xem').innerHTML='<div class="canh vang">Chưa khai mã GoatCounter trong Cấu hình.</div>';
+  $('k-xem').innerHTML=`<div class="the-so" style="grid-template-columns:1fr 1fr">
+      <div><b>${r.tong.toLocaleString('vi-VN')}</b><small>lượt xem từ khi mở web</small></div>
+      <div><b>${r.homNay.toLocaleString('vi-VN')}</b><small>lượt xem hôm nay</small></div></div>
+    <table><thead><tr><th>Trang</th><th class="so">Hôm nay</th><th class="so">Tổng</th></tr></thead>
+    <tbody>${r.duong.filter(d=>d.tong>0).map(d=>`<tr><td>${esc(d.ten)}<br><span style="color:var(--mo);font-size:11.5px">${esc(d.d)}</span></td>
+      <td class="so">${d.homNay}</td><td class="so">${d.tong}</td></tr>`).join('')}</tbody></table>`;
+}
+async function napLuotTai(){
+  $('k-tai').innerHTML='<div class="canh xanh">Đang hỏi GitHub…</div>';
+  const r=await layJson('/api/thong-ke-tai');
+  if(!r.co) return $('k-tai').innerHTML='<div class="canh vang">Máy chưa có công cụ gh của GitHub.</div>';
+  const tong=r.ds.reduce((t,x)=>t+x.tong,0);
+  $('k-tai').innerHTML=`<div class="canh luc">Tổng ${tong.toLocaleString('vi-VN')} lượt tải trên GitHub Releases.</div>
+    <table><thead><tr><th>Phần mềm</th><th>File tải nhiều nhất</th><th class="so">Lượt tải</th></tr></thead>
+    <tbody>${r.ds.map(x=>`<tr><td><b>${esc(x.ten)}</b></td>
+      <td style="font-size:12px;color:var(--mo)">${x.tep.map(t=>`${esc(t.ten)} — ${t.so}`).join('<br>')}</td>
+      <td class="so"><b>${x.tong}</b></td></tr>`).join('')}</tbody></table>`;
+}
+
+// ================= Trang cau hinh =================
+async function veCauHinh(){
+  const r=await layJson('/api/cau-hinh');
+  $('nut-phu').innerHTML='<button class="nut chinh" onclick="luuCauHinh()">Lưu cấu hình</button>';
+  $('than').innerHTML=`<div class="khoi"><h3>Thông tin chung của website</h3>
+    <p class="mota">Sửa ở đây là sửa thẳng file src/config.ts. Đăng lên web xong mới có hiệu lực.</p>
+    ${r.o.map(x=>{
+      const v=r.giaTri[x.khoa];
+      if(x.kieu==='co') return `<div class="o"><label class="hopchon"><input type="checkbox" id="c-${x.khoa}" ${v?'checked':''} /> ${x.nhan}</label></div>`;
+      if(x.kieu==='dai') return o(x.nhan,`<textarea id="c-${x.khoa}" rows="3">${esc(v)}</textarea>`);
+      return o(x.nhan,`<input id="c-${x.khoa}" value="${esc(v)}" />`);
+    }).join('')}</div>`;
+  CAU_HINH_O=r.o;
+}
+let CAU_HINH_O=[];
+async function luuCauHinh(){
+  const gui={};
+  for(const x of CAU_HINH_O){
+    const e=$('c-'+x.khoa); if(!e) continue;
+    gui[x.khoa] = x.kieu==='co' ? e.checked : e.value;
+  }
+  const r=await guiJson('/api/cau-hinh',gui);
+  bao(r.ok?'Đã lưu cấu hình. Nhớ bấm "Đăng lên web".':'Lưu thất bại', r.ok?'ok':'loi');
+}
+
+// ================= Trang dien thoai =================
+// Bat len thi may Mac noi toi may chu chuyen tiep; dien thoai quet QR la mo duoc dung bang
+// dieu khien nay, moi viec van chay tren Mac. Ma ghep nam tren link = chia khoa quan tri.
+let DT_DONGHO=null, DT_LINK='';
+function tatDongHoDt(){ if(DT_DONGHO){ clearInterval(DT_DONGHO); DT_DONGHO=null; } }
+
+function chuTrangThaiDt(t){
+  if(!t.bat) return '<span class="nhan cho">đang tắt</span>';
+  if(t.daNoi) return '<span class="nhan ok">đã nối máy chủ chuyển tiếp — điện thoại vào được</span>';
+  return `<span class="nhan loi">chưa nối được</span> <span style="font-size:12px;color:var(--mo)">${esc(t.loi||'đang thử nối…')}</span>`;
+}
+const chuLanCuoiDt=(t)=> t.lanCuoiYc ? `Điện thoại thao tác lần cuối: <b>${baoLau(t.lanCuoiYc)}</b> · ${t.soYc} yêu cầu từ lúc mở app`
+  : 'Từ lúc mở app chưa có điện thoại nào vào.';
+
+async function veDienThoai(){
+  tatDongHoDt();
+  $('nut-phu').innerHTML='';
+  if(TU_XA) return $('than').innerHTML='<div class="canh xanh">Bạn đang dùng chính tính năng này. Bật, tắt và đổi mã ghép chỉ làm được ngay trên máy Mac.</div>';
+  const t=await layJson('/api/dien-thoai');
+  DT_LINK=t.link||'';
+  let html=`<div class="khoi">
+      <div style="display:flex;gap:14px;align-items:center">
+        <button class="gat ${t.bat?'bat':''}" onclick="batTatDt(${t.bat?'false':'true'})" aria-label="Bật tắt"></button>
+        <div style="flex:1"><b style="font-size:14.5px">Cho phép quản lý website từ điện thoại</b>
+          <div style="margin-top:4px" id="dt-tt">${chuTrangThaiDt(t)}</div></div>
+      </div>
+      <p class="mota" style="margin:12px 0 0">Điện thoại mở đúng bảng điều khiển này qua mạng: viết bài, sửa phần mềm, ép cập nhật, xem khách, cộng trừ tiền,
+        đăng lên web. Mọi việc vẫn chạy trên máy Mac, nên <b>Mac phải đang mở app này và có mạng</b>. Tắt app thì điện thoại báo “Máy Mac đang không kết nối”.</p>
+    </div>`;
+  html+=`<div class="khoi"><h3><span style="margin-right:5px">🔐</span>Mật khẩu điện thoại</h3>
+      <p class="mota">${t.coMatKhau
+        ? `Đã đặt. Điện thoại phải nhập đúng mật khẩu này mới dùng được, mỗi máy nhập một lần dùng 30 ngày. Đang có <b>${t.soPhien}</b> điện thoại đăng nhập.`
+        : '<b style="color:var(--do)">Chưa đặt.</b> Điện thoại quét mã xong vẫn chưa làm được gì cho tới khi bạn đặt mật khẩu ở đây.'}</p>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+        <input id="dt-mk" type="password" placeholder="${t.coMatKhau?'Mật khẩu mới (từ 6 ký tự)':'Đặt mật khẩu (từ 6 ký tự)'}" style="max-width:280px"
+          onkeydown="if(event.key==='Enter') datMatKhauDt()" />
+        <button class="nut chinh" onclick="datMatKhauDt()">${t.coMatKhau?'Đổi mật khẩu':'Đặt mật khẩu'}</button>
+        ${t.coMatKhau&&t.soPhien?'<button class="nut" onclick="dangXuatDt()">Đăng xuất mọi điện thoại</button>':''}
+      </div>
+      <p class="mota" style="margin:10px 0 0">Đổi mật khẩu là mọi điện thoại đang đăng nhập bị đẩy ra. Nhập sai 5 lần thì bị khoá nhập 5 phút, sai tiếp thì khoá lâu gấp đôi.</p>
+    </div>`;
+  if(t.bat){
+    html+=`<div class="khoi"><h3><span style="margin-right:5px">📷</span>Ghép điện thoại</h3>
+      <div class="dt-qr">
+        <div id="dt-qr"><div style="width:220px;height:220px;display:grid;place-items:center;color:var(--mo);border:1px dashed var(--vien);border-radius:12px">Đang vẽ mã QR…</div></div>
+        <div style="flex:1;min-width:260px">
+          <ol>
+            <li>Mở <b>Camera</b> trên iPhone (hoặc app quét QR trên Android), chĩa vào mã bên cạnh rồi bấm vào link hiện ra.</li>
+            <li>Trong Safari bấm nút <b>Chia sẻ</b> → <b>Thêm vào MH chính</b> để có biểu tượng như một app, lần sau bấm là vào.</li>
+            <li>Không quét được thì bấm <b>Chép link</b> rồi gửi sang điện thoại qua AirDrop / Zalo của chính bạn.</li>
+          </ol>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+            <button class="nut chinh" onclick="chepLinkDt()">Chép link</button>
+            <button class="nut do" onclick="doiMaDt()">Đổi mã ghép</button>
+          </div>
+          <p class="mota" style="margin:12px 0 0" id="dt-lan">${chuLanCuoiDt(t)}</p>
+        </div>
+      </div></div>
+      <div class="canh vang"><b>Link + mật khẩu là chìa khoá quản trị website</b> (kể cả cộng tiền vào ví, đăng lên web).
+        Đừng gửi link cho người khác, đừng chụp màn hình mã QR đăng lên mạng; có link còn phải biết mật khẩu điện thoại mới vào được. Nghi bị lộ, hay mất điện thoại: bấm <b>Đổi mã ghép</b> — link cũ chết ngay, quét lại mã mới là dùng tiếp.
+        Riêng ba việc sau bị khoá hẳn với điện thoại: đổi mã quản trị ví, đẩy file cài đặt lên GitHub, và chính mục này.</div>`;
+  }
+  $('than').innerHTML=html;
+  if(t.bat) veQrDt(DT_LINK);
+  DT_DONGHO=setInterval(async()=>{
+    if(TRANG!=='dien-thoai') return tatDongHoDt();
+    try{
+      const m=await layJson('/api/dien-thoai');
+      if($('dt-tt')) $('dt-tt').innerHTML=chuTrangThaiDt(m);
+      if($('dt-lan')) $('dt-lan').innerHTML=chuLanCuoiDt(m);
+    }catch{}
+  },3000);
+}
+
+// Ma QR do vo app macOS ve (CoreImage). Mo bang trinh duyet thuong thi chi co link.
+async function veQrDt(link){
+  const k=$('dt-qr'); if(!k) return;
+  try{
+    const png=await window.webkit.messageHandlers.qr.postMessage(link);
+    if(!png) throw 0;
+    k.innerHTML=`<img alt="Mã QR ghép điện thoại" src="data:image/png;base64,${png}" />`;
+  }catch{
+    k.innerHTML=`<div class="canh xanh" style="max-width:240px;margin:0">Mã QR chỉ hiện trong app Quản Lý Website. Dùng nút <b>Chép link</b> bên cạnh.</div>`;
+  }
+}
+async function datMatKhauDt(){
+  const mk=$('dt-mk').value;
+  if(mk.length<6) return bao('Mật khẩu phải từ 6 ký tự trở lên','loi');
+  const r=await guiJson('/api/dien-thoai/mat-khau',{matKhau:mk});
+  if(r.loi) return bao(r.loi,'loi');
+  bao('Đã đặt mật khẩu. Điện thoại nào đang đăng nhập phải nhập lại.','ok');
+  veDienThoai();
+}
+async function dangXuatDt(){
+  if(!confirm('Đẩy mọi điện thoại đang đăng nhập ra? Lần sau chúng phải nhập lại mật khẩu.')) return;
+  await guiJson('/api/dien-thoai/dang-xuat');
+  bao('Đã đăng xuất mọi điện thoại','ok'); veDienThoai();
+}
+async function batTatDt(bat){
+  if(!bat && !confirm('Tắt quản lý trên điện thoại? Link đang dùng sẽ ngừng chạy cho tới khi bật lại.')) return;
+  await guiJson('/api/dien-thoai',{bat});
+  veDienThoai();
+}
+async function doiMaDt(){
+  if(!confirm('Đổi mã ghép?\n\nLink và biểu tượng đang có trên điện thoại sẽ chết ngay. Phải quét lại mã QR mới.')) return;
+  await guiJson('/api/dien-thoai/doi-ma');
+  bao('Đã đổi mã ghép. Quét lại mã QR mới trên điện thoại.','ok');
+  veDienThoai();
+}
+async function chepLinkDt(){
+  try{ await navigator.clipboard.writeText(DT_LINK); }
+  catch{
+    const o=document.createElement('textarea'); o.value=DT_LINK; document.body.appendChild(o);
+    o.select(); document.execCommand('copy'); o.remove();
+  }
+  bao('Đã chép link. Chỉ gửi cho chính điện thoại của bạn.','ok');
+}
+
+// ================= Dang len web =================
+function moDang(){
+  const m=document.createElement('div'); m.className='man'; m.id='man-dang';
+  m.innerHTML=`<div class="hop"><h3>Đăng lên web</h3>
+    <div class="canh vang">Mọi thay đổi đã lưu sẽ được đưa lên website. Khoảng 1–2 phút sau web tự cập nhật.
+      Bảng liên kết tải cũng được dựng lại, nhưng máy chủ ví thì phải tự đẩy ở mục <b>Ví và liên kết</b>.</div>
+    <div class="o"><label>Ghi chú lần đăng này</label><input id="f-loiNhan" value="Cap nhat website ${homNay()}" /></div>
+    <div id="kq-dang"></div>
+    <div class="cuoi"><button class="nut" onclick="dongMan()">Huỷ</button>
+      <button class="nut luc" id="nut-xacnhan" onclick="dangLen()">Đăng ngay</button></div></div>`;
+  document.body.appendChild(m);
+}
+function dongMan(){ $('man-dang')?.remove(); }
+async function dangLen(){
+  const n=$('nut-xacnhan'); n.disabled=true; n.textContent='Đang đăng…';
+  $('kq-dang').innerHTML='<div class="canh xanh">Đang đưa lên GitHub…</div>';
+  try{
+    const r=await guiJson('/api/dang',{loiNhan:$('f-loiNhan').value});
+    $('kq-dang').innerHTML = r.ok
+      ? '<div class="canh luc">Đăng thành công! Website tự cập nhật sau 1–2 phút.</div>'
+      : `<div class="canh do">Chưa đăng được.</div><pre>${esc(r.nhatKy||r.loi||'')}</pre>`;
+    n.textContent=r.ok?'Xong':'Thử lại'; n.disabled=false;
+    if(r.ok) setTimeout(dongMan,2200);
+    kiemTraGit();
+  }catch(e){ $('kq-dang').innerHTML=`<div class="canh do">Lỗi: ${esc(e.message)}</div>`; n.disabled=false; n.textContent='Thử lại'; }
+}
+
+document.addEventListener('keydown',(e)=>{
+  if((e.metaKey||e.ctrlKey)&&e.key==='s'){ e.preventDefault(); if($('f-noiDung')) luuMuc(); }
+});
+
+// Chi ve tong quan neu trong luc nap nguoi dung chua bam sang trang khac
+if(TU_XA) $('mn-dien-thoai').style.display='none';
+nap().then(()=>{ if(TRANG==='tong-quan') veTongQuan(); }).catch(()=>{});   // tu dien thoai: chua nhap mat khau thi dung o man khoa
+setInterval(kiemTraGit,20000);
+</script>
+</body>
+</html>
