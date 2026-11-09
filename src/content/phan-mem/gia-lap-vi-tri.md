@@ -8,7 +8,6 @@ banToiThieuMac: "5.20"
 ngayCapNhat: 2026-09-08
 linkTaiMac: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.20-mac/GiaLapViTri-5.20-macOS.dmg"
 linkTaiWin: "https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/gia-lap-vi-tri-5.18/GiaLapViTri-5.18-Windows.zip"
-linkTaiIOS: "https://testflight.apple.com/join/KYYj3Bfd"
 ghiChuCapNhat: "- Gỡ khoá ký bản quyền ra khỏi phần mềm: từ nay không ai làm giả key được\n- Gỡ luôn khoá đọc giao dịch ngân hàng khỏi phần mềm\n- Key mua trên phanmemtq.com vẫn dùng bình thường, không phải đổi"
 dungLuong: "132 MB (Mac) · 683 MB (Windows, bộ cài trong file nén)"
 gia: "300.000đ / tháng"
