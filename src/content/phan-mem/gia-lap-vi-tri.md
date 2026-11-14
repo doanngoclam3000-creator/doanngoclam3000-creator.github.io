@@ -47,13 +47,27 @@ Từ bản 4.0, phần mềm điều khiển được **cả iPhone lẫn máy A
 
 ![Nhận cả iPhone lẫn máy Android](/anh/gia-lap-vi-tri/3-nhan-may.svg)
 
+## Bản iPhone không cần máy tính: Vị Trí Wi-Fi
+
+> ⛔ **Thông báo (14/11/2026): Vị Trí Wi-Fi KHÔNG dùng được trên iOS 26 trở lên.**
+> Từ iOS 26, Apple đã chặn cách đổi vị trí Wi-Fi mà ứng dụng dùng. Shop **ngừng bán key Vị Trí Wi-Fi cho máy iOS 26 trở lên** để bạn không mất tiền oan.
+> **Máy iOS 18 trở xuống vẫn dùng bình thường.** Máy iOS 26 vui lòng dùng Giả Lập Vị Trí cắm cáp ở trên.
+
+**Vị Trí Wi-Fi** là ứng dụng chạy thẳng trên iPhone: cài một lần, dán toạ độ là máy báo đang ở nơi bạn chọn, không cần máy tính, không cần bật Chế độ nhà phát triển.
+
+- Chỉ đổi được vị trí theo **Wi-Fi**: dùng tốt trong nhà. Ra ngoài trời, GPS khoẻ thì toạ độ thật vẫn thắng.
+- Yêu cầu: **iOS 17 – iOS 18**. Không dùng được trên iOS 26 trở lên.
+- Giá: 300.000đ / tháng · 800.000đ / 3 tháng · 1.500.000đ / 6 tháng · 2.500.000đ / năm — chuyển khoản theo mã QR trong ứng dụng là tự mở khoá.
+
+**[📲 Tải Vị Trí Wi-Fi qua TestFlight](https://testflight.apple.com/join/KYYj3Bfd)** — cài app TestFlight của Apple trước, rồi mở link này trên iPhone.
+
 ## Yêu cầu hệ thống
 
 | Thiết bị | Yêu cầu |
 | --- | --- |
 | Máy tính Mac | macOS 12 Monterey trở lên |
 | Máy tính Windows | Windows 10 hoặc 11, 64-bit — có cài app **Apple Devices** |
-| iPhone | iOS 16 trở lên, đã bật Chế độ nhà phát triển |
+| iPhone | iOS 16 trở lên, đã bật Chế độ nhà phát triển (kể cả iOS 26) |
 | Máy Android | Android 7 trở lên, đã bật Gỡ lỗi USB |
 | Kết nối | Cáp truyền dữ liệu (cáp chỉ sạc sẽ không nhận máy) |
 
