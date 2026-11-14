@@ -30,6 +30,9 @@ const phanMem = defineCollection({
     linkGoiMac: z.string().optional(),
     linkGoiWin: z.string().optional(),
     linkTaiIOS: z.string().optional(),
+    // Ten rieng cho nut iPhone khi link iOS la mot app khac (vd Vi Tri Wi-Fi)
+    tenNutIOS: z.string().optional(),
+    phuNutIOS: z.string().optional(),
     linkTaiAndroid: z.string().optional(),
     dungLuong: z.string().optional(),
     // Cong them vao so luot tai (danh cho ban da phat cho khach ngoai website)

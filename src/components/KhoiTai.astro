@@ -14,8 +14,8 @@ const nut = [
   {
     kenh: 'ios',
     link: pm.data.linkTaiIOS,
-    ten: 'iPhone / iPad',
-    phu: laTestFlight(pm.data.linkTaiIOS) ? 'iOS · qua TestFlight' : 'iOS',
+    ten: pm.data.tenNutIOS ?? 'iPhone / iPad',
+    phu: pm.data.phuNutIOS ?? (laTestFlight(pm.data.linkTaiIOS) ? 'iOS · qua TestFlight' : 'iOS'),
     icon: '',
     tf: laTestFlight(pm.data.linkTaiIOS),
   },
