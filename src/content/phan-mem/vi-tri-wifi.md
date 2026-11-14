@@ -1,13 +1,14 @@
 ---
 ten: "Vị Trí Wi-Fi"
-moTa: "Đổi vị trí iPhone theo đường Wi-Fi: cài một lần, dán toạ độ là máy báo đang ở nơi bạn chọn. Không cần máy tính, không cần Chế độ nhà phát triển."
+moTa: "Đổi vị trí iPhone theo đường Wi-Fi, dùng cho iOS 18 trở xuống. Từ iOS 26 Apple đã chặn, ứng dụng không còn dùng được và ngừng bán key cho máy iOS 26."
 nenTang: ["iOS"]
-phienBan: "1.12"
+phienBan: "1.15"
 banToiThieu: "1.7"
 banToiThieuIOS: "1.9"
-ngayCapNhat: 2026-11-06
-ghiChuCapNhat: "- Sửa lỗi app báo “Máy chưa tin cậy chứng chỉ” dù đã gạt bật Vi Tri Wi-Fi CA — không phải cài lại hồ sơ, key cũ giữ nguyên
-- Bản 1.11: nhận key có số ngày lớn (hơn 999 ngày)"
+ngayCapNhat: 2026-11-14
+ghiChuCapNhat: "- iOS 26 trở lên: Apple đã chặn cách đổi vị trí Wi-Fi, ứng dụng không còn dùng được và ngừng bán key cho máy iOS 26
+- iOS 18 trở xuống: dùng bình thường
+- Đọc được thêm các dạng gói tin định vị mới của Apple"
 linkTaiIOS: "https://testflight.apple.com/join/KYYj3Bfd"
 gia: "300.000đ / tháng · 800.000đ / 3 tháng · 1.500.000đ / 6 tháng · 2.500.000đ / năm"
 mienPhi: false
@@ -20,9 +21,13 @@ noiBat: false
 # Vẫn phải giữ mục này: app trên máy khách hỏi phien-ban.json bằng mã
 # "vi-tri-wifi" để biết có bản mới; bỏ hẳn là app không bao giờ được nhắc
 # cập nhật, và máy đang bị khoá vì bản cũ cũng mất luôn nút tải bản mới.
-an: true
+an: false
 thuTu: 10
 ---
+
+> ⛔ **Thông báo (14/11/2026): Vị Trí Wi-Fi KHÔNG dùng được trên iOS 26 trở lên.**
+> Từ iOS 26, Apple đã chặn cách đổi vị trí Wi-Fi mà ứng dụng dùng. Shop **ngừng bán key cho máy iOS 26 trở lên** để bạn không mất tiền oan.
+> **Máy iOS 18 trở xuống vẫn dùng bình thường.** Cần đổi vị trí trên iOS 26, hãy dùng **Giả Lập Vị Trí** (cắm cáp vào máy tính).
 
 ## Giới thiệu
 
@@ -60,7 +65,7 @@ Thiếu bước 2 là ứng dụng không chạy. Xong hai bước này thì nh�
 
 | Thiết bị | Yêu cầu |
 | --- | --- |
-| iPhone / iPad | iOS 17 trở lên |
+| iPhone / iPad | iOS 17 – iOS 18 (**không** dùng được trên iOS 26 trở lên) |
 | Máy tính | Không cần |
 
 Ứng dụng cài qua **TestFlight**. Nhắn cho shop để được thêm vào danh sách thử nghiệm.
