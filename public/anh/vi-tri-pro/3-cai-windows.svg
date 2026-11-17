@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#f3fcfa"/><stop offset="100%" stop-color="#d6f1ec"/>
+  </linearGradient>
+  <linearGradient id="nut" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#19b3a3"/><stop offset="100%" stop-color="#0b7c71"/>
+  </linearGradient>
+  <linearGradient id="hinhnen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#14323a"/><stop offset="100%" stop-color="#0b1a24"/>
+  </linearGradient>
+  <filter id="bong" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#0f172a" flood-opacity="0.20"/>
+  </filter>
+  <filter id="bongnho" x="-40%" y="-40%" width="180%" height="180%">
+    <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.16"/>
+  </filter>
+</defs>
+<rect width="1200" height="760" fill="url(#nen)"/>
+<circle cx="90" cy="104" r="34" fill="#0f9d8f"/>
+<text x="90" y="116" font-size="34" fill="#ffffff" font-weight="700" text-anchor="middle"><tspan>1</tspan></text>
+<text x="142" y="116" font-size="32" fill="#0f172a" font-weight="700"><tspan>Cho phép chạy bộ cài</tspan></text>
+<text x="56" y="190" font-size="20" fill="#475569"><tspan>Bấm đúp tệp vừa tải. Lần đầu</tspan></text>
+<text x="56" y="228" font-size="20" fill="#475569"><tspan>Windows có thể hiện </tspan><tspan font-weight="700" fill="#0f172a">bảng xanh</tspan><tspan>.</tspan></text>
+<text x="56" y="296" font-size="20" fill="#475569"><tspan>① Bấm chữ </tspan><tspan font-weight="700" fill="#0f172a">More info</tspan><tspan>.</tspan></text>
+<text x="56" y="334" font-size="20" fill="#475569"><tspan>② Bấm nút </tspan><tspan font-weight="700" fill="#0f172a">Run anyway</tspan><tspan>.</tspan></text>
+<text x="56" y="402" font-size="20" fill="#475569"><tspan>Phần mềm tự cài trong khoảng</tspan></text>
+<text x="56" y="440" font-size="20" fill="#475569"><tspan>một phút, tạo lối tắt ngoài</tspan></text>
+<text x="56" y="478" font-size="20" fill="#475569"><tspan>Desktop rồi tự mở.</tspan></text>
+<g filter="url(#bong)"><rect x="500" y="64" width="450" height="290" rx="2" fill="#0a5fb4"/>
+</g><text x="528" y="122" font-size="25" fill="#ffffff"><tspan>Windows protected your PC</tspan></text>
+<text x="528" y="160" font-size="13" fill="#ffffff"><tspan>Microsoft Defender SmartScreen prevented an</tspan></text>
+<text x="528" y="180" font-size="13" fill="#ffffff"><tspan>unrecognized app from starting. Running this app</tspan></text>
+<text x="528" y="200" font-size="13" fill="#ffffff"><tspan>might put your PC at risk.</tspan></text>
+<text x="528" y="230" font-size="13.5" fill="#ffffff" text-decoration="underline"><tspan>More info</tspan></text>
+<rect x="818" y="300" width="108" height="32" rx="0" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+<text x="872" y="321" font-size="13" fill="#ffffff" text-anchor="middle"><tspan>Don't run</tspan></text>
+<g>
+  <circle cx="606" cy="228" r="18" fill="#f59e0b" opacity="0.18"/>
+  <circle cx="606" cy="228" r="18" fill="none" stroke="#f59e0b" stroke-width="3"/>
+  <path d="M 612 236 l 30 26 l -13 3 l 7 15 l -7 3 l -7 -15 l -10 8 z"
+        fill="#0f172a" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/>
+</g>
+<circle cx="666" cy="226" r="17" fill="#f59e0b" stroke="#ffffff" stroke-width="3"/>
+<text x="666" y="232.5" font-size="18" fill="#ffffff" font-weight="700" text-anchor="middle"><tspan>1</tspan></text>
+<path d="M 750 362 C 750 370, 790 374, 790 388" fill="none" stroke="#f59e0b" stroke-width="4" stroke-dasharray="2 9" stroke-linecap="round"/>
+<path d="M 781 380 l 9 12 l 9 -12" fill="none" stroke="#f59e0b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+<g filter="url(#bong)"><rect x="640" y="400" width="510" height="300" rx="2" fill="#0a5fb4"/>
+</g><text x="668" y="458" font-size="25" fill="#ffffff"><tspan>Windows protected your PC</tspan></text>
+<text x="668" y="496" font-size="13" fill="#ffffff"><tspan>Microsoft Defender SmartScreen prevented an unrecognized</tspan></text>
+<text x="668" y="516" font-size="13" fill="#ffffff"><tspan>app from starting. Running this app might put your PC at risk.</tspan></text>
+<text x="668" y="556" font-size="13" fill="#ffffff"><tspan>App:</tspan></text>
+<text x="750" y="556" font-size="13" fill="#ffffff"><tspan>ViTriPro-1.0-Windows-CaiDat.exe</tspan></text>
+<text x="668" y="578" font-size="13" fill="#ffffff"><tspan>Publisher:</tspan></text>
+<text x="750" y="578" font-size="13" fill="#ffffff"><tspan>Unknown publisher</tspan></text>
+<rect x="882" y="646" width="118" height="32" rx="0" fill="#ffffff"/>
+<text x="941" y="667" font-size="13" fill="#0a5fb4" font-weight="700" text-anchor="middle"><tspan>Run anyway</tspan></text>
+<rect x="1018" y="646" width="108" height="32" rx="0" fill="none" stroke="#ffffff" stroke-width="1.2"/>
+<text x="1072" y="667" font-size="13" fill="#ffffff" text-anchor="middle"><tspan>Don't run</tspan></text>
+<g>
+  <circle cx="990" cy="670" r="18" fill="#f59e0b" opacity="0.18"/>
+  <circle cx="990" cy="670" r="18" fill="none" stroke="#f59e0b" stroke-width="3"/>
+  <path d="M 996 678 l 30 26 l -13 3 l 7 15 l -7 3 l -7 -15 l -10 8 z"
+        fill="#0f172a" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/>
+</g>
+<circle cx="880" cy="638" r="17" fill="#f59e0b" stroke="#ffffff" stroke-width="3"/>
+<text x="880" y="644.5" font-size="18" fill="#ffffff" font-weight="700" text-anchor="middle"><tspan>2</tspan></text>
+</svg>

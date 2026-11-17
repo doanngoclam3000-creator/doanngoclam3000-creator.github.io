@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#f3fcfa"/><stop offset="100%" stop-color="#d6f1ec"/>
+  </linearGradient>
+  <linearGradient id="nut" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#19b3a3"/><stop offset="100%" stop-color="#0b7c71"/>
+  </linearGradient>
+  <linearGradient id="hinhnen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#14323a"/><stop offset="100%" stop-color="#0b1a24"/>
+  </linearGradient>
+  <filter id="bong" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#0f172a" flood-opacity="0.20"/>
+  </filter>
+  <filter id="bongnho" x="-40%" y="-40%" width="180%" height="180%">
+    <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.16"/>
+  </filter>
+</defs>
+<rect width="1200" height="760" fill="url(#nen)"/>
+<circle cx="90" cy="104" r="34" fill="#0f9d8f"/>
+<text x="90" y="116" font-size="34" fill="#ffffff" font-weight="700" text-anchor="middle"><tspan>2</tspan></text>
+<text x="142" y="116" font-size="32" fill="#0f172a" font-weight="700"><tspan>Cắm cáp và bấm Tin cậy</tspan></text>
+<text x="56" y="190" font-size="20" fill="#475569"><tspan>Cắm iPhone vào máy tính bằng</tspan></text>
+<text x="56" y="228" font-size="20" fill="#475569"><tspan font-weight="700" fill="#0f172a">cáp truyền dữ liệu</tspan><tspan>.</tspan></text>
+<text x="56" y="296" font-size="20" fill="#475569"><tspan>Mở khoá màn hình iPhone,</tspan></text>
+<text x="56" y="334" font-size="20" fill="#475569"><tspan>bấm </tspan><tspan font-weight="700" fill="#0f172a">Tin cậy</tspan><tspan> rồi nhập mật mã.</tspan></text>
+<text x="56" y="402" font-size="20" fill="#475569"><tspan>Không thấy bảng này? Rút cáp,</tspan></text>
+<text x="56" y="440" font-size="20" fill="#475569"><tspan>cắm lại và thử cáp khác.</tspan></text>
+<text x="56" y="478" font-size="20" fill="#475569"><tspan>Cáp chỉ sạc sẽ không nhận máy.</tspan></text>
+<path d="M 870 716 v 20 C 870 790, 620 700, 560 720 S 520 760, 470 760" fill="none" stroke="#94a3b8" stroke-width="9" stroke-linecap="round"/>
+<rect x="856" y="712" width="28" height="22" rx="5" fill="#cbd5e1"/>
+<clipPath id="c3"><rect x="712" y="56" width="316" height="648" rx="34"/></clipPath>
+<g filter="url(#bong)">
+  <rect x="700" y="44" width="340" height="672" rx="46" fill="#1b2431"/>
+  <rect x="706" y="50" width="328" height="660" rx="41" fill="#0d131c"/>
+  <rect x="712" y="56" width="316" height="648" rx="34" fill="#ffffff"/>
+</g>
+<g clip-path="url(#c3)">
+<rect x="712" y="56" width="316" height="648" rx="0" fill="url(#hinhnen)"/>
+<text x="742" y="96" font-size="14" fill="#ffffff" font-weight="700"><tspan>9:41</tspan></text>
+<rect x="740" y="150" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="810" y="150" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="880" y="150" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="950" y="150" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="740" y="236" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="810" y="236" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="880" y="236" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="950" y="236" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="740" y="322" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="810" y="322" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="880" y="322" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="950" y="322" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="740" y="408" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="810" y="408" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="880" y="408" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="950" y="408" width="50" height="50" rx="12" fill="#ffffff" opacity="0.10"/>
+<rect x="712" y="56" width="316" height="648" rx="0" fill="#000000" opacity="0.35"/>
+<rect x="735" y="268" width="270" height="196" rx="16" fill="#f4f4f6"/>
+<text x="870.0" y="306" font-size="17" fill="#111827" font-weight="700" text-anchor="middle"><tspan>Tin cậy máy tính này?</tspan></text>
+<text x="870.0" y="334" font-size="13" fill="#374151" text-anchor="middle"><tspan>Cài đặt và dữ liệu của bạn sẽ có</tspan></text>
+<text x="870.0" y="353" font-size="13" fill="#374151" text-anchor="middle"><tspan>thể truy cập được từ máy tính này</tspan></text>
+<text x="870.0" y="372" font-size="13" fill="#374151" text-anchor="middle"><tspan>khi được kết nối.</tspan></text>
+<line x1="735" y1="416" x2="1005" y2="416" stroke="#d1d5db"/>
+<line x1="870.0" y1="416" x2="870.0" y2="464" stroke="#d1d5db"/>
+<text x="802.5" y="447" font-size="16.5" fill="#0a84ff" font-weight="700" text-anchor="middle"><tspan>Tin cậy</tspan></text>
+<text x="937.5" y="447" font-size="16.5" fill="#0a84ff" text-anchor="middle"><tspan>Không tin cậy</tspan></text>
+</g>
+<rect x="818" y="68" width="104" height="30" rx="15" fill="#0d131c"/>
+<rect x="814" y="686" width="112" height="5" rx="2.5" fill="#0d131c" opacity="0.35"/>
+<g>
+  <circle cx="848.5" cy="452" r="20" fill="#f59e0b" opacity="0.18"/>
+  <circle cx="848.5" cy="452" r="20" fill="none" stroke="#f59e0b" stroke-width="3"/>
+  <path d="M 854.5 460 l 30 26 l -13 3 l 7 15 l -7 3 l -7 -15 l -10 8 z"
+        fill="#0f172a" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/>
+</g>
+</svg>

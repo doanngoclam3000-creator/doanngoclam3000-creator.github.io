@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<defs>
+  <linearGradient id="nen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#f3fcfa"/><stop offset="100%" stop-color="#d6f1ec"/>
+  </linearGradient>
+  <linearGradient id="nut" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#19b3a3"/><stop offset="100%" stop-color="#0b7c71"/>
+  </linearGradient>
+  <linearGradient id="hinhnen" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0%" stop-color="#14323a"/><stop offset="100%" stop-color="#0b1a24"/>
+  </linearGradient>
+  <filter id="bong" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="16" stdDeviation="24" flood-color="#0f172a" flood-opacity="0.20"/>
+  </filter>
+  <filter id="bongnho" x="-40%" y="-40%" width="180%" height="180%">
+    <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.16"/>
+  </filter>
+</defs>
+<rect width="1200" height="760" fill="url(#nen)"/>
+<circle cx="90" cy="104" r="34" fill="#0f9d8f"/>
+<text x="90" y="116" font-size="34" fill="#ffffff" font-weight="700" text-anchor="middle"><tspan>1</tspan></text>
+<text x="142" y="116" font-size="32" fill="#0f172a" font-weight="700"><tspan>Ghim và dịch chuyển</tspan></text>
+<text x="56" y="190" font-size="20" fill="#475569"><tspan font-weight="700" fill="#0f172a">Bấm lên bản đồ</tspan><tspan> để ghim một điểm,</tspan></text>
+<text x="56" y="228" font-size="20" fill="#475569"><tspan>hoặc gõ tên địa điểm vào ô tìm kiếm.</tspan></text>
+<text x="56" y="296" font-size="20" fill="#475569"><tspan>Rồi bấm nút</tspan></text>
+<text x="56" y="334" font-size="20" fill="#475569"><tspan font-weight="700" fill="#0f172a">Dịch chuyển tới điểm ghim</tspan><tspan>.</tspan></text>
+<text x="56" y="402" font-size="20" fill="#475569"><tspan>iPhone sẽ báo đang ở đúng điểm đó.</tspan></text>
+<text x="56" y="440" font-size="20" fill="#475569"><tspan>Dùng xong bấm </tspan><tspan font-weight="700" fill="#0f172a">Về vị trí thật</tspan><tspan>.</tspan></text>
+<g filter="url(#bong)"><rect x="500" y="110" width="650" height="540" rx="12" fill="#ffffff"/></g>
+<clipPath id="c1k"><rect x="500" y="110" width="650" height="540" rx="12"/></clipPath>
+<g clip-path="url(#c1k)"><rect x="500" y="110" width="650" height="36" fill="#f3f4f6"/></g>
+<rect x="514" y="121" width="14" height="14" rx="4" fill="#0f9d8f"/>
+<text x="536" y="133" font-size="12.5" fill="#1f2937"><tspan>Vị Trí Pro</tspan></text>
+<g stroke="#1f2937" stroke-width="1.3" fill="none" opacity="0.75"><line x1="1058" y1="128" x2="1068" y2="128"/><rect x="1088" y="123" width="10" height="10"/><path d="M 1118 123 l 10 10 M 1128 123 l -10 10"/></g>
+<clipPath id="c1"><path d="M 500 146 h 650 v 492 a 12 12 0 0 1 -12 12 h -626 a 12 12 0 0 1 -12 -12 z"/></clipPath>
+<g clip-path="url(#c1)">
+<rect x="720" y="146" width="430" height="504" rx="0" fill="#eef1e7"/>
+<rect x="754.4" y="196.4" width="86.0" height="80.64" rx="10" fill="#cfe8c3"/>
+<rect x="986.6" y="438.32" width="111.8" height="100.80000000000001" rx="12" fill="#cfe8c3"/>
+<rect x="892.0" y="327.44" width="60.2" height="65.52" rx="30" fill="#aad3df"/>
+<path d="M 700 549.2 C 827.5 458.48, 849.0 639.9200000000001, 956.5 599.6 S 1107.0 498.79999999999995, 1170 579.44" fill="none" stroke="#aad3df" stroke-width="55.44"/>
+<path d="M 720 256.88 L 1150 226.64 M 720 382.88 L 1150 352.64 M 720 498.79999999999995 L 1150 468.55999999999995 M 797.4 146 L 818.9 650 M 874.8 146 L 896.3 650 M 969.4 146 L 990.9 650 M 1072.6 146 L 1094.1 650" stroke="#d5d8cf" stroke-width="11" fill="none"/>
+<path d="M 720 256.88 L 1150 226.64 M 720 382.88 L 1150 352.64 M 720 498.79999999999995 L 1150 468.55999999999995 M 797.4 146 L 818.9 650 M 874.8 146 L 896.3 650 M 969.4 146 L 990.9 650 M 1072.6 146 L 1094.1 650" stroke="#ffffff" stroke-width="8" fill="none"/>
+<path d="M 720 428.24 L 913.5 297.2 L 1150 317.36" stroke="#e9a45f" stroke-width="12" fill="none" stroke-linejoin="round"/>
+<path d="M 720 428.24 L 913.5 297.2 L 1150 317.36" stroke="#f9d59a" stroke-width="8" fill="none" stroke-linejoin="round"/>
+<rect x="500" y="146" width="220" height="504" rx="0" fill="#f6f7f9"/>
+<line x1="720" y1="146" x2="720" y2="650" stroke="#e2e5ea"/>
+<rect x="514" y="160" width="34" height="34" rx="9" fill="#e7eaef"/>
+<rect x="525" y="166" width="12" height="22" rx="3" fill="#1f2937"/>
+<text x="558" y="175" font-size="13.5" fill="#0f172a" font-weight="700"><tspan>iPhone của bạn</tspan></text>
+<circle cx="562" cy="188" r="3.5" fill="#22c55e"/>
+<text x="570" y="192" font-size="11" fill="#6b7280"><tspan>iPhone · iOS 18.1</tspan></text>
+<circle cx="690" cy="177" r="1.9" fill="#6b7280"/>
+<circle cx="697" cy="177" r="1.9" fill="#6b7280"/>
+<circle cx="704" cy="177" r="1.9" fill="#6b7280"/>
+<rect x="514" y="208" width="192" height="30" rx="9" fill="#e9ebef"/>
+<circle cx="530" cy="222" r="5" fill="none" stroke="#3b82f6" stroke-width="1.8"/>
+<line x1="534" y1="226" x2="538" y2="230" stroke="#3b82f6" stroke-width="1.8"/>
+<text x="546" y="227" font-size="11" fill="#6b7280"><tspan>Tìm địa điểm hoặc dán toạ độ</tspan></text>
+<rect x="514" y="250" width="192" height="28" rx="8" fill="#e9ebef"/>
+<rect x="516" y="252" width="92.0" height="24" rx="7" fill="#ffffff" filter="url(#bongnho)"/>
+<text x="562.0" y="268" font-size="11.5" fill="#0f172a" font-weight="700" text-anchor="middle"><tspan>Địa điểm</tspan></text>
+<text x="658.0" y="268" font-size="11.5" fill="#0f172a" text-anchor="middle"><tspan>Tuyến đường</tspan></text>
+<text x="516" y="304" font-size="11" fill="#6b7280" font-weight="700"><tspan>Gợi ý nhanh</tspan></text>
+<rect x="508" y="314" width="204" height="40" rx="8" fill="#dff3f0"/>
+<circle cx="524" cy="332" r="4" fill="#e11d74"/>
+<text x="538" y="330" font-size="12" fill="#0f172a"><tspan>Hồ Gươm, Hà Nội</tspan></text>
+<text x="538" y="345" font-size="9.5" fill="#6b7280"><tspan>21.02870, 105.85240</tspan></text>
+<circle cx="524" cy="376" r="4" fill="#e11d74"/>
+<text x="538" y="374" font-size="12" fill="#0f172a"><tspan>Chợ Bến Thành, TP.HCM</tspan></text>
+<text x="538" y="389" font-size="9.5" fill="#6b7280"><tspan>10.77250, 106.69800</tspan></text>
+<circle cx="524" cy="420" r="4" fill="#e11d74"/>
+<text x="538" y="418" font-size="12" fill="#0f172a"><tspan>Cầu Rồng, Đà Nẵng</tspan></text>
+<text x="538" y="433" font-size="9.5" fill="#6b7280"><tspan>16.06120, 108.22700</tspan></text>
+<circle cx="524" cy="464" r="4" fill="#e11d74"/>
+<text x="538" y="462" font-size="12" fill="#0f172a"><tspan>Quảng Châu, Trung Quốc</tspan></text>
+<text x="538" y="477" font-size="9.5" fill="#6b7280"><tspan>23.12910, 113.26440</tspan></text>
+<line x1="500" y1="500" x2="720" y2="500" stroke="#e2e5ea"/>
+<circle cx="526" cy="524" r="10" fill="#e11d74"/><circle cx="526" cy="524" r="3.5" fill="#fff"/>
+<text x="544" y="521" font-size="12" fill="#0f172a" font-weight="700"><tspan>Hồ Gươm, Hà Nội</tspan></text>
+<text x="544" y="535" font-size="9.5" fill="#6b7280"><tspan>21.02870, 105.85240</tspan></text>
+<rect x="514" y="548" width="192" height="26" rx="8" fill="#e9ebef"/>
+<rect x="516.0" y="550" width="44.0" height="22" rx="6" fill="#ffffff" filter="url(#bongnho)"/>
+<text x="538.0" y="565" font-size="10.5" fill="#0f172a" font-weight="700" text-anchor="middle"><tspan>Đi bộ</tspan></text>
+<text x="586.0" y="565" font-size="10.5" fill="#0f172a" text-anchor="middle"><tspan>Chạy</tspan></text>
+<text x="634.0" y="565" font-size="10.5" fill="#0f172a" text-anchor="middle"><tspan>Xe đạp</tspan></text>
+<text x="682.0" y="565" font-size="10.5" fill="#0f172a" text-anchor="middle"><tspan>Ô tô</tspan></text>
+<line x1="514" y1="590" x2="656" y2="590" stroke="#1f2937" stroke-width="4" stroke-linecap="round"/>
+<circle cx="544" cy="590" r="7" fill="#0f9d8f"/>
+<text x="706" y="594" font-size="10.5" fill="#374151" text-anchor="end"><tspan>5 km/h</tspan></text>
+<rect x="514" y="602" width="192" height="36" rx="9" fill="url(#nut)"/>
+<text x="610.0" y="624.14" font-size="11.5" fill="#ffffff" font-weight="700" text-anchor="middle"><tspan>Dịch chuyển tới điểm ghim</tspan></text>
+<rect x="734" y="160" width="176" height="30" rx="15" fill="#ffffff" filter="url(#bongnho)"/>
+<circle cx="750" cy="175" r="4.5" fill="#22c55e"/>
+<text x="762" y="179.5" font-size="11" fill="#0f172a" font-weight="700"><tspan>Đang ở: Hồ Gươm, Hà Nội</tspan></text>
+<rect x="1104" y="160" width="34" height="96" rx="10" fill="#ffffff" filter="url(#bongnho)"/>
+<rect x="1113" y="170" width="16" height="16" rx="5" fill="#0ea5e9"/>
+<rect x="1113" y="200" width="16" height="16" rx="5" fill="#e11d74"/>
+<rect x="1113" y="230" width="16" height="16" rx="5" fill="#7c3aed"/>
+<rect x="1106" y="574" width="30" height="60" rx="6" fill="#ffffff" stroke="#d1d5db" stroke-width="1.2"/>
+<text x="1121" y="596" font-size="18" fill="#0f172a" font-weight="700" text-anchor="middle"><tspan>+</tspan></text>
+<text x="1121" y="626" font-size="18" fill="#0f172a" font-weight="700" text-anchor="middle"><tspan>−</tspan></text>
+<circle cx="1021.0" cy="408.08" r="36" fill="#0f9d8f" opacity="0.16"/><circle cx="1021.0" cy="408.08" r="36" fill="none" stroke="#0f9d8f" stroke-width="1.5" opacity="0.5"/>
+<g filter="url(#bongnho)"><path d="M 1021.0 408.08 C 1016.0 394.08, 1004.0 388.08, 1004.0 374.08 a 17 17 0 1 1 34 0 C 1038.0 388.08, 1026.0 394.08, 1021.0 408.08 z" fill="#e11d74"/></g>
+<circle cx="1021.0" cy="374.08" r="6.5" fill="#ffffff"/>
+</g>
+<g>
+  <circle cx="684" cy="624" r="20" fill="#f59e0b" opacity="0.18"/>
+  <circle cx="684" cy="624" r="20" fill="none" stroke="#f59e0b" stroke-width="3"/>
+  <path d="M 690 632 l 30 26 l -13 3 l 7 15 l -7 3 l -7 -15 l -10 8 z"
+        fill="#0f172a" stroke="#ffffff" stroke-width="2.4" stroke-linejoin="round"/>
+</g>
+</svg>
