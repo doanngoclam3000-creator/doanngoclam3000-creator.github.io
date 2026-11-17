@@ -62,7 +62,7 @@ Vị Trí Pro thay cho phần mềm Giả Lập Vị Trí trước đây.
 </style>
 <div class="vtp-tai"><div class="vtp-luoi">
 <a class="vtp-nut" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/ViTriPro-1.0-Windows-CaiDat.exe"><span class="i">⊞</span><span class="c"><b>Vị Trí Pro cho Windows</b><small>Windows 10 / 11 · file .exe · 734 MB</small></span><span class="m">↓</span></a>
-<a class="vtp-nut" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/ViTriPro-1.0-macOS.dmg"><span class="i"></span><span class="c"><b>Vị Trí Pro cho MacBook</b><small>macOS 14 trở lên · cần cài Xcode · file .dmg · 1,6 MB</small></span><span class="m">↓</span></a>
+<a class="vtp-nut" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/ViTriPro-1.1-macOS.dmg"><span class="i"></span><span class="c"><b>Vị Trí Pro cho MacBook</b><small>macOS 14 trở lên · chip Apple · file .dmg · 36 MB</small></span><span class="m">↓</span></a>
 <a class="vtp-nut tf" href="https://testflight.apple.com/join/aabZw9gJ" target="_blank" rel="noopener"><span class="i">📱</span><span class="c"><b>Vị Trí Pro cho iPhone</b><small>iOS 17.4 trở lên · qua TestFlight</small></span><span class="m">↗</span></a>
 <a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.0-Windows-CaiDat.exe"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi cho iOS — bản Windows</b><small>Tạo tệp ghép đôi cho app iPhone · chạy trên Windows · 111 MB</small></span><span class="m">↓</span></a>
 <a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.1-macOS.dmg"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi cho iOS — bản MacBook</b><small>Tạo tệp ghép đôi cho app iPhone · chạy trên MacBook chip Apple · 36 MB</small></span><span class="m">↓</span></a>
@@ -77,7 +77,7 @@ Vị Trí Pro thay cho phần mềm Giả Lập Vị Trí trước đây.
 | --- | --- |
 | iPhone | Bản iPhone và công cụ Tạo Tệp Ghép Đôi cần iOS 17.4 trở lên. iPhone phải có đặt mật mã |
 | Máy tính Windows | Windows 10 hoặc 11, 64-bit. Chưa có driver Apple thì phần mềm có nút cài sẵn |
-| Máy Mac | Bản Vị Trí Pro cho MacBook: macOS 14 trở lên, đã cài Xcode. Công cụ Tạo Tệp Ghép Đôi bản MacBook: chip Apple (M1 trở lên), macOS 14 trở lên |
+| Máy Mac | Chip Apple (M1 trở lên), macOS 14 trở lên. Không cần cài thêm gì |
 | Cáp | Cáp truyền dữ liệu. Cáp chỉ sạc sẽ không nhận máy |
 
 ## Bắt đầu nhanh
@@ -96,7 +96,7 @@ Vị Trí Pro thay cho phần mềm Giả Lập Vị Trí trước đây.
 1. Tải **Vị Trí Pro cho MacBook** ở phần Tải về, mở file .dmg và kéo app vào **Applications**.
 2. Lần đầu mở nếu Mac chặn: vào **Cài đặt hệ thống → Quyền riêng tư & Bảo mật**, bấm **Vẫn mở**.
 3. Cắm iPhone bằng cáp, mở khoá màn hình, bấm **Tin cậy**. Trên iPhone bật **Cài đặt → Quyền riêng tư & Bảo mật → Chế độ nhà phát triển**.
-4. Nhập key hoặc quét mã QR để mua key, ghim một điểm trên bản đồ rồi bấm **Dịch chuyển tới điểm ghim**.
+4. Nhập key hoặc quét mã QR để mua key, ghim một điểm trên bản đồ rồi bấm **Dịch chuyển tới điểm ghim**. Lần đầu mất 10–30 giây và cần có mạng Internet.
 
 **Dùng ngay trên iPhone:**
 
