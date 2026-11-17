@@ -120,10 +120,9 @@ Mua 1 năm là **trả 10 tháng, dùng 12 tháng** — tiết kiệm 160.000đ 
 
 ### Dùng thử miễn phí 1 ngày
 
-Chưa tin thì thử trước đã. Đăng nhập trên website, vào mục **Tài khoản**, chọn LamVPN rồi bấm
-**Dùng thử miễn phí 1 ngày** — nhận mã ngay, không cần nạp tiền, không cần thẻ.
+Chưa tin thì thử trước đã. Nhắn shop qua Zalo **0971619705** hoặc WeChat **tieumanthau1409** để nhận
+**mã dùng thử miễn phí 1 ngày**, không cần thẻ.
 
-Mỗi tài khoản nhận được một lần. Thấy chạy nhanh thì mua tiếp, ngày sẽ cộng dồn.
+Mỗi người nhận được một lần. Thấy chạy nhanh thì mua tiếp, ngày sẽ cộng dồn.
 
-Mua bằng số dư trong tài khoản trên website. Nạp tiền xong, bấm mua là **nhận mã ngay**,
-không phải chờ ai duyệt.
+Mua mã cũng nhắn shop qua Zalo hoặc WeChat: chuyển khoản xong shop gửi mã cho bạn.

@@ -87,11 +87,10 @@ Phần mềm cho **dùng thử miễn phí 10 ngày**, hết hạn thì mua ti�
 Chuyển thiếu tiền thì chưa mở khoá được nhưng tiền không mất — chuyển bù cho đủ là
 mở ngay. Chuyển dư cũng được giữ lại để trừ vào lần gia hạn sau.
 
-### Cách 2 — mua key trên website
+### Cách 2 — nhắn shop
 
-Vào [Ví của tôi](/tai-khoan/) → tab **Mua key** → chọn **Bán Tệ — Quản Lý Kho Tệ**,
-chọn gói rồi dán **mã máy** lấy trong mục Bản quyền của phần mềm. Tiền trừ thẳng
-từ ví, key hiện ra ngay để nhập vào phần mềm. Cách này dùng được cho cả bản Windows,
+Không quét mã được thì nhắn shop qua Zalo **0971619705** hoặc WeChat **tieumanthau1409**, gửi kèm **mã máy**
+lấy trong mục Bản quyền của phần mềm. Shop cấp key để bạn nhập tay. Cách này dùng được cho cả bản Windows,
 bản Mac lẫn bản iPhone.
 
 > Mỗi máy một mã riêng, nên dùng cả máy tính lẫn Mac hay iPhone thì mỗi máy mua một lần.
