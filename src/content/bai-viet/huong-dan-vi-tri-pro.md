@@ -57,7 +57,7 @@ Lần dịch chuyển đầu tiên mất khoảng 10–30 giây để nối tớ
 
 ## Phần B — Dùng ngay trên iPhone
 
-Cần: iPhone chạy iOS 17.4 trở lên, có đặt mật mã. Một máy tính Windows để tạo tệp ghép đôi, chỉ dùng một lần.
+Cần: iPhone chạy iOS 17.4 trở lên, có đặt mật mã. Một máy tính Windows hoặc MacBook để tạo tệp ghép đôi, chỉ dùng một lần.
 
 ### Bước 1 — Cài app Vị Trí Pro lên iPhone
 
@@ -79,9 +79,13 @@ App trên iPhone cần một tệp ghép đôi tạo từ máy tính thì mới 
 4. Chọn iPhone trong danh sách, bấm **Tạo tệp ghép đôi**, đợi vài giây. Giữ iPhone mở khoá và đừng rút cáp trong lúc chờ.
 5. Tệp được lưu ở `Desktop\TepGhepDoi\(tên iPhone)\pairingFile.plist`.
 
-<div class="vtp-mot"><a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.0-Windows-CaiDat.exe"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi</b><small>Công cụ cho bản iPhone · Windows · 111 MB</small></span><span class="m">↓</span></a></div>
+<div class="vtp-mot"><a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.0-Windows-CaiDat.exe"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi cho iOS — bản Windows</b><small>Tạo tệp ghép đôi cho app iPhone · chạy trên Windows · 111 MB</small></span><span class="m">↓</span></a></div>
 
 ![Chọn iPhone rồi bấm Tạo tệp ghép đôi](/anh/vi-tri-pro/5-tao-tep.svg)
+
+**Dùng MacBook thay cho Windows:** tải **Tạo Tệp Ghép Đôi cho iOS — bản MacBook** (cần Mac chip Apple, macOS 14 trở lên). Mở file .dmg, kéo app vào **Applications** rồi mở. Lần đầu nếu Mac chặn thì vào **Cài đặt hệ thống → Quyền riêng tư & Bảo mật** bấm **Vẫn mở**. Cắm iPhone bằng cáp, bấm **Tin cậy**, rồi bấm **Tạo tệp ghép đôi**. Tệp nằm ở màn hình chính của Mac, bấm **AirDrop** để gửi sang iPhone. Trong file .dmg có kèm hướng dẫn chi tiết.
+
+<div class="vtp-mot"><a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.1-macOS.dmg"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi cho iOS — bản MacBook</b><small>Tạo tệp ghép đôi cho app iPhone · chạy trên MacBook chip Apple · 36 MB</small></span><span class="m">↓</span></a></div>
 
 ### Bước 3 — Đưa tệp sang iPhone
 

@@ -1,14 +1,14 @@
 ---
 ten: "Vị Trí Pro"
-moTa: "Đổi vị trí GPS của iPhone: dùng ngay trên iPhone, hoặc điều khiển từ máy tính Windows qua cáp. Một key dùng được cho cả điện thoại lẫn máy tính."
-nenTang: ["iOS", "Windows"]
+moTa: "Đổi vị trí GPS của iPhone: dùng ngay trên iPhone, hoặc điều khiển từ máy tính Windows hay MacBook qua cáp. Một key dùng được cho cả điện thoại lẫn máy tính."
+nenTang: ["iOS", "Windows", "macOS"]
 phienBan: "1.0"
 # Hai dòng dưới là mức ép cập nhật của app Giả Lập Vị Trí đời cũ (app đó vẫn hỏi mục này).
 # Giữ nguyên để máy khách cũ không bị đổi cách chạy. Vị Trí Pro không dùng tới.
 banToiThieu: "5.18"
 banToiThieuMac: "5.20"
 ngayCapNhat: 2026-11-17
-ghiChuCapNhat: "- Vị Trí Pro thay cho Giả Lập Vị Trí\n- Có bản chạy ngay trên iPhone và bản cho máy tính Windows\n- Mua key bằng mã QR ngay trong phần mềm, chuyển khoản xong là tự mở khoá"
+ghiChuCapNhat: "- Vị Trí Pro thay cho Giả Lập Vị Trí\n- Có bản chạy ngay trên iPhone, bản cho máy tính Windows và bản cho MacBook\n- Mua key bằng mã QR ngay trong phần mềm, chuyển khoản xong là tự mở khoá"
 gia: "300.000đ / tháng · 500.000đ / 2 tháng · 2.000.000đ vĩnh viễn"
 anhIcon: "/icon/gia-lap-vi-tri.png"
 icon: "📍"
@@ -18,14 +18,15 @@ thuTu: 1
 
 ## Giới thiệu
 
-**Vị Trí Pro** đổi vị trí GPS của iPhone sang bất kỳ điểm nào trên bản đồ. Phần mềm có hai bản, dùng chung một key:
+**Vị Trí Pro** đổi vị trí GPS của iPhone sang bất kỳ điểm nào trên bản đồ. Phần mềm có ba bản, dùng chung một key:
 
 | Bản | Dùng khi nào |
 | --- | --- |
 | **iPhone** | Đổi vị trí ngay trên điện thoại, không cần mang theo máy tính |
 | **Windows** | Cắm iPhone vào máy tính Windows bằng cáp rồi điều khiển từ máy tính |
+| **MacBook** | Cắm iPhone vào máy Mac bằng cáp rồi điều khiển từ máy Mac |
 
-Bản cho máy Mac sẽ có sau. Vị Trí Pro thay cho phần mềm Giả Lập Vị Trí trước đây.
+Vị Trí Pro thay cho phần mềm Giả Lập Vị Trí trước đây.
 
 ![Ghim một điểm trên bản đồ rồi bấm Dịch chuyển tới điểm ghim](/anh/vi-tri-pro/1-dich-chuyen.svg)
 
@@ -61,8 +62,10 @@ Bản cho máy Mac sẽ có sau. Vị Trí Pro thay cho phần mềm Giả Lập
 </style>
 <div class="vtp-tai"><div class="vtp-luoi">
 <a class="vtp-nut" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/ViTriPro-1.0-Windows-CaiDat.exe"><span class="i">⊞</span><span class="c"><b>Vị Trí Pro cho Windows</b><small>Windows 10 / 11 · file .exe · 734 MB</small></span><span class="m">↓</span></a>
+<a class="vtp-nut" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/ViTriPro-1.0-macOS.dmg"><span class="i"></span><span class="c"><b>Vị Trí Pro cho MacBook</b><small>macOS 14 trở lên · cần cài Xcode · file .dmg · 1,6 MB</small></span><span class="m">↓</span></a>
 <a class="vtp-nut tf" href="https://testflight.apple.com/join/aabZw9gJ" target="_blank" rel="noopener"><span class="i">📱</span><span class="c"><b>Vị Trí Pro cho iPhone</b><small>iOS 17.4 trở lên · qua TestFlight</small></span><span class="m">↗</span></a>
-<a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.0-Windows-CaiDat.exe"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi</b><small>Công cụ cho bản iPhone · Windows · 111 MB</small></span><span class="m">↓</span></a>
+<a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.0-Windows-CaiDat.exe"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi cho iOS — bản Windows</b><small>Tạo tệp ghép đôi cho app iPhone · chạy trên Windows · 111 MB</small></span><span class="m">↓</span></a>
+<a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.1-macOS.dmg"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi cho iOS — bản MacBook</b><small>Tạo tệp ghép đôi cho app iPhone · chạy trên MacBook chip Apple · 36 MB</small></span><span class="m">↓</span></a>
 <a class="vtp-nut hd" href="/bai-viet/huong-dan-vi-tri-pro/"><span class="i">📖</span><span class="c"><b>Hướng dẫn cài và dùng</b><small>Từng bước, có hình minh hoạ</small></span><span class="m">→</span></a>
 </div></div>
 
@@ -74,6 +77,7 @@ Bản cho máy Mac sẽ có sau. Vị Trí Pro thay cho phần mềm Giả Lập
 | --- | --- |
 | iPhone | Bản iPhone và công cụ Tạo Tệp Ghép Đôi cần iOS 17.4 trở lên. iPhone phải có đặt mật mã |
 | Máy tính Windows | Windows 10 hoặc 11, 64-bit. Chưa có driver Apple thì phần mềm có nút cài sẵn |
+| Máy Mac | Bản Vị Trí Pro cho MacBook: macOS 14 trở lên, đã cài Xcode. Công cụ Tạo Tệp Ghép Đôi bản MacBook: chip Apple (M1 trở lên), macOS 14 trở lên |
 | Cáp | Cáp truyền dữ liệu. Cáp chỉ sạc sẽ không nhận máy |
 
 ## Bắt đầu nhanh
@@ -87,10 +91,17 @@ Bản cho máy Mac sẽ có sau. Vị Trí Pro thay cho phần mềm Giả Lập
 
 ![Bảng xanh của Windows: bấm More info rồi Run anyway](/anh/vi-tri-pro/3-cai-windows.svg)
 
+**Dùng trên MacBook:**
+
+1. Tải **Vị Trí Pro cho MacBook** ở phần Tải về, mở file .dmg và kéo app vào **Applications**.
+2. Lần đầu mở nếu Mac chặn: vào **Cài đặt hệ thống → Quyền riêng tư & Bảo mật**, bấm **Vẫn mở**.
+3. Cắm iPhone bằng cáp, mở khoá màn hình, bấm **Tin cậy**. Trên iPhone bật **Cài đặt → Quyền riêng tư & Bảo mật → Chế độ nhà phát triển**.
+4. Nhập key hoặc quét mã QR để mua key, ghim một điểm trên bản đồ rồi bấm **Dịch chuyển tới điểm ghim**.
+
 **Dùng ngay trên iPhone:**
 
 1. Cài app **TestFlight**, mở [link Vị Trí Pro](https://testflight.apple.com/join/aabZw9gJ) trên iPhone và bấm cài.
-2. Trên máy tính Windows, tải **Tạo Tệp Ghép Đôi**, cắm iPhone và bấm **Tạo tệp ghép đôi**. Việc này chỉ làm một lần cho mỗi iPhone.
+2. Trên máy tính Windows hoặc MacBook, tải **Tạo Tệp Ghép Đôi cho iOS** đúng bản của máy tính đó, cắm iPhone và bấm **Tạo tệp ghép đôi**. Việc này chỉ làm một lần cho mỗi iPhone.
 3. Đưa tệp sang iPhone, mở app Vị Trí Pro và bấm **Chọn tệp ghép đôi**.
 4. Kích hoạt key, ghim một điểm trên bản đồ rồi bấm dịch chuyển.
 
