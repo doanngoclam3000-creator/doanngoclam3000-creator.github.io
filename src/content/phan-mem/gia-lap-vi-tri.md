@@ -59,17 +59,43 @@ Vị Trí Pro thay cho phần mềm Giả Lập Vị Trí trước đây.
 .vtp-nut .c small{font-size:.78rem;opacity:.9}
 .vtp-nut .m{font-size:1.1rem;opacity:.85}
 .vtp-mot{display:block;max-width:420px;margin:1.1em 0}
+.vtq{margin:1.4em 0;padding:20px;border:1px solid var(--vien);border-radius:20px;background:var(--nen-the);display:grid;gap:20px}
+.vtq-nhom{display:grid;gap:10px}
+.noi-dung p.vtq-ten{margin:0;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--chu)}
+.vtq-ten span{margin-left:8px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--chu-nhat)}
+.vtq-luoi{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.noi-dung a.vtq-o,.noi-dung a.vtq-hd{--mau:#0f9d8f;display:flex;align-items:center;gap:12px;min-height:64px;padding:11px 14px;border-radius:14px;border:1px solid var(--vien);background:var(--nen-phu);color:var(--chu);text-decoration:none;word-break:normal;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease}
+.noi-dung a.vtq-o:hover,.noi-dung a.vtq-hd:hover{color:var(--chu);border-color:var(--mau);transform:translateY(-1px);box-shadow:0 6px 18px color-mix(in srgb,var(--mau) 22%,transparent)}
+.noi-dung a.vtq-o.ios{--mau:#2f8cf0}
+.noi-dung a.vtq-o.cu{--mau:#8b93a5}
+.noi-dung a.vtq-o.cc{--mau:#7c6cf0}
+.noi-dung a.vtq-hd{--mau:#e08a12;background:color-mix(in srgb,#e08a12 9%,var(--nen-phu))}
+.vtq-i{flex:none;width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--mau) 16%,transparent);color:var(--mau)}
+.vtq-i svg{width:21px;height:21px;fill:currentColor}
+.vtq-c{flex:1;min-width:0;line-height:1.3}
+.vtq-c b{display:block;font-size:.96rem;font-weight:650}
+.vtq-c small{display:block;margin-top:2px;font-size:.8rem;color:var(--chu-nhat)}
+.vtq-m{flex:none;font-size:1.05rem;color:var(--mau)}
+.vtq-the{margin-left:8px;padding:1px 7px;border-radius:999px;font-size:.68rem;font-style:normal;font-weight:650;vertical-align:1px;background:color-mix(in srgb,#e08a12 18%,transparent);color:#e08a12}
+@media (max-width:520px){.vtq{padding:14px}.vtq-ten span{display:block;margin:2px 0 0}}
 </style>
-<div class="vtp-tai"><div class="vtp-luoi">
-<a class="vtp-nut" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/ViTriPro-1.0-Windows-CaiDat.exe"><span class="i">⊞</span><span class="c"><b>Vị Trí Pro cho Windows</b><small>Windows 10 / 11 · file .exe · 734 MB</small></span><span class="m">↓</span></a>
-<a class="vtp-nut" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/ViTriPro-1.1-macOS.dmg"><span class="i"></span><span class="c"><b>Vị Trí Pro cho MacBook</b><small>macOS 14 trở lên · chip Apple · file .dmg · 36 MB</small></span><span class="m">↓</span></a>
-<a class="vtp-nut tf" href="https://testflight.apple.com/join/aabZw9gJ" target="_blank" rel="noopener"><span class="i">📱</span><span class="c"><b>Vị Trí Pro cho iPhone</b><small>iOS 17.4 trở lên · qua TestFlight</small></span><span class="m">↗</span></a>
-<a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.0-Windows-CaiDat.exe"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi cho iOS — bản Windows</b><small>Tạo tệp ghép đôi cho app iPhone · chạy trên Windows · 111 MB</small></span><span class="m">↓</span></a>
-<a class="vtp-nut phu" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.1-macOS.dmg"><span class="i">🔗</span><span class="c"><b>Tạo Tệp Ghép Đôi cho iOS — bản MacBook</b><small>Tạo tệp ghép đôi cho app iPhone · chạy trên MacBook chip Apple · 36 MB</small></span><span class="m">↓</span></a>
-<a class="vtp-nut hd" href="/bai-viet/huong-dan-vi-tri-pro/"><span class="i">📖</span><span class="c"><b>Hướng dẫn cài và dùng</b><small>Từng bước, có hình minh hoạ</small></span><span class="m">→</span></a>
+<div class="vtq">
+<div class="vtq-nhom"><p class="vtq-ten">Bản cho iPhone <span>cài qua TestFlight</span></p><div class="vtq-luoi">
+<a class="vtq-o ios" href="https://testflight.apple.com/join/aabZw9gJ" target="_blank" rel="noopener"><span class="vtq-i"><svg viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 3v13h8V5zm3 14.2v1.3h2v-1.3z"/></svg></span><span class="vtq-c"><b>Vị Trí Pro cho iPhone</b><small>iOS 17.4 trở lên · bản mới nhất</small></span><span class="vtq-m">↗</span></a>
+<a class="vtq-o cu" href="https://testflight.apple.com/join/KYYj3Bfd" target="_blank" rel="noopener"><span class="vtq-i"><svg viewBox="0 0 24 24"><path d="M8 2h8a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 3v13h8V5zm3 14.2v1.3h2v-1.3z"/></svg></span><span class="vtq-c"><b>Vị Trí Pro — bản cũ<i class="vtq-the">Bản cũ</i></b><small>Chỉ cho iOS đời cũ · iOS 26 trở lên không dùng được</small></span><span class="vtq-m">↗</span></a>
 </div></div>
+<div class="vtq-nhom"><p class="vtq-ten">Bản cho máy tính <span>điều khiển iPhone qua cáp</span></p><div class="vtq-luoi">
+<a class="vtq-o may" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/ViTriPro-1.0-Windows-CaiDat.exe"><span class="vtq-i"><svg viewBox="0 0 24 24"><path d="M3 5.5 11 4v7.5H3zM13 3.7 21 2.5v9H13zM3 12.5h8V20l-8-1.5zM13 12.5h8v9l-8-1.2z"/></svg></span><span class="vtq-c"><b>Vị Trí Pro cho Windows</b><small>Windows 10 / 11 · 734 MB</small></span><span class="vtq-m">↓</span></a>
+<a class="vtq-o may" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/ViTriPro-1.1-macOS.dmg"><span class="vtq-i"><svg viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v10H4V6a1 1 0 0 1 1-1zm1 2v7h12V7zM2 17.5h20V18a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18z"/></svg></span><span class="vtq-c"><b>Vị Trí Pro cho MacBook</b><small>macOS 14 trở lên · chip Apple · 36 MB</small></span><span class="vtq-m">↓</span></a>
+</div></div>
+<div class="vtq-nhom"><p class="vtq-ten">Tạo Tệp Ghép Đôi cho iOS <span>công cụ cho bản iPhone, chọn theo máy tính của bạn</span></p><div class="vtq-luoi">
+<a class="vtq-o cc" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.0-Windows-CaiDat.exe"><span class="vtq-i"><svg viewBox="0 0 24 24"><path d="M3 5.5 11 4v7.5H3zM13 3.7 21 2.5v9H13zM3 12.5h8V20l-8-1.5zM13 12.5h8v9l-8-1.2z"/></svg></span><span class="vtq-c"><b>Bản Windows</b><small>Chạy trên Windows 10 / 11 · 111 MB</small></span><span class="vtq-m">↓</span></a>
+<a class="vtq-o cc" href="https://github.com/doanngoclam3000-creator/doanngoclam3000-creator.github.io/releases/download/vi-tri-pro-1.0/TaoTepGhepDoi-1.1-macOS.dmg"><span class="vtq-i"><svg viewBox="0 0 24 24"><path d="M5 5h14a1 1 0 0 1 1 1v10H4V6a1 1 0 0 1 1-1zm1 2v7h12V7zM2 17.5h20V18a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 18z"/></svg></span><span class="vtq-c"><b>Bản MacBook</b><small>Chạy trên MacBook chip Apple · 36 MB</small></span><span class="vtq-m">↓</span></a>
+</div></div>
+<a class="vtq-hd" href="/bai-viet/huong-dan-vi-tri-pro/"><span class="vtq-i"><svg viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 2 .8A3 3 0 0 1 14 4h6v15h-6a2 2 0 0 0-2 1 2 2 0 0 0-2-1H4zm2 2v11h4c.4 0 .7 0 1 .2V7a1 1 0 0 0-1-1zm12 0h-4a1 1 0 0 0-1 1v10.2c.3-.2.6-.2 1-.2h4z"/></svg></span><span class="vtq-c"><b>Hướng dẫn cài và dùng</b><small>Từng bước, có hình minh hoạ</small></span><span class="vtq-m">→</span></a>
+</div>
 
-> **Bản iPhone cài qua TestFlight.** Cài app **TestFlight** của Apple từ App Store trước, rồi bấm nút iPhone ở trên **ngay trên iPhone**. Chưa dùng TestFlight bao giờ thì xem [hướng dẫn có hình](/bai-viet/huong-dan-cai-qua-testflight/).
+> **Bản iPhone cài qua TestFlight.** Cài app **TestFlight** của Apple từ App Store trước, rồi bấm nút iPhone ở trên **ngay trên iPhone**. iPhone chạy iOS 26 trở lên dùng bản mới nhất; **bản cũ** chỉ dành cho iPhone chạy iOS đời cũ, từ iOS 26 trở lên không dùng được. Chưa dùng TestFlight bao giờ thì xem [hướng dẫn có hình](/bai-viet/huong-dan-cai-qua-testflight/).
 
 ## Cần chuẩn bị
 
