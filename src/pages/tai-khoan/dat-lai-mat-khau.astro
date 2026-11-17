@@ -2,7 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import '../../styles/tai-khoan.css';
 ---
-<Layout tieuDe="Đặt lại mật khẩu" moTa="Đặt mật khẩu mới cho tài khoản ví phanmemtq.com." anGoogle={true}>
+<Layout tieuDe="Đặt lại mật khẩu" moTa="Đặt mật khẩu mới cho tài khoản phanmemtq.com." anGoogle={true}>
   <div class="tk-trang">
     <div class="tk-hep">
       <div class="tk-tieu">
@@ -72,7 +72,7 @@ import '../../styles/tai-khoan.css';
           // Đổi xong là vào thẳng ví luôn, khỏi bắt đăng nhập lại
           window.VI.datToken(kq.token);
           var o = document.getElementById('duoc');
-          o.textContent = 'Đã đổi mật khẩu xong. Đang đưa bạn vào ví…';
+          o.textContent = 'Đã đổi mật khẩu xong. Đang đưa bạn vào tài khoản…';
           o.hidden = false;
           form.hidden = true;
           setTimeout(function () { location.href = '/tai-khoan/'; }, 1200);

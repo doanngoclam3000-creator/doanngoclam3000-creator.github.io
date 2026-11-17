@@ -3,97 +3,42 @@ import Layout from '../../layouts/Layout.astro';
 import '../../styles/tai-khoan.css';
 ---
 
-<Layout tieuDe="Ví của tôi" moTa="Nạp tiền, mua key phần mềm và rút tiền về ngân hàng.">
+<Layout tieuDe="Tài khoản" moTa="Thông tin tài khoản của bạn trên phanmemtq.com.">
   <div class="tk-trang">
     <div class="khung-rong">
 
       <div class="tk-dau">
-        <h1>Ví của tôi</h1>
+        <h1>Tài khoản</h1>
         <div class="day">
           <button class="nut nut-vien" id="nut-thoat" type="button">Đăng xuất</button>
         </div>
       </div>
 
       <!-- Tai khoan mo bang Google tu truoc khi bat buoc so dien thoai thi con
-           thieu. Chua bo sung thi may chu chan mua key / dung thu / rut tien. -->
+           thieu. Chua bo sung thi may chu chan tai phan mem. -->
       <div class="loi" id="thieu-dt" hidden>
-        <b>Thiếu số điện thoại.</b> Bạn cần điền số điện thoại thì mới mua key,
-        nhận mã dùng thử, tải phần mềm hay rút tiền được.
+        <b>Thiếu số điện thoại.</b> Bạn cần điền số điện thoại thì mới tải phần mềm được.
         <a href="#ho-so" data-di="ho-so">Điền ngay</a>
       </div>
 
-      <div class="o-sodu">
+      <!-- Website khong con nap tien / mua key. O so du va cac muc Rut tien, Lich su
+           chi hien voi tai khoan CON TIEN tu truoc, de khach rut ve duoc. -->
+      <div class="o-sodu" id="o-sodu" hidden>
         <div class="nhan-so">Số dư khả dụng</div>
         <div class="tien" id="so-du">…</div>
         <div class="cot">
           <div>Đã nạp<b id="da-nap">…</b></div>
           <div>Đã rút<b id="da-rut">…</b></div>
           <div>Hoa hồng<b id="hh-kiem">…</b></div>
-          <div>Mã giới thiệu<b id="ma-gt">…</b></div>
         </div>
       </div>
 
       <div class="thanh-tab" id="tabs">
-        <button data-tab="nap" class="on" type="button">Nạp tiền</button>
-        <button data-tab="mua" type="button">Mua key</button>
+        <button data-tab="ho-so" class="on" type="button">Tài khoản</button>
         <button data-tab="don" type="button">Key đã mua</button>
-        <button data-tab="rut" type="button">Rút tiền</button>
-        <button data-tab="lich-su" type="button">Lịch sử</button>
-        <button data-tab="ho-so" type="button">Tài khoản</button>
+        <button data-tab="rut" type="button" hidden>Rút tiền</button>
+        <button data-tab="lich-su" type="button" hidden>Lịch sử</button>
       </div>
-
-      <section data-o="nap">
-        <div class="hop">
-          <h2>Nạp tiền vào ví</h2>
-          <p class="loi-mo">
-            Chuyển khoản đúng <b>nội dung</b> bên dưới. Tiền vào ví tự động sau khoảng 10 giây,
-            không cần nhắn tin cho ai.
-          </p>
-          <label class="o o-hep">
-            <span>Số tiền muốn nạp (không bắt buộc)</span>
-            <input type="number" id="nap-tien" min="0" step="1000" placeholder="Ví dụ 300000" />
-            <small>Điền vào thì mã QR có sẵn số tiền, quét là xong.</small>
-          </label>
-          <div class="qr">
-            <img id="nap-qr" alt="Mã QR chuyển khoản" />
-            <div class="tt">
-              <div class="dong-tt"><span>Ngân hàng</span><b id="nap-nh">…</b></div>
-              <div class="dong-tt"><span>Số tài khoản</span><b><span id="nap-stk">…</span> <button class="chep" data-chep="nap-stk" type="button">chép</button></b></div>
-              <div class="dong-tt"><span>Chủ tài khoản</span><b id="nap-ctk">…</b></div>
-              <div class="dong-tt"><span>Nội dung bắt buộc</span><b><span id="nap-nd">…</span> <button class="chep" data-chep="nap-nd" type="button">chép</button></b></div>
-              <p class="ghi-nho">Ghi sai nội dung thì tiền không tự vào ví, phải nhờ chủ shop cộng tay.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section data-o="mua" hidden>
-        <div class="hop">
-          <h2>Mua key bằng tiền trong ví</h2>
-          <div class="loi" id="mua-loi" hidden></div>
-          <div class="duoc" id="mua-duoc" hidden></div>
-
-          <label class="o o-vua">
-            <span>Phần mềm</span>
-            <select id="mua-pm"></select>
-          </label>
-          <p class="luu-y" id="mua-luuy" hidden></p>
-
-          <div class="o">
-            <span>Chọn gói</span>
-            <div class="luoi-goi" id="mua-goi"></div>
-          </div>
-
-          <label class="o o-hep" id="o-ma-may">
-            <span>Mã máy</span>
-            <input type="text" id="mua-may" maxlength="24" placeholder="VD: MAY-A7K2Q9" class="o-ma" />
-            <small>Mở phần mềm, vào mục <b>Bản quyền</b> rồi chép mã máy 6 ký tự.</small>
-          </label>
-
-          <button class="nut nut-chinh" id="mua-nut" type="button">Mua ngay</button>
-          <button class="nut" id="thu-nut" type="button" hidden>Dùng thử miễn phí</button>
-        </div>
-      </section>
 
       <section data-o="don" hidden>
         <div class="hop">
@@ -149,7 +94,7 @@ import '../../styles/tai-khoan.css';
         </div>
       </section>
 
-      <section data-o="ho-so" hidden>
+      <section data-o="ho-so">
         <div class="hop">
           <h2>Thông tin của bạn</h2>
           <div class="loi" id="hs-loi" hidden></div>
@@ -161,7 +106,7 @@ import '../../styles/tai-khoan.css';
           <button class="nut nut-chinh" id="hs-nut" type="button">Lưu</button>
         </div>
 
-        <div class="hop">
+        <div class="hop" id="hop-nh" hidden>
           <h2>Tài khoản ngân hàng để rút tiền</h2>
           <div class="loi" id="nh-loi" hidden></div>
           <div class="duoc" id="nh-duoc" hidden></div>
@@ -182,14 +127,6 @@ import '../../styles/tai-khoan.css';
           <button class="nut nut-chinh" id="mk-nut" type="button">Đổi mật khẩu</button>
         </div>
 
-        <div class="hop">
-          <h2>Giới thiệu bạn bè</h2>
-          <p class="loi-mo">
-            Ai đăng ký qua đường dẫn này rồi mua key, bạn được cộng hoa hồng thẳng vào ví và rút ra được.
-          </p>
-          <div class="the-key" id="link-gt">…</div>
-          <button class="nut nut-vien dat-tren" id="gt-chep" type="button">Chép đường dẫn</button>
-        </div>
       </section>
 
     </div>
@@ -201,7 +138,7 @@ import '../../styles/tai-khoan.css';
       if (!window.VI.canDangNhap()) return;
       var V = window.VI;
       var $ = function (id) { return document.getElementById(id); };
-      var toi = null, bangGia = null, pmDangChon = null, goiDangChon = null, lsCuoi = 0;
+      var toi = null, lsCuoi = 0;
       var daNhacDt = false;
 
       // Nhan moi kieu khach hay go: "0912 345 678", "+84912345678" -> "0912345678"
@@ -255,8 +192,13 @@ import '../../styles/tai-khoan.css';
         $('da-nap').textContent = V.tien(toi.daNap);
         $('da-rut').textContent = V.tien(toi.daRut);
         $('hh-kiem').textContent = V.tien(toi.hhKiem);
-        $('ma-gt').textContent = toi.maNap;
-        $('link-gt').textContent = location.origin + '/tai-khoan/dang-ky/?gt=' + toi.maNap;
+        // Con tien tu truoc thi moi hien so du + Rut tien + Lich su
+        var conTien = Number(toi.soDu) > 0;
+        $('o-sodu').hidden = !conTien;
+        $('hop-nh').hidden = !conTien;
+        document.querySelectorAll('#tabs button[data-tab="rut"], #tabs button[data-tab="lich-su"]').forEach(function (b) {
+          b.hidden = !conTien;
+        });
         $('nh-ten').value = toi.nganHang;
         $('nh-stk').value = toi.soTk;
         $('nh-ctk').value = toi.chuTk;
@@ -286,124 +228,6 @@ import '../../styles/tai-khoan.css';
           $('hs-duoc').hidden = false;
           await taiToi();
         } catch (err) { V.baoLoi('hs-loi', err); }
-      });
-      $('gt-chep').addEventListener('click', function () { chep($('link-gt').textContent, $('gt-chep')); });
-
-      // ---------- Nap tien ----------
-      var hen = null;
-      async function taiNap() {
-        var t = Number($('nap-tien').value) || 0;
-        var kq = await V.goi('/nap?soTien=' + t);
-        $('nap-nh').textContent = kq.nganHang;
-        $('nap-stk').textContent = kq.soTk;
-        $('nap-ctk').textContent = kq.chuTk;
-        $('nap-nd').textContent = kq.noiDung;
-        $('nap-qr').src = kq.qr;
-      }
-      $('nap-tien').addEventListener('input', function () {
-        clearTimeout(hen);
-        hen = setTimeout(function () { taiNap().catch(function () {}); }, 500);
-      });
-
-      // ---------- Mua key ----------
-      function veGoi() {
-        var pm = bangGia.phanMem.find(function (x) { return x.ma === $('mua-pm').value; });
-        pmDangChon = pm; goiDangChon = null;
-        $('mua-luuy').textContent = pm.luuY || '';
-        $('mua-luuy').hidden = !pm.luuY;
-        // Phan mem khong gan key vao may (LamVPN, Gia Lap Vi Tri) thi giau han
-        // o ma may di - hoi cai khach khong co la khach tuong minh lam sai roi
-        // bo cuoc giua chung.
-        // Chi hien nut dung thu voi phan mem co khai dungThuNgay.
-        var nutThu = $('thu-nut');
-        if (nutThu) {
-        nutThu.hidden = !pm.dungThuNgay;
-        if (pm.dungThuNgay) {
-          nutThu.textContent = 'Dùng thử miễn phí ' + pm.dungThuNgay + ' ngày';
-          nutThu.disabled = false;
-        }
-        }
-        $('o-ma-may').hidden = !pm.canMaMay;
-        if (!pm.canMaMay) $('mua-may').value = '';
-        $('o-ma-may').querySelector('small').innerHTML = pm.tuDong
-          ? 'Mở đúng phần mềm bạn muốn kích hoạt (máy tính hay iPhone), vào mục ' +
-            '<b>Bản quyền</b> rồi chép mã máy ở đó. Chép cả cụm <b>MAY-XXXXXX</b> cũng được.'
-          : 'Phần mềm này cấp key tay. Có mã máy thì điền vào để chủ shop cấp nhanh hơn.';
-        $('mua-goi').innerHTML = pm.goi.map(function (g) {
-          return '<button type="button" data-goi="' + g.ma + '"><b>' + g.ten + '</b><span>' +
-            V.tien(g.gia) + '</span></button>';
-        }).join('');
-      }
-      $('mua-goi').addEventListener('click', function (e) {
-        var b = e.target.closest('button[data-goi]');
-        if (!b) return;
-        goiDangChon = b.dataset.goi;
-        $('mua-goi').querySelectorAll('button').forEach(function (x) {
-          x.classList.toggle('on', x.dataset.goi === goiDangChon);
-        });
-      });
-      async function taiBangGia() {
-        bangGia = await V.goi('/bang-gia');
-        $('mua-pm').innerHTML = bangGia.phanMem.map(function (m) {
-          return '<option value="' + m.ma + '">' + m.ten + (m.tuDong ? '' : ' (cấp tay)') + '</option>';
-        }).join('');
-        veGoi();
-      }
-      $('mua-pm').addEventListener('change', veGoi);
-
-      // Buoc qua neu thieu nut: mot phan tu thieu KHONG duoc lam chet toan bo
-      // trang vi. Da vap dung loi nay - nut chua co ma JS goi toi, addEventListener
-      // tren null nem loi, moi thu sau do khong chay, so du hien "..." mai.
-      if ($('thu-nut')) $('thu-nut').addEventListener('click', async function () {
-        V.baoLoi('mua-loi', ''); $('mua-duoc').hidden = true;
-        var nut = this;
-        nut.disabled = true; nut.textContent = 'Đang xin mã…';
-        try {
-          var kq = await V.goi('/dung-thu', { phanMem: pmDangChon.ma });
-          $('mua-duoc').hidden = false;
-          $('mua-duoc').innerHTML = '<b>' + kq.key + '</b><br><span>' + kq.nhan + '</span>';
-          nut.textContent = 'Đã nhận mã dùng thử';
-        } catch (e) {
-          V.baoLoi('mua-loi', e);
-          nut.disabled = false;
-          nut.textContent = 'Dùng thử miễn phí ' + (pmDangChon.dungThuNgay || 1) + ' ngày';
-        }
-      });
-
-      $('mua-nut').addEventListener('click', async function () {
-        V.baoLoi('mua-loi', ''); $('mua-duoc').hidden = true;
-        if (!goiDangChon) return V.baoLoi('mua-loi', new Error('Chọn gói trước đã.'));
-        // Phan mem hien ma may dang MAY-XXXXXX, nhung phan de ky key la doan
-        // SAU dau gach. Khach chep ca cum hay chep moi doan sau deu nhan.
-        var may = $('mua-may').value.trim().toUpperCase()
-          .replace(/^MAY[-\s]+/, '').replace(/[^A-Z0-9]/g, '');
-        if (pmDangChon.canMaMay && pmDangChon.tuDong && (may.length < 4 || may.length > 16)) {
-          return V.baoLoi('mua-loi', new Error('Chép thiếu mã máy rồi. Mở phần mềm, vào mục Bản quyền lấy đúng mã.'));
-        }
-        var g = pmDangChon.goi.find(function (x) { return x.ma === goiDangChon; });
-        // Bấm hai lần thay cho hộp thoại confirm: hộp thoại của trình duyệt
-        // chặn hết thao tác khác, trên điện thoại lại hay bị chặn luôn.
-        if (this.dataset.sanSang !== '1') {
-          this.dataset.sanSang = '1';
-          this.textContent = 'Trừ ' + V.tien(g.gia) + ' từ ví — bấm lần nữa';
-          var nutM = this;
-          setTimeout(function () { nutM.dataset.sanSang = '0'; nutM.textContent = 'Mua ngay'; }, 6000);
-          return;
-        }
-        this.dataset.sanSang = '0';
-
-        $('mua-nut').disabled = true; $('mua-nut').textContent = 'Đang xử lý…';
-        try {
-          var kq = await V.goi('/mua', { phanMem: pmDangChon.ma, goi: goiDangChon, maMay: may });
-          var html = '<b>' + kq.nhan + '</b>';
-          if (kq.key) html += '<div class="the-key dat-tren">' + kq.key + '</div>';
-          $('mua-duoc').innerHTML = html;
-          $('mua-duoc').hidden = false;
-          await taiToi();
-        } catch (err) {
-          V.baoLoi('mua-loi', err);
-        }
-        $('mua-nut').disabled = false; $('mua-nut').textContent = 'Mua ngay';
       });
 
       // ---------- Don da mua ----------
@@ -519,24 +343,11 @@ import '../../styles/tai-khoan.css';
       (async function () {
         try {
           await taiToi();
-          await taiNap();
-          await taiBangGia();
-          // Tu trang phan mem bam "Mua key" sang: ?mua=<ma phan mem>#mua
-          var muaSan = new URLSearchParams(location.search).get('mua');
-          if (muaSan || location.hash === '#mua') {
-            if (muaSan && bangGia.phanMem.some(function (m) { return m.ma === muaSan; })) {
-              $('mua-pm').value = muaSan;
-              veGoi();
-            }
-            moTab('mua');
-            var hop = document.querySelector('section[data-o="mua"]');
-            if (hop) hop.scrollIntoView({ block: 'start' });
-          }
         } catch (err) {
           var oLoi = document.createElement('div');
           oLoi.className = 'loi';
           oLoi.textContent = err.message || err;
-          document.querySelector('.o-sodu').after(oLoi);
+          document.getElementById('tabs').before(oLoi);
         }
       })();
     })();
