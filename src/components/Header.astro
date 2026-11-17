@@ -27,7 +27,7 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
       <a href="/gioi-thieu" class:list={['muc', dangO('/gioi-thieu') && 'dang-o']}>Giới thiệu</a>
       <a href="/lien-he" class:list={['muc', dangO('/lien-he') && 'dang-o']}>Liên hệ</a>
       <a href="/tai-khoan/dang-nhap" class:list={['muc', 'chi-khach']} id="menu-dang-nhap">Đăng nhập</a>
-      <a href="/tai-khoan" class:list={['muc', dangO('/tai-khoan') && 'dang-o']} id="menu-vi" hidden>Ví của tôi <b class="so-du" id="so-du-menu">0đ</b></a>
+      <a href="/tai-khoan" class:list={['muc', dangO('/tai-khoan') && 'dang-o']} id="menu-vi" hidden>Tài khoản</a>
     </nav>
 
     <div class="phai">
@@ -35,7 +35,7 @@ const dangO = (h: string) => (h === '/' ? p === '/' : p.startsWith(h));
         <span class="hien-sang">🌙</span><span class="hien-toi">☀️</span>
       </button>
       <a href="/tai-khoan/dang-nhap/" class="nut nut-vien nut-dn" id="nut-dang-nhap">Đăng nhập</a>
-      <a href="/tai-khoan/" class="nut nut-vien nut-dn" id="nut-vi" hidden>Ví của tôi <b class="so-du" id="so-du-nut">0đ</b></a>
+      <a href="/tai-khoan/" class="nut nut-vien nut-dn" id="nut-vi" hidden>Tài khoản</a>
       <a href="/phan-mem" class="nut nut-chinh nut-tai">Tải phần mềm</a>
       <button id="mo-menu" class="nut-tron chi-mobile" aria-label="Mở menu" aria-expanded="false" aria-controls="menu">☰</button>
     </div>

@@ -25,11 +25,6 @@ const nut = [
 
 const coTestFlight = nut.some((n) => n.tf);
 
-// Phan mem thu phi thi co nut Mua key ngay canh nut tai; mien phi thi khong.
-const banKey = !pm.data.mienPhi;
-// Lay doan GIA dau tien lam dong chu nho: "Dùng thử 1 ngày · 80.000đ / tháng · ..." -> "80.000đ / tháng"
-const giaNgan = (pm.data.gia || '').split(/\s+[·—-]\s+/).map((d) => d.trim()).find((d) => /\dđ/.test(d)) || '';
-
 // Neu chua khai bao link rieng cho tung he dieu hanh thi dung link chung
 const dungLinkChung = nut.length === 0 && pm.data.linkTai && pm.data.linkTai !== '#';
 // Chua co link nao thi khong hien khoi tai
@@ -90,16 +85,6 @@ const coGiDeTai = nut.length > 0 || dungLinkChung;
             </small>
           </span>
           <span class="mui">↓</span>
-        </a>
-      )}
-      {banKey && (
-        <a href={`/tai-khoan/?mua=${pm.id}#mua`} class="nut-tai nut-key">
-          <span class="nut-icon">🔑</span>
-          <span class="nut-chu">
-            <b>Mua key bản quyền</b>
-            <small>{giaNgan || 'Thanh toán bằng ví, nhận key ngay'}</small>
-          </span>
-          <span class="mui">→</span>
         </a>
       )}
       {coTestFlight && (
