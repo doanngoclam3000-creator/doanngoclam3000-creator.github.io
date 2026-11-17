@@ -1,0 +1,41 @@
+name: Ghep tep cai tu cac manh
+
+# Chay tay tu tab Actions. May Windows khong co git, cong cu tai tep chi nhan
+# duoi 10 MB, nen tep cai lon duoc cat thanh cac manh <ten>.partNNN roi tai len
+# ban phat hanh. Viec nay ghep cac manh lai thanh tep that, kiem SHA-256, tai
+# len ban phat hanh va xoa cac manh.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ghep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ghep va tai len
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -e
+          THE="vi-tri-pro-1.0"
+          ghep() {
+            TEN="$1"; SHA="$2"
+            SO=$(gh release view "$THE" --json assets --jq "[.assets[].name | select(startswith(\"$TEN.part\"))] | length")
+            if [ "$SO" = "0" ]; then echo "Khong co manh nao cua $TEN, bo qua"; return 0; fi
+            echo "Ghep $SO manh cua $TEN"
+            rm -rf p && mkdir p
+            gh release download "$THE" -p "$TEN.part*" -D p
+            cat $(ls p/* | sort) > "$TEN"
+            ls -l "$TEN"
+            echo "$SHA  $TEN" | sha256sum -c -
+            gh release upload "$THE" "$TEN" --clobber
+            for f in p/*; do gh release delete-asset "$THE" "$(basename "$f")" -y; done
+            rm -rf p "$TEN"
+          }
+          ghep "TaoTepGhepDoi-1.0-Windows-CaiDat.exe" "2c44bd930f1d95ce08a2e48befe0a1854cd6a0b1179980feb6eb4ced02b88cce"
+          ghep "ViTriPro-1.0-Windows-CaiDat.exe" "1fa714fe1a94e5bdd021c18b1960f245593c87926871ca9d66f12741b88aed68"
+          gh release view "$THE" --json assets --jq '.assets[] | "\(.name)  \(.size)"'
