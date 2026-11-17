@@ -23,23 +23,21 @@ Tổng cộng mất khoảng **ba phút**.
 
 ### Muốn thử trước cho biết
 
-Đăng nhập **phanmemtq.com**, vào mục **Tài khoản**, chọn LamVPN rồi bấm
-**Dùng thử miễn phí 1 ngày**. Nhận mã ngay, không cần nạp tiền. Mỗi tài khoản một lần.
+Nhắn shop qua Zalo **0971619705** hoặc WeChat **tieumanthau1409** để nhận
+**mã dùng thử miễn phí 1 ngày**. Mỗi người một lần.
 
 ### Mua mã dùng tiếp
 
 Phải có mã mới mở được app — app không tự cho vào.
 
-1. Vào **phanmemtq.com**, đăng nhập (chưa có thì đăng ký, mất 30 giây).
-2. Vào mục **Tài khoản**, nạp tiền vào số dư. Trang sẽ hiện số tài khoản ngân hàng và
-   nội dung chuyển khoản — **chuyển đúng nội dung đó** thì tiền vào tự động trong ít phút.
-3. Vẫn ở trang Tài khoản, chọn **LamVPN**, chọn gói, bấm **Mua**.
-4. Mã hiện ra ngay trên màn hình. Bấm nút **chép** cạnh mã.
+1. Nhắn shop qua Zalo **0971619705** hoặc WeChat **tieumanthau1409**, nói gói bạn muốn mua.
+2. Chuyển khoản theo hướng dẫn của shop.
+3. Shop gửi mã cho bạn ngay trong tin nhắn.
 
 Mã có dạng `LAM-XXXX-XXXX-XXXX`. Cứ để nguyên cả dấu gạch, không cần xoá.
 
-> **Giữ lại mã.** Cài lại máy hay đổi điện thoại còn dùng tới. Mã cũng nằm trong lịch sử
-> đơn hàng ở trang Tài khoản nếu bạn lỡ mất.
+> **Giữ lại mã.** Cài lại máy hay đổi điện thoại còn dùng tới. Mã mua trên website trước đây vẫn
+> xem lại được ở trang Tài khoản, mục **Key đã mua**.
 
 ## Bước 2 — Cài app
 
@@ -139,7 +137,7 @@ dùng được, vẫn cần VPN để chúng kết nối ra ngoài.
 
 Gần hết hạn thì **không phải chờ hết mới gia hạn**:
 
-1. Mua thêm một mã trên website như bước 1.
+1. Mua thêm một mã như bước 1.
 2. Ở trang chính của app, **bấm vào dòng "Hết hạn"** — ô nhập mã hiện ra.
 3. Dán mã mới vào, bấm xác nhận.
 
