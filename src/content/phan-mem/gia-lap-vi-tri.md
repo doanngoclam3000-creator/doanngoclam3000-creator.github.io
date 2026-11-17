@@ -59,25 +59,31 @@ Vị Trí Pro thay cho phần mềm Giả Lập Vị Trí trước đây.
 .vtp-nut .c small{font-size:.78rem;opacity:.9}
 .vtp-nut .m{font-size:1.1rem;opacity:.85}
 .vtp-mot{display:block;max-width:420px;margin:1.1em 0}
-.vtq{margin:1.4em 0;padding:20px;border:1px solid var(--vien);border-radius:20px;background:var(--nen-the);display:grid;gap:20px}
+.vtq{position:relative;margin:1.4em 0;padding:22px;border-radius:22px;display:grid;gap:22px;border:1.5px solid color-mix(in srgb,#0f9d8f 55%,var(--vien));background:radial-gradient(900px 320px at 0% 0%,color-mix(in srgb,#0f9d8f 20%,transparent),transparent 70%),radial-gradient(700px 300px at 100% 100%,color-mix(in srgb,#7c6cf0 16%,transparent),transparent 70%),var(--nen-the);box-shadow:0 0 0 4px color-mix(in srgb,#0f9d8f 10%,transparent),0 18px 50px color-mix(in srgb,#0f9d8f 22%,transparent)}
 .vtq-nhom{display:grid;gap:10px}
-.noi-dung p.vtq-ten{margin:0;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--chu)}
-.vtq-ten span{margin-left:8px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--chu-nhat)}
-.vtq-luoi{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
-.noi-dung a.vtq-o,.noi-dung a.vtq-hd{--mau:#0f9d8f;display:flex;align-items:center;gap:12px;min-height:64px;padding:11px 14px;border-radius:14px;border:1px solid var(--vien);background:var(--nen-phu);color:var(--chu);text-decoration:none;word-break:normal;transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease}
-.noi-dung a.vtq-o:hover,.noi-dung a.vtq-hd:hover{color:var(--chu);border-color:var(--mau);transform:translateY(-1px);box-shadow:0 6px 18px color-mix(in srgb,var(--mau) 22%,transparent)}
-.noi-dung a.vtq-o.ios{--mau:#2f8cf0}
-.noi-dung a.vtq-o.cu{--mau:#8b93a5}
+.noi-dung p.vtq-ten{margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:.84rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--chu)}
+.vtq-ten::before{content:"";width:4px;height:16px;border-radius:2px;background:var(--mau,#0f9d8f)}
+.vtq-nhom:nth-child(1){--mau:#2f8cf0}.vtq-nhom:nth-child(2){--mau:#0f9d8f}.vtq-nhom:nth-child(3){--mau:#7c6cf0}
+.vtq-ten span{font-weight:500;letter-spacing:0;text-transform:none;color:var(--chu-nhat)}
+.vtq-luoi{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.noi-dung a.vtq-o,.noi-dung a.vtq-hd{--mau:#0f9d8f;display:flex;align-items:center;gap:13px;min-height:70px;padding:13px 15px;border-radius:15px;border:1.5px solid color-mix(in srgb,var(--mau) 50%,var(--vien));background:linear-gradient(135deg,color-mix(in srgb,var(--mau) 22%,var(--nen-the)),color-mix(in srgb,var(--mau) 7%,var(--nen-the)));color:var(--chu);text-decoration:none;word-break:normal;box-shadow:0 4px 14px color-mix(in srgb,var(--mau) 16%,transparent);transition:border-color .15s ease,transform .15s ease,box-shadow .15s ease}
+.noi-dung a.vtq-o:hover,.noi-dung a.vtq-hd:hover{color:var(--chu);border-color:var(--mau);transform:translateY(-2px);box-shadow:0 10px 26px color-mix(in srgb,var(--mau) 38%,transparent)}
+.noi-dung a.vtq-o.ios{--mau:#2f8cf0;border-color:transparent;background:linear-gradient(135deg,#3b9bff,#0a63d8);color:#fff;box-shadow:0 8px 24px rgba(10,99,216,.45)}
+.noi-dung a.vtq-o.ios:hover{color:#fff;box-shadow:0 12px 30px rgba(10,99,216,.6)}
+.noi-dung a.vtq-o.cu{--mau:#8b93a5;box-shadow:none}
 .noi-dung a.vtq-o.cc{--mau:#7c6cf0}
-.noi-dung a.vtq-hd{--mau:#e08a12;background:color-mix(in srgb,#e08a12 9%,var(--nen-phu))}
-.vtq-i{flex:none;width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:color-mix(in srgb,var(--mau) 16%,transparent);color:var(--mau)}
-.vtq-i svg{width:21px;height:21px;fill:currentColor}
+.noi-dung a.vtq-hd{--mau:#e08a12}
+.vtq-i{flex:none;width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--mau);color:#fff;box-shadow:0 4px 10px color-mix(in srgb,var(--mau) 40%,transparent)}
+.vtq-o.ios .vtq-i{background:rgba(255,255,255,.22);box-shadow:none}
+.vtq-i svg{width:22px;height:22px;fill:currentColor}
 .vtq-c{flex:1;min-width:0;line-height:1.3}
-.vtq-c b{display:block;font-size:.96rem;font-weight:650}
+.vtq-c b{display:block;font-size:1rem;font-weight:700}
 .vtq-c small{display:block;margin-top:2px;font-size:.8rem;color:var(--chu-nhat)}
-.vtq-m{flex:none;font-size:1.05rem;color:var(--mau)}
-.vtq-the{margin-left:8px;padding:1px 7px;border-radius:999px;font-size:.68rem;font-style:normal;font-weight:650;vertical-align:1px;background:color-mix(in srgb,#e08a12 18%,transparent);color:#e08a12}
-@media (max-width:520px){.vtq{padding:14px}.vtq-ten span{display:block;margin:2px 0 0}}
+.vtq-o.ios .vtq-c small{color:rgba(255,255,255,.88)}
+.vtq-m{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:1rem;font-weight:700;background:color-mix(in srgb,var(--mau) 20%,transparent);color:var(--mau)}
+.vtq-o.ios .vtq-m{background:rgba(255,255,255,.22);color:#fff}
+.vtq-the{margin-left:8px;padding:1px 7px;border-radius:999px;font-size:.68rem;font-style:normal;font-weight:650;vertical-align:1px;background:color-mix(in srgb,#e08a12 22%,transparent);color:#e08a12}
+@media (max-width:520px){.vtq{padding:14px}}
 </style>
 <div class="vtq">
 <div class="vtq-nhom"><p class="vtq-ten">Bản cho iPhone <span>cài qua TestFlight</span></p><div class="vtq-luoi">
